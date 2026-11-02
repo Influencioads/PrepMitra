@@ -1,0 +1,56 @@
+{
+  "method": "GET",
+  "path": "/v1/plans",
+  "response": [
+    {
+      "id": "free",
+      "name": "Free Trial",
+      "priceInr": 0,
+      "credits": 1,
+      "validityDays": null,
+      "isRecurring": false,
+      "description": "One 30-minute mini mock with the full report, so you can see the value before paying.",
+      "features": [
+        "1 mini mock (30 min)",
+        "Full performance report",
+        "Topic-wise strengths and weaknesses",
+        "No card required"
+      ],
+      "cta": "Start free mini mock"
+    },
+    {
+      "id": "pay-per-mock",
+      "name": "Pay Per Mock",
+      "priceInr": 99,
+      "credits": 1,
+      "validityDays": 90,
+      "isRecurring": false,
+      "description": "One credit for any full mock exam or mock interview, valid for 90 days.",
+      "features": [
+        "1 credit (exam or interview)",
+        "Detailed report and shortcuts",
+        "7-day improvement plan",
+        "Valid for 90 days"
+      ],
+      "cta": "Buy 1 credit"
+    },
+    {
+      "id": "monthly",
+      "name": "10-Credit Pack",
+      "priceInr": 399,
+      "credits": 10,
+      "validityDays": 90,
+      "isRecurring": false,
+      "description": "10 credits for exams or interviews, valid for 90 days. One-time payment, no auto-renew.",
+      "features": [
+        "10 credits (exam or interview)",
+        "Detailed reports and shortcuts",
+        "Progress analytics",
+        "Valid for 90 days"
+      ],
+      "highlighted": true,
+      "badge": "Best value",
+      "cta": "Buy 10 credits"
+    }
+  ]
+}

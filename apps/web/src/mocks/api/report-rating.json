@@ -1,0 +1,8 @@
+{
+  "method": "POST",
+  "path": "/v1/reports/rep-example01/rating",
+  "request": {
+    "rating": 5
+  },
+  "response": null
+}

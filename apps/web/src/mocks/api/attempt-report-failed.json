@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/v1/attempts/att-example01/report",
+  "response": {
+    "status": "failed",
+    "message": "Report generation failed. Your answers are saved — we will retry automatically."
+  }
+}

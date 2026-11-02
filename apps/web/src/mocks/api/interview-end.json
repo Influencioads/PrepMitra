@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "path": "/v1/interviews/int-example01/end",
+  "response": {
+    "status": "processing"
+  }
+}

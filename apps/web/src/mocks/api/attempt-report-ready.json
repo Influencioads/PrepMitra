@@ -1,0 +1,371 @@
+{
+  "method": "GET",
+  "path": "/v1/attempts/att-example01/report",
+  "response": {
+    "status": "ready",
+    "report": {
+      "id": "rep-example01",
+      "attemptId": "att-example01",
+      "examId": "ssc-cgl",
+      "examTitle": "SSC CGL Tier 1 Mock Test",
+      "createdAt": "2026-10-01T10:25:00.000Z",
+      "language": "en",
+      "isDemo": true,
+      "result": {
+        "score": 0,
+        "maxScore": 20,
+        "percentage": 0,
+        "correct": 1,
+        "incorrect": 4,
+        "unanswered": 5,
+        "attempted": 5,
+        "accuracy": 20,
+        "negativeMarksLost": 2,
+        "marksLostTotal": 20,
+        "sections": [
+          {
+            "sectionId": "cgl-gir",
+            "name": "General Intelligence & Reasoning",
+            "score": 1.5,
+            "maxScore": 6,
+            "correct": 1,
+            "incorrect": 1,
+            "unanswered": 1,
+            "accuracy": 50,
+            "timeSpentSec": 124
+          },
+          {
+            "sectionId": "cgl-ga",
+            "name": "General Awareness",
+            "score": -0.5,
+            "maxScore": 6,
+            "correct": 0,
+            "incorrect": 1,
+            "unanswered": 2,
+            "accuracy": 0,
+            "timeSpentSec": 113
+          },
+          {
+            "sectionId": "cgl-qa",
+            "name": "Quantitative Aptitude",
+            "score": -0.5,
+            "maxScore": 4,
+            "correct": 0,
+            "incorrect": 1,
+            "unanswered": 1,
+            "accuracy": 0,
+            "timeSpentSec": 107
+          },
+          {
+            "sectionId": "cgl-en",
+            "name": "English Comprehension",
+            "score": -0.5,
+            "maxScore": 4,
+            "correct": 0,
+            "incorrect": 1,
+            "unanswered": 1,
+            "accuracy": 0,
+            "timeSpentSec": 121
+          }
+        ],
+        "topics": [
+          {
+            "topic": "Direction Sense",
+            "subject": "reasoning",
+            "correct": 1,
+            "total": 1,
+            "attempted": 1,
+            "accuracy": 100
+          },
+          {
+            "topic": "Analogy",
+            "subject": "reasoning",
+            "correct": 0,
+            "total": 1,
+            "attempted": 1,
+            "accuracy": 0
+          },
+          {
+            "topic": "Coding-Decoding",
+            "subject": "reasoning",
+            "correct": 0,
+            "total": 1,
+            "attempted": 0,
+            "accuracy": 0
+          },
+          {
+            "topic": "Geography",
+            "subject": "general-awareness",
+            "correct": 0,
+            "total": 1,
+            "attempted": 0,
+            "accuracy": 0
+          },
+          {
+            "topic": "Indian Polity",
+            "subject": "general-awareness",
+            "correct": 0,
+            "total": 1,
+            "attempted": 1,
+            "accuracy": 0
+          },
+          {
+            "topic": "Science",
+            "subject": "general-awareness",
+            "correct": 0,
+            "total": 1,
+            "attempted": 0,
+            "accuracy": 0
+          },
+          {
+            "topic": "Time Speed Distance",
+            "subject": "quant",
+            "correct": 0,
+            "total": 1,
+            "attempted": 1,
+            "accuracy": 0
+          },
+          {
+            "topic": "Time and Work",
+            "subject": "quant",
+            "correct": 0,
+            "total": 1,
+            "attempted": 0,
+            "accuracy": 0
+          },
+          {
+            "topic": "Synonyms",
+            "subject": "english",
+            "correct": 0,
+            "total": 1,
+            "attempted": 1,
+            "accuracy": 0
+          },
+          {
+            "topic": "Reading Comprehension",
+            "subject": "english",
+            "correct": 0,
+            "total": 1,
+            "attempted": 0,
+            "accuracy": 0
+          }
+        ],
+        "questions": [
+          {
+            "questionId": "q-reas-6",
+            "sectionId": "cgl-gir",
+            "outcome": "incorrect",
+            "marksAwarded": -0.5,
+            "maxMarks": 2,
+            "timeSpentSec": 45
+          },
+          {
+            "questionId": "q-reas-2",
+            "sectionId": "cgl-gir",
+            "outcome": "unanswered",
+            "marksAwarded": 0,
+            "maxMarks": 2,
+            "timeSpentSec": 20
+          },
+          {
+            "questionId": "q-reas-4",
+            "sectionId": "cgl-gir",
+            "outcome": "correct",
+            "marksAwarded": 2,
+            "maxMarks": 2,
+            "timeSpentSec": 59
+          },
+          {
+            "questionId": "q-ga-2",
+            "sectionId": "cgl-ga",
+            "outcome": "unanswered",
+            "marksAwarded": 0,
+            "maxMarks": 2,
+            "timeSpentSec": 20
+          },
+          {
+            "questionId": "q-ga-1",
+            "sectionId": "cgl-ga",
+            "outcome": "incorrect",
+            "marksAwarded": -0.5,
+            "maxMarks": 2,
+            "timeSpentSec": 73
+          },
+          {
+            "questionId": "q-ga-4",
+            "sectionId": "cgl-ga",
+            "outcome": "unanswered",
+            "marksAwarded": 0,
+            "maxMarks": 2,
+            "timeSpentSec": 20
+          },
+          {
+            "questionId": "q-quant-3",
+            "sectionId": "cgl-qa",
+            "outcome": "incorrect",
+            "marksAwarded": -0.5,
+            "maxMarks": 2,
+            "timeSpentSec": 87
+          },
+          {
+            "questionId": "q-quant-5",
+            "sectionId": "cgl-qa",
+            "outcome": "unanswered",
+            "marksAwarded": 0,
+            "maxMarks": 2,
+            "timeSpentSec": 20
+          },
+          {
+            "questionId": "q-eng-5",
+            "sectionId": "cgl-en",
+            "outcome": "incorrect",
+            "marksAwarded": -0.5,
+            "maxMarks": 2,
+            "timeSpentSec": 101
+          },
+          {
+            "questionId": "q-eng-6",
+            "sectionId": "cgl-en",
+            "outcome": "unanswered",
+            "marksAwarded": 0,
+            "maxMarks": 2,
+            "timeSpentSec": 20
+          }
+        ]
+      },
+      "timeTakenSec": 1500,
+      "durationSec": 1800,
+      "percentile": 1.1,
+      "strengths": [
+        "Direction Sense: 1/1 correct. Accuracy is strong; work on speed to save time for harder sections."
+      ],
+      "weaknesses": [
+        {
+          "topic": "Analogy",
+          "accuracy": 0,
+          "evidenceQuestionIds": [
+            "q-reas-6"
+          ],
+          "note": "0/1 correct. Review the explanations for the linked questions and practise 15 targeted questions."
+        },
+        {
+          "topic": "Coding-Decoding",
+          "accuracy": 0,
+          "evidenceQuestionIds": [
+            "q-reas-2"
+          ],
+          "note": "All 1 Coding-Decoding question(s) were skipped. Revise the core formulae and attempt at least the easy ones next time."
+        },
+        {
+          "topic": "Geography",
+          "accuracy": 0,
+          "evidenceQuestionIds": [
+            "q-ga-2"
+          ],
+          "note": "All 1 Geography question(s) were skipped. Revise the core formulae and attempt at least the easy ones next time."
+        },
+        {
+          "topic": "Indian Polity",
+          "accuracy": 0,
+          "evidenceQuestionIds": [
+            "q-ga-1"
+          ],
+          "note": "0/1 correct. Review the explanations for the linked questions and practise 15 targeted questions."
+        },
+        {
+          "topic": "Science",
+          "accuracy": 0,
+          "evidenceQuestionIds": [
+            "q-ga-4"
+          ],
+          "note": "All 1 Science question(s) were skipped. Revise the core formulae and attempt at least the easy ones next time."
+        }
+      ],
+      "loopholes": [
+        {
+          "title": "Careless errors on easy questions",
+          "detail": "3 easy question(s) were answered incorrectly. Re-read the question stem and verify units before confirming.",
+          "marksImpact": 7.5
+        },
+        {
+          "title": "Negative marking from guesses",
+          "detail": "You lost 2 mark(s) to negative marking. Guess only when you can eliminate at least two options.",
+          "marksImpact": 2
+        },
+        {
+          "title": "Time sinks",
+          "detail": "5 question(s) took more than twice the expected time. Use the two-pass strategy: skip after 90 seconds, return later.",
+          "marksImpact": 0
+        }
+      ],
+      "recommendedNextExamId": "ssc-cgl",
+      "improvementPlan": [
+        {
+          "day": 1,
+          "title": "Fix Analogy",
+          "minutes": 45,
+          "tasks": [
+            "Re-read explanations for every Analogy question you missed",
+            "Solve 15 Analogy questions untimed",
+            "Write down the formula or rule you forgot"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Strengthen Coding-Decoding",
+          "minutes": 45,
+          "tasks": [
+            "Learn 2 shortcuts for Coding-Decoding",
+            "Solve 15 Coding-Decoding questions with a 60-second limit each"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Timed sectional test",
+          "minutes": 40,
+          "tasks": [
+            "Take a 20-question sectional on General Intelligence & Reasoning",
+            "Mark questions taking more than 90 seconds"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Revise Geography",
+          "minutes": 40,
+          "tasks": [
+            "Practise 20 mixed-difficulty Geography questions",
+            "Focus on elimination when unsure"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Speed and accuracy drill",
+          "minutes": 30,
+          "tasks": [
+            "Maintain Direction Sense: 10 quick questions",
+            "Avoid guesses without eliminating two options"
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Full-length mock",
+          "minutes": 60,
+          "tasks": [
+            "Attempt a full SSC CGL mock in one sitting",
+            "Use the two-pass strategy"
+          ]
+        },
+        {
+          "day": 7,
+          "title": "Review and plan",
+          "minutes": 30,
+          "tasks": [
+            "Compare this week’s report with the previous one",
+            "Choose next week’s three focus topics"
+          ]
+        }
+      ],
+      "isMini": true
+    }
+  }
+}

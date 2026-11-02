@@ -1,0 +1,9 @@
+{
+  "method": "POST",
+  "path": "/v1/questions/q-reas-6/flags",
+  "request": {
+    "reason": "wrong_answer",
+    "note": "Option B looks correct."
+  },
+  "response": null
+}

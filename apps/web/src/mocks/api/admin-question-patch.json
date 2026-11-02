@@ -1,0 +1,11 @@
+{
+  "method": "PATCH",
+  "path": "/v1/admin/questions/q-reas-6",
+  "request": {
+    "status": "retired",
+    "note": "Ambiguous options"
+  },
+  "response": {
+    "ok": true
+  }
+}

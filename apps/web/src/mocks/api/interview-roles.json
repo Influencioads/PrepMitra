@@ -1,0 +1,265 @@
+{
+  "method": "GET",
+  "path": "/v1/interview-roles",
+  "response": [
+    {
+      "id": "software-developer",
+      "title": "Software Developer — Fresher",
+      "shortTitle": "Software Developer",
+      "category": "IT & Technology",
+      "icon": "code",
+      "description": "Campus-style technical interview covering programming fundamentals, a project deep-dive, problem-solving and HR questions.",
+      "levels": [
+        "fresher",
+        "1-3"
+      ],
+      "durationMin": 25,
+      "questionCount": 9,
+      "evaluates": [
+        "DSA and OOP fundamentals",
+        "Project ownership",
+        "Problem-solving approach",
+        "Communication"
+      ],
+      "themes": [
+        "OOP",
+        "Data structures",
+        "Projects",
+        "Debugging",
+        "Teamwork"
+      ],
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "mr",
+        "te",
+        "ta",
+        "gu",
+        "kn",
+        "ml",
+        "or",
+        "pa",
+        "ur"
+      ],
+      "voiceAvailable": true,
+      "creditCost": 1,
+      "status": "published",
+      "popularity": 97
+    },
+    {
+      "id": "bank-po",
+      "title": "Bank PO Interview",
+      "shortTitle": "Bank PO",
+      "category": "Banking",
+      "icon": "banknote",
+      "description": "Panel-style interview for probationary officer roles: banking awareness, current affairs, situational judgement and motivation.",
+      "levels": [
+        "fresher",
+        "1-3"
+      ],
+      "durationMin": 20,
+      "questionCount": 9,
+      "evaluates": [
+        "Banking awareness",
+        "Customer orientation",
+        "Situational judgement",
+        "Clarity of motivation"
+      ],
+      "themes": [
+        "Banking terms",
+        "RBI policy",
+        "Financial inclusion",
+        "Customer handling"
+      ],
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "mr",
+        "te",
+        "ta",
+        "gu",
+        "kn",
+        "ml",
+        "or",
+        "pa",
+        "ur"
+      ],
+      "voiceAvailable": true,
+      "creditCost": 1,
+      "status": "published",
+      "popularity": 90
+    },
+    {
+      "id": "hr-executive",
+      "title": "HR Executive",
+      "shortTitle": "HR Executive",
+      "category": "Human Resources",
+      "icon": "users",
+      "description": "Interview for HR generalist roles covering recruitment, employee relations, labour-law basics and conflict handling.",
+      "levels": [
+        "fresher",
+        "1-3",
+        "3-5"
+      ],
+      "durationMin": 20,
+      "questionCount": 9,
+      "evaluates": [
+        "HR process knowledge",
+        "Empathy and judgement",
+        "Structured answers",
+        "Confidence"
+      ],
+      "themes": [
+        "Recruitment",
+        "Onboarding",
+        "Grievances",
+        "Policies"
+      ],
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "mr",
+        "te",
+        "ta",
+        "gu",
+        "kn",
+        "ml",
+        "or",
+        "pa",
+        "ur"
+      ],
+      "voiceAvailable": true,
+      "creditCost": 1,
+      "status": "published",
+      "popularity": 78
+    },
+    {
+      "id": "sales-bd",
+      "title": "Sales and Business Development",
+      "shortTitle": "Sales & BD",
+      "category": "Sales",
+      "icon": "trending",
+      "description": "Sales interview focusing on prospecting, objection handling, target ownership and a live pitch exercise.",
+      "levels": [
+        "fresher",
+        "1-3",
+        "3-5"
+      ],
+      "durationMin": 20,
+      "questionCount": 9,
+      "evaluates": [
+        "Persuasion",
+        "Target orientation",
+        "Objection handling",
+        "Communication"
+      ],
+      "themes": [
+        "Pitching",
+        "Negotiation",
+        "Pipeline",
+        "CRM discipline"
+      ],
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "mr",
+        "te",
+        "ta",
+        "gu",
+        "kn",
+        "ml",
+        "or",
+        "pa",
+        "ur"
+      ],
+      "voiceAvailable": true,
+      "creditCost": 1,
+      "status": "published",
+      "popularity": 82
+    },
+    {
+      "id": "accountant",
+      "title": "Accountant / Financial Analyst",
+      "shortTitle": "Accountant",
+      "category": "Finance",
+      "icon": "calculator",
+      "description": "Finance interview on accounting principles, GST basics, financial statements, Excel modelling and analytical thinking.",
+      "levels": [
+        "fresher",
+        "1-3",
+        "3-5"
+      ],
+      "durationMin": 25,
+      "questionCount": 9,
+      "evaluates": [
+        "Accounting concepts",
+        "Analytical reasoning",
+        "Attention to detail",
+        "Answer structure"
+      ],
+      "themes": [
+        "Financial statements",
+        "GST",
+        "Reconciliation",
+        "Excel"
+      ],
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "mr",
+        "te",
+        "ta",
+        "gu",
+        "kn",
+        "ml",
+        "or",
+        "pa",
+        "ur"
+      ],
+      "voiceAvailable": true,
+      "creditCost": 1,
+      "status": "published",
+      "popularity": 75
+    },
+    {
+      "id": "civil-services-pt",
+      "title": "Civil Services Personality Test",
+      "shortTitle": "UPSC Personality Test",
+      "category": "Civil Services",
+      "icon": "scale",
+      "description": "Board-style personality test simulation exploring your background, optional subject, ethics, governance and current affairs.",
+      "levels": [
+        "fresher",
+        "1-3",
+        "3-5"
+      ],
+      "durationMin": 30,
+      "questionCount": 9,
+      "evaluates": [
+        "Balanced opinions",
+        "Ethical reasoning",
+        "Awareness of governance",
+        "Composure"
+      ],
+      "themes": [
+        "DAF-based questions",
+        "Ethics",
+        "Governance",
+        "Current affairs"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "voiceAvailable": true,
+      "creditCost": 2,
+      "status": "published",
+      "popularity": 85
+    }
+  ]
+}

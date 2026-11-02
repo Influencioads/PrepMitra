@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "path": "/v1/uploads/resume",
+  "request": "<multipart/form-data: file (PDF/DOCX, ≤ 5 MB)>",
+  "response": {
+    "fileName": "Ananya_Sharma_Resume.pdf",
+    "sizeKb": 182,
+    "mimeType": "application/pdf",
+    "uploadedAt": "2026-10-01T10:00:00.000Z"
+  }
+}

@@ -1,0 +1,453 @@
+{
+  "method": "GET",
+  "path": "/v1/attempts/att-example01/paper",
+  "response": {
+    "id": "att-example01",
+    "examId": "ssc-cgl",
+    "language": "en",
+    "startedAt": "2026-10-01T10:00:00.000Z",
+    "endsAt": "2026-10-01T10:30:00.000Z",
+    "durationSec": 1800,
+    "paper": [
+      {
+        "questionId": "q-reas-6",
+        "sectionId": "cgl-gir",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-reas-2",
+        "sectionId": "cgl-gir",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-reas-4",
+        "sectionId": "cgl-gir",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-ga-2",
+        "sectionId": "cgl-ga",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-ga-1",
+        "sectionId": "cgl-ga",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-ga-4",
+        "sectionId": "cgl-ga",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-quant-3",
+        "sectionId": "cgl-qa",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-quant-5",
+        "sectionId": "cgl-qa",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-eng-5",
+        "sectionId": "cgl-en",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-eng-6",
+        "sectionId": "cgl-en",
+        "marks": 2,
+        "negativeMarks": 0.5
+      }
+    ],
+    "states": {
+      "q-reas-6": {
+        "visited": true,
+        "marked": false,
+        "timeSpentSec": 0
+      }
+    },
+    "currentIndex": 0,
+    "status": "in-progress",
+    "tabSwitches": 0,
+    "isMini": true,
+    "questions": [
+      {
+        "id": "q-reas-6",
+        "subject": "reasoning",
+        "topic": "Analogy",
+        "type": "single",
+        "difficulty": "Easy",
+        "text": "Doctor : Hospital :: Teacher : ?",
+        "shortcut": "Name the relationship in words (“works in”) before scanning options.",
+        "expectedTimeSec": 15,
+        "options": [
+          {
+            "id": "q-reas-6-a",
+            "text": "Student"
+          },
+          {
+            "id": "q-reas-6-b",
+            "text": "School"
+          },
+          {
+            "id": "q-reas-6-c",
+            "text": "Book"
+          },
+          {
+            "id": "q-reas-6-d",
+            "text": "Classroom board"
+          }
+        ],
+        "translations": {
+          "hi": {
+            "text": "डॉक्टर : अस्पताल :: शिक्षक : ?",
+            "options": [
+              "छात्र",
+              "विद्यालय",
+              "पुस्तक",
+              "कक्षा का बोर्ड"
+            ]
+          }
+        }
+      },
+      {
+        "id": "q-reas-2",
+        "subject": "reasoning",
+        "topic": "Coding-Decoding",
+        "type": "single",
+        "difficulty": "Moderate",
+        "text": "If CAT is coded as 3120 and DOG is coded as 4157, how is BAT coded?",
+        "shortcut": "BAT differs from CAT only in the first letter (C→B), so change 3 to 2.",
+        "expectedTimeSec": 30,
+        "options": [
+          {
+            "id": "q-reas-2-a",
+            "text": "2120"
+          },
+          {
+            "id": "q-reas-2-b",
+            "text": "2210"
+          },
+          {
+            "id": "q-reas-2-c",
+            "text": "3120"
+          },
+          {
+            "id": "q-reas-2-d",
+            "text": "2130"
+          }
+        ],
+        "translations": {
+          "hi": {
+            "text": "यदि CAT को 3120 और DOG को 4157 के रूप में कोडित किया जाता है, तो BAT को कैसे कोडित किया जाएगा?",
+            "options": [
+              "2120",
+              "2210",
+              "3120",
+              "2130"
+            ]
+          }
+        }
+      },
+      {
+        "id": "q-reas-4",
+        "subject": "reasoning",
+        "topic": "Direction Sense",
+        "type": "single",
+        "difficulty": "Easy",
+        "text": "Aman walks 5 km north, turns right and walks 3 km, then turns right again and walks 5 km. How far is he from the start?",
+        "shortcut": "Equal north and south legs cancel; only the 3 km east leg remains.",
+        "expectedTimeSec": 25,
+        "options": [
+          {
+            "id": "q-reas-4-a",
+            "text": "3 km"
+          },
+          {
+            "id": "q-reas-4-b",
+            "text": "5 km"
+          },
+          {
+            "id": "q-reas-4-c",
+            "text": "8 km"
+          },
+          {
+            "id": "q-reas-4-d",
+            "text": "13 km"
+          }
+        ],
+        "translations": {
+          "hi": {
+            "text": "अमन 5 किमी उत्तर की ओर चलता है, दाएँ मुड़कर 3 किमी चलता है, फिर दोबारा दाएँ मुड़कर 5 किमी चलता है। वह आरंभिक बिंदु से कितनी दूर है?",
+            "options": [
+              "3 किमी",
+              "5 किमी",
+              "8 किमी",
+              "13 किमी"
+            ]
+          }
+        }
+      },
+      {
+        "id": "q-ga-2",
+        "subject": "general-awareness",
+        "topic": "Geography",
+        "type": "single",
+        "difficulty": "Moderate",
+        "text": "Which river is known as the “Dakshin Ganga” (Ganga of the South)?",
+        "shortcut": "Longest peninsular river ↔ largest comparison (Ganga) — Godavari.",
+        "expectedTimeSec": 15,
+        "options": [
+          {
+            "id": "q-ga-2-a",
+            "text": "Krishna"
+          },
+          {
+            "id": "q-ga-2-b",
+            "text": "Kaveri"
+          },
+          {
+            "id": "q-ga-2-c",
+            "text": "Godavari"
+          },
+          {
+            "id": "q-ga-2-d",
+            "text": "Narmada"
+          }
+        ],
+        "translations": {
+          "hi": {
+            "text": "किस नदी को “दक्षिण गंगा” कहा जाता है?",
+            "options": [
+              "कृष्णा",
+              "कावेरी",
+              "गोदावरी",
+              "नर्मदा"
+            ]
+          }
+        }
+      },
+      {
+        "id": "q-ga-1",
+        "subject": "general-awareness",
+        "topic": "Indian Polity",
+        "type": "single",
+        "difficulty": "Easy",
+        "text": "Who is known as the principal architect of the Indian Constitution?",
+        "expectedTimeSec": 15,
+        "options": [
+          {
+            "id": "q-ga-1-a",
+            "text": "Jawaharlal Nehru"
+          },
+          {
+            "id": "q-ga-1-b",
+            "text": "B. R. Ambedkar"
+          },
+          {
+            "id": "q-ga-1-c",
+            "text": "Rajendra Prasad"
+          },
+          {
+            "id": "q-ga-1-d",
+            "text": "Sardar Patel"
+          }
+        ],
+        "translations": {
+          "hi": {
+            "text": "भारतीय संविधान के मुख्य वास्तुकार के रूप में किसे जाना जाता है?",
+            "options": [
+              "जवाहरलाल नेहरू",
+              "बी. आर. आंबेडकर",
+              "राजेंद्र प्रसाद",
+              "सरदार पटेल"
+            ]
+          }
+        }
+      },
+      {
+        "id": "q-ga-4",
+        "subject": "general-awareness",
+        "topic": "Science",
+        "type": "single",
+        "difficulty": "Easy",
+        "text": "Which vitamin is produced in the human skin on exposure to sunlight?",
+        "expectedTimeSec": 10,
+        "options": [
+          {
+            "id": "q-ga-4-a",
+            "text": "Vitamin A"
+          },
+          {
+            "id": "q-ga-4-b",
+            "text": "Vitamin B12"
+          },
+          {
+            "id": "q-ga-4-c",
+            "text": "Vitamin C"
+          },
+          {
+            "id": "q-ga-4-d",
+            "text": "Vitamin D"
+          }
+        ],
+        "translations": {
+          "hi": {
+            "text": "सूर्य के प्रकाश के संपर्क में आने पर मानव त्वचा में कौन-सा विटामिन बनता है?",
+            "options": [
+              "विटामिन A",
+              "विटामिन B12",
+              "विटामिन C",
+              "विटामिन D"
+            ]
+          }
+        }
+      },
+      {
+        "id": "q-quant-3",
+        "subject": "quant",
+        "topic": "Time Speed Distance",
+        "type": "single",
+        "difficulty": "Easy",
+        "text": "A train 240 m long passes a pole in 12 seconds. What is its speed in km/h?",
+        "shortcut": "Multiply m/s by 3.6 to get km/h: 20 × 3.6 = 72.",
+        "expectedTimeSec": 30,
+        "options": [
+          {
+            "id": "q-quant-3-a",
+            "text": "60"
+          },
+          {
+            "id": "q-quant-3-b",
+            "text": "72"
+          },
+          {
+            "id": "q-quant-3-c",
+            "text": "80"
+          },
+          {
+            "id": "q-quant-3-d",
+            "text": "84"
+          }
+        ],
+        "translations": {
+          "hi": {
+            "text": "240 मीटर लंबी एक ट्रेन एक खंभे को 12 सेकंड में पार करती है। ट्रेन की चाल किमी/घंटा में क्या है?",
+            "options": [
+              "60",
+              "72",
+              "80",
+              "84"
+            ]
+          }
+        }
+      },
+      {
+        "id": "q-quant-5",
+        "subject": "quant",
+        "topic": "Time and Work",
+        "type": "single",
+        "difficulty": "Moderate",
+        "text": "A can finish a job in 12 days and B in 18 days. Working together, in how many days will they finish it?",
+        "shortcut": "Use product ÷ sum: (12 × 18) ÷ (12 + 18) = 216 ÷ 30 = 7.2 days.",
+        "expectedTimeSec": 40,
+        "options": [
+          {
+            "id": "q-quant-5-a",
+            "text": "6.6 days"
+          },
+          {
+            "id": "q-quant-5-b",
+            "text": "7.2 days"
+          },
+          {
+            "id": "q-quant-5-c",
+            "text": "7.5 days"
+          },
+          {
+            "id": "q-quant-5-d",
+            "text": "8 days"
+          }
+        ],
+        "translations": {
+          "hi": {
+            "text": "A किसी काम को 12 दिनों में और B उसी काम को 18 दिनों में पूरा कर सकता है। दोनों मिलकर काम कितने दिनों में पूरा करेंगे?",
+            "options": [
+              "6.6 दिन",
+              "7.2 दिन",
+              "7.5 दिन",
+              "8 दिन"
+            ]
+          }
+        }
+      },
+      {
+        "id": "q-eng-5",
+        "subject": "english",
+        "topic": "Synonyms",
+        "type": "single",
+        "difficulty": "Moderate",
+        "text": "Choose the word closest in meaning to “METICULOUS”.",
+        "shortcut": "Careless and hasty are antonyms; remove them and choose between the remaining two.",
+        "expectedTimeSec": 15,
+        "options": [
+          {
+            "id": "q-eng-5-a",
+            "text": "Careless"
+          },
+          {
+            "id": "q-eng-5-b",
+            "text": "Thorough"
+          },
+          {
+            "id": "q-eng-5-c",
+            "text": "Hasty"
+          },
+          {
+            "id": "q-eng-5-d",
+            "text": "Generous"
+          }
+        ]
+      },
+      {
+        "id": "q-eng-6",
+        "subject": "english",
+        "topic": "Reading Comprehension",
+        "type": "single",
+        "difficulty": "Hard",
+        "text": "Passage: “Digital payments in India grew rapidly after 2016, but trust remains uneven: first-time users often abandon a transaction after a single failure.” Which inference is best supported?",
+        "shortcut": "Reject options with absolute words (“all”, “only”) unless the passage uses them.",
+        "expectedTimeSec": 60,
+        "options": [
+          {
+            "id": "q-eng-6-a",
+            "text": "Digital payments declined after 2016"
+          },
+          {
+            "id": "q-eng-6-b",
+            "text": "Reliability affects whether new users keep using digital payments"
+          },
+          {
+            "id": "q-eng-6-c",
+            "text": "All users distrust digital payments"
+          },
+          {
+            "id": "q-eng-6-d",
+            "text": "Failures happen only to first-time users"
+          }
+        ]
+      }
+    ]
+  }
+}

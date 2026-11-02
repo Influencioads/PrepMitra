@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "path": "/v1/webhooks/razorpay",
+  "request": {
+    "event": "payment.captured",
+    "payload": "<Razorpay webhook body — verified with the webhook secret on the server>"
+  },
+  "response": {
+    "ok": true
+  }
+}

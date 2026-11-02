@@ -1,0 +1,182 @@
+{
+  "method": "GET",
+  "path": "/v1/me/progress",
+  "response": {
+    "trend": [
+      {
+        "date": "2026-09-18T14:00:00.000Z",
+        "label": "18/9",
+        "score": 67,
+        "accuracy": 83,
+        "examId": "general-aptitude",
+        "category": "campus-placement"
+      },
+      {
+        "date": "2026-09-25T14:00:00.000Z",
+        "label": "25/9",
+        "score": 55,
+        "accuracy": 75,
+        "examId": "ssc-cgl",
+        "category": "government"
+      },
+      {
+        "date": "2026-10-02T14:00:00.000Z",
+        "label": "2/10",
+        "score": 37,
+        "accuracy": 54,
+        "examId": "ibps-po",
+        "category": "banking"
+      },
+      {
+        "date": "2026-10-09T14:00:00.000Z",
+        "label": "9/10",
+        "score": 48,
+        "accuracy": 65,
+        "examId": "ssc-cgl",
+        "category": "government"
+      },
+      {
+        "date": "2026-10-16T14:00:00.000Z",
+        "label": "16/10",
+        "score": 56,
+        "accuracy": 88,
+        "examId": "ibps-clerk",
+        "category": "banking"
+      },
+      {
+        "date": "2026-10-23T14:00:00.000Z",
+        "label": "23/10",
+        "score": 60,
+        "accuracy": 71,
+        "examId": "sbi-po",
+        "category": "banking"
+      },
+      {
+        "date": "2026-10-28T14:00:00.000Z",
+        "label": "28/10",
+        "score": 78,
+        "accuracy": 92,
+        "examId": "ibps-po",
+        "category": "banking"
+      }
+    ],
+    "topics": [
+      {
+        "topic": "Percentages",
+        "subject": "quant",
+        "mastery": 84,
+        "attempts": 18,
+        "trend": 6
+      },
+      {
+        "topic": "Profit and Loss",
+        "subject": "quant",
+        "mastery": 78,
+        "attempts": 15,
+        "trend": 4
+      },
+      {
+        "topic": "Time and Work",
+        "subject": "quant",
+        "mastery": 52,
+        "attempts": 12,
+        "trend": -3
+      },
+      {
+        "topic": "Compound Interest",
+        "subject": "quant",
+        "mastery": 46,
+        "attempts": 10,
+        "trend": 8
+      },
+      {
+        "topic": "Number Series",
+        "subject": "reasoning",
+        "mastery": 81,
+        "attempts": 16,
+        "trend": 2
+      },
+      {
+        "topic": "Seating Arrangement",
+        "subject": "reasoning",
+        "mastery": 38,
+        "attempts": 11,
+        "trend": 5
+      },
+      {
+        "topic": "Syllogism",
+        "subject": "reasoning",
+        "mastery": 63,
+        "attempts": 9,
+        "trend": 1
+      },
+      {
+        "topic": "Coding-Decoding",
+        "subject": "reasoning",
+        "mastery": 72,
+        "attempts": 8,
+        "trend": 3
+      },
+      {
+        "topic": "Error Spotting",
+        "subject": "english",
+        "mastery": 58,
+        "attempts": 14,
+        "trend": -2
+      },
+      {
+        "topic": "Reading Comprehension",
+        "subject": "english",
+        "mastery": 69,
+        "attempts": 12,
+        "trend": 4
+      },
+      {
+        "topic": "Synonyms",
+        "subject": "english",
+        "mastery": 88,
+        "attempts": 10,
+        "trend": 1
+      },
+      {
+        "topic": "Economy",
+        "subject": "general-awareness",
+        "mastery": 55,
+        "attempts": 9,
+        "trend": 7
+      }
+    ],
+    "weekly": [
+      {
+        "day": "Mon",
+        "minutes": 45
+      },
+      {
+        "day": "Tue",
+        "minutes": 30
+      },
+      {
+        "day": "Wed",
+        "minutes": 60
+      },
+      {
+        "day": "Thu",
+        "minutes": 25
+      },
+      {
+        "day": "Fri",
+        "minutes": 50
+      },
+      {
+        "day": "Sat",
+        "minutes": 90
+      },
+      {
+        "day": "Sun",
+        "minutes": 40
+      }
+    ],
+    "streakDays": 6,
+    "totalMinutes": 340
+  }
+}

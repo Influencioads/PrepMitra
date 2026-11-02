@@ -1,0 +1,239 @@
+{
+  "method": "GET",
+  "path": "/v1/admin/flags",
+  "response": [
+    {
+      "id": "rv-1",
+      "questionId": "q-gs-4",
+      "examId": "upsc-prelims",
+      "source": "user-flag",
+      "language": "en",
+      "status": "open",
+      "createdAt": "2026-10-30T01:00:00.000Z",
+      "flags": [
+        {
+          "id": "f-1",
+          "reporter": "Neha Gupta",
+          "reason": "wrong-answer",
+          "comment": "Repo rate figure looks outdated after the latest MPC meeting.",
+          "language": "en",
+          "at": "2026-10-30T01:00:00.000Z"
+        },
+        {
+          "id": "f-2",
+          "reporter": "Aditya Mishra",
+          "reason": "outdated",
+          "comment": "Answer key does not match current RBI data.",
+          "language": "hi",
+          "at": "2026-10-29T21:00:00.000Z"
+        },
+        {
+          "id": "f-3",
+          "reporter": "Riya Chatterjee",
+          "reason": "wrong-answer",
+          "language": "bn",
+          "at": "2026-10-29T04:00:00.000Z"
+        },
+        {
+          "id": "f-4",
+          "reporter": "Sneha Joshi",
+          "reason": "multiple-correct",
+          "comment": "Options B and D both seem defensible.",
+          "language": "mr",
+          "at": "2026-10-28T23:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "rv-2",
+      "questionId": "q-cs-7",
+      "examId": "gate-cse",
+      "source": "user-flag",
+      "language": "en",
+      "status": "open",
+      "createdAt": "2026-10-29T06:00:00.000Z",
+      "flags": [
+        {
+          "id": "f-5",
+          "reporter": "Karthik Raman",
+          "reason": "wrong-answer",
+          "comment": "This language is context-free, not regular.",
+          "language": "en",
+          "at": "2026-10-29T06:00:00.000Z"
+        },
+        {
+          "id": "f-6",
+          "reporter": "Nikhil Menon",
+          "reason": "wrong-answer",
+          "language": "en",
+          "at": "2026-10-29T02:00:00.000Z"
+        },
+        {
+          "id": "f-7",
+          "reporter": "Pallavi Hegde",
+          "reason": "unclear",
+          "comment": "Question does not define the alphabet.",
+          "language": "kn",
+          "at": "2026-10-28T06:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "rv-3",
+      "questionId": "q-reas-7",
+      "examId": "ibps-po",
+      "source": "user-flag",
+      "language": "hi",
+      "status": "open",
+      "createdAt": "2026-10-28T06:00:00.000Z",
+      "flags": [
+        {
+          "id": "f-8",
+          "reporter": "Rohit Kumar",
+          "reason": "translation",
+          "comment": "Hindi version says \"बाएँ\" where English says right.",
+          "language": "hi",
+          "at": "2026-10-28T06:00:00.000Z"
+        },
+        {
+          "id": "f-9",
+          "reporter": "Amit Yadav",
+          "reason": "unclear",
+          "language": "hi",
+          "at": "2026-10-27T06:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "rv-4",
+      "questionId": "q-eng-6",
+      "examId": "cat",
+      "source": "user-flag",
+      "language": "en",
+      "status": "open",
+      "createdAt": "2026-10-27T06:00:00.000Z",
+      "flags": [
+        {
+          "id": "f-10",
+          "reporter": "Tanvi Shah",
+          "reason": "typo",
+          "comment": "Passage has a missing word in line 2.",
+          "language": "en",
+          "at": "2026-10-27T06:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "rv-5",
+      "questionId": "q-ga-6",
+      "examId": "rrb-ntpc",
+      "source": "user-flag",
+      "language": "en",
+      "status": "open",
+      "createdAt": "2026-10-26T06:00:00.000Z",
+      "flags": [
+        {
+          "id": "f-11",
+          "reporter": "Suresh Behera",
+          "reason": "outdated",
+          "comment": "Zone count changed recently.",
+          "language": "or",
+          "at": "2026-10-26T06:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "rv-6",
+      "questionId": "q-quant-1",
+      "examId": "ssc-cgl",
+      "source": "user-flag",
+      "language": "hi",
+      "status": "open",
+      "createdAt": "2026-10-25T06:00:00.000Z",
+      "flags": [
+        {
+          "id": "f-12",
+          "reporter": "Vikram Rathore",
+          "reason": "translation",
+          "comment": "\"चक्रवृद्धि\" should be used consistently in options.",
+          "language": "hi",
+          "at": "2026-10-25T06:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "rv-7",
+      "questionId": "q-ece-5",
+      "examId": "gate-ece",
+      "source": "random-sample",
+      "language": "en",
+      "status": "open",
+      "createdAt": "2026-10-30T04:00:00.000Z",
+      "flags": []
+    },
+    {
+      "id": "rv-8",
+      "questionId": "q-di-3",
+      "examId": "cat",
+      "source": "random-sample",
+      "language": "en",
+      "status": "open",
+      "createdAt": "2026-10-29T22:00:00.000Z",
+      "flags": []
+    },
+    {
+      "id": "rv-9",
+      "questionId": "q-quant-5",
+      "examId": "ssc-chsl",
+      "source": "random-sample",
+      "language": "ta",
+      "status": "open",
+      "createdAt": "2026-10-29T03:00:00.000Z",
+      "flags": []
+    },
+    {
+      "id": "rv-10",
+      "questionId": "q-reas-3",
+      "examId": "ibps-clerk",
+      "source": "random-sample",
+      "language": "bn",
+      "status": "open",
+      "createdAt": "2026-10-28T01:00:00.000Z",
+      "flags": []
+    },
+    {
+      "id": "rv-11",
+      "questionId": "q-quant-3",
+      "examId": "rrb-ntpc",
+      "source": "user-flag",
+      "language": "en",
+      "status": "rejected",
+      "createdAt": "2026-10-21T06:00:00.000Z",
+      "resolvedAt": "2026-10-22T06:00:00.000Z",
+      "resolvedBy": "Dr. Arvind Kulkarni",
+      "resolutionNote": "Answer verified: 20 m/s × 3.6 = 72 km/h.",
+      "flags": [
+        {
+          "id": "f-13",
+          "reporter": "Arjun Singh",
+          "reason": "wrong-answer",
+          "language": "hi",
+          "at": "2026-10-21T06:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "rv-12",
+      "questionId": "q-ga-2",
+      "examId": "ssc-cgl",
+      "source": "random-sample",
+      "language": "en",
+      "status": "fixed",
+      "createdAt": "2026-10-18T06:00:00.000Z",
+      "resolvedAt": "2026-10-19T06:00:00.000Z",
+      "resolvedBy": "Sneha Iyer",
+      "resolutionNote": "Explanation clarified; lesson added.",
+      "flags": []
+    }
+  ]
+}

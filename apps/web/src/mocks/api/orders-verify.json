@@ -1,0 +1,20 @@
+{
+  "method": "POST",
+  "path": "/v1/orders/verify",
+  "request": {
+    "razorpay_payment_id": "pay_Example123",
+    "razorpay_order_id": "order_Example123",
+    "razorpay_signature": "<hmac-sha256 computed by Razorpay>",
+    "planId": "monthly",
+    "method": "upi"
+  },
+  "response": {
+    "id": "pay_Example123",
+    "planId": "monthly",
+    "amountInr": 399,
+    "gstInr": 60.86,
+    "method": "upi",
+    "status": "success",
+    "createdAt": "2026-10-01T10:00:00.000Z"
+  }
+}

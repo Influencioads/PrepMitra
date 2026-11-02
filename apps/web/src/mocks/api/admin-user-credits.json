@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "path": "/v1/admin/users/u-1001/credits",
+  "request": {
+    "delta": 2,
+    "reason": "Goodwill — report delayed"
+  },
+  "response": {
+    "credits": 6
+  }
+}

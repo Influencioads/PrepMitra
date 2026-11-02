@@ -1,0 +1,82 @@
+{
+  "method": "GET",
+  "path": "/v1/me/credits",
+  "response": {
+    "credits": 6,
+    "nextExpiry": "2026-12-23T06:00:00.000Z",
+    "ledger": [
+      {
+        "id": "cl-1",
+        "delta": 1,
+        "reason": "free-trial",
+        "label": "Free trial mini mock",
+        "at": "2026-09-12T06:00:00.000Z"
+      },
+      {
+        "id": "cl-2",
+        "delta": -1,
+        "reason": "free-trial",
+        "label": "General Aptitude mini mock",
+        "at": "2026-09-18T06:00:00.000Z"
+      },
+      {
+        "id": "cl-3",
+        "delta": 1,
+        "reason": "purchase",
+        "label": "Pay Per Mock — ₹99",
+        "at": "2026-09-24T06:00:00.000Z",
+        "expiresAt": "2026-12-23T06:00:00.000Z"
+      },
+      {
+        "id": "cl-4",
+        "delta": -1,
+        "reason": "exam-attempt",
+        "label": "SSC CGL mock",
+        "at": "2026-09-25T06:00:00.000Z"
+      },
+      {
+        "id": "cl-5",
+        "delta": 10,
+        "reason": "purchase",
+        "label": "Monthly plan — ₹399",
+        "at": "2026-10-12T06:00:00.000Z",
+        "expiresAt": "2026-11-11T06:00:00.000Z"
+      },
+      {
+        "id": "cl-6",
+        "delta": -1,
+        "reason": "exam-attempt",
+        "label": "IBPS Clerk mock",
+        "at": "2026-10-16T06:00:00.000Z"
+      },
+      {
+        "id": "cl-7",
+        "delta": -1,
+        "reason": "interview",
+        "label": "Bank PO mock interview",
+        "at": "2026-10-20T06:00:00.000Z"
+      },
+      {
+        "id": "cl-8",
+        "delta": -1,
+        "reason": "exam-attempt",
+        "label": "SBI PO mock",
+        "at": "2026-10-23T06:00:00.000Z"
+      },
+      {
+        "id": "cl-9",
+        "delta": 1,
+        "reason": "refund",
+        "label": "Credit restored — report delayed",
+        "at": "2026-10-24T06:00:00.000Z"
+      },
+      {
+        "id": "cl-10",
+        "delta": -1,
+        "reason": "exam-attempt",
+        "label": "IBPS PO mock",
+        "at": "2026-10-28T06:00:00.000Z"
+      }
+    ]
+  }
+}

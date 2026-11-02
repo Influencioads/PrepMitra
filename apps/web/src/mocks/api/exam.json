@@ -1,0 +1,95 @@
+{
+  "method": "GET",
+  "path": "/v1/exams/ssc-cgl",
+  "response": {
+    "id": "ssc-cgl",
+    "title": "SSC CGL Tier 1 Mock Test",
+    "shortTitle": "SSC CGL",
+    "category": "government",
+    "conductingBody": "SSC pattern",
+    "description": "Full-length mock based on the SSC Combined Graduate Level Tier 1 pattern covering reasoning, general awareness, quantitative aptitude and English comprehension.",
+    "durationMin": 60,
+    "totalQuestions": 100,
+    "totalMarks": 200,
+    "difficulty": "Moderate",
+    "languages": [
+      "en",
+      "hi",
+      "bn",
+      "mr",
+      "te",
+      "ta",
+      "gu",
+      "kn",
+      "ml",
+      "or",
+      "pa",
+      "ur"
+    ],
+    "creditCost": 1,
+    "isFree": false,
+    "sections": [
+      {
+        "id": "cgl-gir",
+        "name": "General Intelligence & Reasoning",
+        "subject": "reasoning",
+        "questionCount": 25,
+        "marksPerQuestion": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "id": "cgl-ga",
+        "name": "General Awareness",
+        "subject": "general-awareness",
+        "questionCount": 25,
+        "marksPerQuestion": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "id": "cgl-qa",
+        "name": "Quantitative Aptitude",
+        "subject": "quant",
+        "questionCount": 25,
+        "marksPerQuestion": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "id": "cgl-en",
+        "name": "English Comprehension",
+        "subject": "english",
+        "questionCount": 25,
+        "marksPerQuestion": 2,
+        "negativeMarks": 0.5
+      }
+    ],
+    "negativeMarking": "0.50 marks deducted for each wrong answer",
+    "calculatorAllowed": false,
+    "questionTypes": [
+      "single"
+    ],
+    "popularity": 98,
+    "rating": 4.6,
+    "attemptsCount": 18420,
+    "highlights": [
+      "Never-repeat AI papers",
+      "Section-wise analysis",
+      "Available in 12 languages"
+    ],
+    "sampleQuestion": {
+      "text": "A sum becomes ₹1,331 in 3 years at 10% compound interest per annum. What is the principal?",
+      "options": [
+        "₹900",
+        "₹1,000",
+        "₹1,100",
+        "₹1,210"
+      ],
+      "answerIndex": 1
+    },
+    "status": "published",
+    "demo": {
+      "questionsPerSection": 5,
+      "durationMin": 20
+    },
+    "updatedAt": "2026-10-15T09:00:00.000Z"
+  }
+}

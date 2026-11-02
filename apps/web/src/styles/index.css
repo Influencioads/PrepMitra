@@ -1,0 +1,153 @@
+@import 'tailwindcss';
+
+/* Brand tokens mirror packages/shared/src/design-tokens. Keep them in sync. */
+@theme {
+  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+  --font-display: 'Bricolage Grotesque', 'DM Sans', system-ui, sans-serif;
+  /* Handwriting: the teacher's red pen and Mitra's chalk. Use for short notes only, never for body copy. */
+  --font-hand: 'Kalam', 'Noto Sans Devanagari', 'Comic Sans MS', cursive;
+
+  /* Saffron for action, peepal green for trust, warm stone for the canvas. No blue. */
+  --color-primary: #c2410c;
+  --color-primary-hover: #a6370a;
+  --color-primary-soft: #fcebdd;
+  --color-secondary: #1e5e47;
+  --color-secondary-hover: #174a38;
+  --color-secondary-soft: #e3efe8;
+  --color-accent: #f28c28;
+  --color-accent-soft: #fff1de;
+  --color-background: #f4f3ec;
+  --color-surface: #eceae0;
+  --color-card: #fffefa;
+  --color-ink: #1c2321;
+  --color-muted: #5b6661;
+  --color-subtle: #8e9792;
+  --color-line: #e3e2d8;
+  --color-line-strong: #cfcfc3;
+  --color-success: #15803d;
+  --color-success-soft: #eaf5ec;
+  --color-warning: #d97706;
+  --color-warning-ink: #92400e;
+  --color-warning-soft: #fef4e2;
+  --color-danger: #dc2626;
+  --color-danger-soft: #fdeeec;
+  --color-info: #1e5e47;
+  --color-info-soft: #e8f1ec;
+
+  /* Concept B · answer sheet & blackboard */
+  --color-paper: #fbf8ef;
+  --color-rule: #ece6d4;
+  --color-pen: #d7263d;
+  --color-chalk: #17392c;
+  --color-chalk-deep: #10241c;
+  --color-chalk-text: #f5f3ea;
+  --color-marigold: #ffd27a;
+  --color-wood: #5c3a1e;
+  --color-sticky-yellow: #fff3c4;
+  --color-sticky-green: #ddefe4;
+  --color-sticky-purple: #f3e8fa;
+
+  --radius-card: 14px;
+  --shadow-card: 0 1px 2px rgb(28 35 33 / 0.04), 0 1px 3px rgb(28 35 33 / 0.06);
+  --shadow-raised: 0 6px 18px rgb(28 35 33 / 0.08);
+  --shadow-overlay: 0 24px 48px rgb(28 35 33 / 0.16);
+  --shadow-hard: 6px 6px 0 #1c2321;
+  --shadow-hard-sm: 4px 4px 0 #1c2321;
+  --shadow-wood: 0 6px 0 #5c3a1e;
+  --shadow-sticky: 6px 8px 0 rgb(28 35 33 / 0.12);
+
+  --animate-fade-in: fade-in 160ms ease-out;
+  --animate-pulse-ring: pulse-ring 1.6s ease-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgb(220 38 38 / 0.45); }
+    70% { box-shadow: 0 0 0 14px rgb(220 38 38 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(220 38 38 / 0); }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-ink font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--color-primary-soft);
+  }
+  h1, h2, h3, h4 {
+    @apply text-ink;
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+
+/* Notebook paper: ruled lines plus the red margin. The margin shifts in from the edge on wider screens. */
+@utility bg-notebook {
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(90deg, transparent 0 calc(var(--margin-x, 28px)), rgb(215 38 61 / 0.25) calc(var(--margin-x, 28px)) calc(var(--margin-x, 28px) + 1.5px), transparent calc(var(--margin-x, 28px) + 1.5px)),
+    repeating-linear-gradient(180deg, transparent 0 39px, var(--color-rule) 39px 40px);
+}
+
+/* Ruled lines only, for cards that sit on top of the notebook. */
+@utility bg-ruled {
+  background-color: var(--color-paper);
+  background-image: repeating-linear-gradient(180deg, transparent 0 31px, var(--color-rule) 31px 32px);
+}
+
+/* Chalkboard: deep green with a faint smudge. */
+@utility bg-chalkboard {
+  background-color: var(--color-chalk);
+  background-image: radial-gradient(circle at 18% 12%, rgb(255 255 255 / 0.06), transparent 40%), radial-gradient(circle at 85% 75%, rgb(255 255 255 / 0.05), transparent 45%);
+}
+
+/* Spotlit room for interview screens. */
+@utility bg-panel-room {
+  background-color: var(--color-chalk-deep);
+  background-image: radial-gradient(ellipse 60% 55% at 50% 30%, rgb(242 140 40 / 0.2), transparent 70%);
+}

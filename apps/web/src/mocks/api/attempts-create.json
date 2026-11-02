@@ -1,0 +1,84 @@
+{
+  "method": "POST",
+  "path": "/v1/attempts",
+  "request": {
+    "examId": "ssc-cgl",
+    "language": "en",
+    "mode": "mini"
+  },
+  "response": {
+    "id": "att-example01",
+    "examId": "ssc-cgl",
+    "language": "en",
+    "startedAt": "2026-10-01T10:00:00.000Z",
+    "endsAt": "2026-10-01T10:30:00.000Z",
+    "durationSec": 1800,
+    "paper": [
+      {
+        "questionId": "q-reas-6",
+        "sectionId": "cgl-gir",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-reas-2",
+        "sectionId": "cgl-gir",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-reas-4",
+        "sectionId": "cgl-gir",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-ga-2",
+        "sectionId": "cgl-ga",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-ga-1",
+        "sectionId": "cgl-ga",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-ga-4",
+        "sectionId": "cgl-ga",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-quant-3",
+        "sectionId": "cgl-qa",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-quant-5",
+        "sectionId": "cgl-qa",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-eng-5",
+        "sectionId": "cgl-en",
+        "marks": 2,
+        "negativeMarks": 0.5
+      },
+      {
+        "questionId": "q-eng-6",
+        "sectionId": "cgl-en",
+        "marks": 2,
+        "negativeMarks": 0.5
+      }
+    ],
+    "states": {},
+    "currentIndex": 0,
+    "status": "in-progress",
+    "tabSwitches": 0,
+    "isMini": true
+  }
+}

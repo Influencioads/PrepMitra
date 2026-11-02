@@ -1,0 +1,32 @@
+# Runs on every push and pull request: lint, typecheck, tests and a production build of the website.
+# Vercel builds its own preview for each push once the repo is connected (apps/web/vercel.json).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck (web, mobile, shared)
+        run: npm run typecheck
+      - name: Tests
+        run: npm test
+      - name: Build website
+        run: npm run build:web

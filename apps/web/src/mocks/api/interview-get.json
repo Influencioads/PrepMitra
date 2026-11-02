@@ -1,0 +1,39 @@
+{
+  "method": "GET",
+  "path": "/v1/interviews/int-example01",
+  "response": {
+    "id": "int-example01",
+    "config": {
+      "roleId": "bank-po",
+      "level": "fresher",
+      "language": "en",
+      "mode": "text",
+      "resumeFileName": "Ananya_Sharma_Resume.pdf"
+    },
+    "status": "in-progress",
+    "turns": [
+      {
+        "id": "int-example01-t1",
+        "speaker": "interviewer",
+        "stage": "introduction",
+        "questionId": "intro",
+        "at": "2026-10-01T10:00:00.000Z",
+        "text": "Hello, and thanks for joining. This is a practice interview for a fresher position. Welcome! Let’s begin. Please introduce yourself and tell me why you are interested in this Bank PO role."
+      }
+    ],
+    "questionQueue": [
+      "intro",
+      "po-why",
+      "po-repo",
+      "po-npa",
+      "po-situational",
+      "po-hr",
+      "po-digital",
+      "po-target",
+      "closing"
+    ],
+    "askedCount": 1,
+    "followUpsAsked": 0,
+    "startedAt": "2026-10-01T10:00:00.000Z"
+  }
+}

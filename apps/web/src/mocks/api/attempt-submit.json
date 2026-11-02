@@ -1,0 +1,78 @@
+{
+  "method": "POST",
+  "path": "/v1/attempts/att-example01/submit",
+  "request": {
+    "states": {
+      "q-reas-6": {
+        "visited": true,
+        "marked": false,
+        "timeSpentSec": 45,
+        "answer": {
+          "selectedOptionIds": [
+            "q-reas-6-a"
+          ]
+        }
+      },
+      "q-reas-2": {
+        "visited": true,
+        "timeSpentSec": 20
+      },
+      "q-reas-4": {
+        "visited": true,
+        "timeSpentSec": 59,
+        "answer": {
+          "selectedOptionIds": [
+            "q-reas-4-a"
+          ]
+        }
+      },
+      "q-ga-2": {
+        "visited": true,
+        "timeSpentSec": 20
+      },
+      "q-ga-1": {
+        "visited": true,
+        "timeSpentSec": 73,
+        "answer": {
+          "selectedOptionIds": [
+            "q-ga-1-a"
+          ]
+        }
+      },
+      "q-ga-4": {
+        "visited": true,
+        "timeSpentSec": 20
+      },
+      "q-quant-3": {
+        "visited": true,
+        "timeSpentSec": 87,
+        "answer": {
+          "selectedOptionIds": [
+            "q-quant-3-a"
+          ]
+        }
+      },
+      "q-quant-5": {
+        "visited": true,
+        "timeSpentSec": 20
+      },
+      "q-eng-5": {
+        "visited": true,
+        "timeSpentSec": 101,
+        "answer": {
+          "selectedOptionIds": [
+            "q-eng-5-a"
+          ]
+        }
+      },
+      "q-eng-6": {
+        "visited": true,
+        "timeSpentSec": 20
+      }
+    },
+    "autoSubmitted": false
+  },
+  "response": {
+    "status": "processing"
+  }
+}

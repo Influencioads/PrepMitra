@@ -1,0 +1,165 @@
+{
+  "method": "GET",
+  "path": "/v1/interviews/int-example01/report",
+  "response": {
+    "status": "ready",
+    "report": {
+      "id": "irep-seed01",
+      "sessionId": "int-seed01",
+      "roleId": "bank-po",
+      "roleTitle": "Bank PO Interview",
+      "level": "fresher",
+      "mode": "text",
+      "language": "en",
+      "createdAt": "2026-10-20T06:18:00.000Z",
+      "isDemo": true,
+      "scores": {
+        "roleKnowledge": 8.1,
+        "answerStructure": 5.2,
+        "communication": 7.1,
+        "confidence": 7.4,
+        "resumeConsistency": 7.5
+      },
+      "overall": 7.1,
+      "strengths": [
+        "Good command of role-specific concepts and terminology.",
+        "Clear communication with appropriate answer length."
+      ],
+      "weaknesses": [
+        "Use the STAR format (Situation, Task, Action, Result) for experience-based questions."
+      ],
+      "redFlags": [],
+      "questionFeedback": [
+        {
+          "questionId": "intro",
+          "question": "Welcome! Let’s begin. Please introduce yourself and tell me why you are interested in this Bank PO role.",
+          "answer": "I am Ananya, a commerce graduate from Mumbai University. I interned at a cooperative bank where I helped customers open accounts, and I am interested in banking because I want to work on financial inclusion in rural areas.",
+          "score": 5.3,
+          "good": "You covered 2 key point(s) and used clear signposting.",
+          "missing": "Consider mentioning: background, experience, skills.",
+          "modelAnswer": "Start with one line on your education, follow with two relevant achievements or experiences, and close with a specific reason this role matches your strengths and goals. Keep it under 90 seconds."
+        },
+        {
+          "questionId": "po-why",
+          "question": "You have a background that is not in finance. Why do you want to join banking?",
+          "answer": "During my commerce degree I studied accounting and economics, and the internship showed me how banks serve customers and support the economy, so banking felt like the right growth path.",
+          "score": 6.1,
+          "good": "You covered 4 key point(s).",
+          "missing": "Consider mentioning: stability, financial inclusion, rural.",
+          "modelAnswer": "Connect your background to banking: analytical skills from your degree, interest in financial inclusion, and the PO role’s exposure to credit, operations and customer service across branches."
+        },
+        {
+          "questionId": "po-repo",
+          "question": "What is the repo rate, and how does a change in it affect customers?",
+          "answer": "The repo rate is the rate at which the RBI lends to banks. When it increases, loans become costlier so EMI goes up, and it helps control inflation. RBI also uses CRR, SLR and open market operations.",
+          "score": 7.6,
+          "good": "You covered 6 key point(s).",
+          "missing": "Consider mentioning: interest.",
+          "modelAnswer": "The repo rate is the rate at which the RBI lends short-term funds to banks. When it rises, banks’ cost of funds rises, so loan EMIs usually increase and deposit rates may rise; it is used to control inflation."
+        },
+        {
+          "questionId": "po-npa",
+          "question": "What is an NPA, and what steps can a branch take to reduce it?",
+          "answer": "An NPA is a loan overdue for more than 90 days. A branch can reduce it through better credit appraisal, regular monitoring and recovery follow-ups.",
+          "score": 5.8,
+          "good": "You covered 3 key point(s).",
+          "missing": "Consider mentioning: non-performing, restructuring, sarfaesi.",
+          "modelAnswer": "An NPA is a loan whose interest or principal is overdue for more than 90 days. Branches can reduce NPAs through careful credit appraisal, early-warning monitoring, follow-ups, restructuring and recovery under SARFAESI where appropriate."
+        },
+        {
+          "questionId": "po-situational",
+          "question": "An elderly customer is upset because their pension has not been credited. How would you handle this at the branch?",
+          "answer": "First I would listen calmly and apologise, then check the transaction status, escalate to the pension cell if needed, and update the customer with a clear timeline.",
+          "score": 8.6,
+          "good": "You covered 5 key point(s) and used clear signposting.",
+          "missing": "Consider mentioning: empathy, resolve.",
+          "modelAnswer": "Listen calmly, apologise for the inconvenience, check the transaction status and the pension disbursing authority, escalate if needed, give a clear timeline and follow up personally."
+        },
+        {
+          "questionId": "po-hr",
+          "question": "Are you comfortable being posted in a rural branch?",
+          "answer": "Yes, I am comfortable. A rural posting helps me learn about priority sector lending and serve customers who need banking the most.",
+          "score": 5.3,
+          "good": "You covered 3 key point(s).",
+          "missing": "Consider mentioning: financial inclusion, adapt, experience. Add a specific example to make it credible.",
+          "modelAnswer": "Yes — a rural posting gives direct exposure to priority-sector lending and financial inclusion, and teaches adaptability, which are valuable for a long banking career."
+        },
+        {
+          "questionId": "po-digital",
+          "question": "What is UPI, and how has it changed banking for small businesses in India?",
+          "answer": "What does success look like for a new PO in the first six months?",
+          "score": 3.4,
+          "good": "You stayed on topic.",
+          "missing": "Consider mentioning: npci, real-time, qr. Add a specific example to make it credible.",
+          "modelAnswer": "UPI, run by NPCI, enables instant, interoperable bank-to-bank payments through a mobile app or QR code. It lets small merchants accept digital payments at almost no cost, reduces cash handling, and creates a transaction history banks can use to offer them credit."
+        }
+      ],
+      "plan": [
+        {
+          "day": 1,
+          "title": "Focus on answer structure",
+          "minutes": 30,
+          "tasks": [
+            "Re-read the model answers in this report",
+            "Write 3 answers that fix your answer structure gaps"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Build your STAR bank",
+          "minutes": 40,
+          "tasks": [
+            "Prepare 5 STAR stories: challenge, failure, teamwork, leadership, conflict",
+            "Keep each under 90 seconds"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Banking terms deep-dive",
+          "minutes": 45,
+          "tasks": [
+            "Revise core Banking terms concepts",
+            "Explain two concepts aloud as if to a panel"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Record and review",
+          "minutes": 30,
+          "tasks": [
+            "Record yourself answering 3 questions",
+            "Count filler words and pauses"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "RBI policy practice",
+          "minutes": 40,
+          "tasks": [
+            "Practise 5 RBI policy questions",
+            "Add numbers or outcomes to every answer"
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Mock interview",
+          "minutes": 20,
+          "tasks": [
+            "Take another Bank PO mock interview",
+            "Try voice mode if you used text"
+          ]
+        },
+        {
+          "day": 7,
+          "title": "Compare and plan",
+          "minutes": 20,
+          "tasks": [
+            "Compare both reports",
+            "Pick the next two improvement areas"
+          ]
+        }
+      ],
+      "durationSec": 1080
+    }
+  }
+}

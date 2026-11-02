@@ -1,0 +1,5 @@
+{
+  "method": "DELETE",
+  "path": "/v1/me",
+  "response": null
+}

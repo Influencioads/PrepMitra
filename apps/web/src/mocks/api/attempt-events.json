@@ -1,0 +1,9 @@
+{
+  "method": "POST",
+  "path": "/v1/attempts/att-example01/events",
+  "request": {
+    "type": "tab_switch",
+    "at": "2026-10-01T10:05:00.000Z"
+  },
+  "response": null
+}

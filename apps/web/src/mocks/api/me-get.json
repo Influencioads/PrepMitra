@@ -1,0 +1,57 @@
+{
+  "method": "GET",
+  "path": "/v1/me",
+  "response": {
+    "user": {
+      "id": "user-demo-1",
+      "name": "Ananya Sharma",
+      "phone": "9876543210",
+      "email": "ananya.sharma@example.com",
+      "dob": "2001-06-14",
+      "state": "Maharashtra",
+      "preferredLanguage": "en",
+      "role": "user",
+      "createdAt": "2026-09-12T06:00:00.000Z",
+      "onboardingComplete": true
+    },
+    "profile": {
+      "educationLevel": "graduate",
+      "stream": "B.Com / BBA",
+      "institution": "University of Mumbai",
+      "graduationYear": 2023,
+      "targetExamIds": [
+        "ibps-po",
+        "sbi-po",
+        "ssc-cgl"
+      ],
+      "targetRoleIds": [
+        "bank-po"
+      ],
+      "experienceYears": 1,
+      "secondaryLanguage": "hi",
+      "resume": {
+        "fileName": "Ananya_Sharma_Resume.pdf",
+        "sizeKb": 182,
+        "mimeType": "application/pdf",
+        "uploadedAt": "2026-09-20T06:00:00.000Z"
+      }
+    },
+    "settings": {
+      "notifications": {
+        "email": true,
+        "push": true,
+        "resultReady": true,
+        "practiceReminders": true,
+        "planExpiry": true,
+        "offers": false
+      },
+      "privacy": {
+        "shareWithRecruiters": false,
+        "productAnalytics": true,
+        "showOnLeaderboard": false
+      },
+      "examLanguageToggle": true,
+      "reduceMotion": false
+    }
+  }
+}

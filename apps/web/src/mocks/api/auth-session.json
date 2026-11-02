@@ -1,0 +1,30 @@
+{
+  "method": "POST",
+  "path": "/v1/auth/session",
+  "request": {
+    "profile": {
+      "name": "Ananya Sharma",
+      "email": "ananya@example.com"
+    }
+  },
+  "response": {
+    "user": {
+      "id": "user-demo-1",
+      "name": "Ananya Sharma",
+      "phone": "9876543210",
+      "email": "ananya.sharma@example.com",
+      "dob": "2001-06-14",
+      "state": "Maharashtra",
+      "preferredLanguage": "en",
+      "role": "user",
+      "createdAt": "2026-09-12T06:00:00.000Z",
+      "onboardingComplete": true
+    },
+    "tokens": {
+      "accessToken": "<firebase-id-token>",
+      "refreshToken": "<managed-by-firebase>",
+      "expiresAt": "2026-10-01T11:00:00.000Z"
+    },
+    "isNewUser": false
+  }
+}

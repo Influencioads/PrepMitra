@@ -1,0 +1,60 @@
+{
+  "method": "POST",
+  "path": "/v1/interviews/int-example01/answer",
+  "request": {
+    "text": "I am a commerce graduate who interned at a cooperative bank…",
+    "durationSec": 60
+  },
+  "response": {
+    "id": "int-example01",
+    "config": {
+      "roleId": "bank-po",
+      "level": "fresher",
+      "language": "en",
+      "mode": "text",
+      "resumeFileName": "Ananya_Sharma_Resume.pdf"
+    },
+    "status": "in-progress",
+    "turns": [
+      {
+        "id": "int-example01-t1",
+        "speaker": "interviewer",
+        "stage": "introduction",
+        "questionId": "intro",
+        "at": "2026-10-01T10:00:00.000Z",
+        "text": "Hello, and thanks for joining. This is a practice interview for a fresher position. Welcome! Let’s begin. Please introduce yourself and tell me why you are interested in this Bank PO role."
+      },
+      {
+        "id": "int-example01-t2",
+        "speaker": "candidate",
+        "text": "I am a commerce graduate who interned at a cooperative bank…",
+        "stage": "introduction",
+        "questionId": "intro",
+        "at": "2026-10-01T10:02:00.000Z",
+        "durationSec": 60
+      },
+      {
+        "id": "int-example01-t3",
+        "speaker": "interviewer",
+        "stage": "resume",
+        "questionId": "po-why",
+        "at": "2026-10-01T10:02:00.000Z",
+        "text": "Thank you. You have a background that is not in finance. Why do you want to join banking?"
+      }
+    ],
+    "questionQueue": [
+      "intro",
+      "po-why",
+      "po-repo",
+      "po-npa",
+      "po-situational",
+      "po-hr",
+      "po-digital",
+      "po-target",
+      "closing"
+    ],
+    "askedCount": 2,
+    "followUpsAsked": 0,
+    "startedAt": "2026-10-01T10:00:00.000Z"
+  }
+}

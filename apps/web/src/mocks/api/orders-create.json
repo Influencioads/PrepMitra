@@ -1,0 +1,17 @@
+{
+  "method": "POST",
+  "path": "/v1/orders",
+  "request": {
+    "planId": "monthly"
+  },
+  "response": {
+    "orderId": "order_Example123",
+    "amountPaise": 39900,
+    "currency": "INR",
+    "planName": "10-Credit Pack",
+    "prefill": {
+      "name": "Ananya Sharma",
+      "contact": "9876543210"
+    }
+  }
+}

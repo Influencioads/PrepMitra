@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/v1/attempts/att-example01/report",
+  "response": {
+    "status": "processing",
+    "progress": 40
+  }
+}

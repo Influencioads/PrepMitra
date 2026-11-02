@@ -1,0 +1,163 @@
+{
+  "method": "GET",
+  "path": "/v1/admin/stats",
+  "response": {
+    "attemptsToday": 1286,
+    "attemptsByCategory": [
+      {
+        "category": "government",
+        "attempts": 29650
+      },
+      {
+        "category": "banking",
+        "attempts": 38690
+      },
+      {
+        "category": "railway",
+        "attempts": 14310
+      },
+      {
+        "category": "civil-services",
+        "attempts": 8560
+      },
+      {
+        "category": "higher-education",
+        "attempts": 19890
+      },
+      {
+        "category": "campus-placement",
+        "attempts": 42340
+      }
+    ],
+    "attemptsByExam": [
+      {
+        "examId": "general-aptitude",
+        "label": "General Aptitude",
+        "attempts": 889
+      },
+      {
+        "examId": "ssc-cgl",
+        "label": "SSC CGL",
+        "attempts": 625
+      },
+      {
+        "examId": "ibps-po",
+        "label": "IBPS PO",
+        "attempts": 579
+      },
+      {
+        "examId": "it-placement",
+        "label": "IT Placement",
+        "attempts": 533
+      },
+      {
+        "examId": "rrb-ntpc",
+        "label": "RRB NTPC",
+        "attempts": 489
+      },
+      {
+        "examId": "sbi-po",
+        "label": "SBI PO",
+        "attempts": 404
+      },
+      {
+        "examId": "ssc-chsl",
+        "label": "SSC CHSL",
+        "attempts": 376
+      },
+      {
+        "examId": "ibps-clerk",
+        "label": "IBPS Clerk",
+        "attempts": 335
+      }
+    ],
+    "secondAttemptRate": 38.2,
+    "secondAttemptTarget": 35,
+    "conversionRate": 4.3,
+    "conversionTarget": 5,
+    "retentionTrend": [
+      {
+        "label": "May",
+        "value": 27.15
+      },
+      {
+        "label": "Jun",
+        "value": 29.97
+      },
+      {
+        "label": "Jul",
+        "value": 32.26
+      },
+      {
+        "label": "Aug",
+        "value": 34.36
+      },
+      {
+        "label": "Sep",
+        "value": 36.16
+      },
+      {
+        "label": "Oct",
+        "value": 38.81
+      }
+    ],
+    "conversionTrend": [
+      {
+        "label": "May",
+        "value": 2.65
+      },
+      {
+        "label": "Jun",
+        "value": 3.11
+      },
+      {
+        "label": "Jul",
+        "value": 3.32
+      },
+      {
+        "label": "Aug",
+        "value": 3.74
+      },
+      {
+        "label": "Sep",
+        "value": 4.06
+      },
+      {
+        "label": "Oct",
+        "value": 4.4
+      }
+    ],
+    "interviewsByRole": [
+      {
+        "roleId": "software-developer",
+        "label": "Software Developer",
+        "sessions": 1831
+      },
+      {
+        "roleId": "bank-po",
+        "label": "Bank PO",
+        "sessions": 1688
+      },
+      {
+        "roleId": "hr-executive",
+        "label": "HR Executive",
+        "sessions": 1457
+      },
+      {
+        "roleId": "sales-bd",
+        "label": "Sales & BD",
+        "sessions": 1524
+      },
+      {
+        "roleId": "accountant",
+        "label": "Accountant",
+        "sessions": 1423
+      },
+      {
+        "roleId": "civil-services-pt",
+        "label": "UPSC Personality Test",
+        "sessions": 1601
+      }
+    ]
+  }
+}

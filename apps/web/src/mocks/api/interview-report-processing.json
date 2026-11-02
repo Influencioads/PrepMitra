@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "path": "/v1/interviews/int-example01/report",
+  "response": {
+    "status": "processing"
+  }
+}

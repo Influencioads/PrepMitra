@@ -1,0 +1,244 @@
+{
+  "method": "GET",
+  "path": "/v1/exams?category=banking&language=en",
+  "response": [
+    {
+      "id": "ibps-po",
+      "title": "IBPS PO Prelims Mock Test",
+      "shortTitle": "IBPS PO",
+      "category": "banking",
+      "conductingBody": "IBPS pattern",
+      "description": "Speed-focused prelims mock based on the IBPS Probationary Officer pattern with sectional timing for English, quant and reasoning.",
+      "durationMin": 60,
+      "totalQuestions": 100,
+      "totalMarks": 100,
+      "difficulty": "Hard",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "creditCost": 1,
+      "isFree": false,
+      "sections": [
+        {
+          "id": "po-en",
+          "name": "English Language",
+          "subject": "english",
+          "questionCount": 30,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        },
+        {
+          "id": "po-qa",
+          "name": "Quantitative Aptitude",
+          "subject": "quant",
+          "questionCount": 35,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        },
+        {
+          "id": "po-ra",
+          "name": "Reasoning Ability",
+          "subject": "reasoning",
+          "questionCount": 35,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        }
+      ],
+      "negativeMarking": "0.25 marks deducted for each wrong answer",
+      "calculatorAllowed": false,
+      "questionTypes": [
+        "single"
+      ],
+      "popularity": 94,
+      "rating": 4.7,
+      "attemptsCount": 16780,
+      "highlights": [
+        "Sectional cut-off insights",
+        "Puzzle-solving shortcuts",
+        "Percentile vs platform users"
+      ],
+      "sampleQuestion": {
+        "text": "If the cost price of 12 pens equals the selling price of 10 pens, what is the profit percentage?",
+        "options": [
+          "16.67%",
+          "20%",
+          "18%",
+          "25%"
+        ],
+        "answerIndex": 1
+      },
+      "status": "published",
+      "demo": {
+        "questionsPerSection": 5,
+        "durationMin": 18
+      },
+      "updatedAt": "2026-10-15T09:00:00.000Z"
+    },
+    {
+      "id": "ibps-clerk",
+      "title": "IBPS Clerk Prelims Mock Test",
+      "shortTitle": "IBPS Clerk",
+      "category": "banking",
+      "conductingBody": "IBPS pattern",
+      "description": "Prelims practice based on the IBPS Clerk pattern with emphasis on accuracy under strict sectional timing.",
+      "durationMin": 60,
+      "totalQuestions": 100,
+      "totalMarks": 100,
+      "difficulty": "Moderate",
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "mr",
+        "te",
+        "ta",
+        "gu",
+        "kn",
+        "ml",
+        "or",
+        "pa",
+        "ur"
+      ],
+      "creditCost": 1,
+      "isFree": false,
+      "sections": [
+        {
+          "id": "clerk-en",
+          "name": "English Language",
+          "subject": "english",
+          "questionCount": 30,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        },
+        {
+          "id": "clerk-na",
+          "name": "Numerical Ability",
+          "subject": "quant",
+          "questionCount": 35,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        },
+        {
+          "id": "clerk-ra",
+          "name": "Reasoning Ability",
+          "subject": "reasoning",
+          "questionCount": 35,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        }
+      ],
+      "negativeMarking": "0.25 marks deducted for each wrong answer",
+      "calculatorAllowed": false,
+      "questionTypes": [
+        "single"
+      ],
+      "popularity": 86,
+      "rating": 4.5,
+      "attemptsCount": 9870,
+      "highlights": [
+        "Simplification speed drills",
+        "Accuracy tracking",
+        "12 language options"
+      ],
+      "sampleQuestion": {
+        "text": "What is 35% of 640?",
+        "options": [
+          "214",
+          "224",
+          "234",
+          "244"
+        ],
+        "answerIndex": 1
+      },
+      "status": "published",
+      "demo": {
+        "questionsPerSection": 4,
+        "durationMin": 15
+      },
+      "updatedAt": "2026-10-15T09:00:00.000Z"
+    },
+    {
+      "id": "sbi-po",
+      "title": "SBI PO Prelims Mock Test",
+      "shortTitle": "SBI PO",
+      "category": "banking",
+      "conductingBody": "SBI pattern",
+      "description": "High-difficulty prelims mock modelled on the SBI Probationary Officer pattern, including data interpretation and arrangement puzzles.",
+      "durationMin": 60,
+      "totalQuestions": 100,
+      "totalMarks": 100,
+      "difficulty": "Hard",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "creditCost": 1,
+      "isFree": false,
+      "sections": [
+        {
+          "id": "sbi-en",
+          "name": "English Language",
+          "subject": "english",
+          "questionCount": 30,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        },
+        {
+          "id": "sbi-qa",
+          "name": "Quantitative Aptitude",
+          "subject": "quant",
+          "questionCount": 35,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        },
+        {
+          "id": "sbi-ra",
+          "name": "Reasoning Ability",
+          "subject": "reasoning",
+          "questionCount": 35,
+          "marksPerQuestion": 1,
+          "negativeMarks": 0.25,
+          "durationMin": 20
+        }
+      ],
+      "negativeMarking": "0.25 marks deducted for each wrong answer",
+      "calculatorAllowed": false,
+      "questionTypes": [
+        "single"
+      ],
+      "popularity": 90,
+      "rating": 4.6,
+      "attemptsCount": 12040,
+      "highlights": [
+        "Advanced DI sets",
+        "Guessing-pattern detection",
+        "Detailed elimination tips"
+      ],
+      "sampleQuestion": {
+        "text": "A train 240 m long passes a pole in 12 seconds. What is its speed in km/h?",
+        "options": [
+          "60",
+          "72",
+          "80",
+          "84"
+        ],
+        "answerIndex": 1
+      },
+      "status": "published",
+      "demo": {
+        "questionsPerSection": 5,
+        "durationMin": 18
+      },
+      "updatedAt": "2026-10-15T09:00:00.000Z"
+    }
+  ]
+}
