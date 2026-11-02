@@ -1,0 +1,140 @@
+import type { Attempt, ExamReport, InterviewReport, InterviewSession } from '@prepmitra/shared';
+import { API_ENDPOINTS, DEFAULT_SETTINGS, toCredits, toInterviewReport, toInterviewSession, toMe, toNotification } from '@prepmitra/shared';
+import type { Json } from '@prepmitra/shared';
+import { http } from '@/services/http';
+import { examIdForUuid, fetchExam, fetchExams, fetchPaper, fetchRoles, mapExamReport } from '@/services/backend';
+import { useAuthStore } from './authStore';
+import { useExamStore } from './examStore';
+import { useInterviewStore } from './interviewStore';
+import { useNotificationStore } from './notificationStore';
+import { useProfileStore } from './profileStore';
+import { useSubscriptionStore } from './subscriptionStore';
+
+/**
+ * Real-API mode: loads the signed-in user's data from the backend into the app stores,
+ * which the screens read. Runs after sign-in and on every app start.
+ */
+const MAX_REPORTS = 20;
+let running: Promise<void> | null = null;
+
+export function syncFromBackend(): Promise<void> {
+  running ??= doSync().finally(() => {
+    running = null;
+  });
+  return running;
+}
+
+/** Credits, ledger and free-trial state (after starting an exam or interview, or paying). */
+export async function syncCredits(): Promise<void> {
+  const uid = useAuthStore.getState().session?.user.id;
+  if (!uid) return;
+  const [credits, attempts] = await Promise.all([http.get(API_ENDPOINTS.credits), http.get(API_ENDPOINTS.attempts, { params: { limit: 50 } })]);
+  applyCredits(credits.data, attempts.data.items ?? []);
+}
+
+function applyCredits(c: Json, attempts: Json[]) {
+  const { credits, ledger } = toCredits(c);
+  const usedTrial = attempts.some((a) => a.is_free_trial);
+  useSubscriptionStore.setState((s) => ({
+    sub: {
+      ...s.sub,
+      planId: credits > 0 ? (s.sub.planId === 'free' ? 'pay-per-mock' : s.sub.planId) : 'free',
+      status: credits > 0 ? 'active' : usedTrial ? 'expired' : 'trial',
+      credits,
+      ledger,
+      freeMiniMockUsed: usedTrial,
+      autoRenew: false,
+    },
+  }));
+}
+
+const settled = <T,>(p: Promise<T>) => p.then((v) => v, () => undefined);
+
+async function doSync() {
+  const session = useAuthStore.getState().session;
+  if (!session) return;
+  const uid = session.user.id;
+  await Promise.all([settled(fetchExams()), settled(fetchRoles())]);
+  const [me, credits, attemptsRes, progress, notes] = await Promise.all([
+    settled(http.get(API_ENDPOINTS.me)),
+    settled(http.get(API_ENDPOINTS.credits)),
+    settled(http.get(API_ENDPOINTS.attempts, { params: { limit: 50 } })),
+    settled(http.get(API_ENDPOINTS.progress)),
+    settled(http.get(API_ENDPOINTS.notifications)),
+  ]);
+  if (useAuthStore.getState().session?.user.id !== uid) return; // signed out meanwhile
+
+  if (me) {
+    const m = toMe(me.data);
+    useAuthStore.getState().updateUser(m.user);
+    const local = useProfileStore.getState();
+    const keep = local.ownerId === uid;
+    useProfileStore.getState().reset(uid, { ...m.profile, resume: m.profile.resume && keep ? local.profile.resume ?? m.profile.resume : m.profile.resume }, {
+      ...(keep ? local.settings : DEFAULT_SETTINGS),
+      privacy: { ...(keep ? local.settings.privacy : DEFAULT_SETTINGS.privacy), shareWithRecruiters: m.settings.privacy.shareWithRecruiters },
+      notifications: { ...(keep ? local.settings.notifications : DEFAULT_SETTINGS.notifications), offers: m.settings.notifications.offers },
+    });
+  }
+
+  const attemptItems: Json[] = attemptsRes?.data.items ?? [];
+  if (credits) {
+    if (useSubscriptionStore.getState().ownerId !== uid) useSubscriptionStore.getState().reset(uid, useSubscriptionStore.getState().sub);
+    applyCredits(credits.data, attemptItems);
+  }
+
+  // Exam attempts: unfinished ones (to resume) and reports for the most recent submitted ones.
+  const attempts: Attempt[] = [];
+  const reports: ExamReport[] = [];
+  const examIds = new Set<string>();
+  for (const a of attemptItems) {
+    const examId = await examIdForUuid(a.exam_id);
+    if (examId) examIds.add(examId);
+  }
+  await Promise.all([...examIds].map((id) => settled(fetchExam(id)))); // sections, for per-question marks
+  await Promise.all(
+    attemptItems.map(async (a, i) => {
+      const examId = (await examIdForUuid(a.exam_id)) ?? a.exam_id;
+      if (a.status === 'in_progress') {
+        if (a.remaining_seconds > 0) {
+          const attempt = await settled(fetchPaper(a.id, a.language));
+          if (attempt) attempts.push(attempt);
+        }
+        return;
+      }
+      if (i >= MAX_REPORTS) return;
+      const res = await settled(http.get(API_ENDPOINTS.attemptReport(a.id)));
+      const report = res?.data.status === 'ready' ? mapExamReport(res.data, a.id, examId) : undefined;
+      attempts.push({
+        id: a.id, examId, language: a.language, startedAt: a.started_at, endsAt: a.submitted_at ?? a.started_at, durationSec: report?.durationSec ?? 0,
+        paper: [], states: {}, currentIndex: 0, status: 'submitted', submittedAt: a.submitted_at ?? undefined, reportId: report?.id, tabSwitches: 0,
+        isMini: !!a.is_free_trial,
+      });
+      if (report) reports.push(report);
+    }),
+  );
+  if (attemptsRes) {
+    const local = useExamStore.getState();
+    useExamStore.getState().reset(uid, attempts, reports, local.ownerId === uid ? local.practiceLog : {});
+  }
+
+  // Interviews: sessions and ready reports from the progress history.
+  if (progress) {
+    const sessions: InterviewSession[] = [];
+    const ireports: InterviewReport[] = [];
+    const items = (progress.data.history as Json[]).filter((h) => h.kind === 'interview').slice(0, MAX_REPORTS);
+    await Promise.all(
+      items.map(async (h) => {
+        const s = await settled(http.get(API_ENDPOINTS.interview(h.id)));
+        if (!s) return;
+        const session = toInterviewSession(s.data);
+        sessions.push(session);
+        if (!session.reportId) return;
+        const r = await settled(http.get(`/v1/reports/${session.reportId}`));
+        if (r?.data.status === 'ready') ireports.push(toInterviewReport(r.data, session));
+      }),
+    );
+    useInterviewStore.getState().reset(uid, sessions, ireports);
+  }
+
+  if (notes) useNotificationStore.getState().reset(uid, (notes.data.items as Json[]).map(toNotification));
+}

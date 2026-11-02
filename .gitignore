@@ -1,3 +1,4 @@
+# Frontend
 node_modules
 dist
 .expo
@@ -8,3 +9,11 @@ coverage
 web-build
 ios
 android
+
+# Backend
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+backend/storage/
+backend/dev.db*

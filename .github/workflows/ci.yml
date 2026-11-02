@@ -1,5 +1,5 @@
 # Runs on every push and pull request: lint, typecheck, tests and a production build of the website.
-# Vercel builds its own preview for each push once the repo is connected (apps/web/vercel.json).
+# Vercel builds its own preview for each push once the repo is connected (frontend/vercel.json).
 name: CI
 
 on:
