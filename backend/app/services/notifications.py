@@ -9,6 +9,8 @@ import logging
 import smtplib
 from datetime import timedelta
 from email.message import EmailMessage
+from functools import lru_cache
+from pathlib import Path
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -68,14 +70,14 @@ class FcmPush:
     """FCM HTTP v1. Needs FCM_CREDENTIALS_FILE (service account JSON) - not exercised without real credentials."""
 
     def __init__(self):
-        import os
-
         from google.oauth2 import service_account
 
-        path = os.environ.get("FCM_CREDENTIALS_FILE", "")
+        path = Path(get_settings().fcm_credentials_file)
+        if not path.is_absolute():
+            path = Path(__file__).resolve().parents[2] / path
         self.creds = service_account.Credentials.from_service_account_file(
-            path, scopes=["https://www.googleapis.com/auth/firebase.messaging"])
-        self.project = json.load(open(path))["project_id"]
+            str(path), scopes=["https://www.googleapis.com/auth/firebase.messaging"])
+        self.project = json.loads(path.read_text())["project_id"]
 
     def send(self, token: str, title: str, body: str, data: dict) -> None:
         import httpx
@@ -121,8 +123,13 @@ class ResendEmail:
                    json={"from": s.email_from, "to": [to], "subject": subject, "text": body}, timeout=15).raise_for_status()
 
 
+@lru_cache
+def _fcm() -> FcmPush:
+    return FcmPush()  # one instance, so the OAuth token is reused until it expires
+
+
 def get_push():
-    return FcmPush() if get_settings().push_provider == "fcm" else ConsolePush()
+    return _fcm() if get_settings().push_provider == "fcm" else ConsolePush()
 
 
 def get_email():

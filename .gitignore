@@ -17,3 +17,7 @@ __pycache__/
 .pytest_cache/
 backend/storage/
 backend/dev.db*
+
+# Service-account keys (Firebase / FCM) - never commit
+backend/secrets/
+*firebase-adminsdk*.json

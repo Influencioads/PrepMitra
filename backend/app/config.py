@@ -78,7 +78,8 @@ class Settings(BaseSettings):
     smtp_password: str = ""
     email_from: str = "PrepMitra AI <no-reply@prepmitra.local>"
     push_provider: str = "console"  # console | fcm
-    fcm_server_key: str = ""
+    # Firebase service-account JSON for FCM HTTP v1. A relative path is resolved from the backend folder.
+    fcm_credentials_file: str = ""
 
     # Monitoring: errors go to Sentry when a DSN is set.
     sentry_dsn: str = ""
