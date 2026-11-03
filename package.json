@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "description": "PrepMitra AI \u2014 AI mock exam and mock interview platform (frontend monorepo)",
   "workspaces": [
-    "apps/web",
-    "apps/mobile",
-    "packages/shared"
+    "frontend",
+    "app",
+    "shared"
   ],
   "scripts": {
     "dev:web": "npm run dev --workspace @prepmitra/web",

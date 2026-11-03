@@ -1,11 +1,16 @@
 # PrepMitra AI — API contract (frontend ⇄ backend)
 
-Source: the "API Plan" sheet of the 15-day plan. This file describes what the **web app**
-(`apps/web`) sends and expects. Route constants live in `packages/shared/src/constants`
-(`API_ENDPOINTS`) and types in `packages/shared/src/types/core.ts`.
+> **Status (Nov 2026): connected.** The FastAPI backend in `backend/` implements every route below. Its JSON is
+> snake_case and its IDs are slugs/UUIDs, so the frontend translates both ways in `shared/src/api/adapters.ts`
+> (e.g. exam `ssc-cgl` ⇄ backend slug `ssc-cgl-tier1`). The real request/response bodies are in
+> `docs/backend/API.md` and live at `http://localhost:8000/docs`. The tables below describe what the screens use.
 
-**Example bodies:** `apps/web/src/mocks/api/*.json`, with one file per row below.
-Regenerate them with `npm run fixtures -w apps/web`.
+Source: the "API Plan" sheet of the 15-day plan. This file describes what the **web app**
+(`frontend/`) sends and expects. Route constants live in `shared/src/constants`
+(`API_ENDPOINTS`) and types in `shared/src/types/core.ts`.
+
+**Example bodies:** `frontend/src/mocks/api/*.json`, with one file per row below.
+Regenerate them with `npm run fixtures -w frontend`.
 
 ## Conventions
 
@@ -60,7 +65,7 @@ sends an SMS itself. It only verifies the ID token at `/v1/auth/session` and cre
 
 **Mini mock:** `mode: 'mini'` gives at most 10 questions in 30 minutes, spread across all sections.
 It is free once per user. `Attempt.isMini` and `ExamReport.isMini` are set.
-The demo version is in `packages/shared/src/logic/paper.ts` (`MINI_MOCK`, `capPaper`).
+The demo version is in `shared/src/logic/paper.ts` (`MINI_MOCK`, `capPaper`).
 
 ## Payments (Razorpay)
 
