@@ -50,7 +50,9 @@ export function VerifyOtpPage() {
       const s = await authService.verifyOtp({ requestId: pending.requestId, phone: pending.phone, otp: code, signup: pending.signup });
       // Sign in first: the consent call needs the new session's token.
       signInWithDemoData(s);
-      if (s.isNewUser) await profileService.recordConsent('terms-and-privacy', true).catch(() => undefined);
+      // Signup collects Terms/Privacy consent on its form; a new user who came via Log in gives it
+      // in onboarding step 3 instead, so nothing is recorded for them here.
+      if (s.isNewUser && pending.signup) await profileService.recordConsent('terms-and-privacy', true).catch(() => undefined);
       track(s.isNewUser ? 'signup_completed' : 'login', { method: 'phone' });
       if (pending.purpose === 'recovery') toast.success(t('recoveredToast'));
       else toast.success(s.isNewUser ? t('accountCreated') : t('welcomeBack', { name: s.user.name.split(' ')[0] }));

@@ -3,7 +3,10 @@ import { persist } from 'zustand/middleware';
 import type { AuthSession, User } from '@prepmitra/shared';
 import { STORAGE_KEYS } from '@prepmitra/shared';
 import { demoStorage } from './storage';
+import toast from 'react-hot-toast';
 import { setAuthHandlers } from '@/services/http';
+import { translate } from '@/i18n';
+import { authMessages } from '@/i18n/messages/auth';
 
 export interface PendingOtp {
   phone: string;
@@ -42,7 +45,13 @@ export const useAuthStore = create<AuthState>()(
 setAuthHandlers({
   refreshed: (tokens) =>
     useAuthStore.setState((s) => (s.session ? { session: { ...s.session, tokens } } : s)),
-  expired: () => useAuthStore.getState().signOut(),
+  // Refresh token no longer valid: sign out and say why. RequireAuth then sends the user to
+  // /login?redirect=<current page>, so they come back to the same screen after logging in.
+  expired: () => {
+    if (!useAuthStore.getState().session) return;
+    useAuthStore.getState().signOut();
+    toast.error(translate(authMessages, 'sessionExpired'), { id: 'session-expired' });
+  },
 });
 
 export const useCurrentUser = () => useAuthStore((s) => s.session?.user ?? null);

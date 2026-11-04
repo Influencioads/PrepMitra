@@ -5,7 +5,7 @@ import { colors, radii, TOUCH } from '@/theme';
 import type { IoniconName } from '@/utils/icons';
 import { AppText } from './AppText';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'soft' | 'danger';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'soft' | 'danger' | 'accent' | 'outlineLight' | 'ghostLight';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps {
@@ -32,6 +32,10 @@ const VARIANTS: Record<ButtonVariant, { bg: string; fg: string; border: string; 
   ghost: { bg: 'transparent', fg: colors.primary, border: 'transparent', pressed: colors.primarySoft },
   soft: { bg: colors.primarySoft, fg: colors.primary, border: colors.primarySoft, pressed: '#F9DCC6' },
   danger: { bg: colors.error, fg: colors.white, border: colors.error, pressed: '#B91C1C' },
+  // For the dark green auth panel
+  accent: { bg: '#F26B1D', fg: colors.white, border: '#F26B1D', pressed: '#E05E12' },
+  outlineLight: { bg: 'transparent', fg: '#F5F3EA', border: 'rgba(255,255,255,0.32)', pressed: 'rgba(255,255,255,0.08)' },
+  ghostLight: { bg: 'transparent', fg: '#FFAD66', border: 'transparent', pressed: 'rgba(255,255,255,0.08)' },
 };
 
 const SIZES: Record<ButtonSize, { height: number; px: number; font: number; icon: number }> = {

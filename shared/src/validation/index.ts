@@ -67,6 +67,55 @@ export const languageSchema = z.object({
   secondaryLanguage: z.string().optional(),
 });
 
+/** Edit-profile personal details: name and date of birth (18+, checked again by the backend) are required. */
+export const profilePersonalSchema = z.object({
+  name: z.string().trim().min(2, 'Enter your full name').max(60),
+  dob: z.string().min(1, 'Select your date of birth').refine(isAdult, 'You must be between 18 and 80 years old'),
+  state: z.string().optional(),
+  email: z.union([z.literal(''), z.email('Enter a valid email address')]).optional(),
+});
+
+/**
+ * Onboarding step 1 (15-day plan, Day 2): name + language, plus date of birth because the backend
+ * only lets 18+ users start an exam (GET /v1/me `missing_fields`). State and email are optional.
+ */
+export const onboardingBasicsSchema = z.object({
+  name: z.string().trim().min(2, 'Enter your full name').max(60),
+  dob: z.string().min(1, 'Select your date of birth').refine(isAdult, 'You must be between 18 and 80 years old'),
+  preferredLanguage: z.string().min(2, 'Choose a preferred language'),
+  secondaryLanguage: z.string().optional(),
+  state: z.string().optional(),
+  email: z.union([z.literal(''), z.email('Enter a valid email address')]).optional(),
+});
+
+/** Onboarding step 3: targets plus the Terms/Privacy consent, which is required. */
+export const onboardingTargetsSchema = z
+  .object({
+    targetExamIds: z.array(z.string()),
+    targetRoleIds: z.array(z.string()),
+    consent: z.boolean().refine((v) => v, 'Please agree to the Terms of Use and Privacy Policy to continue'),
+  })
+  .refine((v) => v.targetExamIds.length + v.targetRoleIds.length > 0, {
+    message: 'Pick at least one target exam or job role',
+    path: ['targetExamIds'],
+  });
+
+/**
+ * A user can start an exam only when their profile has a name, an 18+ date of birth, a preferred language and at
+ * least one target exam or role (15-day plan, Day 2). UI check only; the backend enforces it too.
+ */
+export function isProfileReady(
+  user: { name?: string; dob?: string; preferredLanguage?: string; onboardingComplete?: boolean } | null | undefined,
+  profile: { targetExamIds?: string[]; targetRoleIds?: string[] } | null | undefined,
+): boolean {
+  if (!user?.onboardingComplete) return false;
+  const hasName = (user.name ?? '').trim().length >= 2;
+  const hasLanguage = (user.preferredLanguage ?? '').length >= 2;
+  const hasDob = !!user.dob;
+  const targets = (profile?.targetExamIds?.length ?? 0) + (profile?.targetRoleIds?.length ?? 0);
+  return hasName && hasDob && hasLanguage && targets > 0;
+}
+
 export const profileSchema = personalDetailsSchema.extend({
   preferredLanguage: z.string().min(2),
   educationLevel: z.enum(['12th', 'graduate', 'postgraduate']),
@@ -194,6 +243,9 @@ export type PersonalDetailsInput = z.infer<typeof personalDetailsSchema>;
 export type EducationInput = z.infer<typeof educationSchema>;
 export type TargetsInput = z.infer<typeof targetsSchema>;
 export type LanguageInput = z.infer<typeof languageSchema>;
+export type ProfilePersonalInput = z.infer<typeof profilePersonalSchema>;
+export type OnboardingBasicsInput = z.infer<typeof onboardingBasicsSchema>;
+export type OnboardingTargetsInput = z.infer<typeof onboardingTargetsSchema>;
 export type ProfileInput = z.infer<typeof profileSchema>;
 export type InterviewSetupInput = z.infer<typeof interviewSetupSchema>;
 export type DemoCheckoutInput = z.infer<typeof demoCheckoutSchema>;

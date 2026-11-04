@@ -3,9 +3,13 @@ import { defineMessages } from '@/i18n';
 /** Login, signup, OTP verification and account recovery. Zod validation messages stay English (shared package). */
 export const authMessages = defineMessages({
   en: {
+    sessionExpired: 'Your session has ended. Please log in again.',
     // Login
     loginDocTitle: 'Log in',
     loginTitle: 'Welcome back',
+    loginEyebrow: 'Log in',
+    getOtp: 'Get OTP',
+    secureNote: 'No password needed. A one-time code keeps your account safe.',
     loginBody: 'Log in with your mobile number. We’ll verify it with a one-time code.',
     mobileNumber: 'Mobile number',
     sendCode: 'Send verification code',
@@ -66,8 +70,12 @@ export const authMessages = defineMessages({
     newCodeDemo: 'A new code was generated (demo — no SMS sent).',
   },
   hi: {
+    sessionExpired: 'आपका सेशन समाप्त हो गया है। कृपया फिर से लॉग इन करें।',
     loginDocTitle: 'लॉग इन',
     loginTitle: 'फिर से स्वागत है',
+    loginEyebrow: 'लॉग इन',
+    getOtp: 'OTP पाएँ',
+    secureNote: 'पासवर्ड की ज़रूरत नहीं। एक बार का कोड आपके अकाउंट को सुरक्षित रखता है।',
     loginBody: 'अपने मोबाइल नंबर से लॉग इन करें। हम इसे एक बार इस्तेमाल होने वाले कोड (OTP) से वेरिफ़ाई करेंगे।',
     mobileNumber: 'मोबाइल नंबर',
     sendCode: 'वेरिफ़िकेशन कोड भेजें',

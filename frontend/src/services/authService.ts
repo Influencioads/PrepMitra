@@ -4,6 +4,7 @@ import type { Json } from '@prepmitra/shared';
 import { http } from './http';
 import { USE_MOCK, delay, mockError } from './mock';
 import { firebaseAuth } from './firebaseAuth';
+import { readDemoAccount, rememberDemoAccount } from './demoAccounts';
 import { useAuthStore } from '@/store/authStore';
 
 export interface OtpRequest {
@@ -77,21 +78,25 @@ export const authService = {
     }
     await delay(700);
     if (input.otp !== DEMO_OTP) throw mockError(400, 'OTP_INVALID', 'That code is incorrect. In demo mode, use 123456.');
-    if (input.signup) {
-      const user: User = {
-        id: `user-${input.phone}`,
-        name: input.signup.name,
-        phone: input.phone,
-        email: input.signup.email || undefined,
-        preferredLanguage: 'en',
-        role: 'user',
-        createdAt: new Date().toISOString(),
-        onboardingComplete: false,
-      };
-      return { user, tokens: fakeTokens(), isNewUser: true };
-    }
-    const base = input.phone === DEMO_ADMIN.phone ? DEMO_ADMIN : { ...DEMO_USER, phone: input.phone };
-    return { user: base, tokens: fakeTokens(), isNewUser: false };
+    // Demo accounts: the seeded learner and admin are returning users. Any other number is a
+    // new account (like the backend, which creates one on the first verified login) until it
+    // has been used on this device before.
+    if (input.phone === DEMO_ADMIN.phone) return { user: DEMO_ADMIN, tokens: fakeTokens(), isNewUser: false };
+    if (input.phone === DEMO_USER.phone && !input.signup) return { user: DEMO_USER, tokens: fakeTokens(), isNewUser: false };
+    const known = input.signup ? undefined : readDemoAccount(input.phone);
+    if (known) return { user: known, tokens: fakeTokens(), isNewUser: false };
+    const user: User = {
+      id: `user-${input.phone}`,
+      name: input.signup?.name ?? '',
+      phone: input.phone,
+      email: input.signup?.email || undefined,
+      preferredLanguage: 'en',
+      role: 'user',
+      createdAt: new Date().toISOString(),
+      onboardingComplete: false,
+    };
+    rememberDemoAccount(user);
+    return { user, tokens: fakeTokens(), isNewUser: true };
   },
 
   /** Simulated in demo mode; no Google account is contacted. */

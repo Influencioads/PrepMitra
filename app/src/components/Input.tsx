@@ -12,21 +12,26 @@ export interface InputProps extends Omit<TextInputProps, 'style'> {
   leftAddon?: ReactNode;
   rightElement?: ReactNode;
   showCount?: boolean;
+  /** Light-on-dark styling for the auth panel. */
+  dark?: boolean;
   ref?: Ref<TextInputInstance>;
 }
 
-export function Input({ label, error, hint, required, leftAddon, rightElement, showCount, multiline, maxLength, value, ref, onFocus, onBlur, ...rest }: InputProps) {
+const DARK = { text: '#F5F3EA', muted: 'rgba(245,243,234,0.74)', placeholder: 'rgba(245,243,234,0.5)', line: 'rgba(255,255,255,0.32)', focus: '#FFAD66', error: '#FDA4A4' };
+
+export function Input({ label, error, hint, required, leftAddon, rightElement, showCount, dark, multiline, maxLength, value, ref, onFocus, onBlur, ...rest }: InputProps) {
   const [focused, setFocused] = useState(false);
+  const errorColor = dark ? DARK.error : colors.error;
   return (
     <View style={styles.wrap}>
-      <AppText variant="label" nativeID={`${label}-label`}>
+      <AppText variant="label" nativeID={`${label}-label`} color={dark ? DARK.text : undefined}>
         {label}
-        {required ? <AppText variant="label" color={colors.error}> *</AppText> : null}
+        {required ? <AppText variant="label" color={errorColor}> *</AppText> : null}
       </AppText>
-      <View style={[styles.field, multiline && styles.multiField, focused && styles.focused, !!error && styles.errorField]}>
+      <View style={[styles.field, dark && styles.darkField, multiline && styles.multiField, focused && (dark ? styles.darkFocused : styles.focused), !!error && { borderColor: errorColor }]}>
         {leftAddon ? (
-          <View style={styles.addon}>
-            {typeof leftAddon === 'string' ? <AppText variant="bodyStrong" color={colors.textSecondary}>{leftAddon}</AppText> : leftAddon}
+          <View style={[styles.addon, dark && styles.darkAddon]}>
+            {typeof leftAddon === 'string' ? <AppText variant="bodyStrong" color={dark ? DARK.text : colors.textSecondary}>{leftAddon}</AppText> : leftAddon}
           </View>
         ) : null}
         <TextInput
@@ -37,7 +42,7 @@ export function Input({ label, error, hint, required, leftAddon, rightElement, s
           maxLength={maxLength}
           accessibilityLabel={label}
           accessibilityHint={error ?? hint}
-          placeholderTextColor={colors.textMuted}
+          placeholderTextColor={dark ? DARK.placeholder : colors.textMuted}
           onFocus={(e) => {
             setFocused(true);
             onFocus?.(e);
@@ -46,7 +51,7 @@ export function Input({ label, error, hint, required, leftAddon, rightElement, s
             setFocused(false);
             onBlur?.(e);
           }}
-          style={[styles.input, multiline && styles.multiline]}
+          style={[styles.input, dark && styles.darkInput, multiline && styles.multiline]}
           maxFontSizeMultiplier={1.6}
           textAlignVertical={multiline ? 'top' : 'center'}
         />
@@ -54,9 +59,9 @@ export function Input({ label, error, hint, required, leftAddon, rightElement, s
       </View>
       <View style={styles.meta}>
         {error ? (
-          <AppText variant="small" color={colors.error} accessibilityRole="alert" style={styles.flex}>{error}</AppText>
+          <AppText variant="small" color={errorColor} accessibilityRole="alert" style={styles.flex}>{error}</AppText>
         ) : hint ? (
-          <AppText variant="caption" style={styles.flex}>{hint}</AppText>
+          <AppText variant="caption" color={dark ? DARK.muted : undefined} style={styles.flex}>{hint}</AppText>
         ) : <View style={styles.flex} />}
         {showCount && maxLength ? (
           <AppText variant="caption">{(value ?? '').length}/{maxLength}</AppText>
@@ -81,7 +86,10 @@ const styles = StyleSheet.create({
   },
   multiField: { alignItems: 'flex-start', paddingVertical: spacing.sm },
   focused: { borderColor: colors.primary, borderWidth: 2, paddingHorizontal: spacing.md - 1 },
-  errorField: { borderColor: colors.error },
+  darkField: { backgroundColor: 'transparent', borderColor: DARK.line },
+  darkFocused: { borderColor: DARK.focus, borderWidth: 2, paddingHorizontal: spacing.md - 1 },
+  darkAddon: { borderRightColor: DARK.line },
+  darkInput: { color: DARK.text },
   addon: { paddingRight: spacing.sm, borderRightWidth: 1, borderRightColor: colors.border, height: 28, justifyContent: 'center' },
   input: { flex: 1, fontSize: fontSizes.md, color: colors.text, paddingVertical: 10 },
   multiline: { minHeight: 110 },

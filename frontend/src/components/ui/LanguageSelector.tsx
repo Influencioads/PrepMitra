@@ -12,10 +12,11 @@ export interface LanguageSelectorProps {
   hint?: string;
   className?: string;
   id?: string;
+  placeholder?: string;
 }
 
 /** Language picker for all 22 scheduled Indian languages plus English. */
-export function LanguageSelector({ value, onChange, label = 'Language', allowed, voiceOnly, error, hint, className, id }: LanguageSelectorProps) {
+export function LanguageSelector({ value, onChange, label = 'Language', allowed, voiceOnly, error, hint, className, id, placeholder }: LanguageSelectorProps) {
   const options = LANGUAGES.filter((l) => l.enabled && (!allowed || allowed.includes(l.code)) && (!voiceOnly || l.voiceSupported)).map((l) => ({
     value: l.code,
     label: l.code === 'en' ? 'English' : `${l.name} — ${l.nativeName}`,
@@ -27,6 +28,7 @@ export function LanguageSelector({ value, onChange, label = 'Language', allowed,
       value={value}
       onChange={(e) => onChange(e.target.value as LanguageCode)}
       options={options}
+      placeholder={placeholder}
       error={error}
       hint={hint}
       containerClassName={className}

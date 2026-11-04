@@ -5,6 +5,8 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { IconKey } from '@prepmitra/shared';
+import { useT } from '@/i18n';
+import { layoutMessages } from '@/i18n/messages/layout';
 import { initials } from '@prepmitra/shared';
 import { cn } from '@/utils/cn';
 import { Card } from './Card';
@@ -35,8 +37,9 @@ export function IconTile({ name, tone = 'primary', className }: { name: IconKey;
 }
 
 export function Logo({ className, to = '/', light }: { className?: string; to?: string; light?: boolean }) {
+  const t = useT(layoutMessages);
   return (
-    <Link to={to} className={cn('inline-flex items-center gap-2 font-bold tracking-tight', className)} aria-label="PrepMitra AI home">
+    <Link to={to} className={cn('inline-flex items-center gap-2 font-bold tracking-tight', className)} aria-label={t('a11yLogoHome')}>
       <span className={cn('flex h-8 w-8 items-center justify-center rounded-lg', light ? 'bg-card text-primary' : 'bg-primary text-white')}>
         <svg viewBox="0 0 64 64" className="h-5 w-5" aria-hidden>
           <path d="M20 46V18h13.5c6.4 0 10.5 3.9 10.5 9.6 0 5.8-4.1 9.7-10.5 9.7H27V46h-7Zm7-14.6h5.9c2.6 0 4.1-1.4 4.1-3.8 0-2.3-1.5-3.7-4.1-3.7H27v7.5Z" fill="currentColor" />

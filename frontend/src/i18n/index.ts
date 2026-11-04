@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { setFormatLanguage } from '@prepmitra/shared';
 import { demoStorage } from '@/store/storage';
 
 /**
@@ -27,6 +28,10 @@ interface I18nState {
 export const useI18nStore = create<I18nState>()(
   persist((set) => ({ lang: 'en', setLang: (lang) => set({ lang }) }), { name: 'pm.ui-lang', storage: demoStorage }),
 );
+
+// Dates and relative times ("2 days ago") follow the UI language.
+setFormatLanguage(useI18nStore.getState().lang);
+useI18nStore.subscribe((s) => setFormatLanguage(s.lang));
 
 export const useUiLang = () => useI18nStore((s) => s.lang);
 

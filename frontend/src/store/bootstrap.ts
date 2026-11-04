@@ -1,6 +1,6 @@
 import type { AuthSession } from '@prepmitra/shared';
 import {
-  DEFAULT_SETTINGS, DEMO_PROFILE, EMPTY_PROFILE, SEED_NOTIFICATIONS, SEED_SUBSCRIPTION, createSeedHistory, createSeedInterview, createSeedPracticeLog,
+  DEFAULT_SETTINGS, DEMO_PROFILE, DEMO_USER, EMPTY_PROFILE, SEED_NOTIFICATIONS, SEED_SUBSCRIPTION, createSeedHistory, createSeedInterview, createSeedPracticeLog,
 } from '@prepmitra/shared';
 import { useAuthStore } from './authStore';
 import { useExamStore } from './examStore';
@@ -10,6 +10,14 @@ import { useProfileStore } from './profileStore';
 import { NEW_USER_SUBSCRIPTION, useSubscriptionStore } from './subscriptionStore';
 import { syncFromBackend } from './sync';
 import { USE_MOCK } from '@/services/mock';
+import { rememberDemoAccount } from '@/services/demoAccounts';
+
+// Demo mode: keep this device's demo accounts in step with profile edits (name, onboarding done…).
+if (USE_MOCK) {
+  useAuthStore.subscribe((s) => {
+    if (s.session?.user) rememberDemoAccount(s.session.user);
+  });
+}
 
 /**
  * Signs the user in and prepares local demo data. Existing (returning) users get
@@ -33,7 +41,8 @@ export function signInWithDemoData(session: AuthSession) {
   }
   if (useProfileStore.getState().ownerId === uid) return;
 
-  if (session.isNewUser) {
+  // Only the seeded demo learner (and admin) get the sample history; every other account starts empty.
+  if (session.isNewUser || (session.user.role === 'user' && session.user.phone !== DEMO_USER.phone)) {
     useProfileStore.getState().reset(uid, EMPTY_PROFILE, DEFAULT_SETTINGS);
     useExamStore.getState().reset(uid, [], []);
     useInterviewStore.getState().reset(uid, [], []);

@@ -5,7 +5,7 @@ import { PublicLayout } from '@/layouts/PublicLayout';
 import { AppLayout } from '@/layouts/AppLayout';
 import { AuthLayout } from '@/layouts/AuthLayout';
 import { AdaptiveLayout } from '@/layouts/AdaptiveLayout';
-import { GuestOnly, RequireAdmin, RequireAuth } from './guards';
+import { GuestOnly, RequireAdmin, RequireAuth, RequireReadyProfile } from './guards';
 import { RouteError } from '@/pages/RouteError';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
@@ -28,6 +28,7 @@ const PrivacyPage = page(() => import('@/pages/legal/PrivacyPage'), 'PrivacyPage
 const TermsPage = page(() => import('@/pages/legal/TermsPage'), 'TermsPage');
 const RefundPolicyPage = page(() => import('@/pages/legal/RefundPolicyPage'), 'RefundPolicyPage');
 const ContactPage = page(() => import('@/pages/legal/ContactPage'), 'ContactPage');
+const UiKitPage = page(() => import('@/pages/dev/UiKitPage'), 'UiKitPage');
 const InterviewCatalogPage = page(() => import('@/pages/interview/InterviewCatalogPage'), 'InterviewCatalogPage');
 // Auth
 const LoginPage = page(() => import('@/pages/auth/LoginPage'), 'LoginPage');
@@ -82,6 +83,7 @@ export const routes = [
         children: [
           { path: '/', element: <S><LandingPage /></S> },
           { path: '/pricing', element: <S><PricingPage /></S> },
+          { path: '/ui-kit', element: <S><UiKitPage /></S> },
           { path: '/privacy', element: <S><PrivacyPage /></S> },
           { path: '/terms', element: <S><TermsPage /></S> },
           { path: '/refund-policy', element: <S><RefundPolicyPage /></S> },
@@ -95,7 +97,7 @@ export const routes = [
           { path: '/exams', element: <S><ExamCatalogPage /></S> },
           { path: '/exams/:id', element: <S><ExamDetailsPage /></S> },
           { path: '/interviews', element: <S><InterviewCatalogPage /></S> },
-          { path: '/interviews/:roleId', element: auth(<InterviewSetupPage />) },
+          { path: '/interviews/:roleId', element: auth(<RequireReadyProfile><InterviewSetupPage /></RequireReadyProfile>) },
         ],
       },
       {
@@ -113,7 +115,7 @@ export const routes = [
         children: [
           { path: '/dashboard', element: <S><DashboardPage /></S> },
           { path: '/my-tests', element: <S><MyTestsPage /></S> },
-          { path: '/exams/:id/instructions', element: <S><ExamInstructionsPage /></S> },
+          { path: '/exams/:id/instructions', element: <S><RequireReadyProfile><ExamInstructionsPage /></RequireReadyProfile></S> },
           { path: '/exam-result/:reportId', element: <S><ExamResultPage /></S> },
           { path: '/reports/:reportId', element: <S><ReportPage /></S> },
           { path: '/progress', element: <S><ProgressPage /></S> },
@@ -125,7 +127,7 @@ export const routes = [
         ],
       },
       // Focused, full-screen experiences
-      { path: '/exam/:attemptId', element: auth(<ExamSessionPage />) },
+      { path: '/exam/:attemptId', element: auth(<RequireReadyProfile><ExamSessionPage /></RequireReadyProfile>) },
       { path: '/interview/session/:sessionId', element: auth(<InterviewSessionPage />) },
       {
         path: '/admin',

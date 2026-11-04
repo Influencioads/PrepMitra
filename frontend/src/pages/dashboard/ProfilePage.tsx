@@ -2,15 +2,16 @@ import { useRef, useState, type ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
+import { Link, useSearchParams } from 'react-router-dom';
 import { CircleCheck, FileText, Upload } from 'lucide-react';
 import type { EducationLevel, LanguageCode } from '@prepmitra/shared';
 import {
   EDUCATION_LEVELS, EXAMS, INDIAN_STATES, INTERVIEW_ROLES, LANGUAGES, RESUME_RULES, STREAMS, educationSchema, formatDate, getPlan, languageName, languageSchema,
-  maskPhone, personalDetailsSchema, targetsSchema, validateResumeFile, type EducationInput, type LanguageInput, type PersonalDetailsInput,
+  isProfileReady, maskPhone, profilePersonalSchema, targetsSchema, validateResumeFile, type EducationInput, type LanguageInput, type ProfilePersonalInput,
   type TargetsInput,
 } from '@prepmitra/shared';
 import {
-  Avatar, Badge, Button, Card, CardBody, CardHeader, ChoiceChip, ConfirmationDialog, Input, LanguageSelector, PageHeader, Select,
+  Avatar, Badge, Button, Card, CardBody, CardHeader, ChoiceChip, ConfirmationDialog, Input, LanguageSelector, Notice, PageHeader, Select,
 } from '@/components/ui';
 import { errorMessage, profileService } from '@/services';
 import { useAuthStore, useProfileStore, useSubscriptionStore } from '@/store';
@@ -53,6 +54,8 @@ export function ProfilePage() {
   const updateProfile = useProfileStore((s) => s.updateProfile);
   const planId = useSubscriptionStore((s) => s.sub.planId);
   const [saving, setSaving] = useState<string | null>(null);
+  const [params] = useSearchParams();
+  const ready = isProfileReady(user, profile);
 
   const save = async (key: string, apply: () => void, payload: Parameters<typeof profileService.updateMe>[0]) => {
     setSaving(key);
@@ -69,8 +72,8 @@ export function ProfilePage() {
     }
   };
 
-  const personal = useForm<PersonalDetailsInput>({
-    resolver: zodResolver(personalDetailsSchema),
+  const personal = useForm<ProfilePersonalInput>({
+    resolver: zodResolver(profilePersonalSchema),
     defaultValues: { name: user?.name ?? '', dob: user?.dob ?? '', state: user?.state ?? '', email: user?.email ?? '' },
   });
   const education = useForm<EducationInput>({
@@ -103,6 +106,12 @@ export function ProfilePage() {
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <PageHeader title={t('profileTitle')} description={t('profileDesc')} />
+      {params.get('complete') === '1' && !ready && <Notice tone="warning" title={t('completeTitle')}>{t('completeBody')}</Notice>}
+      {params.get('complete') === '1' && ready && params.get('redirect')?.startsWith('/') && (
+        <Notice tone="success" title={t('readyTitle')}>
+          <Link to={params.get('redirect')!} className="font-semibold text-primary underline">{t('readyContinue')}</Link>
+        </Notice>
+      )}
 
       <Card className="flex flex-col items-start gap-4 p-5 sm:flex-row sm:items-center">
         <Avatar name={user.name} size="lg" />
@@ -122,15 +131,15 @@ export function ProfilePage() {
         dirty={personal.formState.isDirty}
         saving={saving === 'personal'}
         onSubmit={personal.handleSubmit(async (v) => {
-          const patch = { name: v.name, dob: v.dob, state: v.state, email: v.email || undefined };
+          const patch = { name: v.name, dob: v.dob, state: v.state || undefined, email: v.email || undefined };
           if (await save('personal', () => updateUser(patch), { user: { ...user, ...patch } })) personal.reset(v);
         })}
       >
         <div className="grid gap-4 sm:grid-cols-2">
           <Input label={t('fullName')} required error={personal.formState.errors.name?.message} {...personal.register('name')} />
           <Input label={t('email')} type="email" error={personal.formState.errors.email?.message} {...personal.register('email')} />
-          <Input label={t('dob')} type="date" required error={personal.formState.errors.dob?.message} {...personal.register('dob')} />
-          <Select label={t('stateUt')} required placeholder={t('selectState')} options={INDIAN_STATES.map((s) => ({ value: s, label: s }))} error={personal.formState.errors.state?.message} {...personal.register('state')} />
+          <Input label={t('dob')} type="date" required max={new Date().toISOString().slice(0, 10)} error={personal.formState.errors.dob?.message} {...personal.register('dob')} />
+          <Select label={t('stateUt')} placeholder={t('selectState')} options={INDIAN_STATES.map((s) => ({ value: s, label: s }))} error={personal.formState.errors.state?.message} {...personal.register('state')} />
         </div>
         <Input label={t('mobile')} value={`+91 ${user.phone}`} disabled hint={t('mobileHint')} readOnly />
       </Section>

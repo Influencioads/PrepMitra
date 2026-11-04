@@ -110,10 +110,14 @@ export function AppTopbar({ onMenu }: { onMenu?: () => void }) {
         <LanguageSwitcher className="hidden sm:inline-flex" />
         <Link
           to="/subscription"
-          className="hidden items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-sm font-medium hover:bg-stone-50 sm:inline-flex"
+          className="inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1.5 text-sm font-medium hover:bg-stone-50 sm:px-3"
           aria-label={t('creditsAvailable', { count: credits })}
+          data-testid="header-credits"
         >
-          <Coins className="h-4 w-4 text-warning" aria-hidden /> {t('creditsChip', { count: credits })}
+          <Coins className="h-4 w-4 text-warning" aria-hidden />
+          {/* Phones show just the number so the balance stays visible in a narrow header. */}
+          <span className="tabular-nums sm:hidden" aria-hidden>{credits}</span>
+          <span className="hidden sm:inline" aria-hidden>{t('creditsChip', { count: credits })}</span>
         </Link>
         <Link to="/notifications" className="relative rounded-full p-2 hover:bg-stone-100" aria-label={t('notificationsAria', { count: unread })}>
           <Bell className="h-5 w-5" />

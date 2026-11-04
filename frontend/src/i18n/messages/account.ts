@@ -3,6 +3,10 @@ import { defineMessages } from '../index';
 /** Signed-in account screens: My tests, Progress, Credits & plan, Notifications, Profile, Settings. */
 export const accountMessages = defineMessages({
   en: {
+    completeTitle: 'Finish your profile to start exams',
+    completeBody: 'Add your name, preferred language and at least one target exam or job role, then save.',
+    readyTitle: 'Your profile is ready',
+    readyContinue: 'Continue to your exam',
     // Shared bits
     demoData: 'Demo data',
     prototype: 'Prototype',
@@ -348,6 +352,10 @@ export const accountMessages = defineMessages({
     accountDeleted: 'Account deleted. In production, personal data is removed within 30 days.',
   },
   hi: {
+    completeTitle: 'परीक्षा शुरू करने के लिए प्रोफ़ाइल पूरी करें',
+    completeBody: 'अपना नाम, पसंदीदा भाषा और कम से कम एक लक्ष्य परीक्षा या जॉब रोल जोड़ें, फिर सेव करें।',
+    readyTitle: 'आपकी प्रोफ़ाइल तैयार है',
+    readyContinue: 'अपनी परीक्षा पर जाएँ',
     demoData: 'डेमो डेटा',
     prototype: 'प्रोटोटाइप',
     modeVoice: 'आवाज़',

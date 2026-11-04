@@ -37,9 +37,8 @@ export function ExamCard({ exam, onPress, freeTrialAvailable }: { exam: Exam; on
         <Badge label={free ? 'Free trial' : pluralize(exam.creditCost, 'credit')} tone={free ? 'success' : 'primary'} icon="wallet-outline" />
       </View>
       <View style={styles.meta}>
-        <Ionicons name="star" size={14} color={colors.warning} />
-        <AppText variant="caption" color={colors.text}>{exam.rating.toFixed(1)}</AppText>
-        <AppText variant="caption">· {exam.attemptsCount.toLocaleString('en-IN')} attempts · demo {demoQs} Qs / {exam.demo.durationMin} min</AppText>
+        <Ionicons name="layers-outline" size={14} color={colors.textMuted} />
+        <AppText variant="caption">{pluralize(exam.sections.length, 'section')} · demo {demoQs} Qs / {exam.demo.durationMin} min</AppText>
       </View>
     </Card>
   );

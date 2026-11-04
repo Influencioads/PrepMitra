@@ -10,6 +10,7 @@ import { ScoreChart, TopicAccuracyChart, WeeklyBarChart } from '@/components/cha
 import { useExamStore } from '@/store';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { cn } from '@/utils/cn';
+import { useContentT } from '@/i18n/content';
 import { useT } from '@/i18n';
 import { accountMessages } from '@/i18n/messages/account';
 import { catalogMessages, categoryText } from '@/i18n/messages/catalog';
@@ -27,6 +28,7 @@ const masteryClass = (m: number) =>
 
 export function ProgressPage() {
   const t = useT(accountMessages);
+  const ct = useContentT();
   const tcat = useT(catalogMessages);
   useDocumentTitle(t('progressDocTitle'));
   const reports = useExamStore((s) => s.reports);
@@ -123,7 +125,7 @@ export function ProgressPage() {
                   <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                     {data.topics.slice(0, 15).map((tp) => (
                       <li key={tp.topic} className={cn('rounded-lg border p-3', masteryClass(tp.mastery))}>
-                        <p className="truncate text-xs font-medium" title={tp.topic}>{tp.topic}</p>
+                        <p className="truncate text-xs font-medium" title={ct(tp.topic)}>{ct(tp.topic)}</p>
                         <p className="mt-1 flex items-center gap-1 text-lg font-bold">
                           {tp.mastery}%
                           {tp.trend > 0 ? <ArrowUp className="h-4 w-4" aria-label={t('trendUp', { n: tp.trend })} /> : tp.trend < 0 ? <ArrowDown className="h-4 w-4" aria-label={t('trendDown', { n: -tp.trend })} /> : <Minus className="h-4 w-4 opacity-50" aria-label={t('noChange')} />}
@@ -144,14 +146,14 @@ export function ProgressPage() {
                 <div>
                   <p className="text-sm font-semibold text-success">{t('strong')}</p>
                   <ul className="mt-3 space-y-3">
-                    {data.strong.slice(0, 5).map((tp) => <li key={tp.topic}><ProgressBar label={tp.topic} value={tp.mastery} showValue tone="success" size="sm" /></li>)}
+                    {data.strong.slice(0, 5).map((tp) => <li key={tp.topic}><ProgressBar label={ct(tp.topic)} value={tp.mastery} showValue tone="success" size="sm" /></li>)}
                     {data.strong.length === 0 && <li className="text-sm text-muted">{t('noStrong')}</li>}
                   </ul>
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-danger">{t('weak')}</p>
                   <ul className="mt-3 space-y-3">
-                    {data.weak.slice(0, 5).map((tp) => <li key={tp.topic}><ProgressBar label={tp.topic} value={tp.mastery} showValue tone={accuracyTone(tp.mastery)} size="sm" /></li>)}
+                    {data.weak.slice(0, 5).map((tp) => <li key={tp.topic}><ProgressBar label={ct(tp.topic)} value={tp.mastery} showValue tone={accuracyTone(tp.mastery)} size="sm" /></li>)}
                     {data.weak.length === 0 && <li className="text-sm text-muted">{t('noWeak')}</li>}
                   </ul>
                 </div>
@@ -175,7 +177,7 @@ export function ProgressPage() {
                   {plan.map((p) => (
                     <li key={p.topic} className="rounded-lg border border-line p-4">
                       <p className="text-xs font-semibold text-primary">{t('daysRange', { a: p.day, b: p.day + 1 })}</p>
-                      <p className="mt-1 font-semibold">{p.topic}</p>
+                      <p className="mt-1 font-semibold">{ct(p.topic)}</p>
                       <p className="mt-1 text-sm text-muted">{t('masteryTask', { n: p.mastery })}</p>
                       {p.examId && (
                         <Link to={`/exams/${p.examId}`} className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">

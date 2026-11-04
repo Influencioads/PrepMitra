@@ -128,10 +128,11 @@ export function toExam(e: Json): Exam {
     negativeMarking: p ? (p.negative_marking && neg ? `−${neg} per wrong answer` : 'No negative marking') : demo?.negativeMarking ?? '',
     calculatorAllowed: !!p?.calculator_allowed,
     questionTypes: types.size ? [...types] : demo?.questionTypes ?? ['single'],
-    popularity: demo?.popularity ?? 50,
-    rating: demo?.rating ?? 4.5,
-    attemptsCount: demo?.attemptsCount ?? 0,
-    highlights: demo?.highlights ?? [],
+    popularity: demo?.popularity ?? 50, // ordering hint only, never shown
+    // The backend has no ratings or attempt counts yet; never borrow the demo numbers for real exams.
+    rating: 0,
+    attemptsCount: 0,
+    highlights: [],
     sampleQuestion: sample
       ? { text: sample.text, options: sample.options.map((o: Json) => o.text), answerIndex: Math.max(0, answerIndex) }
       : demo?.sampleQuestion ?? { text: '', options: [], answerIndex: 0 },

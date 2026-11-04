@@ -151,3 +151,35 @@
   background-color: var(--color-chalk-deep);
   background-image: radial-gradient(ellipse 60% 55% at 50% 30%, rgb(242 140 40 / 0.2), transparent 70%);
 }
+
+/*
+ * Light-on-dark colour scope for the auth form panel (AuthLayout). Tailwind v4 utilities read
+ * these variables, so the shared form controls adapt without per-page classes.
+ */
+.auth-dark {
+  --color-ink: #f5f3ea;
+  --color-muted: rgb(245 243 234 / 0.74);
+  --color-subtle: rgb(245 243 234 / 0.5);
+  --color-card: transparent;
+  --color-line: rgb(255 255 255 / 0.14);
+  --color-line-strong: rgb(255 255 255 / 0.32);
+  --color-background: rgb(255 255 255 / 0.06);
+  --color-primary: #f26b1d;
+  --color-primary-hover: #e05e12;
+  --color-primary-soft: rgb(255 255 255 / 0.1);
+  --color-danger: #fda4a4;
+  --color-stone-50: rgb(255 255 255 / 0.08);
+  --color-stone-100: rgb(255 255 255 / 0.12);
+  color: var(--color-ink);
+}
+.auth-dark .text-primary {
+  color: #ffad66;
+}
+.auth-dark input:-webkit-autofill {
+  -webkit-text-fill-color: #f5f3ea;
+  box-shadow: 0 0 0 1000px #1f4d3c inset;
+}
+.auth-dark select option {
+  color: #1c2321;
+}
+

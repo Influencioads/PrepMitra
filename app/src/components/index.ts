@@ -1,4 +1,5 @@
 export * from './AppText';
+export * from './AuthShell';
 export * from './Avatar';
 export * from './Badge';
 export * from './BottomSheet';
@@ -28,6 +29,7 @@ export * from './SectionHeader';
 export * from './SegmentedControl';
 export * from './Select';
 export * from './States';
+export * from './StudyDeskArt';
 export * from './StatCard';
 export * from './SwitchRow';
 export * from './Toast';

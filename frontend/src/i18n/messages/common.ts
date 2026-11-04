@@ -3,6 +3,16 @@ import { defineMessages } from '../index';
 /** Shared words used across many screens. Screen-specific text goes in its own namespace file. */
 export const commonMessages = defineMessages({
   en: {
+    chartScoreTrend: 'Score trend across {{count}} attempts',
+    chartTopicAccuracy: 'Topic-wise accuracy',
+    chartSection: 'Section-wise performance',
+    chartWeekly: 'Weekly practice minutes',
+    chartScore: 'Score',
+    chartAccuracy: 'Accuracy',
+    chartCorrect: 'Correct',
+    chartIncorrect: 'Incorrect',
+    chartUnanswered: 'Unanswered',
+    chartPractice: 'Practice',
     language: 'Language',
     loading: 'Loading…',
     retry: 'Try again',
@@ -66,6 +76,16 @@ export const commonMessages = defineMessages({
     hard: 'Hard',
   },
   hi: {
+    chartScoreTrend: '{{count}} प्रयासों में स्कोर का रुझान',
+    chartTopicAccuracy: 'विषय-वार सटीकता',
+    chartSection: 'सेक्शन-वार प्रदर्शन',
+    chartWeekly: 'साप्ताहिक अभ्यास मिनट',
+    chartScore: 'स्कोर',
+    chartAccuracy: 'सटीकता',
+    chartCorrect: 'सही',
+    chartIncorrect: 'गलत',
+    chartUnanswered: 'छोड़े गए',
+    chartPractice: 'अभ्यास',
     language: 'भाषा',
     loading: 'लोड हो रहा है…',
     retry: 'फिर से कोशिश करें',

@@ -14,6 +14,7 @@ import { selectInProgress, useAuthStore, useExamStore, useInterviewStore, usePro
 import { InterviewScoresCard } from '@/components/common/InterviewScoresCard';
 import { useProgress } from '@/hooks/useProgress';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+import { useContentT } from '@/i18n/content';
 import { useT } from '@/i18n';
 import { dashboardMessages } from '@/i18n/messages/dashboard';
 
@@ -24,6 +25,7 @@ const greetingKey = () => {
 
 export function DashboardPage() {
   const t = useT(dashboardMessages);
+  const ct = useContentT();
   useDocumentTitle(t('docTitle'));
   const user = useAuthStore((s) => s.session?.user);
   const profile = useProfileStore((s) => s.profile);
@@ -46,7 +48,7 @@ export function DashboardPage() {
     if (!sub.freeMiniMockUsed) recs.push({ id: 'free', title: t('recFreeTitle'), reason: t('recFreeReason'), examId: 'general-aptitude', minutes: 30 });
     for (const w of p.weak.slice(0, 2)) {
       const exam = p.reports.find((r) => r.result.topics.some((tp) => tp.topic === w.topic));
-      recs.push({ id: `w-${w.topic}`, title: t('recTopicTitle', { topic: w.topic }), reason: t('recTopicReason', { mastery: w.mastery, count: w.attempts }), topic: w.topic, examId: exam?.examId, minutes: 20 });
+      recs.push({ id: `w-${w.topic}`, title: t('recTopicTitle', { topic: ct(w.topic) }), reason: t('recTopicReason', { mastery: w.mastery, count: w.attempts }), topic: w.topic, examId: exam?.examId, minutes: 20 });
     }
     const last = p.history[0];
     if (last) {
@@ -65,7 +67,7 @@ export function DashboardPage() {
   const nextExam = getExamById(latestReport?.recommendedNextExamId ?? (sub.freeMiniMockUsed ? profile.targetExamIds[0] ?? 'general-aptitude' : 'general-aptitude'));
   const nextReason = latestReport
     ? latestReport.weaknesses[0]
-      ? t('nextReasonReportFocus', { exam: latestReport.examTitle, topic: latestReport.weaknesses[0].topic })
+      ? t('nextReasonReportFocus', { exam: latestReport.examTitle, topic: ct(latestReport.weaknesses[0].topic) })
       : t('nextReasonReport', { exam: latestReport.examTitle })
     : sub.freeMiniMockUsed
       ? t('nextReasonTarget')
@@ -217,7 +219,7 @@ export function DashboardPage() {
               <p className="flex items-center gap-1.5 text-sm font-semibold text-success"><Trophy className="h-4 w-4" aria-hidden />{t('strengths')}</p>
               <ul className="mt-3 space-y-3">
                 {p.strong.slice(0, 4).map((tp) => (
-                  <li key={tp.topic}><ProgressBar label={tp.topic} value={tp.mastery} showValue tone="success" size="sm" /></li>
+                  <li key={tp.topic}><ProgressBar label={ct(tp.topic)} value={tp.mastery} showValue tone="success" size="sm" /></li>
                 ))}
                 {p.strong.length === 0 && <li className="text-sm text-muted">{t('strengthsEmpty')}</li>}
               </ul>
@@ -226,7 +228,7 @@ export function DashboardPage() {
               <p className="flex items-center gap-1.5 text-sm font-semibold text-danger"><TrendingDown className="h-4 w-4" aria-hidden />{t('needsWork')}</p>
               <ul className="mt-3 space-y-3">
                 {p.weak.slice(0, 4).map((tp) => (
-                  <li key={tp.topic}><ProgressBar label={tp.topic} value={tp.mastery} showValue tone={accuracyTone(tp.mastery)} size="sm" /></li>
+                  <li key={tp.topic}><ProgressBar label={ct(tp.topic)} value={tp.mastery} showValue tone={accuracyTone(tp.mastery)} size="sm" /></li>
                 ))}
                 {p.weak.length === 0 && <li className="text-sm text-muted">{t('needsWorkEmpty')}</li>}
               </ul>
