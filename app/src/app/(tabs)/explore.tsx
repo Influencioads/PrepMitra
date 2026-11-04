@@ -16,7 +16,6 @@ import { CATEGORY_ICONS } from '@/utils/icons';
 type Sort = NonNullable<ExamQuery['sort']>;
 const SORTS: { value: Sort; label: string }[] = [
   { value: 'popular', label: 'Most popular' },
-  { value: 'rating', label: 'Highest rated' },
   { value: 'duration-asc', label: 'Shortest first' },
   { value: 'duration-desc', label: 'Longest first' },
   { value: 'credits-asc', label: 'Fewest credits' },

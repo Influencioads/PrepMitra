@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import type { ExamCategory } from '@prepmitra/shared';
-import { EXAM_CATEGORIES, EXAMS, INTERVIEW_ROLES } from '@prepmitra/shared';
+import { EXAM_CATEGORIES } from '@prepmitra/shared';
 import { AppIcon, ButtonLink, HandEyebrow, MarksLeak, PenNote, StickyNote } from '@/components/ui';
 import { PricingCards } from '@/components/marketing/PricingCards';
 import { AnswerSheetHero, PanelRoom, PrepPathPreview } from '@/components/marketing/PaperVisuals';
 import { useAuthStore } from '@/store';
+import { examService, interviewService } from '@/services';
+import { useAsync } from '@/hooks/useAsync';
+import { useContentT } from '@/i18n/content';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { cn } from '@/utils/cn';
 import { useT } from '@/i18n';
@@ -63,7 +66,12 @@ export function LandingPage() {
   const tl = useT(layoutMessages);
   const user = useAuthStore((s) => s.session?.user);
   const startHref = user ? '/exams/general-aptitude' : '/signup';
-  const popular = [...EXAMS].sort((a, b) => b.popularity - a.popularity).slice(0, 10);
+  const ct = useContentT();
+  // Live catalog (API or demo data): the ribbon, category counts and role chips only list what exists.
+  const exams = useAsync(() => examService.list({ sort: 'popular' }), []).data ?? [];
+  const roles = useAsync(() => interviewService.listRoles(), []).data ?? [];
+  const popular = exams.slice(0, 10);
+  const categories = EXAM_CATEGORIES.map((c) => ({ ...c, count: exams.filter((e) => e.category === c.id).length })).filter((c) => c.count > 0);
 
   return (
     <div className="bg-notebook [--margin-x:14px] sm:[--margin-x:28px] lg:[--margin-x:48px]">
@@ -94,7 +102,7 @@ export function LandingPage() {
           {popular.map((e, i) => (
             <span key={e.id} className="flex shrink-0 items-center gap-6">
               {i > 0 && <span className="text-accent" aria-hidden>✦</span>}
-              <Link to={`/exams/${e.id}`} className="font-hand text-xl text-chalk-text transition-colors hover:text-marigold sm:text-2xl">{e.shortTitle}</Link>
+              <Link to={`/exams/${e.id}`} className="font-hand text-xl text-chalk-text transition-colors hover:text-marigold sm:text-2xl">{ct(e.shortTitle)}</Link>
             </span>
           ))}
         </div>
@@ -152,8 +160,7 @@ export function LandingPage() {
           <ButtonLink to="/exams" variant="outline" rightIcon={<ArrowRight className="h-4 w-4" />} className="self-start border-ink sm:self-auto">{t('catAll')}</ButtonLink>
         </div>
         <div className="mt-10 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-          {EXAM_CATEGORIES.map((c) => {
-            const count = EXAMS.filter((e) => e.category === c.id).length;
+          {categories.map(({ count, ...c }) => {
             return (
               <Link key={c.id} to={`/exams?category=${c.id}`} className="group relative block rounded-[4px_16px_16px_16px] pt-5 focus-visible:outline-2">
                 <span className={cn('absolute left-0 top-0 inline-flex h-7 items-center gap-1.5 rounded-t-xl px-3 text-xs font-bold', CATEGORY_TAB[c.id])}>
@@ -164,7 +171,7 @@ export function LandingPage() {
                   <h3 className="text-xl font-bold">{categoryText(tc, c.id).label}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{categoryText(tc, c.id).description}</p>
                   <p className="mt-4 flex items-center justify-between gap-3 border-t-2 border-dashed border-line-strong pt-3 text-sm">
-                    <span className="min-w-0 font-hand text-base text-ink">{c.examples}</span>
+                    <span className="min-w-0 font-hand text-base text-ink">{c.examples.split(' · ').map(ct).join(' · ')}</span>
                     <ArrowRight className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" aria-hidden />
                   </p>
                 </article>
@@ -202,10 +209,10 @@ export function LandingPage() {
             <h2 className="mt-1 text-3xl font-extrabold leading-tight text-chalk-text sm:text-[2.75rem]">{t('intTitle1')}<br />{t('intTitle2')}</h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80">{t('intBody')}</p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {INTERVIEW_ROLES.map((r) => (
+              {roles.map((r) => (
                 <Link key={r.id} to={`/interviews/${r.id}`} className="inline-flex items-center gap-1.5 rounded-full border border-white/25 px-3 py-1.5 text-sm text-white transition-colors hover:bg-white hover:text-chalk-deep">
                   <AppIcon name={r.icon} className="h-3.5 w-3.5" />
-                  {r.shortTitle}
+                  {ct(r.shortTitle)}
                 </Link>
               ))}
             </div>

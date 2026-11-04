@@ -1,12 +1,16 @@
+import { useT } from '@/i18n';
+import { layoutMessages } from '@/i18n/messages/layout';
+
 /**
  * Line-art illustration for the auth screens: a laptop showing an exam with answer bubbles,
  * a stack of books and a pencil. Brand green strokes with offset saffron/marigold fills.
  */
 export function StudyDeskArt({ className }: { className?: string }) {
+  const t = useT(layoutMessages);
   const ink = '#1e5e47';
   const s = { fill: 'none', stroke: ink, strokeWidth: 3, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   return (
-    <svg viewBox="0 0 400 320" className={className} role="img" aria-label="Laptop with a practice exam, books and a pencil">
+    <svg viewBox="0 0 400 320" className={className} role="img" aria-label={t('a11yStudyArt')}>
       {/* soft colour shapes, offset from the lines */}
       <rect x="92" y="54" width="196" height="130" rx="14" fill="#ffd27a" opacity="0.55" />
       <rect x="300" y="196" width="70" height="22" rx="5" fill="#f28c28" />

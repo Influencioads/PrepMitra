@@ -3,6 +3,9 @@ import { defineMessages } from '../index';
 /** Header, footer, sidebar, user menu, install button, offline banner. */
 export const layoutMessages = defineMessages({
   en: {
+    a11yLanguage: 'Website language',
+    a11yLogoHome: 'PrepMitra AI home',
+    a11yStudyArt: 'Laptop with a practice exam, books and a pencil',
     skipToContent: 'Skip to content',
     navExams: 'Exams',
     navInterviews: 'Interviews',
@@ -97,6 +100,9 @@ export const layoutMessages = defineMessages({
     reload: 'Reload',
   },
   hi: {
+    a11yLanguage: 'वेबसाइट की भाषा',
+    a11yLogoHome: 'PrepMitra AI होम',
+    a11yStudyArt: 'प्रैक्टिस परीक्षा वाला लैपटॉप, किताबें और पेंसिल',
     skipToContent: 'मुख्य सामग्री पर जाएँ',
     navExams: 'परीक्षाएँ',
     navInterviews: 'इंटरव्यू',

@@ -157,7 +157,7 @@ export function OnboardingPage() {
     setStep(nextStep);
     saveDraft({ step: nextStep, data: next as unknown as Record<string, unknown> });
     window.scrollTo({ top: 0 });
-    document.getElementById('main')?.scrollTo({ top: 0 });
+    document.getElementById('main')?.scrollTo?.({ top: 0 });
   };
   const saveLater = () => {
     saveDraft({ step, data: data as unknown as Record<string, unknown> });

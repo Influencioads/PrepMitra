@@ -57,12 +57,11 @@ export default function ExamDetails() {
       </View>
       <View style={styles.badges}>
         <Badge label={exam.difficulty} tone={exam.difficulty === 'Easy' ? 'success' : exam.difficulty === 'Hard' ? 'error' : 'warning'} />
-        <Badge label={`${exam.rating.toFixed(1)} rating`} icon="star" tone="warning" />
-        <Badge label={`${exam.attemptsCount.toLocaleString('en-IN')} attempts`} icon="people-outline" />
+        <Badge label={`${exam.sections.length} sections`} icon="layers-outline" />
         {exam.isFree && <Badge label="Free mini mock" tone="success" />}
       </View>
       <AppText variant="body" color={colors.textSecondary}>{exam.description}</AppText>
-      {exam.highlights.map((h) => (
+      {[`${exam.sections.length} sections · ${exam.totalQuestions} questions`, 'Section-wise report after you submit', `Available in ${exam.languages.length} languages`].map((h) => (
         <View key={h} style={styles.highlight}>
           <Ionicons name="checkmark-circle" size={18} color={colors.success} />
           <AppText variant="small" color={colors.text} style={styles.flex}>{h}</AppText>
