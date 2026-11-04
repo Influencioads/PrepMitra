@@ -44,6 +44,20 @@ T = {  # reusable syllabus topic lists: (name, weightage)
     "ga": [("History", 2), ("Polity", 2), ("Geography", 2), ("Economy", 2), ("General science", 2),
            ("Current affairs", 2)],
     "banking_ga": [("Banking awareness", 2), ("Financial awareness", 2), ("Current affairs", 2)],
+    # Banking topic map (PrepMitra_Competitive_Examination_Guide.pdf, section 3.1).
+    "bank_quant": [("Simplification and approximation", 2), ("Number series", 2), ("Percentage", 1),
+                   ("Ratio and proportion", 1), ("Average", 1), ("Profit, loss and discount", 1),
+                   ("Simple and compound interest", 1), ("Partnership", 1), ("Mixture and alligation", 1),
+                   ("Time and work, pipes and cisterns", 1), ("Speed, time and distance, trains and boats", 1),
+                   ("Data interpretation (tables, graphs, pie charts, caselets, missing DI)", 3)],
+    "bank_reasoning": [("Puzzles and seating arrangement (linear, circular, floor-based)", 3), ("Syllogism", 1),
+                       ("Inequality", 1), ("Blood relations", 1), ("Direction sense", 1), ("Coding-decoding", 1),
+                       ("Alphanumeric series", 1), ("Order and ranking", 1), ("Input-output", 1),
+                       ("Logical reasoning", 1)],
+    "bank_english": [("Reading comprehension", 3), ("Cloze test", 2), ("Error detection", 2),
+                     ("Sentence improvement", 1), ("Para jumbles", 1),
+                     ("Grammar (subject-verb agreement, tenses, articles, prepositions)", 1),
+                     ("Vocabulary, synonyms and antonyms", 1), ("Idioms and phrases", 1)],
     "gs_upsc": [("Indian history and culture", 2), ("Indian polity and governance", 2), ("Geography", 2),
                 ("Economy", 2), ("Environment and ecology", 2), ("Science and technology", 1), ("Current affairs", 2)],
     "csat": [("Comprehension", 3), ("Logical reasoning", 2), ("Basic numeracy", 2), ("Data interpretation", 1),
@@ -65,9 +79,12 @@ T = {  # reusable syllabus topic lists: (name, weightage)
 }
 
 
-def S(key, name, n, marks, neg, topics, types=None):
-    return {"key": key, "name": name, "question_count": n, "marks_per_question": marks, "negative_marks": neg,
-            "question_types": types or {"single": n}, "_topics": topics}
+def S(key, name, n, marks, neg, topics, types=None, mins=None):
+    sec = {"key": key, "name": name, "question_count": n, "marks_per_question": marks, "negative_marks": neg,
+           "question_types": types or {"single": n}, "_topics": topics}
+    if mins:
+        sec["duration_min"] = mins  # sectional time limit
+    return sec
 
 
 EXAMS = [
@@ -93,21 +110,45 @@ EXAMS = [
          sections=[S("maths", "Mathematics", 30, 1, 1 / 3, "quant"),
                    S("reasoning", "General Intelligence and Reasoning", 30, 1, 1 / 3, "reasoning"),
                    S("ga", "General Awareness", 40, 1, 1 / 3, "ga")]),
+    # Banking (guide section 3): six exams from IBPS and SBI, each with its own pattern. Prelims patterns follow the
+    # latest notifications; verify against ibps.in / sbi.co.in each cycle and change them from admin (new blueprint).
     dict(slug="ibps-po-prelims", name="IBPS PO Prelims", category="banking", duration=60, langs=["en", "hi"],
-         description="Mock test based on the IBPS PO preliminary exam pattern.",
-         sections=[S("english", "English Language", 30, 1, 0.25, "english"),
-                   S("quant", "Quantitative Aptitude", 35, 1, 0.25, "quant"),
-                   S("reasoning", "Reasoning Ability", 35, 1, 0.25, "reasoning")]),
-    dict(slug="ibps-clerk-prelims", name="IBPS Clerk Prelims", category="banking", duration=60, langs=TIER1,
-         description="Mock test based on the IBPS Clerk preliminary exam pattern.",
-         sections=[S("english", "English Language", 30, 1, 0.25, "english"),
-                   S("numerical", "Numerical Ability", 35, 1, 0.25, "quant"),
-                   S("reasoning", "Reasoning Ability", 35, 1, 0.25, "reasoning")]),
+         description="IBPS Probationary Officer prelims mock: 100 questions, 100 marks, 60 minutes with sectional "
+                     "timing. The full process is prelims, mains and interview.",
+         sections=[S("english", "English Language", 30, 1, 0.25, "bank_english", mins=20),
+                   S("quant", "Quantitative Aptitude", 35, 1, 0.25, "bank_quant", mins=20),
+                   S("reasoning", "Reasoning Ability", 35, 1, 0.25, "bank_reasoning", mins=20)]),
+    dict(slug="ibps-clerk-prelims", name="IBPS CSA (Clerk) Prelims", category="banking", duration=60, langs=TIER1,
+         description="IBPS Customer Service Associate (Clerk) prelims mock: 100 questions, 100 marks, 60 minutes with "
+                     "sectional timing. The full process is prelims and mains; check the local-language requirement.",
+         sections=[S("english", "English Language", 30, 1, 0.25, "bank_english", mins=20),
+                   S("numerical", "Numerical Ability", 35, 1, 0.25, "bank_quant", mins=20),
+                   S("reasoning", "Reasoning Ability", 35, 1, 0.25, "bank_reasoning", mins=20)]),
+    dict(slug="ibps-rrb-officer-prelims", name="IBPS RRB Officer Scale I Prelims", category="banking", duration=45,
+         langs=TIER1,
+         description="Regional Rural Bank Officer Scale I prelims mock: 80 questions, 80 marks, 45 minutes (one "
+                     "combined timer). The full process is prelims, mains and interview.",
+         sections=[S("reasoning", "Reasoning", 40, 1, 0.25, "bank_reasoning"),
+                   S("quant", "Quantitative Aptitude", 40, 1, 0.25, "bank_quant")]),
+    dict(slug="ibps-rrb-office-assistant-prelims", name="IBPS RRB Office Assistant Prelims", category="banking",
+         duration=45, langs=TIER1,
+         description="Regional Rural Bank Office Assistant (Multipurpose) prelims mock: 80 questions, 80 marks, "
+                     "45 minutes (one combined timer). The full process is prelims and mains.",
+         sections=[S("reasoning", "Reasoning", 40, 1, 0.25, "bank_reasoning"),
+                   S("numerical", "Numerical Ability", 40, 1, 0.25, "bank_quant")]),
     dict(slug="sbi-po-prelims", name="SBI PO Prelims", category="banking", duration=60, langs=["en", "hi"],
-         description="Mock test based on the SBI PO preliminary exam pattern.",
-         sections=[S("english", "English Language", 30, 1, 0.25, "english"),
-                   S("quant", "Quantitative Aptitude", 35, 1, 0.25, "quant"),
-                   S("reasoning", "Reasoning Ability", 35, 1, 0.25, "reasoning")]),
+         description="SBI Probationary Officer prelims mock (separate SBI pattern): 100 questions, 100 marks, "
+                     "60 minutes with sectional timing. The full process is prelims, mains and the final phase.",
+         sections=[S("english", "English Language", 40, 1, 0.25, "bank_english", mins=20),
+                   S("quant", "Quantitative Aptitude", 30, 1, 0.25, "bank_quant", mins=20),
+                   S("reasoning", "Reasoning Ability", 30, 1, 0.25, "bank_reasoning", mins=20)]),
+    dict(slug="sbi-junior-associate-prelims", name="SBI Junior Associate (Clerk) Prelims", category="banking",
+         duration=60, langs=TIER1,
+         description="SBI Junior Associate (Customer Support and Sales) prelims mock: 100 questions, 100 marks, "
+                     "60 minutes with sectional timing. The full process is prelims, mains and a local-language test.",
+         sections=[S("english", "English Language", 30, 1, 0.25, "bank_english", mins=20),
+                   S("numerical", "Numerical Ability", 35, 1, 0.25, "bank_quant", mins=20),
+                   S("reasoning", "Reasoning Ability", 35, 1, 0.25, "bank_reasoning", mins=20)]),
     dict(slug="upsc-cse-prelims-gs", name="UPSC CSE Prelims - GS Paper I", category="civil_services", duration=120,
          langs=["en", "hi"], description="Mock test based on the UPSC Civil Services Prelims GS Paper I pattern.",
          sections=[S("gs", "General Studies", 100, 2, 0.66, "gs_upsc")]),
@@ -183,17 +224,18 @@ GLOSSARY = [
 ]
 
 
-# 15-day launch scope (PrepMitra_15_Day_Plan_Frontend_Backend.xlsx): 3 exams + the free mini mock, 2 interview
-# roles, English + Hindi, one-time credit packs (auto-renew plans are Phase 2). Everything else is seeded as draft
-# so an admin can publish it later without code.
-LAUNCH_EXAMS = {"mini-mock-general-aptitude", "ssc-cgl-tier1", "ibps-po-prelims", "it-placement-aptitude"}
-LAUNCH_ROLES = {"software-developer-fresher", "bank-po-interview"}
+# Launch scope: banking only (Nov 2026) - the six banking exams, the free mini mock the free trial uses and the
+# Bank PO interview, in English + Hindi, with one-time credit packs (auto-renew plans are Phase 2). Everything else
+# (SSC, railway, ...) is seeded as draft so an admin can publish it later without code.
+LAUNCH_EXAMS = {"mini-mock-general-aptitude", "ibps-po-prelims", "ibps-clerk-prelims", "ibps-rrb-officer-prelims",
+                "ibps-rrb-office-assistant-prelims", "sbi-po-prelims", "sbi-junior-associate-prelims"}
+LAUNCH_ROLES = {"bank-po-interview"}
 LAUNCH_PLANS = {"free_trial", "pay_per_exam", "credit_pack_10"}
 LAUNCH_LANGS = ["en", "hi"]
 
 
 def seed(papers_per_exam: int = 0, scope: str = "launch") -> dict:
-    """scope="launch": the 15-day MVP catalog. scope="full": the PDF's whole proposed catalog (15 exams, 6 roles)."""
+    """scope="launch": the 15-day MVP catalog. scope="full": the PDF's whole proposed catalog (18 exams, 6 roles)."""
     full = scope == "full"
     with SessionLocal() as db:
         for code, name, price, credits_, days, rec in PLANS:
@@ -268,6 +310,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--papers", type=int, default=0, help="pre-generate this many papers per exam")
     ap.add_argument("--scope", choices=["launch", "full"], default="launch",
-                    help="launch = 15-day MVP catalog (default); full = all 15 exams and 6 roles")
+                    help="launch = 15-day MVP catalog (default); full = all 18 exams and 6 roles")
     args = ap.parse_args()
     print(seed(args.papers, args.scope))

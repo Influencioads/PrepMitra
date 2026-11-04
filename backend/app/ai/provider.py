@@ -24,12 +24,24 @@ class AIError(Exception):
     """The model call failed or returned unusable output. Callers decide whether to retry, skip or fail the job."""
 
 
+# USD per million tokens (input, output). The one price list for every cost figure (logs, bank builder, dashboard).
+USD_PER_MTOK = {"claude-opus-5-5": (4.0, 20.0), "claude-sonnet-5-5": (2.0, 10.0), "claude-haiku-5-5": (0.10, 0.50)}
+USD_TO_INR = 84.0
+
+
+def cost_usd(model: str, input_tokens: int, output_tokens: int) -> float:
+    pin, pout = next((v for k, v in USD_PER_MTOK.items() if model.startswith(k)), (0.0, 0.0))
+    return (input_tokens or 0) / 1e6 * pin + (output_tokens or 0) / 1e6 * pout
+
+
 def _record_usage(purpose: str, model: str, input_tokens: int, output_tokens: int, ref_id, latency_ms: int,
                   db=None) -> None:
     """Adds the usage row to the caller's session when given (committed with its work), else writes it directly."""
     from app.db import SessionLocal
     from app.models import AiUsage
 
+    log.info("ai call %s model=%s tokens=%d in / %d out cost=$%.5f latency=%dms", purpose, model, input_tokens,
+             output_tokens, cost_usd(model, input_tokens, output_tokens), latency_ms)
     if db is not None:
         db.add(AiUsage(purpose=purpose, model=model, input_tokens=input_tokens, output_tokens=output_tokens,
                        ref_id=str(ref_id) if ref_id else None, latency_ms=latency_ms))

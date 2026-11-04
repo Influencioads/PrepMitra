@@ -14,6 +14,7 @@ import time
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.ai.provider import USD_TO_INR, cost_usd
 from app.core.errors import not_found
 from app.models import AiUsage, Exam, Question, Topic
 from app.services import blueprints as bp
@@ -21,17 +22,12 @@ from app.services.papers import current_blueprint
 from app.services.question_pipeline import generate_question
 
 log = logging.getLogger(__name__)
-USD_PER_MTOK = {"claude-opus-5-5": (4.0, 20.0), "claude-sonnet-5-5": (2.0, 10.0), "claude-haiku-5-5": (0.10, 0.50)}
-USD_TO_INR = 84.0
 
 
 def _cost_inr_since(db: Session, ref_id: str, since) -> float:
-    usd = 0.0
-    for model, tin, tout in db.execute(select(AiUsage.model, func.sum(AiUsage.input_tokens), func.sum(AiUsage.output_tokens))
-                                       .where(AiUsage.ref_id == ref_id, AiUsage.created_at >= since)
-                                       .group_by(AiUsage.model)):
-        pin, pout = next((v for k, v in USD_PER_MTOK.items() if model.startswith(k)), (0.0, 0.0))
-        usd += (tin or 0) / 1e6 * pin + (tout or 0) / 1e6 * pout
+    usd = sum(cost_usd(model, tin, tout) for model, tin, tout in db.execute(
+        select(AiUsage.model, func.sum(AiUsage.input_tokens), func.sum(AiUsage.output_tokens))
+        .where(AiUsage.ref_id == ref_id, AiUsage.created_at >= since).group_by(AiUsage.model)))
     return round(usd * USD_TO_INR, 2)
 
 

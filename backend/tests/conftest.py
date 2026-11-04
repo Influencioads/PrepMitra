@@ -12,6 +12,7 @@ from pathlib import Path
 _TMP = Path(tempfile.mkdtemp(prefix="prepmitra-tests-"))
 os.environ["APP_ENV"] = "test"
 os.environ["AI_PROVIDER"] = "mock"
+os.environ["ALLOW_PLACEHOLDER_QUESTIONS"] = "true"
 os.environ["JOB_MODE"] = "eager"
 os.environ["RUN_SCHEDULER_IN_API"] = "false"
 os.environ["PAYMENT_GATEWAY"] = "mock"

@@ -20,9 +20,9 @@ JWT (access + rotating refresh) · Anthropic Claude behind a provider layer · r
 cd backend && .venv/Scripts/python scripts/dev_server.py
 ```
 
-Runs on SQLite with the mock AI and mock payments, seeds the 15-day launch catalog (3 exams + free mini mock,
-2 interview roles, English + Hindi, ₹99 / ₹399 plans) and opens Swagger at `http://localhost:8000/docs`. Phone
-`9000000009` is a founder admin. `SEED_SCOPE=full` publishes all 15 exams and 6 roles instead.
+Runs on SQLite with the mock AI and mock payments, seeds the launch catalog (banking only: 6 bank exams + free mini mock,
+the Bank PO interview, English + Hindi, ₹99 / ₹399 plans) and opens Swagger at `http://localhost:8000/docs`. Phone
+`9000000009` is a founder admin. `SEED_SCOPE=full` publishes all 18 exams and 6 roles instead.
 
 ## Quick start (development)
 

@@ -58,6 +58,8 @@ class Settings(BaseSettings):
     back_translation_min_similarity: float = 0.75
     review_sample_rate: float = 0.10
     auto_quarantine_reports: int = 3
+    # The mock AI writes placeholder arithmetic, not exam questions. Only the automated tests may put those in papers.
+    allow_placeholder_questions: bool = False
 
     # Exams / interviews / reports
     attempt_grace_seconds: int = 30  # autosaves accepted this long after the deadline (network latency)

@@ -7,6 +7,8 @@ from app.core.languages import language_name
 
 QUESTION_SYSTEM = f"""You write exam questions for Indian competitive exams (government jobs, banking, higher education,
 campus hiring). Each question must follow the requested exam pattern, topic, difficulty and type exactly.
+Match the style, length and level of recent questions in that exam, so a candidate would recognise it as a
+question from that paper, and test only the requested section's subject (an English section question tests English).
 
 Rules:
 - Exactly one unambiguous correct answer for single-correct MCQs; one or more for multiple-correct; a single number for numeric.

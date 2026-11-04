@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
+from app.ai.provider import USD_TO_INR, cost_usd
 from app.core.audit import audit
 from app.core.deps import require_admin
 from app.core.errors import AppError, not_found
@@ -42,10 +43,6 @@ finance = require_admin("finance")
 quality = require_admin("product")
 founder = require_admin("founder")
 ADMIN_ROLES = ("founder", "content_manager", "subject_expert", "language_reviewer", "support", "finance", "product")
-
-# USD per million tokens (input, output); used only for the AI cost estimate on the quality dashboard.
-MODEL_PRICES = {"claude-opus-5-5": (4.0, 20.0), "claude-sonnet-5-5": (2.0, 10.0), "claude-haiku-5-5": (0.10, 0.50)}
-USD_TO_INR = 84.0
 
 
 # ---- users --------------------------------------------------------------------------------------------------------
@@ -294,11 +291,7 @@ def upsert_plan(body: PlanIn, admin: User = Depends(finance), db: Session = Depe
 
 # ---- quality dashboard --------------------------------------------------------------------------------------------
 def _cost_inr(rows) -> float:
-    usd = 0.0
-    for model, tin, tout in rows:
-        pin, pout = next((v for k, v in MODEL_PRICES.items() if model.startswith(k)), (0.0, 0.0))
-        usd += tin / 1e6 * pin + tout / 1e6 * pout
-    return round(usd * USD_TO_INR, 2)
+    return round(sum(cost_usd(model, tin, tout) for model, tin, tout in rows) * USD_TO_INR, 2)
 
 
 @router.get("/quality")

@@ -15,9 +15,19 @@ BACKEND = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BACKEND))
 os.chdir(BACKEND)
 
+
+def _env_file_value(key: str) -> str:
+    for line in (BACKEND / ".env").read_text(encoding="utf-8").splitlines() if (BACKEND / ".env").exists() else []:
+        if line.strip().startswith(f"{key}="):
+            return line.split("=", 1)[1].strip()
+    return ""
+
+
 os.environ.setdefault("APP_ENV", "development")
 os.environ.setdefault("DATABASE_URL", f"sqlite:///{(BACKEND / 'dev.db').as_posix()}")
-os.environ.setdefault("AI_PROVIDER", "mock")
+# Real Claude once backend/.env has an API key (mock tests then get real questions); the free mock AI otherwise.
+if not (os.environ.get("ANTHROPIC_API_KEY") or _env_file_value("ANTHROPIC_API_KEY")):
+    os.environ.setdefault("AI_PROVIDER", "mock")
 os.environ.setdefault("PAYMENT_GATEWAY", "mock")
 os.environ.setdefault("JOB_MODE", "thread")
 os.environ.setdefault("REDIS_URL", "")
@@ -39,7 +49,7 @@ def main() -> None:
     fresh = not inspect(engine).has_table("exams")
     Base.metadata.create_all(engine)
     if fresh:
-        # SEED_SCOPE=full publishes all 15 exams and 6 roles instead of the 15-day launch catalog.
+        # SEED_SCOPE=full publishes all 18 exams and 6 roles instead of the 15-day launch catalog.
         print("Seeding:", seed(scope=os.environ.get("SEED_SCOPE", "launch")))
     print(f"\nSwagger UI: http://localhost:{port}/docs   (admin phone: {os.environ['BOOTSTRAP_ADMIN_PHONE']})\n")
     uvicorn.run("app.main:app", host="127.0.0.1", port=port)

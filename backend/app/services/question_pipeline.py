@@ -98,6 +98,11 @@ def generate_question(db: Session, *, exam: Exam, topic: Topic, section_name: st
     """Runs the full pipeline once. Returns the stored verified question, or None if it was discarded."""
     s = get_settings()
     provider = get_provider()
+    if provider.name == "mock" and not s.allow_placeholder_questions:
+        # Mock tests only get real exam questions: without a real AI provider nothing is generated.
+        _log(db, exam.id, topic.id, "error", "generate: no real AI provider configured (set ANTHROPIC_API_KEY)")
+        db.commit()
+        return None
     seed = seed if seed is not None else random.randrange(1 << 30)
     lessons = memory.lessons_for(db, exam_id=exam.id, topic_id=topic.id, language="en",
                                  query=f"{topic.name} {difficulty} {qtype}")

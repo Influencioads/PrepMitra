@@ -102,6 +102,19 @@ def test_duplicate_and_known_bad_are_rejected(db, catalog_seeded):
     assert "known-bad" in log.reason
 
 
+def test_mock_ai_never_fills_real_papers(db, catalog_seeded, monkeypatch):
+    from app.config import get_settings
+    from app.core.errors import AppError
+
+    monkeypatch.setattr(get_settings(), "allow_placeholder_questions", False)
+    exam, topic = _exam_topic(db, catalog_seeded, "ibps-po-prelims")
+    assert _gen(db, exam, topic) is None
+    assert "no real AI provider" in db.scalar(select(QuestionGenerationLog)).reason
+    with pytest.raises(AppError) as e:
+        papers.assemble_paper(db, exam)
+    assert e.value.status_code == 503 and db.scalar(select(Question)) is None
+
+
 def test_ai_error_is_logged_not_raised(db, catalog_seeded):
     exam, topic = _exam_topic(db, catalog_seeded)
     MockProvider.force("question_generate", AIError("boom"))

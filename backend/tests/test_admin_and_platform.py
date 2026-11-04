@@ -52,9 +52,16 @@ def test_admin_creates_and_publishes_exam_that_appears_in_catalog(client, admin_
 
 def test_catalog_filters(client, catalog_seeded):
     all_ = client.get("/v1/exams", params={"limit": 100}).json()
-    assert all_["total"] == 15
+    assert all_["total"] == 18
     banking = client.get("/v1/exams", params={"category": "banking"}).json()
-    assert {e["slug"] for e in banking["items"]} == {"ibps-po-prelims", "ibps-clerk-prelims", "sbi-po-prelims"}
+    assert {e["slug"] for e in banking["items"]} == {
+        "ibps-po-prelims", "ibps-clerk-prelims", "ibps-rrb-officer-prelims", "ibps-rrb-office-assistant-prelims",
+        "sbi-po-prelims", "sbi-junior-associate-prelims"}
+    # Sectional timing where the exam has it; RRB prelims run on one combined timer.
+    po = client.get("/v1/exams/ibps-po-prelims").json()["pattern"]["sections"]
+    assert [s["duration_min"] for s in po] == [20, 20, 20]
+    rrb = client.get("/v1/exams/ibps-rrb-officer-prelims").json()
+    assert rrb["pattern"]["duration_min"] == 45 and all(s["duration_min"] is None for s in rrb["pattern"]["sections"])
     tamil = client.get("/v1/exams", params={"language": "ta"}).json()
     assert "cat" not in {e["slug"] for e in tamil["items"]} and tamil["total"] > 0
     roles = client.get("/v1/interview-roles").json()["items"]

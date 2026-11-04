@@ -73,10 +73,13 @@ def test_launch_scope_catalog_and_plans(client):
 
     seed(scope="launch")
     exams = client.get("/v1/exams").json()
-    assert {e["slug"] for e in exams["items"]} == {MINI, "ssc-cgl-tier1", "ibps-po-prelims", "it-placement-aptitude"}
+    # Banking only, plus the free mini mock.
+    assert {e["slug"] for e in exams["items"]} == {
+        MINI, "ibps-po-prelims", "ibps-clerk-prelims", "ibps-rrb-officer-prelims", "ibps-rrb-office-assistant-prelims",
+        "sbi-po-prelims", "sbi-junior-associate-prelims"}
     assert all(e["languages"] == ["en", "hi"] for e in exams["items"])
     roles = {r["slug"] for r in client.get("/v1/interview-roles").json()["items"]}
-    assert roles == {"software-developer-fresher", "bank-po-interview"}
+    assert roles == {"bank-po-interview"}
     plans = {p["code"]: p for p in client.get("/v1/plans").json()["items"]}
     assert set(plans) == {"free_trial", "pay_per_exam", "credit_pack_10"}
     assert plans["credit_pack_10"]["price_paise"] == 39900 and plans["credit_pack_10"]["credits"] == 10
@@ -84,6 +87,7 @@ def test_launch_scope_catalog_and_plans(client):
     # Drafts exist and can be published from admin later without code.
     with SessionLocal() as s:
         assert s.scalar(select(Exam).where(Exam.slug == "cat")).status == "draft"
+        assert s.scalar(select(Exam).where(Exam.slug == "ssc-cgl-tier1")).status == "draft"
 
 
 # ---- API Plan endpoint names --------------------------------------------------------------------------------------
