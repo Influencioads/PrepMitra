@@ -24,12 +24,15 @@ from app.models import CreditLedger, DeviceToken, Notification, User
 log = logging.getLogger(__name__)
 
 
-def notify(db: Session, user_id, kind: str, data: dict | None = None, **params) -> Notification:
-    """Creates the in-app notification; push/email are sent by a job after the caller commits."""
+def notify(db: Session, user_id, kind: str, data: dict | None = None, channels: list[str] | None = None,
+           **params) -> Notification:
+    """Creates the in-app notification; push/email are sent by a job after the caller commits.
+    `channels` narrows delivery (the mentor passes the student's reminder preferences)."""
     user = db.get(User, user_id)
     lang = (user.preferred_language if user else "en") or "en"
     title, body = message(kind, lang, **params)
-    channels = ["in_app", "push"] + (["email"] if user is not None and user.email else [])
+    allowed = ["in_app", "push"] + (["email"] if user is not None and user.email else [])
+    channels = [c for c in allowed if channels is None or c in channels]
     n = Notification(user_id=user_id, kind=kind, title=title, body=body, channels=channels, data=data or {})
     db.add(n)
     db.flush()

@@ -31,6 +31,15 @@ def send_notification(notification_id: int) -> None:
     send(notification_id)
 
 
+@task("mentor_replan")
+def mentor_replan(user_id: str, exam_id: str | None = None) -> None:
+    """A scored mock changed the student's topic evidence: re-plan their active exam goals from today."""
+    from app.services.mentor.planner import replan_user
+
+    with SessionLocal() as db:
+        replan_user(db, uuid.UUID(str(user_id)), exam_id)
+
+
 @task("build_bank")
 def build_bank(exam_id: str, per_topic: int) -> None:
     from app.models import Exam
@@ -62,6 +71,7 @@ def _with_db(fn):
 def periodic() -> list[tuple[int, object]]:
     """(interval_seconds, callable) pairs run by the scheduler."""
     from app.services import attempts, credits, interviews, notifications, payments, reports
+    from app.services.mentor import reminders
 
     return [
         (15, _with_db(attempts.auto_submit_expired)),  # server-side auto-submit when time ends
@@ -72,4 +82,5 @@ def periodic() -> list[tuple[int, object]]:
         (3600, _with_db(payments.expire_subscriptions)),
         (6 * 3600, _with_db(notifications.notify_expiring_credits)),
         (6 * 3600, _with_db(notifications.notify_inactive_users)),
+        (get_settings().mentor_reminder_interval_seconds, _with_db(reminders.sweep)),  # mentor nudges, deduplicated
     ]

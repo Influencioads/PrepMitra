@@ -13,6 +13,11 @@ MESSAGES: dict[str, dict[str, tuple[str, str]]] = {
         "plan_expiring": ("Credits expiring soon", "{credits} credit(s) expire on {expires}. Take a mock test before they lapse."),
         "practice_reminder": ("Time for a practice test", "You have not practised for a week. A short mock keeps your preparation on track."),
         "refund_processed": ("Refund processed", "Your refund of ₹{amount} for order {order} has been processed."),
+        "mentor_morning": ("Good morning! {days} days to {exam}", "Today's focus: {focus}."),
+        "mentor_countdown": ("Only {days} days left for {exam}", "{advice}. Today's focus: {focus}."),
+        "mentor_afternoon": ("Today's practice is waiting", "You have not completed today's {subject} practice yet: {task}."),
+        "mentor_evening": ("Your day in review", "{status}{extra}"),
+        "mentor_missed": ("Let's get back on track", "You have missed your planned preparation for {days} days. {exam} is {exam_days} days away, so your schedule has been adjusted."),
     },
     "hi": {
         "result_ready": ("आपकी AI रिपोर्ट तैयार है", "{exam} की आपकी रिपोर्ट तैयार है। अपनी ताकत, कमजोर विषय और 7-दिन की योजना देखें।"),
@@ -22,6 +27,11 @@ MESSAGES: dict[str, dict[str, tuple[str, str]]] = {
         "plan_expiring": ("क्रेडिट जल्द समाप्त होंगे", "{credits} क्रेडिट {expires} को समाप्त होंगे। उससे पहले एक मॉक टेस्ट दें।"),
         "practice_reminder": ("अभ्यास का समय", "आपने एक सप्ताह से अभ्यास नहीं किया है। एक छोटा मॉक टेस्ट दें।"),
         "refund_processed": ("रिफंड हो गया", "ऑर्डर {order} के लिए ₹{amount} का रिफंड प्रोसेस हो गया है।"),
+        "mentor_morning": ("सुप्रभात! {exam} में {days} दिन बाकी", "आज का फोकस: {focus}।"),
+        "mentor_countdown": ("{exam} में केवल {days} दिन बाकी", "{advice}। आज का फोकस: {focus}।"),
+        "mentor_afternoon": ("आज का अभ्यास बाकी है", "आपने आज का {subject} अभ्यास अभी पूरा नहीं किया है: {task}।"),
+        "mentor_evening": ("आज की तैयारी", "{status}{extra}"),
+        "mentor_missed": ("चलिए फिर से शुरू करें", "आपकी योजना की तैयारी {days} दिन से छूट गई है। {exam} {exam_days} दिन दूर है, इसलिए आपका शेड्यूल बदल दिया गया है।"),
     },
     "ta": {
         "result_ready": ("உங்கள் AI அறிக்கை தயார்", "{exam} க்கான உங்கள் அறிக்கை தயார். உங்கள் பலம், பலவீனமான பகுதிகள் மற்றும் 7 நாள் திட்டத்தைப் பாருங்கள்."),

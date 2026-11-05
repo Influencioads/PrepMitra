@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
-  Bell, BookOpen, ClipboardList, Coins, CreditCard, LayoutDashboard, Menu, MessageSquare, Settings, TrendingUp, User, X,
+  Bell, BookOpen, BookX, Bot, CalendarDays, ClipboardList, Coins, CreditCard, LayoutDashboard, Menu, MessageCircle, MessageSquare,
+  Settings, TrendingUp, User, X,
 } from 'lucide-react';
 import { Logo } from '@/components/ui';
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
@@ -21,6 +22,15 @@ const NAV_GROUPS = [
       { to: '/interviews', label: 'navMockInterviews', icon: MessageSquare },
       { to: '/my-tests', label: 'navMyTests', icon: ClipboardList },
       { to: '/progress', label: 'navProgress', icon: TrendingUp },
+    ],
+  },
+  {
+    label: 'groupMentor',
+    items: [
+      { to: '/mentor', label: 'navMentor', icon: Bot },
+      { to: '/mentor/plan', label: 'navStudyPlan', icon: CalendarDays },
+      { to: '/mentor/notebook', label: 'navNotebook', icon: BookX },
+      { to: '/mentor/chat', label: 'navMentorChat', icon: MessageCircle },
     ],
   },
   {
@@ -48,7 +58,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
                 <NavLink
                   to={to}
                   onClick={onNavigate}
-                  end={to === '/exams'}
+                  end={to === '/exams' || to === '/mentor'}
                   className={({ isActive }) =>
                     cn(
                       'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',

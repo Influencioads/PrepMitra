@@ -38,6 +38,25 @@ port = int(sys.argv[sys.argv.index("--port") + 1] if "--port" in sys.argv else o
 os.environ.setdefault("PUBLIC_BASE_URL", f"http://localhost:{port}")
 
 
+def _add_missing_columns(engine, base) -> None:
+    """create_all never alters existing tables. On an older dev.db, add columns introduced since (additive only,
+    the dev equivalent of an Alembic upgrade; PostgreSQL uses the real migrations)."""
+    from sqlalchemy import inspect, text
+
+    insp = inspect(engine)
+    with engine.begin() as conn:
+        for table in base.metadata.sorted_tables:
+            have = {c["name"] for c in insp.get_columns(table.name)}
+            for col in table.columns:
+                if col.name in have:
+                    continue
+                ddl = col.type.compile(dialect=engine.dialect)
+                default = col.server_default.arg if col.server_default is not None else None
+                suffix = f" DEFAULT {default}" if isinstance(default, str) else ""
+                conn.execute(text(f'ALTER TABLE "{table.name}" ADD COLUMN "{col.name}" {ddl}{suffix}'))
+                print(f"dev.db: added {table.name}.{col.name}")
+
+
 def main() -> None:
     import uvicorn
     from sqlalchemy import inspect
@@ -48,6 +67,7 @@ def main() -> None:
 
     fresh = not inspect(engine).has_table("exams")
     Base.metadata.create_all(engine)
+    _add_missing_columns(engine, Base)
     if fresh:
         # SEED_SCOPE=full publishes all 18 exams and 6 roles instead of the 15-day launch catalog.
         print("Seeding:", seed(scope=os.environ.get("SEED_SCOPE", "launch")))

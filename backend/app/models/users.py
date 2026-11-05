@@ -1,7 +1,7 @@
 import uuid
 from datetime import date, datetime
 
-from sqlalchemy import Boolean, Date, ForeignKey, Integer, String, Text, Uuid
+from sqlalchemy import Boolean, Date, ForeignKey, Index, Integer, String, Text, Uuid
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base, TimestampMixin, utcnow, JSONType, TZDateTime
@@ -103,10 +103,11 @@ class AuditLog(Base):
 
 class Notification(Base):
     __tablename__ = "notifications"
+    __table_args__ = (Index("ix_notifications_user_kind_created", "user_id", "kind", "created_at"),)
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    # payment_receipt | result_ready | plan_expiring | practice_reminder
+    # payment_receipt | result_ready | plan_expiring | practice_reminder | mentor_* (services/mentor/reminders.py)
     kind: Mapped[str] = mapped_column(String(40))
     title: Mapped[str] = mapped_column(String(200))
     body: Mapped[str] = mapped_column(Text)

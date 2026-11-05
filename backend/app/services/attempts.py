@@ -25,6 +25,8 @@ from app.models import (
     User,
 )
 from app.services import credits, memory, papers, scoring
+from app.services.mentor import config as mentor_cfg
+from app.services.mentor import hooks as mentor_hooks
 from app.services.profile import require_complete_profile
 
 ANTI_CHEAT_EVENTS = {
@@ -259,6 +261,7 @@ def finalize(db: Session, a: Attempt, reason: str) -> None:
     track(db, a.user_id, "submit", attempt_id=str(a.id), reason=reason, score=a.score)
     db.commit()
     enqueue("generate_exam_report", report_id=report.id)
+    enqueue("mentor_replan", user_id=str(a.user_id), exam_id=str(a.exam_id))
 
 
 def score_attempt(db: Session, a: Attempt) -> dict:
@@ -303,10 +306,14 @@ def score_attempt(db: Session, a: Attempt) -> dict:
         .order_by(Attempt.submitted_at.desc()).limit(5)).all()
     result["previous_scores"] = [{"score": s, "max_score": m} for s, m in prev]
     result["since_last_attempt"] = since_last_attempt(db, a, result)
+    scheme = blueprint.marking_scheme or {}
     memory.update_after_scoring(db, a, [
         {"question_id": uuid.UUID(r["question_id"]), "topic_id": qs[uuid.UUID(r["question_id"])].topic_id,
-         "status": r["status"], "error_type": r["error_type"]} for r in result["questions"]
+         "status": r["status"], "error_type": r["error_type"], "difficulty": r["difficulty"], "time_sec": r["time_sec"],
+         "target_sec": mentor_cfg.target_time(scheme, r["section_key"], r["difficulty"], r["expected_time_sec"])}
+        for r in result["questions"]
     ])
+    mentor_hooks.after_scoring(db, a)
     return result
 
 

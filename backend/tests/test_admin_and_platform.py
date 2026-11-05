@@ -191,7 +191,7 @@ def test_migration_covers_every_table():
     """The Alembic migration (PostgreSQL DDL) must create every table the models define."""
     from app.db import Base
 
-    text = next((Path(__file__).resolve().parents[1] / "alembic" / "versions").glob("0001_*.py")).read_text("utf-8")
+    text = "".join(f.read_text("utf-8") for f in (Path(__file__).resolve().parents[1] / "alembic" / "versions").glob("0*.py"))
     missing = [t for t in Base.metadata.tables if f"op.create_table('{t}'" not in text]
     assert missing == [], f"tables missing from migration (run alembic revision --autogenerate): {missing}"
     assert "CREATE EXTENSION IF NOT EXISTS vector" in text and "Vector(256)" in text

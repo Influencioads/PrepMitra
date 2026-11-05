@@ -9,6 +9,7 @@ import {
 } from '@/components/ui';
 import { SectionChart, TopicAccuracyChart } from '@/components/charts/Charts';
 import { ReportActions } from '@/components/exam/ReportActions';
+import { mentorMessages } from '@/i18n/messages/mentor';
 import { CheckedSheet } from '@/components/exam/CheckedSheet';
 import { ReportRating } from '@/components/exam/ReportRating';
 import { TimePerQuestionChart } from '@/components/exam/TimePerQuestionChart';
@@ -36,6 +37,7 @@ const outcomeBadge: Record<QuestionOutcome, { tone: 'success' | 'danger' | 'neut
 export function ReportPage() {
   const { reportId = '' } = useParams();
   const t = useT(reportMessages);
+  const tm = useT(mentorMessages);
   const uiLang = useUiLang();
   const report = useExamStore((s) => s.reports[reportId]);
   const attempt = useExamStore((s) => (report ? s.attempts[report.attemptId] : undefined));
@@ -100,6 +102,9 @@ export function ReportPage() {
         eyebrow={<DemoBadge>{t('demoAnalysis')}</DemoBadge>}
         title={t('reportTitle', { exam: report.examTitle })}
         description={t('reportSubtitle', { date: formatDate(report.createdAt), language: languageName(report.language), taken: formatDuration(report.timeTakenSec), duration: formatDuration(report.durationSec) })}
+        actions={USE_MOCK ? undefined : (
+          <ButtonLink data-print-hide to={`/mentor/analysis/${report.attemptId}`} variant="outline">{tm('viewAnalysis')}</ButtonLink>
+        )}
       />
       <CheckedSheet
         report={report}

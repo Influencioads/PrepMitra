@@ -12,6 +12,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev:web"],
       "port": 5173
+    },
+    {
+      "name": "prepmitra-web-3000",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:web", "--", "--port", "3000", "--strictPort"],
+      "port": 3000
     }
   ]
 }

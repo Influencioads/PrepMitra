@@ -50,6 +50,12 @@ const ExamSessionPage = page(() => import('@/pages/exam/ExamSessionPage'), 'Exam
 const ExamResultPage = page(() => import('@/pages/exam/ExamResultPage'), 'ExamResultPage');
 const ReportPage = page(() => import('@/pages/exam/ReportPage'), 'ReportPage');
 // Interview
+const MentorDashboardPage = page(() => import('@/pages/mentor/MentorDashboardPage'), 'MentorDashboardPage');
+const StudyPlanPage = page(() => import('@/pages/mentor/StudyPlanPage'), 'StudyPlanPage');
+const MockAnalysisPage = page(() => import('@/pages/mentor/MockAnalysisPage'), 'MockAnalysisPage');
+const MistakeNotebookPage = page(() => import('@/pages/mentor/MistakeNotebookPage'), 'MistakeNotebookPage');
+const MentorChatPage = page(() => import('@/pages/mentor/MentorChatPage'), 'MentorChatPage');
+
 const InterviewSetupPage = page(() => import('@/pages/interview/InterviewSetupPage'), 'InterviewSetupPage');
 const InterviewSessionPage = page(() => import('@/pages/interview/InterviewSessionPage'), 'InterviewSessionPage');
 const InterviewReportPage = page(() => import('@/pages/interview/InterviewReportPage'), 'InterviewReportPage');
@@ -119,6 +125,11 @@ export const routes = [
           { path: '/exam-result/:reportId', element: <S><ExamResultPage /></S> },
           { path: '/reports/:reportId', element: <S><ReportPage /></S> },
           { path: '/progress', element: <S><ProgressPage /></S> },
+          { path: '/mentor', element: <S><MentorDashboardPage /></S> },
+          { path: '/mentor/plan', element: <S><StudyPlanPage /></S> },
+          { path: '/mentor/analysis/:attemptId', element: <S><MockAnalysisPage /></S> },
+          { path: '/mentor/notebook', element: <S><MistakeNotebookPage /></S> },
+          { path: '/mentor/chat', element: <S><MentorChatPage /></S> },
           { path: '/subscription', element: <S><SubscriptionPage /></S> },
           { path: '/notifications', element: <S><NotificationsPage /></S> },
           { path: '/profile', element: <S><ProfilePage /></S> },

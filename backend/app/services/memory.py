@@ -49,26 +49,11 @@ def most_similar_question(db: Session, exam_id, vector: list[float]) -> tuple[Qu
 
 
 def update_after_scoring(db: Session, attempt: Attempt, rows: list[dict]) -> None:
-    """rows: per question {question_id, topic_id, status, error_type|None}. Called once per scored attempt."""
-    now = utcnow()
-    per_topic: dict[int, list[int]] = {}
-    for r in rows:
-        if r["status"] == "unanswered" and r.get("error_type") is None:
-            continue
-        stats = per_topic.setdefault(r["topic_id"], [0, 0])
-        if r["status"] != "unanswered":
-            stats[0] += 1
-            stats[1] += 1 if r["status"] == "correct" else 0
-    for topic_id, (n, c) in per_topic.items():
-        m = db.get(UserTopicMastery, (attempt.user_id, topic_id))
-        if m is None:
-            m = UserTopicMastery(user_id=attempt.user_id, topic_id=topic_id, attempts_count=0, correct_count=0)
-            db.add(m)
-        m.attempts_count = (m.attempts_count or 0) + n
-        m.correct_count = (m.correct_count or 0) + c
-        # Laplace-smoothed accuracy, so one lucky answer does not mean "mastered".
-        m.mastery_score = round((m.correct_count + 1) / (m.attempts_count + 2), 4)
-        m.last_seen_at = now
+    """rows: per question {question_id, topic_id, status, error_type|None, difficulty, time_sec, target_sec}.
+    Called once per scored attempt. Topic evidence is kept by the mentor (services/mentor/mastery.py)."""
+    from app.services.mentor import mastery
+
+    mastery.record(db, attempt.user_id, rows, utcnow())
     for r in rows:
         if r.get("error_type"):
             db.add(UserMistake(user_id=attempt.user_id, question_id=r["question_id"], attempt_id=attempt.id,

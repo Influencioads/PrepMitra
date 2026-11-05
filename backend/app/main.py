@@ -20,6 +20,7 @@ from app.routers import (
     engagement,
     interviews,
     me,
+    mentor,
     reports,
 )
 
@@ -118,5 +119,5 @@ def languages():
 
 
 for r in (auth.router, me.router, me.uploads, catalog.router, attempts.router, reports.router, interviews.router,
-          billing.router, engagement.router, admin_content.router, admin_ops.router):
+          billing.router, engagement.router, mentor.router, admin_content.router, admin_ops.router):
     app.include_router(r, prefix=settings.api_prefix)

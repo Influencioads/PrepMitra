@@ -68,6 +68,14 @@ class Settings(BaseSettings):
     papers_pool_size: int = 3  # pre-generated ready papers kept per exam
     report_share_days: int = 30
 
+    # AI mentor (services/mentor): evidence threshold, spaced-revision steps, plan horizon, chat limits.
+    mentor_min_evidence: int = 8
+    mentor_revision_intervals_days: str = "1,3,7,14,30"
+    mentor_plan_horizon_days: int = 60
+    mentor_chat_daily_limit: int = 60
+    # Reminder sweep runs this often; each reminder still goes out at most once per day per kind.
+    mentor_reminder_interval_seconds: int = 600
+
     # Speech (voice interviews). mock = dev adapters; real providers plug in per language (PDF section 8).
     speech_provider: str = "mock"
 

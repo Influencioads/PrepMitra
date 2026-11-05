@@ -155,6 +155,18 @@ class UserTopicMastery(Base):
     attempts_count: Mapped[int] = mapped_column(Integer, default=0)
     correct_count: Mapped[int] = mapped_column(Integer, default=0)
     last_seen_at: Mapped[datetime] = mapped_column(TZDateTime, default=utcnow)
+    # Evidence used by the mentor (classification needs more than accuracy): attempted = correct + wrong (+ partial).
+    wrong_count: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    skipped_count: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    # Seconds spent on attempted questions, and the sum of their target times, so time ratio = spent / target.
+    time_spent_sec: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    target_time_sec: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    # Exponentially weighted accuracy per session (mock or quiz): recent form, so improvement or decline shows.
+    recent_accuracy: Mapped[float | None] = mapped_column(Float)
+    previous_recent_accuracy: Mapped[float | None] = mapped_column(Float)
+    sessions_count: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    # {"easy": [attempted, correct], "medium": [...], "hard": [...]}
+    by_difficulty: Mapped[dict] = mapped_column(JSONType, default=dict)
 
 
 class UserMistake(Base):
