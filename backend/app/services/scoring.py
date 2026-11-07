@@ -82,6 +82,7 @@ def analyse(items: list[dict], sections: list[dict], scheme: dict) -> dict:
             "attempted": len(att), "correct": sum(1 for r in mine if r["status"] == "correct"),
             "wrong": sum(1 for r in mine if r["status"] == "wrong"),
             "unanswered": len(mine) - len(att),
+            "attempt_rate": round(len(att) / len(mine), 4) if mine else 0.0,
             "accuracy": round(sum(1 for r in att if r["status"] == "correct") / len(att), 4) if att else None,
             "time_sec": sum(r["time_spent_sec"] for r in mine),
         })
@@ -133,6 +134,7 @@ def analyse(items: list[dict], sections: list[dict], scheme: dict) -> dict:
         "wrong": sum(1 for r in rows if r["status"] == "wrong"),
         "partial": sum(1 for r in rows if r["status"] == "partial"),
         "unanswered": len(rows) - len(attempted),
+        "attempt_rate": round(len(attempted) / len(rows), 4) if rows else 0.0,
         "negative_marks_lost": negative_loss,
         "total_time_sec": sum(times), "avg_time_per_question_sec": round(mean(times), 1) if times else 0,
         "sections": section_stats,
