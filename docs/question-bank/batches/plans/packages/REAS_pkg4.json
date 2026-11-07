@@ -1,0 +1,387 @@
+{
+  "subject": "Reasoning Ability",
+  "prefix": "REAS",
+  "package": 4,
+  "topics": [
+    "Ranking and Order",
+    "Input and Output",
+    "Data Sufficiency",
+    "Statement and Assumptions",
+    "Statement and Conclusions",
+    "Cause and Effect",
+    "Critical Reasoning"
+  ],
+  "total": 199,
+  "batches": {
+    "007": {
+      "batch_id": "BATCH_007",
+      "count": 52,
+      "by_difficulty": {
+        "Basic": 16,
+        "Intermediate": 19,
+        "Advanced": 17
+      },
+      "question_ids": [
+        "BANK_REAS_001352",
+        "BANK_REAS_001403"
+      ],
+      "stimulus_id_start": "STIM_REAS_007401",
+      "topics": [
+        {
+          "topic": "Ranking and Order",
+          "subtopics": [
+            "Position in a row",
+            "Comparison of heights/weights"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 0,
+            "Advanced": 5
+          },
+          "total": 10
+        },
+        {
+          "topic": "Input and Output",
+          "subtopics": [
+            "Word rearrangement",
+            "Number rearrangement",
+            "Mixed machine"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 7,
+            "Advanced": 3
+          },
+          "total": 12
+        },
+        {
+          "topic": "Data Sufficiency",
+          "subtopics": [
+            "Two-statement",
+            "Three-statement"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 0
+          },
+          "total": 3
+        },
+        {
+          "topic": "Statement and Assumptions",
+          "subtopics": [
+            "Implicit assumptions"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 1,
+            "Advanced": 5
+          },
+          "total": 10
+        },
+        {
+          "topic": "Statement and Conclusions",
+          "subtopics": [
+            "Valid conclusions",
+            "Inferences"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 6,
+            "Advanced": 0
+          },
+          "total": 6
+        },
+        {
+          "topic": "Critical Reasoning",
+          "subtopics": [
+            "Strengthen and weaken",
+            "Course of action",
+            "Inference from a passage"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 3,
+            "Advanced": 4
+          },
+          "total": 11
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_007_REAS_pkg4.json"
+    },
+    "008": {
+      "batch_id": "BATCH_008",
+      "count": 50,
+      "by_difficulty": {
+        "Basic": 12,
+        "Intermediate": 23,
+        "Advanced": 15
+      },
+      "question_ids": [
+        "BANK_REAS_001553",
+        "BANK_REAS_001602"
+      ],
+      "stimulus_id_start": "STIM_REAS_008401",
+      "topics": [
+        {
+          "topic": "Input and Output",
+          "subtopics": [
+            "Word rearrangement",
+            "Number rearrangement",
+            "Mixed machine"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 1,
+            "Advanced": 6
+          },
+          "total": 12
+        },
+        {
+          "topic": "Data Sufficiency",
+          "subtopics": [
+            "Two-statement",
+            "Three-statement"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 7,
+            "Advanced": 3
+          },
+          "total": 12
+        },
+        {
+          "topic": "Statement and Assumptions",
+          "subtopics": [
+            "Implicit assumptions"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 1,
+            "Advanced": 0
+          },
+          "total": 1
+        },
+        {
+          "topic": "Statement and Conclusions",
+          "subtopics": [
+            "Valid conclusions",
+            "Inferences"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 1,
+            "Advanced": 5
+          },
+          "total": 10
+        },
+        {
+          "topic": "Cause and Effect",
+          "subtopics": [
+            "Independent causes",
+            "Common cause"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 5,
+            "Advanced": 0
+          },
+          "total": 5
+        },
+        {
+          "topic": "Critical Reasoning",
+          "subtopics": [
+            "Strengthen and weaken",
+            "Course of action",
+            "Inference from a passage"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 8,
+            "Advanced": 1
+          },
+          "total": 10
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_008_REAS_pkg4.json"
+    },
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 47,
+      "by_difficulty": {
+        "Basic": 12,
+        "Intermediate": 21,
+        "Advanced": 14
+      },
+      "question_ids": [
+        "BANK_REAS_001755",
+        "BANK_REAS_001801"
+      ],
+      "stimulus_id_start": "STIM_REAS_009401",
+      "topics": [
+        {
+          "topic": "Ranking and Order",
+          "subtopics": [
+            "Position in a row",
+            "Comparison of heights/weights"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 6,
+            "Advanced": 0
+          },
+          "total": 7
+        },
+        {
+          "topic": "Data Sufficiency",
+          "subtopics": [
+            "Two-statement",
+            "Three-statement"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 1,
+            "Advanced": 6
+          },
+          "total": 12
+        },
+        {
+          "topic": "Statement and Assumptions",
+          "subtopics": [
+            "Implicit assumptions"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 6,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Statement and Conclusions",
+          "subtopics": [
+            "Valid conclusions",
+            "Inferences"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 1,
+            "Advanced": 0
+          },
+          "total": 1
+        },
+        {
+          "topic": "Cause and Effect",
+          "subtopics": [
+            "Independent causes",
+            "Common cause"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 0,
+            "Advanced": 5
+          },
+          "total": 9
+        },
+        {
+          "topic": "Critical Reasoning",
+          "subtopics": [
+            "Strengthen and weaken",
+            "Course of action",
+            "Inference from a passage"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 7,
+            "Advanced": 2
+          },
+          "total": 11
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_REAS_pkg4.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 50,
+      "by_difficulty": {
+        "Basic": 17,
+        "Intermediate": 15,
+        "Advanced": 18
+      },
+      "question_ids": [
+        "BANK_REAS_001951",
+        "BANK_REAS_002000"
+      ],
+      "stimulus_id_start": "STIM_REAS_010401",
+      "topics": [
+        {
+          "topic": "Ranking and Order",
+          "subtopics": [
+            "Position in a row",
+            "Comparison of heights/weights"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 0,
+            "Advanced": 4
+          },
+          "total": 9
+        },
+        {
+          "topic": "Input and Output",
+          "subtopics": [
+            "Word rearrangement",
+            "Number rearrangement",
+            "Mixed machine"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 7,
+            "Advanced": 1
+          },
+          "total": 11
+        },
+        {
+          "topic": "Statement and Assumptions",
+          "subtopics": [
+            "Implicit assumptions"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 0,
+            "Advanced": 5
+          },
+          "total": 10
+        },
+        {
+          "topic": "Statement and Conclusions",
+          "subtopics": [
+            "Valid conclusions",
+            "Inferences"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 6,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Critical Reasoning",
+          "subtopics": [
+            "Strengthen and weaken",
+            "Course of action",
+            "Inference from a passage"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 2,
+            "Advanced": 7
+          },
+          "total": 13
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_REAS_pkg4.json"
+    }
+  }
+}

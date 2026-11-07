@@ -1,0 +1,517 @@
+{
+  "subject": "Quantitative Aptitude",
+  "prefix": "QUANT",
+  "package": 2,
+  "topics": [
+    "Mixture and Alligation",
+    "Time and Work",
+    "Pipes and Cisterns",
+    "Speed, Time and Distance",
+    "Boats and Streams",
+    "Problems on Trains",
+    "Mensuration",
+    "Probability",
+    "Permutation and Combination",
+    "Tabular DI",
+    "Bar Graph DI",
+    "Pie Chart DI",
+    "Line Graph DI",
+    "Caselet DI",
+    "Missing DI",
+    "Quantity Comparison",
+    "Data Sufficiency (Quant)"
+  ],
+  "total": 200,
+  "batches": {
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 99,
+      "by_difficulty": {
+        "Basic": 28,
+        "Intermediate": 39,
+        "Advanced": 32
+      },
+      "question_ids": [
+        "BANK_QUANT_001703",
+        "BANK_QUANT_001801"
+      ],
+      "stimulus_id_start": "STIM_QUANT_009201",
+      "topics": [
+        {
+          "topic": "Mixture and Alligation",
+          "subtopics": [
+            "Alligation rule",
+            "Replacement of mixture",
+            "Mixing solutions"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 4
+        },
+        {
+          "topic": "Time and Work",
+          "subtopics": [
+            "Work efficiency",
+            "Work and wages",
+            "Alternate days",
+            "Men-women-children"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 6
+        },
+        {
+          "topic": "Pipes and Cisterns",
+          "subtopics": [
+            "Inlet and outlet",
+            "Leak problems"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Speed, Time and Distance",
+          "subtopics": [
+            "Average speed",
+            "Relative speed",
+            "Meeting and overtaking"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 3
+          },
+          "total": 7
+        },
+        {
+          "topic": "Boats and Streams",
+          "subtopics": [
+            "Upstream and downstream",
+            "Speed of stream"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Problems on Trains",
+          "subtopics": [
+            "Crossing a pole or platform",
+            "Trains crossing each other"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Mensuration",
+          "subtopics": [
+            "2D areas and perimeters",
+            "3D volume and surface area",
+            "Cylinder, cone and sphere"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Probability",
+          "subtopics": [
+            "Coins and dice",
+            "Cards",
+            "Balls from bags"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Permutation and Combination",
+          "subtopics": [
+            "Arrangements",
+            "Selections",
+            "Word arrangements"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Tabular DI",
+          "subtopics": [
+            "Single table",
+            "Table with percentages"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 3
+          },
+          "total": 7
+        },
+        {
+          "topic": "Bar Graph DI",
+          "subtopics": [
+            "Simple bar",
+            "Stacked or grouped bar"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Pie Chart DI",
+          "subtopics": [
+            "Degree-based",
+            "Percentage-based",
+            "Two pie charts"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 6
+        },
+        {
+          "topic": "Line Graph DI",
+          "subtopics": [
+            "Single line",
+            "Multiple lines"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 6
+        },
+        {
+          "topic": "Caselet DI",
+          "subtopics": [
+            "Paragraph data",
+            "Caselet with table"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 4,
+            "Advanced": 6
+          },
+          "total": 11
+        },
+        {
+          "topic": "Missing DI",
+          "subtopics": [
+            "Table with missing values"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Quantity Comparison",
+          "subtopics": [
+            "Quantity I vs II",
+            "Arithmetic-based comparison"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 5,
+            "Advanced": 3
+          },
+          "total": 10
+        },
+        {
+          "topic": "Data Sufficiency (Quant)",
+          "subtopics": [
+            "Two-statement",
+            "Three-statement"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 4
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_QUANT_pkg2.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 101,
+      "by_difficulty": {
+        "Basic": 33,
+        "Intermediate": 37,
+        "Advanced": 31
+      },
+      "question_ids": [
+        "BANK_QUANT_001900",
+        "BANK_QUANT_002000"
+      ],
+      "stimulus_id_start": "STIM_QUANT_010201",
+      "topics": [
+        {
+          "topic": "Mixture and Alligation",
+          "subtopics": [
+            "Alligation rule",
+            "Replacement of mixture",
+            "Mixing solutions"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 6
+        },
+        {
+          "topic": "Time and Work",
+          "subtopics": [
+            "Work efficiency",
+            "Work and wages",
+            "Alternate days",
+            "Men-women-children"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 4
+        },
+        {
+          "topic": "Pipes and Cisterns",
+          "subtopics": [
+            "Inlet and outlet",
+            "Leak problems"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Speed, Time and Distance",
+          "subtopics": [
+            "Average speed",
+            "Relative speed",
+            "Meeting and overtaking"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Boats and Streams",
+          "subtopics": [
+            "Upstream and downstream",
+            "Speed of stream"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Problems on Trains",
+          "subtopics": [
+            "Crossing a pole or platform",
+            "Trains crossing each other"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Mensuration",
+          "subtopics": [
+            "2D areas and perimeters",
+            "3D volume and surface area",
+            "Cylinder, cone and sphere"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 8
+        },
+        {
+          "topic": "Probability",
+          "subtopics": [
+            "Coins and dice",
+            "Cards",
+            "Balls from bags"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Permutation and Combination",
+          "subtopics": [
+            "Arrangements",
+            "Selections",
+            "Word arrangements"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Tabular DI",
+          "subtopics": [
+            "Single table",
+            "Table with percentages"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 11
+        },
+        {
+          "topic": "Bar Graph DI",
+          "subtopics": [
+            "Simple bar",
+            "Stacked or grouped bar"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "Pie Chart DI",
+          "subtopics": [
+            "Degree-based",
+            "Percentage-based",
+            "Two pie charts"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Line Graph DI",
+          "subtopics": [
+            "Single line",
+            "Multiple lines"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 6
+        },
+        {
+          "topic": "Caselet DI",
+          "subtopics": [
+            "Paragraph data",
+            "Caselet with table"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Missing DI",
+          "subtopics": [
+            "Table with missing values"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 3
+          },
+          "total": 6
+        },
+        {
+          "topic": "Quantity Comparison",
+          "subtopics": [
+            "Quantity I vs II",
+            "Arithmetic-based comparison"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 4
+          },
+          "total": 8
+        },
+        {
+          "topic": "Data Sufficiency (Quant)",
+          "subtopics": [
+            "Two-statement",
+            "Three-statement"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 6
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_QUANT_pkg2.json"
+    }
+  }
+}

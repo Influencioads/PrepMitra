@@ -1,0 +1,386 @@
+{
+  "subject": "Reasoning Ability",
+  "prefix": "REAS",
+  "package": 3,
+  "topics": [
+    "Blood Relations",
+    "Direction Sense",
+    "Coding and Decoding",
+    "Alphanumeric Series",
+    "Alphabet Test",
+    "Number Series (Reasoning)"
+  ],
+  "total": 198,
+  "batches": {
+    "007": {
+      "batch_id": "BATCH_007",
+      "count": 52,
+      "by_difficulty": {
+        "Basic": 14,
+        "Intermediate": 24,
+        "Advanced": 14
+      },
+      "question_ids": [
+        "BANK_REAS_001300",
+        "BANK_REAS_001351"
+      ],
+      "stimulus_id_start": "STIM_REAS_007301",
+      "topics": [
+        {
+          "topic": "Blood Relations",
+          "subtopics": [
+            "Direct relation",
+            "Coded blood relation",
+            "Family puzzle"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 3,
+            "Advanced": 6
+          },
+          "total": 14
+        },
+        {
+          "topic": "Direction Sense",
+          "subtopics": [
+            "Distance and direction",
+            "Point-to-point",
+            "Shadow-based"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 7,
+            "Advanced": 1
+          },
+          "total": 10
+        },
+        {
+          "topic": "Coding and Decoding",
+          "subtopics": [
+            "Letter coding",
+            "Sentence/word coding",
+            "Number coding"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 7,
+            "Advanced": 2
+          },
+          "total": 11
+        },
+        {
+          "topic": "Alphanumeric Series",
+          "subtopics": [
+            "Position-based",
+            "Symbol and number series"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 1,
+            "Advanced": 5
+          },
+          "total": 11
+        },
+        {
+          "topic": "Alphabet Test",
+          "subtopics": [
+            "Letter position",
+            "Word formation",
+            "Pairs of letters"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 6,
+            "Advanced": 0
+          },
+          "total": 6
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_007_REAS_pkg3.json"
+    },
+    "008": {
+      "batch_id": "BATCH_008",
+      "count": 46,
+      "by_difficulty": {
+        "Basic": 14,
+        "Intermediate": 20,
+        "Advanced": 12
+      },
+      "question_ids": [
+        "BANK_REAS_001507",
+        "BANK_REAS_001552"
+      ],
+      "stimulus_id_start": "STIM_REAS_008301",
+      "topics": [
+        {
+          "topic": "Blood Relations",
+          "subtopics": [
+            "Direct relation",
+            "Coded blood relation",
+            "Family puzzle"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Direction Sense",
+          "subtopics": [
+            "Distance and direction",
+            "Point-to-point",
+            "Shadow-based"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 3,
+            "Advanced": 6
+          },
+          "total": 14
+        },
+        {
+          "topic": "Coding and Decoding",
+          "subtopics": [
+            "Letter coding",
+            "Sentence/word coding",
+            "Number coding"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 9,
+            "Advanced": 1
+          },
+          "total": 12
+        },
+        {
+          "topic": "Alphanumeric Series",
+          "subtopics": [
+            "Position-based",
+            "Symbol and number series"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 0,
+            "Advanced": 0
+          },
+          "total": 1
+        },
+        {
+          "topic": "Alphabet Test",
+          "subtopics": [
+            "Letter position",
+            "Word formation",
+            "Pairs of letters"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 0,
+            "Advanced": 4
+          },
+          "total": 9
+        },
+        {
+          "topic": "Number Series (Reasoning)",
+          "subtopics": [
+            "Number-based digit operations",
+            "Three-digit number questions"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 6,
+            "Advanced": 0
+          },
+          "total": 6
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_008_REAS_pkg3.json"
+    },
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 49,
+      "by_difficulty": {
+        "Basic": 14,
+        "Intermediate": 19,
+        "Advanced": 16
+      },
+      "question_ids": [
+        "BANK_REAS_001706",
+        "BANK_REAS_001754"
+      ],
+      "stimulus_id_start": "STIM_REAS_009301",
+      "topics": [
+        {
+          "topic": "Blood Relations",
+          "subtopics": [
+            "Direct relation",
+            "Coded blood relation",
+            "Family puzzle"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 7,
+            "Advanced": 3
+          },
+          "total": 11
+        },
+        {
+          "topic": "Direction Sense",
+          "subtopics": [
+            "Distance and direction",
+            "Point-to-point",
+            "Shadow-based"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Coding and Decoding",
+          "subtopics": [
+            "Letter coding",
+            "Sentence/word coding",
+            "Number coding"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 3,
+            "Advanced": 7
+          },
+          "total": 15
+        },
+        {
+          "topic": "Alphanumeric Series",
+          "subtopics": [
+            "Position-based",
+            "Symbol and number series"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 7,
+            "Advanced": 1
+          },
+          "total": 10
+        },
+        {
+          "topic": "Alphabet Test",
+          "subtopics": [
+            "Letter position",
+            "Word formation",
+            "Pairs of letters"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 0,
+            "Advanced": 0
+          },
+          "total": 1
+        },
+        {
+          "topic": "Number Series (Reasoning)",
+          "subtopics": [
+            "Number-based digit operations",
+            "Three-digit number questions"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 0,
+            "Advanced": 4
+          },
+          "total": 8
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_REAS_pkg3.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 51,
+      "by_difficulty": {
+        "Basic": 14,
+        "Intermediate": 21,
+        "Advanced": 16
+      },
+      "question_ids": [
+        "BANK_REAS_001900",
+        "BANK_REAS_001950"
+      ],
+      "stimulus_id_start": "STIM_REAS_010301",
+      "topics": [
+        {
+          "topic": "Blood Relations",
+          "subtopics": [
+            "Direct relation",
+            "Coded blood relation",
+            "Family puzzle"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 3,
+            "Advanced": 5
+          },
+          "total": 14
+        },
+        {
+          "topic": "Direction Sense",
+          "subtopics": [
+            "Distance and direction",
+            "Point-to-point",
+            "Shadow-based"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 7,
+            "Advanced": 3
+          },
+          "total": 11
+        },
+        {
+          "topic": "Coding and Decoding",
+          "subtopics": [
+            "Letter coding",
+            "Sentence/word coding",
+            "Number coding"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 3
+          },
+          "total": 7
+        },
+        {
+          "topic": "Alphanumeric Series",
+          "subtopics": [
+            "Position-based",
+            "Symbol and number series"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 3,
+            "Advanced": 5
+          },
+          "total": 13
+        },
+        {
+          "topic": "Alphabet Test",
+          "subtopics": [
+            "Letter position",
+            "Word formation",
+            "Pairs of letters"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 6,
+            "Advanced": 0
+          },
+          "total": 6
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_REAS_pkg3.json"
+    }
+  }
+}

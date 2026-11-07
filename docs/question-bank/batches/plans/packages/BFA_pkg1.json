@@ -1,0 +1,504 @@
+{
+  "subject": "Banking and Financial Awareness",
+  "prefix": "BFA",
+  "package": 1,
+  "topics": [
+    "Banking Fundamentals",
+    "History of Banking in India",
+    "Reserve Bank of India",
+    "RBI Functions",
+    "Monetary Policy",
+    "Repo Rate",
+    "Reverse Repo Rate",
+    "CRR",
+    "SLR",
+    "Bank Rate",
+    "Inflation"
+  ],
+  "total": 197,
+  "batches": {
+    "008": {
+      "batch_id": "BATCH_008",
+      "count": 64,
+      "by_difficulty": {
+        "Basic": 21,
+        "Intermediate": 25,
+        "Advanced": 18
+      },
+      "question_ids": [
+        "BANK_BFA_001404",
+        "BANK_BFA_001467"
+      ],
+      "stimulus_id_start": "STIM_BFA_008101",
+      "topics": [
+        {
+          "topic": "Banking Fundamentals",
+          "subtopics": [
+            "Types of accounts",
+            "Types of banks",
+            "Cheques and instruments"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 3
+          },
+          "total": 12
+        },
+        {
+          "topic": "History of Banking in India",
+          "subtopics": [
+            "Nationalisation",
+            "Mergers and consolidation",
+            "Committees"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Reserve Bank of India",
+          "subtopics": [
+            "Establishment and structure",
+            "Governors and leadership"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 4
+          },
+          "total": 8
+        },
+        {
+          "topic": "RBI Functions",
+          "subtopics": [
+            "Issuer of currency",
+            "Banker to government",
+            "Regulator and supervisor"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 4,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Monetary Policy",
+          "subtopics": [
+            "MPC structure",
+            "Policy stance",
+            "Transmission"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 4,
+            "Advanced": 2
+          },
+          "total": 8
+        },
+        {
+          "topic": "Repo Rate",
+          "subtopics": [
+            "Repo and policy corridor"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Reverse Repo Rate",
+          "subtopics": [
+            "Reverse repo and SDF"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "CRR",
+          "subtopics": [
+            "CRR concept",
+            "CRR value"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "SLR",
+          "subtopics": [
+            "SLR concept",
+            "SLR value"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Bank Rate",
+          "subtopics": [
+            "Bank rate and MSF"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Inflation",
+          "subtopics": [
+            "CPI and WPI",
+            "Inflation targeting"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 5
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_008_BFA_pkg1.json"
+    },
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 65,
+      "by_difficulty": {
+        "Basic": 19,
+        "Intermediate": 28,
+        "Advanced": 18
+      },
+      "question_ids": [
+        "BANK_BFA_001603",
+        "BANK_BFA_001667"
+      ],
+      "stimulus_id_start": "STIM_BFA_009101",
+      "topics": [
+        {
+          "topic": "Banking Fundamentals",
+          "subtopics": [
+            "Types of accounts",
+            "Types of banks",
+            "Cheques and instruments"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 6,
+            "Advanced": 3
+          },
+          "total": 11
+        },
+        {
+          "topic": "History of Banking in India",
+          "subtopics": [
+            "Nationalisation",
+            "Mergers and consolidation",
+            "Committees"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "Reserve Bank of India",
+          "subtopics": [
+            "Establishment and structure",
+            "Governors and leadership"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "RBI Functions",
+          "subtopics": [
+            "Issuer of currency",
+            "Banker to government",
+            "Regulator and supervisor"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 4
+          },
+          "total": 8
+        },
+        {
+          "topic": "Monetary Policy",
+          "subtopics": [
+            "MPC structure",
+            "Policy stance",
+            "Transmission"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 2
+          },
+          "total": 9
+        },
+        {
+          "topic": "Repo Rate",
+          "subtopics": [
+            "Repo and policy corridor"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Reverse Repo Rate",
+          "subtopics": [
+            "Reverse repo and SDF"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "CRR",
+          "subtopics": [
+            "CRR concept",
+            "CRR value"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "SLR",
+          "subtopics": [
+            "SLR concept",
+            "SLR value"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Bank Rate",
+          "subtopics": [
+            "Bank rate and MSF"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Inflation",
+          "subtopics": [
+            "CPI and WPI",
+            "Inflation targeting"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 5
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_BFA_pkg1.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 68,
+      "by_difficulty": {
+        "Basic": 17,
+        "Intermediate": 30,
+        "Advanced": 21
+      },
+      "question_ids": [
+        "BANK_BFA_001802",
+        "BANK_BFA_001869"
+      ],
+      "stimulus_id_start": "STIM_BFA_010101",
+      "topics": [
+        {
+          "topic": "Banking Fundamentals",
+          "subtopics": [
+            "Types of accounts",
+            "Types of banks",
+            "Cheques and instruments"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 4,
+            "Advanced": 5
+          },
+          "total": 13
+        },
+        {
+          "topic": "History of Banking in India",
+          "subtopics": [
+            "Nationalisation",
+            "Mergers and consolidation",
+            "Committees"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Reserve Bank of India",
+          "subtopics": [
+            "Establishment and structure",
+            "Governors and leadership"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 3
+          },
+          "total": 8
+        },
+        {
+          "topic": "RBI Functions",
+          "subtopics": [
+            "Issuer of currency",
+            "Banker to government",
+            "Regulator and supervisor"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Monetary Policy",
+          "subtopics": [
+            "MPC structure",
+            "Policy stance",
+            "Transmission"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 5,
+            "Advanced": 5
+          },
+          "total": 11
+        },
+        {
+          "topic": "Repo Rate",
+          "subtopics": [
+            "Repo and policy corridor"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Reverse Repo Rate",
+          "subtopics": [
+            "Reverse repo and SDF"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 0
+          },
+          "total": 2
+        },
+        {
+          "topic": "CRR",
+          "subtopics": [
+            "CRR concept",
+            "CRR value"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "SLR",
+          "subtopics": [
+            "SLR concept",
+            "SLR value"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Bank Rate",
+          "subtopics": [
+            "Bank rate and MSF"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Inflation",
+          "subtopics": [
+            "CPI and WPI",
+            "Inflation targeting"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_BFA_pkg1.json"
+    }
+  }
+}

@@ -1,0 +1,483 @@
+{
+  "subject": "Quantitative Aptitude",
+  "prefix": "QUANT",
+  "package": 1,
+  "topics": [
+    "Simplification",
+    "Approximation",
+    "Number Series",
+    "Wrong Number Series",
+    "Quadratic Equations",
+    "Number System",
+    "Percentage",
+    "Ratio and Proportion",
+    "Problems on Ages",
+    "Average",
+    "Profit and Loss",
+    "Discount",
+    "Simple Interest",
+    "Compound Interest",
+    "Partnership"
+  ],
+  "total": 198,
+  "batches": {
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 100,
+      "by_difficulty": {
+        "Basic": 32,
+        "Intermediate": 40,
+        "Advanced": 28
+      },
+      "question_ids": [
+        "BANK_QUANT_001603",
+        "BANK_QUANT_001702"
+      ],
+      "stimulus_id_start": "STIM_QUANT_009101",
+      "topics": [
+        {
+          "topic": "Simplification",
+          "subtopics": [
+            "BODMAS",
+            "Fractions and decimals",
+            "Surds and indices",
+            "Square and cube roots"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 2,
+            "Advanced": 3
+          },
+          "total": 9
+        },
+        {
+          "topic": "Approximation",
+          "subtopics": [
+            "Percentage approximation",
+            "Root approximation",
+            "Mixed approximation"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 4,
+            "Advanced": 4
+          },
+          "total": 9
+        },
+        {
+          "topic": "Number Series",
+          "subtopics": [
+            "Missing number series",
+            "Pattern: differences",
+            "Pattern: multiply-add",
+            "Pattern: squares and cubes"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 10,
+            "Advanced": 4
+          },
+          "total": 18
+        },
+        {
+          "topic": "Wrong Number Series",
+          "subtopics": [
+            "Find the wrong term"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Quadratic Equations",
+          "subtopics": [
+            "Relation between roots",
+            "Linear vs quadratic"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 9
+        },
+        {
+          "topic": "Number System",
+          "subtopics": [
+            "Divisibility",
+            "HCF and LCM",
+            "Remainders",
+            "Unit digit"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Percentage",
+          "subtopics": [
+            "Basic percentage",
+            "Successive change",
+            "Population and depreciation",
+            "Income and expenditure"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Ratio and Proportion",
+          "subtopics": [
+            "Basic ratio",
+            "Proportion",
+            "Ages via ratio",
+            "Coins and salary share"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Problems on Ages",
+          "subtopics": [
+            "Present and future ages",
+            "Ratio-based ages"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Average",
+          "subtopics": [
+            "Simple average",
+            "Replacement",
+            "Weighted average"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Profit and Loss",
+          "subtopics": [
+            "Cost and selling price",
+            "Marked price",
+            "Dishonest dealer",
+            "Successive transactions"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 3
+          },
+          "total": 8
+        },
+        {
+          "topic": "Discount",
+          "subtopics": [
+            "Single discount",
+            "Successive discounts",
+            "Discount with profit"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Simple Interest",
+          "subtopics": [
+            "Basic SI",
+            "SI with changing rates"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Compound Interest",
+          "subtopics": [
+            "Annual compounding",
+            "Half-yearly and quarterly",
+            "CI vs SI difference",
+            "Instalments"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Partnership",
+          "subtopics": [
+            "Simple partnership",
+            "Compound partnership",
+            "Working partner"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 4
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_QUANT_pkg1.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 98,
+      "by_difficulty": {
+        "Basic": 26,
+        "Intermediate": 43,
+        "Advanced": 29
+      },
+      "question_ids": [
+        "BANK_QUANT_001802",
+        "BANK_QUANT_001899"
+      ],
+      "stimulus_id_start": "STIM_QUANT_010101",
+      "topics": [
+        {
+          "topic": "Simplification",
+          "subtopics": [
+            "BODMAS",
+            "Fractions and decimals",
+            "Surds and indices",
+            "Square and cube roots"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 6,
+            "Advanced": 3
+          },
+          "total": 12
+        },
+        {
+          "topic": "Approximation",
+          "subtopics": [
+            "Percentage approximation",
+            "Root approximation",
+            "Mixed approximation"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 2,
+            "Advanced": 3
+          },
+          "total": 9
+        },
+        {
+          "topic": "Number Series",
+          "subtopics": [
+            "Missing number series",
+            "Pattern: differences",
+            "Pattern: multiply-add",
+            "Pattern: squares and cubes"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 4,
+            "Advanced": 5
+          },
+          "total": 10
+        },
+        {
+          "topic": "Wrong Number Series",
+          "subtopics": [
+            "Find the wrong term"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Quadratic Equations",
+          "subtopics": [
+            "Relation between roots",
+            "Linear vs quadratic"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 9,
+            "Advanced": 1
+          },
+          "total": 12
+        },
+        {
+          "topic": "Number System",
+          "subtopics": [
+            "Divisibility",
+            "HCF and LCM",
+            "Remainders",
+            "Unit digit"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Percentage",
+          "subtopics": [
+            "Basic percentage",
+            "Successive change",
+            "Population and depreciation",
+            "Income and expenditure"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 3
+          },
+          "total": 6
+        },
+        {
+          "topic": "Ratio and Proportion",
+          "subtopics": [
+            "Basic ratio",
+            "Proportion",
+            "Ages via ratio",
+            "Coins and salary share"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Problems on Ages",
+          "subtopics": [
+            "Present and future ages",
+            "Ratio-based ages"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Average",
+          "subtopics": [
+            "Simple average",
+            "Replacement",
+            "Weighted average"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "Profit and Loss",
+          "subtopics": [
+            "Cost and selling price",
+            "Marked price",
+            "Dishonest dealer",
+            "Successive transactions"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Discount",
+          "subtopics": [
+            "Single discount",
+            "Successive discounts",
+            "Discount with profit"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 4
+        },
+        {
+          "topic": "Simple Interest",
+          "subtopics": [
+            "Basic SI",
+            "SI with changing rates"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Compound Interest",
+          "subtopics": [
+            "Annual compounding",
+            "Half-yearly and quarterly",
+            "CI vs SI difference",
+            "Instalments"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "Partnership",
+          "subtopics": [
+            "Simple partnership",
+            "Compound partnership",
+            "Working partner"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_QUANT_pkg1.json"
+    }
+  }
+}
