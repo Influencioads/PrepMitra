@@ -56,6 +56,41 @@ def test_analyse_totals_sections_and_patterns():
     assert analyse(items, sections, {}) == out
 
 
+def test_hand_checked_sample_paper():
+    """A small prelims-style paper worked out by hand: +1 per correct, -0.25 per wrong, 0 for skipped."""
+    sections = [{"key": "quant", "name": "Quant", "question_count": 4, "marks_per_question": 1, "negative_marks": 0.25},
+                {"key": "english", "name": "English", "question_count": 3, "marks_per_question": 1,
+                 "negative_marks": 0.25}]
+    items = [
+        _item(1, "quant", "A", t=40, topic=1),  # correct +1
+        _item(2, "quant", "B", t=50, topic=1),  # wrong -0.25
+        _item(3, "quant", None, t=10, topic=2),  # skipped 0
+        _item(4, "quant", "A", t=130, topic=2),  # correct +1 (slow, but correct)
+        _item(5, "english", "A", t=20, topic=3),  # correct +1
+        _item(6, "english", "C", diff="hard", t=10, topic=3),  # wrong -0.25, a fast guess
+        _item(7, "english", None, t=0, topic=3),  # skipped 0
+    ]
+    out = analyse(items, sections, {})
+    assert (out["score"], out["max_score"]) == (2.5, 7.0)
+    assert (out["attempted"], out["correct"], out["wrong"], out["unanswered"]) == (5, 3, 2, 2)
+    assert (out["accuracy"], out["attempt_rate"], out["negative_marks_lost"]) == (0.6, 0.7143, 0.5)
+    assert (out["total_time_sec"], out["avg_time_per_question_sec"]) == (260, 37.1)
+
+    quant, english = out["sections"]
+    assert (quant["score"], quant["max_score"], quant["accuracy"], quant["attempt_rate"], quant["time_sec"]) == \
+        (1.75, 4.0, 0.6667, 0.75, 230)
+    assert (english["score"], english["max_score"], english["accuracy"], english["attempt_rate"],
+            english["time_sec"]) == (0.75, 3.0, 0.5, 0.6667, 30)
+
+    topics = {t["topic_id"]: t for t in out["topics"]}
+    assert (topics[1]["accuracy"], topics[1]["avg_time_sec"], topics[1]["wrong_refs"]) == (0.5, 45.0, [2])
+    assert (topics[2]["accuracy"], topics[2]["avg_time_sec"], topics[2]["wrong_refs"]) == (1.0, 70.0, [3])
+    assert (topics[3]["accuracy"], topics[3]["avg_time_sec"], topics[3]["wrong_refs"]) == (0.5, 10.0, [6, 7])
+
+    assert out["error_patterns"] == [{"type": "negative_guess", "description": "Fast guesses that lost negative marks",
+                                      "question_refs": [6], "marks_lost": 0.25}]
+
+
 def test_percentile():
     assert percentile(50, []) is None
     assert percentile(50, [10, 20, 50, 80]) == 62.5
