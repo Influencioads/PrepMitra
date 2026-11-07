@@ -163,7 +163,12 @@ def test_submit_scores_report_and_double_submit_is_idempotent(client, catalog_se
 
 def test_correct_answers_hidden_until_submitted(client, catalog_seeded, ready_user):
     a = _start(client, ready_user, catalog_seeded[MINI]).json()
-    assert "correct_answer" not in str(a)
+    paper = client.get(f"/v1/attempts/{a['id']}/paper", headers=ready_user).json()
+    for body in (a, paper):
+        assert body["questions"]
+        for q in body["questions"]:
+            assert not {"correct_answer", "explanation", "shortcut"} & set(q)
+            assert not {"correct_answer", "explanation", "shortcut"} & set(q["content"])
     assert client.get(f"/v1/attempts/{a['id']}/review", headers=ready_user).status_code == 409
 
 
