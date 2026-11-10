@@ -37,14 +37,15 @@ def send_otp(db: Session, raw_phone: str) -> str | None:
     """Creates an OTP. Returns the plain code only in development so the UI can show it."""
     s = get_settings()
     phone = normalize_phone(raw_phone)
+    demo = phone in s.demo_login_phone_set
     since = utcnow() - timedelta(hours=1)
     sent_recently = db.scalar(
         select(func.count()).select_from(OtpCode).where(OtpCode.phone == phone, OtpCode.created_at >= since)
     )
-    if s.rate_limits_enabled and sent_recently >= s.otp_send_limit_per_hour:
+    if s.rate_limits_enabled and not demo and sent_recently >= s.otp_send_limit_per_hour:
         raise AppError(429, "otp_rate_limited", "Too many OTP requests. Try again later.")
 
-    code = generate_otp()
+    code = s.demo_login_otp if demo else generate_otp()
     db.add(OtpCode(phone=phone, code_hash=hash_secret(f"{phone}:{code}"), expires_at=utcnow() + timedelta(seconds=s.otp_ttl_seconds)))
     db.commit()
     get_sms_provider().send_otp(phone, code)

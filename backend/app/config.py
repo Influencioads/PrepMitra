@@ -36,6 +36,10 @@ class Settings(BaseSettings):
     otp_ttl_seconds: int = 300
     otp_max_attempts: int = 5
     otp_send_limit_per_hour: int = 5
+    # Demo/staging only: these numbers (comma separated, 10 digits) always get DEMO_LOGIN_OTP and skip the send limit.
+    # Both empty = off. Never set on a public launch: anyone who knows a number and the code can log in as it.
+    demo_login_phones: str = ""
+    demo_login_otp: str = ""
     # Firebase Authentication (phone OTP + Google on the client). Set to accept Firebase ID tokens.
     firebase_project_id: str = ""
     google_client_id: str = ""
@@ -116,6 +120,12 @@ class Settings(BaseSettings):
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def demo_login_phone_set(self) -> set[str]:
+        if not self.demo_login_otp:
+            return set()
+        return {f"+91{p.strip()[-10:]}" for p in self.demo_login_phones.split(",") if p.strip()}
 
     @property
     def google_client_ids(self) -> list[str]:

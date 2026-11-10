@@ -90,3 +90,30 @@ def test_blocked_user_cannot_use_api(client, db):
 def test_google_not_configured(client):
     r = client.post("/v1/auth/google", json={"id_token": "x" * 20})
     assert r.status_code == 503
+
+
+def test_demo_login_numbers_use_the_fixed_code(client, monkeypatch):
+    from app.config import get_settings
+
+    monkeypatch.setattr(get_settings(), "app_env", "production")
+    monkeypatch.setattr(get_settings(), "demo_login_phones", "9000000101, 9000000102")
+    monkeypatch.setattr(get_settings(), "demo_login_otp", "123456")
+    # No send limit for demo numbers, and the code is never echoed back in production
+    for _ in range(7):
+        r = client.post("/v1/auth/otp/send", json={"phone": "9000000101"})
+        assert r.status_code == 200 and r.json()["dev_otp"] is None
+    assert client.post("/v1/auth/otp/verify", json={"phone": "9000000101", "code": "123456"}).status_code == 200
+    # Other numbers still get a random code
+    client.post("/v1/auth/otp/send", json={"phone": "9876543210"})
+    r = client.post("/v1/auth/otp/verify", json={"phone": "9876543210", "code": "123456"})
+    assert r.status_code == 400
+
+
+def test_demo_login_off_without_a_code(client, monkeypatch):
+    from app.config import get_settings
+
+    monkeypatch.setattr(get_settings(), "app_env", "production")
+    monkeypatch.setattr(get_settings(), "demo_login_phones", "9000000101")
+    client.post("/v1/auth/otp/send", json={"phone": "9000000101"})
+    r = client.post("/v1/auth/otp/verify", json={"phone": "9000000101", "code": ""})
+    assert r.status_code in (400, 422)
