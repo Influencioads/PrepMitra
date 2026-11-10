@@ -10,12 +10,16 @@ export interface CountdownTimerProps {
   /** ISO end time. Demo: client-computed. Production: server-controlled. */
   endsAt: string;
   onExpire: () => void;
+  /** Called once when 5 minutes or less remain (also right away if the page opens with < 5 min left). */
+  onWarning?: () => void;
   className?: string;
   paused?: boolean;
+  /** `dark` for use on the green exam header. */
+  variant?: 'light' | 'dark';
 }
 
 /** Countdown clock with warning (<5 min) and danger (<1 min) states plus screen-reader announcements. */
-export function CountdownTimer({ endsAt, onExpire, className, paused }: CountdownTimerProps) {
+export function CountdownTimer({ endsAt, onExpire, onWarning, className, paused, variant = 'light' }: CountdownTimerProps) {
   const t = useT(examMessages);
   const tRef = useRef(t);
   tRef.current = t;
@@ -24,6 +28,9 @@ export function CountdownTimer({ endsAt, onExpire, className, paused }: Countdow
   const expired = useRef(false);
   const onExpireRef = useRef(onExpire);
   onExpireRef.current = onExpire;
+  const onWarningRef = useRef(onWarning);
+  onWarningRef.current = onWarning;
+  const warned = useRef(false);
 
   useEffect(() => {
     if (paused) return;
@@ -31,6 +38,10 @@ export function CountdownTimer({ endsAt, onExpire, className, paused }: Countdow
       const s = remainingSeconds({ endsAt });
       setLeft(s);
       if (s === 300) setAnnounce(tRef.current('fiveMinLeft'));
+      if (s <= 300 && s > 0 && !warned.current) {
+        warned.current = true;
+        onWarningRef.current?.();
+      }
       if (s === 60) setAnnounce(tRef.current('oneMinLeft'));
       if (s <= 0 && !expired.current) {
         expired.current = true;
@@ -47,7 +58,7 @@ export function CountdownTimer({ endsAt, onExpire, className, paused }: Countdow
     <div
       className={cn(
         'inline-flex items-center gap-2 rounded-lg px-3 py-1.5 font-mono text-base font-semibold tabular-nums',
-        tone === 'normal' && 'bg-stone-100 text-ink',
+        tone === 'normal' && (variant === 'dark' ? 'bg-white/10 text-white ring-1 ring-white/20' : 'bg-stone-100 text-ink'),
         tone === 'warning' && 'bg-warning-soft text-warning-ink',
         tone === 'danger' && 'animate-pulse bg-danger-soft text-danger',
         className,

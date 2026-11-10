@@ -4,6 +4,16 @@ import { defineMessages } from '../index';
 /** Exam catalog, exam cards, exam details, interview cards, pricing cards and pricing page. */
 export const catalogMessages = defineMessages({
   en: {
+    comingSoon: 'Coming soon',
+    comingSoonTitle: 'Opening soon',
+    comingSoonBody: 'This mock is not open yet. Banking exam mocks are open now — start with one of those.',
+    seeOpenExams: 'See open exams',
+    soon: 'Soon',
+    tileOpenNow: 'open now',
+    homeEyebrowExams: 'Mock exams',
+    homeDescExams: 'Full mocks built on real exam patterns, with a detailed report after every attempt.',
+    homeSearchExams: 'Search exams — IBPS, SBI, SSC…',
+    homeSearchExamsLabel: 'Search exams',
     // categories
     cat_government_label: 'Government Exams',
     cat_government_desc: 'SSC CGL, CHSL and other central recruitment patterns with tier-wise sections.',
@@ -201,6 +211,16 @@ export const catalogMessages = defineMessages({
     demoPayment: 'Demo checkout — no real payment is processed and no card, UPI or bank details are collected.',
   },
   hi: {
+    comingSoon: 'जल्द आ रहा है',
+    comingSoonTitle: 'जल्द शुरू होगा',
+    comingSoonBody: 'यह मॉक अभी शुरू नहीं हुआ है। बैंकिंग परीक्षा मॉक अभी उपलब्ध हैं — उनमें से किसी एक से शुरू करें।',
+    seeOpenExams: 'उपलब्ध परीक्षाएँ देखें',
+    soon: 'जल्द',
+    tileOpenNow: 'अभी उपलब्ध',
+    homeEyebrowExams: 'मॉक परीक्षाएँ',
+    homeDescExams: 'असली परीक्षा पैटर्न पर फ़ुल मॉक — हर प्रयास के बाद विस्तृत रिपोर्ट।',
+    homeSearchExams: 'परीक्षा खोजें — IBPS, SBI, SSC…',
+    homeSearchExamsLabel: 'परीक्षा खोजें',
     cat_government_label: 'सरकारी परीक्षाएँ',
     cat_government_desc: 'SSC CGL, CHSL और अन्य केंद्रीय भर्ती पैटर्न, टियर-वार सेक्शन के साथ।',
     cat_banking_label: 'बैंकिंग परीक्षाएँ',

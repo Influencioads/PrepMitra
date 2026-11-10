@@ -67,6 +67,23 @@ sends an SMS itself. It only verifies the ID token at `/v1/auth/session` and cre
 It is free once per user. `Attempt.isMini` and `ExamReport.isMini` are set.
 The demo version is in `shared/src/logic/paper.ts` (`MINI_MOCK`, `capPaper`).
 
+**Errors the exam screens handle (Day 6):**
+
+| When | Server reply | What the student sees |
+| --- | --- | --- |
+| Start, no credits | `402 insufficient_credits` | "You need more credits" dialog; balance re-synced from the server |
+| Start, incomplete profile | `409 profile_incomplete` | Toast, then the profile page |
+| Start, no network | no response | "You are offline. Nothing was charged" |
+| Autosave or submit after the deadline | `409 deadline_passed` | Exam closes, report processing screen |
+| Autosave on a closed attempt | `409 attempt_closed` | Exam closes, report processing screen |
+| Submit, no network | no response | Answers stay on the device; submit is sent again when the network returns |
+| Report polling, network drop or 5xx | — | "Connection lost — still checking" and polling continues |
+| Report job failed | `failed` (+ `credit_restored`) | Error card with **Try again** (`POST /v1/reports/{id}/retry`) |
+| Report not ready in 2 minutes | `processing` | "Taking longer than usual" with **Check again** |
+
+The processing screen is its own route, `/exam/{attemptId}/processing`, so a refresh keeps polling.
+Submitted attempts that are still waiting for a report are listed on My tests.
+
 ## Payments (Razorpay)
 
 | # | Method | Path | Request | Response | Auth | Screen | Fixture |

@@ -10,9 +10,9 @@ const STEPS = ['stepScoring', 'stepStrengths', 'stepPlan'] as const;
 
 /**
  * Shown between submit and the result (15-day plan, Day 6). In real mode the report
- * is polled every 3 s; the steps advance on a timer so the screen always shows movement.
+ * is polled every 3 s (ReportProcessingPage); the steps advance on a timer so the screen always shows movement.
  */
-export function ReportProcessing({ examTitle, done, stepMs = 800 }: { examTitle: string; done: boolean; stepMs?: number }) {
+export function ReportProcessing({ examTitle, done, stepMs = 800, note }: { examTitle: string; done: boolean; stepMs?: number; note?: string }) {
   const t = useT(examMessages);
   const [step, setStep] = useState(0);
   const [elapsed, setElapsed] = useState(0);
@@ -54,6 +54,7 @@ export function ReportProcessing({ examTitle, done, stepMs = 800 }: { examTitle:
             );
           })}
         </ol>
+        {note && <p className="mt-6 rounded-lg bg-warning-soft px-3 py-2 text-xs font-medium text-warning-ink" role="status">{note}</p>}
         <p className="mt-6 text-xs text-muted">{t('processingNote')}</p>
       </div>
     </div>

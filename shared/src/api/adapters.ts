@@ -9,7 +9,7 @@
 import type {
   Answer, AppNotification, Attempt, CreditLedgerEntry, CreditReason, DayPlan, Difficulty, Exam, ExamCategory, ExamReport,
   InterviewReport, InterviewRole, InterviewScores, InterviewSession, InterviewStage, LanguageCode, Loophole, NotificationType,
-  Plan, PlanId, Question, QuestionOutcome, QuestionReviewItem, QuestionStatusAdmin, QuestionState, QuestionType, ScoreResult, Subject, User,
+  Plan, PlanId, Question, QuestionOutcome, QuestionReviewItem, QuestionStatusAdmin, QuestionState, QuestionType, ScoreResult, SharedReport, ShortcutItem, Subject, User,
   UserProfile, UserSettings, WeaknessItem,
 } from '../types/core';
 import type { AdminOrder, AdminQuestion, AdminUserRecord, ReviewItem, ReviewReason } from '../types/admin';
@@ -73,9 +73,10 @@ const category = (key: string, slug: string): ExamCategory => (slug.startsWith('
 
 export function subjectFromSection(key = '', name = ''): Subject {
   const s = `${key} ${name}`.toLowerCase();
-  if (/quant|math|numerical|aptitude|\bqa\b/.test(s)) return 'quant';
-  if (/data interpretation|dilr/.test(s)) return 'data-interpretation';
+  // Order matters: "Reasoning & Computer Aptitude" is reasoning, "Data Analysis & Interpretation" is DI.
+  if (/data analysis|interpretation|dilr|\bdai\b/.test(s)) return 'data-interpretation';
   if (/reason|logical|intelligence|csat/.test(s)) return 'reasoning';
+  if (/quant|math|numerical|aptitude|\bqa\b/.test(s)) return 'quant';
   if (/english|verbal|varc|comprehension/.test(s)) return 'english';
   if (/awareness|\bga\b/.test(s)) return 'general-awareness';
   if (/computer|cse/.test(s)) return 'computer-science';
@@ -290,6 +291,8 @@ export const CONSENT_KEYS: Record<string, string> = {
 
 // ---------- attempts ----------
 export function answerFromBackend(a: Json, type: QuestionType): Answer | undefined {
+  // Saved answers come back wrapped: {"value": "B"} | {"value": ["A","C"]} | {"value": 12.5}.
+  if (a && typeof a === 'object' && !Array.isArray(a) && 'value' in a) a = a.value;
   if (a === null || a === undefined || a === '') return undefined;
   if (type === 'numeric') return { numericValue: String(a) };
   return { selectedOptionIds: Array.isArray(a) ? a : [String(a)] };
@@ -301,7 +304,7 @@ export function answerToBackend(a: Answer | undefined, type: QuestionType): stri
     const n = parseFloat(a.numericValue ?? '');
     return Number.isFinite(n) ? n : null;
   }
-  const ids = a.selectedOptionIds ?? [];
+  const ids = (a.selectedOptionIds ?? []).filter((x): x is string => typeof x === 'string' && x !== '[object Object]');
   if (!ids.length) return null;
   return type === 'multiple' ? ids : ids[0]!;
 }
@@ -400,6 +403,11 @@ export function toExamReport(r: Json, ctx: ReportContext): ExamReport {
   const rep = r.report ?? {};
   const exam = getExamById(ctx.examId);
   const sectionMarks: Record<string, number> = Object.fromEntries((exam?.sections ?? []).map((s) => [s.id, s.marksPerQuestion]));
+  // Marks per question from the server's own section totals (max marks ÷ questions) win over the local catalog.
+  for (const s of an.sections ?? []) {
+    const count = (s.attempted ?? 0) + (s.unanswered ?? 0);
+    if (count > 0 && typeof s.max_score === 'number') sectionMarks[s.key] = Math.round((s.max_score / count) * 100) / 100;
+  }
   const refToId: Record<number, string> = Object.fromEntries((an.questions ?? []).map((q: Json) => [q.ref, q.question_id]));
   const topicAcc: Record<string, number> = Object.fromEntries((an.topics ?? []).map((t: Json) => [t.name, pct(t.accuracy)]));
   const lost: Record<string, number> = Object.fromEntries((an.error_patterns ?? []).map((e: Json) => [e.type, e.marks_lost ?? 0]));
@@ -414,10 +422,11 @@ export function toExamReport(r: Json, ctx: ReportContext): ExamReport {
     attempted: an.attempted ?? 0,
     accuracy: pct(an.accuracy),
     negativeMarksLost: an.negative_marks_lost ?? 0,
-    marksLostTotal: round1(maxScore - (an.score ?? 0)),
+    marksLostTotal: Math.round((maxScore - (an.score ?? 0)) * 100) / 100,
     sections: (an.sections ?? []).map((s: Json) => ({
       sectionId: s.key, name: s.name, score: s.score, maxScore: s.max_score, correct: s.correct, incorrect: s.wrong,
       unanswered: s.unanswered, accuracy: pct(s.accuracy), timeSpentSec: s.time_sec ?? 0,
+      attempted: s.attempted ?? (s.correct ?? 0) + (s.wrong ?? 0),
     })),
     topics: (an.topics ?? []).map((t: Json) => ({
       topic: t.name, subject: subjectFromSection(t.section_key), correct: t.correct, total: t.total, attempted: t.attempted, accuracy: pct(t.accuracy),
@@ -425,6 +434,7 @@ export function toExamReport(r: Json, ctx: ReportContext): ExamReport {
     questions: (an.questions ?? []).map((q: Json) => ({
       questionId: q.question_id, sectionId: q.section_key, outcome: OUTCOME[q.status] ?? 'unanswered', marksAwarded: q.marks ?? 0,
       maxMarks: sectionMarks[q.section_key] ?? 1, timeSpentSec: q.time_sec ?? 0,
+      expectedTimeSec: q.expected_time_sec ?? undefined,
     })),
   };
   const weaknesses: WeaknessItem[] = (rep.weaknesses ?? []).map((w: Json) => ({
@@ -433,11 +443,22 @@ export function toExamReport(r: Json, ctx: ReportContext): ExamReport {
     evidenceQuestionIds: (w.questions?.map((q: Json) => q.question_id) ?? (w.question_refs ?? []).map((n: number) => refToId[n])).filter(Boolean),
     note: w.detail ?? '',
   }));
-  const loopholes: Loophole[] = (rep.loopholes ?? []).map((l: Json) => ({
-    title: (an.error_patterns ?? []).find((e: Json) => e.type === l.pattern)?.description ?? String(l.pattern).replace(/_/g, ' '),
-    detail: l.detail ?? '',
-    marksImpact: lost[l.pattern] ?? 0,
-  }));
+  const loopholes: Loophole[] = (rep.loopholes ?? []).map((l: Json) => {
+    const pattern = (an.error_patterns ?? []).find((e: Json) => e.type === l.pattern && (!l.detail || e.description === l.detail))
+      ?? (an.error_patterns ?? []).find((e: Json) => e.type === l.pattern);
+    const title: string = pattern?.description ?? String(l.pattern).replace(/_/g, ' ');
+    return {
+      title,
+      detail: l.detail && l.detail !== title ? l.detail : '',
+      marksImpact: pattern?.marks_lost ?? lost[l.pattern] ?? 0,
+      pattern: l.pattern,
+      section: l.pattern === 'skipped_section' ? /Skipped the whole (.+) section/.exec(title)?.[1] : undefined,
+      evidenceQuestionIds: ((l.question_refs ?? pattern?.question_refs ?? []) as number[]).map((n) => refToId[n]).filter(Boolean),
+    };
+  });
+  const shortcuts: ShortcutItem[] = (rep.shortcuts ?? [])
+    .map((s: Json) => ({ questionId: s.question_id ?? refToId[s.question_ref], technique: s.technique ?? '', detail: s.explanation ?? '' }))
+    .filter((s: ShortcutItem) => s.questionId && (s.technique || s.detail));
   return {
     id: r.id,
     attemptId: r.attempt_id,
@@ -454,9 +475,37 @@ export function toExamReport(r: Json, ctx: ReportContext): ExamReport {
     weaknesses,
     loopholes,
     recommendedNextExamId: rep.next_test?.exam_slug ? examIdFromSlug(rep.next_test.exam_slug) : ctx.examId,
+    nextTestReason: rep.next_test?.reason || undefined,
     improvementPlan: plan(rep.study_plan),
+    shortcuts,
+    summary: rep.summary || undefined,
+    encouragement: rep.encouragement || undefined,
     rating: r.user_rating ?? undefined,
     isMini: ctx.isMini,
+  };
+}
+
+/** GET /v1/shared/reports/{token} → SharedReport. */
+export function toSharedReport(d: Json): SharedReport {
+  const rep = d.report ?? {};
+  const sc = rep.score_summary;
+  return {
+    kind: d.kind === 'interview' ? 'interview' : 'exam',
+    title: d.title ?? '',
+    language: d.language ?? 'en',
+    createdAt: d.created_at,
+    score: sc
+      ? {
+          score: sc.score ?? 0, maxScore: sc.max_score ?? 0, accuracy: pct(sc.accuracy), attempted: sc.attempted ?? 0, correct: sc.correct ?? 0,
+          incorrect: sc.wrong ?? 0, unanswered: sc.unanswered ?? 0, negativeMarksLost: sc.negative_marks_lost ?? 0,
+        }
+      : undefined,
+    summary: rep.summary || undefined,
+    strengths: (rep.strengths ?? []).map((s: Json) => (typeof s === 'string' ? s : [s.topic, s.detail].filter(Boolean).join(': '))),
+    weaknesses: (rep.weaknesses ?? []).map((w: Json) => ({ topic: w.topic ?? '', detail: w.detail ?? '' })),
+    loopholes: (rep.loopholes ?? []).map((l: Json) => ({ title: String(l.pattern ?? '').replace(/_/g, ' '), detail: l.detail ?? '' })),
+    plan: plan(rep.study_plan),
+    encouragement: rep.encouragement || undefined,
   };
 }
 

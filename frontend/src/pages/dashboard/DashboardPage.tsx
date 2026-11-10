@@ -12,6 +12,8 @@ import { ScoreChart, TopicAccuracyChart } from '@/components/charts/Charts';
 import { ExamCard } from '@/components/exam/ExamCard';
 import { selectInProgress, useAuthStore, useExamStore, useInterviewStore, useProfileStore, useSubscriptionStore } from '@/store';
 import { InterviewScoresCard } from '@/components/common/InterviewScoresCard';
+import { interviewsEnabled, isExamOpen } from '@/config/launch';
+import { cn } from '@/utils/cn';
 import { useProgress } from '@/hooks/useProgress';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useContentT } from '@/i18n/content';
@@ -39,7 +41,7 @@ export function DashboardPage() {
   const recommendedExams = useMemo(() => {
     const targets = profile.targetExamIds.map((id) => getExamById(id)).filter((e): e is NonNullable<typeof e> => !!e);
     const fallback = EXAMS.filter((e) => e.status === 'published').sort((a, b) => b.popularity - a.popularity);
-    const list = [...targets, ...fallback.filter((e) => !targets.includes(e))];
+    const list = [...targets, ...fallback.filter((e) => !targets.includes(e))].filter(isExamOpen);
     return list.slice(0, 3);
   }, [profile.targetExamIds]);
 
@@ -55,16 +57,24 @@ export function DashboardPage() {
       const next = p.reports.find((r) => r.id === last.reportId)?.recommendedNextExamId;
       if (next) recs.push({ id: 'next', title: t('recNextTitle', { exam: getExamById(next)?.shortTitle ?? t('next') }), reason: t('recNextReason'), examId: next, minutes: getExamById(next)?.durationMin ?? 60 });
     }
-    for (const roleId of profile.targetRoleIds.slice(0, 1)) {
+    for (const roleId of interviewsEnabled() ? profile.targetRoleIds.slice(0, 1) : []) {
       recs.push({ id: `r-${roleId}`, title: t('recRoleTitle', { role: getRoleById(roleId)?.shortTitle ?? t('role') }), reason: t('recRoleReason'), roleId, minutes: getRoleById(roleId)?.durationMin ?? 20 });
     }
-    return recs.slice(0, 4);
+    // Only suggest exams that are open (others are "Coming soon").
+    return recs.filter((r) => !r.examId || isExamOpen(getExamById(r.examId) ?? { category: 'banking', isFree: false })).slice(0, 4);
   }, [p, sub.freeMiniMockUsed, profile.targetRoleIds, t]);
 
   const firstName = user?.name.split(' ')[0] ?? t('there');
   // Next recommended test: from the latest report, else the free mini mock, else the first target exam.
   const latestReport = p.history[0] ? p.reports.find((r) => r.id === p.history[0]!.reportId) : undefined;
-  const nextExam = getExamById(latestReport?.recommendedNextExamId ?? (sub.freeMiniMockUsed ? profile.targetExamIds[0] ?? 'general-aptitude' : 'general-aptitude'));
+  const openExam = (id?: string) => {
+    const e = id ? getExamById(id) : undefined;
+    return e && isExamOpen(e) ? e : undefined;
+  };
+  const nextExam =
+    openExam(latestReport?.recommendedNextExamId ?? (sub.freeMiniMockUsed ? profile.targetExamIds[0] ?? 'general-aptitude' : 'general-aptitude')) ??
+    openExam(profile.targetExamIds.find((id) => openExam(id))) ??
+    EXAMS.find((e) => e.status === 'published' && !e.isFree && isExamOpen(e));
   const nextReason = latestReport
     ? latestReport.weaknesses[0]
       ? t('nextReasonReportFocus', { exam: latestReport.examTitle, topic: ct(latestReport.weaknesses[0].topic) })
@@ -148,13 +158,13 @@ export function DashboardPage() {
         <StatCard label={t('statCredits')} value={sub.credits} icon={<Coins className="h-5 w-5" />} hint={sub.freeMiniMockUsed ? <Link to="/subscription" className="font-medium text-primary hover:underline">{t('manageCredits')}</Link> : t('freeMiniAvailable')} />
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label={t('quickPractice')}>
+      <div className={cn('grid gap-3 sm:grid-cols-2', interviewsEnabled() ? 'lg:grid-cols-4' : 'lg:grid-cols-3')} aria-label={t('quickPractice')}>
         {[
           { to: '/exams/general-aptitude', icon: Lightbulb, title: t('qAptitude'), sub: sub.freeMiniMockUsed ? t('oneCredit') : t('freeTrial') },
           { to: '/exams?category=banking', icon: BookOpen, title: t('qBanking'), sub: 'IBPS · SBI' },
           { to: '/interviews', icon: MessageSquare, title: t('qInterview'), sub: t('qInterviewSub') },
           { to: '/progress', icon: TrendingUp, title: t('qProgress'), sub: t('qProgressSub') },
-        ].map(({ to, icon: Icon, title, sub: s }) => (
+        ].filter((q) => q.to !== '/interviews' || interviewsEnabled()).map(({ to, icon: Icon, title, sub: s }) => (
           <Link key={to} to={to} className="group flex items-center gap-3 rounded-[var(--radius-card)] border border-line bg-card p-4 shadow-card transition-colors hover:border-primary/40">
             <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-soft text-secondary"><Icon className="h-5 w-5" aria-hidden /></span>
             <span className="min-w-0 flex-1">
@@ -237,7 +247,7 @@ export function DashboardPage() {
         </Card>
       </div>
 
-      <InterviewScoresCard reports={interviewList} />
+      {interviewsEnabled() && <InterviewScoresCard reports={interviewList} />}
 
       <Card>
         <CardHeader title={t('recentAttempts')} action={hasHistory ? <ButtonLink to="/my-tests" variant="ghost" size="sm">{t('viewAll')}</ButtonLink> : undefined} />

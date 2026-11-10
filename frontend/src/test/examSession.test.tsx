@@ -46,12 +46,17 @@ describe('exam session flow', () => {
       const [first] = screen.getAllByRole(firstQ.type === 'multiple' ? 'checkbox' : 'radio');
       await user.click(first!);
     }
-    expect(within(palette).getByRole('button', { name: 'Question 1, answered' })).toBeInTheDocument();
+    // Real CBT: the choice is not saved until "Save & Next" / "Mark for Review & Next".
+    expect(within(palette).getByRole('button', { name: 'Question 1, not answered' })).toBeInTheDocument();
+    expect(screen.getByText(/Not saved yet/)).toBeInTheDocument();
 
-    // Mark for review & next moves to question 2 and keeps question 1 answered + marked.
+    // Mark for Review & Next saves the answer, marks it and moves to question 2.
     await user.click(screen.getAllByRole('button', { name: /mark for review/i })[0]!);
-    expect(within(palette).getByRole('button', { name: 'Question 1, answered and marked for review' })).toBeInTheDocument();
-    expect(useExamStore.getState().attempts[attempt.id]!.currentIndex).toBe(1);
+    const q1 = attempt.paper[0]!.questionId;
+    const after = useExamStore.getState().attempts[attempt.id]!;
+    expect(after.currentIndex).toBe(1);
+    expect(after.states[q1]!.marked).toBe(true);
+    expect(after.states[q1]!.answer).toBeDefined();
 
     await user.click(within(palette).getByRole('button', { name: /submit test/i }));
     const dialog = await screen.findByRole('dialog');
@@ -64,6 +69,49 @@ describe('exam session flow', () => {
     const reportId = state.attempts[attempt.id]!.reportId!;
     expect(state.reports[reportId]).toBeDefined();
     expect(state.reports[reportId]!.result.attempted).toBe(1);
+  });
+
+  it('Save & Next, Previous, Clear Response and the palette behave like the real CBT', async () => {
+    const user = userEvent.setup();
+    const singleExam = getExamById('ssc-cgl')!;
+    const attempt = createDemoAttempt(singleExam, { id: 'att-test-cbt', language: 'en' });
+    useExamStore.getState().saveAttempt(attempt);
+    renderSession(attempt.id);
+    const [q1, q2] = attempt.paper.map((p) => p.questionId);
+    const get = () => useExamStore.getState().attempts[attempt.id]!;
+    const palette = screen.getByRole('complementary', { name: /question palette/i });
+
+    // Choose an option on Q1, then leave with Previous-less navigation (palette jump): not saved.
+    await user.click(screen.getAllByRole('radio')[0]!);
+    await user.click(within(palette).getByRole('button', { name: /^Question 2,/ }));
+    expect(get().states[q1!]?.answer).toBeUndefined();
+    expect(within(palette).getByRole('button', { name: 'Question 1, not answered' })).toBeInTheDocument();
+
+    // Previous goes back to Q1; choose and Save & Next → answered (palette updates at once), on Q2.
+    await user.click(screen.getAllByRole('button', { name: 'Previous' })[0]!);
+    expect(get().currentIndex).toBe(0);
+    await user.click(screen.getAllByRole('radio')[1]!);
+    await user.click(screen.getAllByRole('button', { name: 'Save & Next' })[0]!);
+    expect(get().currentIndex).toBe(1);
+    expect(within(palette).getByRole('button', { name: 'Question 1, answered' })).toBeInTheDocument();
+
+    // Mark for Review & Next without an answer → Q2 is "marked for review".
+    await user.click(screen.getAllByRole('button', { name: /mark for review/i })[0]!);
+    expect(get().states[q2!]!.marked).toBe(true);
+    expect(within(palette).getByRole('button', { name: 'Question 2, marked for review' })).toBeInTheDocument();
+
+    // Back to Q2: answering it and pressing Save & Next removes the review mark.
+    await user.click(within(palette).getByRole('button', { name: /^Question 2,/ }));
+    await user.click(screen.getAllByRole('radio')[2]!);
+    await user.click(screen.getAllByRole('button', { name: 'Save & Next' })[0]!);
+    expect(get().states[q2!]!.marked).toBe(false);
+    expect(within(palette).getByRole('button', { name: 'Question 2, answered' })).toBeInTheDocument();
+
+    // Clear Response on Q1 removes the saved answer straight away.
+    await user.click(within(palette).getByRole('button', { name: /^Question 1,/ }));
+    await user.click(screen.getAllByRole('button', { name: /Clear Response/ })[0]!);
+    expect(get().states[q1!]!.answer).toBeUndefined();
+    expect(within(palette).getByRole('button', { name: 'Question 1, not answered' })).toBeInTheDocument();
   });
 
   it('restores an unfinished attempt at the saved question after a refresh', async () => {

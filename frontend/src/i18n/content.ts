@@ -60,6 +60,34 @@ const HI: Record<string, string> = {
   Reasoning: 'रीज़निंग',
   'Reasoning Ability': 'रीज़निंग क्षमता',
   'Numerical Ability': 'संख्यात्मक क्षमता',
+  'Data Analysis & Interpretation': 'डेटा एनालिसिस और इंटरप्रिटेशन',
+  'Reasoning & Computer Aptitude': 'रीज़निंग और कंप्यूटर एप्टीट्यूड',
+  'Reasoning Ability & Computer Aptitude': 'रीज़निंग क्षमता और कंप्यूटर एप्टीट्यूड',
+  'Computer Knowledge': 'कंप्यूटर ज्ञान',
+  'General English': 'सामान्य अंग्रेज़ी',
+  'General/ Financial Awareness': 'सामान्य / वित्तीय जागरूकता',
+  'General Awareness/ Economy/ Banking Knowledge': 'सामान्य जागरूकता / अर्थव्यवस्था / बैंकिंग ज्ञान',
+  'General/ Economy/ Banking Awareness/ Digital/ Financial Awareness including RBI circulars':
+    'सामान्य / अर्थव्यवस्था / बैंकिंग / डिजिटल / वित्तीय जागरूकता (RBI सर्कुलर सहित)',
+  'English Language (or Hindi Language - candidate opts one)': 'अंग्रेज़ी भाषा (या हिंदी भाषा — उम्मीदवार एक चुनता है)',
+  'Prelims mock based on the SBI Junior Associate (Customer Support and Sales) pattern: 100 questions in 60 minutes with sectional timing.':
+    'SBI जूनियर एसोसिएट (कस्टमर सपोर्ट और सेल्स) पैटर्न पर प्रीलिम्स मॉक: 60 मिनट में 100 प्रश्न, सेक्शनल टाइमिंग के साथ।',
+  'Regional Rural Bank Officer Scale I prelims mock: 80 questions, 80 marks, 45 minutes across reasoning and quantitative aptitude.':
+    'क्षेत्रीय ग्रामीण बैंक ऑफ़िसर स्केल I प्रीलिम्स मॉक: 80 प्रश्न, 80 अंक, 45 मिनट — रीज़निंग और मात्रात्मक योग्यता।',
+  'Regional Rural Bank Office Assistant (Multipurpose) prelims mock: 80 questions, 80 marks, 45 minutes across reasoning and numerical ability.':
+    'क्षेत्रीय ग्रामीण बैंक ऑफ़िस असिस्टेंट (मल्टीपर्पज़) प्रीलिम्स मॉक: 80 प्रश्न, 80 अंक, 45 मिनट — रीज़निंग और संख्यात्मक क्षमता।',
+  'IBPS PO Mains mock: 170 questions, 200 marks, 160 minutes with sectional timing, including banking and financial awareness and data analysis.':
+    'IBPS PO मेन्स मॉक: 170 प्रश्न, 200 अंक, 160 मिनट, सेक्शनल टाइमिंग — बैंकिंग और वित्तीय जागरूकता तथा डेटा एनालिसिस सहित।',
+  'SBI PO Mains mock: 170 questions, 200 marks, 180 minutes with sectional timing, including reasoning and computer aptitude and data analysis.':
+    'SBI PO मेन्स मॉक: 170 प्रश्न, 200 अंक, 180 मिनट, सेक्शनल टाइमिंग — रीज़निंग और कंप्यूटर एप्टीट्यूड तथा डेटा एनालिसिस सहित।',
+  'IBPS CSA (Clerk) Mains mock: 160 questions, 200 marks, 125 minutes with sectional timing across awareness, English, reasoning and quant.':
+    'IBPS CSA (क्लर्क) मेन्स मॉक: 160 प्रश्न, 200 अंक, 125 मिनट, सेक्शनल टाइमिंग — जागरूकता, अंग्रेज़ी, रीज़निंग और क्वांट।',
+  'SBI Junior Associate (Clerk) Mains mock: 190 questions, 200 marks, 160 minutes with sectional timing across awareness, English, quant and reasoning with computer aptitude.':
+    'SBI जूनियर एसोसिएट (क्लर्क) मेन्स मॉक: 190 प्रश्न, 200 अंक, 160 मिनट, सेक्शनल टाइमिंग — जागरूकता, अंग्रेज़ी, क्वांट और रीज़निंग के साथ कंप्यूटर एप्टीट्यूड।',
+  'IBPS RRB Officer Scale I Mains mock: 200 questions, 200 marks, 120 minutes with sectional timing, including computer knowledge and general awareness.':
+    'IBPS RRB ऑफ़िसर स्केल I मेन्स मॉक: 200 प्रश्न, 200 अंक, 120 मिनट, सेक्शनल टाइमिंग — कंप्यूटर ज्ञान और सामान्य जागरूकता सहित।',
+  'IBPS RRB Office Assistant Mains mock: 200 questions, 200 marks, 120 minutes with sectional timing, including computer knowledge and general awareness.':
+    'IBPS RRB ऑफ़िस असिस्टेंट मेन्स मॉक: 200 प्रश्न, 200 अंक, 120 मिनट, सेक्शनल टाइमिंग — कंप्यूटर ज्ञान और सामान्य जागरूकता सहित।',
   'General Studies I': 'सामान्य अध्ययन I',
   'CSAT (Aptitude)': 'CSAT (एप्टीट्यूड)',
   VARC: 'VARC (वर्बल और रीडिंग)',
@@ -127,6 +155,7 @@ const HI: Record<string, string> = {
   '−1 for wrong MCQs; no negative marking on numeric (TITA) answers': 'गलत MCQ पर −1; न्यूमेरिक (TITA) उत्तरों पर कोई नेगेटिव मार्किंग नहीं',
   '1/3 negative for MCQs only; no negative marking for MSQ and NAT': 'सिर्फ़ MCQ पर 1/3 नेगेटिव; MSQ और NAT पर कोई नेगेटिव मार्किंग नहीं',
   '+4 for correct, −1 for wrong': 'सही पर +4, गलत पर −1',
+  'One quarter of the marks for the question deducted for each wrong answer': 'हर गलत उत्तर पर उस प्रश्न के अंकों का एक-चौथाई कटेगा',
 
   // ---- interview roles (API) ----
   'Bank PO interview': 'Bank PO इंटरव्यू',

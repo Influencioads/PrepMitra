@@ -82,7 +82,7 @@ export function CheckedSheet({ report, studentName, onOpenPlan, className }: { r
             </li>
           )}
         </ol>
-        <p className="mt-6 text-xs text-subtle">{t('codeNote')}</p>
+        <p className="mt-6 text-xs text-subtle">{report.isDemo ? t('codeNote') : t('serverCodeNote')}</p>
       </div>
 
       {/* Leak + heat + Mitra */}

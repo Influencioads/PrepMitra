@@ -18,6 +18,7 @@ import { track } from '@/lib/analytics';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useT, useUiLang, type UiLang } from '@/i18n';
 import { LanguageSwitcher } from '@/i18n/LanguageSwitcher';
+import { interviewsEnabled, isCategoryOpen, isExamOpen } from '@/config/launch';
 import { catalogMessages } from '@/i18n/messages/catalog';
 import { educationLabel, onboardingMessages, streamLabel } from '@/i18n/messages/onboarding';
 import { cn } from '@/utils/cn';
@@ -457,7 +458,7 @@ function EducationStep({ defaults, onNext, onBack, onSave }: { defaults?: Educat
 
 /* ----------------------------------------------------------------- step 3 */
 
-function TargetChip({ selected, onClick, children }: { selected: boolean; onClick: () => void; children: ReactNode }) {
+function TargetChip({ selected, onClick, children, soon }: { selected: boolean; onClick: () => void; children: ReactNode; soon?: string }) {
   return (
     <button
       type="button"
@@ -470,6 +471,7 @@ function TargetChip({ selected, onClick, children }: { selected: boolean; onClic
     >
       {selected ? <Check className="h-4 w-4" strokeWidth={3} aria-hidden /> : <Plus className="h-4 w-4 text-subtle" aria-hidden />}
       {children}
+      {soon && <span className={cn('rounded-full px-1.5 text-[10px] font-bold uppercase tracking-wide', selected ? 'bg-white/25 text-white' : 'bg-line text-muted')}>{soon}</span>}
     </button>
   );
 }
@@ -497,7 +499,10 @@ function TargetsStep({
     const current = key === 'targetExamIds' ? exams : roles;
     setValue(key, current.includes(id) ? current.filter((x) => x !== id) : [...current, id], { shouldValidate: true });
   };
-  const groups = CATEGORY_ORDER.map((c) => ({ c, items: EXAMS.filter((e) => e.category === c) })).filter((g) => g.items.length);
+  // Open categories (e.g. banking at launch) first; the rest are marked "Soon" but can still be picked as goals.
+  const groups = CATEGORY_ORDER.map((c) => ({ c, items: EXAMS.filter((e) => e.category === c) }))
+    .filter((g) => g.items.length)
+    .sort((a, b) => Number(isCategoryOpen(b.c)) - Number(isCategoryOpen(a.c)));
 
   return (
     <form onSubmit={handleSubmit(onFinish)} noValidate className="flex flex-1 flex-col">
@@ -527,14 +532,14 @@ function TargetsStep({
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-subtle">{tc(`cat_${c}_label`)}</p>
               <div className="flex flex-wrap gap-2">
                 {items.map((e) => (
-                  <TargetChip key={e.id} selected={exams.includes(e.id)} onClick={() => toggle('targetExamIds', e.id)}>{e.shortTitle}</TargetChip>
+                  <TargetChip key={e.id} selected={exams.includes(e.id)} onClick={() => toggle('targetExamIds', e.id)} soon={isExamOpen(e) ? undefined : tc('soon')}>{e.shortTitle}</TargetChip>
                 ))}
               </div>
             </div>
           ))}
         </fieldset>
 
-        <fieldset>
+        {interviewsEnabled() && <fieldset>
           <legend className="mb-1 flex items-center gap-2 text-sm font-semibold text-ink">
             <Briefcase className="h-4 w-4 text-secondary" aria-hidden /> {t('targetRoles')}
           </legend>
@@ -544,7 +549,7 @@ function TargetsStep({
               <TargetChip key={r.id} selected={roles.includes(r.id)} onClick={() => toggle('targetRoleIds', r.id)}>{r.shortTitle}</TargetChip>
             ))}
           </div>
-        </fieldset>
+        </fieldset>}
         {errors.targetExamIds && <p role="alert" className="text-sm font-medium text-danger">{errors.targetExamIds.message}</p>}
 
         <div className={cn('rounded-2xl border-2 p-4 transition-colors sm:p-5', consent ? 'border-secondary/40 bg-secondary-soft' : errors.consent ? 'border-danger/50 bg-danger-soft' : 'border-line bg-card')}>
