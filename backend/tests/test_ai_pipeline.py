@@ -1,5 +1,7 @@
 """AI layer: safety guards, the question pipeline's checks, translations, lessons and paper assembly."""
 
+import uuid
+
 import pytest
 from sqlalchemy import select
 
@@ -149,6 +151,22 @@ def test_paper_matches_blueprint_and_reuses_bank(db, catalog_seeded):
     db.commit()
     assert len(list(db.scalars(select(Question)))) == before
     assert len(p2.items) == 30
+
+
+def test_quarantined_question_is_never_served_from_a_prebuilt_paper(db, catalog_seeded):
+    exam = db.get(Exam, catalog_seeded["mini-mock-general-aptitude"])
+    prebuilt = papers.assemble_paper(db, exam, seed=1)
+    db.commit()
+    qid = prebuilt.items[0]["question_id"]
+    db.get(Question, uuid.UUID(qid)).status = "quarantined"  # e.g. the third user flag
+    db.commit()
+
+    served = papers.pick_paper(db, exam, uuid.uuid4())
+    db.commit()
+    assert served.id != prebuilt.id
+    assert qid not in {i["question_id"] for i in served.items}
+    db.refresh(prebuilt)
+    assert prebuilt.status == "retired"
 
 
 def test_lessons_are_injected_into_generation_prompts(db, catalog_seeded, monkeypatch):

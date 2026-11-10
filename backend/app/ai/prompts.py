@@ -113,8 +113,8 @@ def lesson_prompt(*, topic: str, language: str, question_text: str, reason: str,
 def report_prompt(*, language: str, exam_name: str, analytics: dict, memory: dict, candidates: list[str]) -> str:
     return (f"Write the report in: {language_name(language)}\nExam: {exam_name}\n"
             f"Candidate next-test slugs: {', '.join(candidates)}\n"
-            f"Analytics (computed by code, final):\n{json.dumps(analytics, ensure_ascii=False)}\n"
-            f"User memory profile:\n{json.dumps(memory, ensure_ascii=False)}")
+            f"Analytics (computed by code, final):\n{json.dumps(analytics, ensure_ascii=False, separators=(',', ':'))}\n"
+            f"User memory profile:\n{json.dumps(memory, ensure_ascii=False, separators=(',', ':'))}")
 
 
 def interview_next_prompt(*, role: str, level: str, language: str, stage: str, themes: list[str], persona: str,

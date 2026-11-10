@@ -4,17 +4,17 @@ import logging
 import time
 from datetime import timedelta
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.ai import prompts, schemas
-from app.ai.provider import AIError, get_provider
+from app.ai.provider import USD_TO_INR, AIError, cost_usd, get_provider
 from app.config import get_settings
 from app.core.audit import track
 from app.core.errors import AppError, not_found
 from app.core.security import new_share_token
 from app.db import SessionLocal, utcnow
-from app.models import AiLesson, Attempt, Exam, InterviewRole, InterviewSession, Report, User
+from app.models import AiLesson, AiUsage, Attempt, Exam, InterviewRole, InterviewSession, Report, User
 from app.services import credits, memory, pdf
 from app.services.notifications import dispatch_after_commit, notify
 from app.services.providers import get_storage
@@ -23,15 +23,22 @@ log = logging.getLogger(__name__)
 MAX_AI_TRIES = 2
 
 
+REPORT_QUESTION_KEYS = ("ref", "section_key", "topic", "difficulty", "status", "time_sec", "expected_time_sec")
+
+
 def _compact_analytics(a: dict) -> dict:
-    """What the LLM needs (no internal ids)."""
+    """What the LLM needs (no internal ids). Questions answered correctly within their expected time are left out
+    of the list: weaknesses, loopholes and shortcuts only ever cite missed, skipped or slow questions, and the
+    section and topic totals already carry the strengths. This keeps the prompt, and so the report's time and cost,
+    small (a 100-question paper sends roughly half the questions)."""
+    listed = [{k: q[k] for k in REPORT_QUESTION_KEYS} for q in a["questions"]
+              if q["status"] != "correct" or q["time_sec"] > q["expected_time_sec"]]
     return {
         "score": a["score"], "max_score": a["max_score"], "accuracy": a["accuracy"], "percentile": a.get("percentile"),
         "attempted": a["attempted"], "correct": a["correct"], "wrong": a["wrong"], "unanswered": a["unanswered"],
         "negative_marks_lost": a["negative_marks_lost"], "avg_time_per_question_sec": a["avg_time_per_question_sec"],
         "sections": a["sections"], "topics": a["topics"], "error_patterns": a["error_patterns"],
-        "questions": [{k: q[k] for k in ("ref", "section_key", "topic", "difficulty", "status", "time_sec",
-                                         "expected_time_sec")} for q in a["questions"]],
+        "questions": listed, "questions_correct_on_time": len(a["questions"]) - len(listed),
         "previous_scores": a.get("previous_scores", []), "anti_cheat": a.get("anti_cheat", {}),
         "since_last_attempt": a.get("since_last_attempt"),
     }
@@ -103,7 +110,7 @@ def generate_exam_report(report_id) -> None:
         exam = db.get(Exam, attempt.exam_id)
         user = db.get(User, report.user_id)
         candidates = _next_test_candidates(db, user, exam)
-        started = time.monotonic()
+        started, started_at = time.monotonic(), utcnow()
         last_error = ""
         for _ in range(MAX_AI_TRIES):
             try:
@@ -127,6 +134,7 @@ def generate_exam_report(report_id) -> None:
             return
         report.report = content
         report.generation_ms = int((time.monotonic() - started) * 1000)
+        _log_report_cost(db, report, attempt.id, started_at)
         try:
             data = pdf.exam_report_pdf(app_name=get_settings().app_name, exam_name=exam.name, language=report.language,
                                        analytics=report.analytics, report=content)
@@ -138,6 +146,17 @@ def generate_exam_report(report_id) -> None:
                    exam=exam.name)
         db.commit()
         dispatch_after_commit(n.id)
+
+
+def _log_report_cost(db: Session, report: Report, attempt_id, since) -> None:
+    """One log line per report with its time, tokens and cost (all exam_report AI calls for it, retries included)."""
+    rows = db.execute(select(AiUsage.model, func.sum(AiUsage.input_tokens), func.sum(AiUsage.output_tokens))
+                      .where(AiUsage.purpose == "exam_report", AiUsage.ref_id == str(attempt_id),
+                             AiUsage.created_at >= since).group_by(AiUsage.model)).all()
+    tokens_in, tokens_out = sum(r[1] or 0 for r in rows), sum(r[2] or 0 for r in rows)
+    inr = sum(cost_usd(m, tin or 0, tout or 0) for m, tin, tout in rows) * USD_TO_INR
+    log.info("exam report %s ready in %d ms: %d input + %d output tokens, about Rs %.2f",
+             report.id, report.generation_ms, tokens_in, tokens_out, inr)
 
 
 def _fail(db: Session, report: Report, error: str) -> None:
