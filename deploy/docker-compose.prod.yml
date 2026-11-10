@@ -1,5 +1,6 @@
 # Production stack for prepmitra.influencioweb.com. Runs from /opt/prepmitra on the shared server:
 #   docker compose -f deploy/docker-compose.prod.yml up -d --build
+# The image is built by the migrate service; on updates run `build migrate`, then `up -d --force-recreate api worker`.
 # Only the API is published, on 127.0.0.1:8110; nginx serves the web app and proxies /v1 to it.
 name: prepmitra
 
