@@ -33,7 +33,8 @@ def main() -> None:
     log.info("worker started")
     while running:
         scheduler.tick()
-        item = r.blpop([QUEUE_KEY], timeout=5)
+        # Must stay below the client's socket_timeout (5s), or an idle queue raises TimeoutError.
+        item = r.blpop([QUEUE_KEY], timeout=2)
         if item is None:
             continue
         job = json.loads(item[1])
