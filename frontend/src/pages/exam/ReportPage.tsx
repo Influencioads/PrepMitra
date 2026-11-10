@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, CircleCheck, CircleMinus, Flag, Lightbulb, Sparkles, TrendingDown, Trophy, TriangleAlert, XCircle } from 'lucide-react';
 import type { Answer, Loophole, QuestionOutcome } from '@prepmitra/shared';
@@ -15,6 +15,8 @@ import { TimePerQuestionChart } from '@/components/exam/TimePerQuestionChart';
 import { ReportQuestionModal } from '@/components/exam/ReportQuestionModal';
 import { PrintStyles } from '@/components/common/PrintStyles';
 import { usePrintMode } from '@/lib/share';
+import { saveFile } from '@/lib/download';
+import { buildReportPdf } from '@/lib/reportPdf';
 import { track } from '@/lib/analytics';
 import { describeAnswer, describeCorrect, shortLabel } from '@/features/exam/answers';
 import { useAuthStore, useExamStore } from '@/store';
@@ -50,7 +52,8 @@ export function ReportPage() {
   useDocumentTitle(report ? t('reportDocTitle', { exam: report.examTitle }) : t('reportFallbackTitle'));
 
   const numbered = useMemo(() => report?.result.questions.map((q, i) => ({ ...q, n: i + 1 })) ?? [], [report]);
-  const { printing, print } = usePrintMode();
+  const { printing, print, withExpanded } = usePrintMode();
+  const pageRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (report) track('report_viewed', { reportId: report.id, examId: report.examId, kind: 'exam' });
   }, [report?.id]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -133,8 +136,16 @@ export function ReportPage() {
   const marksLostWrong = r.questions.filter((q) => q.outcome === 'incorrect').reduce((s, q) => s + q.maxMarks, 0);
   const marksLostSkipped = r.questions.filter((q) => q.outcome === 'unanswered').reduce((s, q) => s + q.maxMarks, 0);
 
+  // Demo reports have no server PDF: build one from the expanded page in the browser.
+  const downloadPdf = report.isDemo
+    ? async () => {
+        const blob = await withExpanded(() => buildReportPdf(pageRef.current!));
+        await saveFile(`PrepMitra-${report.examId}-report.pdf`, blob);
+      }
+    : undefined;
+
   return (
-    <div>
+    <div ref={pageRef}>
       <PrintStyles />
       <Link data-print-hide to={`/exam-result/${report.id}`} className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-primary">
         <ArrowLeft className="h-4 w-4" aria-hidden /> {t('resultSummary')}
@@ -151,9 +162,10 @@ export function ReportPage() {
         className="mb-8"
         onOpenPlan={() => { setTab('plan'); setTimeout(() => document.getElementById('report-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30); }}
       />
-      <ReportActions report={report} className="mb-6" onPrint={() => { track('report_viewed', { reportId: report.id, kind: 'exam', action: 'pdf' }); print(); }} />
+      <ReportActions report={report} className="mb-6" onDownloadPdf={downloadPdf} onPrint={() => { track('report_viewed', { reportId: report.id, kind: 'exam', action: 'pdf' }); print(); }} />
 
       <div id="report-tabs" className="scroll-mt-24" />
+      <div data-print-hide>
       <Tabs<Tab>
         ariaLabel={t('tabsLabel')}
         value={tab}
@@ -165,6 +177,7 @@ export function ReportPage() {
           { value: 'plan', label: t('tabPlan') },
         ]}
       />
+      </div>
 
       <div className="mt-6" role="tabpanel" aria-label={tab}>
         {show('overview') && (

@@ -170,3 +170,21 @@ describe('Day 7 — rating, PDF and share', () => {
     expect(screen.getByText(/no name, phone number or questions/)).toBeInTheDocument();
   });
 });
+
+describe('Day 7 — PDF in the demo link (claude.ai artifact viewer)', () => {
+  it('sends files through the viewer downloads capability, where direct downloads are blocked', async () => {
+    const { saveFile, inArtifactViewer } = await import('@/lib/download');
+    const save = vi.fn().mockResolvedValue({ status: 'saved' });
+    (window as unknown as { claude?: unknown }).claude = { use: vi.fn(async (n: string) => (n === 'downloads' ? { save } : null)) };
+    try {
+      expect(inArtifactViewer()).toBe(true);
+      const blob = new Blob(['%PDF-1.4'], { type: 'application/pdf' });
+      await expect(saveFile('report.pdf', blob)).resolves.toBe('saved');
+      expect(save).toHaveBeenCalledWith({ filename: 'report.pdf', data: blob });
+      save.mockRejectedValueOnce({ code: 'declined', message: 'no' });
+      await expect(saveFile('report.pdf', blob)).resolves.toBe('declined');
+    } finally {
+      delete (window as unknown as { claude?: unknown }).claude;
+    }
+  });
+});

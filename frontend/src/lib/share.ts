@@ -45,6 +45,16 @@ export function usePrintMode() {
       window.removeEventListener('afterprint', after);
     };
   }, []);
+  /** Renders the expanded print layout, runs `fn` (e.g. builds a PDF from it), then goes back. */
+  const withExpanded = useCallback(async <T,>(fn: () => Promise<T>): Promise<T> => {
+    setPrinting(true);
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 150))));
+    try {
+      return await fn();
+    } finally {
+      setPrinting(false);
+    }
+  }, []);
   const print = useCallback(() => {
     setPrinting(true);
     // Let React render the expanded layout before the dialog opens.
@@ -53,5 +63,5 @@ export function usePrintMode() {
       window.setTimeout(() => setPrinting(false), 500);
     }, 60);
   }, []);
-  return { printing, print };
+  return { printing, print, withExpanded };
 }

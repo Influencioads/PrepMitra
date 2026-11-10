@@ -8,7 +8,10 @@ import { useT } from '@/i18n';
 import { reportMessages } from '@/i18n/messages/report';
 
 
-export function ReportActions({ report, className, onPrint }: { report: ExamReport; className?: string; onPrint: () => void }) {
+/** `onDownloadPdf` builds the PDF in the browser (demo); real reports download the server PDF. */
+export function ReportActions({
+  report, className, onPrint, onDownloadPdf,
+}: { report: ExamReport; className?: string; onPrint: () => void; onDownloadPdf?: () => Promise<void> }) {
   const t = useT(reportMessages);
   const weakExam = report.weaknesses.length > 0 ? report.examId : report.recommendedNextExamId;
   return (
@@ -16,7 +19,7 @@ export function ReportActions({ report, className, onPrint }: { report: ExamRepo
       <ShareActions
         onPrint={onPrint}
         onDownloadHtml={() => reportService.downloadExamReport(report)}
-        onDownloadPdf={report.isDemo ? undefined : () => reportService.downloadExamPdf(report)}
+        onDownloadPdf={onDownloadPdf ?? (report.isDemo ? undefined : () => reportService.downloadExamPdf(report))}
         getShareUrl={report.isDemo ? undefined : () => reportService.createShareLink(report.id)}
       />
       <ButtonLink to={`/exams/${weakExam}`} variant="secondary" leftIcon={<Target className="h-4 w-4" />}>{t('practiceWeak')}</ButtonLink>

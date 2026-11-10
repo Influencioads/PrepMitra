@@ -4,6 +4,7 @@ import { FileDown, Link2, Printer } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { errorMessage } from '@/services';
 import { copyText, currentShareUrl } from '@/lib/share';
+import { inArtifactViewer } from '@/lib/download';
 import { useT } from '@/i18n';
 import { reportMessages } from '@/i18n/messages/report';
 
@@ -55,7 +56,7 @@ export function ShareActions({
       <Button variant="outline" onClick={() => void downloadPdf()} loading={pdfBusy} leftIcon={onDownloadPdf ? <FileDown className="h-4 w-4" /> : <Printer className="h-4 w-4" />}>
         {t('downloadPdf')}
       </Button>
-      {onDownloadPdf && (
+      {onDownloadPdf && !inArtifactViewer() && (
         <Button variant="ghost" onClick={onPrint} leftIcon={<Printer className="h-4 w-4" />}>{t('printReport')}</Button>
       )}
       {onDownloadHtml && !onDownloadPdf && (

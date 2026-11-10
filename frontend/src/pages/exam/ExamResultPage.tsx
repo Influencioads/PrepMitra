@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowRight, FileText, Timer, TrendingDown, Trophy } from 'lucide-react';
 import { getExamById } from '@prepmitra/shared';
@@ -13,6 +14,8 @@ import { shortLabel } from '@/features/exam/answers';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { PrintStyles } from '@/components/common/PrintStyles';
 import { usePrintMode } from '@/lib/share';
+import { saveFile } from '@/lib/download';
+import { buildReportPdf } from '@/lib/reportPdf';
 import { useT, useUiLang } from '@/i18n';
 import { reportMessages } from '@/i18n/messages/report';
 
@@ -25,7 +28,8 @@ export function ExamResultPage() {
   const firstName = useAuthStore((s) => s.session?.user.name?.split(' ')[0]);
   const navigate = useNavigate();
   useDocumentTitle(report ? t('resultDocTitle', { exam: report.examTitle }) : t('resultFallbackTitle'));
-  const { print } = usePrintMode();
+  const { print, withExpanded } = usePrintMode();
+  const pageRef = useRef<HTMLDivElement>(null);
 
   if (!report)
     return (
@@ -39,8 +43,15 @@ export function ExamResultPage() {
   const r = report.result;
   const next = getExamById(report.recommendedNextExamId);
 
+  const downloadPdf = report.isDemo
+    ? async () => {
+        const blob = await withExpanded(() => buildReportPdf(pageRef.current!));
+        await saveFile(`PrepMitra-${report.examId}-result.pdf`, blob);
+      }
+    : undefined;
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" ref={pageRef}>
       <PrintStyles />
       <div>
         <div className="flex flex-wrap gap-2">
@@ -53,7 +64,7 @@ export function ExamResultPage() {
       </div>
       <CheckedSheet report={report} studentName={firstName} onOpenPlan={() => navigate(`/reports/${report.id}?tab=plan`)} />
 
-      <ReportActions report={report} onPrint={print} />
+      <ReportActions report={report} onPrint={print} onDownloadPdf={downloadPdf} />
       <div data-print-hide>
         <ButtonLink to={`/reports/${report.id}`} size="lg" leftIcon={<FileText className="h-4 w-4" />} rightIcon={<ArrowRight className="h-4 w-4" />}>
           {t('viewDetailedReport')}
