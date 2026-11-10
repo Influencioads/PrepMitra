@@ -3,6 +3,7 @@ question the user has already seen. Papers are pre-generated in the background s
 
 import logging
 import random
+import uuid
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -98,7 +99,15 @@ def pick_paper(db: Session, exam: Exam, user_id) -> Paper:
     ready = db.scalars(select(Paper).where(Paper.exam_id == exam.id, Paper.status == "ready",
                                            Paper.blueprint_version == blueprint.version)
                        .order_by(Paper.created_at).with_for_update(skip_locked=True).limit(20)).all()
+    ids = {uuid.UUID(i["question_id"]) for p in ready for i in p.items}
+    pulled = {str(q) for q in db.scalars(select(Question.id).where(
+        Question.id.in_(ids), Question.status != "verified"))} if ids else set()
     for p in ready:
+        if any(i["question_id"] in pulled for i in p.items):
+            # A question was taken out of service after this paper was built (e.g. quarantined by 3 user flags);
+            # retire the paper so the pre-generation job replaces it.
+            p.status = "retired"
+            continue
         if not any(i["question_id"] in seen for i in p.items):
             return p
     return assemble_paper(db, exam, user_id=user_id)

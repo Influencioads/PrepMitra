@@ -161,6 +161,15 @@ def test_submit_scores_report_and_double_submit_is_idempotent(client, catalog_se
     assert client.get(f"/v1/reports/{rep['id']}/pdf", headers=ready_user).content.startswith(b"%PDF")
 
 
+def test_each_report_logs_its_time_and_cost(client, catalog_seeded, ready_user, caplog):
+    a = _start(client, ready_user, catalog_seeded[MINI]).json()
+    _answer_all(client, ready_user, a)
+    with caplog.at_level("INFO", logger="app.services.reports"):
+        client.post(f"/v1/attempts/{a['id']}/submit", headers=ready_user)
+    line = next(r.getMessage() for r in caplog.records if r.getMessage().startswith("exam report"))
+    assert " ms: " in line and "input + " in line and "about Rs " in line
+
+
 def test_correct_answers_hidden_until_submitted(client, catalog_seeded, ready_user):
     a = _start(client, ready_user, catalog_seeded[MINI]).json()
     paper = client.get(f"/v1/attempts/{a['id']}/paper", headers=ready_user).json()

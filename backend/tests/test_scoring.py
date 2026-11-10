@@ -91,6 +91,26 @@ def test_hand_checked_sample_paper():
                                       "question_refs": [6], "marks_lost": 0.25}]
 
 
+def test_report_prompt_sends_only_missed_skipped_or_slow_questions():
+    from app.ai import prompts
+    from app.services.reports import _compact_analytics
+
+    sections = [{"key": "quant", "name": "Quant", "question_count": 4, "marks_per_question": 1, "negative_marks": 0.25},
+                {"key": "english", "name": "English", "question_count": 3, "marks_per_question": 1,
+                 "negative_marks": 0.25}]
+    items = [_item(1, "quant", "A", t=40), _item(2, "quant", "B", t=50), _item(3, "quant", None, t=10),
+             _item(4, "quant", "A", t=130), _item(5, "english", "A", t=20), _item(6, "english", "C", t=10),
+             _item(7, "english", None, t=0)]
+    full = analyse(items, sections, {})
+    compact = _compact_analytics(full)
+    # 1 and 5 were answered correctly on time; 4 was correct but slow, so it stays.
+    assert [q["ref"] for q in compact["questions"]] == [2, 3, 4, 6, 7]
+    assert compact["questions_correct_on_time"] == 2
+    assert compact["score"] == full["score"] and compact["topics"] == full["topics"]
+    prompt = prompts.report_prompt(language="en", exam_name="X", analytics=compact, memory={}, candidates=["x"])
+    assert ": " not in prompt.split("Analytics (computed by code, final):\n")[1]  # compact JSON, no padding
+
+
 def test_percentile():
     assert percentile(50, []) is None
     assert percentile(50, [10, 20, 50, 80]) == 62.5
