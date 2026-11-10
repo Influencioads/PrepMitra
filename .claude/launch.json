@@ -14,6 +14,13 @@
       "port": 5173
     },
     {
+      "name": "question-bank-viewer",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8765", "--bind", "127.0.0.1", "--directory", "docs/question-bank"],
+      "port": 8765,
+      "autoPort": false
+    },
+    {
       "name": "prepmitra-web-3000",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev:web", "--", "--port", "3000", "--strictPort"],

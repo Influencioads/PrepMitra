@@ -1,0 +1,2073 @@
+{
+  "total": 10000,
+  "by_difficulty": {
+    "Basic": 3000,
+    "Intermediate": 4000,
+    "Advanced": 3000
+  },
+  "subjects": [
+    {
+      "subject": "Quantitative Aptitude",
+      "id_prefix": "BANK_QUANT_",
+      "target": 2000,
+      "by_difficulty": {
+        "Basic": 600,
+        "Intermediate": 800,
+        "Advanced": 600
+      },
+      "tested_in": [
+        "IBPS_CSA:Mains",
+        "IBPS_CSA:Prelims",
+        "IBPS_PO:Mains",
+        "IBPS_PO:Prelims",
+        "IBPS_RRB_OA:Mains",
+        "IBPS_RRB_OA:Prelims",
+        "IBPS_RRB_OS1:Mains",
+        "IBPS_RRB_OS1:Prelims",
+        "SBI_JA:Mains",
+        "SBI_JA:Prelims",
+        "SBI_PO:Mains",
+        "SBI_PO:Prelims"
+      ],
+      "topics": [
+        {
+          "topic": "Simplification",
+          "subtopics": [
+            "BODMAS",
+            "Fractions and decimals",
+            "Surds and indices",
+            "Square and cube roots"
+          ],
+          "note": "",
+          "target": 111,
+          "by_difficulty": {
+            "Basic": 33,
+            "Intermediate": 45,
+            "Advanced": 33
+          }
+        },
+        {
+          "topic": "Approximation",
+          "subtopics": [
+            "Percentage approximation",
+            "Root approximation",
+            "Mixed approximation"
+          ],
+          "note": "",
+          "target": 111,
+          "by_difficulty": {
+            "Basic": 33,
+            "Intermediate": 45,
+            "Advanced": 33
+          }
+        },
+        {
+          "topic": "Number Series",
+          "subtopics": [
+            "Missing number series",
+            "Pattern: differences",
+            "Pattern: multiply-add",
+            "Pattern: squares and cubes"
+          ],
+          "note": "",
+          "target": 130,
+          "by_difficulty": {
+            "Basic": 39,
+            "Intermediate": 52,
+            "Advanced": 39
+          }
+        },
+        {
+          "topic": "Wrong Number Series",
+          "subtopics": [
+            "Find the wrong term"
+          ],
+          "note": "Added: frequent in IBPS/SBI prelims",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Quadratic Equations",
+          "subtopics": [
+            "Relation between roots",
+            "Linear vs quadratic"
+          ],
+          "note": "Added: a staple of PO and RRB prelims",
+          "target": 93,
+          "by_difficulty": {
+            "Basic": 28,
+            "Intermediate": 37,
+            "Advanced": 28
+          }
+        },
+        {
+          "topic": "Number System",
+          "subtopics": [
+            "Divisibility",
+            "HCF and LCM",
+            "Remainders",
+            "Unit digit"
+          ],
+          "note": "",
+          "target": 47,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 19,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Percentage",
+          "subtopics": [
+            "Basic percentage",
+            "Successive change",
+            "Population and depreciation",
+            "Income and expenditure"
+          ],
+          "note": "",
+          "target": 66,
+          "by_difficulty": {
+            "Basic": 20,
+            "Intermediate": 26,
+            "Advanced": 20
+          }
+        },
+        {
+          "topic": "Ratio and Proportion",
+          "subtopics": [
+            "Basic ratio",
+            "Proportion",
+            "Ages via ratio",
+            "Coins and salary share"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Problems on Ages",
+          "subtopics": [
+            "Present and future ages",
+            "Ratio-based ages"
+          ],
+          "note": "Added: regular arithmetic word problem",
+          "target": 37,
+          "by_difficulty": {
+            "Basic": 11,
+            "Intermediate": 15,
+            "Advanced": 11
+          }
+        },
+        {
+          "topic": "Average",
+          "subtopics": [
+            "Simple average",
+            "Replacement",
+            "Weighted average"
+          ],
+          "note": "",
+          "target": 47,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 19,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Profit and Loss",
+          "subtopics": [
+            "Cost and selling price",
+            "Marked price",
+            "Dishonest dealer",
+            "Successive transactions"
+          ],
+          "note": "",
+          "target": 66,
+          "by_difficulty": {
+            "Basic": 20,
+            "Intermediate": 26,
+            "Advanced": 20
+          }
+        },
+        {
+          "topic": "Discount",
+          "subtopics": [
+            "Single discount",
+            "Successive discounts",
+            "Discount with profit"
+          ],
+          "note": "",
+          "target": 37,
+          "by_difficulty": {
+            "Basic": 11,
+            "Intermediate": 15,
+            "Advanced": 11
+          }
+        },
+        {
+          "topic": "Simple Interest",
+          "subtopics": [
+            "Basic SI",
+            "SI with changing rates"
+          ],
+          "note": "",
+          "target": 37,
+          "by_difficulty": {
+            "Basic": 11,
+            "Intermediate": 15,
+            "Advanced": 11
+          }
+        },
+        {
+          "topic": "Compound Interest",
+          "subtopics": [
+            "Annual compounding",
+            "Half-yearly and quarterly",
+            "CI vs SI difference",
+            "Instalments"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Partnership",
+          "subtopics": [
+            "Simple partnership",
+            "Compound partnership",
+            "Working partner"
+          ],
+          "note": "",
+          "target": 47,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 19,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Mixture and Alligation",
+          "subtopics": [
+            "Alligation rule",
+            "Replacement of mixture",
+            "Mixing solutions"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Time and Work",
+          "subtopics": [
+            "Work efficiency",
+            "Work and wages",
+            "Alternate days",
+            "Men-women-children"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Pipes and Cisterns",
+          "subtopics": [
+            "Inlet and outlet",
+            "Leak problems"
+          ],
+          "note": "",
+          "target": 37,
+          "by_difficulty": {
+            "Basic": 11,
+            "Intermediate": 15,
+            "Advanced": 11
+          }
+        },
+        {
+          "topic": "Speed, Time and Distance",
+          "subtopics": [
+            "Average speed",
+            "Relative speed",
+            "Meeting and overtaking"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Boats and Streams",
+          "subtopics": [
+            "Upstream and downstream",
+            "Speed of stream"
+          ],
+          "note": "",
+          "target": 37,
+          "by_difficulty": {
+            "Basic": 11,
+            "Intermediate": 15,
+            "Advanced": 11
+          }
+        },
+        {
+          "topic": "Problems on Trains",
+          "subtopics": [
+            "Crossing a pole or platform",
+            "Trains crossing each other"
+          ],
+          "note": "",
+          "target": 37,
+          "by_difficulty": {
+            "Basic": 11,
+            "Intermediate": 15,
+            "Advanced": 11
+          }
+        },
+        {
+          "topic": "Mensuration",
+          "subtopics": [
+            "2D areas and perimeters",
+            "3D volume and surface area",
+            "Cylinder, cone and sphere"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Probability",
+          "subtopics": [
+            "Coins and dice",
+            "Cards",
+            "Balls from bags"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Permutation and Combination",
+          "subtopics": [
+            "Arrangements",
+            "Selections",
+            "Word arrangements"
+          ],
+          "note": "",
+          "target": 37,
+          "by_difficulty": {
+            "Basic": 11,
+            "Intermediate": 15,
+            "Advanced": 11
+          }
+        },
+        {
+          "topic": "Tabular DI",
+          "subtopics": [
+            "Single table",
+            "Table with percentages"
+          ],
+          "note": "",
+          "target": 93,
+          "by_difficulty": {
+            "Basic": 28,
+            "Intermediate": 37,
+            "Advanced": 28
+          }
+        },
+        {
+          "topic": "Bar Graph DI",
+          "subtopics": [
+            "Simple bar",
+            "Stacked or grouped bar"
+          ],
+          "note": "",
+          "target": 74,
+          "by_difficulty": {
+            "Basic": 22,
+            "Intermediate": 30,
+            "Advanced": 22
+          }
+        },
+        {
+          "topic": "Pie Chart DI",
+          "subtopics": [
+            "Degree-based",
+            "Percentage-based",
+            "Two pie charts"
+          ],
+          "note": "",
+          "target": 74,
+          "by_difficulty": {
+            "Basic": 22,
+            "Intermediate": 30,
+            "Advanced": 22
+          }
+        },
+        {
+          "topic": "Line Graph DI",
+          "subtopics": [
+            "Single line",
+            "Multiple lines"
+          ],
+          "note": "",
+          "target": 64,
+          "by_difficulty": {
+            "Basic": 19,
+            "Intermediate": 26,
+            "Advanced": 19
+          }
+        },
+        {
+          "topic": "Caselet DI",
+          "subtopics": [
+            "Paragraph data",
+            "Caselet with table"
+          ],
+          "note": "",
+          "target": 93,
+          "by_difficulty": {
+            "Basic": 28,
+            "Intermediate": 37,
+            "Advanced": 28
+          }
+        },
+        {
+          "topic": "Missing DI",
+          "subtopics": [
+            "Table with missing values"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Quantity Comparison",
+          "subtopics": [
+            "Quantity I vs II",
+            "Arithmetic-based comparison"
+          ],
+          "note": "",
+          "target": 74,
+          "by_difficulty": {
+            "Basic": 22,
+            "Intermediate": 30,
+            "Advanced": 22
+          }
+        },
+        {
+          "topic": "Data Sufficiency (Quant)",
+          "subtopics": [
+            "Two-statement",
+            "Three-statement"
+          ],
+          "note": "Added: appears in PO mains DA&I",
+          "target": 47,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 19,
+            "Advanced": 14
+          }
+        }
+      ]
+    },
+    {
+      "subject": "Reasoning Ability",
+      "id_prefix": "BANK_REAS_",
+      "target": 2000,
+      "by_difficulty": {
+        "Basic": 600,
+        "Intermediate": 800,
+        "Advanced": 600
+      },
+      "tested_in": [
+        "IBPS_CSA:Mains",
+        "IBPS_CSA:Prelims",
+        "IBPS_PO:Mains",
+        "IBPS_PO:Prelims",
+        "IBPS_RRB_OA:Mains",
+        "IBPS_RRB_OA:Prelims",
+        "IBPS_RRB_OS1:Mains",
+        "IBPS_RRB_OS1:Prelims",
+        "SBI_JA:Mains",
+        "SBI_JA:Prelims",
+        "SBI_PO:Mains",
+        "SBI_PO:Prelims"
+      ],
+      "topics": [
+        {
+          "topic": "Linear Seating Arrangement",
+          "subtopics": [
+            "Single row, facing north/south",
+            "Double row",
+            "Unknown number of persons"
+          ],
+          "note": "",
+          "target": 127,
+          "by_difficulty": {
+            "Basic": 38,
+            "Intermediate": 51,
+            "Advanced": 38
+          }
+        },
+        {
+          "topic": "Circular Seating Arrangement",
+          "subtopics": [
+            "Facing centre",
+            "Facing inside and outside",
+            "Square and rectangular tables"
+          ],
+          "note": "",
+          "target": 127,
+          "by_difficulty": {
+            "Basic": 38,
+            "Intermediate": 51,
+            "Advanced": 38
+          }
+        },
+        {
+          "topic": "Floor-Based Puzzles",
+          "subtopics": [
+            "Floor and flat",
+            "Floor with attribute"
+          ],
+          "note": "",
+          "target": 139,
+          "by_difficulty": {
+            "Basic": 42,
+            "Intermediate": 55,
+            "Advanced": 42
+          }
+        },
+        {
+          "topic": "Box-Based Puzzles",
+          "subtopics": [
+            "Stacked boxes",
+            "Boxes with weights or colours"
+          ],
+          "note": "",
+          "target": 116,
+          "by_difficulty": {
+            "Basic": 35,
+            "Intermediate": 46,
+            "Advanced": 35
+          }
+        },
+        {
+          "topic": "Month and Date-Based Puzzles",
+          "subtopics": [
+            "Month-based",
+            "Date-based",
+            "Year-based"
+          ],
+          "note": "",
+          "target": 116,
+          "by_difficulty": {
+            "Basic": 35,
+            "Intermediate": 46,
+            "Advanced": 35
+          }
+        },
+        {
+          "topic": "Puzzles (Other)",
+          "subtopics": [
+            "Designation",
+            "Comparison and ordering",
+            "Day-based"
+          ],
+          "note": "Covers puzzles that are not seating, floor, box or calendar",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "Syllogism",
+          "subtopics": [
+            "Two-statement",
+            "Only a few / Only",
+            "Possibility cases"
+          ],
+          "note": "",
+          "target": 163,
+          "by_difficulty": {
+            "Basic": 49,
+            "Intermediate": 65,
+            "Advanced": 49
+          }
+        },
+        {
+          "topic": "Inequality",
+          "subtopics": [
+            "Direct inequality",
+            "Coded inequality"
+          ],
+          "note": "",
+          "target": 163,
+          "by_difficulty": {
+            "Basic": 49,
+            "Intermediate": 65,
+            "Advanced": 49
+          }
+        },
+        {
+          "topic": "Blood Relations",
+          "subtopics": [
+            "Direct relation",
+            "Coded blood relation",
+            "Family puzzle"
+          ],
+          "note": "",
+          "target": 93,
+          "by_difficulty": {
+            "Basic": 28,
+            "Intermediate": 37,
+            "Advanced": 28
+          }
+        },
+        {
+          "topic": "Direction Sense",
+          "subtopics": [
+            "Distance and direction",
+            "Point-to-point",
+            "Shadow-based"
+          ],
+          "note": "",
+          "target": 93,
+          "by_difficulty": {
+            "Basic": 28,
+            "Intermediate": 37,
+            "Advanced": 28
+          }
+        },
+        {
+          "topic": "Coding and Decoding",
+          "subtopics": [
+            "Letter coding",
+            "Sentence/word coding",
+            "Number coding"
+          ],
+          "note": "",
+          "target": 127,
+          "by_difficulty": {
+            "Basic": 38,
+            "Intermediate": 51,
+            "Advanced": 38
+          }
+        },
+        {
+          "topic": "Alphanumeric Series",
+          "subtopics": [
+            "Position-based",
+            "Symbol and number series"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Alphabet Test",
+          "subtopics": [
+            "Letter position",
+            "Word formation",
+            "Pairs of letters"
+          ],
+          "note": "",
+          "target": 57,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 23,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Number Series (Reasoning)",
+          "subtopics": [
+            "Number-based digit operations",
+            "Three-digit number questions"
+          ],
+          "note": "Digit-operation questions; arithmetic series sit in Quant",
+          "target": 47,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 19,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Ranking and Order",
+          "subtopics": [
+            "Position in a row",
+            "Comparison of heights/weights"
+          ],
+          "note": "",
+          "target": 57,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 23,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Input and Output",
+          "subtopics": [
+            "Word rearrangement",
+            "Number rearrangement",
+            "Mixed machine"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Data Sufficiency",
+          "subtopics": [
+            "Two-statement",
+            "Three-statement"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Statement and Assumptions",
+          "subtopics": [
+            "Implicit assumptions"
+          ],
+          "note": "Logical reasoning",
+          "target": 57,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 23,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Statement and Conclusions",
+          "subtopics": [
+            "Valid conclusions",
+            "Inferences"
+          ],
+          "note": "Logical reasoning",
+          "target": 57,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 23,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Cause and Effect",
+          "subtopics": [
+            "Independent causes",
+            "Common cause"
+          ],
+          "note": "Logical reasoning",
+          "target": 47,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 19,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Critical Reasoning",
+          "subtopics": [
+            "Strengthen and weaken",
+            "Course of action",
+            "Inference from a passage"
+          ],
+          "note": "Logical reasoning; heavier in PO mains",
+          "target": 104,
+          "by_difficulty": {
+            "Basic": 31,
+            "Intermediate": 42,
+            "Advanced": 31
+          }
+        }
+      ]
+    },
+    {
+      "subject": "English Language",
+      "id_prefix": "BANK_ENG_",
+      "target": 1500,
+      "by_difficulty": {
+        "Basic": 450,
+        "Intermediate": 600,
+        "Advanced": 450
+      },
+      "tested_in": [
+        "IBPS_CSA:Mains",
+        "IBPS_CSA:Prelims",
+        "IBPS_PO:Mains",
+        "IBPS_PO:Prelims",
+        "IBPS_RRB_OA:Mains",
+        "IBPS_RRB_OS1:Mains",
+        "SBI_JA:Mains",
+        "SBI_JA:Prelims",
+        "SBI_PO:Mains",
+        "SBI_PO:Prelims"
+      ],
+      "topics": [
+        {
+          "topic": "Reading Comprehension",
+          "subtopics": [
+            "Factual",
+            "Inference",
+            "Tone and title",
+            "Vocabulary in context"
+          ],
+          "note": "",
+          "target": 303,
+          "by_difficulty": {
+            "Basic": 91,
+            "Intermediate": 121,
+            "Advanced": 91
+          }
+        },
+        {
+          "topic": "Cloze Test",
+          "subtopics": [
+            "Single-blank cloze",
+            "Error-based cloze"
+          ],
+          "note": "",
+          "target": 181,
+          "by_difficulty": {
+            "Basic": 54,
+            "Intermediate": 73,
+            "Advanced": 54
+          }
+        },
+        {
+          "topic": "Error Detection",
+          "subtopics": [
+            "Part-wise error",
+            "Error-free sentence"
+          ],
+          "note": "",
+          "target": 151,
+          "by_difficulty": {
+            "Basic": 45,
+            "Intermediate": 61,
+            "Advanced": 45
+          }
+        },
+        {
+          "topic": "Sentence Improvement",
+          "subtopics": [
+            "Bold-part improvement"
+          ],
+          "note": "",
+          "target": 77,
+          "by_difficulty": {
+            "Basic": 23,
+            "Intermediate": 31,
+            "Advanced": 23
+          }
+        },
+        {
+          "topic": "Phrase Replacement",
+          "subtopics": [
+            "Replace the phrase"
+          ],
+          "note": "",
+          "target": 46,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 18,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Sentence Correction",
+          "subtopics": [
+            "Correct sentence",
+            "Grammatically incorrect sentence"
+          ],
+          "note": "",
+          "target": 46,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 18,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Para Jumbles",
+          "subtopics": [
+            "Five-sentence jumble",
+            "Fixed sentence"
+          ],
+          "note": "",
+          "target": 91,
+          "by_difficulty": {
+            "Basic": 27,
+            "Intermediate": 37,
+            "Advanced": 27
+          }
+        },
+        {
+          "topic": "Sentence Rearrangement",
+          "subtopics": [
+            "Word/phrase rearrangement within a sentence"
+          ],
+          "note": "",
+          "target": 30,
+          "by_difficulty": {
+            "Basic": 9,
+            "Intermediate": 12,
+            "Advanced": 9
+          }
+        },
+        {
+          "topic": "Fill in the Blanks",
+          "subtopics": [
+            "Single blank",
+            "Double blank",
+            "Phrase fillers"
+          ],
+          "note": "",
+          "target": 121,
+          "by_difficulty": {
+            "Basic": 36,
+            "Intermediate": 49,
+            "Advanced": 36
+          }
+        },
+        {
+          "topic": "Word Usage",
+          "subtopics": [
+            "Correct usage of a word",
+            "Word swap"
+          ],
+          "note": "",
+          "target": 46,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 18,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Vocabulary",
+          "subtopics": [
+            "Contextual meaning",
+            "Word pairs"
+          ],
+          "note": "",
+          "target": 46,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 18,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Synonyms",
+          "subtopics": [
+            "Contextual synonym"
+          ],
+          "note": "",
+          "target": 46,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 18,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "Antonyms",
+          "subtopics": [
+            "Contextual antonym"
+          ],
+          "note": "",
+          "target": 37,
+          "by_difficulty": {
+            "Basic": 11,
+            "Intermediate": 15,
+            "Advanced": 11
+          }
+        },
+        {
+          "topic": "Idioms and Phrases",
+          "subtopics": [
+            "Meaning of idiom",
+            "Idiom in context"
+          ],
+          "note": "",
+          "target": 46,
+          "by_difficulty": {
+            "Basic": 14,
+            "Intermediate": 18,
+            "Advanced": 14
+          }
+        },
+        {
+          "topic": "One-Word Substitution",
+          "subtopics": [
+            "Single word for a phrase"
+          ],
+          "note": "",
+          "target": 30,
+          "by_difficulty": {
+            "Basic": 9,
+            "Intermediate": 12,
+            "Advanced": 9
+          }
+        },
+        {
+          "topic": "Active and Passive Voice",
+          "subtopics": [
+            "Voice conversion"
+          ],
+          "note": "Rare in current patterns; kept low",
+          "target": 23,
+          "by_difficulty": {
+            "Basic": 7,
+            "Intermediate": 9,
+            "Advanced": 7
+          }
+        },
+        {
+          "topic": "Direct and Indirect Speech",
+          "subtopics": [
+            "Narration change"
+          ],
+          "note": "Rare in current patterns; kept low",
+          "target": 23,
+          "by_difficulty": {
+            "Basic": 7,
+            "Intermediate": 9,
+            "Advanced": 7
+          }
+        },
+        {
+          "topic": "Subject-Verb Agreement",
+          "subtopics": [
+            "Agreement rules"
+          ],
+          "note": "Grammar",
+          "target": 30,
+          "by_difficulty": {
+            "Basic": 9,
+            "Intermediate": 12,
+            "Advanced": 9
+          }
+        },
+        {
+          "topic": "Tenses",
+          "subtopics": [
+            "Sequence of tenses",
+            "Perfect tenses"
+          ],
+          "note": "Grammar",
+          "target": 30,
+          "by_difficulty": {
+            "Basic": 9,
+            "Intermediate": 12,
+            "Advanced": 9
+          }
+        },
+        {
+          "topic": "Articles",
+          "subtopics": [
+            "Definite and indefinite"
+          ],
+          "note": "Grammar",
+          "target": 23,
+          "by_difficulty": {
+            "Basic": 7,
+            "Intermediate": 9,
+            "Advanced": 7
+          }
+        },
+        {
+          "topic": "Prepositions",
+          "subtopics": [
+            "Fixed prepositions",
+            "Phrasal verbs"
+          ],
+          "note": "Grammar",
+          "target": 30,
+          "by_difficulty": {
+            "Basic": 9,
+            "Intermediate": 12,
+            "Advanced": 9
+          }
+        },
+        {
+          "topic": "Connectors",
+          "subtopics": [
+            "Sentence connectors",
+            "Starters and linkers"
+          ],
+          "note": "",
+          "target": 44,
+          "by_difficulty": {
+            "Basic": 13,
+            "Intermediate": 18,
+            "Advanced": 13
+          }
+        }
+      ]
+    },
+    {
+      "subject": "General Awareness and Current Affairs",
+      "id_prefix": "BANK_GA_",
+      "target": 1500,
+      "by_difficulty": {
+        "Basic": 450,
+        "Intermediate": 600,
+        "Advanced": 450
+      },
+      "tested_in": [
+        "IBPS_CSA:Mains",
+        "IBPS_PO:Mains",
+        "IBPS_RRB_OA:Mains",
+        "IBPS_RRB_OS1:Mains",
+        "SBI_JA:Mains",
+        "SBI_PO:Mains"
+      ],
+      "topics": [
+        {
+          "topic": "National Current Affairs",
+          "subtopics": [
+            "Government decisions",
+            "States and UTs",
+            "Defence"
+          ],
+          "note": "Current affairs: 6-8 month window",
+          "target": 167,
+          "by_difficulty": {
+            "Basic": 50,
+            "Intermediate": 67,
+            "Advanced": 50
+          }
+        },
+        {
+          "topic": "International Current Affairs",
+          "subtopics": [
+            "Bilateral relations",
+            "Global events"
+          ],
+          "note": "Current affairs",
+          "target": 139,
+          "by_difficulty": {
+            "Basic": 42,
+            "Intermediate": 55,
+            "Advanced": 42
+          }
+        },
+        {
+          "topic": "Government Schemes",
+          "subtopics": [
+            "Central schemes",
+            "Scheme launches and changes"
+          ],
+          "note": "",
+          "target": 153,
+          "by_difficulty": {
+            "Basic": 46,
+            "Intermediate": 61,
+            "Advanced": 46
+          }
+        },
+        {
+          "topic": "Important Appointments",
+          "subtopics": [
+            "Banking and finance heads",
+            "International bodies"
+          ],
+          "note": "Current affairs",
+          "target": 110,
+          "by_difficulty": {
+            "Basic": 33,
+            "Intermediate": 44,
+            "Advanced": 33
+          }
+        },
+        {
+          "topic": "Awards and Honours",
+          "subtopics": [
+            "National awards",
+            "International awards"
+          ],
+          "note": "Current affairs",
+          "target": 97,
+          "by_difficulty": {
+            "Basic": 29,
+            "Intermediate": 39,
+            "Advanced": 29
+          }
+        },
+        {
+          "topic": "Sports",
+          "subtopics": [
+            "Tournaments and winners",
+            "Venues and records"
+          ],
+          "note": "Current affairs",
+          "target": 97,
+          "by_difficulty": {
+            "Basic": 29,
+            "Intermediate": 39,
+            "Advanced": 29
+          }
+        },
+        {
+          "topic": "Summits and Conferences",
+          "subtopics": [
+            "G20, BRICS, SCO and others",
+            "Hosting countries"
+          ],
+          "note": "Current affairs",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "Important Days",
+          "subtopics": [
+            "Days and themes"
+          ],
+          "note": "",
+          "target": 56,
+          "by_difficulty": {
+            "Basic": 17,
+            "Intermediate": 22,
+            "Advanced": 17
+          }
+        },
+        {
+          "topic": "Books and Authors",
+          "subtopics": [
+            "Recent books"
+          ],
+          "note": "Current affairs",
+          "target": 43,
+          "by_difficulty": {
+            "Basic": 13,
+            "Intermediate": 17,
+            "Advanced": 13
+          }
+        },
+        {
+          "topic": "National and International Organizations",
+          "subtopics": [
+            "Headquarters and heads",
+            "Membership"
+          ],
+          "note": "",
+          "target": 110,
+          "by_difficulty": {
+            "Basic": 33,
+            "Intermediate": 44,
+            "Advanced": 33
+          }
+        },
+        {
+          "topic": "Important Reports and Indexes",
+          "subtopics": [
+            "Publishing body",
+            "India's rank"
+          ],
+          "note": "",
+          "target": 97,
+          "by_difficulty": {
+            "Basic": 29,
+            "Intermediate": 39,
+            "Advanced": 29
+          }
+        },
+        {
+          "topic": "Economic Affairs",
+          "subtopics": [
+            "GDP and growth projections",
+            "Inflation data",
+            "Fiscal data",
+            "Monetary policy decisions"
+          ],
+          "note": "Current affairs",
+          "target": 124,
+          "by_difficulty": {
+            "Basic": 37,
+            "Intermediate": 50,
+            "Advanced": 37
+          }
+        },
+        {
+          "topic": "Government Policies",
+          "subtopics": [
+            "Policy changes",
+            "Regulatory reforms"
+          ],
+          "note": "",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "Business and Corporate News",
+          "subtopics": [
+            "Mergers and acquisitions",
+            "Corporate partnerships"
+          ],
+          "note": "Current affairs",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "Static Awareness",
+          "subtopics": [
+            "Capitals and currencies",
+            "National parks and dams",
+            "Indian states facts"
+          ],
+          "note": "Added: common in RRB GA",
+          "target": 97,
+          "by_difficulty": {
+            "Basic": 29,
+            "Intermediate": 39,
+            "Advanced": 29
+          }
+        }
+      ]
+    },
+    {
+      "subject": "Banking and Financial Awareness",
+      "id_prefix": "BANK_BFA_",
+      "target": 2000,
+      "by_difficulty": {
+        "Basic": 600,
+        "Intermediate": 800,
+        "Advanced": 600
+      },
+      "tested_in": [
+        "IBPS_CSA:Mains",
+        "IBPS_PO:Mains",
+        "IBPS_RRB_OA:Mains",
+        "IBPS_RRB_OS1:Mains",
+        "SBI_JA:Mains",
+        "SBI_PO:Mains"
+      ],
+      "topics": [
+        {
+          "topic": "Banking Fundamentals",
+          "subtopics": [
+            "Types of accounts",
+            "Types of banks",
+            "Cheques and instruments"
+          ],
+          "note": "",
+          "target": 120,
+          "by_difficulty": {
+            "Basic": 36,
+            "Intermediate": 48,
+            "Advanced": 36
+          }
+        },
+        {
+          "topic": "History of Banking in India",
+          "subtopics": [
+            "Nationalisation",
+            "Mergers and consolidation",
+            "Committees"
+          ],
+          "note": "",
+          "target": 60,
+          "by_difficulty": {
+            "Basic": 18,
+            "Intermediate": 24,
+            "Advanced": 18
+          }
+        },
+        {
+          "topic": "Reserve Bank of India",
+          "subtopics": [
+            "Establishment and structure",
+            "Governors and leadership"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "RBI Functions",
+          "subtopics": [
+            "Issuer of currency",
+            "Banker to government",
+            "Regulator and supervisor"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Monetary Policy",
+          "subtopics": [
+            "MPC structure",
+            "Policy stance",
+            "Transmission"
+          ],
+          "note": "",
+          "target": 100,
+          "by_difficulty": {
+            "Basic": 30,
+            "Intermediate": 40,
+            "Advanced": 30
+          }
+        },
+        {
+          "topic": "Repo Rate",
+          "subtopics": [
+            "Repo and policy corridor"
+          ],
+          "note": "Current values change: needs review_by date",
+          "target": 50,
+          "by_difficulty": {
+            "Basic": 15,
+            "Intermediate": 20,
+            "Advanced": 15
+          }
+        },
+        {
+          "topic": "Reverse Repo Rate",
+          "subtopics": [
+            "Reverse repo and SDF"
+          ],
+          "note": "",
+          "target": 30,
+          "by_difficulty": {
+            "Basic": 9,
+            "Intermediate": 12,
+            "Advanced": 9
+          }
+        },
+        {
+          "topic": "CRR",
+          "subtopics": [
+            "CRR concept",
+            "CRR value"
+          ],
+          "note": "",
+          "target": 40,
+          "by_difficulty": {
+            "Basic": 12,
+            "Intermediate": 16,
+            "Advanced": 12
+          }
+        },
+        {
+          "topic": "SLR",
+          "subtopics": [
+            "SLR concept",
+            "SLR value"
+          ],
+          "note": "",
+          "target": 40,
+          "by_difficulty": {
+            "Basic": 12,
+            "Intermediate": 16,
+            "Advanced": 12
+          }
+        },
+        {
+          "topic": "Bank Rate",
+          "subtopics": [
+            "Bank rate and MSF"
+          ],
+          "note": "",
+          "target": 30,
+          "by_difficulty": {
+            "Basic": 9,
+            "Intermediate": 12,
+            "Advanced": 9
+          }
+        },
+        {
+          "topic": "Inflation",
+          "subtopics": [
+            "CPI and WPI",
+            "Inflation targeting"
+          ],
+          "note": "",
+          "target": 60,
+          "by_difficulty": {
+            "Basic": 18,
+            "Intermediate": 24,
+            "Advanced": 18
+          }
+        },
+        {
+          "topic": "NPA",
+          "subtopics": [
+            "Classification",
+            "Resolution and IBC",
+            "SARFAESI"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Basel Norms",
+          "subtopics": [
+            "Capital adequacy",
+            "LCR and NSFR",
+            "Leverage ratio"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Financial Inclusion",
+          "subtopics": [
+            "PMJDY and allied schemes",
+            "Business correspondents"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Priority Sector Lending",
+          "subtopics": [
+            "Targets and sub-targets",
+            "PSLCs"
+          ],
+          "note": "",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "RBI Integrated Ombudsman Scheme",
+          "subtopics": [
+            "Scope and grounds",
+            "Process and limits"
+          ],
+          "note": "",
+          "target": 60,
+          "by_difficulty": {
+            "Basic": 18,
+            "Intermediate": 24,
+            "Advanced": 18
+          }
+        },
+        {
+          "topic": "Digital Banking",
+          "subtopics": [
+            "Mobile and internet banking",
+            "Digital lending",
+            "CBDC (e-rupee)"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "UPI",
+          "subtopics": [
+            "Features",
+            "UPI Lite and international"
+          ],
+          "note": "",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "NEFT",
+          "subtopics": [
+            "Settlement and timings"
+          ],
+          "note": "",
+          "target": 40,
+          "by_difficulty": {
+            "Basic": 12,
+            "Intermediate": 16,
+            "Advanced": 12
+          }
+        },
+        {
+          "topic": "RTGS",
+          "subtopics": [
+            "Limits and timings"
+          ],
+          "note": "",
+          "target": 40,
+          "by_difficulty": {
+            "Basic": 12,
+            "Intermediate": 16,
+            "Advanced": 12
+          }
+        },
+        {
+          "topic": "IMPS",
+          "subtopics": [
+            "Limits and features"
+          ],
+          "note": "",
+          "target": 30,
+          "by_difficulty": {
+            "Basic": 9,
+            "Intermediate": 12,
+            "Advanced": 9
+          }
+        },
+        {
+          "topic": "NPCI",
+          "subtopics": [
+            "Products: NACH, AePS, RuPay, FASTag"
+          ],
+          "note": "",
+          "target": 60,
+          "by_difficulty": {
+            "Basic": 18,
+            "Intermediate": 24,
+            "Advanced": 18
+          }
+        },
+        {
+          "topic": "Payment Banks",
+          "subtopics": [
+            "Permitted activities",
+            "Deposit limit"
+          ],
+          "note": "",
+          "target": 40,
+          "by_difficulty": {
+            "Basic": 12,
+            "Intermediate": 16,
+            "Advanced": 12
+          }
+        },
+        {
+          "topic": "Small Finance Banks",
+          "subtopics": [
+            "Licensing norms",
+            "PSL targets"
+          ],
+          "note": "",
+          "target": 40,
+          "by_difficulty": {
+            "Basic": 12,
+            "Intermediate": 16,
+            "Advanced": 12
+          }
+        },
+        {
+          "topic": "Financial Markets",
+          "subtopics": [
+            "Structure and regulators"
+          ],
+          "note": "",
+          "target": 60,
+          "by_difficulty": {
+            "Basic": 18,
+            "Intermediate": 24,
+            "Advanced": 18
+          }
+        },
+        {
+          "topic": "Money Market",
+          "subtopics": [
+            "Instruments: T-bills, CP, CD, call money"
+          ],
+          "note": "",
+          "target": 60,
+          "by_difficulty": {
+            "Basic": 18,
+            "Intermediate": 24,
+            "Advanced": 18
+          }
+        },
+        {
+          "topic": "Capital Market",
+          "subtopics": [
+            "Primary and secondary market",
+            "SEBI",
+            "Indices"
+          ],
+          "note": "",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "Insurance",
+          "subtopics": [
+            "IRDAI",
+            "Life and general insurance",
+            "Government insurance schemes"
+          ],
+          "note": "",
+          "target": 60,
+          "by_difficulty": {
+            "Basic": 18,
+            "Intermediate": 24,
+            "Advanced": 18
+          }
+        },
+        {
+          "topic": "Mutual Funds",
+          "subtopics": [
+            "Types",
+            "NAV and SIP",
+            "AMFI"
+          ],
+          "note": "",
+          "target": 50,
+          "by_difficulty": {
+            "Basic": 15,
+            "Intermediate": 20,
+            "Advanced": 15
+          }
+        },
+        {
+          "topic": "Budget and Economic Survey",
+          "subtopics": [
+            "Union Budget highlights",
+            "Economic Survey highlights",
+            "Fiscal terms"
+          ],
+          "note": "Current affairs",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Government Financial Schemes",
+          "subtopics": [
+            "PMMY, PMSBY, PMJJBY, APY",
+            "Credit guarantee schemes"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "RBI Circulars and Regulatory Updates",
+          "subtopics": [
+            "Recent RBI directions"
+          ],
+          "note": "Added: IBPS PO 2026 Mains names RBI circulars explicitly",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        }
+      ]
+    },
+    {
+      "subject": "Computer Knowledge",
+      "id_prefix": "BANK_COMP_",
+      "target": 1000,
+      "by_difficulty": {
+        "Basic": 300,
+        "Intermediate": 400,
+        "Advanced": 300
+      },
+      "tested_in": [
+        "IBPS_RRB_OA:Mains",
+        "IBPS_RRB_OS1:Mains",
+        "SBI_JA:Mains",
+        "SBI_PO:Mains"
+      ],
+      "topics": [
+        {
+          "topic": "Computer Fundamentals",
+          "subtopics": [
+            "Generations and history",
+            "Number systems",
+            "Types of computers"
+          ],
+          "note": "",
+          "target": 90,
+          "by_difficulty": {
+            "Basic": 27,
+            "Intermediate": 36,
+            "Advanced": 27
+          }
+        },
+        {
+          "topic": "Hardware",
+          "subtopics": [
+            "CPU and components",
+            "Motherboard and ports"
+          ],
+          "note": "",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "Software",
+          "subtopics": [
+            "System and application software",
+            "Licensing",
+            "Programming languages"
+          ],
+          "note": "",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "Operating Systems",
+          "subtopics": [
+            "Functions",
+            "Windows and Linux basics",
+            "File systems"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Input and Output Devices",
+          "subtopics": [
+            "Input devices",
+            "Output devices"
+          ],
+          "note": "",
+          "target": 60,
+          "by_difficulty": {
+            "Basic": 18,
+            "Intermediate": 24,
+            "Advanced": 18
+          }
+        },
+        {
+          "topic": "Memory",
+          "subtopics": [
+            "Primary memory",
+            "Secondary storage",
+            "Cache and units"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Internet",
+          "subtopics": [
+            "Web basics",
+            "Protocols",
+            "Email"
+          ],
+          "note": "",
+          "target": 80,
+          "by_difficulty": {
+            "Basic": 24,
+            "Intermediate": 32,
+            "Advanced": 24
+          }
+        },
+        {
+          "topic": "Networking",
+          "subtopics": [
+            "Topologies",
+            "OSI and TCP/IP",
+            "Devices"
+          ],
+          "note": "",
+          "target": 90,
+          "by_difficulty": {
+            "Basic": 27,
+            "Intermediate": 36,
+            "Advanced": 27
+          }
+        },
+        {
+          "topic": "Cybersecurity",
+          "subtopics": [
+            "Malware",
+            "Phishing and social engineering",
+            "Encryption and authentication"
+          ],
+          "note": "",
+          "target": 100,
+          "by_difficulty": {
+            "Basic": 30,
+            "Intermediate": 40,
+            "Advanced": 30
+          }
+        },
+        {
+          "topic": "Database Fundamentals",
+          "subtopics": [
+            "DBMS concepts",
+            "Keys",
+            "SQL basics"
+          ],
+          "note": "",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        },
+        {
+          "topic": "MS Office",
+          "subtopics": [
+            "MS Word",
+            "MS Excel",
+            "MS PowerPoint",
+            "Shortcuts"
+          ],
+          "note": "",
+          "target": 100,
+          "by_difficulty": {
+            "Basic": 30,
+            "Intermediate": 40,
+            "Advanced": 30
+          }
+        },
+        {
+          "topic": "Digital Payments",
+          "subtopics": [
+            "Payment technology",
+            "Card security"
+          ],
+          "note": "Technical side; banking side sits in BFA",
+          "target": 40,
+          "by_difficulty": {
+            "Basic": 12,
+            "Intermediate": 16,
+            "Advanced": 12
+          }
+        },
+        {
+          "topic": "Computer Abbreviations",
+          "subtopics": [
+            "Common abbreviations"
+          ],
+          "note": "",
+          "target": 70,
+          "by_difficulty": {
+            "Basic": 21,
+            "Intermediate": 28,
+            "Advanced": 21
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ dist
 *.log
 .env
 .env.local
+.env.*.local
 coverage
 web-build
 ios

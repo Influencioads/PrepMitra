@@ -1,0 +1,239 @@
+{
+  "subject": "General Awareness and Current Affairs",
+  "prefix": "GA",
+  "package": 1,
+  "topics": [
+    "National Current Affairs",
+    "International Current Affairs",
+    "Government Schemes",
+    "Important Appointments",
+    "Awards and Honours",
+    "Sports",
+    "Summits and Conferences",
+    "Important Days",
+    "Books and Authors",
+    "National and International Organizations",
+    "Important Reports and Indexes",
+    "Economic Affairs",
+    "Government Policies",
+    "Business and Corporate News",
+    "Static Awareness"
+  ],
+  "total": 149,
+  "batches": {
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 149,
+      "by_difficulty": {
+        "Basic": 44,
+        "Intermediate": 60,
+        "Advanced": 45
+      },
+      "question_ids": [
+        "BANK_GA_001352",
+        "BANK_GA_001500"
+      ],
+      "stimulus_id_start": "STIM_GA_010101",
+      "topics": [
+        {
+          "topic": "National Current Affairs",
+          "subtopics": [
+            "Government decisions",
+            "States and UTs",
+            "Defence"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 5,
+            "Advanced": 3
+          },
+          "total": 9
+        },
+        {
+          "topic": "International Current Affairs",
+          "subtopics": [
+            "Bilateral relations",
+            "Global events"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 10,
+            "Advanced": 1
+          },
+          "total": 15
+        },
+        {
+          "topic": "Government Schemes",
+          "subtopics": [
+            "Central schemes",
+            "Scheme launches and changes"
+          ],
+          "quota": {
+            "Basic": 7,
+            "Intermediate": 2,
+            "Advanced": 9
+          },
+          "total": 18
+        },
+        {
+          "topic": "Important Appointments",
+          "subtopics": [
+            "Banking and finance heads",
+            "International bodies"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Awards and Honours",
+          "subtopics": [
+            "National awards",
+            "International awards"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 9,
+            "Advanced": 1
+          },
+          "total": 11
+        },
+        {
+          "topic": "Sports",
+          "subtopics": [
+            "Tournaments and winners",
+            "Venues and records"
+          ],
+          "quota": {
+            "Basic": 7,
+            "Intermediate": 2,
+            "Advanced": 8
+          },
+          "total": 17
+        },
+        {
+          "topic": "Summits and Conferences",
+          "subtopics": [
+            "G20, BRICS, SCO and others",
+            "Hosting countries"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 0,
+            "Advanced": 1
+          },
+          "total": 1
+        },
+        {
+          "topic": "Important Days",
+          "subtopics": [
+            "Days and themes"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 5,
+            "Advanced": 0
+          },
+          "total": 5
+        },
+        {
+          "topic": "Books and Authors",
+          "subtopics": [
+            "Recent books"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 0,
+            "Advanced": 4
+          },
+          "total": 9
+        },
+        {
+          "topic": "National and International Organizations",
+          "subtopics": [
+            "Headquarters and heads",
+            "Membership"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Important Reports and Indexes",
+          "subtopics": [
+            "Publishing body",
+            "India's rank"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 8,
+            "Advanced": 2
+          },
+          "total": 12
+        },
+        {
+          "topic": "Economic Affairs",
+          "subtopics": [
+            "GDP and growth projections",
+            "Inflation data",
+            "Fiscal data",
+            "Monetary policy decisions"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 5,
+            "Advanced": 7
+          },
+          "total": 17
+        },
+        {
+          "topic": "Government Policies",
+          "subtopics": [
+            "Policy changes",
+            "Regulatory reforms"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 0,
+            "Advanced": 1
+          },
+          "total": 1
+        },
+        {
+          "topic": "Business and Corporate News",
+          "subtopics": [
+            "Mergers and acquisitions",
+            "Corporate partnerships"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 8,
+            "Advanced": 0
+          },
+          "total": 9
+        },
+        {
+          "topic": "Static Awareness",
+          "subtopics": [
+            "Capitals and currencies",
+            "National parks and dams",
+            "Indian states facts"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 1,
+            "Advanced": 6
+          },
+          "total": 13
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_GA_pkg1.json"
+    }
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "subject": "Reasoning Ability",
+  "prefix": "REAS",
+  "package": 1,
+  "topics": [
+    "Linear Seating Arrangement",
+    "Circular Seating Arrangement",
+    "Floor-Based Puzzles",
+    "Box-Based Puzzles"
+  ],
+  "total": 206,
+  "batches": {
+    "007": {
+      "batch_id": "BATCH_007",
+      "count": 52,
+      "by_difficulty": {
+        "Basic": 18,
+        "Intermediate": 20,
+        "Advanced": 14
+      },
+      "question_ids": [
+        "BANK_REAS_001205",
+        "BANK_REAS_001256"
+      ],
+      "stimulus_id_start": "STIM_REAS_007101",
+      "topics": [
+        {
+          "topic": "Linear Seating Arrangement",
+          "subtopics": [
+            "Single row, facing north/south",
+            "Double row",
+            "Unknown number of persons"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 2
+          },
+          "total": 16
+        },
+        {
+          "topic": "Circular Seating Arrangement",
+          "subtopics": [
+            "Facing centre",
+            "Facing inside and outside",
+            "Square and rectangular tables"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Floor-Based Puzzles",
+          "subtopics": [
+            "Floor and flat",
+            "Floor with attribute"
+          ],
+          "quota": {
+            "Basic": 8,
+            "Intermediate": 3,
+            "Advanced": 5
+          },
+          "total": 16
+        },
+        {
+          "topic": "Box-Based Puzzles",
+          "subtopics": [
+            "Stacked boxes",
+            "Boxes with weights or colours"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 7,
+            "Advanced": 6
+          },
+          "total": 15
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_007_REAS_pkg1.json"
+    },
+    "008": {
+      "batch_id": "BATCH_008",
+      "count": 53,
+      "by_difficulty": {
+        "Basic": 22,
+        "Intermediate": 17,
+        "Advanced": 14
+      },
+      "question_ids": [
+        "BANK_REAS_001404",
+        "BANK_REAS_001456"
+      ],
+      "stimulus_id_start": "STIM_REAS_008101",
+      "topics": [
+        {
+          "topic": "Linear Seating Arrangement",
+          "subtopics": [
+            "Single row, facing north/south",
+            "Double row",
+            "Unknown number of persons"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 4,
+            "Advanced": 6
+          },
+          "total": 15
+        },
+        {
+          "topic": "Circular Seating Arrangement",
+          "subtopics": [
+            "Facing centre",
+            "Facing inside and outside",
+            "Square and rectangular tables"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 2
+          },
+          "total": 16
+        },
+        {
+          "topic": "Floor-Based Puzzles",
+          "subtopics": [
+            "Floor and flat",
+            "Floor with attribute"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Box-Based Puzzles",
+          "subtopics": [
+            "Stacked boxes",
+            "Boxes with weights or colours"
+          ],
+          "quota": {
+            "Basic": 8,
+            "Intermediate": 3,
+            "Advanced": 4
+          },
+          "total": 15
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_008_REAS_pkg1.json"
+    },
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 46,
+      "by_difficulty": {
+        "Basic": 14,
+        "Intermediate": 22,
+        "Advanced": 10
+      },
+      "question_ids": [
+        "BANK_REAS_001603",
+        "BANK_REAS_001648"
+      ],
+      "stimulus_id_start": "STIM_REAS_009101",
+      "topics": [
+        {
+          "topic": "Linear Seating Arrangement",
+          "subtopics": [
+            "Single row, facing north/south",
+            "Double row",
+            "Unknown number of persons"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 9,
+            "Advanced": 1
+          },
+          "total": 11
+        },
+        {
+          "topic": "Circular Seating Arrangement",
+          "subtopics": [
+            "Facing centre",
+            "Facing inside and outside",
+            "Square and rectangular tables"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 4,
+            "Advanced": 6
+          },
+          "total": 15
+        },
+        {
+          "topic": "Floor-Based Puzzles",
+          "subtopics": [
+            "Floor and flat",
+            "Floor with attribute"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 9,
+            "Advanced": 2
+          },
+          "total": 17
+        },
+        {
+          "topic": "Box-Based Puzzles",
+          "subtopics": [
+            "Stacked boxes",
+            "Boxes with weights or colours"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 0,
+            "Advanced": 1
+          },
+          "total": 3
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_REAS_pkg1.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 55,
+      "by_difficulty": {
+        "Basic": 14,
+        "Intermediate": 29,
+        "Advanced": 12
+      },
+      "question_ids": [
+        "BANK_REAS_001802",
+        "BANK_REAS_001856"
+      ],
+      "stimulus_id_start": "STIM_REAS_010101",
+      "topics": [
+        {
+          "topic": "Linear Seating Arrangement",
+          "subtopics": [
+            "Single row, facing north/south",
+            "Double row",
+            "Unknown number of persons"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 8,
+            "Advanced": 3
+          },
+          "total": 13
+        },
+        {
+          "topic": "Circular Seating Arrangement",
+          "subtopics": [
+            "Facing centre",
+            "Facing inside and outside",
+            "Square and rectangular tables"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 9,
+            "Advanced": 1
+          },
+          "total": 11
+        },
+        {
+          "topic": "Floor-Based Puzzles",
+          "subtopics": [
+            "Floor and flat",
+            "Floor with attribute"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 4,
+            "Advanced": 6
+          },
+          "total": 15
+        },
+        {
+          "topic": "Box-Based Puzzles",
+          "subtopics": [
+            "Stacked boxes",
+            "Boxes with weights or colours"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 2
+          },
+          "total": 16
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_REAS_pkg1.json"
+    }
+  }
+}

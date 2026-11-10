@@ -1,0 +1,4842 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "BATCH_010",
+  "created_at": "2026-11-05",
+  "notes": "Reasoning Ability topic package 1 (Linear Seating, Circular Seating, Floor-Based and Box-Based Puzzles) of BATCH_010: 55 original questions built by tools/packages/REAS_pkg1.py. New puzzle structures (checked against every earlier REAS part file). Every puzzle is brute-forced to exactly one arrangement and every answer is read off it in code. All questions await human review.",
+  "stimuli": [
+    {
+      "stimulus_id": "STIM_REAS_010101",
+      "type": "puzzle",
+      "title": "Twelve persons in two facing rows of six",
+      "content": "Twelve persons Arya, Bhola, Chanda, Dhiren, Gulab, Hasan, Kapil, Lalit, Mohan, Nayan, Ravi and Tulsi sit in two parallel rows of six seats each. The persons in Row 1 face south and those in Row 2 face north, so each person faces exactly one person of the other row. (Facing south, the right is towards the west; facing north, the right is towards the east.)\n\n- Mohan sits in Row 1, third from the east end of that row.\n- Hasan faces Mohan, and Bhola sits immediately to the right of Hasan.\n- Tulsi sits immediately to the right of Mohan, and Dhiren faces Tulsi.\n- Ravi sits second to the left of Mohan, and Gulab sits between Mohan and Ravi.\n- Lalit faces Ravi, and Chanda sits at one end of Row 2.\n- Nayan faces Arya, who sits in the row that faces south.",
+      "solution": "Number the columns 1 to 6 from the west in both rows.\nStep 1: Mohan = Row 1, column 4. Hasan faces him: Row 2, column 4; Bhola, to Hasan's right (east): Row 2, column 5.\nStep 2: Tulsi, to Mohan's right (west): Row 1, column 3; Dhiren faces her: Row 2, column 3.\nStep 3: Ravi, second to Mohan's left (east): Row 1, column 6; Gulab between them: column 5. Lalit faces Ravi: Row 2, column 6, so Chanda is at the other end: Row 2, column 1.\nStep 4: Free seats: Row 1 columns 1 and 2, Row 2 column 2. Nayan faces Arya, so they take the facing pair Row 2 column 2 and Row 1 column 2; Arya is in the south-facing Row 1, so Nayan is in Row 2, and Kapil gets Row 1, column 1.\n\n| Column | Row 1 (facing south) | Row 2 (facing north) |\n|---|---|---|\n| 1 | Kapil | Chanda |\n| 2 | Arya | Nayan |\n| 3 | Tulsi | Dhiren |\n| 4 | Mohan | Hasan |\n| 5 | Gulab | Bhola |\n| 6 | Ravi | Lalit |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010102",
+      "type": "puzzle",
+      "title": "Ten seats, seven persons",
+      "content": "Ten seats are placed in a straight row and numbered 1 to 10 from the left end. Seven persons Anvi, Bhim, Chiru, Dolu, Esha, Fuzail and Gita sit on seven of them, all facing north; the other three seats are vacant. Positions such as 'second to the right' count seats, including vacant ones.\n\n- Anvi sits on seat 6, and Chiru sits immediately to the right of Anvi.\n- Bhim sits at the extreme left end, and Dolu at the extreme right end.\n- Fuzail sits immediately to the left of Dolu.\n- Esha and Gita sit in adjacent seats, Esha to the left of Gita, and exactly one seat lies between Bhim and Esha.",
+      "solution": "Step 1: Anvi = 6, Chiru = 7, Bhim = 1, Dolu = 10, Fuzail = 9.\nStep 2: One seat lies between Bhim (1) and Esha: Esha = 3, and Gita, immediately to her right, = 4.\nStep 3: The vacant seats are 2, 5 and 8.\n\n| Seat | Person |\n|---|---|\n| 1 | Bhim |\n| 2 | vacant |\n| 3 | Esha |\n| 4 | Gita |\n| 5 | vacant |\n| 6 | Anvi |\n| 7 | Chiru |\n| 8 | vacant |\n| 9 | Fuzail |\n| 10 | Dolu |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010103",
+      "type": "puzzle",
+      "title": "Eight persons in a row, ranked by height",
+      "content": "Eight persons Hiran, Ishu, Kuku, Lado, Mitu, Nanki, Pammi and Rinku sit in a straight row, all facing north. No two of them are of the same height. (Facing north, the right is towards the east.)\n\n- Lado and Pammi sit at the two ends of the row, Lado at the left end.\n- The tallest person sits immediately to the right of Lado, and the shortest person sits immediately to the right of the tallest person.\n- Nanki is the second tallest and sits second to the right of the tallest person.\n- Hiran sits second to the right of Nanki and is shorter than only Kuku and Nanki.\n- Kuku is taller than Nanki.\n- Ishu sits immediately to the left of Hiran, and Rinku immediately to the right of Hiran.\n- Ishu is shorter than everyone except the shortest person; Rinku is taller than Lado, and Lado is taller than Pammi.",
+      "solution": "Number the seats 1 to 8 from the left.\nStep 1: Lado = 1, Pammi = 8. The tallest person is on seat 2 and the shortest on seat 3. Nanki (2nd tallest) = 4, Hiran (3rd tallest) = 6, Ishu = 5, Rinku = 7.\nStep 2: Kuku and Mitu take seats 2 and 3. Kuku is taller than Nanki, the second tallest, so Kuku is the tallest (seat 2) and Mitu the shortest (seat 3).\nStep 3: Ranks 4 to 7 remain for Ishu, Rinku, Lado and Pammi. Ishu is 7th; Rinku > Lado > Pammi in height: Rinku 4th, Lado 5th, Pammi 6th.\n\n| Seat | Person | Height rank |\n|---|---|---|\n| 1 | Lado | 5 |\n| 2 | Kuku | 1 |\n| 3 | Mitu | 8 |\n| 4 | Nanki | 2 |\n| 5 | Ishu | 7 |\n| 6 | Hiran | 3 |\n| 7 | Rinku | 4 |\n| 8 | Pammi | 6 |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010104",
+      "type": "puzzle",
+      "title": "Ten chairs, eight persons",
+      "content": "Ten chairs are placed around a circular table, equally spaced. Eight persons Ajay, Bimal, Disha, Fateh, Jassi, Lucky, Rupal and Ujjal sit on eight of them, all facing the centre; two chairs are vacant. Positions such as 'second to the right' count chairs, including vacant ones. (Facing the centre, the right is anticlockwise.)\n\n- Jassi sits opposite Ajay, and Bimal sits immediately to the left of Jassi.\n- Rupal sits immediately to the right of Ajay. Fateh sits second to the right of Rupal, and the chair between Rupal and Fateh is vacant.\n- Lucky sits immediately to the left of Ajay, and Disha sits immediately to the left of Lucky.\n- Ujjal sits immediately to the right of Jassi.\n- The two vacant chairs are exactly opposite each other.",
+      "solution": "Number the chairs 0 to 9 anticlockwise from Ajay.\nStep 1: Jassi = 5 (opposite), Bimal = 4 (Jassi's left, clockwise), Ujjal = 6.\nStep 2: Rupal = 1, chair 2 is vacant, Fateh = 3.\nStep 3: Lucky = 9, Disha = 8. The only chair left is 7, which is vacant — and it is exactly opposite chair 2, as required.\n\n| Chair | Person |\n|---|---|\n| 0 | Ajay |\n| 1 | Rupal |\n| 2 | vacant |\n| 3 | Fateh |\n| 4 | Bimal |\n| 5 | Jassi |\n| 6 | Ujjal |\n| 7 | vacant |\n| 8 | Disha |\n| 9 | Lucky |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010105",
+      "type": "puzzle",
+      "title": "Seven persons facing in or out",
+      "content": "Seven persons Rohit, Saloni, Tanuj, Urvi, Vedika, Xena and Yuvi sit around a circular table, equally spaced. Some of them face the centre and the others face outside. (Facing the centre, the right is anticlockwise; facing outside, it is clockwise.)\n\n- Rohit faces the centre, and Urvi sits immediately to his right.\n- Urvi faces outside, and Yuvi sits immediately to Urvi's left.\n- Saloni sits immediately to the right of Yuvi, and the two of them face opposite directions.\n- Vedika sits immediately to the left of Rohit and faces the same direction as Rohit.\n- Tanuj sits immediately to the left of Vedika.\n- Xena faces the centre, Xena and Tanuj face opposite directions, and Yuvi faces the same direction as Xena.",
+      "solution": "Number the seats 0 to 6 anticlockwise from Rohit.\nStep 1: Rohit faces the centre: Urvi = 1. Urvi faces outside, so her left is anticlockwise: Yuvi = 2.\nStep 2: Vedika, on Rohit's left (clockwise), = 6 and faces the centre. Tanuj, on Vedika's left, = 5.\nStep 3: Xena faces the centre; Yuvi faces the same way (centre), Tanuj the other way (outside). Saloni faces opposite to Yuvi (outside) and sits on Yuvi's right (anticlockwise): 3. Xena takes seat 4.\n\n| Seat | Person | Facing |\n|---|---|---|\n| 0 | Rohit | facing the centre |\n| 1 | Urvi | facing outside |\n| 2 | Yuvi | facing the centre |\n| 3 | Saloni | facing outside |\n| 4 | Xena | facing the centre |\n| 5 | Tanuj | facing outside |\n| 6 | Vedika | facing the centre |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010106",
+      "type": "puzzle",
+      "title": "Six floors and six hobbies",
+      "content": "Six persons Bablu, Chameli, Dinu, Ganesh, Heena and Jagan live on the six floors of a building, one on each floor (floor 1 is the lowermost, floor 6 the topmost). Each has a different hobby among Dancing, Painting, Reading, Singing, Swimming and Writing.\n\n- Chameli lives on floor 4, Bablu immediately above her and Jagan immediately below her.\n- Dinu lives on the topmost floor, and Heena lives below Ganesh.\n- The person who likes Painting lives on an even-numbered floor between Jagan and Bablu.\n- The person on the topmost floor likes Singing, and the person on floor 1 likes Reading.\n- The person who likes Dancing lives immediately below the person who likes Painting.\n- Bablu does not like Swimming.",
+      "solution": "Step 1: Chameli = 4, Bablu = 5, Jagan = 3, Dinu = 6. Floors 1 and 2 remain; Heena is below Ganesh: Heena = 1, Ganesh = 2.\nStep 2: Painting is on an even floor between 3 and 5: floor 4 (Chameli). Dancing is immediately below: floor 3 (Jagan). Singing: floor 6 (Dinu). Reading: floor 1 (Heena).\nStep 3: Swimming and Writing remain for Ganesh and Bablu; Bablu does not swim: Bablu Writing, Ganesh Swimming.\n\n| Floor | Person | Hobby |\n|---|---|---|\n| 6 | Dinu | Singing |\n| 5 | Bablu | Writing |\n| 4 | Chameli | Painting |\n| 3 | Jagan | Dancing |\n| 2 | Ganesh | Swimming |\n| 1 | Heena | Reading |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010107",
+      "type": "puzzle",
+      "title": "Two persons on each of four floors, with colours",
+      "content": "Eight persons Arif, Chinki, Gudiya, Hanif, Lalu, Mamta, Pintu and Sweety live in a four-storey building, two persons on each floor (floor 1 is the lowermost, floor 4 the topmost). Each likes a different colour among Amber, Coral, Indigo, Lilac, Mint, Navy, Rose and Tan.\n\n- Gudiya lives on floor 3 and likes Rose.\n- Arif lives on the floor immediately above Gudiya's and likes Mint.\n- Hanif lives on an even-numbered floor below Gudiya.\n- Chinki and Mamta live on the same floor.\n- Sweety lives above Lalu, and Pintu lives on the floor immediately below Lalu's.\n- The person who likes Navy lives on the topmost floor. Hanif likes Amber and Pintu likes Lilac.\n- The person who likes Tan lives on floor 3, and Chinki does not like Indigo.",
+      "solution": "Step 1: Gudiya = 3 (Rose), Arif = 4 (Mint), Hanif = 2 (Amber).\nStep 2: Chinki and Mamta share a floor; floors 2, 3 and 4 each have only one free place, so they live on floor 1.\nStep 3: Lalu, Pintu and Sweety fill one place each on floors 2, 3 and 4. Pintu is immediately below Lalu and Sweety is above Lalu: Pintu = 2, Lalu = 3, Sweety = 4.\nStep 4: Navy is on floor 4; Arif likes Mint, so Sweety likes Navy. Pintu likes Lilac. Tan is on floor 3, where Gudiya likes Rose, so Lalu likes Tan. Coral and Indigo remain for Chinki and Mamta; Chinki does not like Indigo: Chinki Coral, Mamta Indigo.\n\n| Floor | Persons (colour) |\n|---|---|\n| 4 | Arif (Mint), Sweety (Navy) |\n| 3 | Gudiya (Rose), Lalu (Tan) |\n| 2 | Hanif (Amber), Pintu (Lilac) |\n| 1 | Chinki (Coral), Mamta (Indigo) |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010108",
+      "type": "puzzle",
+      "title": "A basement, a ground floor and six floors",
+      "content": "A building has a basement, a ground floor and six floors above the ground floor (floors 1 to 6, floor 6 being the topmost). Eight persons Abhi, Barun, Chaya, Dilip, Emily, Feroz, Gagan and Harsha live in it, one on each of these eight levels. Each has a different profession among Actor, Baker, Cashier, Doctor, Editor, Farmer, Guard and Nurse. 'Level' means any of the eight (basement, ground floor or floor 1-6).\n\n- Exactly three persons live above Emily, and Emily is the Actor.\n- The Doctor lives two levels below Emily.\n- Chaya lives on the ground floor, immediately above the Guard.\n- Barun lives on the topmost floor, and Dilip lives two levels below Barun.\n- Gagan lives between Dilip and Barun.\n- Feroz lives below Harsha, and Abhi lives immediately above Harsha.\n- The Nurse lives immediately above the Doctor.\n- The Cashier lives immediately below the Editor, and the Editor lives below the Farmer.",
+      "solution": "List the levels from the bottom: basement, ground, 1, 2, 3, 4, 5, 6.\nStep 1: Three persons live above Emily, so Emily is on floor 3 (the Actor). The Doctor is two levels lower: floor 1.\nStep 2: Chaya = ground floor; the Guard is in the basement. Barun = floor 6, Dilip = floor 4, Gagan = floor 5.\nStep 3: Feroz, Harsha and Abhi take the basement, floor 1 and floor 2. Abhi is immediately above Harsha and Feroz below Harsha: Feroz = basement (Guard), Harsha = floor 1 (Doctor), Abhi = floor 2.\nStep 4: The Nurse is immediately above the Doctor: Abhi. Baker, Cashier, Editor and Farmer remain for Chaya (ground), Dilip (4), Gagan (5) and Barun (6). Cashier is immediately below Editor, and Editor is below Farmer: Cashier 4 (Dilip), Editor 5 (Gagan), Farmer 6 (Barun). Chaya is the Baker.\n\n| Level | Person | Profession |\n|---|---|---|\n| floor 6 | Barun | Farmer |\n| floor 5 | Gagan | Editor |\n| floor 4 | Dilip | Cashier |\n| floor 3 | Emily | Actor |\n| floor 2 | Abhi | Nurse |\n| floor 1 | Harsha | Doctor |\n| the ground floor | Chaya | Baker |\n| the basement | Feroz | Guard |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010109",
+      "type": "puzzle",
+      "title": "Eight coloured boxes in a stack",
+      "content": "Eight boxes A, C, E, H, K, N, R and W are kept one above another in a single stack (position 1 is the bottom and 8 the top). Each box is of a different colour among Aqua, Black, Cyan, Gold, Ivory, Lime, Plum and Rust.\n\n- Box A is kept fourth from the bottom and is Black; Box N is kept immediately above Box A.\n- Box K is kept at the top, and Box H is kept immediately below Box K.\n- Box C is kept between Box N and Box H, and Box R is kept at the bottom.\n- Box W is kept above Box E.\n- The Ivory box is kept immediately above the Black box, and the top box is Cyan.\n- The Gold box is kept two places below the Black box, and the Plum box is kept between the Gold and Black boxes.\n- The Rust box is kept immediately below the Cyan box, and the bottom box is not Aqua.",
+      "solution": "Step 1: A = 4 (Black), N = 5, K = 8, H = 7, C = 6, R = 1.\nStep 2: Positions 2 and 3 remain for E and W; W is above E: E = 2, W = 3.\nStep 3: Ivory = 5 (N), Cyan = 8 (K), Gold = 2 (E), Plum = 3 (W), Rust = 7 (H).\nStep 4: Aqua and Lime remain for R (1) and C (6); the bottom box is not Aqua: R Lime, C Aqua.\n\n| Position | Box | Colour |\n|---|---|---|\n| 8 | K | Cyan |\n| 7 | H | Rust |\n| 6 | C | Aqua |\n| 5 | N | Ivory |\n| 4 | A | Black |\n| 3 | W | Plum |\n| 2 | E | Gold |\n| 1 | R | Lime |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010110",
+      "type": "puzzle",
+      "title": "Eight boxes on two shelves",
+      "content": "Eight boxes B, D, F, H, J, L, N and P are placed on two shelves, upper and lower, four boxes on each shelf in a line. Each box on the upper shelf is directly above one box on the lower shelf. Left and right are as seen from the front.\n\n- Box J is on the upper shelf, third from the left, and Box F is directly below Box J.\n- Box L is immediately to the right of Box F, and Box B is directly above Box L.\n- Box H is at the left end of the lower shelf, and Box P is on the lower shelf.\n- Box D is directly above Box P.",
+      "solution": "Number the places 1 to 4 from the left on each shelf.\nStep 1: J = upper 3, F = lower 3, L = lower 4, B = upper 4.\nStep 2: H = lower 1. P is on the lower shelf: the only free place there is 2. D is directly above P: upper 2.\nStep 3: N takes the last place, upper 1.\n\n| Shelf | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|\n| Upper | N | D | J | B |\n| Lower | H | P | F | L |"
+    },
+    {
+      "stimulus_id": "STIM_REAS_010111",
+      "type": "puzzle",
+      "title": "Seven boxes of three sizes",
+      "content": "Seven boxes C, G, M, Q, T, V and Y are kept one above another in a single stack (position 1 is the bottom). Three boxes are Large, two Medium and two Small.\n\n- No box is kept directly on top of a box smaller than itself.\n- Box Y is Medium, and Box C is kept immediately below Box Y.\n- Box M is kept at the top, and Box T is Small.\n- Box G is kept immediately below Box T.\n- Box V is kept below Box Q.",
+      "solution": "Step 1: No box sits on a smaller box, so sizes never increase going up: positions 1–3 are Large, 4–5 Medium and 6–7 Small.\nStep 2: M = 7 (Small). T is Small: T = 6, and G, immediately below T, = 5 (Medium).\nStep 3: Y is Medium: the only Medium place left is 4, so Y = 4 and C = 3 (Large).\nStep 4: V and Q take 1 and 2 with V below: V = 1, Q = 2.\n\n| Position | Box | Size |\n|---|---|---|\n| 7 | M | Small |\n| 6 | T | Small |\n| 5 | G | Medium |\n| 4 | Y | Medium |\n| 3 | C | Large |\n| 2 | Q | Large |\n| 1 | V | Large |"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "BANK_REAS_001802",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Six persons Abha, Babli, Chhotu, Dabbu, Eva and Fanny sit in a straight row, all facing north. (Facing north, the right is towards the east.)\n- Only two persons sit to the right of Abha.\n- Dabbu sits at the extreme right end, and Chhotu sits between Abha and Dabbu.\n- Eva sits at the extreme left end, and Fanny sits immediately to the left of Abha.\n\nWho sits second to the left of Abha?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Babli"
+        },
+        {
+          "key": "B",
+          "text": "Fanny"
+        },
+        {
+          "key": "C",
+          "text": "Eva"
+        },
+        {
+          "key": "D",
+          "text": "Chhotu"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "'Only two persons to the right' fixes a seat",
+        "explanation": "With six seats and two persons to her right, Abha is in seat 4. Dabbu = 6, Chhotu = 5, Eva = 1, Fanny = 3, and Babli takes seat 2 — second to Abha's left.",
+        "steps": [
+          "Abha = 4 (two persons to her right)",
+          "Dabbu 6, Chhotu 5, Eva 1, Fanny 3",
+          "Babli = 2 = second to Abha's left"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Fanny is immediately to her left, Eva third to her left, and Chhotu to her right.",
+        "final_answer": "Option A: Babli"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001803",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Seven persons Karan, Lekha, Megha, Nikki, Pari, Raju and Sunny sit in a straight row, all facing north. (Facing north, the right is towards the east.)\n- Megha sits fourth from the left end, and Raju sits second to the right of Megha.\n- Karan sits at the extreme left end and Sunny at the extreme right end.\n- Pari sits immediately to the left of Megha.\n- Lekha sits to the right of Nikki.\n\nHow many persons sit between Karan and Lekha?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two"
+        },
+        {
+          "key": "B",
+          "text": "Three"
+        },
+        {
+          "key": "C",
+          "text": "Four"
+        },
+        {
+          "key": "D",
+          "text": "Five"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Place the fixed seats, then the last pair",
+        "explanation": "Megha = 4, Raju = 6, Karan = 1, Sunny = 7, Pari = 3. Seats 2 and 5 remain for Nikki and Lekha; Lekha is to the right: Lekha = 5. Between seats 1 and 5 sit Nikki, Pari and Megha: three persons.",
+        "steps": [
+          "Megha 4, Raju 6, Karan 1, Sunny 7, Pari 3",
+          "Nikki 2, Lekha 5",
+          "Between 1 and 5 ⇒ three"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: Three"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001804",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Double row",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010101",
+      "set_position": 1,
+      "question_text": "Who faces Kapil?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nayan"
+        },
+        {
+          "key": "B",
+          "text": "Lalit"
+        },
+        {
+          "key": "C",
+          "text": "Chanda"
+        },
+        {
+          "key": "D",
+          "text": "Dhiren"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Facing persons share a column",
+        "explanation": "Kapil is in Row 1, column 1; facing him is Row 2, column 1: Chanda.",
+        "steps": [
+          "West to east — Row 1 (facing south): Kapil, Arya, Tulsi, Mohan, Gulab, Ravi; Row 2 (facing north): Chanda, Nayan, Dhiren, Hasan, Bhola, Lalit",
+          "Kapil = Row 1, col 1",
+          "Faces Row 2, col 1"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Nayan faces Arya, Lalit faces Ravi and Dhiren faces Tulsi.",
+        "final_answer": "Option C: Chanda"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001805",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Double row",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010101",
+      "set_position": 2,
+      "question_text": "Who sits second to the right of Nayan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Chanda"
+        },
+        {
+          "key": "B",
+          "text": "Bhola"
+        },
+        {
+          "key": "C",
+          "text": "Dhiren"
+        },
+        {
+          "key": "D",
+          "text": "Hasan"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Row 2 faces north: right = east",
+        "explanation": "Nayan is in Row 2, column 2; two seats east is column 4: Hasan.",
+        "steps": [
+          "West to east — Row 1 (facing south): Kapil, Arya, Tulsi, Mohan, Gulab, Ravi; Row 2 (facing north): Chanda, Nayan, Dhiren, Hasan, Bhola, Lalit",
+          "Nayan = Row 2, col 2",
+          "2 + 2 = col 4 ⇒ Hasan"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Dhiren is immediately to his right, Bhola third to his right, and Chanda to his left.",
+        "final_answer": "Option D: Hasan"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001806",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Double row",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010101",
+      "set_position": 3,
+      "question_text": "Who sits immediately to the left of Gulab?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ravi"
+        },
+        {
+          "key": "B",
+          "text": "Mohan"
+        },
+        {
+          "key": "C",
+          "text": "Bhola"
+        },
+        {
+          "key": "D",
+          "text": "Lalit"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Row 1 faces south: left = east",
+        "explanation": "Gulab is in Row 1, column 5, facing south; his left is east: column 6, Ravi.",
+        "steps": [
+          "West to east — Row 1 (facing south): Kapil, Arya, Tulsi, Mohan, Gulab, Ravi; Row 2 (facing north): Chanda, Nayan, Dhiren, Hasan, Bhola, Lalit",
+          "Gulab = Row 1, col 5",
+          "Left = east ⇒ col 6 = Ravi"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Mohan is to his right; Bhola faces him; Lalit is in the other row.",
+        "final_answer": "Option A: Ravi"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001807",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Double row",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010101",
+      "set_position": 4,
+      "question_text": "How many persons sit between Arya and Ravi?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two"
+        },
+        {
+          "key": "B",
+          "text": "Three"
+        },
+        {
+          "key": "C",
+          "text": "Four"
+        },
+        {
+          "key": "D",
+          "text": "Five"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Count within one row",
+        "explanation": "Arya is in Row 1, column 2 and Ravi in Row 1, column 6: Tulsi, Mohan and Gulab sit between them.",
+        "steps": [
+          "West to east — Row 1 (facing south): Kapil, Arya, Tulsi, Mohan, Gulab, Ravi; Row 2 (facing north): Chanda, Nayan, Dhiren, Hasan, Bhola, Lalit",
+          "Arya col 2, Ravi col 6 (Row 1)",
+          "Between: cols 3, 4, 5 ⇒ three"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: Three"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001808",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010102",
+      "set_position": 1,
+      "question_text": "How many vacant seats lie between Bhim and Anvi?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None"
+        },
+        {
+          "key": "B",
+          "text": "One"
+        },
+        {
+          "key": "C",
+          "text": "Two"
+        },
+        {
+          "key": "D",
+          "text": "Three"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Mark the vacant seats after placing everyone",
+        "explanation": "Bhim is on seat 1 and Anvi on seat 6; seats 2 and 5 between them are vacant.",
+        "steps": [
+          "Seats 1 to 10 from the left: Bhim, vacant, Esha, Gita, vacant, Anvi, Chiru, vacant, Fuzail, Dolu",
+          "Vacant: 2, 5, 8",
+          "Between 1 and 6: 2 and 5 ⇒ two"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option C: Two"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001809",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010102",
+      "set_position": 2,
+      "question_text": "Who sits third to the left of Fuzail?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Chiru"
+        },
+        {
+          "key": "B",
+          "text": "Gita"
+        },
+        {
+          "key": "C",
+          "text": "Dolu"
+        },
+        {
+          "key": "D",
+          "text": "Anvi"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Count seats, including vacant ones",
+        "explanation": "Fuzail is on seat 9; three seats to the left is seat 6: Anvi.",
+        "steps": [
+          "Seats 1 to 10 from the left: Bhim, vacant, Esha, Gita, vacant, Anvi, Chiru, vacant, Fuzail, Dolu",
+          "Fuzail = 9",
+          "9 − 3 = seat 6 ⇒ Anvi"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Chiru is second to his left (seat 8 is vacant, seat 7 is Chiru's); Gita is further left; Dolu is to his right.",
+        "final_answer": "Option D: Anvi"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001810",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010102",
+      "set_position": 3,
+      "question_text": "Which of the following seats is vacant?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Seat 5"
+        },
+        {
+          "key": "B",
+          "text": "Seat 4"
+        },
+        {
+          "key": "C",
+          "text": "Seat 7"
+        },
+        {
+          "key": "D",
+          "text": "Seat 3"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Place all seven persons first",
+        "explanation": "The persons occupy seats 1, 3, 4, 6, 7, 9 and 10, so seats 2, 5 and 8 are vacant.",
+        "steps": [
+          "Seats 1 to 10 from the left: Bhim, vacant, Esha, Gita, vacant, Anvi, Chiru, vacant, Fuzail, Dolu",
+          "Occupied: 1, 3, 4, 6, 7, 9, 10",
+          "Vacant: 2, 5, 8 ⇒ seat 5"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Gita is on seat 4, Chiru on 7 and Esha on 3.",
+        "final_answer": "Option A: Seat 5"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001811",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010102",
+      "set_position": 4,
+      "question_text": "How many persons sit to the right of Gita?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Three"
+        },
+        {
+          "key": "B",
+          "text": "Four"
+        },
+        {
+          "key": "C",
+          "text": "Five"
+        },
+        {
+          "key": "D",
+          "text": "Six"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Count persons, not seats",
+        "explanation": "Gita is on seat 4; to her right sit Anvi (6), Chiru (7), Fuzail (9) and Dolu (10).",
+        "steps": [
+          "Seats 1 to 10 from the left: Bhim, vacant, Esha, Gita, vacant, Anvi, Chiru, vacant, Fuzail, Dolu",
+          "Gita = 4",
+          "Persons on 6, 7, 9, 10 ⇒ four"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: Four"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001812",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010103",
+      "set_position": 1,
+      "question_text": "Who is the fourth tallest?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lado"
+        },
+        {
+          "key": "B",
+          "text": "Ishu"
+        },
+        {
+          "key": "C",
+          "text": "Rinku"
+        },
+        {
+          "key": "D",
+          "text": "Hiran"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Order the last four with the comparison chain",
+        "explanation": "Kuku, Nanki and Hiran are the three tallest. Of the rest, Ishu is 7th and Rinku is taller than Lado, who is taller than Pammi, so Rinku is 4th.",
+        "steps": [
+          "Left to right (height rank, 1 = tallest): Lado (5), Kuku (1), Mitu (8), Nanki (2), Ishu (7), Hiran (3), Rinku (4), Pammi (6)",
+          "Top three: Kuku, Nanki, Hiran",
+          "Ishu 7th, Mitu 8th",
+          "Rinku > Lado > Pammi ⇒ Rinku 4th"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Lado is 5th, Ishu 7th and Hiran 3rd.",
+        "final_answer": "Option C: Rinku"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001813",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010103",
+      "set_position": 2,
+      "question_text": "Among the persons who have two neighbours, how many are taller than both of their neighbours?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None"
+        },
+        {
+          "key": "B",
+          "text": "One"
+        },
+        {
+          "key": "C",
+          "text": "Two"
+        },
+        {
+          "key": "D",
+          "text": "Three"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Compare each person with both neighbours",
+        "explanation": "Kuku (taller than Lado and Mitu), Nanki (taller than Mitu and Ishu) and Hiran (taller than Ishu and Rinku) qualify; nobody else does.",
+        "steps": [
+          "Left to right (height rank, 1 = tallest): Lado (5), Kuku (1), Mitu (8), Nanki (2), Ishu (7), Hiran (3), Rinku (4), Pammi (6)",
+          "Kuku 1 vs 5, 8 ✓",
+          "Nanki 2 vs 8, 7 ✓",
+          "Hiran 3 vs 7, 4 ✓",
+          "Mitu, Ishu, Rinku ✗"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option D: Three"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001814",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Linear Seating Arrangement",
+      "subtopic": "Single row, facing north/south",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010103",
+      "set_position": 3,
+      "question_text": "Who sits immediately to the left of the second shortest person?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nanki"
+        },
+        {
+          "key": "B",
+          "text": "Hiran"
+        },
+        {
+          "key": "C",
+          "text": "Mitu"
+        },
+        {
+          "key": "D",
+          "text": "Kuku"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Find the person by rank, then move left",
+        "explanation": "Ishu is the second shortest and sits on seat 5; seat 4, to the left, is Nanki's.",
+        "steps": [
+          "Left to right (height rank, 1 = tallest): Lado (5), Kuku (1), Mitu (8), Nanki (2), Ishu (7), Hiran (3), Rinku (4), Pammi (6)",
+          "Second shortest = Ishu (seat 5)",
+          "Seat 4 = Nanki"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Hiran is to Ishu's right; Mitu and Kuku are further left.",
+        "final_answer": "Option A: Nanki"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001815",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing centre",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Six friends Tina, Umesh, Vimla, Waris, Yusuf and Zarna sit around a circular table, equally spaced and all facing the centre. (Facing the centre, the right is anticlockwise and the left clockwise.)\n- Umesh sits immediately to the right of Tina, and Yusuf sits opposite Umesh.\n- Vimla sits second to the left of Yusuf.\n- Zarna does not sit next to Tina.\n\nWho sits immediately to the left of Tina?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Umesh"
+        },
+        {
+          "key": "B",
+          "text": "Waris"
+        },
+        {
+          "key": "C",
+          "text": "Zarna"
+        },
+        {
+          "key": "D",
+          "text": "Yusuf"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fix one person and go round",
+        "explanation": "Seats 0 to 5 anticlockwise from Tina: Umesh = 1, Yusuf (opposite) = 4, Vimla (second to Yusuf's left, clockwise) = 2. Seats 3 and 5 remain; seat 5 is next to Tina, so Zarna = 3 and Waris = 5. Tina's left (clockwise) neighbour is seat 5: Waris.",
+        "steps": [
+          "Tina 0, Umesh 1, Yusuf 4, Vimla 2",
+          "Zarna not next to Tina ⇒ Zarna 3, Waris 5",
+          "Left of Tina = seat 5 ⇒ Waris"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Umesh is on Tina's right; Zarna and Yusuf are not her neighbours.",
+        "final_answer": "Option B: Waris"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001816",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing centre",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010104",
+      "set_position": 1,
+      "question_text": "Who sits opposite Rupal?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jassi"
+        },
+        {
+          "key": "B",
+          "text": "Bimal"
+        },
+        {
+          "key": "C",
+          "text": "Ujjal"
+        },
+        {
+          "key": "D",
+          "text": "Disha"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Opposite = five chairs away",
+        "explanation": "Rupal is on chair 1; chair 6 is opposite: Ujjal.",
+        "steps": [
+          "Chairs anticlockwise from Ajay: Ajay, Rupal, vacant, Fateh, Bimal, Jassi, Ujjal, vacant, Disha, Lucky",
+          "Rupal = 1",
+          "1 + 5 = 6 ⇒ Ujjal"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Jassi is opposite Ajay, Bimal is opposite Lucky, and Disha is opposite Fateh.",
+        "final_answer": "Option C: Ujjal"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001817",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing centre",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010104",
+      "set_position": 2,
+      "question_text": "Who sits second to the left of Fateh?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ajay"
+        },
+        {
+          "key": "B",
+          "text": "Bimal"
+        },
+        {
+          "key": "C",
+          "text": "Lucky"
+        },
+        {
+          "key": "D",
+          "text": "Rupal"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Count the vacant chair as well",
+        "explanation": "Fateh is on chair 3; his left is clockwise: chair 2 (vacant), then chair 1, Rupal.",
+        "steps": [
+          "Chairs anticlockwise from Ajay: Ajay, Rupal, vacant, Fateh, Bimal, Jassi, Ujjal, vacant, Disha, Lucky",
+          "Fateh = 3",
+          "Clockwise: 2 (vacant), 1 ⇒ Rupal"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Ajay is third to his left, Bimal is to his right, and Lucky is further clockwise.",
+        "final_answer": "Option D: Rupal"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001818",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing centre",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010104",
+      "set_position": 3,
+      "question_text": "How many persons sit between Ajay and Bimal, counting from Ajay's right?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two"
+        },
+        {
+          "key": "B",
+          "text": "Three"
+        },
+        {
+          "key": "C",
+          "text": "Four"
+        },
+        {
+          "key": "D",
+          "text": "Five"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Count persons, skipping vacant chairs",
+        "explanation": "From Ajay (0) anticlockwise: Rupal (1), vacant (2), Fateh (3), then Bimal (4). Two persons sit between them.",
+        "steps": [
+          "Chairs anticlockwise from Ajay: Ajay, Rupal, vacant, Fateh, Bimal, Jassi, Ujjal, vacant, Disha, Lucky",
+          "Chairs 1, 2, 3 lie between",
+          "Chair 2 is vacant ⇒ two persons"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option A: Two"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001819",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing centre",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010104",
+      "set_position": 4,
+      "question_text": "Who sits immediately to the right of the vacant chair that is next to Ujjal?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lucky"
+        },
+        {
+          "key": "B",
+          "text": "Disha"
+        },
+        {
+          "key": "C",
+          "text": "Jassi"
+        },
+        {
+          "key": "D",
+          "text": "Fateh"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "A vacant chair has a 'right' as seen by a person facing the centre from it",
+        "explanation": "The vacant chair next to Ujjal is chair 7. Facing the centre from it, the right is anticlockwise: chair 8, Disha.",
+        "steps": [
+          "Chairs anticlockwise from Ajay: Ajay, Rupal, vacant, Fateh, Bimal, Jassi, Ujjal, vacant, Disha, Lucky",
+          "Vacant chairs: 2 and 7; chair 7 is next to Ujjal (6)",
+          "Chair 8 ⇒ Disha"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Lucky is two chairs from it, Jassi is next to Ujjal on the other side, and Fateh is beside the other vacant chair.",
+        "final_answer": "Option B: Disha"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001820",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing centre",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010104",
+      "set_position": 5,
+      "question_text": "Which of the following statements is true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Disha sits immediately to the right of Ujjal"
+        },
+        {
+          "key": "B",
+          "text": "Fateh sits opposite Jassi"
+        },
+        {
+          "key": "C",
+          "text": "Bimal sits opposite Lucky"
+        },
+        {
+          "key": "D",
+          "text": "Both vacant chairs are next to Rupal"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Checking each statement against the arrangement",
+        "explanation": "Bimal is on chair 4 and Lucky on chair 9: 4 + 5 = 9, so they sit opposite each other.",
+        "steps": [
+          "Chairs anticlockwise from Ajay: Ajay, Rupal, vacant, Fateh, Bimal, Jassi, Ujjal, vacant, Disha, Lucky",
+          "Bimal 4 ↔ 9 Lucky ✓",
+          "Ujjal's right is chair 7, which is vacant ✗",
+          "Fateh 3 ↔ 8 Disha ✗",
+          "Only chair 2 is next to Rupal; chair 7 is not ✗"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A vacant chair is to Ujjal's right, Fateh faces Disha, and only one vacant chair touches Rupal.",
+        "final_answer": "Option C: Bimal sits opposite Lucky"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001821",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing inside and outside",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010105",
+      "set_position": 1,
+      "question_text": "Who sits second to the right of Saloni?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Xena"
+        },
+        {
+          "key": "B",
+          "text": "Tanuj"
+        },
+        {
+          "key": "C",
+          "text": "Rohit"
+        },
+        {
+          "key": "D",
+          "text": "Urvi"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Saloni faces outside",
+        "explanation": "Saloni (seat 3) faces outside, so her right is clockwise: seat 2 (Yuvi), then seat 1 (Urvi).",
+        "steps": [
+          "Anticlockwise from Rohit: Rohit (facing the centre), Urvi (facing outside), Yuvi (facing the centre), Saloni (facing outside), Xena (facing the centre), Tanuj (facing outside), Vedika (facing the centre)",
+          "Saloni = 3, faces outside ⇒ right = clockwise",
+          "3 → 2 → 1 ⇒ Urvi"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Xena and Tanuj are on her left; Rohit is third to her right.",
+        "final_answer": "Option D: Urvi"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001822",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing inside and outside",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010105",
+      "set_position": 2,
+      "question_text": "Who sits immediately to the left of Tanuj?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Vedika"
+        },
+        {
+          "key": "B",
+          "text": "Xena"
+        },
+        {
+          "key": "C",
+          "text": "Rohit"
+        },
+        {
+          "key": "D",
+          "text": "Saloni"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Tanuj faces outside",
+        "explanation": "Tanuj (seat 5) faces outside, so his left is anticlockwise: seat 6, Vedika.",
+        "steps": [
+          "Anticlockwise from Rohit: Rohit (facing the centre), Urvi (facing outside), Yuvi (facing the centre), Saloni (facing outside), Xena (facing the centre), Tanuj (facing outside), Vedika (facing the centre)",
+          "Tanuj = 5, faces outside ⇒ left = anticlockwise",
+          "Seat 6 = Vedika"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Xena is on his right; Rohit and Saloni are not his neighbours.",
+        "final_answer": "Option A: Vedika"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001823",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing inside and outside",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010105",
+      "set_position": 3,
+      "question_text": "How many persons face outside?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two"
+        },
+        {
+          "key": "B",
+          "text": "Three"
+        },
+        {
+          "key": "C",
+          "text": "Four"
+        },
+        {
+          "key": "D",
+          "text": "Five"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Collect every facing clue",
+        "explanation": "Urvi, Saloni and Tanuj face outside; Rohit, Yuvi, Xena and Vedika face the centre.",
+        "steps": [
+          "Anticlockwise from Rohit: Rohit (facing the centre), Urvi (facing outside), Yuvi (facing the centre), Saloni (facing outside), Xena (facing the centre), Tanuj (facing outside), Vedika (facing the centre)",
+          "Outside: Urvi, Saloni, Tanuj",
+          "Centre: Rohit, Yuvi, Xena, Vedika"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: Three"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001824",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing inside and outside",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010105",
+      "set_position": 4,
+      "question_text": "Who sits third to the right of Urvi?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Vedika"
+        },
+        {
+          "key": "B",
+          "text": "Xena"
+        },
+        {
+          "key": "C",
+          "text": "Tanuj"
+        },
+        {
+          "key": "D",
+          "text": "Yuvi"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Urvi faces outside",
+        "explanation": "Urvi (seat 1) faces outside, so her right is clockwise: seat 0 (Rohit), 6 (Vedika), 5 (Tanuj).",
+        "steps": [
+          "Anticlockwise from Rohit: Rohit (facing the centre), Urvi (facing outside), Yuvi (facing the centre), Saloni (facing outside), Xena (facing the centre), Tanuj (facing outside), Vedika (facing the centre)",
+          "Urvi = 1 ⇒ clockwise 0, 6, 5",
+          "Third = Tanuj"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Vedika is second to her right, Yuvi is to her left, and Xena is further anticlockwise.",
+        "final_answer": "Option C: Tanuj"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001825",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Circular Seating Arrangement",
+      "subtopic": "Facing inside and outside",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Eight persons Ambar, Chitti, Dhruva, Garima, Hoshang, Jalaj, Mukta and Navami sit around a circular table, equally spaced. Some face the centre and the others face outside, and every person sits exactly opposite a person who faces the other way. (Facing the centre, the right is anticlockwise; facing outside, it is clockwise.)\n- Ambar faces the centre, and Dhruva sits opposite Ambar.\n- Garima faces outside and sits immediately to the right of Ambar.\n- Jalaj sits immediately to the left of Garima, and Mukta sits opposite Garima.\n- Hoshang sits second to the left of Dhruva, and Chitti sits immediately to the left of Ambar.\n- Chitti faces outside, and Jalaj and Navami face the same direction.\n\nWho sits second to the right of Navami?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hoshang"
+        },
+        {
+          "key": "B",
+          "text": "Dhruva"
+        },
+        {
+          "key": "C",
+          "text": "Garima"
+        },
+        {
+          "key": "D",
+          "text": "Mukta"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Opposite persons face opposite ways — use this to fix facings",
+        "explanation": "Seats 0 to 7 anticlockwise from Ambar (centre): Dhruva 4 faces outside (opposite Ambar). Garima (outside) = 1, so Mukta (opposite) = 5 faces the centre. Garima's left is anticlockwise: Jalaj = 2. Dhruva faces outside, so his left is anticlockwise: Hoshang = 6. Chitti, on Ambar's left (clockwise), = 7 and faces outside, so Navami (3, opposite Chitti) faces the centre, and Jalaj faces the centre like Navami (and Hoshang, opposite Jalaj, faces outside). Navami faces the centre, so second to her right (anticlockwise) is seat 5: Mukta.",
+        "steps": [
+          "Ambar 0 (C), Dhruva 4 (O)",
+          "Garima 1 (O) ⇒ Mukta 5 (C); Jalaj 2",
+          "Hoshang 6, Chitti 7 (O), Navami 3",
+          "Chitti O ⇒ Navami C ⇒ Jalaj C ⇒ Hoshang O",
+          "Navami (3, centre) ⇒ anticlockwise 4, 5 ⇒ Mukta"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Dhruva is immediately to her right; Hoshang third to her right; Garima is to her left.",
+        "final_answer": "Option D: Mukta"
+      },
+      "suggested_time_seconds": 120,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001826",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010106",
+      "set_position": 1,
+      "question_text": "Who likes Writing?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bablu"
+        },
+        {
+          "key": "B",
+          "text": "Ganesh"
+        },
+        {
+          "key": "C",
+          "text": "Chameli"
+        },
+        {
+          "key": "D",
+          "text": "Dinu"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "The last pair by a negative clue",
+        "explanation": "Swimming and Writing remain for Ganesh and Bablu, and Bablu does not like Swimming, so he likes Writing.",
+        "steps": [
+          "Bottom to top: floor 1 Heena (Reading), floor 2 Ganesh (Swimming), floor 3 Jagan (Dancing), floor 4 Chameli (Painting), floor 5 Bablu (Writing), floor 6 Dinu (Singing)",
+          "Left: Swimming, Writing",
+          "Bablu ≠ Swimming ⇒ Writing"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Ganesh likes Swimming, Chameli Painting and Dinu Singing.",
+        "final_answer": "Option A: Bablu"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001827",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010106",
+      "set_position": 2,
+      "question_text": "What is Ganesh's hobby?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Writing"
+        },
+        {
+          "key": "B",
+          "text": "Swimming"
+        },
+        {
+          "key": "C",
+          "text": "Reading"
+        },
+        {
+          "key": "D",
+          "text": "Dancing"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Same step, the other person",
+        "explanation": "Of Swimming and Writing, Bablu takes Writing, so Ganesh likes Swimming.",
+        "steps": [
+          "Bottom to top: floor 1 Heena (Reading), floor 2 Ganesh (Swimming), floor 3 Jagan (Dancing), floor 4 Chameli (Painting), floor 5 Bablu (Writing), floor 6 Dinu (Singing)",
+          "Bablu = Writing ⇒ Ganesh = Swimming"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Writing is Bablu's, Reading Heena's and Dancing Jagan's hobby.",
+        "final_answer": "Option B: Swimming"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001828",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010106",
+      "set_position": 3,
+      "question_text": "How many persons live between Heena and the person who likes Dancing?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None"
+        },
+        {
+          "key": "B",
+          "text": "One"
+        },
+        {
+          "key": "C",
+          "text": "Two"
+        },
+        {
+          "key": "D",
+          "text": "Three"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Floors strictly between",
+        "explanation": "Heena is on floor 1 and the Dancing lover (Jagan) on floor 3; only Ganesh lives between them.",
+        "steps": [
+          "Bottom to top: floor 1 Heena (Reading), floor 2 Ganesh (Swimming), floor 3 Jagan (Dancing), floor 4 Chameli (Painting), floor 5 Bablu (Writing), floor 6 Dinu (Singing)",
+          "Heena 1, Dancing = Jagan 3",
+          "Between: floor 2 ⇒ one"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: One"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001829",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010106",
+      "set_position": 4,
+      "question_text": "Who likes Reading?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ganesh"
+        },
+        {
+          "key": "B",
+          "text": "Jagan"
+        },
+        {
+          "key": "C",
+          "text": "Dinu"
+        },
+        {
+          "key": "D",
+          "text": "Heena"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Floor 1 is settled by the 'below' clue",
+        "explanation": "Reading is liked by the person on floor 1. Heena lives below Ganesh, so Heena is on floor 1.",
+        "steps": [
+          "Bottom to top: floor 1 Heena (Reading), floor 2 Ganesh (Swimming), floor 3 Jagan (Dancing), floor 4 Chameli (Painting), floor 5 Bablu (Writing), floor 6 Dinu (Singing)",
+          "Reading = floor 1",
+          "Heena below Ganesh ⇒ Heena = 1"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Ganesh is on floor 2, Jagan on 3 and Dinu on 6.",
+        "final_answer": "Option D: Heena"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001830",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010106",
+      "set_position": 5,
+      "question_text": "Which of the following statements is true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Chameli likes Dancing"
+        },
+        {
+          "key": "B",
+          "text": "Jagan lives on an even-numbered floor"
+        },
+        {
+          "key": "C",
+          "text": "Dinu lives immediately above the person who likes Writing"
+        },
+        {
+          "key": "D",
+          "text": "Heena lives immediately below Jagan"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Checking each statement against the floors",
+        "explanation": "The Writing lover (Bablu) is on floor 5, and Dinu lives on floor 6, immediately above him.",
+        "steps": [
+          "Bottom to top: floor 1 Heena (Reading), floor 2 Ganesh (Swimming), floor 3 Jagan (Dancing), floor 4 Chameli (Painting), floor 5 Bablu (Writing), floor 6 Dinu (Singing)",
+          "Chameli likes Painting ✗",
+          "Writing = Bablu (5), Dinu 6 ✓",
+          "Jagan is on floor 3 ✗",
+          "Heena is on floor 1 and Jagan on 3 ✗"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Chameli paints, Jagan's floor is odd, and Ganesh lives between Heena and Jagan.",
+        "final_answer": "Option C: Dinu lives immediately above the person who likes Writing"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001831",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010107",
+      "set_position": 1,
+      "question_text": "Who lives on the same floor as Lalu?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sweety"
+        },
+        {
+          "key": "B",
+          "text": "Pintu"
+        },
+        {
+          "key": "C",
+          "text": "Gudiya"
+        },
+        {
+          "key": "D",
+          "text": "Arif"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Fill the single free places in order",
+        "explanation": "Pintu is immediately below Lalu and Sweety above him, with one free place on each of floors 2, 3 and 4, so Lalu is on floor 3 with Gudiya.",
+        "steps": [
+          "Top to bottom: floor 4: Arif (Mint), Sweety (Navy); floor 3: Gudiya (Rose), Lalu (Tan); floor 2: Hanif (Amber), Pintu (Lilac); floor 1: Chinki (Coral), Mamta (Indigo)",
+          "Free: one place on 2, 3, 4",
+          "Pintu 2, Lalu 3, Sweety 4",
+          "Floor 3: Gudiya, Lalu"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Sweety and Arif are on floor 4; Pintu is on floor 2.",
+        "final_answer": "Option C: Gudiya"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001832",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010107",
+      "set_position": 2,
+      "question_text": "Which colour does Sweety like?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Mint"
+        },
+        {
+          "key": "B",
+          "text": "Tan"
+        },
+        {
+          "key": "C",
+          "text": "Lilac"
+        },
+        {
+          "key": "D",
+          "text": "Navy"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Two persons share the top floor",
+        "explanation": "Navy belongs to someone on floor 4. Arif (floor 4) likes Mint, so Sweety, the other person there, likes Navy.",
+        "steps": [
+          "Top to bottom: floor 4: Arif (Mint), Sweety (Navy); floor 3: Gudiya (Rose), Lalu (Tan); floor 2: Hanif (Amber), Pintu (Lilac); floor 1: Chinki (Coral), Mamta (Indigo)",
+          "Floor 4: Arif, Sweety",
+          "Arif = Mint ⇒ Sweety = Navy"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Mint is Arif's, Tan Lalu's and Lilac Pintu's colour.",
+        "final_answer": "Option D: Navy"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001833",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010107",
+      "set_position": 3,
+      "question_text": "Who likes Coral?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Chinki"
+        },
+        {
+          "key": "B",
+          "text": "Mamta"
+        },
+        {
+          "key": "C",
+          "text": "Lalu"
+        },
+        {
+          "key": "D",
+          "text": "Hanif"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "The last pair on floor 1",
+        "explanation": "Tan goes to Lalu (the only floor-3 person without a colour), so Coral and Indigo remain for Chinki and Mamta; Chinki does not like Indigo, so Chinki likes Coral.",
+        "steps": [
+          "Top to bottom: floor 4: Arif (Mint), Sweety (Navy); floor 3: Gudiya (Rose), Lalu (Tan); floor 2: Hanif (Amber), Pintu (Lilac); floor 1: Chinki (Coral), Mamta (Indigo)",
+          "Floor 1 colours: Coral, Indigo",
+          "Chinki ≠ Indigo ⇒ Coral"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Mamta likes Indigo, Lalu Tan and Hanif Amber.",
+        "final_answer": "Option A: Chinki"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001834",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010107",
+      "set_position": 4,
+      "question_text": "How many persons live above Pintu's floor?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Four"
+        },
+        {
+          "key": "B",
+          "text": "Five"
+        },
+        {
+          "key": "C",
+          "text": "Six"
+        },
+        {
+          "key": "D",
+          "text": "Seven"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Two persons per floor",
+        "explanation": "Pintu lives on floor 2; floors 3 and 4 hold two persons each: four persons.",
+        "steps": [
+          "Top to bottom: floor 4: Arif (Mint), Sweety (Navy); floor 3: Gudiya (Rose), Lalu (Tan); floor 2: Hanif (Amber), Pintu (Lilac); floor 1: Chinki (Coral), Mamta (Indigo)",
+          "Pintu = floor 2",
+          "Floors 3, 4 ⇒ 2 + 2 = four"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option A: Four"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001835",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010108",
+      "set_position": 1,
+      "question_text": "Who is the Cashier?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gagan"
+        },
+        {
+          "key": "B",
+          "text": "Dilip"
+        },
+        {
+          "key": "C",
+          "text": "Chaya"
+        },
+        {
+          "key": "D",
+          "text": "Barun"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Chain the Cashier–Editor–Farmer clues",
+        "explanation": "Of floors 4, 5, 6 and the ground floor, only 4–5 lets the Cashier sit immediately below the Editor with the Farmer above: Dilip (floor 4) is the Cashier.",
+        "steps": [
+          "Lowest to highest: the basement Feroz (Guard), the ground floor Chaya (Baker), floor 1 Harsha (Doctor), floor 2 Abhi (Nurse), floor 3 Emily (Actor), floor 4 Dilip (Cashier), floor 5 Gagan (Editor), floor 6 Barun (Farmer)",
+          "Free professions: Baker, Cashier, Editor, Farmer for ground, 4, 5, 6",
+          "Cashier 4, Editor 5, Farmer 6"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Gagan is the Editor, Chaya the Baker and Barun the Farmer.",
+        "final_answer": "Option B: Dilip"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001836",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010108",
+      "set_position": 2,
+      "question_text": "What is Chaya's profession?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Guard"
+        },
+        {
+          "key": "B",
+          "text": "Cashier"
+        },
+        {
+          "key": "C",
+          "text": "Baker"
+        },
+        {
+          "key": "D",
+          "text": "Nurse"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "The leftover profession",
+        "explanation": "Cashier, Editor and Farmer go to floors 4, 5 and 6, so the Baker is left for Chaya on the ground floor.",
+        "steps": [
+          "Lowest to highest: the basement Feroz (Guard), the ground floor Chaya (Baker), floor 1 Harsha (Doctor), floor 2 Abhi (Nurse), floor 3 Emily (Actor), floor 4 Dilip (Cashier), floor 5 Gagan (Editor), floor 6 Barun (Farmer)",
+          "Cashier 4, Editor 5, Farmer 6",
+          "Ground floor = Chaya ⇒ Baker"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The Guard is Feroz, the Cashier Dilip and the Nurse Abhi.",
+        "final_answer": "Option C: Baker"
+      },
+      "suggested_time_seconds": 85,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001837",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010108",
+      "set_position": 3,
+      "question_text": "How many persons live between the Guard and the Actor?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None"
+        },
+        {
+          "key": "B",
+          "text": "One"
+        },
+        {
+          "key": "C",
+          "text": "Two"
+        },
+        {
+          "key": "D",
+          "text": "Three"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Count levels, including the ground floor",
+        "explanation": "The Guard (Feroz) is in the basement and the Actor (Emily) on floor 3. Chaya (ground), Harsha (1) and Abhi (2) live between them.",
+        "steps": [
+          "Lowest to highest: the basement Feroz (Guard), the ground floor Chaya (Baker), floor 1 Harsha (Doctor), floor 2 Abhi (Nurse), floor 3 Emily (Actor), floor 4 Dilip (Cashier), floor 5 Gagan (Editor), floor 6 Barun (Farmer)",
+          "Guard = basement, Actor = floor 3",
+          "Between: ground, 1, 2 ⇒ three"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option D: Three"
+      },
+      "suggested_time_seconds": 85,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001838",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010108",
+      "set_position": 4,
+      "question_text": "Who lives immediately above the Nurse?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Emily"
+        },
+        {
+          "key": "B",
+          "text": "Harsha"
+        },
+        {
+          "key": "C",
+          "text": "Dilip"
+        },
+        {
+          "key": "D",
+          "text": "Gagan"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Find the Nurse first",
+        "explanation": "The Nurse (Abhi) lives on floor 2; floor 3 is Emily's.",
+        "steps": [
+          "Lowest to highest: the basement Feroz (Guard), the ground floor Chaya (Baker), floor 1 Harsha (Doctor), floor 2 Abhi (Nurse), floor 3 Emily (Actor), floor 4 Dilip (Cashier), floor 5 Gagan (Editor), floor 6 Barun (Farmer)",
+          "Nurse = Abhi = floor 2",
+          "Floor 3 = Emily"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Harsha is below the Nurse; Dilip and Gagan live higher up.",
+        "final_answer": "Option A: Emily"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001839",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010108",
+      "set_position": 5,
+      "question_text": "On which level does the Doctor live?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The ground floor"
+        },
+        {
+          "key": "B",
+          "text": "Floor 1"
+        },
+        {
+          "key": "C",
+          "text": "Floor 2"
+        },
+        {
+          "key": "D",
+          "text": "The basement"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Count levels from Emily",
+        "explanation": "Emily is on floor 3 and the Doctor two levels below: floor 1.",
+        "steps": [
+          "Lowest to highest: the basement Feroz (Guard), the ground floor Chaya (Baker), floor 1 Harsha (Doctor), floor 2 Abhi (Nurse), floor 3 Emily (Actor), floor 4 Dilip (Cashier), floor 5 Gagan (Editor), floor 6 Barun (Farmer)",
+          "Emily = floor 3",
+          "Two levels down ⇒ floor 1"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The ground floor is Chaya's, floor 2 the Nurse's, and the basement the Guard's.",
+        "final_answer": "Option B: Floor 1"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001840",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Floor-Based Puzzles",
+      "subtopic": "Floor with attribute",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010108",
+      "set_position": 6,
+      "question_text": "Which of the following statements is true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Harsha lives on the ground floor"
+        },
+        {
+          "key": "B",
+          "text": "Three persons live above Dilip"
+        },
+        {
+          "key": "C",
+          "text": "Gagan is the Editor"
+        },
+        {
+          "key": "D",
+          "text": "Abhi is the Doctor"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Checking each statement against the building",
+        "explanation": "Gagan (floor 5) is the Editor.",
+        "steps": [
+          "Lowest to highest: the basement Feroz (Guard), the ground floor Chaya (Baker), floor 1 Harsha (Doctor), floor 2 Abhi (Nurse), floor 3 Emily (Actor), floor 4 Dilip (Cashier), floor 5 Gagan (Editor), floor 6 Barun (Farmer)",
+          "Gagan = Editor ✓",
+          "Harsha is on floor 1 ✗",
+          "Above Dilip (floor 4): only Gagan and Barun ✗",
+          "Abhi is the Nurse ✗"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Harsha lives on floor 1, only two persons live above Dilip, and Abhi is the Nurse.",
+        "final_answer": "Option C: Gagan is the Editor"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001841",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Boxes with weights or colours",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010109",
+      "set_position": 1,
+      "question_text": "What is the colour of Box W?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gold"
+        },
+        {
+          "key": "B",
+          "text": "Ivory"
+        },
+        {
+          "key": "C",
+          "text": "Lime"
+        },
+        {
+          "key": "D",
+          "text": "Plum"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "'Between' two fixed colours",
+        "explanation": "Gold is at 2 and Black at 4, so Plum is at 3: Box W.",
+        "steps": [
+          "Bottom to top: 1 R (Lime), 2 E (Gold), 3 W (Plum), 4 A (Black), 5 N (Ivory), 6 C (Aqua), 7 H (Rust), 8 K (Cyan)",
+          "Gold 2, Black 4 ⇒ Plum 3",
+          "Position 3 = W"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Gold is E's colour, Ivory N's and Lime R's.",
+        "final_answer": "Option D: Plum"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001842",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Boxes with weights or colours",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010109",
+      "set_position": 2,
+      "question_text": "Which box is Ivory?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Box N"
+        },
+        {
+          "key": "B",
+          "text": "Box C"
+        },
+        {
+          "key": "C",
+          "text": "Box A"
+        },
+        {
+          "key": "D",
+          "text": "Box W"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Ivory sits on the Black box",
+        "explanation": "The Black box (A) is at 4, so Ivory is at 5: Box N.",
+        "steps": [
+          "Bottom to top: 1 R (Lime), 2 E (Gold), 3 W (Plum), 4 A (Black), 5 N (Ivory), 6 C (Aqua), 7 H (Rust), 8 K (Cyan)",
+          "Black = A = 4",
+          "Ivory = 5 = N"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "C is Aqua, A is Black and W is Plum.",
+        "final_answer": "Option A: Box N"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001843",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Boxes with weights or colours",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010109",
+      "set_position": 3,
+      "question_text": "How many boxes are kept between Box E and the Rust box?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Three"
+        },
+        {
+          "key": "B",
+          "text": "Four"
+        },
+        {
+          "key": "C",
+          "text": "Five"
+        },
+        {
+          "key": "D",
+          "text": "Six"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Count positions strictly between",
+        "explanation": "E is at 2 and the Rust box (H) at 7, so W, A, N and C lie between them.",
+        "steps": [
+          "Bottom to top: 1 R (Lime), 2 E (Gold), 3 W (Plum), 4 A (Black), 5 N (Ivory), 6 C (Aqua), 7 H (Rust), 8 K (Cyan)",
+          "E 2, Rust = H 7",
+          "Between: 3, 4, 5, 6 ⇒ four"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: Four"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001844",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Boxes with weights or colours",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010109",
+      "set_position": 4,
+      "question_text": "Which box is kept immediately above the Gold box?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Box A"
+        },
+        {
+          "key": "B",
+          "text": "Box R"
+        },
+        {
+          "key": "C",
+          "text": "Box W"
+        },
+        {
+          "key": "D",
+          "text": "Box N"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Find the Gold box first",
+        "explanation": "The Gold box (E) is at 2; position 3 is Box W.",
+        "steps": [
+          "Bottom to top: 1 R (Lime), 2 E (Gold), 3 W (Plum), 4 A (Black), 5 N (Ivory), 6 C (Aqua), 7 H (Rust), 8 K (Cyan)",
+          "Gold = E = 2",
+          "Position 3 = W"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A is two places above the Gold box, R below it, and N three places above it.",
+        "final_answer": "Option C: Box W"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001845",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Boxes with weights or colours",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010109",
+      "set_position": 5,
+      "question_text": "What is the colour of Box R?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Aqua"
+        },
+        {
+          "key": "B",
+          "text": "Rust"
+        },
+        {
+          "key": "C",
+          "text": "Gold"
+        },
+        {
+          "key": "D",
+          "text": "Lime"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "The last pair by a negative clue",
+        "explanation": "Aqua and Lime remain for R (bottom) and C; the bottom box is not Aqua, so R is Lime.",
+        "steps": [
+          "Bottom to top: 1 R (Lime), 2 E (Gold), 3 W (Plum), 4 A (Black), 5 N (Ivory), 6 C (Aqua), 7 H (Rust), 8 K (Cyan)",
+          "Left: Aqua, Lime for R and C",
+          "Bottom ≠ Aqua ⇒ R Lime"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Aqua is C's colour, Rust H's and Gold E's.",
+        "final_answer": "Option D: Lime"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001846",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Boxes with weights or colours",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010109",
+      "set_position": 6,
+      "question_text": "Which of the following statements is true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Box C is Aqua"
+        },
+        {
+          "key": "B",
+          "text": "Box H is Cyan"
+        },
+        {
+          "key": "C",
+          "text": "Box E is kept immediately below Box A"
+        },
+        {
+          "key": "D",
+          "text": "Four boxes are kept above Box N"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Checking each statement against the stack",
+        "explanation": "Box C (position 6) is Aqua.",
+        "steps": [
+          "Bottom to top: 1 R (Lime), 2 E (Gold), 3 W (Plum), 4 A (Black), 5 N (Ivory), 6 C (Aqua), 7 H (Rust), 8 K (Cyan)",
+          "C = Aqua ✓",
+          "H is Rust ✗",
+          "E is two places below A (W between) ✗",
+          "Above N (5): C, H, K = three, not four ✗"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "H is Rust, W sits between E and A, and only three boxes are above N.",
+        "final_answer": "Option A: Box C is Aqua"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001847",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010110",
+      "set_position": 1,
+      "question_text": "Which box is directly above Box H?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Box D"
+        },
+        {
+          "key": "B",
+          "text": "Box N"
+        },
+        {
+          "key": "C",
+          "text": "Box P"
+        },
+        {
+          "key": "D",
+          "text": "Box J"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Same place, upper shelf",
+        "explanation": "H is at lower 1; upper 1 holds N, the last box placed.",
+        "steps": [
+          "Upper shelf, left to right: N, D, J, B; lower shelf: H, P, F, L",
+          "H = lower 1",
+          "Upper 1 = N"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "D is above P, J above F, and P is beside H.",
+        "final_answer": "Option B: Box N"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001848",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010110",
+      "set_position": 2,
+      "question_text": "Which box is placed immediately to the right of Box D?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Box N"
+        },
+        {
+          "key": "B",
+          "text": "Box B"
+        },
+        {
+          "key": "C",
+          "text": "Box J"
+        },
+        {
+          "key": "D",
+          "text": "Box F"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Same shelf, next place",
+        "explanation": "D is at upper 2; upper 3 is J.",
+        "steps": [
+          "Upper shelf, left to right: N, D, J, B; lower shelf: H, P, F, L",
+          "D = upper 2",
+          "Upper 3 = J"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "N is to D's left, B is two places to its right, and F is on the lower shelf.",
+        "final_answer": "Option C: Box J"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001849",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010110",
+      "set_position": 3,
+      "question_text": "Which two boxes are at the right ends of the two shelves?",
+      "options": [
+        {
+          "key": "A",
+          "text": "J and F"
+        },
+        {
+          "key": "B",
+          "text": "N and H"
+        },
+        {
+          "key": "C",
+          "text": "D and P"
+        },
+        {
+          "key": "D",
+          "text": "B and L"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Right end = place 4 on each shelf",
+        "explanation": "Upper 4 is B and lower 4 is L.",
+        "steps": [
+          "Upper shelf, left to right: N, D, J, B; lower shelf: H, P, F, L",
+          "Upper 4 = B",
+          "Lower 4 = L"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "J and F are at place 3, N and H at the left ends, and D and P at place 2.",
+        "final_answer": "Option D: B and L"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001850",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010110",
+      "set_position": 4,
+      "question_text": "How many boxes are placed between Box N and Box B on the upper shelf?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two"
+        },
+        {
+          "key": "B",
+          "text": "Three"
+        },
+        {
+          "key": "C",
+          "text": "Four"
+        },
+        {
+          "key": "D",
+          "text": "Five"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Count places between",
+        "explanation": "N is at upper 1 and B at upper 4; D and J lie between them.",
+        "steps": [
+          "Upper shelf, left to right: N, D, J, B; lower shelf: H, P, F, L",
+          "N = 1, B = 4 (upper)",
+          "Between: D, J ⇒ two"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option A: Two"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001851",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010111",
+      "set_position": 1,
+      "question_text": "Which is the topmost Large box?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Box Q"
+        },
+        {
+          "key": "B",
+          "text": "Box C"
+        },
+        {
+          "key": "C",
+          "text": "Box Y"
+        },
+        {
+          "key": "D",
+          "text": "Box V"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Sizes fall into blocks",
+        "explanation": "Large boxes fill positions 1–3; position 3 is C, kept immediately below the Medium box Y.",
+        "steps": [
+          "Bottom to top: 1 V (Large), 2 Q (Large), 3 C (Large), 4 Y (Medium), 5 G (Medium), 6 T (Small), 7 M (Small)",
+          "Large = 1, 2, 3",
+          "Position 3 = C"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Q and V are lower Large boxes; Y is Medium.",
+        "final_answer": "Option B: Box C"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001852",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010111",
+      "set_position": 2,
+      "question_text": "How many Medium boxes are kept above Box C?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None"
+        },
+        {
+          "key": "B",
+          "text": "One"
+        },
+        {
+          "key": "C",
+          "text": "Two"
+        },
+        {
+          "key": "D",
+          "text": "Three"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "The size blocks are ordered",
+        "explanation": "Both Medium boxes, Y (4) and G (5), are above C (3).",
+        "steps": [
+          "Bottom to top: 1 V (Large), 2 Q (Large), 3 C (Large), 4 Y (Medium), 5 G (Medium), 6 T (Small), 7 M (Small)",
+          "Medium: Y 4, G 5",
+          "Both above C ⇒ two"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option C: Two"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001853",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010111",
+      "set_position": 3,
+      "question_text": "Which box is kept directly below Box G?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Box C"
+        },
+        {
+          "key": "B",
+          "text": "Box T"
+        },
+        {
+          "key": "C",
+          "text": "Box Q"
+        },
+        {
+          "key": "D",
+          "text": "Box Y"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Read the stack",
+        "explanation": "G is at 5; position 4 is Y.",
+        "steps": [
+          "Bottom to top: 1 V (Large), 2 Q (Large), 3 C (Large), 4 Y (Medium), 5 G (Medium), 6 T (Small), 7 M (Small)",
+          "G = 5",
+          "Position 4 = Y"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "C is two places below G, T above it, and Q at 2.",
+        "final_answer": "Option D: Box Y"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001854",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_010111",
+      "set_position": 4,
+      "question_text": "What is the size of Box Q?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Large"
+        },
+        {
+          "key": "B",
+          "text": "Medium"
+        },
+        {
+          "key": "C",
+          "text": "Small"
+        },
+        {
+          "key": "D",
+          "text": "Cannot be determined"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Positions fix sizes",
+        "explanation": "Q is at position 2, inside the Large block (1–3).",
+        "steps": [
+          "Bottom to top: 1 V (Large), 2 Q (Large), 3 C (Large), 4 Y (Medium), 5 G (Medium), 6 T (Small), 7 M (Small)",
+          "Q = 2",
+          "Positions 1–3 are Large"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The size of every position is fixed by the rule, so Q's size can be determined.",
+        "final_answer": "Option A: Large"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001855",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Stacked boxes",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Some boxes are kept one above another in a single stack. The number of boxes is not given; R, S and T are three of them.\n- Box R is kept sixth from the top, and Box S is kept fourth from the bottom.\n- Exactly two boxes are kept between Box R and Box S.\n- The stack has more than eight boxes, and Box T is kept immediately above Box R.\n\nHow many boxes are kept above Box T?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Three"
+        },
+        {
+          "key": "B",
+          "text": "Four"
+        },
+        {
+          "key": "C",
+          "text": "Five"
+        },
+        {
+          "key": "D",
+          "text": "Six"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Test both orders of R and S; keep the one the size condition allows",
+        "explanation": "S is 4th from the bottom. If R were below S it would be 1st from the bottom and also 6th from the top, giving only 6 boxes — not more than eight. So R is 4 + 3 = 7th from the bottom, and the stack has 7 + 6 − 1 = 12 boxes. T is 8th from the bottom, so 12 − 8 = 4 boxes are above it.",
+        "steps": [
+          "R below S ⇒ R 1st from bottom ⇒ 6 boxes ✗",
+          "R above S ⇒ R 7th from bottom ⇒ n = 12",
+          "T = 8th ⇒ above it: 12 − 8 = 4"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: Four"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001856",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Box-Based Puzzles",
+      "subtopic": "Boxes with weights or colours",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Six boxes D, F, L, P, U and Z are kept one above another in a single stack (position 1 is the bottom and 6 the top). Their weights are 5, 10, 15, 20, 25 and 30 kg, one weight per box.\n- Box Z is the heaviest box, and the boxes kept above Z weigh 40 kg in all.\n- Box D is the lightest box and is kept immediately above Box Z.\n- The two boxes kept below Box Z weigh 35 kg in all.\n- Box U is at the top, and Box P is kept immediately below Box U.\n- Box F is kept below Box L.\n- Box U is lighter than Box P but heavier than Box L.\n\nWhat is the weight of Box F?",
+      "options": [
+        {
+          "key": "A",
+          "text": "15 kg"
+        },
+        {
+          "key": "B",
+          "text": "20 kg"
+        },
+        {
+          "key": "C",
+          "text": "25 kg"
+        },
+        {
+          "key": "D",
+          "text": "30 kg"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Split the total weight around the heaviest box",
+        "explanation": "The weights total 105 kg. Z (30 kg) has 40 kg above it and 35 kg below it, and exactly two boxes below it, so Z = 3. D (5 kg) = 4, U = 6, P = 5, and F, L take 1, 2 with F below. The two bottom boxes weigh 35 kg: 10 + 25 or 15 + 20. P and U weigh 40 − 5 = 35 kg: the other pair. U is lighter than P and heavier than L. If F, L are 10 and 25, then P, U are 20 and 15, and L must be 10 (lighter than U): F = 25. If F, L were 15 and 20, U would be 10 and could not be heavier than L. So F weighs 25 kg.",
+        "steps": [
+          "Total 105 = 30 + 40 (above Z) + 35 (below Z) ⇒ Z = 3",
+          "D 4, P 5, U 6, F 1, L 2",
+          "F + L = 35 and P + U = 35: {10, 25} and {15, 20} in some order",
+          "L < U < P ⇒ P 20, U 15, L 10 ⇒ F 25"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option C: 25 kg"
+      },
+      "suggested_time_seconds": 120,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    }
+  ]
+}

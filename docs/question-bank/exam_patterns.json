@@ -1,0 +1,206 @@
+{
+  "_comment": "Official exam patterns for the six PrepMitra banking exams, transcribed from the latest official notifications. Marks and negative marks live here, per exam and stage, not on questions. Per-question marks = max_marks / questions; penalty = 0.25 x per-question marks (all six notifications).",
+  "verified_on": "2026-11-05",
+  "exams": [
+    {
+      "exam_id": "IBPS_PO",
+      "app_slug": "ibps-po-prelims",
+      "name": "IBPS PO/MT (CRP PO/MT-XVI, vacancies of 2027-28)",
+      "conducting_body": "IBPS",
+      "notification_url": "https://www.ibps.in/wp-content/uploads/Detailed-Notification_CRP-PO-XVI_Final_V1_30.06.2026.pdf",
+      "stages": [
+        {
+          "stage": "Prelims",
+          "duration_min": 60,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "english", "name": "English Language", "subjects": ["English Language"], "questions": 30, "max_marks": 30, "duration_min": 20},
+            {"section_key": "quant", "name": "Quantitative Aptitude", "subjects": ["Quantitative Aptitude"], "questions": 35, "max_marks": 30, "duration_min": 20},
+            {"section_key": "reasoning", "name": "Reasoning Ability", "subjects": ["Reasoning Ability"], "questions": 35, "max_marks": 40, "duration_min": 20}
+          ]
+        },
+        {
+          "stage": "Mains",
+          "duration_min": 160,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "reasoning", "name": "Reasoning", "subjects": ["Reasoning Ability"], "questions": 40, "max_marks": 60, "duration_min": 45},
+            {"section_key": "ga", "name": "General/ Economy/ Banking Awareness/ Digital/ Financial Awareness including RBI circulars", "subjects": ["General Awareness and Current Affairs", "Banking and Financial Awareness"], "questions": 50, "max_marks": 60, "duration_min": 35},
+            {"section_key": "english", "name": "English Language", "subjects": ["English Language"], "questions": 40, "max_marks": 20, "duration_min": 35},
+            {"section_key": "dai", "name": "Data Analysis & Interpretation", "subjects": ["Quantitative Aptitude"], "questions": 40, "max_marks": 60, "duration_min": 45}
+          ],
+          "descriptive": {"name": "Descriptive Paper (Essay and Comprehension)", "questions": 2, "max_marks": 25, "duration_min": 30}
+        }
+      ],
+      "final_stages": "Personality Test (non-qualifying, mandatory) + Interview (100 marks); Mains:Interview weightage 80:20"
+    },
+    {
+      "exam_id": "IBPS_CSA",
+      "app_slug": "ibps-clerk-prelims",
+      "name": "IBPS Customer Service Associate (CRP CSA-XVI, vacancies of 2027-28)",
+      "conducting_body": "IBPS",
+      "notification_url": "https://www.ibps.in/wp-content/uploads/Notification_CRP_CSA_XVI-Final.pdf",
+      "stages": [
+        {
+          "stage": "Prelims",
+          "duration_min": 60,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "english", "name": "English Language", "subjects": ["English Language"], "questions": 30, "max_marks": 30, "duration_min": 20},
+            {"section_key": "numerical", "name": "Numerical Ability", "subjects": ["Quantitative Aptitude"], "questions": 35, "max_marks": 35, "duration_min": 20},
+            {"section_key": "reasoning", "name": "Reasoning Ability", "subjects": ["Reasoning Ability"], "questions": 35, "max_marks": 35, "duration_min": 20}
+          ]
+        },
+        {
+          "stage": "Mains",
+          "duration_min": 125,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "ga", "name": "General/ Financial Awareness", "subjects": ["General Awareness and Current Affairs", "Banking and Financial Awareness"], "questions": 40, "max_marks": 50, "duration_min": 20},
+            {"section_key": "english", "name": "General English", "subjects": ["English Language"], "questions": 40, "max_marks": 40, "duration_min": 35},
+            {"section_key": "reasoning", "name": "Reasoning Ability", "subjects": ["Reasoning Ability"], "questions": 40, "max_marks": 60, "duration_min": 35},
+            {"section_key": "quant", "name": "Quantitative Aptitude", "subjects": ["Quantitative Aptitude"], "questions": 40, "max_marks": 50, "duration_min": 35}
+          ]
+        }
+      ],
+      "final_stages": "No interview; provisional allotment on Mains score. Local-language proficiency required for the State/UT applied."
+    },
+    {
+      "exam_id": "IBPS_RRB_OS1",
+      "app_slug": "ibps-rrb-officer-prelims",
+      "name": "IBPS RRB Officer Scale-I (CRP RRBs-XV)",
+      "conducting_body": "IBPS (interviews coordinated by Nodal RRBs with NABARD)",
+      "notification_url": "https://www.ibps.in/wp-content/uploads/CRP-RRBs-XV-notification_Revised.pdf",
+      "stages": [
+        {
+          "stage": "Prelims",
+          "duration_min": 45,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "reasoning", "name": "Reasoning", "subjects": ["Reasoning Ability"], "questions": 40, "max_marks": 40, "duration_min": 25},
+            {"section_key": "quant", "name": "Quantitative Aptitude", "subjects": ["Quantitative Aptitude"], "questions": 40, "max_marks": 40, "duration_min": 20}
+          ]
+        },
+        {
+          "stage": "Mains",
+          "duration_min": 120,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "reasoning", "name": "Reasoning", "subjects": ["Reasoning Ability"], "questions": 40, "max_marks": 50, "duration_min": 30},
+            {"section_key": "computer", "name": "Computer Knowledge", "subjects": ["Computer Knowledge"], "questions": 40, "max_marks": 20, "duration_min": 15},
+            {"section_key": "ga", "name": "General Awareness", "subjects": ["General Awareness and Current Affairs", "Banking and Financial Awareness"], "questions": 40, "max_marks": 40, "duration_min": 15},
+            {"section_key": "language", "name": "English Language (or Hindi Language - candidate opts one)", "subjects": ["English Language"], "questions": 40, "max_marks": 40, "duration_min": 30},
+            {"section_key": "quant", "name": "Quantitative Aptitude", "subjects": ["Quantitative Aptitude"], "questions": 40, "max_marks": 50, "duration_min": 30}
+          ]
+        }
+      ],
+      "final_stages": "Interview (100 marks); Online exam:Interview weightage 80:20"
+    },
+    {
+      "exam_id": "IBPS_RRB_OA",
+      "app_slug": "ibps-rrb-office-assistant-prelims",
+      "name": "IBPS RRB Office Assistant (Multipurpose) (CRP RRBs-XV)",
+      "conducting_body": "IBPS",
+      "notification_url": "https://www.ibps.in/wp-content/uploads/CRP-RRBs-XV-notification_Revised.pdf",
+      "stages": [
+        {
+          "stage": "Prelims",
+          "duration_min": 45,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "reasoning", "name": "Reasoning", "subjects": ["Reasoning Ability"], "questions": 40, "max_marks": 40, "duration_min": 25},
+            {"section_key": "numerical", "name": "Numerical Ability", "subjects": ["Quantitative Aptitude"], "questions": 40, "max_marks": 40, "duration_min": 20}
+          ]
+        },
+        {
+          "stage": "Mains",
+          "duration_min": 120,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "reasoning", "name": "Reasoning", "subjects": ["Reasoning Ability"], "questions": 40, "max_marks": 50, "duration_min": 30},
+            {"section_key": "computer", "name": "Computer Knowledge", "subjects": ["Computer Knowledge"], "questions": 40, "max_marks": 20, "duration_min": 15},
+            {"section_key": "ga", "name": "General Awareness", "subjects": ["General Awareness and Current Affairs", "Banking and Financial Awareness"], "questions": 40, "max_marks": 40, "duration_min": 15},
+            {"section_key": "language", "name": "English Language (or Hindi Language - candidate opts one)", "subjects": ["English Language"], "questions": 40, "max_marks": 40, "duration_min": 30},
+            {"section_key": "numerical", "name": "Numerical Ability", "subjects": ["Quantitative Aptitude"], "questions": 40, "max_marks": 50, "duration_min": 30}
+          ]
+        }
+      ],
+      "final_stages": "No interview; provisional allotment on Mains score. Local-language proficiency as prescribed by the RRB."
+    },
+    {
+      "exam_id": "SBI_PO",
+      "app_slug": "sbi-po-prelims",
+      "name": "SBI Probationary Officer (Advt. CRPD/PO/2026-27/09)",
+      "conducting_body": "State Bank of India",
+      "notification_url": "https://sbi.bank.in/documents/77530/57941/18062026_1_Detailed_Adv.2026.pdf/1f1a9532-8a2f-6e59-08a0-616d62a497b1?t=1781759726353",
+      "stages": [
+        {
+          "stage": "Prelims",
+          "duration_min": 60,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "english", "name": "English Language", "subjects": ["English Language"], "questions": 40, "max_marks": 40, "duration_min": 20},
+            {"section_key": "quant", "name": "Quantitative Aptitude", "subjects": ["Quantitative Aptitude"], "questions": 30, "max_marks": 30, "duration_min": 20},
+            {"section_key": "reasoning", "name": "Reasoning Ability", "subjects": ["Reasoning Ability"], "questions": 30, "max_marks": 30, "duration_min": 20}
+          ]
+        },
+        {
+          "stage": "Mains",
+          "duration_min": 180,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "reasoning_computer", "name": "Reasoning & Computer Aptitude", "subjects": ["Reasoning Ability", "Computer Knowledge"], "questions": 40, "max_marks": 60, "duration_min": 50},
+            {"section_key": "dai", "name": "Data Analysis & Interpretation", "subjects": ["Quantitative Aptitude"], "questions": 30, "max_marks": 60, "duration_min": 45},
+            {"section_key": "ga", "name": "General Awareness/ Economy/ Banking Knowledge", "subjects": ["General Awareness and Current Affairs", "Banking and Financial Awareness"], "questions": 60, "max_marks": 60, "duration_min": 45},
+            {"section_key": "english", "name": "English Language", "subjects": ["English Language"], "questions": 40, "max_marks": 20, "duration_min": 40}
+          ],
+          "descriptive": {"name": "Descriptive: Communication Skills (Email, Situation Analysis, Report or Precis)", "questions": 3, "max_marks": 30, "duration_min": 30}
+        }
+      ],
+      "final_stages": "Phase III: Psychometric Test + Group Exercise (20) + Interview (30). Final merit: Mains (230) normalised to 75 + Phase III (50) normalised to 25."
+    },
+    {
+      "exam_id": "SBI_JA",
+      "app_slug": "sbi-junior-associate-prelims",
+      "name": "SBI Junior Associate (Customer Support & Sales) (Advt. CRPD/CR/2026-27/17)",
+      "conducting_body": "State Bank of India",
+      "notification_url": "https://sbi.bank.in/webfiles/uploads/files_2627/08/JA_2026_Detailed_Advt_Eng.pdf",
+      "stages": [
+        {
+          "stage": "Prelims",
+          "duration_min": 60,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "english", "name": "English Language", "subjects": ["English Language"], "questions": 30, "max_marks": 30, "duration_min": 20},
+            {"section_key": "numerical", "name": "Numerical Ability", "subjects": ["Quantitative Aptitude"], "questions": 35, "max_marks": 35, "duration_min": 20},
+            {"section_key": "reasoning", "name": "Reasoning Ability", "subjects": ["Reasoning Ability"], "questions": 35, "max_marks": 35, "duration_min": 20}
+          ]
+        },
+        {
+          "stage": "Mains",
+          "duration_min": 160,
+          "sectional_timing": true,
+          "negative_marking_fraction": 0.25,
+          "sections": [
+            {"section_key": "ga", "name": "General/ Financial Awareness", "subjects": ["General Awareness and Current Affairs", "Banking and Financial Awareness"], "questions": 50, "max_marks": 50, "duration_min": 35},
+            {"section_key": "english", "name": "General English", "subjects": ["English Language"], "questions": 40, "max_marks": 40, "duration_min": 35},
+            {"section_key": "quant", "name": "Quantitative Aptitude", "subjects": ["Quantitative Aptitude"], "questions": 50, "max_marks": 50, "duration_min": 45},
+            {"section_key": "reasoning_computer", "name": "Reasoning Ability & Computer Aptitude", "subjects": ["Reasoning Ability", "Computer Knowledge"], "questions": 50, "max_marks": 60, "duration_min": 45}
+          ]
+        }
+      ],
+      "final_stages": "Local Language Proficiency Test (qualifying) for candidates who did not study the opted language in class 10/12. Final merit on Mains only."
+    }
+  ]
+}

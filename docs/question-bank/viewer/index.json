@@ -1,0 +1,59 @@
+{
+ "files": [
+  {
+   "path": "../batches/BATCH_000_sample.json",
+   "label": "BATCH 000 sample",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_001.json",
+   "label": "BATCH 001",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_002.json",
+   "label": "BATCH 002",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_003.json",
+   "label": "BATCH 003",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_004.json",
+   "label": "BATCH 004",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_005.json",
+   "label": "BATCH 005",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_006.json",
+   "label": "BATCH 006",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_007.json",
+   "label": "BATCH 007",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_008.json",
+   "label": "BATCH 008",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_009.json",
+   "label": "BATCH 009",
+   "status": "merged"
+  },
+  {
+   "path": "../batches/BATCH_010.json",
+   "label": "BATCH 010",
+   "status": "merged"
+  }
+ ]
+}

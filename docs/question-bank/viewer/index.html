@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PrepMitra Question Bank</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --text: #1d2330; --muted: #5f6b7a; --line: #dfe3ea;
+    --accent: #2f5bd3; --ok: #1f8a4c; --ok-bg: #e6f5ec; --bad: #c0392b; --bad-bg: #fbe9e7; --chip: #eef1f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12151b; --card: #1b2029; --text: #e6e9ef; --muted: #9aa4b2; --line: #2c3340;
+      --accent: #7c9cff; --ok: #4cc283; --ok-bg: #173226; --bad: #ef7b6c; --bad-bg: #3a1d1a; --chip: #262c37;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 16px; border-bottom: 1px solid var(--line); background: var(--card); position: sticky; top: 0; z-index: 2; }
+  h1 { margin: 0 0 4px; font-size: 20px; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
+  .stat { background: var(--chip); border-radius: 8px; padding: 4px 10px; font-size: 13px; }
+  .stat b { font-variant-numeric: tabular-nums; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  select, input[type=search] { background: var(--card); color: var(--text); border: 1px solid var(--line);
+         border-radius: 6px; padding: 6px 8px; font: inherit; font-size: 14px; max-width: 100%; }
+  input[type=search] { flex: 1 1 220px; }
+  label.toggle { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+  main { max-width: 980px; margin: 0 auto; padding: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; font-size: 12px; }
+  .chip { background: var(--chip); border-radius: 999px; padding: 2px 9px; color: var(--muted); }
+  .chip.id { font-family: ui-monospace, Consolas, monospace; color: var(--text); }
+  .chip.Basic { color: var(--ok); } .chip.Advanced { color: var(--bad); }
+  .stim { border-left: 3px solid var(--accent); padding: 8px 12px; margin-bottom: 12px; background: var(--chip); border-radius: 6px; }
+  .stim summary { cursor: pointer; font-weight: 600; }
+  .qtext { white-space: pre-wrap; margin-bottom: 12px; }
+  .opts { display: grid; gap: 8px; }
+  .opt { display: flex; gap: 10px; align-items: flex-start; text-align: left; width: 100%; padding: 9px 12px;
+         border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); font: inherit; cursor: pointer; }
+  .opt:hover { border-color: var(--accent); }
+  .opt .k { font-weight: 700; min-width: 18px; }
+  .opt.correct { border-color: var(--ok); background: var(--ok-bg); }
+  .opt.wrong { border-color: var(--bad); background: var(--bad-bg); }
+  .sol { margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 12px; }
+  .sol h4 { margin: 10px 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .sol ol { margin: 4px 0; padding-left: 22px; }
+  .sol .final { font-weight: 600; color: var(--ok); }
+  .src a { color: var(--accent); word-break: break-all; }
+  .btn { background: none; border: 1px solid var(--line); color: var(--accent); border-radius: 6px; padding: 5px 10px;
+         font: inherit; font-size: 13px; cursor: pointer; margin-top: 10px; }
+  table { border-collapse: collapse; margin: 6px 0; font-size: 14px; display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--line); padding: 4px 8px; text-align: left; }
+  .pager { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 18px 0 30px; color: var(--muted); }
+  .empty, .loading { text-align: center; color: var(--muted); padding: 40px 0; }
+  .warn { color: var(--bad); }
+</style>
+</head>
+<body>
+<header>
+  <h1>PrepMitra Banking Question Bank</h1>
+  <div class="sub">Local preview of the generated questions. Every question is still "Pending Human Review".</div>
+  <div class="stats" id="stats"></div>
+  <div class="filters">
+    <select id="f-status"><option value="">All files</option><option value="merged">Merged batches</option><option value="not merged yet">Not merged yet</option></select>
+    <select id="f-subject"><option value="">All subjects</option></select>
+    <select id="f-topic"><option value="">All topics</option></select>
+    <select id="f-diff"><option value="">All difficulties</option><option>Basic</option><option>Intermediate</option><option>Advanced</option></select>
+    <select id="f-exam"><option value="">All exams</option></select>
+    <input type="search" id="f-q" placeholder="Search text or question ID">
+    <label class="toggle"><input type="checkbox" id="f-reveal"> Show answers</label>
+  </div>
+</header>
+<main id="list"><div class="loading" id="loading">Loading questions…</div></main>
+
+<script>
+const PAGE = 25;
+let ALL = [], STIM = {}, view = [], page = 0;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+
+// Minimal markdown: pipe tables, **bold**, line breaks. Everything is escaped first.
+function md(text) {
+  const lines = String(text || "").split("\n"); const out = []; let i = 0;
+  const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  while (i < lines.length) {
+    if (/^\s*\|.*\|\s*$/.test(lines[i]) && i + 1 < lines.length && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1])) {
+      const cells = l => l.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+      let h = "<table><tr>" + cells(lines[i]).map(c => `<th>${inline(c)}</th>`).join("") + "</tr>";
+      i += 2;
+      while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) { h += "<tr>" + cells(lines[i]).map(c => `<td>${inline(c)}</td>`).join("") + "</tr>"; i++; }
+      out.push(h + "</table>");
+    } else { out.push(inline(lines[i]) + "<br>"); i++; }
+  }
+  return out.join("");
+}
+
+async function load() {
+  const idx = await (await fetch("index.json")).json();
+  let done = 0;
+  await Promise.all(idx.files.map(async f => {
+    try {
+      const d = await (await fetch(f.path)).json();
+      for (const s of d.stimuli || []) STIM[s.stimulus_id] = s;
+      for (const q of d.questions) { q._file = f.label; q._status = f.status; ALL.push(q); }
+    } catch (e) { console.error("could not load", f.path, e); }
+    $("loading").textContent = `Loading questions… ${++done}/${idx.files.length} files`;
+  }));
+  ALL.sort((a, b) => a.question_id.localeCompare(b.question_id));
+  fillFilters(); apply();
+}
+
+function fillFilters() {
+  const uniq = arr => [...new Set(arr)].sort();
+  for (const s of uniq(ALL.map(q => q.subject))) $("f-subject").add(new Option(s, s));
+  for (const e of uniq(ALL.flatMap(q => q.exam_mappings.map(m => m.exam_id)))) $("f-exam").add(new Option(e.replaceAll("_", " "), e));
+  fillTopics();
+}
+function fillTopics() {
+  const sel = $("f-topic"), subj = $("f-subject").value, cur = sel.value;
+  sel.length = 1;
+  for (const t of [...new Set(ALL.filter(q => !subj || q.subject === subj).map(q => q.topic))].sort()) sel.add(new Option(t, t));
+  sel.value = [...sel.options].some(o => o.value === cur) ? cur : "";
+}
+
+function apply() {
+  const f = { st: $("f-status").value, s: $("f-subject").value, t: $("f-topic").value, d: $("f-diff").value,
+              e: $("f-exam").value, q: $("f-q").value.trim().toLowerCase() };
+  view = ALL.filter(x => (!f.st || x._status === f.st) && (!f.s || x.subject === f.s) && (!f.t || x.topic === f.t)
+    && (!f.d || x.difficulty === f.d) && (!f.e || x.exam_mappings.some(m => m.exam_id === f.e))
+    && (!f.q || x.question_id.toLowerCase().includes(f.q) || x.question_text.toLowerCase().includes(f.q)));
+  page = 0; stats(); render();
+}
+
+function stats() {
+  const by = (arr, k) => arr.reduce((m, x) => (m[x[k]] = (m[x[k]] || 0) + 1, m), {});
+  const subj = by(ALL, "subject"), diff = by(view, "difficulty");
+  const merged = ALL.filter(q => q._status === "merged").length;
+  $("stats").innerHTML =
+    `<span class="stat">Total loaded <b>${ALL.length.toLocaleString()}</b> / 10,000</span>` +
+    `<span class="stat">Merged <b>${merged.toLocaleString()}</b></span>` +
+    Object.entries(subj).map(([k, v]) => `<span class="stat">${esc(k)} <b>${v}</b></span>`).join("") +
+    `<span class="stat">Showing <b>${view.length.toLocaleString()}</b> (B ${diff.Basic || 0} · I ${diff.Intermediate || 0} · A ${diff.Advanced || 0})</span>`;
+}
+
+function card(q) {
+  const reveal = $("f-reveal").checked;
+  const st = q.stimulus_id && STIM[q.stimulus_id];
+  const exams = [...new Set(q.exam_mappings.map(m => `${m.exam_id.replaceAll("_", " ")} ${m.stage}`))];
+  const v = q.verification, s = q.solution;
+  return `<div class="card" data-id="${esc(q.question_id)}">
+    <div class="meta"><span class="chip id">${esc(q.question_id)}</span><span class="chip">${esc(q.subject)}</span>
+      <span class="chip">${esc(q.topic)} › ${esc(q.subtopic)}</span><span class="chip ${esc(q.difficulty)}">${esc(q.difficulty)}</span>
+      <span class="chip">${q.suggested_time_seconds}s</span><span class="chip">${esc(q._file)}</span>
+      ${q.current_affairs ? `<span class="chip">event ${esc(q.current_affairs.event_date)} · review by ${esc(q.current_affairs.review_by)}</span>` : ""}</div>
+    ${st ? `<details class="stim" ${q.set_position === 1 ? "open" : ""}><summary>${esc(st.title)} (Q${q.set_position} of set)</summary>${md(st.content)}</details>` : ""}
+    <div class="qtext">${md(q.question_text)}</div>
+    <div class="opts">${q.options.map(o => `<button class="opt ${reveal && o.key === q.correct_answer ? "correct" : ""}" data-k="${o.key}"><span class="k">${o.key}</span><span>${md(o.text)}</span></button>`).join("")}</div>
+    <div class="sol" ${reveal ? "" : "hidden"}>
+      <div class="final">${esc(s.final_answer)}</div>
+      <h4>Concept</h4><div>${md(s.concept)}</div>
+      <h4>Explanation</h4><div>${md(s.explanation)}</div>
+      <h4>Steps</h4><ol>${s.steps.map(x => `<li>${md(x)}</li>`).join("")}</ol>
+      ${s.shortcut ? `<h4>Shortcut</h4><div>${md(s.shortcut)}</div>` : ""}
+      ${s.why_others_wrong ? `<h4>Why the other options are wrong</h4><div>${md(s.why_others_wrong)}</div>` : ""}
+      <h4>Verification</h4><div class="sub">${esc(v.review_status)} · ${v.verified_by.map(esc).join(", ")}</div>
+      ${(v.fact_checks || []).length ? `<h4>Sources</h4><div class="src">${v.fact_checks.map(f => `<div>${esc(f.claim)} — <a href="${esc(f.source_url)}" target="_blank" rel="noopener">${esc(f.source_url)}</a> (checked ${esc(f.checked_on)})</div>`).join("")}</div>` : ""}
+      <h4>Exams</h4><div class="sub">${exams.map(esc).join(" · ")}</div>
+    </div>
+    ${reveal ? "" : `<button class="btn reveal">Show solution</button>`}
+  </div>`;
+}
+
+function render() {
+  const list = $("list"), start = page * PAGE, pages = Math.max(1, Math.ceil(view.length / PAGE));
+  if (!view.length) { list.innerHTML = `<div class="empty">No questions match these filters.</div>`; return; }
+  list.innerHTML = view.slice(start, start + PAGE).map(card).join("") +
+    `<div class="pager"><button class="btn" id="prev" ${page ? "" : "disabled"}>Previous</button>
+     Page ${page + 1} of ${pages}<button class="btn" id="next" ${page + 1 < pages ? "" : "disabled"}>Next</button></div>`;
+  $("prev").onclick = () => { page--; render(); scrollTo(0, 0); };
+  $("next").onclick = () => { page++; render(); scrollTo(0, 0); };
+}
+
+// Practice mode: clicking an option marks it right or wrong and reveals the solution.
+$("list").addEventListener("click", e => {
+  const c = e.target.closest(".card"); if (!c) return;
+  const q = ALL.find(x => x.question_id === c.dataset.id);
+  const opt = e.target.closest(".opt");
+  if (opt || e.target.closest(".reveal")) {
+    c.querySelectorAll(".opt").forEach(b => b.classList.toggle("correct", b.dataset.k === q.correct_answer));
+    if (opt && opt.dataset.k !== q.correct_answer) opt.classList.add("wrong");
+    c.querySelector(".sol").hidden = false;
+    c.querySelector(".reveal")?.remove();
+  }
+});
+["f-status", "f-topic", "f-diff", "f-exam", "f-reveal"].forEach(id => $(id).addEventListener("change", () => id === "f-reveal" ? render() : apply()));
+$("f-subject").addEventListener("change", () => { fillTopics(); apply(); });
+$("f-q").addEventListener("input", apply);
+load().catch(e => { $("list").innerHTML = `<div class="empty warn">Could not load questions: ${esc(e.message)}. Open this page through the local server.</div>`; });
+</script>
+</body>
+</html>

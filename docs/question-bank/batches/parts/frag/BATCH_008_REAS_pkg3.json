@@ -1,0 +1,3902 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "BATCH_008",
+  "created_at": "2026-11-05",
+  "notes": "Reasoning Ability fragment of BATCH_008 from topic package REAS_pkg3 (Blood Relations, Direction Sense, Coding and Decoding, Alphanumeric Series, Alphabet Test, Number Series (Reasoning)): 46 original questions built by tools/packages/REAS_pkg3.py. Family trees, coordinates, coding rules (inferred rules checked against a library of alternative rules; sentence codes by enumerating every word-code bijection), series, alphabet and number operations are recomputed in code. All questions await human review.",
+  "stimuli": [
+    {
+      "stimulus_id": "STIM_REAS_008301",
+      "type": "puzzle",
+      "title": "Five benches in a park",
+      "content": "Five benches A, B, C, D and E stand in a park.\n\n- Bench B is 15 m north of bench A.\n- Bench C is 20 m east of bench B.\n- Bench D is 15 m south of bench C.\n- Bench E is 10 m west of bench D.",
+      "solution": "Take A at (0, 0): B (0, 15), C (20, 15), D (20, 0), E (10, 0)."
+    },
+    {
+      "stimulus_id": "STIM_REAS_008302",
+      "type": "passage",
+      "title": "A robot's movement instructions",
+      "content": "A robot always starts at point O facing north and follows a program of instructions from left to right:\nF n — move n metres forward in the direction it is facing;\nR — turn 90° to its right;\nL — turn 90° to its left;\nB — turn about (180°).\nTurns do not move the robot.",
+      "solution": "Track the facing after every turn and the position (east, north) after every F."
+    },
+    {
+      "stimulus_id": "STIM_REAS_008303",
+      "type": "puzzle",
+      "title": "Seven points with diagonal steps",
+      "content": "Seven points P, Q, R, S, T, U and V lie on flat ground.\n\n- Q is 4√2 m to the north-east of P.\n- R is 7 m to the south of Q.\n- S is 8 m to the west of R.\n- T is 9 m to the north of S.\n- U is 4√2 m to the south-east of T.\n- V is 3 m to the south of P.",
+      "solution": "A diagonal step of k√2 m moves k m along each axis. With P at (0, 0): Q (4, 4), R (4, −3), S (−4, −3), T (−4, 6), U (0, 2), V (0, −3)."
+    },
+    {
+      "stimulus_id": "STIM_REAS_008304",
+      "type": "data_table",
+      "title": "Letter codes that depend on the number of vowels",
+      "content": "Each letter is coded as shown below, subject to the conditions that follow.\n\n| Letter | A | B | D | E | G | I | K | L | M | N | O | P | R | S | T | U |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| C | o | d | e |\n| 6 |\n| # |\n| 3 |\n| 9 |\n| % |\n| 1 |\n| & |\n| 4 |\n| @ |\n| 7 |\n| 2 |\n| $ |\n| 8 |\n| © |\n| 5 |\n| ★ |\n\nConditions (A, E, I, O and U are vowels):\n(i) If the word has exactly one vowel, that vowel is coded as ◎.\n(ii) If the word has exactly two vowels, the codes of its first and last letters are interchanged.\n(iii) If the word has three or more vowels, every consonant that is immediately followed by a vowel is coded as ◇.\nAll other letters are coded as in the table.",
+      "solution": "Count the vowels of the word first; exactly one condition (or none, for a word without vowels) applies."
+    },
+    {
+      "stimulus_id": "STIM_REAS_008305",
+      "type": "data_table",
+      "title": "A 5 × 5 letter grid code",
+      "content": "In a certain code, each letter is written as a two-digit number: its row number followed by its column number in the grid below (Z is not used).\n\n| Row \\ Column | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|\n| 1 | P | L | A | N | E |\n| 2 | T | B | C | D | F |\n| 3 | G | H | I | J | K |\n| 4 | M | O | Q | R | S |\n| 5 | U | V | W | X | Y |",
+      "solution": "Read the row first, then the column. For example, C is in row 2, column 3, so C = 23."
+    },
+    {
+      "stimulus_id": "STIM_REAS_008306",
+      "type": "passage",
+      "title": "An alphabet with its halves rearranged",
+      "content": "The English alphabet is rearranged as follows: the last thirteen letters (N to Z) are written first in their usual order, followed by the first thirteen letters (A to M) in reverse order.\n\nN O P Q R S T U V W X Y Z M L K J I H G F E D C B A",
+      "solution": "Number the new arrangement 1 to 26 from the left: N is 1st, Z 13th, M 14th and A 26th."
+    },
+    {
+      "stimulus_id": "STIM_REAS_008307",
+      "type": "data_table",
+      "title": "Five three-digit numbers (set C)",
+      "content": "Study the following five three-digit numbers and answer the questions.\n\n473   852   619   352   725",
+      "solution": "Write out the digits of each number before applying an operation."
+    },
+    {
+      "stimulus_id": "STIM_REAS_008308",
+      "type": "data_table",
+      "title": "Three rows of numbers with square and prime rules",
+      "content": "Each row has three numbers. Work from left to right: apply the first rule below that fits the first two numbers, then apply the first rule that fits that result and the third number. The final value is the row's result.\n\n(i) If the first number of the pair is a perfect square, the result is its square root multiplied by the second number.\n(ii) Otherwise, if the first number is a prime number, the result is the first number plus twice the second number.\n(iii) Otherwise, if the second number is even it is subtracted from the first; if it is odd it is added to the first.\n\nRow 1: 16   5   3\nRow 2: 7   6   4\nRow 3: 25   3   9",
+      "solution": "Row 1: 16 is a square → 4 × 5 = 20; 20 is neither a square nor a prime and 3 is odd → 23.\nRow 2: 7 is prime → 7 + 12 = 19; 19 is prime → 19 + 8 = 27.\nRow 3: 25 is a square → 5 × 3 = 15; 15 is neither, 9 is odd → 24."
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "BANK_REAS_001507",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Blood Relations",
+      "subtopic": "Direct relation",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Jyoti is the only daughter of Kamal. Kamal's father is Lakhan, and Lakhan's wife is Mira. How is Jyoti related to Mira?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Daughter"
+        },
+        {
+          "key": "B",
+          "text": "Niece"
+        },
+        {
+          "key": "C",
+          "text": "Daughter-in-law"
+        },
+        {
+          "key": "D",
+          "text": "Granddaughter"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "A son's daughter is a granddaughter",
+        "explanation": "Mira is Lakhan's wife, so she is Kamal's mother. Jyoti is Kamal's daughter, so she is Mira's granddaughter.",
+        "steps": [
+          "Mira = Kamal's mother",
+          "Jyoti = Kamal's daughter ⇒ Mira's granddaughter"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Daughter skips a generation; Niece would need Jyoti's parent to be Mira's sibling; Daughter-in-law would need Jyoti to be married to Mira's son.",
+        "final_answer": "Option D: Granddaughter"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001508",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Blood Relations",
+      "subtopic": "Coded blood relation",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "In a certain code:\n'P # Q' means 'P is a child of Q';\n'P $ Q' means 'P is the sister of Q';\n'P @ Q' means 'P is the husband of Q'.\n\nIf 'A # B @ C $ D', how is D related to A?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cannot be determined"
+        },
+        {
+          "key": "B",
+          "text": "Maternal uncle"
+        },
+        {
+          "key": "C",
+          "text": "Maternal aunt"
+        },
+        {
+          "key": "D",
+          "text": "Cousin"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Check whether every gender needed is given",
+        "explanation": "A is B's child and B is C's husband, so C is A's mother. C is D's sister, so D is a sibling of A's mother. D's gender is not given, so D may be A's maternal uncle or maternal aunt: the exact relation cannot be determined.",
+        "steps": [
+          "A # B, B @ C ⇒ C is A's mother",
+          "C $ D ⇒ D is a sibling of A's mother",
+          "D's gender unknown ⇒ uncle or aunt"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Uncle and Aunt each assume a gender the code never states; a cousin would be a child of D.",
+        "final_answer": "Option A: Cannot be determined"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001509",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Blood Relations",
+      "subtopic": "Family puzzle",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Ojas and Pallavi are a married couple with exactly two children, Qadir and Radha. Qadir is unmarried. Sameer is Qadir's only brother-in-law. How is Sameer related to Pallavi?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Son"
+        },
+        {
+          "key": "B",
+          "text": "Nephew"
+        },
+        {
+          "key": "C",
+          "text": "Brother-in-law"
+        },
+        {
+          "key": "D",
+          "text": "Son-in-law"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "An unmarried man's brother-in-law is his sister's husband",
+        "explanation": "Qadir is unmarried, so his brother-in-law can only be the husband of his sister. His only sibling is Radha, so Sameer is Radha's husband. The husband of Pallavi's daughter is Pallavi's son-in-law.",
+        "steps": [
+          "Qadir unmarried ⇒ brother-in-law = sister's husband",
+          "Sameer = Radha's husband",
+          "Daughter's husband ⇒ son-in-law"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Pallavi's only son is Qadir; Sameer is not the child of Pallavi's sibling; he is Qadir's brother-in-law, not Pallavi's.",
+        "final_answer": "Option D: Son-in-law"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001510",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Blood Relations",
+      "subtopic": "Family puzzle",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Ruchi is the daughter-in-law of Lata, who has only one son. Nandita is Lata's only daughter. Om is the son-in-law of Lata's husband, and Parth is the son of Om and Nandita. Ishaan is Ruchi's son. Every person mentioned has only one spouse. How is Parth related to Ruchi?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Son"
+        },
+        {
+          "key": "B",
+          "text": "Cousin"
+        },
+        {
+          "key": "C",
+          "text": "Nephew"
+        },
+        {
+          "key": "D",
+          "text": "Brother-in-law"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Find both couples, then link through Lata's children",
+        "explanation": "Ruchi is the wife of Lata's only son. Om, the son-in-law of Lata's husband, is the husband of Lata's only daughter Nandita. Parth is Nandita's son, i.e. the son of Ruchi's husband's sister: Ruchi's nephew (and Ishaan's cousin).",
+        "steps": [
+          "Ruchi = wife of Lata's only son",
+          "Nandita = Lata's only daughter = sister of Ruchi's husband",
+          "Parth = Nandita's son ⇒ Ruchi's nephew"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Ruchi's son is Ishaan; Parth is Ishaan's cousin, not Ruchi's; he is a generation below Ruchi, so not her brother-in-law.",
+        "final_answer": "Option C: Nephew"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001511",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008301",
+      "set_position": 1,
+      "question_text": "What is the straight-line distance between benches A and C, and in which direction is C from A?",
+      "options": [
+        {
+          "key": "A",
+          "text": "25 m, North-West"
+        },
+        {
+          "key": "B",
+          "text": "25 m, South-West"
+        },
+        {
+          "key": "C",
+          "text": "25 m, North-East"
+        },
+        {
+          "key": "D",
+          "text": "35 m, North-East"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "A 15-20-25 triangle",
+        "explanation": "C is 20 m east and 15 m north of A: √(400 + 225) = 25 m, north-east.",
+        "steps": [
+          "A (0, 0), B (0, 15), C (20, 15), D (20, 0), E (10, 0)",
+          "C − A = (20, 15)",
+          "√(20² + 15²) = 25 m, North-East"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'25 m, North-West' mixes up east and west; '25 m, South-West' gives the direction of the start from the end point; '35 m, North-East' adds the two components instead of using Pythagoras.",
+        "final_answer": "Option C: 25 m, North-East"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001512",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008301",
+      "set_position": 2,
+      "question_text": "In which direction is bench E with respect to bench B?",
+      "options": [
+        {
+          "key": "A",
+          "text": "North-West"
+        },
+        {
+          "key": "B",
+          "text": "South-East"
+        },
+        {
+          "key": "C",
+          "text": "South-West"
+        },
+        {
+          "key": "D",
+          "text": "East"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Signs of the two components",
+        "explanation": "E (10, 0) − B (0, 15) = (10, −15): east and south, so E is south-east of B.",
+        "steps": [
+          "A (0, 0), B (0, 15), C (20, 15), D (20, 0), E (10, 0)",
+          "E − B = (10, −15) ⇒ South-East"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "North-West is B's direction from E; South-West takes E as west of A; East ignores the 15 m north–south gap.",
+        "final_answer": "Option B: South-East"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001513",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008301",
+      "set_position": 3,
+      "question_text": "Which bench is nearest to bench A?",
+      "options": [
+        {
+          "key": "A",
+          "text": "E"
+        },
+        {
+          "key": "B",
+          "text": "B"
+        },
+        {
+          "key": "C",
+          "text": "D"
+        },
+        {
+          "key": "D",
+          "text": "C"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Compare straight-line distances",
+        "explanation": "Distances from A: B 15 m, C 25 m, D 20 m, E 10 m. E is nearest.",
+        "steps": [
+          "A (0, 0), B (0, 15), C (20, 15), D (20, 0), E (10, 0)",
+          "AB 15, AC 25, AD 20, AE 10"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "B is 15 m, D 20 m and C 25 m from A.",
+        "final_answer": "Option A: E"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001514",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Shadow-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "One evening before sunset, Arjun walked straight towards his own shadow. In which direction was he walking?",
+      "options": [
+        {
+          "key": "A",
+          "text": "West"
+        },
+        {
+          "key": "B",
+          "text": "North"
+        },
+        {
+          "key": "C",
+          "text": "East"
+        },
+        {
+          "key": "D",
+          "text": "South"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Evening sun is in the west",
+        "explanation": "Before sunset the sun is in the west, so shadows point east. Walking towards his shadow, Arjun was walking east.",
+        "steps": [
+          "Evening: sun in the west",
+          "Shadow points away from the sun ⇒ east"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "West is towards the sun; North and South are at right angles to the shadow.",
+        "final_answer": "Option C: East"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001515",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Distance and direction",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Pooja walks 9 km towards the south, then turns left and walks 12 km. How far is she from her starting point, and in which direction?",
+      "options": [
+        {
+          "key": "A",
+          "text": "15 km, South-East"
+        },
+        {
+          "key": "B",
+          "text": "15 km, South-West"
+        },
+        {
+          "key": "C",
+          "text": "15 km, North-West"
+        },
+        {
+          "key": "D",
+          "text": "21 km, South-East"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Left of south is east",
+        "explanation": "Facing south, a left turn makes her face east. She ends 12 km east and 9 km south of the start: √(144 + 81) = 15 km, south-east.",
+        "steps": [
+          "Start south: 9 km → (0, -9)",
+          "Turn left from south ⇒ east: 12 km → (12, -9)",
+          "√(12² + 9²) = 15 km, South-East"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'15 km, South-West' mixes up east and west; '15 km, North-West' gives the direction of the start from the end point; '21 km, South-East' adds the two components instead of using Pythagoras.",
+        "final_answer": "Option A: 15 km, South-East"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001516",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Distance and direction",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008302",
+      "set_position": 1,
+      "question_text": "Where is the robot, with respect to O, at the end of the program 'F6 R F8 L F4 B F2'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "8√2 m, North-West"
+        },
+        {
+          "key": "B",
+          "text": "8√2 m, North-East"
+        },
+        {
+          "key": "C",
+          "text": "8√2 m, South-West"
+        },
+        {
+          "key": "D",
+          "text": "16 m, North-East"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Equal east and north parts give a diagonal",
+        "explanation": "North 6 → (0, 6); right ⇒ east 8 → (8, 6); left ⇒ north 4 → (8, 10); about turn ⇒ south 2 → (8, 8). It is 8 m east and 8 m north of O: 8√2 m, north-east.",
+        "steps": [
+          "(0, 6) → (8, 6) → (8, 10) → (8, 8)",
+          "√(8² + 8²) = 8√2 m, North-East"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'8√2 m, North-West' mixes up east and west; '8√2 m, South-West' gives the direction of the start from the end point; '16 m, North-East' adds the two components instead of using Pythagoras.",
+        "final_answer": "Option B: 8√2 m, North-East"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001517",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Distance and direction",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008302",
+      "set_position": 2,
+      "question_text": "Which direction is the robot facing at the end of the program 'F4 L F7 B F3 R R F2'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "West"
+        },
+        {
+          "key": "B",
+          "text": "North"
+        },
+        {
+          "key": "C",
+          "text": "East"
+        },
+        {
+          "key": "D",
+          "text": "South"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Only the turns change the facing",
+        "explanation": "Facing: north → L ⇒ west → B ⇒ east → R ⇒ south → R ⇒ west. The moves do not change the facing, so it ends facing west.",
+        "steps": [
+          "N →L W →B E →R S →R W"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "East is the facing before the last two right turns; South is after only one of them; North ignores the about-turn.",
+        "final_answer": "Option A: West"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001518",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008302",
+      "set_position": 3,
+      "question_text": "The program 'F10 R F6 R F10 R' is to be completed with one more step so that the robot ends exactly at O. Which step should be added?",
+      "options": [
+        {
+          "key": "A",
+          "text": "F10"
+        },
+        {
+          "key": "B",
+          "text": "F6"
+        },
+        {
+          "key": "C",
+          "text": "B F6"
+        },
+        {
+          "key": "D",
+          "text": "L F6"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Find the position and the facing first",
+        "explanation": "North 10 → (0, 10); right ⇒ east 6 → (6, 10); right ⇒ south 10 → (6, 0); right ⇒ facing west. O is 6 m to its west, so 'F6' brings it back.",
+        "steps": [
+          "Position (6, 0), facing west",
+          "O is 6 m west ⇒ F6"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "F10 overshoots by 4 m; 'B F6' moves it east, away from O; 'L F6' moves it south.",
+        "final_answer": "Option B: F6"
+      },
+      "suggested_time_seconds": 65,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001519",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008303",
+      "set_position": 1,
+      "question_text": "What is the straight-line distance between P and R, and in which direction is R from P?",
+      "options": [
+        {
+          "key": "A",
+          "text": "5 m, South-West"
+        },
+        {
+          "key": "B",
+          "text": "5 m, North-West"
+        },
+        {
+          "key": "C",
+          "text": "7 m, South-East"
+        },
+        {
+          "key": "D",
+          "text": "5 m, South-East"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Convert the diagonal step first",
+        "explanation": "Q is 4 m east and 4 m north of P; R is 7 m south of Q, so R = (4, −3): 4 m east and 3 m south of P, 5 m away, south-east.",
+        "steps": [
+          "P (0, 0), Q (4, 4), R (4, −3), S (−4, −3), T (−4, 6), U (0, 2), V (0, −3)",
+          "R − P = (4, −3)",
+          "√(16 + 9) = 5 m, South-East"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'5 m, South-West' mixes up east and west; '5 m, North-West' gives the direction of the start from the end point; '7 m, South-East' adds the two components instead of using Pythagoras.",
+        "final_answer": "Option D: 5 m, South-East"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001520",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008303",
+      "set_position": 2,
+      "question_text": "Which point lies exactly midway between R and S?",
+      "options": [
+        {
+          "key": "A",
+          "text": "P"
+        },
+        {
+          "key": "B",
+          "text": "V"
+        },
+        {
+          "key": "C",
+          "text": "U"
+        },
+        {
+          "key": "D",
+          "text": "T"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Midpoint of a horizontal segment",
+        "explanation": "R (4, −3) and S (−4, −3) are on the same east–west line; their midpoint is (0, −3), which is V (3 m south of P).",
+        "steps": [
+          "P (0, 0), Q (4, 4), R (4, −3), S (−4, −3), T (−4, 6), U (0, 2), V (0, −3)",
+          "Midpoint of R and S = (0, −3) = V"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "P is 3 m north of that midpoint, U 5 m north, and T is far to the west.",
+        "final_answer": "Option B: V"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001521",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008303",
+      "set_position": 3,
+      "question_text": "In which direction is T with respect to Q?",
+      "options": [
+        {
+          "key": "A",
+          "text": "South-West"
+        },
+        {
+          "key": "B",
+          "text": "North-West"
+        },
+        {
+          "key": "C",
+          "text": "South-East"
+        },
+        {
+          "key": "D",
+          "text": "West"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Signs of the two components",
+        "explanation": "T (−4, 6) − Q (4, 4) = (−8, 2): 8 m west and 2 m north, so T is north-west of Q.",
+        "steps": [
+          "P (0, 0), Q (4, 4), R (4, −3), S (−4, −3), T (−4, 6), U (0, 2), V (0, −3)",
+          "T − Q = (−8, +2) ⇒ North-West"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "South-West misreads T as below Q; South-East is the direction of Q from T; West ignores the 2 m north component.",
+        "final_answer": "Option B: North-West"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001522",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008303",
+      "set_position": 4,
+      "question_text": "What is the shortest distance between U and V, and in which direction is U from V?",
+      "options": [
+        {
+          "key": "A",
+          "text": "5 m, North"
+        },
+        {
+          "key": "B",
+          "text": "5 m, South"
+        },
+        {
+          "key": "C",
+          "text": "4√2 m, North-East"
+        },
+        {
+          "key": "D",
+          "text": "9 m, North"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Points on one north–south line",
+        "explanation": "U = T + (4, −4) = (0, 2), so U is 2 m north of P; V is 3 m south of P. Both lie on the north–south line through P, and U is 2 + 3 = 5 m north of V.",
+        "steps": [
+          "P (0, 0), Q (4, 4), R (4, −3), S (−4, −3), T (−4, 6), U (0, 2), V (0, −3)",
+          "U − V = (0, 5) ⇒ 5 m, North"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "5 m, South is V's direction from U; 4√2 m treats U as a diagonal step from V; 9 m adds T's north step instead of U's position.",
+        "final_answer": "Option A: 5 m, North"
+      },
+      "suggested_time_seconds": 85,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001523",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Shadow-based",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Just before sunset, Ravi stood facing his own shadow. He then turned 135° clockwise and walked 6√2 m, and then turned 135° anticlockwise and walked 14 m. How far is he now from where he stood, and in which direction?",
+      "options": [
+        {
+          "key": "A",
+          "text": "10 m, South-West"
+        },
+        {
+          "key": "B",
+          "text": "10 m, North-West"
+        },
+        {
+          "key": "C",
+          "text": "10 m, South-East"
+        },
+        {
+          "key": "D",
+          "text": "14 m, South-East"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Fix the first facing from the shadow",
+        "explanation": "Before sunset the sun is in the west and the shadow points east, so Ravi faced east. 135° clockwise from east is south-west: 6√2 m moves him 6 m west and 6 m south → (−6, −6). 135° anticlockwise from south-west is east: 14 m → (8, −6). He is 8 m east and 6 m south of the start: 10 m, south-east.",
+        "steps": [
+          "Facing the shadow at sunset ⇒ facing east",
+          "Heading south-west, 6√2 → (-6, -6)",
+          "Heading east, 14 → (8, -6)",
+          "√(8² + 6²) = 10 m, South-East"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'10 m, South-West' mixes up east and west; '10 m, North-West' gives the direction of the start from the end point; '14 m, South-East' adds the two components instead of using Pythagoras.",
+        "final_answer": "Option C: 10 m, South-East"
+      },
+      "suggested_time_seconds": 100,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001524",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Direction Sense",
+      "subtopic": "Point-to-point",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Town X is 30 km east of town Y. Town Z is due north of X and is 50 km from Y in a straight line. A car drives from Z straight towards Y and stops exactly halfway, at W. How far is W from X, and in which direction?",
+      "options": [
+        {
+          "key": "A",
+          "text": "25 km, North-East"
+        },
+        {
+          "key": "B",
+          "text": "20 km, North-West"
+        },
+        {
+          "key": "C",
+          "text": "35 km, North-West"
+        },
+        {
+          "key": "D",
+          "text": "25 km, North-West"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Find Z first, then the midpoint",
+        "explanation": "Z is north of X with YZ = 50 and YX = 30, so XZ = √(50² − 30²) = 40 km: Z = (30, 40) with Y at (0, 0). The midpoint W of ZY is (15, 20). From X (30, 0), W is 15 km west and 20 km north: √(225 + 400) = 25 km, north-west.",
+        "steps": [
+          "XZ = √(2500 − 900) = 40 ⇒ Z (30, 40)",
+          "W = midpoint of Z and Y = (15, 20)",
+          "W − X = (−15, 20) ⇒ 25 km, North-West"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "North-East forgets that W is west of X; 20 km is only the north part; 35 km adds the two parts.",
+        "final_answer": "Option D: 25 km, North-West"
+      },
+      "suggested_time_seconds": 110,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001525",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Letter coding",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "In a certain code, PLANET is written as PAELNT. How is GARDEN written in that code?",
+      "options": [
+        {
+          "key": "A",
+          "text": "GAREDN"
+        },
+        {
+          "key": "B",
+          "text": "GREADN"
+        },
+        {
+          "key": "C",
+          "text": "NEDRAG"
+        },
+        {
+          "key": "D",
+          "text": "AGDRNE"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Odd places first, then even places",
+        "explanation": "PLANET: the letters in the 1st, 3rd and 5th places (P, A, E) are written first, followed by those in the 2nd, 4th and 6th places (L, N, T): PAELNT. GARDEN: G, R, E then A, D, N = GREADN.",
+        "steps": [
+          "Odd places: P A E; even places: L N T",
+          "GARDEN ⇒ G R E + A D N"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "GAREDN only swaps two middle letters; NEDRAG reverses the word; AGDRNE swaps neighbouring letters.",
+        "final_answer": "Option B: GREADN"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001526",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Number coding",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "In a certain code, BED is written as 40 and DOG is written as 420. How is HEN written in that code?",
+      "options": [
+        {
+          "key": "A",
+          "text": "27"
+        },
+        {
+          "key": "B",
+          "text": "112"
+        },
+        {
+          "key": "C",
+          "text": "520"
+        },
+        {
+          "key": "D",
+          "text": "560"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Multiply the alphabetical positions",
+        "explanation": "BED: 2 × 5 × 4 = 40. DOG: 4 × 15 × 7 = 420. HEN: 8 × 5 × 14 = 560.",
+        "steps": [
+          "Check: 2 × 5 × 4 = 40; 4 × 15 × 7 = 420",
+          "HEN: 8 × 5 × 14 = 560"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "27 adds the positions; 112 multiplies only the first and last letters; 520 takes N as 13.",
+        "final_answer": "Option D: 560"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001527",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Letter coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008304",
+      "set_position": 1,
+      "question_text": "What is the code for 'SPRINT'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "©$8175"
+        },
+        {
+          "key": "B",
+          "text": "5$8◎7©"
+        },
+        {
+          "key": "C",
+          "text": "©$8◇75"
+        },
+        {
+          "key": "D",
+          "text": "©$8◎75"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "One vowel: condition (i)",
+        "explanation": "SPRINT has one vowel (I), so only I is coded as ◎; the rest follow the table: S ©, P $, R 8, N 7, T 5 ⇒ ©$8◎75.",
+        "steps": [
+          "Vowels: I only ⇒ condition (i)",
+          "S © P $ R 8 I ◎ N 7 T 5"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "©$8175 ignores the condition; 5$8◎7© also swaps the end codes (condition (ii)); ©$8◇75 uses the symbol of condition (iii).",
+        "final_answer": "Option D: ©$8◎75"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001528",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Letter coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008304",
+      "set_position": 2,
+      "question_text": "What is the code for 'MANGO'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "267%@"
+        },
+        {
+          "key": "B",
+          "text": "@67%2"
+        },
+        {
+          "key": "C",
+          "text": "@◎7%◎"
+        },
+        {
+          "key": "D",
+          "text": "2@7%6"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Two vowels: condition (ii)",
+        "explanation": "MANGO has two vowels (A, O), so the codes of the first and last letters are interchanged: table codes @ 6 7 % 2 become 2 6 7 % @.",
+        "steps": [
+          "Vowels: A, O ⇒ condition (ii)",
+          "@67%2 → swap ends ⇒ 267%@"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "@67%2 ignores the condition; @◎7%◎ applies condition (i); 2@7%6 swaps the wrong codes.",
+        "final_answer": "Option A: 267%@"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001529",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Letter coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008304",
+      "set_position": 3,
+      "question_text": "What is the code for 'TOMATO'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "52@652"
+        },
+        {
+          "key": "B",
+          "text": "◇2◇6◇◇"
+        },
+        {
+          "key": "C",
+          "text": "◇2◇6◇2"
+        },
+        {
+          "key": "D",
+          "text": "256@25"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Three vowels: condition (iii)",
+        "explanation": "TOMATO has three vowels (O, A, O). Each consonant followed by a vowel — T, M and T — becomes ◇; the vowels keep their codes (O 2, A 6): ◇2◇6◇2.",
+        "steps": [
+          "Vowels: O, A, O ⇒ condition (iii)",
+          "T→◇, O 2, M→◇, A 6, T→◇, O 2"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "52@652 ignores the condition; ◇2◇6◇◇ wrongly changes the last vowel; 256@25 reverses the plain code.",
+        "final_answer": "Option C: ◇2◇6◇2"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001530",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Letter coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008304",
+      "set_position": 4,
+      "question_text": "Which of the following words is coded as '◇1◇★◇9'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "MINUET"
+        },
+        {
+          "key": "B",
+          "text": "MANURE"
+        },
+        {
+          "key": "C",
+          "text": "IMPUTE"
+        },
+        {
+          "key": "D",
+          "text": "MINUTE"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Code every option",
+        "explanation": "MINUTE (3 vowels): M, N and T are each followed by a vowel ⇒ ◇1◇★◇9. MINUET → ◇1◇★95, MANURE → ◇6◇★◇9, IMPUTE → 1@◇★◇9.",
+        "steps": [
+          "All four words have three vowels ⇒ condition (iii)",
+          "Only MINUTE gives ◇1◇★◇9"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "MINUET ends in T after a vowel, MANURE has A (6) as its 2nd letter, and IMPUTE starts with the vowel I.",
+        "final_answer": "Option D: MINUTE"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001531",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Letter coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008304",
+      "set_position": 5,
+      "question_text": "What is the code for 'BOARD'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "#2683"
+        },
+        {
+          "key": "B",
+          "text": "#◎◎83"
+        },
+        {
+          "key": "C",
+          "text": "3268#"
+        },
+        {
+          "key": "D",
+          "text": "3◇683"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Two vowels: condition (ii)",
+        "explanation": "BOARD has two vowels (O, A), so the first and last codes are interchanged: table codes # 2 6 8 3 become 3 2 6 8 #.",
+        "steps": [
+          "Vowels: O, A ⇒ condition (ii)",
+          "#2683 → swap ends ⇒ 3268#"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "#2683 ignores the condition; #◎◎83 applies condition (i) to both vowels; 3◇683 mixes in condition (iii).",
+        "final_answer": "Option C: 3268#"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001532",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Number coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008305",
+      "set_position": 1,
+      "question_text": "How is 'WHITE' written in this code?",
+      "options": [
+        {
+          "key": "A",
+          "text": "35 23 33 12 51"
+        },
+        {
+          "key": "B",
+          "text": "53 32 33 21 51"
+        },
+        {
+          "key": "C",
+          "text": "53 32 33 21 15"
+        },
+        {
+          "key": "D",
+          "text": "53 33 32 21 15"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Row first, then column",
+        "explanation": "W is in row 5, column 3 (53); H row 3, column 2 (32); I 33; T row 2, column 1 (21); E row 1, column 5 (15).",
+        "steps": [
+          "W 53, H 32, I 33, T 21, E 15"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "35 23 33 12 51 reads column before row; the third option reverses only E; the fourth swaps H and I.",
+        "final_answer": "Option C: 53 32 33 21 15"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001533",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Number coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008305",
+      "set_position": 2,
+      "question_text": "Which word is written as '22 42 12 24' in this code?",
+      "options": [
+        {
+          "key": "A",
+          "text": "BALD"
+        },
+        {
+          "key": "B",
+          "text": "BOND"
+        },
+        {
+          "key": "C",
+          "text": "BOLT"
+        },
+        {
+          "key": "D",
+          "text": "BOLD"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Decode each pair",
+        "explanation": "22 = row 2, column 2 = B; 42 = O; 12 = L; 24 = D: BOLD.",
+        "steps": [
+          "22 B, 42 O, 12 L, 24 D"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "BALD would be 22 13 12 24, BOND 22 42 14 24 and BOLT 22 42 12 21.",
+        "final_answer": "Option D: BOLD"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001534",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Number coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008305",
+      "set_position": 3,
+      "question_text": "What is the sum of all the digits in the code for 'GRAPE'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "22"
+        },
+        {
+          "key": "B",
+          "text": "24"
+        },
+        {
+          "key": "C",
+          "text": "26"
+        },
+        {
+          "key": "D",
+          "text": "29"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Code first, then add the digits",
+        "explanation": "G 31, R 44, A 13, P 11, E 15. Digit sum: 3 + 1 + 4 + 4 + 1 + 3 + 1 + 1 + 1 + 5 = 24.",
+        "steps": [
+          "GRAPE ⇒ 31 44 13 11 15",
+          "Sum of digits = 24"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "22 drops a digit of R's code; 26 takes A as 33; 29 takes E as 55.",
+        "final_answer": "Option B: 24"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001535",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Letter coding",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "In a certain code, BANKER is written as BCLOSF and TICKET is written as JULDUF. How is MIRROR written in that code?",
+      "options": [
+        {
+          "key": "A",
+          "text": "JNSSSP"
+        },
+        {
+          "key": "B",
+          "text": "NJSSPS"
+        },
+        {
+          "key": "C",
+          "text": "HLQQQN"
+        },
+        {
+          "key": "D",
+          "text": "JNSSSQ"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Swap neighbouring pairs, then shift",
+        "explanation": "BANKER → swap each pair: AB KN RE → each letter one place forward: BC LO SF. TICKET → IT KC TE → JU LD UF. MIRROR → IM RR RO → JN SS SP.",
+        "steps": [
+          "Swap pairs: MI RR OR → IM RR RO",
+          "+1 each ⇒ JNSSSP"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "NJSSPS shifts without swapping; HLQQQN moves the letters back; JNSSSQ shifts the last letter twice.",
+        "final_answer": "Option A: JNSSSP"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001536",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Coding and Decoding",
+      "subtopic": "Letter coding",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "In a certain code, PLANET is written as LH1J2P and CABIN is written as Y1X3J. How is MOUSE written in that code?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I1521O5"
+        },
+        {
+          "key": "B",
+          "text": "I54O2"
+        },
+        {
+          "key": "C",
+          "text": "I45O2"
+        },
+        {
+          "key": "D",
+          "text": "Q45W2"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Vowels and consonants follow different rules",
+        "explanation": "Consonants move 4 places back (P→L, L→H, N→J, T→P; C→Y, B→X, N→J). Vowels become their place among the vowels A 1, E 2, I 3, O 4, U 5 (A→1, E→2; A→1, I→3). MOUSE: M→I, O→4, U→5, S→O, E→2 = I45O2.",
+        "steps": [
+          "Consonants: −4",
+          "Vowels: A1 E2 I3 O4 U5",
+          "M I, O 4, U 5, S O, E 2"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "I1521O5 uses alphabetical positions for the vowels; I54O2 swaps O and U; Q45W2 moves the consonants forward.",
+        "final_answer": "Option C: I45O2"
+      },
+      "suggested_time_seconds": 85,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001537",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphanumeric Series",
+      "subtopic": "Symbol and number series",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Which term should replace the question mark in the series?\n\n1A, 4D, 9I, 16P, ?",
+      "options": [
+        {
+          "key": "A",
+          "text": "25X"
+        },
+        {
+          "key": "B",
+          "text": "24Y"
+        },
+        {
+          "key": "C",
+          "text": "25Y"
+        },
+        {
+          "key": "D",
+          "text": "36Y"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Squares and the letters at those places",
+        "explanation": "The numbers are 1², 2², 3², 4², so the next is 5² = 25. Each letter is the letter at that place in the alphabet (A 1, D 4, I 9, P 16), so the 25th letter Y goes with 25: 25Y.",
+        "steps": [
+          "Numbers: 1, 4, 9, 16 ⇒ 25",
+          "Letter = 25th letter = Y"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "25X takes the 24th letter; 24Y breaks the square pattern; 36Y skips a square.",
+        "final_answer": "Option C: 25Y"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001538",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Letter position",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Which letter is 6th to the left of the 10th letter from the right end of the English alphabet?",
+      "options": [
+        {
+          "key": "A",
+          "text": "K"
+        },
+        {
+          "key": "B",
+          "text": "J"
+        },
+        {
+          "key": "C",
+          "text": "L"
+        },
+        {
+          "key": "D",
+          "text": "W"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Convert the right-end position first",
+        "explanation": "The 10th letter from the right is the 26 − 10 + 1 = 17th from the left, Q. Six places to its left is the 11th letter: K.",
+        "steps": [
+          "10th from the right = 17th = Q",
+          "17 − 6 = 11th ⇒ K"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "J and L are one place off; W is 6 places to the right of Q.",
+        "final_answer": "Option A: K"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001539",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Letter position",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "How many letters of the English alphabet are there between the letter that is 4th to the right of H and the letter that is 3rd to the left of W?",
+      "options": [
+        {
+          "key": "A",
+          "text": "6"
+        },
+        {
+          "key": "B",
+          "text": "7"
+        },
+        {
+          "key": "C",
+          "text": "8"
+        },
+        {
+          "key": "D",
+          "text": "9"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Letters between = difference − 1",
+        "explanation": "4th to the right of H (8) is the 12th letter, L. 3rd to the left of W (23) is the 20th letter, T. Between L and T lie M, N, O, P, Q, R, S: 20 − 12 − 1 = 7 letters.",
+        "steps": [
+          "H + 4 = 12 = L; W − 3 = 20 = T",
+          "20 − 12 − 1 = 7"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "8 is the difference of the positions; 6 subtracts one too many; 9 counts both end letters.",
+        "final_answer": "Option B: 7"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001540",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Word formation",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Which of the following words CANNOT be formed using the letters of the word 'PERSONALITY', each letter used no more often than it appears in PERSONALITY?",
+      "options": [
+        {
+          "key": "A",
+          "text": "PAINTER"
+        },
+        {
+          "key": "B",
+          "text": "TERRAIN"
+        },
+        {
+          "key": "C",
+          "text": "SENATOR"
+        },
+        {
+          "key": "D",
+          "text": "PLASTER"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Count repeated letters as well",
+        "explanation": "PERSONALITY has eleven different letters, each only once: P, E, R, S, O, N, A, L, I, T, Y. TERRAIN needs two R's, so it cannot be formed. PAINTER, SENATOR and PLASTER use each of their letters only once, and all of them are available.",
+        "steps": [
+          "Each letter of PERSONALITY occurs once",
+          "TERRAIN needs R twice ✗"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "PAINTER, SENATOR and PLASTER can all be formed.",
+        "final_answer": "Option B: TERRAIN"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001541",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Pairs of letters",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Count the letter pairs in 'HOSTEL' whose gap in the word (the number of letters between them) equals their gap in the English alphabet, in either direction. How many such pairs are there?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None"
+        },
+        {
+          "key": "B",
+          "text": "One"
+        },
+        {
+          "key": "C",
+          "text": "Two"
+        },
+        {
+          "key": "D",
+          "text": "Three"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Compare the gap in the word with the gap in the alphabet",
+        "explanation": "Pairs found: ST — 1 in all.",
+        "steps": [
+          "Alphabet positions: H 8, O 15, S 19, T 20, E 5, L 12",
+          "A pair qualifies when |word gap| = |alphabet gap|"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: One"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001542",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Word formation",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "If the words RELIABLE, RELATION, RELEASE and RELIEF are arranged in the order in which they appear in an English dictionary, which word will be third?",
+      "options": [
+        {
+          "key": "A",
+          "text": "RELATION"
+        },
+        {
+          "key": "B",
+          "text": "RELEASE"
+        },
+        {
+          "key": "C",
+          "text": "RELIABLE"
+        },
+        {
+          "key": "D",
+          "text": "RELIEF"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Compare the first letter that differs",
+        "explanation": "All begin with REL. The 4th letters are A (RELATION), E (RELEASE) and I (RELIABLE, RELIEF). Between RELIABLE and RELIEF the 5th letters are A and E, so RELIABLE comes first. Order: RELATION, RELEASE, RELIABLE, RELIEF.",
+        "steps": [
+          "4th letters: A < E < I",
+          "RELIA- < RELIE-",
+          "Order: RELATION, RELEASE, RELIABLE, RELIEF"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "RELATION is first, RELEASE second and RELIEF fourth.",
+        "final_answer": "Option C: RELIABLE"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001543",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Letter position",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008306",
+      "set_position": 1,
+      "question_text": "In the new arrangement, which letter is 8th to the right of the 12th letter from the left end?",
+      "options": [
+        {
+          "key": "A",
+          "text": "F"
+        },
+        {
+          "key": "B",
+          "text": "H"
+        },
+        {
+          "key": "C",
+          "text": "E"
+        },
+        {
+          "key": "D",
+          "text": "G"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Count in the new arrangement, not the usual alphabet",
+        "explanation": "The 12th letter is Y. Eight places to its right is the 20th letter of the new arrangement: G.",
+        "steps": [
+          "12th = Y",
+          "12 + 8 = 20th ⇒ G"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option D: G"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001544",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Letter position",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008306",
+      "set_position": 2,
+      "question_text": "In the new arrangement, how many letters are there between G and S?",
+      "options": [
+        {
+          "key": "A",
+          "text": "11"
+        },
+        {
+          "key": "B",
+          "text": "12"
+        },
+        {
+          "key": "C",
+          "text": "13"
+        },
+        {
+          "key": "D",
+          "text": "14"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Use the new positions",
+        "explanation": "S is 6th and G is 20th in the new arrangement; letters between them: 20 − 6 − 1 = 13.",
+        "steps": [
+          "S = 6th, G = 20th",
+          "20 − 6 − 1 = 13"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "11 counts the gap in the usual alphabet (S − G − 1); 12 and 14 miscount by one at an end.",
+        "final_answer": "Option C: 13"
+      },
+      "suggested_time_seconds": 65,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001545",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Letter position",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008306",
+      "set_position": 3,
+      "question_text": "In the new arrangement, which letter lies exactly midway between Q and C?",
+      "options": [
+        {
+          "key": "A",
+          "text": "M"
+        },
+        {
+          "key": "B",
+          "text": "L"
+        },
+        {
+          "key": "C",
+          "text": "Z"
+        },
+        {
+          "key": "D",
+          "text": "K"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Midway = average of the two new positions",
+        "explanation": "Q is 4th and C is 24th; (4 + 24) ÷ 2 = 14th: M.",
+        "steps": [
+          "Q = 4, C = 24",
+          "Midway = 14th ⇒ M"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option A: M"
+      },
+      "suggested_time_seconds": 65,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001546",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Alphabet Test",
+      "subtopic": "Letter position",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008306",
+      "set_position": 4,
+      "question_text": "If every 4th letter of the new arrangement (the 4th, 8th, 12th, … letters) is removed, which letter will be 10th from the right end of what remains?",
+      "options": [
+        {
+          "key": "A",
+          "text": "M"
+        },
+        {
+          "key": "B",
+          "text": "L"
+        },
+        {
+          "key": "C",
+          "text": "Z"
+        },
+        {
+          "key": "D",
+          "text": "J"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Remove first, then count",
+        "explanation": "Removed: Q, U, Y, K, G, C. Remaining (20 letters): N O P R S T V W X Z M L J I H F E D B A. The 10th from the right is M.",
+        "steps": [
+          "Remove positions 4, 8, …, 24",
+          "Remaining: N O P R S T V W X Z M L J I H F E D B A",
+          "10th from the right ⇒ M"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option A: M"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001547",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Number Series (Reasoning)",
+      "subtopic": "Three-digit number questions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008307",
+      "set_position": 1,
+      "question_text": "In how many of the numbers is the sum of the first and the last digits equal to the middle digit?",
+      "options": [
+        {
+          "key": "A",
+          "text": "One"
+        },
+        {
+          "key": "B",
+          "text": "Two"
+        },
+        {
+          "key": "C",
+          "text": "Three"
+        },
+        {
+          "key": "D",
+          "text": "Four"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Test every number",
+        "explanation": "473: 4 + 3 = 7 vs 7; 852: 8 + 2 = 10 vs 5; 619: 6 + 9 = 15 vs 1; 352: 3 + 2 = 5 vs 5; 725: 7 + 5 = 12 vs 2. Equal for 473 and 352 — two numbers.",
+        "steps": [
+          "Check first + last = middle for each",
+          "473 ✓, 352 ✓"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: Two"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001548",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Number Series (Reasoning)",
+      "subtopic": "Three-digit number questions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008307",
+      "set_position": 2,
+      "question_text": "If the digits within each number are arranged in descending order, and the new numbers are then arranged in ascending order, which original number will be in the middle?",
+      "options": [
+        {
+          "key": "A",
+          "text": "473"
+        },
+        {
+          "key": "B",
+          "text": "852"
+        },
+        {
+          "key": "C",
+          "text": "619"
+        },
+        {
+          "key": "D",
+          "text": "725"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Rearrange digits, then rank",
+        "explanation": "New numbers: 473 → 743, 852 → 852, 619 → 961, 352 → 532, 725 → 752. Ascending: 532, 743, 752, 852, 961. The middle one, 752, comes from 725.",
+        "steps": [
+          "Descending digits within each number",
+          "Rank the new numbers",
+          "Middle ⇒ 752 ⇐ 725"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "473 gives 743 (2nd), 852 stays 852 (4th) and 619 gives 961 (5th).",
+        "final_answer": "Option D: 725"
+      },
+      "suggested_time_seconds": 65,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001549",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Number Series (Reasoning)",
+      "subtopic": "Number-based digit operations",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008307",
+      "set_position": 3,
+      "question_text": "What is the difference between the product of the digits of the largest number and the product of the digits of the smallest number?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30"
+        },
+        {
+          "key": "B",
+          "text": "50"
+        },
+        {
+          "key": "C",
+          "text": "54"
+        },
+        {
+          "key": "D",
+          "text": "80"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Find the extremes, then multiply digits",
+        "explanation": "Largest 852: 8 × 5 × 2 = 80. Smallest 352: 3 × 5 × 2 = 30. Difference 80 − 30 = 50.",
+        "steps": [
+          "Largest 852 → 80",
+          "Smallest 352 → 30",
+          "80 − 30 = 50"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "30 and 80 are the two products themselves; 54 uses 473 (84) instead of 852.",
+        "final_answer": "Option B: 50"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001550",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Number Series (Reasoning)",
+      "subtopic": "Number-based digit operations",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008308",
+      "set_position": 1,
+      "question_text": "What is the result of Row 2?",
+      "options": [
+        {
+          "key": "A",
+          "text": "15"
+        },
+        {
+          "key": "B",
+          "text": "19"
+        },
+        {
+          "key": "C",
+          "text": "23"
+        },
+        {
+          "key": "D",
+          "text": "27"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Check the rules in order for each step",
+        "explanation": "7 is prime, so rule (ii): 7 + 2 × 6 = 19. 19 is also prime, so rule (ii) again: 19 + 2 × 4 = 27.",
+        "steps": [
+          "7 + 12 = 19",
+          "19 + 8 = 27"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "19 stops after the first step; 23 adds 4 instead of 8; 15 applies rule (iii) to 19.",
+        "final_answer": "Option D: 27"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001551",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Number Series (Reasoning)",
+      "subtopic": "Number-based digit operations",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008308",
+      "set_position": 2,
+      "question_text": "What is the sum of the results of Row 1 and Row 3?",
+      "options": [
+        {
+          "key": "A",
+          "text": "35"
+        },
+        {
+          "key": "B",
+          "text": "47"
+        },
+        {
+          "key": "C",
+          "text": "50"
+        },
+        {
+          "key": "D",
+          "text": "51"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Rule (i) uses the square root",
+        "explanation": "Row 1: √16 × 5 = 20, then 20 + 3 = 23. Row 3: √25 × 3 = 15, then 15 + 9 = 24. 23 + 24 = 47.",
+        "steps": [
+          "Row 1 = 23",
+          "Row 3 = 24",
+          "23 + 24 = 47"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "35 adds only the first-step values (20 + 15); 50 adds Rows 1 and 2; 51 adds Rows 2 and 3.",
+        "final_answer": "Option B: 47"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001552",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Number Series (Reasoning)",
+      "subtopic": "Number-based digit operations",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008308",
+      "set_position": 3,
+      "question_text": "If the 6 in Row 2 is replaced by 9, what will be the result of Row 2?",
+      "options": [
+        {
+          "key": "A",
+          "text": "20"
+        },
+        {
+          "key": "B",
+          "text": "29"
+        },
+        {
+          "key": "C",
+          "text": "33"
+        },
+        {
+          "key": "D",
+          "text": "100"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "A new first-step result can change which rule applies next",
+        "explanation": "7 is prime: 7 + 2 × 9 = 25. Now 25 is a perfect square, so rule (i) applies: √25 × 4 = 20.",
+        "steps": [
+          "7 + 18 = 25",
+          "25 is a square ⇒ 5 × 4 = 20"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "29 adds 4 to 25 (rule iii) and 33 adds 2 × 4 (rule ii), both ignoring that 25 is a square; 100 multiplies 25 by 4 without taking the square root.",
+        "final_answer": "Option A: 20"
+      },
+      "suggested_time_seconds": 65,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://prepmitra.in/schemas/banking-question-batch.v1.json",
+  "title": "PrepMitra banking question batch v1",
+  "description": "One import file. Shared passages, DI data and puzzle conditions are stored once in `stimuli` and referenced by `stimulus_id`. Marks and negative marks are NOT stored on a question: they come from the exam section the question is served in (exam_patterns.json).",
+  "type": "object",
+  "required": ["schema_version", "batch_id", "created_at", "stimuli", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "batch_id": {"type": "string", "pattern": "^BATCH_[0-9]{3}$"},
+    "created_at": {"type": "string", "format": "date"},
+    "notes": {"type": "string"},
+    "stimuli": {"type": "array", "items": {"$ref": "#/$defs/stimulus"}},
+    "questions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/question"}}
+  },
+  "$defs": {
+    "examId": {"enum": ["IBPS_PO", "IBPS_CSA", "IBPS_RRB_OS1", "IBPS_RRB_OA", "SBI_PO", "SBI_JA"]},
+    "subject": {"enum": ["Quantitative Aptitude", "Reasoning Ability", "English Language",
+                         "General Awareness and Current Affairs", "Banking and Financial Awareness", "Computer Knowledge"]},
+    "url": {"type": "string", "pattern": "^https?://"},
+    "stimulus": {
+      "type": "object",
+      "required": ["stimulus_id", "type", "title", "content"],
+      "additionalProperties": false,
+      "properties": {
+        "stimulus_id": {"type": "string", "pattern": "^STIM_[A-Z]+_[0-9]{6}$"},
+        "type": {"enum": ["passage", "data_table", "chart", "caselet", "puzzle", "input_output"]},
+        "title": {"type": "string"},
+        "content": {"type": "string", "minLength": 20, "description": "Markdown. Tables as pipe tables."},
+        "chart_data": {"type": "object", "description": "Optional machine-readable data the frontend can draw"},
+        "solution": {"type": "string", "description": "Shared working, e.g. the final puzzle arrangement"}
+      }
+    },
+    "examMapping": {
+      "type": "object",
+      "required": ["exam_id", "stage", "section_key"],
+      "additionalProperties": false,
+      "properties": {
+        "exam_id": {"$ref": "#/$defs/examId"},
+        "stage": {"enum": ["Prelims", "Mains"]},
+        "section_key": {"type": "string", "description": "Must exist for this exam and stage in exam_patterns.json and list this subject"}
+      }
+    },
+    "option": {
+      "type": "object",
+      "required": ["key", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "key": {"enum": ["A", "B", "C", "D"]},
+        "text": {"type": "string", "minLength": 1}
+      }
+    },
+    "factCheck": {
+      "type": "object",
+      "required": ["claim", "source_url", "checked_on"],
+      "additionalProperties": false,
+      "properties": {
+        "claim": {"type": "string"},
+        "source_url": {"$ref": "#/$defs/url"},
+        "checked_on": {"type": "string", "format": "date"}
+      }
+    },
+    "question": {
+      "type": "object",
+      "required": ["question_id", "exam_mappings", "subject", "topic", "subtopic", "difficulty", "question_type",
+                   "language", "question_text", "options", "correct_answer", "solution", "suggested_time_seconds",
+                   "source", "verification"],
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {"type": "string", "pattern": "^BANK_(QUANT|REAS|ENG|GA|BFA|COMP)_[0-9]{6}$"},
+        "exam_mappings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/examMapping"}},
+        "subject": {"$ref": "#/$defs/subject"},
+        "topic": {"type": "string", "description": "Must be a topic of the subject in taxonomy.json"},
+        "subtopic": {"type": "string"},
+        "difficulty": {"enum": ["Basic", "Intermediate", "Advanced"]},
+        "question_type": {"enum": ["MCQ"], "description": "Single correct answer"},
+        "language": {"const": "en"},
+        "stimulus_id": {"type": "string", "description": "Set when the question belongs to a shared passage/DI/puzzle set"},
+        "set_position": {"type": "integer", "minimum": 1},
+        "question_text": {"type": "string", "minLength": 10},
+        "options": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"$ref": "#/$defs/option"}},
+        "correct_answer": {"enum": ["A", "B", "C", "D"]},
+        "solution": {
+          "type": "object",
+          "required": ["concept", "explanation", "steps", "final_answer"],
+          "additionalProperties": false,
+          "properties": {
+            "concept": {"type": "string"},
+            "explanation": {"type": "string", "minLength": 20},
+            "steps": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "shortcut": {"type": ["string", "null"]},
+            "why_others_wrong": {"type": ["string", "null"]},
+            "final_answer": {"type": "string"}
+          }
+        },
+        "suggested_time_seconds": {"type": "integer", "minimum": 10, "maximum": 300},
+        "current_affairs": {
+          "type": "object",
+          "description": "Required for time-sensitive questions. After review_by the question is pulled from mocks until re-verified.",
+          "required": ["event_date", "review_by"],
+          "additionalProperties": false,
+          "properties": {
+            "event_date": {"type": "string", "format": "date"},
+            "review_by": {"type": "string", "format": "date"}
+          }
+        },
+        "source": {
+          "type": "object",
+          "required": ["source_type", "source_name", "source_url", "original_exam_year"],
+          "additionalProperties": false,
+          "properties": {
+            "source_type": {"enum": ["Original", "Official PYQ", "Licensed"]},
+            "source_name": {"type": "string"},
+            "source_url": {"anyOf": [{"$ref": "#/$defs/url"}, {"type": "null"}]},
+            "original_exam_year": {"type": ["integer", "null"]},
+            "license_note": {"type": ["string", "null"]}
+          }
+        },
+        "verification": {
+          "type": "object",
+          "required": ["answer_verified", "solution_verified", "review_status", "verified_by", "verified_at"],
+          "additionalProperties": false,
+          "properties": {
+            "answer_verified": {"type": "boolean"},
+            "solution_verified": {"type": "boolean"},
+            "review_status": {"enum": ["Draft", "Pending Human Review", "Approved", "Rejected"],
+                              "description": "Only Approved questions are served to students. Approved requires a human reviewer."},
+            "verified_by": {"type": "array", "items": {"type": "string"}, "description": "e.g. script:recompute, ai:independent-solve, human:<reviewer>"},
+            "verified_at": {"type": "string", "format": "date"},
+            "fact_checks": {"type": "array", "items": {"$ref": "#/$defs/factCheck"}}
+          }
+        },
+        "tags": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
