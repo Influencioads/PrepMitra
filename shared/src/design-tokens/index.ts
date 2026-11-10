@@ -35,10 +35,11 @@ export const colors = {
 /** Exam question palette colours (CBT convention). */
 export const paletteColors = {
   'not-visited': { bg: '#EFEFE8', fg: '#4B5550', border: '#CFCFC3' },
-  'not-answered': { bg: '#FDE2DF', fg: '#B91C1C', border: '#F5A39A' },
+  'not-answered': { bg: '#D14343', fg: '#FFFFFF', border: '#B53232' },
   answered: { bg: '#15803D', fg: '#FFFFFF', border: '#116632' },
   marked: { bg: '#7E22CE', fg: '#FFFFFF', border: '#6B21A8' },
-  'answered-marked': { bg: '#C2410C', fg: '#FFFFFF', border: '#A6370A' },
+  // Real CBT convention: purple like "marked", with a green dot (drawn by the palette swatch).
+  'answered-marked': { bg: '#7E22CE', fg: '#FFFFFF', border: '#6B21A8' },
 } as const;
 
 /** Categorical chart palette (colour-blind aware ordering). */

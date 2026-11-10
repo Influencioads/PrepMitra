@@ -216,6 +216,8 @@ export interface Attempt {
   reportId?: ID;
   tabSwitches: number;
   copyAttempts?: number;
+  /** The 5-minutes-left warning was shown (kept so a refresh does not repeat it). */
+  fiveMinWarned?: boolean;
   autoSubmitted?: boolean;
   /** Free 30-minute mini mock: a shortened paper of the exam. */
   isMini?: boolean;
@@ -230,6 +232,8 @@ export interface QuestionResult {
   marksAwarded: number;
   maxMarks: number;
   timeSpentSec: number;
+  /** Expected solving time from the server's question bank (real API reports). */
+  expectedTimeSec?: number;
 }
 
 export interface SectionResult {
@@ -242,6 +246,8 @@ export interface SectionResult {
   unanswered: number;
   accuracy: number;
   timeSpentSec: number;
+  /** Questions answered in this section (correct + incorrect, plus partial on the server). */
+  attempted?: number;
 }
 
 export interface TopicResult {
@@ -287,6 +293,18 @@ export interface Loophole {
   title: string;
   detail: string;
   marksImpact: number;
+  /** Server pattern id (careless_easy, negative_guess, time_sink, skipped_section) — the UI translates the title. */
+  pattern?: string;
+  /** Section name for skipped_section. */
+  section?: string;
+  evidenceQuestionIds?: ID[];
+}
+
+/** A legitimate faster method for one question (report part 2). */
+export interface ShortcutItem {
+  questionId: ID;
+  technique: string;
+  detail: string;
 }
 
 export interface ExamReport {
@@ -306,17 +324,38 @@ export interface ExamReport {
   weaknesses: WeaknessItem[];
   loopholes: Loophole[];
   recommendedNextExamId: ID;
+  /** Why that test is recommended (AI report). */
+  nextTestReason?: string;
   improvementPlan: DayPlan[];
+  shortcuts?: ShortcutItem[];
+  /** One-line summary and a closing line of encouragement (AI report). */
+  summary?: string;
+  encouragement?: string;
   rating?: number;
   autoSubmitted?: boolean;
   isMini?: boolean;
+}
+
+/** GET /v1/shared/reports/{token} — what a shared link shows: score and feedback only, no personal data. */
+export interface SharedReport {
+  kind: 'exam' | 'interview';
+  title: string;
+  language: LanguageCode;
+  createdAt: ISODateString;
+  score?: { score: number; maxScore: number; accuracy: number; attempted: number; correct: number; incorrect: number; unanswered: number; negativeMarksLost: number };
+  summary?: string;
+  strengths: string[];
+  weaknesses: { topic: string; detail: string }[];
+  loopholes: { title: string; detail: string }[];
+  plan: DayPlan[];
+  encouragement?: string;
 }
 
 /** GET /v1/attempts/{id}/report — the report is generated in a background job after submit. */
 export type ReportStatusResponse =
   | { status: 'processing'; progress?: number }
   | { status: 'ready'; report: ExamReport }
-  | { status: 'failed'; message: string };
+  | { status: 'failed'; message: string; reportId?: string; creditRestored?: boolean };
 
 /** GET /v1/attempts/{id}/review — one item per question, in the attempt's language. */
 export interface QuestionReviewItem {
@@ -331,8 +370,9 @@ export interface QuestionReviewItem {
 }
 
 /** Event logged during an attempt (light anti-cheat; shown in the report, never punished). */
+/** Light anti-cheat events (logged and shown in the report, never punished). Same names as the backend. */
 export interface AttemptEvent {
-  type: 'tab_switch' | 'copy_attempt';
+  type: 'tab_switch' | 'copy_attempt' | 'paste_attempt' | 'right_click' | 'network_offline' | 'network_online';
   at: ISODateString;
 }
 

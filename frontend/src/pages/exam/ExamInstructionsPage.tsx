@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { isExamOpen } from '@/config/launch';
 import toast from 'react-hot-toast';
 import { ArrowLeft, Calculator, CircleAlert, Clock, Coins, FileQuestion, Languages, Play, RotateCcw } from 'lucide-react';
 import type { LanguageCode } from '@prepmitra/shared';
@@ -50,6 +51,8 @@ export function ExamInstructionsPage() {
 
   if (loading) return <LoadingSkeleton variant="page" />;
   if (error || !exam) return <ErrorState title={t('examNotAvailable')} description={error ?? t('examNotLoaded')} onRetry={reload} />;
+  // Exams that are not open yet ("Coming soon") cannot be started, even from a direct link.
+  if (!isExamOpen(exam)) return <Navigate to={`/exams/${exam.id}`} replace />;
 
   const lang: LanguageCode = language ?? (user && exam.languages.includes(user.preferredLanguage) ? user.preferredLanguage : 'en');
   // ?mode=mini starts the free 30-minute mini mock (only while the free trial is unused).
@@ -86,8 +89,27 @@ export function ExamInstructionsPage() {
       navigate(`/exam/${attempt.id}`, { replace: true });
     } catch (e) {
       if (!usesFreeTrial) refund(cost, t('couldNotStart', { label }));
-      toast.error(t('creditRestored', { error: errorMessage(e) }));
       setStarting(false);
+      // The server requires a complete profile (name, date of birth, a target, consent) before any exam.
+      if ((e as { code?: string })?.code === 'profile_incomplete') {
+        toast.error(t('profileIncompleteStart'));
+        navigate('/profile', { replace: false });
+        return;
+      }
+      const err = e as { status?: number; code?: string };
+      // 402: the server's credit balance is lower than this device thought — refresh it and offer plans.
+      if (err?.status === 402 || err?.code === 'insufficient_credits') {
+        void import('@/store/sync').then((m) => m.syncCredits()).catch(() => undefined);
+        toast.error(t('noCreditsStart'), { id: 'no-credits' });
+        setNoCredits(true);
+        return;
+      }
+      // No network: the request never reached the server, so nothing was charged.
+      if (err?.status === 0) {
+        toast.error(t('offlineStart'), { id: 'offline-start' });
+        return;
+      }
+      toast.error(t('creditRestored', { error: errorMessage(e) }));
     }
   };
 
@@ -120,7 +142,7 @@ export function ExamInstructionsPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_300px]">
         <div className="space-y-6">
           <Card>
-            <CardHeader title={t('atAGlance')} description={t('atAGlanceDesc', { exam: exam.shortTitle })} />
+            <CardHeader title={USE_MOCK ? t('atAGlance') : t('paperAtAGlance')} description={USE_MOCK ? t('atAGlanceDesc', { exam: exam.shortTitle }) : t('paperAtAGlanceDesc', { exam: exam.shortTitle })} />
             <CardBody>
               <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {[
@@ -201,9 +223,13 @@ export function ExamInstructionsPage() {
               {resumable ? t('startNewAttempt') : t('startTest')}
             </Button>
           </Card>
-          <Notice tone="warning" title={<span className="flex items-center gap-2">{t('demoTimerTitle')} <Badge tone="warning">{t('prototype')}</Badge></span>}>
-            {t('demoTimerBody')}
-          </Notice>
+          {USE_MOCK ? (
+            <Notice tone="warning" title={<span className="flex items-center gap-2">{t('demoTimerTitle')} <Badge tone="warning">{t('prototype')}</Badge></span>}>
+              {t('demoTimerBody')}
+            </Notice>
+          ) : (
+            <Notice tone="info" title={t('serverTimerTitle')}>{t('serverTimerBody')}</Notice>
+          )}
         </aside>
       </div>
 

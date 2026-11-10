@@ -114,7 +114,10 @@ async function doSync() {
   );
   if (attemptsRes) {
     const local = useExamStore.getState();
-    useExamStore.getState().reset(uid, attempts, reports, local.ownerId === uid ? local.practiceLog : {});
+    const mine = local.ownerId === uid ? local.attempts : {};
+    // Keep this device's answers for unfinished attempts (they may not have reached the server yet).
+    const merged = attempts.map((a) => mergeLocalAttempt(a, mine[a.id]));
+    useExamStore.getState().reset(uid, merged, reports, local.ownerId === uid ? local.practiceLog : {});
   }
 
   // Interviews: sessions and ready reports from the progress history.
@@ -137,4 +140,29 @@ async function doSync() {
   }
 
   if (notes) useNotificationStore.getState().reset(uid, (notes.data.items as Json[]).map(toNotification));
+}
+
+/**
+ * Server copy + this device's copy of the same unfinished attempt. Per question, the device's state
+ * wins when it has anything (answer, mark, visit): changes made offline only exist here until the next
+ * autosave. The server stays the source of truth for the paper and the end time.
+ */
+export function mergeLocalAttempt(server: Attempt, local?: Attempt): Attempt {
+  if (!local || server.status !== 'in-progress' || local.status !== 'in-progress' || local.id !== server.id) return server;
+  const states = { ...server.states };
+  const inPaper = new Set(server.paper.map((p) => p.questionId));
+  for (const [qid, l] of Object.entries(local.states)) {
+    if (!inPaper.has(qid)) continue;
+    if (l.visited || l.marked || l.answer) {
+      states[qid] = { ...l, timeSpentSec: Math.max(l.timeSpentSec ?? 0, states[qid]?.timeSpentSec ?? 0) };
+    }
+  }
+  return {
+    ...server,
+    states,
+    currentIndex: local.currentIndex,
+    tabSwitches: Math.max(local.tabSwitches, server.tabSwitches),
+    copyAttempts: local.copyAttempts,
+    fiveMinWarned: local.fiveMinWarned,
+  };
 }

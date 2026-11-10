@@ -13,7 +13,12 @@ export function ReportActions({ report, className, onPrint }: { report: ExamRepo
   const weakExam = report.weaknesses.length > 0 ? report.examId : report.recommendedNextExamId;
   return (
     <div className={cn('flex flex-wrap gap-2', className)} data-print-hide>
-      <ShareActions onPrint={onPrint} onDownloadHtml={() => reportService.downloadExamReport(report)} />
+      <ShareActions
+        onPrint={onPrint}
+        onDownloadHtml={() => reportService.downloadExamReport(report)}
+        onDownloadPdf={report.isDemo ? undefined : () => reportService.downloadExamPdf(report)}
+        getShareUrl={report.isDemo ? undefined : () => reportService.createShareLink(report.id)}
+      />
       <ButtonLink to={`/exams/${weakExam}`} variant="secondary" leftIcon={<Target className="h-4 w-4" />}>{t('practiceWeak')}</ButtonLink>
       <ButtonLink to="/my-tests" variant="outline" leftIcon={<History className="h-4 w-4" />}>{t('previousAttempts')}</ButtonLink>
       <ButtonLink to="/dashboard" variant="ghost" leftIcon={<LayoutDashboard className="h-4 w-4" />}>{t('dashboard')}</ButtonLink>

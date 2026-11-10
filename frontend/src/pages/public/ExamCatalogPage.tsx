@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { ArrowRight, FileQuestion, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
+import { ArrowRight, CircleCheck, FileQuestion, Mic, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
+import { interviewsEnabled, isCategoryOpen, isExamOpen, openFirst } from '@/config/launch';
 import type { Difficulty, ExamCategory, ExamQuery, LanguageCode } from '@prepmitra/shared';
 import { EXAM_CATEGORIES, LANGUAGES } from '@prepmitra/shared';
 import { Button, EmptyState, ErrorState, LoadingSkeleton, Modal, Select } from '@/components/ui';
@@ -36,19 +37,23 @@ const DIFFICULTIES = [
 type Tab = ExamCategory | 'all' | 'interviews';
 
 /** One filter pill: label and a muted count. The selected pill is solid green. */
-function Pill({ selected, onClick, label, count }: { selected: boolean; onClick: () => void; label: string; count?: number }) {
+function Pill({ selected, onClick, label, count, soon, soonLabel }: { selected: boolean; onClick: () => void; label: string; count?: number; soon?: boolean; soonLabel?: string }) {
   return (
     <button
       type="button"
       aria-pressed={selected}
       onClick={onClick}
       className={cn(
-        'inline-flex h-9 shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium transition-colors',
-        selected ? 'bg-secondary text-white' : 'text-muted hover:bg-surface hover:text-ink',
+        'inline-flex h-9 shrink-0 items-center gap-2 rounded-full border px-4 text-sm font-medium transition-colors',
+        selected ? 'border-secondary bg-secondary text-white' : 'border-line bg-card text-muted hover:border-secondary/40 hover:text-ink',
       )}
     >
       {label}
-      {count !== undefined && <span className={cn('text-xs tabular-nums', selected ? 'text-white/75' : 'text-subtle')}>{count}</span>}
+      {soon ? (
+        <span className={cn('rounded-full px-1.5 text-[10px] font-semibold uppercase tracking-wide', selected ? 'bg-white/20 text-white' : 'bg-line text-muted')}>{soonLabel}</span>
+      ) : (
+        count !== undefined && <span className={cn('text-xs tabular-nums', selected ? 'text-white/75' : 'text-subtle')}>{count}</span>
+      )}
     </button>
   );
 }
@@ -110,7 +115,7 @@ export function ExamCatalogPage() {
   const all = exams.data ?? [];
   const paid = all.filter((e) => !e.isFree);
   const freeExam = all.find((e) => e.isFree);
-  const shownExams = useMemo(() => filterExams(paid, query), [exams.data, JSON.stringify(query)]); // eslint-disable-line react-hooks/exhaustive-deps
+  const shownExams = useMemo(() => openFirst(filterExams(paid, query)), [exams.data, JSON.stringify(query)]); // eslint-disable-line react-hooks/exhaustive-deps
   const freeMatches = freeExam ? filterExams([freeExam], query).length > 0 : false;
   const shownRoles = useMemo(
     () =>
@@ -120,8 +125,12 @@ export function ExamCatalogPage() {
     [roles.data, term, ct],
   );
   // Only categories that actually have exams get a tile.
-  const categories = EXAM_CATEGORIES.map((c) => ({ ...c, count: paid.filter((e) => e.category === c.id).length })).filter((c) => c.count > 0);
-  const roleCount = roles.data?.length ?? 0;
+  const categories = EXAM_CATEGORIES.map((c) => ({ ...c, count: paid.filter((e) => e.category === c.id).length }))
+    .filter((c) => c.count > 0)
+    .sort((a, b) => Number(isCategoryOpen(b.id)) - Number(isCategoryOpen(a.id)));
+  const ivOn = interviewsEnabled();
+  const roleCount = ivOn ? roles.data?.length ?? 0 : 0;
+  const openCount = paid.filter(isExamOpen).length;
 
   const setParam = (key: string, value: string) => {
     const next = new URLSearchParams(params);
@@ -139,7 +148,7 @@ export function ExamCatalogPage() {
   };
 
   const showExams = tab !== 'interviews';
-  const showRoles = tab === 'all' || tab === 'interviews';
+  const showRoles = ivOn && (tab === 'all' || tab === 'interviews');
   const filterControls = (
     <>
       <Select label={t('difficulty')} value={query.difficulty} onChange={(e) => setParam('difficulty', e.target.value)} options={difficultyOptions} />
@@ -155,41 +164,59 @@ export function ExamCatalogPage() {
   return (
     <div>
       {/* ---------- Header with search ---------- */}
-      <header className="mx-auto max-w-2xl pb-8 pt-4 text-center sm:pb-10 sm:pt-10">
-        <p className="text-sm font-medium text-secondary">{t('homeEyebrow')}</p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-[2.75rem] sm:leading-tight">{t('homeTitle')}</h1>
-        <p className="mx-auto mt-3 max-w-xl text-muted">{t('homeDesc')}</p>
-        <div className="mt-7 flex items-center gap-2 rounded-2xl border border-line-strong bg-card px-4 shadow-[0_1px_2px_rgb(28_35_33/0.04)] transition focus-within:border-secondary focus-within:ring-4 focus-within:ring-secondary/10">
-          <Search className="h-5 w-5 shrink-0 text-subtle" aria-hidden />
-          <input
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder={t('homeSearchPlaceholder')}
-            aria-label={t('homeSearchLabel')}
-            className="h-14 min-w-0 flex-1 bg-transparent text-base text-ink placeholder:text-subtle focus:outline-none [&::-webkit-search-cancel-button]:hidden"
-          />
-          {search && (
-            <button type="button" onClick={() => setSearch('')} aria-label={t('clearFilters')} className="flex h-8 w-8 items-center justify-center rounded-full text-muted hover:bg-surface">
-              <X className="h-4 w-4" aria-hidden />
-            </button>
-          )}
+      <header className="relative overflow-hidden rounded-[28px] bg-secondary-soft px-5 py-8 sm:px-10 sm:py-11">
+        <svg className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 text-secondary/[0.07]" viewBox="0 0 200 200" aria-hidden>
+          <circle cx="100" cy="100" r="98" fill="currentColor" />
+        </svg>
+        <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+          <div className="min-w-0 max-w-2xl">
+            <p className="text-sm font-semibold text-secondary">{ivOn ? t('homeEyebrow') : t('homeEyebrowExams')}</p>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-[2.6rem] sm:leading-[1.1]">{t('homeTitle')}</h1>
+            <p className="mt-3 max-w-xl text-muted">{ivOn ? t('homeDesc') : t('homeDescExams')}</p>
+            <div className="mt-6 flex items-center gap-2 rounded-2xl border border-white bg-card px-4 shadow-[0_10px_30px_-18px_rgb(23_74_56/0.5)] transition focus-within:border-secondary focus-within:ring-4 focus-within:ring-secondary/10">
+              <Search className="h-5 w-5 shrink-0 text-secondary" aria-hidden />
+              <input
+                type="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder={ivOn ? t('homeSearchPlaceholder') : t('homeSearchExams')}
+                aria-label={ivOn ? t('homeSearchLabel') : t('homeSearchExamsLabel')}
+                className="h-14 min-w-0 flex-1 bg-transparent text-base text-ink placeholder:text-subtle focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+              />
+              {search && (
+                <button type="button" onClick={() => setSearch('')} aria-label={t('clearFilters')} className="flex h-8 w-8 items-center justify-center rounded-full text-muted hover:bg-surface">
+                  <X className="h-4 w-4" aria-hidden />
+                </button>
+              )}
+            </div>
+          </div>
+          {/* Quick stats from the live catalog */}
+          <ul className="grid grid-cols-3 gap-2 sm:gap-3 lg:w-56 lg:grid-cols-1">
+            {[
+              { icon: <FileQuestion className="h-4 w-4" aria-hidden />, value: paid.length, label: count(paid.length, t('tileMockOne'), t('tileMocks', { count: paid.length })).replace(/^\d+\s*/, ''), tone: 'bg-primary-soft text-primary' },
+              ivOn
+                ? { icon: <Mic className="h-4 w-4" aria-hidden />, value: roleCount, label: count(roleCount, t('tileRoleOne'), t('tileRoles', { count: roleCount })).replace(/^\d+\s*/, ''), tone: 'bg-secondary text-white' }
+                : { icon: <CircleCheck className="h-4 w-4" aria-hidden />, value: openCount, label: t('tileOpenNow'), tone: 'bg-secondary text-white' },
+              { icon: <Sparkles className="h-4 w-4" aria-hidden />, value: freeExam ? t('free') : '—', label: t('miniPrice'), tone: 'bg-accent-soft text-primary' },
+            ].map((s) => (
+              <li key={s.label} className="flex flex-col gap-2 rounded-2xl bg-card p-3 sm:flex-row sm:items-center sm:gap-3 sm:p-4">
+                <span className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-xl', s.tone)}>{s.icon}</span>
+                <span className="min-w-0">
+                  <span className="block text-lg font-bold leading-tight tabular-nums text-ink">{s.value}</span>
+                  <span className="block truncate text-xs text-muted">{s.label}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <p className="mt-4 text-sm text-muted">
-          {[
-            count(paid.length, t('statExamOne'), t('statExams', { count: paid.length })),
-            count(roleCount, t('statRoleOne'), t('statRoles', { count: roleCount })),
-            freeExam ? t('statFree') : null,
-          ].filter(Boolean).join(' · ')}
-        </p>
       </header>
 
       {/* ---------- Category pills ---------- */}
-      <div className="flex items-center gap-3 border-b border-line pb-3">
-        <div className="-mx-4 flex flex-1 gap-1 overflow-x-auto px-4 scrollbar-thin sm:mx-0 sm:px-0" role="group" aria-label={t('filterByCategory')}>
+      <div className="mt-6 flex items-center gap-3">
+        <div className="-mx-4 flex flex-1 gap-1.5 overflow-x-auto px-4 scrollbar-thin sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0" role="group" aria-label={t('filterByCategory')}>
           <Pill selected={tab === 'all'} onClick={() => setParam('category', 'all')} label={t('catAll')} />
           {categories.map((c) => (
-            <Pill key={c.id} selected={tab === c.id} onClick={() => setParam('category', c.id)} label={categoryText(t, c.id).label} count={c.count} />
+            <Pill key={c.id} selected={tab === c.id} onClick={() => setParam('category', c.id)} label={categoryText(t, c.id).label} count={c.count} soon={!isCategoryOpen(c.id)} soonLabel={t('soon')} />
           ))}
           {roleCount > 0 && <Pill selected={tab === 'interviews'} onClick={() => setParam('category', 'interviews')} label={t('catInterviews')} count={roleCount} />}
         </div>

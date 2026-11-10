@@ -1,8 +1,9 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowRight, FileText, Timer, TrendingDown, Trophy } from 'lucide-react';
-import { formatDuration, getExamById } from '@prepmitra/shared';
+import { getExamById } from '@prepmitra/shared';
 import { Badge, ButtonLink, Card, CardBody, CardHeader, DemoBadge, EmptyState, Notice } from '@/components/ui';
 import { CheckedSheet } from '@/components/exam/CheckedSheet';
+import { SectionTable } from '@/components/exam/SectionTable';
 import { SectionChart } from '@/components/charts/Charts';
 import { ExamCard } from '@/components/exam/ExamCard';
 import { ReportActions } from '@/components/exam/ReportActions';
@@ -43,7 +44,7 @@ export function ExamResultPage() {
       <PrintStyles />
       <div>
         <div className="flex flex-wrap gap-2">
-          <DemoBadge>{t('demoAnalysis')}</DemoBadge>
+          {report.isDemo && <DemoBadge>{t('demoAnalysis')}</DemoBadge>}
           {report.isMini && <Badge tone="success">{t('freeMiniMock')}</Badge>}
           {report.autoSubmitted && <Badge tone="warning" icon={<Timer className="h-3 w-3" />}>{t('autoSubmittedBadge')}</Badge>}
         </div>
@@ -64,28 +65,7 @@ export function ExamResultPage() {
           <CardHeader title={t('sectionWise')} />
           <CardBody>
             <SectionChart data={r.sections.map((s) => ({ name: shortLabel(s.name), correct: s.correct, incorrect: s.incorrect, unanswered: s.unanswered }))} />
-            <div className="mt-4 overflow-x-auto">
-              <table className="w-full min-w-[480px] text-sm">
-                <thead>
-                  <tr className="border-b border-line text-left text-muted">
-                    <th scope="col" className="py-2 pr-3 font-medium">{t('colSection')}</th>
-                    <th scope="col" className="py-2 pr-3 font-medium">{t('colScore')}</th>
-                    <th scope="col" className="py-2 pr-3 font-medium">{t('colAccuracy')}</th>
-                    <th scope="col" className="py-2 font-medium">{t('colTime')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {r.sections.map((s) => (
-                    <tr key={s.sectionId} className="border-b border-line last:border-0">
-                      <th scope="row" className="py-2 pr-3 text-left font-medium">{s.name}</th>
-                      <td className="py-2 pr-3">{s.score}/{s.maxScore}</td>
-                      <td className="py-2 pr-3"><Badge tone={s.accuracy >= 75 ? 'success' : s.accuracy >= 50 ? 'warning' : 'danger'}>{s.accuracy}%</Badge></td>
-                      <td className="py-2 text-muted">{formatDuration(s.timeSpentSec)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <SectionTable sections={r.sections} className="mt-4" />
           </CardBody>
         </Card>
         <div className="space-y-6">
@@ -122,7 +102,7 @@ export function ExamResultPage() {
           <div className="max-w-md"><ExamCard exam={next} /></div>
         </section>
       )}
-      <Notice tone="warning">{t('demoAiNotice')} {t('percentileNote')}{lang === 'hi' ? ` ${t('narrativeNote')}` : ''}</Notice>
+      <Notice tone={report.isDemo ? 'warning' : 'info'}>{report.isDemo ? t('demoAiNotice') : t('serverScoredNotice')} {t('percentileNote')}{lang === 'hi' && (report.isDemo ? ` ${t('narrativeNote')}` : report.language !== 'hi' ? ` ${t('narrativeApiNote')}` : '')}</Notice>
     </div>
   );
 }

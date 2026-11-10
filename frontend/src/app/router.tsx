@@ -8,6 +8,12 @@ import { AdaptiveLayout } from '@/layouts/AdaptiveLayout';
 import { GuestOnly, RequireAdmin, RequireAuth, RequireReadyProfile } from './guards';
 import { RouteError } from '@/pages/RouteError';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { interviewsEnabled } from '@/config/launch';
+
+/** Mock interviews are switched off for the launch (VITE_INTERVIEWS_ENABLED); their pages send people to the exams. */
+function InterviewsGate({ children }: { children: ReactNode }) {
+  return interviewsEnabled() ? <>{children}</> : <Navigate to="/exams" replace />;
+}
 
 const page = (loader: () => Promise<Record<string, ComponentType>>, name: string) =>
   lazy(async () => ({ default: (await loader())[name] as ComponentType }));
@@ -23,6 +29,7 @@ const S = ({ children }: { children: ReactNode }) => <Suspense fallback={<Fallba
 const LandingPage = page(() => import('@/pages/public/LandingPage'), 'LandingPage');
 const ExamCatalogPage = page(() => import('@/pages/public/ExamCatalogPage'), 'ExamCatalogPage');
 const ExamDetailsPage = page(() => import('@/pages/public/ExamDetailsPage'), 'ExamDetailsPage');
+const SharedReportPage = page(() => import('@/pages/public/SharedReportPage'), 'SharedReportPage');
 const PricingPage = page(() => import('@/pages/public/PricingPage'), 'PricingPage');
 const PrivacyPage = page(() => import('@/pages/legal/PrivacyPage'), 'PrivacyPage');
 const TermsPage = page(() => import('@/pages/legal/TermsPage'), 'TermsPage');
@@ -47,6 +54,7 @@ const SettingsPage = page(() => import('@/pages/dashboard/SettingsPage'), 'Setti
 // Exam
 const ExamInstructionsPage = page(() => import('@/pages/exam/ExamInstructionsPage'), 'ExamInstructionsPage');
 const ExamSessionPage = page(() => import('@/pages/exam/ExamSessionPage'), 'ExamSessionPage');
+const ReportProcessingPage = page(() => import('@/pages/exam/ReportProcessingPage'), 'ReportProcessingPage');
 const ExamResultPage = page(() => import('@/pages/exam/ExamResultPage'), 'ExamResultPage');
 const ReportPage = page(() => import('@/pages/exam/ReportPage'), 'ReportPage');
 // Interview
@@ -96,8 +104,9 @@ export const routes = [
         children: [
           { path: '/exams', element: <S><ExamCatalogPage /></S> },
           { path: '/exams/:id', element: <S><ExamDetailsPage /></S> },
-          { path: '/interviews', element: <S><InterviewCatalogPage /></S> },
-          { path: '/interviews/:roleId', element: auth(<RequireReadyProfile><InterviewSetupPage /></RequireReadyProfile>) },
+          { path: '/shared/reports/:token', element: <S><SharedReportPage /></S> },
+          { path: '/interviews', element: <InterviewsGate><S><InterviewCatalogPage /></S></InterviewsGate> },
+          { path: '/interviews/:roleId', element: <InterviewsGate>{auth(<RequireReadyProfile><InterviewSetupPage /></RequireReadyProfile>)}</InterviewsGate> },
         ],
       },
       {
@@ -128,7 +137,8 @@ export const routes = [
       },
       // Focused, full-screen experiences
       { path: '/exam/:attemptId', element: auth(<RequireReadyProfile><ExamSessionPage /></RequireReadyProfile>) },
-      { path: '/interview/session/:sessionId', element: auth(<InterviewSessionPage />) },
+      { path: '/exam/:attemptId/processing', element: auth(<S><ReportProcessingPage /></S>) },
+      { path: '/interview/session/:sessionId', element: <InterviewsGate>{auth(<InterviewSessionPage />)}</InterviewsGate> },
       {
         path: '/admin',
         element: <RequireAdmin><S><AdminLayout /></S></RequireAdmin>,

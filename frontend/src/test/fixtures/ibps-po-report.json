@@ -1,0 +1,2060 @@
+{
+ "id": "2fc25307-d703-4513-9d78-952bf96d0c10",
+ "kind": "exam",
+ "status": "ready",
+ "language": "en",
+ "attempt_id": "60446295-c2ed-4477-bd54-5f6a9dafd577",
+ "interview_session_id": null,
+ "analytics": {
+  "score": 0.75,
+  "max_score": 100.0,
+  "accuracy": 0.25,
+  "attempted": 12,
+  "correct": 3,
+  "wrong": 9,
+  "partial": 0,
+  "unanswered": 88,
+  "negative_marks_lost": 2.25,
+  "total_time_sec": 570,
+  "avg_time_per_question_sec": 5.7,
+  "sections": [
+   {
+    "key": "english",
+    "name": "English Language",
+    "score": 0.75,
+    "max_score": 30.0,
+    "attempted": 12,
+    "correct": 3,
+    "wrong": 9,
+    "unanswered": 18,
+    "accuracy": 0.25,
+    "time_sec": 570
+   },
+   {
+    "key": "quant",
+    "name": "Quantitative Aptitude",
+    "score": 0.0,
+    "max_score": 35.0,
+    "attempted": 0,
+    "correct": 0,
+    "wrong": 0,
+    "unanswered": 35,
+    "accuracy": null,
+    "time_sec": 0
+   },
+   {
+    "key": "reasoning",
+    "name": "Reasoning Ability",
+    "score": 0.0,
+    "max_score": 35.0,
+    "attempted": 0,
+    "correct": 0,
+    "wrong": 0,
+    "unanswered": 35,
+    "accuracy": null,
+    "time_sec": 0
+   }
+  ],
+  "topics": [
+   {
+    "topic_id": 95,
+    "name": "Fill in the blanks",
+    "section_key": "english",
+    "total": 7,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 96,
+    "name": "Synonyms and antonyms",
+    "section_key": "english",
+    "total": 3,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     22,
+     23,
+     24
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 97,
+    "name": "Idioms and phrases",
+    "section_key": "english",
+    "total": 3,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     25,
+     26,
+     27
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 98,
+    "name": "Sentence improvement",
+    "section_key": "english",
+    "total": 3,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     28,
+     29,
+     30
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 99,
+    "name": "Number system",
+    "section_key": "quant",
+    "total": 6,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     31,
+     32,
+     33,
+     34,
+     35,
+     36
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 100,
+    "name": "Percentage",
+    "section_key": "quant",
+    "total": 6,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     37,
+     38,
+     39,
+     40,
+     41,
+     42
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 101,
+    "name": "Profit and loss",
+    "section_key": "quant",
+    "total": 6,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     43,
+     44,
+     45,
+     46,
+     47,
+     48
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 102,
+    "name": "Ratio and proportion",
+    "section_key": "quant",
+    "total": 3,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     49,
+     50,
+     51
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 103,
+    "name": "Time and work",
+    "section_key": "quant",
+    "total": 3,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     52,
+     53,
+     54
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 104,
+    "name": "Time, speed and distance",
+    "section_key": "quant",
+    "total": 3,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     55,
+     56,
+     57
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 105,
+    "name": "Simple and compound interest",
+    "section_key": "quant",
+    "total": 3,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     58,
+     59,
+     60
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 106,
+    "name": "Data interpretation",
+    "section_key": "quant",
+    "total": 5,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     61,
+     62,
+     63,
+     64,
+     65
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 107,
+    "name": "Analogy and classification",
+    "section_key": "reasoning",
+    "total": 7,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     72
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 108,
+    "name": "Coding-decoding",
+    "section_key": "reasoning",
+    "total": 7,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 109,
+    "name": "Series",
+    "section_key": "reasoning",
+    "total": 7,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     80,
+     81,
+     82,
+     83,
+     84,
+     85,
+     86
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 110,
+    "name": "Blood relations",
+    "section_key": "reasoning",
+    "total": 4,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     87,
+     88,
+     89,
+     90
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 111,
+    "name": "Syllogism",
+    "section_key": "reasoning",
+    "total": 3,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     91,
+     92,
+     93
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 112,
+    "name": "Puzzles and seating arrangement",
+    "section_key": "reasoning",
+    "total": 7,
+    "attempted": 0,
+    "correct": 0,
+    "wrong_refs": [
+     94,
+     95,
+     96,
+     97,
+     98,
+     99,
+     100
+    ],
+    "accuracy": null,
+    "avg_time_sec": 0
+   },
+   {
+    "topic_id": 93,
+    "name": "Reading comprehension",
+    "section_key": "english",
+    "total": 7,
+    "attempted": 7,
+    "correct": 1,
+    "wrong_refs": [
+     1,
+     2,
+     3,
+     5,
+     6,
+     7
+    ],
+    "accuracy": 0.1429,
+    "avg_time_sec": 35
+   },
+   {
+    "topic_id": 94,
+    "name": "Error spotting",
+    "section_key": "english",
+    "total": 7,
+    "attempted": 5,
+    "correct": 2,
+    "wrong_refs": [
+     8,
+     9,
+     10,
+     13,
+     14
+    ],
+    "accuracy": 0.4,
+    "avg_time_sec": 46.4
+   }
+  ],
+  "error_patterns": [
+   {
+    "type": "careless_easy",
+    "description": "Wrong answers on easy questions answered quickly",
+    "question_refs": [
+     1
+    ],
+    "marks_lost": 1.25
+   },
+   {
+    "type": "skipped_section",
+    "description": "Skipped the whole Quantitative Aptitude section",
+    "question_refs": [
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     62,
+     63,
+     64,
+     65
+    ],
+    "marks_lost": 0.0
+   },
+   {
+    "type": "skipped_section",
+    "description": "Skipped the whole Reasoning Ability section",
+    "question_refs": [
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     72,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79,
+     80,
+     81,
+     82,
+     83,
+     84,
+     85,
+     86,
+     87,
+     88,
+     89,
+     90,
+     91,
+     92,
+     93,
+     94,
+     95,
+     96,
+     97,
+     98,
+     99,
+     100
+    ],
+    "marks_lost": 0.0
+   }
+  ],
+  "questions": [
+   {
+    "ref": 1,
+    "question_id": "169ac75c-28d2-4183-944d-3f8fff4b6876",
+    "section_key": "english",
+    "topic": "Reading comprehension",
+    "difficulty": "easy",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 20,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "careless_easy"
+   },
+   {
+    "ref": 2,
+    "question_id": "f7bb9ef6-9a55-462e-afcd-1b8e59105817",
+    "section_key": "english",
+    "topic": "Reading comprehension",
+    "difficulty": "medium",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 25,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "wrong"
+   },
+   {
+    "ref": 3,
+    "question_id": "3e7e06eb-d993-4bfa-8d56-fed8404c22a3",
+    "section_key": "english",
+    "topic": "Reading comprehension",
+    "difficulty": "medium",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 30,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "wrong"
+   },
+   {
+    "ref": 4,
+    "question_id": "42ac54a5-06fe-4a7f-995e-741d22fcaf07",
+    "section_key": "english",
+    "topic": "Reading comprehension",
+    "difficulty": "medium",
+    "status": "correct",
+    "marks": 1.0,
+    "time_sec": 35,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 5,
+    "question_id": "0c0f4842-3533-4634-a027-f4e14152ee36",
+    "section_key": "english",
+    "topic": "Reading comprehension",
+    "difficulty": "medium",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 40,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "wrong"
+   },
+   {
+    "ref": 6,
+    "question_id": "c92c7652-6f74-401a-a9ce-dc9d671e48ff",
+    "section_key": "english",
+    "topic": "Reading comprehension",
+    "difficulty": "medium",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 45,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "wrong"
+   },
+   {
+    "ref": 7,
+    "question_id": "5b06c3eb-e326-407b-ae23-02c6ce066c06",
+    "section_key": "english",
+    "topic": "Reading comprehension",
+    "difficulty": "medium",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 50,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "wrong"
+   },
+   {
+    "ref": 8,
+    "question_id": "0ecc9e82-be0b-46bb-9d67-4124f5278d79",
+    "section_key": "english",
+    "topic": "Error spotting",
+    "difficulty": "easy",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 55,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "wrong"
+   },
+   {
+    "ref": 9,
+    "question_id": "171306d7-dbf0-4c18-8338-4e1852f2b39a",
+    "section_key": "english",
+    "topic": "Error spotting",
+    "difficulty": "medium",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 60,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "wrong"
+   },
+   {
+    "ref": 10,
+    "question_id": "773c8076-6602-4660-b159-4ad878e11bcc",
+    "section_key": "english",
+    "topic": "Error spotting",
+    "difficulty": "medium",
+    "status": "wrong",
+    "marks": -0.25,
+    "time_sec": 65,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": "wrong"
+   },
+   {
+    "ref": 11,
+    "question_id": "e33a1bb0-b289-40f4-8d5a-6accbc2d983d",
+    "section_key": "english",
+    "topic": "Error spotting",
+    "difficulty": "medium",
+    "status": "correct",
+    "marks": 1.0,
+    "time_sec": 70,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 12,
+    "question_id": "9f093cb1-8fba-46bd-ab76-57ce957d68b9",
+    "section_key": "english",
+    "topic": "Error spotting",
+    "difficulty": "medium",
+    "status": "correct",
+    "marks": 1.0,
+    "time_sec": 75,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 13,
+    "question_id": "16ef45f8-7761-4fa7-9976-d7034c3abfab",
+    "section_key": "english",
+    "topic": "Error spotting",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 14,
+    "question_id": "5beacd1c-8b07-4501-ba8b-785fd50ad1c3",
+    "section_key": "english",
+    "topic": "Error spotting",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 15,
+    "question_id": "b0931ab9-fb5a-4397-992a-13122106356f",
+    "section_key": "english",
+    "topic": "Fill in the blanks",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 16,
+    "question_id": "d2472d56-50cc-420a-865c-8801d551caf2",
+    "section_key": "english",
+    "topic": "Fill in the blanks",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 17,
+    "question_id": "31bb513b-3599-4db0-9e06-3aea5b38895a",
+    "section_key": "english",
+    "topic": "Fill in the blanks",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 18,
+    "question_id": "e96a15b1-ba78-414e-a43a-f63ec2dcb3ea",
+    "section_key": "english",
+    "topic": "Fill in the blanks",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 19,
+    "question_id": "588afb0d-30dc-488e-90c1-7e67335aafcb",
+    "section_key": "english",
+    "topic": "Fill in the blanks",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 20,
+    "question_id": "8d1e3307-a11c-47fa-9ebe-c29ce1bcb459",
+    "section_key": "english",
+    "topic": "Fill in the blanks",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 21,
+    "question_id": "deb759e4-3476-46bc-a3b1-febd379df04e",
+    "section_key": "english",
+    "topic": "Fill in the blanks",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 22,
+    "question_id": "8dd060f2-6471-46d1-9303-360e66f0c8c1",
+    "section_key": "english",
+    "topic": "Synonyms and antonyms",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 23,
+    "question_id": "eb31aa30-615c-4fc3-a1d7-95f5a1c16a4c",
+    "section_key": "english",
+    "topic": "Synonyms and antonyms",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 24,
+    "question_id": "1104f4c3-ec55-40e4-92bd-bcc9c41cfefc",
+    "section_key": "english",
+    "topic": "Synonyms and antonyms",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 25,
+    "question_id": "af247166-a9b4-4c23-b155-bd803c069c4b",
+    "section_key": "english",
+    "topic": "Idioms and phrases",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 26,
+    "question_id": "28ded145-0601-4bd2-816b-e6e21069ab5e",
+    "section_key": "english",
+    "topic": "Idioms and phrases",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 27,
+    "question_id": "77456660-c45d-4b65-bbae-6f7dedaac28c",
+    "section_key": "english",
+    "topic": "Idioms and phrases",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 28,
+    "question_id": "d837b4cc-933f-4171-a8b3-f11b1bd94e95",
+    "section_key": "english",
+    "topic": "Sentence improvement",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 29,
+    "question_id": "a9b79840-0e1a-456e-962b-95e4c46fc7b3",
+    "section_key": "english",
+    "topic": "Sentence improvement",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 30,
+    "question_id": "0153170a-34ec-47f6-aa1e-b8820eec467a",
+    "section_key": "english",
+    "topic": "Sentence improvement",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 31,
+    "question_id": "bd16134c-0441-46cd-8d8d-e1f070896d75",
+    "section_key": "quant",
+    "topic": "Number system",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 32,
+    "question_id": "82e895fb-a53f-4386-99d5-20ab7d759942",
+    "section_key": "quant",
+    "topic": "Number system",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 33,
+    "question_id": "67f4cc7b-b7bc-4ba3-a5af-55f446ca0587",
+    "section_key": "quant",
+    "topic": "Number system",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 34,
+    "question_id": "5bf44b4e-0956-4d9e-8353-d6052b4bd16d",
+    "section_key": "quant",
+    "topic": "Number system",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 35,
+    "question_id": "ca40e46c-b9d0-4535-8606-b668ace08c73",
+    "section_key": "quant",
+    "topic": "Number system",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 36,
+    "question_id": "a835f38e-9f59-4aef-bb22-888f5dbfe49e",
+    "section_key": "quant",
+    "topic": "Number system",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 37,
+    "question_id": "8c934c8b-6359-401a-a498-69319dce007a",
+    "section_key": "quant",
+    "topic": "Percentage",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 38,
+    "question_id": "89bc425a-4d22-4d35-871b-10f768067c21",
+    "section_key": "quant",
+    "topic": "Percentage",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 39,
+    "question_id": "844de2d8-ec4b-44d4-a1c3-8f9311db30bd",
+    "section_key": "quant",
+    "topic": "Percentage",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 40,
+    "question_id": "0eafd25a-a5db-4321-a347-c377bfd22107",
+    "section_key": "quant",
+    "topic": "Percentage",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 41,
+    "question_id": "b26e45ec-07c6-4603-b130-290d5de6c0c2",
+    "section_key": "quant",
+    "topic": "Percentage",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 42,
+    "question_id": "1b0ed2ec-fa0d-4ceb-8dee-04fcd254caec",
+    "section_key": "quant",
+    "topic": "Percentage",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 43,
+    "question_id": "bba6505f-d569-4a10-8666-513951d51766",
+    "section_key": "quant",
+    "topic": "Profit and loss",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 44,
+    "question_id": "24d92548-5283-4e6f-9d6f-a425ef8e8def",
+    "section_key": "quant",
+    "topic": "Profit and loss",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 45,
+    "question_id": "7a18dbf5-98d9-4afc-b085-a10a43798a7b",
+    "section_key": "quant",
+    "topic": "Profit and loss",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 46,
+    "question_id": "92f05bbb-8f38-47a2-83ac-fb5923d8cc6c",
+    "section_key": "quant",
+    "topic": "Profit and loss",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 47,
+    "question_id": "c4ebd21b-1fc0-4946-8ab5-ed95afbd36f7",
+    "section_key": "quant",
+    "topic": "Profit and loss",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 48,
+    "question_id": "c37594fb-60c3-4c5a-9198-d23133ca7ccf",
+    "section_key": "quant",
+    "topic": "Profit and loss",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 49,
+    "question_id": "94fd11e7-6403-438f-8d19-4e0d46c1b080",
+    "section_key": "quant",
+    "topic": "Ratio and proportion",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 50,
+    "question_id": "2ef658d6-ac1e-453e-9702-009744bf2900",
+    "section_key": "quant",
+    "topic": "Ratio and proportion",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 51,
+    "question_id": "bf4e33e3-35b3-4716-8c27-1ce0c9a5bc8e",
+    "section_key": "quant",
+    "topic": "Ratio and proportion",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 52,
+    "question_id": "675b689e-9a23-48c0-97a6-60c3ddcc4b8d",
+    "section_key": "quant",
+    "topic": "Time and work",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 53,
+    "question_id": "b3cd3d37-11e8-4493-9fec-0dd1f337ed0f",
+    "section_key": "quant",
+    "topic": "Time and work",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 54,
+    "question_id": "6b32668c-e211-44b5-b5fd-90b287e97953",
+    "section_key": "quant",
+    "topic": "Time and work",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 55,
+    "question_id": "388af6c0-3a9a-4c24-94e5-a6b63324816d",
+    "section_key": "quant",
+    "topic": "Time, speed and distance",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 56,
+    "question_id": "02a96fbb-1a22-43f5-a717-da7f73bc4a79",
+    "section_key": "quant",
+    "topic": "Time, speed and distance",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 57,
+    "question_id": "38f803d5-9178-4b51-bfe0-7eee84fad243",
+    "section_key": "quant",
+    "topic": "Time, speed and distance",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 58,
+    "question_id": "b75f750b-bf1d-45fd-a390-d74d5e2c1747",
+    "section_key": "quant",
+    "topic": "Simple and compound interest",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 59,
+    "question_id": "abdc4bc4-9a37-42a2-aaac-5b1371ee7af8",
+    "section_key": "quant",
+    "topic": "Simple and compound interest",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 60,
+    "question_id": "1a327bd7-33a7-43b6-9ae6-b3d3797a0950",
+    "section_key": "quant",
+    "topic": "Simple and compound interest",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 61,
+    "question_id": "d60c16c5-1d7d-4d4e-bfc2-7d7a2d6b7437",
+    "section_key": "quant",
+    "topic": "Data interpretation",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 62,
+    "question_id": "05a69943-a992-4de5-bbfe-1446a602c6c1",
+    "section_key": "quant",
+    "topic": "Data interpretation",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 63,
+    "question_id": "291e4672-0cb8-4be0-b072-d4f226ff7438",
+    "section_key": "quant",
+    "topic": "Data interpretation",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 64,
+    "question_id": "12c5fa89-0fa1-4df8-81c7-bc390d1063b9",
+    "section_key": "quant",
+    "topic": "Data interpretation",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 65,
+    "question_id": "ec6ecdaf-cf1a-4aca-9f6e-9a6e3fd78195",
+    "section_key": "quant",
+    "topic": "Data interpretation",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 66,
+    "question_id": "7159010d-5af0-400b-821c-7bf58a475fe7",
+    "section_key": "reasoning",
+    "topic": "Analogy and classification",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 67,
+    "question_id": "3b262702-0e42-4084-875f-1a4c40b066ac",
+    "section_key": "reasoning",
+    "topic": "Analogy and classification",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 68,
+    "question_id": "0d465440-feb7-4f76-a05a-acd6bf7c5413",
+    "section_key": "reasoning",
+    "topic": "Analogy and classification",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 69,
+    "question_id": "e8928ba5-0f99-498d-b2c5-e5d751b83a6d",
+    "section_key": "reasoning",
+    "topic": "Analogy and classification",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 70,
+    "question_id": "05a76e14-4b0d-42ee-b9fe-b1dfee4a3b4e",
+    "section_key": "reasoning",
+    "topic": "Analogy and classification",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 71,
+    "question_id": "cca75877-a4f4-47aa-a84e-8c4b84c8a0b1",
+    "section_key": "reasoning",
+    "topic": "Analogy and classification",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 72,
+    "question_id": "c6291365-8754-4105-998c-b49cee213d37",
+    "section_key": "reasoning",
+    "topic": "Analogy and classification",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 73,
+    "question_id": "fe7065ae-b780-4f31-8b89-67778f2c9add",
+    "section_key": "reasoning",
+    "topic": "Coding-decoding",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 74,
+    "question_id": "6c534c93-9cb1-44fe-aca7-4fcab00493bd",
+    "section_key": "reasoning",
+    "topic": "Coding-decoding",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 75,
+    "question_id": "eb3add04-1f24-4c7b-b652-9335e8c1e730",
+    "section_key": "reasoning",
+    "topic": "Coding-decoding",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 76,
+    "question_id": "9c036cfc-f060-45ff-80c8-7a94e35d5d92",
+    "section_key": "reasoning",
+    "topic": "Coding-decoding",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 77,
+    "question_id": "cf5614ce-0f05-4436-a45c-6951a856d449",
+    "section_key": "reasoning",
+    "topic": "Coding-decoding",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 78,
+    "question_id": "21dcc3e4-5ccf-4c1f-8f33-8a2635b379b9",
+    "section_key": "reasoning",
+    "topic": "Coding-decoding",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 79,
+    "question_id": "dfa2d688-2358-4e67-bf35-3429305eda1b",
+    "section_key": "reasoning",
+    "topic": "Coding-decoding",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 80,
+    "question_id": "8d320ac3-2256-4dc4-b0bb-40615766d337",
+    "section_key": "reasoning",
+    "topic": "Series",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 81,
+    "question_id": "db5648b4-54d9-46b7-9597-2de1696e123b",
+    "section_key": "reasoning",
+    "topic": "Series",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 82,
+    "question_id": "b93ed0f3-7bb5-4221-8064-9cb401c60a9a",
+    "section_key": "reasoning",
+    "topic": "Series",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 83,
+    "question_id": "21b00f67-9853-498b-9d46-f08f661659aa",
+    "section_key": "reasoning",
+    "topic": "Series",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 84,
+    "question_id": "a9a29c9e-cbcc-453f-9de8-f1b2f24f1dff",
+    "section_key": "reasoning",
+    "topic": "Series",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 85,
+    "question_id": "cd1955b4-4e76-4c56-8ab5-4ea79c1b4c01",
+    "section_key": "reasoning",
+    "topic": "Series",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 86,
+    "question_id": "57e185b7-e1ca-463c-ad6f-754106f37359",
+    "section_key": "reasoning",
+    "topic": "Series",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 87,
+    "question_id": "5d0238a2-977b-4448-90c1-2f8f0a1db9a0",
+    "section_key": "reasoning",
+    "topic": "Blood relations",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 88,
+    "question_id": "f202b910-0321-4ebf-80e0-c99fe2c636a1",
+    "section_key": "reasoning",
+    "topic": "Blood relations",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 89,
+    "question_id": "5d9f4525-cb40-4a62-b4ec-006e9ebe1847",
+    "section_key": "reasoning",
+    "topic": "Blood relations",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 90,
+    "question_id": "e5c6141a-2b22-4652-8f2e-125d184a3c29",
+    "section_key": "reasoning",
+    "topic": "Blood relations",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 91,
+    "question_id": "a88c313c-4194-4094-abe8-eae01a90291e",
+    "section_key": "reasoning",
+    "topic": "Syllogism",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 92,
+    "question_id": "e1a0d189-94ff-4d33-9747-52e66eb5b522",
+    "section_key": "reasoning",
+    "topic": "Syllogism",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 93,
+    "question_id": "de1ecae2-ee42-4c12-88be-a2bc8c622b08",
+    "section_key": "reasoning",
+    "topic": "Syllogism",
+    "difficulty": "hard",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 94,
+    "question_id": "d840df62-39c9-4adf-9f4b-105affb76bfc",
+    "section_key": "reasoning",
+    "topic": "Puzzles and seating arrangement",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 95,
+    "question_id": "a383924a-c3eb-4038-a4a4-1383b5f72266",
+    "section_key": "reasoning",
+    "topic": "Puzzles and seating arrangement",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 96,
+    "question_id": "f90a8086-2421-4139-a3e9-81652dcc3062",
+    "section_key": "reasoning",
+    "topic": "Puzzles and seating arrangement",
+    "difficulty": "easy",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 97,
+    "question_id": "b1e4fe27-b7d4-4fb0-b234-97828ba4aa3d",
+    "section_key": "reasoning",
+    "topic": "Puzzles and seating arrangement",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 98,
+    "question_id": "da13cd2e-4110-464e-8681-b0f7819ff96e",
+    "section_key": "reasoning",
+    "topic": "Puzzles and seating arrangement",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 99,
+    "question_id": "172b8473-92b8-4f3b-8b65-2e979b07434d",
+    "section_key": "reasoning",
+    "topic": "Puzzles and seating arrangement",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   },
+   {
+    "ref": 100,
+    "question_id": "b45a0c59-bc9e-4289-aaff-bb55d5b9766a",
+    "section_key": "reasoning",
+    "topic": "Puzzles and seating arrangement",
+    "difficulty": "medium",
+    "status": "unanswered",
+    "marks": -0.0,
+    "time_sec": 0,
+    "expected_time_sec": 45,
+    "marked_for_review": false,
+    "error_type": null
+   }
+  ],
+  "percentile": 100.0,
+  "percentile_population": 2,
+  "anti_cheat": {
+   "tab_switch_count": 0,
+   "events": 0,
+   "by_type": {}
+  },
+  "previous_scores": [],
+  "since_last_attempt": null
+ },
+ "report": {
+  "summary": "You scored 0.75 out of 100.0 with 25% accuracy.",
+  "score_summary": {
+   "score": 0.75,
+   "max_score": 100.0,
+   "accuracy": 0.25,
+   "percentile": 100.0,
+   "attempted": 12,
+   "correct": 3,
+   "wrong": 9,
+   "unanswered": 88,
+   "negative_marks_lost": 2.25,
+   "total_time_sec": 570,
+   "avg_time_per_question_sec": 5.7
+  },
+  "strengths": [],
+  "weaknesses": [
+   {
+    "topic": "Fill in the blanks",
+    "detail": "Accuracy is low on this topic.",
+    "question_refs": [
+     15,
+     16,
+     17,
+     18,
+     19
+    ],
+    "questions": [
+     {
+      "ref": 15,
+      "question_id": "b0931ab9-fb5a-4397-992a-13122106356f"
+     },
+     {
+      "ref": 16,
+      "question_id": "d2472d56-50cc-420a-865c-8801d551caf2"
+     },
+     {
+      "ref": 17,
+      "question_id": "31bb513b-3599-4db0-9e06-3aea5b38895a"
+     },
+     {
+      "ref": 18,
+      "question_id": "e96a15b1-ba78-414e-a43a-f63ec2dcb3ea"
+     },
+     {
+      "ref": 19,
+      "question_id": "588afb0d-30dc-488e-90c1-7e67335aafcb"
+     }
+    ]
+   },
+   {
+    "topic": "Synonyms and antonyms",
+    "detail": "Accuracy is low on this topic.",
+    "question_refs": [
+     22,
+     23,
+     24
+    ],
+    "questions": [
+     {
+      "ref": 22,
+      "question_id": "8dd060f2-6471-46d1-9303-360e66f0c8c1"
+     },
+     {
+      "ref": 23,
+      "question_id": "eb31aa30-615c-4fc3-a1d7-95f5a1c16a4c"
+     },
+     {
+      "ref": 24,
+      "question_id": "1104f4c3-ec55-40e4-92bd-bcc9c41cfefc"
+     }
+    ]
+   },
+   {
+    "topic": "Idioms and phrases",
+    "detail": "Accuracy is low on this topic.",
+    "question_refs": [
+     25,
+     26,
+     27
+    ],
+    "questions": [
+     {
+      "ref": 25,
+      "question_id": "af247166-a9b4-4c23-b155-bd803c069c4b"
+     },
+     {
+      "ref": 26,
+      "question_id": "28ded145-0601-4bd2-816b-e6e21069ab5e"
+     },
+     {
+      "ref": 27,
+      "question_id": "77456660-c45d-4b65-bbae-6f7dedaac28c"
+     }
+    ]
+   },
+   {
+    "topic": "Sentence improvement",
+    "detail": "Accuracy is low on this topic.",
+    "question_refs": [
+     28,
+     29,
+     30
+    ],
+    "questions": [
+     {
+      "ref": 28,
+      "question_id": "d837b4cc-933f-4171-a8b3-f11b1bd94e95"
+     },
+     {
+      "ref": 29,
+      "question_id": "a9b79840-0e1a-456e-962b-95e4c46fc7b3"
+     },
+     {
+      "ref": 30,
+      "question_id": "0153170a-34ec-47f6-aa1e-b8820eec467a"
+     }
+    ]
+   }
+  ],
+  "loopholes": [
+   {
+    "pattern": "careless_easy",
+    "detail": "Wrong answers on easy questions answered quickly",
+    "question_refs": [
+     1
+    ]
+   },
+   {
+    "pattern": "skipped_section",
+    "detail": "Skipped the whole Quantitative Aptitude section",
+    "question_refs": [
+     31,
+     32,
+     33,
+     34,
+     35
+    ]
+   },
+   {
+    "pattern": "skipped_section",
+    "detail": "Skipped the whole Reasoning Ability section",
+    "question_refs": [
+     66,
+     67,
+     68,
+     69,
+     70
+    ]
+   }
+  ],
+  "shortcuts": [
+   {
+    "question_ref": 15,
+    "technique": "Option elimination",
+    "explanation": "Check the unit digit of each option before calculating fully.",
+    "question_id": "b0931ab9-fb5a-4397-992a-13122106356f"
+   },
+   {
+    "question_ref": 16,
+    "technique": "Option elimination",
+    "explanation": "Check the unit digit of each option before calculating fully.",
+    "question_id": "d2472d56-50cc-420a-865c-8801d551caf2"
+   },
+   {
+    "question_ref": 17,
+    "technique": "Option elimination",
+    "explanation": "Check the unit digit of each option before calculating fully.",
+    "question_id": "31bb513b-3599-4db0-9e06-3aea5b38895a"
+   },
+   {
+    "question_ref": 18,
+    "technique": "Option elimination",
+    "explanation": "Check the unit digit of each option before calculating fully.",
+    "question_id": "e96a15b1-ba78-414e-a43a-f63ec2dcb3ea"
+   },
+   {
+    "question_ref": 19,
+    "technique": "Option elimination",
+    "explanation": "Check the unit digit of each option before calculating fully.",
+    "question_id": "588afb0d-30dc-488e-90c1-7e67335aafcb"
+   }
+  ],
+  "study_plan": [
+   {
+    "day": 1,
+    "focus": "Fill in the blanks",
+    "tasks": [
+     "Revise the concept",
+     "Solve 20 timed questions"
+    ]
+   },
+   {
+    "day": 2,
+    "focus": "Synonyms and antonyms",
+    "tasks": [
+     "Revise the concept",
+     "Solve 20 timed questions"
+    ]
+   },
+   {
+    "day": 3,
+    "focus": "Idioms and phrases",
+    "tasks": [
+     "Revise the concept",
+     "Solve 20 timed questions"
+    ]
+   },
+   {
+    "day": 4,
+    "focus": "Sentence improvement",
+    "tasks": [
+     "Revise the concept",
+     "Solve 20 timed questions"
+    ]
+   },
+   {
+    "day": 5,
+    "focus": "Number system",
+    "tasks": [
+     "Revise the concept",
+     "Solve 20 timed questions"
+    ]
+   },
+   {
+    "day": 6,
+    "focus": "Percentage",
+    "tasks": [
+     "Revise the concept",
+     "Solve 20 timed questions"
+    ]
+   },
+   {
+    "day": 7,
+    "focus": "Profit and loss",
+    "tasks": [
+     "Revise the concept",
+     "Solve 20 timed questions"
+    ]
+   }
+  ],
+  "next_test": {
+   "exam_slug": "ibps-po-prelims",
+   "name": "IBPS PO Prelims",
+   "reason": "Retake the same pattern to confirm improvement."
+  },
+  "encouragement": "Steady practice on weak topics will move your score quickly.",
+  "since_last_attempt": null
+ },
+ "pdf_url": "http://localhost:8000/v1/reports/2fc25307-d703-4513-9d78-952bf96d0c10/pdf",
+ "share_url": null,
+ "share_api_url": null,
+ "user_rating": null,
+ "error": null,
+ "credit_restored": false,
+ "created_at": "2026-11-07T05:10:29Z",
+ "poll_after_seconds": null
+}

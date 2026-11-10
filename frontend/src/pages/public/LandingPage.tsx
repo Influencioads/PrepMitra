@@ -9,6 +9,7 @@ import { useAuthStore } from '@/store';
 import { examService, interviewService } from '@/services';
 import { useAsync } from '@/hooks/useAsync';
 import { useContentT } from '@/i18n/content';
+import { interviewsEnabled, isCategoryOpen, openFirst } from '@/config/launch';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { cn } from '@/utils/cn';
 import { useT } from '@/i18n';
@@ -70,8 +71,10 @@ export function LandingPage() {
   // Live catalog (API or demo data): the ribbon, category counts and role chips only list what exists.
   const exams = useAsync(() => examService.list({ sort: 'popular' }), []).data ?? [];
   const roles = useAsync(() => interviewService.listRoles(), []).data ?? [];
-  const popular = exams.slice(0, 10);
-  const categories = EXAM_CATEGORIES.map((c) => ({ ...c, count: exams.filter((e) => e.category === c.id).length })).filter((c) => c.count > 0);
+  const popular = openFirst(exams).slice(0, 10);
+  const categories = EXAM_CATEGORIES.map((c) => ({ ...c, count: exams.filter((e) => e.category === c.id).length }))
+    .filter((c) => c.count > 0)
+    .sort((a, b) => Number(isCategoryOpen(b.id)) - Number(isCategoryOpen(a.id)));
 
   return (
     <div className="bg-notebook [--margin-x:14px] sm:[--margin-x:28px] lg:[--margin-x:48px]">
@@ -165,7 +168,7 @@ export function LandingPage() {
               <Link key={c.id} to={`/exams?category=${c.id}`} className="group relative block rounded-[4px_16px_16px_16px] pt-5 focus-visible:outline-2">
                 <span className={cn('absolute left-0 top-0 inline-flex h-7 items-center gap-1.5 rounded-t-xl px-3 text-xs font-bold', CATEGORY_TAB[c.id])}>
                   <AppIcon name={c.icon} className="h-3.5 w-3.5" />
-                  {count === 1 ? t('mockOne') : t('mocksMany', { count })}
+                  {!isCategoryOpen(c.id) ? tc('comingSoon') : count === 1 ? t('mockOne') : t('mocksMany', { count })}
                 </span>
                 <article className="h-full rounded-[0_16px_16px_16px] border-[1.5px] border-ink bg-ruled p-6 shadow-hard-sm transition-transform duration-200 group-hover:-translate-y-1">
                   <h3 className="text-xl font-bold">{categoryText(tc, c.id).label}</h3>
@@ -202,7 +205,7 @@ export function LandingPage() {
       </section>
 
       {/* ---------------- Interview panel ---------------- */}
-      <section className="bg-panel-room py-16 text-chalk-text lg:py-24">
+      {interviewsEnabled() && <section className="bg-panel-room py-16 text-chalk-text lg:py-24">
         <div className="container-page grid items-center gap-12 lg:grid-cols-2">
           <div className="min-w-0">
             <HandEyebrow tone="accent">{t('intEyebrow')}</HandEyebrow>
@@ -220,7 +223,7 @@ export function LandingPage() {
           </div>
           <PanelRoom />
         </div>
-      </section>
+      </section>}
 
       {/* ---------------- Pricing as admit cards ---------------- */}
       <section id="pricing" className="container-page scroll-mt-20 py-16 lg:py-24">

@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check, CircleCheck, XCircle } from 'lucide-react';
 import { EXAM_CATEGORIES, LANGUAGES } from '@prepmitra/shared';
-import { AppIcon, Button, ErrorState, LoadingSkeleton, Notice } from '@/components/ui';
+import { AppIcon, Button, ButtonLink, ErrorState, LoadingSkeleton, Notice } from '@/components/ui';
 import { examService } from '@/services';
 import { USE_MOCK } from '@/services/mock';
+import { isExamOpen, openExamCategories } from '@/config/launch';
 import { examCreditCost, useAuthStore, useSubscriptionStore } from '@/store';
 import { useAsync } from '@/hooks/useAsync';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
@@ -56,6 +57,9 @@ export function ExamDetailsPage() {
   const topicMatch = /^\[([^\]]+)\]\s*/.exec(exam.sampleQuestion.text);
   const sample = { topic: topicMatch?.[1], text: topicMatch ? exam.sampleQuestion.text.slice(topicMatch[0].length) : exam.sampleQuestion.text };
   const negMax = Math.max(0, ...exam.sections.map((s) => s.negativeMarks));
+  const open = isExamOpen(exam);
+  const openCats = openExamCategories();
+  const openList = openCats !== 'all' && openCats.length === 1 ? `/exams?category=${openCats[0]}` : '/exams';
   const facts = [
     { label: t('duration'), value: t('minShort', { count: exam.durationMin }) },
     { label: t('questions'), value: String(exam.totalQuestions) },
@@ -209,6 +213,15 @@ export function ExamDetailsPage() {
 
         {/* ---------- Price + start ---------- */}
         <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+          {!open && (
+            <div className="rounded-2xl border border-line bg-card p-6">
+              <span className="inline-flex rounded-full bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white">{t('comingSoon')}</span>
+              <p className="mt-3 text-lg font-semibold">{t('comingSoonTitle')}</p>
+              <p className="mt-1 text-sm text-muted">{t('comingSoonBody')}</p>
+              <ButtonLink to={openList} className="mt-5 w-full">{t('seeOpenExams')}</ButtonLink>
+            </div>
+          )}
+          {open && (
           <div className="rounded-2xl border border-line bg-card p-6">
             <p className="text-sm text-muted">{t('price')}</p>
             <p className="mt-1 text-3xl font-bold tracking-tight">{usesFreeTrial ? t('free') : creditsText(t, cost)}</p>
@@ -250,7 +263,8 @@ export function ExamDetailsPage() {
               <div className="flex justify-between gap-3"><dt className="text-muted">{t('calculator')}</dt><dd className="font-medium">{exam.calculatorAllowed ? t('onScreen') : t('notAllowed')}</dd></div>
             </dl>
           </div>
-          {USE_MOCK && (
+          )}
+          {USE_MOCK && open && (
             <Notice tone="info" title={t('demoPaperTitle')}>
               {t('demoPaperBody', { count: demoQuestions, min: exam.demo.durationMin })}
             </Notice>

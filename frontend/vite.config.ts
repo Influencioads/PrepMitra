@@ -34,7 +34,8 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     // Unit tests always use demo data, even when .env.local points at a real backend
     // (src/test/live-backend.test.ts opts in with VITE_LIVE_API=1).
-    env: { VITE_USE_MOCK_API: process.env.VITE_LIVE_API ? 'false' : 'true' },
+    // Tests run with every exam and interviews switched on; the launch-switch tests turn them off themselves.
+    env: { VITE_USE_MOCK_API: process.env.VITE_LIVE_API ? 'false' : 'true', VITE_OPEN_EXAM_CATEGORIES: 'all', VITE_INTERVIEWS_ENABLED: 'true' },
     css: false,
   },
 });

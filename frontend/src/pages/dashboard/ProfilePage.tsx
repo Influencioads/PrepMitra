@@ -19,7 +19,8 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useT, useUiLang } from '@/i18n';
 import { LanguageSwitcher } from '@/i18n/LanguageSwitcher';
 import { accountMessages } from '@/i18n/messages/account';
-import { planCopy } from '@/i18n/messages/catalog';
+import { catalogMessages, planCopy } from '@/i18n/messages/catalog';
+import { interviewsEnabled, isExamOpen } from '@/config/launch';
 
 const SECOND_LANGS = ['en', 'hi', 'mr', 'ta', 'te', 'bn', 'gu', 'kn'] as const;
 
@@ -46,6 +47,7 @@ function Section({ title, description, children, onSubmit, dirty, saving }: { ti
 
 export function ProfilePage() {
   const t = useT(accountMessages);
+  const tcat = useT(catalogMessages);
   const uiLang = useUiLang();
   useDocumentTitle(t('profileTitle'));
   const user = useAuthStore((s) => s.session?.user);
@@ -175,11 +177,12 @@ export function ProfilePage() {
             {EXAMS.map((e) => (
               <ChoiceChip key={e.id} selected={examIds.includes(e.id)} onClick={() => toggle('targetExamIds', e.id)}>
                 {examIds.includes(e.id) && <CircleCheck className="h-4 w-4" aria-hidden />}{e.shortTitle}
+                {!isExamOpen(e) && <span className="rounded-full bg-line px-1.5 text-[10px] font-bold uppercase tracking-wide text-muted">{tcat('soon')}</span>}
               </ChoiceChip>
             ))}
           </div>
         </fieldset>
-        <fieldset>
+        {interviewsEnabled() && <fieldset>
           <legend className="text-sm font-medium">{t('targetRoles')}</legend>
           <div className="mt-2 flex flex-wrap gap-2">
             {INTERVIEW_ROLES.map((r) => (
@@ -188,7 +191,7 @@ export function ProfilePage() {
               </ChoiceChip>
             ))}
           </div>
-        </fieldset>
+        </fieldset>}
         {targets.formState.errors.targetExamIds && <p role="alert" className="text-sm font-medium text-danger">{targets.formState.errors.targetExamIds.message}</p>}
       </Section>
 

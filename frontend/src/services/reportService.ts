@@ -1,5 +1,5 @@
-import type { ExamReport, InterviewReport, ReportStatusResponse } from '@prepmitra/shared';
-import { API_ENDPOINTS, formatDate, formatDuration, getQuestionById } from '@prepmitra/shared';
+import type { ExamReport, InterviewReport, ReportStatusResponse, SharedReport } from '@prepmitra/shared';
+import { API_ENDPOINTS, formatDate, formatDuration, getQuestionById, toSharedReport } from '@prepmitra/shared';
 import { http } from './http';
 import { USE_MOCK, delay } from './mock';
 import { mapExamReport } from './backend';
@@ -15,6 +15,18 @@ async function downloadPdf(reportId: string, fileName: string) {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+/** Why polling stopped: the report failed, it is taking too long, or the screen was closed. */
+export class ReportPollError extends Error {
+  constructor(
+    public kind: 'failed' | 'timeout' | 'cancelled',
+    message: string,
+    public reportId?: string,
+    public creditRestored?: boolean,
+  ) {
+    super(message);
+  }
 }
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
@@ -42,33 +54,75 @@ export const reportService = {
     const { data } = await http.get(API_ENDPOINTS.attemptReport(attemptId));
     if (data.status === 'ready') return { status: 'ready', report: mapExamReport(data, attemptId) };
     if (data.status === 'failed') {
-      return { status: 'failed', message: data.error || (data.credit_restored ? 'Report generation failed. Your credit has been restored.' : 'Report generation failed.') };
+      return {
+        status: 'failed',
+        reportId: data.id,
+        creditRestored: !!data.credit_restored,
+        message: data.error || (data.credit_restored ? 'Report generation failed. Your credit has been restored.' : 'Report generation failed.'),
+      };
     }
     return { status: 'processing', progress: data.progress ?? undefined };
   },
 
   /**
-   * Polls the report endpoint (default every 3 s, plan Day 6) until it is ready.
-   * Rejects on 'failed', on timeout, or when the signal aborts.
+   * Polls the report endpoint (every 3 s, plan Day 6) until it is ready.
+   * A dropped network or a server hiccup (5xx) does not stop polling: `onNetwork(false)` is called and
+   * the next tick tries again. Rejects on 'failed' (error has `reportId`), on timeout, or when the signal aborts.
    */
   async pollExamReport(
     attemptId: string,
-    opts: { intervalMs?: number; timeoutMs?: number; signal?: AbortSignal; onProgress?: (p: number | undefined) => void } = {},
+    opts: {
+      intervalMs?: number;
+      timeoutMs?: number;
+      signal?: AbortSignal;
+      onProgress?: (p: number | undefined) => void;
+      onNetwork?: (ok: boolean) => void;
+    } = {},
   ): Promise<ExamReport> {
-    const { intervalMs = 3000, timeoutMs = 120_000, signal, onProgress } = opts;
+    const { intervalMs = 3000, timeoutMs = 120_000, signal, onProgress, onNetwork } = opts;
     const started = Date.now();
     for (;;) {
-      if (signal?.aborted) throw new Error('Report polling cancelled');
-      const res = await reportService.getReportStatus(attemptId);
-      if (res.status === 'ready') return res.report;
-      if (res.status === 'failed') throw new Error(res.message || 'Report generation failed. Your credit will be restored.');
-      onProgress?.(res.progress);
+      if (signal?.aborted) throw new ReportPollError('cancelled', 'Report polling cancelled');
+      let res: ReportStatusResponse | null = null;
+      try {
+        res = await reportService.getReportStatus(attemptId);
+        onNetwork?.(true);
+      } catch (e) {
+        const status = (e as { status?: number })?.status ?? 0;
+        if (status !== 0 && status < 500) throw e; // 404 / 409: retrying will not help
+        onNetwork?.(false);
+      }
+      if (res?.status === 'ready') return res.report;
+      if (res?.status === 'failed') throw new ReportPollError('failed', res.message, res.reportId, res.creditRestored);
+      if (res) onProgress?.(res.progress);
       if (Date.now() - started + intervalMs > timeoutMs) {
-        throw new Error('Your report is taking longer than usual. We will notify you when it is ready.');
+        throw new ReportPollError('timeout', 'Your report is taking longer than usual. We will notify you when it is ready.');
       }
       await new Promise((r) => setTimeout(r, intervalMs));
     }
   },
+
+  /** POST /v1/reports/{id}/retry — re-queue a failed report. */
+  async retryReport(reportId: string): Promise<void> {
+    await http.post(`/v1/reports/${reportId}/retry`);
+  },
+
+  /** POST /v1/reports/{id}/share — a public link valid for 30 days (no name, phone or questions on it). */
+  async createShareLink(reportId: string): Promise<string> {
+    const { data } = await http.post(`/v1/reports/${reportId}/share`);
+    if (data.share_url) return data.share_url as string;
+    throw new Error('The server did not return a share link.');
+  },
+
+  /** GET /v1/shared/reports/{token} — public view of a shared report (no login needed). */
+  async getSharedReport(token: string): Promise<SharedReport> {
+    if (USE_MOCK) throw Object.assign(new Error('Shared links work with the live backend.'), { status: 404 });
+    const { data } = await http.get(`/v1/shared/reports/${encodeURIComponent(token)}`);
+    return toSharedReport(data);
+  },
+
+  /** Server-generated PDF of the full report (real API). */
+  downloadExamPdf: (r: ExamReport) => downloadPdf(r.id, `PrepMitra-${r.examId}-report.pdf`),
 
   /** POST /v1/reports/{id}/rating */
   async rate(reportId: string, rating: number): Promise<void> {

@@ -55,6 +55,7 @@ export function Modal({ open, onOpenChange, title, description, children, footer
 }
 
 export interface ConfirmationDialogProps {
+  size?: 'sm' | 'md' | 'lg';
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
@@ -68,7 +69,7 @@ export interface ConfirmationDialogProps {
 }
 
 export function ConfirmationDialog({
-  open, onOpenChange, title, description, confirmLabel = 'Confirm', cancelLabel = 'Cancel', onConfirm, variant = 'primary', loading, children,
+  open, onOpenChange, title, description, confirmLabel = 'Confirm', cancelLabel = 'Cancel', onConfirm, variant = 'primary', loading, children, size = 'sm',
 }: ConfirmationDialogProps) {
   return (
     <Modal
@@ -76,7 +77,7 @@ export function ConfirmationDialog({
       onOpenChange={onOpenChange}
       title={title}
       description={description}
-      size="sm"
+      size={size}
       footer={
         <>
           <Button variant="outline" onClick={() => onOpenChange(false)} disabled={loading}>

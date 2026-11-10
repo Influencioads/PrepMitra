@@ -10,6 +10,7 @@ export interface TimeDatum {
   spent: number;
   expected: number;
   outcome: QuestionOutcome;
+  sectionId?: string;
 }
 
 const fill: Record<QuestionOutcome, string> = { correct: colors.success, incorrect: colors.error, unanswered: colors.borderStrong };
@@ -23,7 +24,7 @@ export function TimePerQuestionChart({ data, height = 260 }: { data: TimeDatum[]
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
           <CartesianGrid stroke={colors.border} strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="q" {...axis} interval={data.length > 20 ? 1 : 0} />
+          <XAxis dataKey="q" {...axis} interval={Math.max(0, Math.ceil(data.length / 20) - 1)} />
           <YAxis {...axis} unit="s" />
           <Tooltip
             contentStyle={{ borderRadius: 10, border: `1px solid ${colors.border}`, fontSize: 13 }}

@@ -1,4 +1,4 @@
-import type { Attempt, DayPlan, Exam, ExamReport, Loophole, Question, ScoreResult, WeaknessItem } from '../types/core';
+import type { Attempt, DayPlan, Exam, ExamReport, Loophole, Question, ScoreResult, ShortcutItem, WeaknessItem } from '../types/core';
 import { EXAMS } from '../mocks/exams';
 import { getQuestionById } from '../mocks/questions';
 import { estimatePercentile, scoreAttempt, sectionNameMap } from './scoring';
@@ -40,6 +40,7 @@ export function buildExamReport(
     loopholes: deriveLoopholes(result, lookup),
     recommendedNextExamId: recommendNextExam(exam, result),
     improvementPlan: buildImprovementPlan(exam, result),
+    shortcuts: deriveShortcuts(result, lookup),
     autoSubmitted: attempt.autoSubmitted,
     isMini: attempt.isMini,
   };
@@ -99,12 +100,16 @@ export function deriveLoopholes(result: ScoreResult, lookup: (id: string) => Que
   if (wrongEasy.length > 0)
     loopholes.push({
       title: 'Careless errors on easy questions',
+      pattern: 'careless_easy',
+      evidenceQuestionIds: wrongEasy.map((q) => q.questionId),
       detail: `${wrongEasy.length} easy question(s) were answered incorrectly. Re-read the question stem and verify units before confirming.`,
       marksImpact: wrongEasy.reduce((s, q) => s + q.maxMarks - q.marksAwarded, 0),
     });
   if (result.negativeMarksLost > 0)
     loopholes.push({
       title: 'Negative marking from guesses',
+      pattern: 'negative_guess',
+      evidenceQuestionIds: result.questions.filter((q) => q.marksAwarded < 0).map((q) => q.questionId),
       detail: `You lost ${result.negativeMarksLost} mark(s) to negative marking. Guess only when you can eliminate at least two options.`,
       marksImpact: result.negativeMarksLost,
     });
@@ -115,6 +120,8 @@ export function deriveLoopholes(result: ScoreResult, lookup: (id: string) => Que
   if (timeSinks.length > 0)
     loopholes.push({
       title: 'Time sinks',
+      pattern: 'time_sink',
+      evidenceQuestionIds: timeSinks.map((q) => q.questionId),
       detail: `${timeSinks.length} question(s) took more than twice the expected time. Use the two-pass strategy: skip after 90 seconds, return later.`,
       marksImpact: 0,
     });
@@ -122,11 +129,24 @@ export function deriveLoopholes(result: ScoreResult, lookup: (id: string) => Que
     if (s.unanswered > 0 && s.unanswered === s.correct + s.incorrect + s.unanswered)
       loopholes.push({
         title: `Skipped the entire ${s.name} section`,
+        pattern: 'skipped_section',
+        section: s.name,
+        evidenceQuestionIds: result.questions.filter((q) => q.sectionId === s.sectionId).map((q) => q.questionId),
         detail: 'Leaving a whole section blank risks the sectional cut-off. Attempt at least the easiest questions in every section.',
         marksImpact: s.maxScore,
       });
   }
   return loopholes;
+}
+
+/** Shortcuts the question bank has for questions the student got wrong or skipped (demo stand-in for the AI's list). */
+export function deriveShortcuts(result: ScoreResult, lookup: (id: string) => Question | undefined): ShortcutItem[] {
+  return result.questions
+    .filter((q) => q.outcome !== 'correct')
+    .map((q) => ({ q, question: lookup(q.questionId) }))
+    .filter(({ question }) => !!question?.shortcut)
+    .slice(0, 5)
+    .map(({ q, question }) => ({ questionId: q.questionId, technique: question!.topic, detail: question!.shortcut! }));
 }
 
 export function recommendNextExam(exam: Exam, result: ScoreResult): string {

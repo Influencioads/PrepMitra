@@ -2,17 +2,19 @@ import { useMemo, useState } from 'react';
 import { ClipboardList, MessageSquare, PlayCircle, Trash2 } from 'lucide-react';
 import type { ExamCategory } from '@prepmitra/shared';
 import {
-  EXAM_CATEGORIES, formatDateTime, formatDuration, formatShortDate, getExamById, relativeTime, remainingSeconds, answeredCount,
+  EXAM_CATEGORIES, formatDateTime, formatDuration, formatShortDate, getExamById, liveCatalog, relativeTime, remainingSeconds, answeredCount,
 } from '@prepmitra/shared';
 import {
   Badge, ButtonLink, Button, Card, ConfirmationDialog, EmptyState, PageHeader, SearchInput, Select, Tabs, accuracyTone,
 } from '@/components/ui';
 import { selectHistory, selectInProgress, useExamStore, useInterviewStore } from '@/store';
+import { interviewsEnabled } from '@/config/launch';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import toast from 'react-hot-toast';
 import { useT } from '@/i18n';
 import { accountMessages } from '@/i18n/messages/account';
+import { examMessages } from '@/i18n/messages/exam';
 import { catalogMessages, categoryText } from '@/i18n/messages/catalog';
 
 type Tab = 'exams' | 'interviews' | 'in-progress';
@@ -35,6 +37,9 @@ export function MyTestsPage() {
 
   const history = useMemo(() => selectHistory(reports), [reports]);
   const inProgress = useMemo(() => selectInProgress(attempts), [attempts]);
+  // Submitted on the real API but the report is still being written (or the screen was closed early).
+  const pending = useMemo(() => Object.values(attempts).filter((a) => a.status === 'submitted' && !a.reportId), [attempts]);
+  const te = useT(examMessages);
   const interviews = useMemo(() => Object.values(interviewReports).sort((a, b) => b.createdAt.localeCompare(a.createdAt)), [interviewReports]);
 
   const exams = useMemo(() => {
@@ -67,7 +72,7 @@ export function MyTestsPage() {
         onChange={setTab}
         items={[
           { value: 'exams', label: t('tabExams'), count: history.length },
-          { value: 'interviews', label: t('tabInterviews'), count: interviews.length },
+          ...(interviewsEnabled() ? [{ value: 'interviews' as const, label: t('tabInterviews'), count: interviews.length }] : []),
           { value: 'in-progress', label: t('tabInProgress'), count: inProgress.length },
         ]}
       />
@@ -82,6 +87,20 @@ export function MyTestsPage() {
           )}
           <Select aria-label={t('sort')} value={sort} onChange={(e) => setSort(e.target.value as Sort)} options={[{ value: 'recent', label: t('sortRecent') }, { value: 'oldest', label: t('sortOldest') }, { value: 'score', label: t('sortScore') }, ...(tab === 'exams' ? [{ value: 'accuracy', label: t('sortAccuracy') }] : [])]} />
         </div>
+      )}
+
+      {tab === 'exams' && pending.length > 0 && (
+        <section aria-labelledby="pending-reports" className="mt-4 rounded-2xl border border-warning/30 bg-warning-soft/60 p-4">
+          <h2 id="pending-reports" className="text-sm font-semibold text-warning-ink">{te('reportPendingTitle')}</h2>
+          <ul className="mt-2 space-y-2">
+            {pending.map((a) => (
+              <li key={a.id} className="flex flex-wrap items-center justify-between gap-2 text-sm">
+                <span className="font-medium text-ink">{liveCatalog.exam(a.examId)?.title ?? a.examId}{a.submittedAt ? <span className="font-normal text-muted"> · {formatDateTime(a.submittedAt)}</span> : null}</span>
+                <ButtonLink to={`/exam/${a.id}/processing`} size="sm" variant="outline">{te('openReportStatus')}</ButtonLink>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
 
       <div className="mt-5">

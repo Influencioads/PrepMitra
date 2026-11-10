@@ -10,6 +10,7 @@ import { useAuthStore } from '@/store';
 import { cn } from '@/utils/cn';
 import { useT } from '@/i18n';
 import { LanguageSwitcher } from '@/i18n/LanguageSwitcher';
+import { interviewsEnabled } from '@/config/launch';
 import { layoutMessages } from '@/i18n/messages/layout';
 import { catalogMessages, categoryText } from '@/i18n/messages/catalog';
 
@@ -35,7 +36,7 @@ export function PublicHeader() {
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Logo />
         <nav aria-label={t('mainNav')} className="hidden items-center gap-1 md:flex">
-          {NAV.map((n) => (
+          {NAV.filter((n) => n.to !== '/interviews' || interviewsEnabled()).map((n) => (
             <NavLink
               key={n.to}
               to={n.to}
@@ -80,7 +81,7 @@ export function PublicHeader() {
       {open && (
         <nav id="mobile-nav" aria-label={t('mobileNav')} className="border-t border-line bg-card md:hidden">
           <div className="container-page flex flex-col gap-1 py-3">
-            {NAV.map((n) => (
+            {NAV.filter((n) => n.to !== '/interviews' || interviewsEnabled()).map((n) => (
               <Link key={n.to} to={n.to} className="rounded-md px-3 py-2.5 text-base font-medium text-ink hover:bg-stone-50">
                 {t(n.key)}
               </Link>
@@ -128,7 +129,7 @@ export function PublicFooter() {
         <div>
           <h2 className="text-sm font-semibold">{t('footerProduct')}</h2>
           <ul className="mt-3 space-y-2 text-sm text-muted">
-            <li><Link className="hover:text-primary" to="/interviews">{t('mockInterviews')}</Link></li>
+            {interviewsEnabled() && <li><Link className="hover:text-primary" to="/interviews">{t('mockInterviews')}</Link></li>}
             <li><Link className="hover:text-primary" to="/pricing">{t('pricing')}</Link></li>
             <li><Link className="hover:text-primary" to="/#how-it-works">{t('howItWorks')}</Link></li>
             <li><Link className="hover:text-primary" to="/#faq">{t('faqs')}</Link></li>

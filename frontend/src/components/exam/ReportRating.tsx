@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Star } from 'lucide-react';
-import { reportService } from '@/services';
+import { errorMessage, reportService } from '@/services';
 import { useExamStore, useInterviewStore } from '@/store';
 import { track } from '@/lib/analytics';
 import { cn } from '@/utils/cn';
@@ -19,11 +19,23 @@ export function ReportRating({ reportId, value, kind = 'exam' }: { reportId: str
   const rate = kind === 'interview' ? rateInterview : rateExam;
   const [hover, setHover] = useState(0);
   const shown = hover || value || 0;
+  const [saving, setSaving] = useState(false);
   const onRate = async (n: number) => {
-    rate(reportId, n);
-    track('report_rated', { reportId, kind, rating: n });
-    await reportService.rate(reportId, n);
-    toast.success(t('thanksRating'));
+    if (saving) return;
+    const before = value;
+    rate(reportId, n); // shown at once, undone if the server does not save it
+    setSaving(true);
+    try {
+      await reportService.rate(reportId, n);
+      track('report_rated', { reportId, kind, rating: n });
+      toast.success(t('thanksRating'));
+    } catch (e) {
+      if (before) rate(reportId, before);
+      else rate(reportId, 0);
+      toast.error(t('ratingFailed', { error: errorMessage(e) }));
+    } finally {
+      setSaving(false);
+    }
   };
   return (
     <div>

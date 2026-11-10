@@ -1,17 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, CircleCheck, CircleMinus, Clock, Lightbulb, TrendingDown, Trophy, TriangleAlert, XCircle } from 'lucide-react';
-import type { QuestionOutcome } from '@prepmitra/shared';
+import { ArrowLeft, CircleCheck, CircleMinus, Flag, Lightbulb, Sparkles, TrendingDown, Trophy, TriangleAlert, XCircle } from 'lucide-react';
+import type { Answer, Loophole, QuestionOutcome } from '@prepmitra/shared';
 import { formatDate, formatDuration, getExamById, getQuestionById, languageName } from '@prepmitra/shared';
 import {
-  Badge, ButtonLink, Card, CardBody, CardHeader, ChoiceChip, DemoBadge, EmptyState, KeyValue, Notice, PageHeader, ProgressBar, Tabs,
-  accuracyTone,
+  Badge, Button, ButtonLink, Card, CardBody, CardHeader, ChoiceChip, DemoBadge, EmptyState, KeyValue, Notice, PageHeader, Tabs,
 } from '@/components/ui';
 import { SectionChart, TopicAccuracyChart } from '@/components/charts/Charts';
 import { ReportActions } from '@/components/exam/ReportActions';
 import { CheckedSheet } from '@/components/exam/CheckedSheet';
+import { SectionTable } from '@/components/exam/SectionTable';
 import { ReportRating } from '@/components/exam/ReportRating';
 import { TimePerQuestionChart } from '@/components/exam/TimePerQuestionChart';
+import { ReportQuestionModal } from '@/components/exam/ReportQuestionModal';
 import { PrintStyles } from '@/components/common/PrintStyles';
 import { usePrintMode } from '@/lib/share';
 import { track } from '@/lib/analytics';
@@ -22,6 +23,7 @@ import { USE_MOCK } from '@/services/mock';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { cn } from '@/utils/cn';
 import { useT, useUiLang } from '@/i18n';
+import { useContentT } from '@/i18n/content';
 import { reportMessages } from '@/i18n/messages/report';
 
 type Tab = 'overview' | 'analysis' | 'review' | 'plan';
@@ -44,6 +46,7 @@ export function ReportPage() {
   const [tab, setTab] = useState<Tab>(initialTab);
   const firstName = useAuthStore((s) => s.session?.user.name?.split(' ')[0]);
   const [filter, setFilter] = useState<Filter>('all');
+  const [timeSection, setTimeSection] = useState<string>('all');
   useDocumentTitle(report ? t('reportDocTitle', { exam: report.examTitle }) : t('reportFallbackTitle'));
 
   const numbered = useMemo(() => report?.result.questions.map((q, i) => ({ ...q, n: i + 1 })) ?? [], [report]);
@@ -53,11 +56,20 @@ export function ReportPage() {
   }, [report?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Real API: question text, answer key and explanations come from GET /v1/attempts/{id}/review.
-  const [, setReviewLoaded] = useState(0);
+  // Also gives the student's own answers, so the review works on a device that did not take the test.
+  const [reviewAnswers, setReviewAnswers] = useState<Record<string, Answer | undefined> | null>(null);
   useEffect(() => {
-    if (USE_MOCK || !report || !report.result.questions.some((q) => !getQuestionById(q.questionId)?.correctOptionIds && getQuestionById(q.questionId)?.type !== 'numeric')) return;
-    attemptService.loadReviewQuestions(report.attemptId).then(() => setReviewLoaded((n) => n + 1), () => undefined);
+    if (USE_MOCK || !report) return;
+    attemptService.fetchReviewItems(report.attemptId).then(
+      (items) => setReviewAnswers(Object.fromEntries(items.map((i) => [i.questionId, i.answer]))),
+      () => undefined,
+    );
   }, [report?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const ct = useContentT();
+  const [flash, setFlash] = useState<string | null>(null);
+  const [flagQ, setFlagQ] = useState<{ id: string; n: number } | null>(null);
+  const [flagged, setFlagged] = useState<Set<string>>(() => new Set());
 
   if (!report)
     return (
@@ -72,19 +84,51 @@ export function ReportPage() {
   const exam = getExamById(report.examId);
   const next = getExamById(report.recommendedNextExamId);
   const qNumber = (qid: string) => numbered.find((q) => q.questionId === qid)?.n ?? 0;
+  /** Tap a question number anywhere in the report: open it in the review and highlight it. */
   const jumpTo = (qid: string) => {
     setFilter('all');
     setTab('review');
-    setTimeout(() => document.getElementById(`q-${qid}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    setFlash(qid);
+    setTimeout(() => {
+      const el = document.getElementById(`q-${qid}`);
+      el?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+      el?.querySelector<HTMLElement>('[data-q-focus]')?.focus({ preventScroll: true });
+    }, 50);
+    setTimeout(() => setFlash((f) => (f === qid ? null : f)), 2000);
   };
+  const QChips = ({ ids, max = 10 }: { ids: string[]; max?: number }) => (
+    <span className="inline-flex flex-wrap items-center gap-1.5">
+      {ids.slice(0, max).map((qid) => (
+        <button key={qid} type="button" onClick={() => jumpTo(qid)} aria-label={t('openQuestion', { n: qNumber(qid) })} className="rounded bg-card px-2 py-0.5 text-xs font-semibold text-primary hover:underline">
+          Q{qNumber(qid)}
+        </button>
+      ))}
+      {ids.length > max && <span className="text-xs text-muted">+{ids.length - max}</span>}
+    </span>
+  );
+  const loopTitle = (l: Loophole) =>
+    l.pattern === 'careless_easy' ? t('loopCarelessEasy')
+    : l.pattern === 'negative_guess' ? t('loopNegativeGuess')
+    : l.pattern === 'time_sink' ? t('loopTimeSink')
+    : l.pattern === 'skipped_section' && l.section ? t('loopSkippedSection', { section: ct(l.section) })
+    : l.title;
+  // The AI may give the same method for several questions: show it once with all its question numbers.
+  const shortcutGroups = Object.values(
+    (report.shortcuts ?? []).reduce<Record<string, { technique: string; detail: string; ids: string[] }>>((acc, sc) => {
+      const key = `${sc.technique}|${sc.detail}`;
+      (acc[key] ??= { technique: sc.technique, detail: sc.detail, ids: [] }).ids.push(sc.questionId);
+      return acc;
+    }, {}),
+  );
   const shown = numbered.filter((q) => printing || filter === 'all' || q.outcome === filter);
   const show = (which: Tab) => printing || tab === which;
   const attemptRate = r.questions.length ? Math.round((r.attempted / r.questions.length) * 100) : 0;
   const timeData = numbered.map((q) => ({
     q: `Q${q.n}`,
     spent: q.timeSpentSec,
-    expected: getQuestionById(q.questionId)?.expectedTimeSec ?? 0,
+    expected: q.expectedTimeSec ?? getQuestionById(q.questionId)?.expectedTimeSec ?? 0,
     outcome: q.outcome,
+    sectionId: q.sectionId,
   }));
   const marksLostWrong = r.questions.filter((q) => q.outcome === 'incorrect').reduce((s, q) => s + q.maxMarks, 0);
   const marksLostSkipped = r.questions.filter((q) => q.outcome === 'unanswered').reduce((s, q) => s + q.maxMarks, 0);
@@ -97,7 +141,7 @@ export function ReportPage() {
       </Link>
       <PageHeader
         className="mt-3"
-        eyebrow={<DemoBadge>{t('demoAnalysis')}</DemoBadge>}
+        eyebrow={report.isDemo ? <DemoBadge>{t('demoAnalysis')}</DemoBadge> : undefined}
         title={t('reportTitle', { exam: report.examTitle })}
         description={t('reportSubtitle', { date: formatDate(report.createdAt), language: languageName(report.language), taken: formatDuration(report.timeTakenSec), duration: formatDuration(report.durationSec) })}
       />
@@ -142,21 +186,23 @@ export function ReportPage() {
                 <CardHeader title={t('sectionWise')} />
                 <CardBody>
                   <SectionChart data={r.sections.map((s) => ({ name: shortLabel(s.name), correct: s.correct, incorrect: s.incorrect, unanswered: s.unanswered }))} />
-                  <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                    {r.sections.map((s) => (
-                      <li key={s.sectionId} className="rounded-lg border border-line p-3">
-                        <p className="text-sm font-medium">{s.name}</p>
-                        <p className="mt-0.5 text-xs text-muted">{t('marksShort', { score: s.score, max: s.maxScore })} · <Clock className="inline h-3 w-3" aria-hidden /> {formatDuration(s.timeSpentSec)}</p>
-                        <ProgressBar className="mt-2" value={s.accuracy} tone={accuracyTone(s.accuracy)} size="sm" label={t('accuracy')} showValue />
-                      </li>
-                    ))}
-                  </ul>
+                  <SectionTable sections={r.sections} className="mt-4" />
                 </CardBody>
               </Card>
             </div>
             <Card data-print-section>
               <CardHeader title={t('timePerQuestion')} description={t('timePerQuestionDesc')} />
-              <CardBody><TimePerQuestionChart data={timeData} /></CardBody>
+              <CardBody>
+                {r.sections.length > 1 && (
+                  <div className="mb-4 flex flex-wrap gap-2" role="group" aria-label={t('timePerQuestion')} data-print-hide>
+                    <ChoiceChip selected={timeSection === 'all'} onClick={() => setTimeSection('all')}>{t('allSections')}</ChoiceChip>
+                    {r.sections.map((s) => (
+                      <ChoiceChip key={s.sectionId} selected={timeSection === s.sectionId} onClick={() => setTimeSection(s.sectionId)}>{s.name}</ChoiceChip>
+                    ))}
+                  </div>
+                )}
+                <TimePerQuestionChart data={printing ? timeData : timeData.filter((d) => timeSection === 'all' || d.sectionId === timeSection)} />
+              </CardBody>
             </Card>
             <Card data-print-section>
               <CardHeader title={t('topicWise')} description={t('topicWiseDesc')} />
@@ -167,11 +213,21 @@ export function ReportPage() {
 
         {show('analysis') && (
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2" data-print-break>
+            {(report.summary || report.encouragement) && (
+              <Card className="flex gap-3 p-5 lg:col-span-2">
+                <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[#f26b1d]" aria-hidden />
+                <div className="space-y-1 text-sm">
+                  {report.summary && <p className="font-medium text-ink">{report.summary}</p>}
+                  {report.encouragement && <p className="text-secondary">{report.encouragement}</p>}
+                </div>
+              </Card>
+            )}
             <Card>
               <CardHeader title={<span className="flex items-center gap-2 text-success"><Trophy className="h-5 w-5" aria-hidden />{t('strengths')}</span>} />
               <CardBody>
                 <ul className="space-y-3 text-sm">
                   {report.strengths.map((s) => <li key={s} className="rounded-lg bg-success-soft p-3 text-green-900">{s}</li>)}
+                  {report.strengths.length === 0 && <li className="text-muted">{t('noStrengths')}</li>}
                 </ul>
               </CardBody>
             </Card>
@@ -185,18 +241,16 @@ export function ReportPage() {
                     {report.weaknesses.map((w) => (
                       <li key={w.topic} className="rounded-lg border border-red-100 bg-danger-soft/60 p-3">
                         <div className="flex items-center justify-between gap-2">
-                          <p className="font-semibold">{w.topic}</p>
+                          <p className="font-semibold">{ct(w.topic)}</p>
                           <Badge tone="danger">{w.accuracy}%</Badge>
                         </div>
                         <p className="mt-1 text-sm text-muted">{w.note}</p>
-                        <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
-                          <span className="text-muted">{t('evidence')}</span>
-                          {w.evidenceQuestionIds.map((qid) => (
-                            <button key={qid} type="button" onClick={() => jumpTo(qid)} className="rounded bg-card px-2 py-0.5 font-semibold text-primary hover:underline">
-                              Q{qNumber(qid)}
-                            </button>
-                          ))}
-                        </p>
+                        {w.evidenceQuestionIds.length > 0 && (
+                          <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
+                            <span className="text-muted">{t('evidence')}</span>
+                            <QChips ids={w.evidenceQuestionIds} />
+                          </p>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -213,10 +267,37 @@ export function ReportPage() {
                     {report.loopholes.map((l) => (
                       <li key={l.title} className="rounded-lg bg-warning-soft p-3">
                         <div className="flex items-start justify-between gap-2">
-                          <p className="font-semibold text-amber-900">{l.title}</p>
-                          {l.marksImpact > 0 && <Badge tone="warning">{t('minusMarks', { n: l.marksImpact })}</Badge>}
+                          <p className="font-semibold text-amber-900">{loopTitle(l)}</p>
+                          {l.marksImpact > 0 && <Badge tone="warning">{t('minusMarks', { n: Math.round(l.marksImpact * 100) / 100 })}</Badge>}
                         </div>
-                        <p className="mt-1 text-sm text-amber-900/80">{l.detail}</p>
+                        {l.detail && <p className="mt-1 text-sm text-amber-900/80">{l.detail}</p>}
+                        {!!l.evidenceQuestionIds?.length && (
+                          <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
+                            <span className="text-amber-900/70">{t('questionsLabel')}</span>
+                            <QChips ids={l.evidenceQuestionIds} max={8} />
+                          </p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </CardBody>
+            </Card>
+            <Card>
+              <CardHeader title={<span className="flex items-center gap-2 text-primary"><Lightbulb className="h-5 w-5" aria-hidden />{t('shortcutsTitle')}</span>} description={t('shortcutsDesc')} />
+              <CardBody>
+                {shortcutGroups.length === 0 ? (
+                  <p className="text-sm text-muted">{t('noShortcuts')}</p>
+                ) : (
+                  <ul className="space-y-3" data-testid="shortcuts">
+                    {shortcutGroups.map((g) => (
+                      <li key={`${g.technique}|${g.detail}`} className="rounded-lg border border-primary/20 bg-primary-soft p-3">
+                        {g.technique && <p className="font-semibold text-primary">{ct(g.technique)}</p>}
+                        <p className="mt-1 text-sm text-primary-hover/80">{g.detail}</p>
+                        <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
+                          <span className="text-muted">{t('questionsLabel')}</span>
+                          <QChips ids={g.ids} max={8} />
+                        </p>
                       </li>
                     ))}
                   </ul>
@@ -253,15 +334,16 @@ export function ReportPage() {
               {shown.map((qr) => {
                 const q = getQuestionById(qr.questionId);
                 if (!q) return null;
-                const answer = attempt?.states[qr.questionId]?.answer;
+                const answer = attempt?.states[qr.questionId]?.answer ?? reviewAnswers?.[qr.questionId];
+                const haveAnswers = !!attempt || !!reviewAnswers;
                 const ob = outcomeBadge[qr.outcome];
                 const slow = qr.timeSpentSec > q.expectedTimeSec * 1.5;
                 const sectionName = exam?.sections.find((s) => s.id === qr.sectionId)?.name;
                 return (
                   <li key={qr.questionId} id={`q-${qr.questionId}`} className="scroll-mt-24">
-                    <Card className="p-5">
+                    <Card className={cn('p-5 transition-shadow', flash === qr.questionId && 'ring-2 ring-[#f26b1d] ring-offset-2')}>
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-sm font-semibold">Q{qr.n}</span>
+                        <span className="text-sm font-semibold outline-none" tabIndex={-1} data-q-focus>Q{qr.n}</span>
                         <Badge tone={ob.tone} icon={<ob.Icon className="h-3 w-3" />}>{t(ob.label)}</Badge>
                         <Badge>{q.topic}</Badge>
                         {sectionName && <span className="text-xs text-muted">{sectionName}</span>}
@@ -293,7 +375,7 @@ export function ReportPage() {
                         </ul>
                       )}
                       <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm">
-                        <div><dt className="inline text-muted">{t('yourAnswer')} </dt><dd className="inline font-semibold">{attempt ? describeAnswer(q, answer) : t('notAvailable')}</dd></div>
+                        <div><dt className="inline text-muted">{t('yourAnswer')} </dt><dd className="inline font-semibold">{haveAnswers ? describeAnswer(q, answer) : t('notAvailable')}</dd></div>
                         <div><dt className="inline text-muted">{t('correctAnswer')} </dt><dd className="inline font-semibold text-success">{describeCorrect(q)}</dd></div>
                       </dl>
                       <div className="mt-4 rounded-lg bg-background p-3 text-sm">
@@ -306,6 +388,17 @@ export function ReportPage() {
                           <p className="mt-1 text-primary-hover/80">{q.shortcut}</p>
                         </div>
                       )}
+                      <div className="mt-3 flex justify-end" data-print-hide>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          leftIcon={<Flag className="h-4 w-4" />}
+                          disabled={flagged.has(qr.questionId)}
+                          onClick={() => setFlagQ({ id: qr.questionId, n: qr.n })}
+                        >
+                          {flagged.has(qr.questionId) ? t('reportedQuestion') : t('reportThisQuestion')}
+                        </Button>
+                      </div>
                     </Card>
                   </li>
                 );
@@ -323,7 +416,7 @@ export function ReportPage() {
                     <Badge tone="primary">{t('day', { n: d.day })}</Badge>
                     <span className="text-xs text-muted">{t('minutes', { n: d.minutes })}</span>
                   </div>
-                  <h3 className="mt-3 font-semibold">{d.title}</h3>
+                  <h3 className="mt-3 font-semibold">{ct(d.title)}</h3>
                   <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted">
                     {d.tasks.map((task) => <li key={task}>{task}</li>)}
                   </ul>
@@ -334,7 +427,8 @@ export function ReportPage() {
               <Card className="flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm text-muted">{t('recommendedNext')}</p>
-                  <p className="font-semibold">{next.title}</p>
+                  <p className="font-semibold">{ct(next.title)}</p>
+                  {report.nextTestReason && <p className="mt-1 text-sm text-muted">{t('whyThisTest')} {report.nextTestReason}</p>}
                 </div>
                 <ButtonLink to={`/exams/${next.id}`}>{t('viewExam')}</ButtonLink>
               </Card>
@@ -344,7 +438,16 @@ export function ReportPage() {
       </div>
 
       <Card className="mt-8 p-5" data-print-hide><ReportRating reportId={report.id} value={report.rating} /></Card>
-      <Notice tone="warning" className="mt-6">{t('demoAiNotice')}{uiLang === 'hi' ? ` ${t('narrativeNote')}` : ''}</Notice>
+      {flagQ && (
+        <ReportQuestionModal
+          open
+          onOpenChange={(o) => !o && setFlagQ(null)}
+          questionId={flagQ.id}
+          questionNumber={flagQ.n}
+          onSent={() => setFlagged((s) => new Set(s).add(flagQ.id))}
+        />
+      )}
+      <Notice tone={report.isDemo ? 'warning' : 'info'} className="mt-6">{report.isDemo ? t('demoAiNotice') : t('serverScoredNotice')}{uiLang === 'hi' && (report.isDemo ? ` ${t('narrativeNote')}` : report.language !== 'hi' ? ` ${t('narrativeApiNote')}` : '')}</Notice>
     </div>
   );
 }

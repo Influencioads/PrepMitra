@@ -14,7 +14,9 @@ const REASONS = [
   { value: 'other', key: 'reasonOther' },
 ] as const;
 
-export function ReportQuestionModal({ open, onOpenChange, questionId, questionNumber }: { open: boolean; onOpenChange: (o: boolean) => void; questionId: string; questionNumber: number }) {
+export function ReportQuestionModal({
+  open, onOpenChange, questionId, questionNumber, onSent,
+}: { open: boolean; onOpenChange: (o: boolean) => void; questionId: string; questionNumber: number; onSent?: () => void }) {
   const t = useT(examMessages);
   const tc = useT(commonMessages);
   const [reason, setReason] = useState('wrong-answer');
@@ -27,8 +29,16 @@ export function ReportQuestionModal({ open, onOpenChange, questionId, questionNu
       await attemptService.reportQuestion(questionId, reason, note.trim() || undefined);
       toast.success(t('reportSent'));
       setNote('');
+      onSent?.();
       onOpenChange(false);
     } catch (e) {
+      // POST /flags returns 409 already_reported when this student flagged the question before.
+      if ((e as { code?: string })?.code === 'already_reported') {
+        toast(t('alreadyReported'), { id: 'already-reported' });
+        onSent?.();
+        onOpenChange(false);
+        return;
+      }
       toast.error(errorMessage(e));
     } finally {
       setSending(false);
