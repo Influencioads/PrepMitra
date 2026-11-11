@@ -9,7 +9,8 @@ from app.db import Base, Embedding, TZDateTime
 
 config = context.config
 if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
+    # Keep the app's loggers on when migrations run in-process (the Postgres test suite upgrades with Alembic).
+    fileConfig(config.config_file_name, disable_existing_loggers=False)
 
 target_metadata = Base.metadata
 
