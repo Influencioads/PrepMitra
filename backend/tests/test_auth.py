@@ -117,3 +117,16 @@ def test_demo_login_off_without_a_code(client, monkeypatch):
     client.post("/v1/auth/otp/send", json={"phone": "9000000101"})
     r = client.post("/v1/auth/otp/verify", json={"phone": "9000000101", "code": ""})
     assert r.status_code in (400, 422)
+
+
+def test_demo_login_number_with_its_own_code(client, monkeypatch):
+    from app.config import get_settings
+
+    monkeypatch.setattr(get_settings(), "app_env", "production")
+    monkeypatch.setattr(get_settings(), "demo_login_phones", "9000000101, 9000000009:482913")
+    monkeypatch.setattr(get_settings(), "demo_login_otp", "123456")
+    client.post("/v1/auth/otp/send", json={"phone": "9000000009"})
+    r = client.post("/v1/auth/otp/verify", json={"phone": "9000000009", "code": "123456"})
+    assert r.status_code == 400  # the shared demo code does not open a number with its own code
+    client.post("/v1/auth/otp/send", json={"phone": "9000000009"})
+    assert client.post("/v1/auth/otp/verify", json={"phone": "9000000009", "code": "482913"}).status_code == 200

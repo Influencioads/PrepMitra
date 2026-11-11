@@ -37,7 +37,8 @@ class Settings(BaseSettings):
     otp_max_attempts: int = 5
     otp_send_limit_per_hour: int = 5
     # Demo/staging only: these numbers (comma separated, 10 digits) always get DEMO_LOGIN_OTP and skip the send limit.
-    # Both empty = off. Never set on a public launch: anyone who knows a number and the code can log in as it.
+    # An entry "number:code" gets its own code instead (e.g. a private code for an admin number while no SMS
+    # provider is set up). Never set on a public launch: anyone who knows a number and its code can log in as it.
     demo_login_phones: str = ""
     demo_login_otp: str = ""
     # Firebase Authentication (phone OTP + Google on the client). Set to accept Firebase ID tokens.
@@ -122,10 +123,15 @@ class Settings(BaseSettings):
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
 
     @property
-    def demo_login_phone_set(self) -> set[str]:
-        if not self.demo_login_otp:
-            return set()
-        return {f"+91{p.strip()[-10:]}" for p in self.demo_login_phones.split(",") if p.strip()}
+    def demo_login_codes(self) -> dict[str, str]:
+        """+91 phone -> fixed OTP for the demo numbers; entries without their own code use DEMO_LOGIN_OTP."""
+        codes = {}
+        for entry in self.demo_login_phones.split(","):
+            phone, _, code = entry.strip().partition(":")
+            code = code.strip() or self.demo_login_otp
+            if phone and code:
+                codes[f"+91{phone.strip()[-10:]}"] = code
+        return codes
 
     @property
     def google_client_ids(self) -> list[str]:
