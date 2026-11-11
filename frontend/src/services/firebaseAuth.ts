@@ -29,6 +29,15 @@ async function getFirebaseAuth(): Promise<Auth> {
   return authPromise;
 }
 
+function resetVerifier() {
+  try {
+    verifier?.clear();
+  } catch {
+    // its element is already gone; nothing left to clean up
+  }
+  verifier = null;
+}
+
 async function exchangeSession(idToken: string, profile?: { name: string; email?: string }): Promise<AuthSession> {
   // The backend verifies the Firebase ID token, creates the user on first login and returns its own tokens.
   const auth = { headers: { Authorization: `Bearer ${idToken}` } };
@@ -55,8 +64,20 @@ export const firebaseAuth = {
   async sendOtp(phone: string): Promise<string> {
     const auth = await getFirebaseAuth();
     const { RecaptchaVerifier, signInWithPhoneNumber } = await import('firebase/auth');
-    verifier ??= new RecaptchaVerifier(auth, RECAPTCHA_CONTAINER_ID, { size: 'invisible' });
-    const confirmation = await signInWithPhoneNumber(auth, `+91${phone}`, verifier);
+    // A fresh verifier per send: the slot remounts between pages and a failed send leaves the old widget unusable.
+    resetVerifier();
+    const slot = document.getElementById(RECAPTCHA_CONTAINER_ID);
+    if (!slot) throw new Error('Could not start phone verification. Reload the page and try again.');
+    const host = document.createElement('div');
+    slot.replaceChildren(host);
+    verifier = new RecaptchaVerifier(auth, host, { size: 'invisible' });
+    let confirmation: ConfirmationResult;
+    try {
+      confirmation = await signInWithPhoneNumber(auth, `+91${phone}`, verifier);
+    } catch (err) {
+      resetVerifier();
+      throw err;
+    }
     const requestId = `fb-${phone}-${Date.now()}`;
     confirmations.set(requestId, confirmation);
     return requestId;
