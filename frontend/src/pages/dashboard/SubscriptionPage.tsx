@@ -14,7 +14,10 @@ import {
 } from '@/components/ui';
 import { PricingCards } from '@/components/marketing/PricingCards';
 import { RadioCards } from '@/components/interview/RadioCards';
-import { errorMessage, getActivePlans, gstBreakup, subscriptionService } from '@/services';
+import { errorMessage, planGst, subscriptionService } from '@/services';
+import { PaymentError } from '@/services/razorpay';
+import { usePlans } from '@/hooks/usePlans';
+import { useAsync } from '@/hooks/useAsync';
 import { USE_MOCK } from '@/services/mock';
 import { track } from '@/lib/analytics';
 import { useAuthStore, useNotificationStore, useSubscriptionStore } from '@/store';
@@ -31,9 +34,10 @@ const METHOD_LABEL: Record<PaymentMethodLabel, string> = { upi: 'UPI', card: 'Cr
 const METHOD_KEY = { upi: 'methodUpi', card: 'methodCardLong', netbanking: 'methodNetbanking', wallet: 'methodWallet' } as const satisfies Record<PaymentMethodLabel, keyof typeof accountMessages.en>;
 const STATUS_KEY = { active: 'statusActive', trial: 'statusTrial', cancelled: 'statusCancelled', expired: 'statusExpired' } as const;
 const STATUS_TONE = { active: 'success', trial: 'info', cancelled: 'warning', expired: 'danger' } as const;
-const PLANS = getActivePlans();
-/** Looks a plan up in the active set first, then the full set (older orders may use another set). */
-const getPlan = (id: string): Plan | undefined => PLANS.find((p) => p.id === id) ?? getPlanSet('full').find((p) => p.id === id);
+/** Looks a plan up in the given set first, then the full set (older orders may use another set). */
+const findPlan = (plans: Plan[], id: string): Plan | undefined => plans.find((p) => p.id === id) ?? getPlanSet('full').find((p) => p.id === id);
+/** Only same-site paths are followed after paying (e.g. back to the exam the student was starting). */
+const safeReturn = (to: string | null) => (to && to.startsWith('/') && !to.startsWith('//') ? to : null);
 
 export function SubscriptionPage() {
   const t = useT(accountMessages);
@@ -47,7 +51,15 @@ export function SubscriptionPage() {
   const [checkoutPlan, setCheckoutPlan] = useState<Plan | null>(null);
   const [confirmCancel, setConfirmCancel] = useState(false);
   const [cancelling, setCancelling] = useState(false);
+  // GET /v1/plans: prices, credits and GST from the server (built-in plans until it answers).
+  const { plans: PLANS } = usePlans();
+  const getPlan = (id: string) => findPlan(PLANS, id);
   const plan = getPlan(sub.planId) ?? PLANS[0]!;
+  // Where to go after paying, e.g. the exam that needed credits (?returnTo=/exams/…/instructions).
+  const [returnTo] = useState(() => safeReturn(params.get('returnTo')));
+  // Real API: this account's paid orders from the server, on any device.
+  const { data: serverOrders, reload: reloadOrders } = useAsync(() => subscriptionService.getOrders(), []);
+  const shownOrders = serverOrders ?? orders;
 
   useEffect(() => {
     const p = params.get('plan');
@@ -58,7 +70,7 @@ export function SubscriptionPage() {
       next.delete('plan');
       setParams(next, { replace: true });
     }
-  }, [params, setParams]);
+  }, [params, setParams, PLANS]);
 
   const doCancel = async () => {
     setCancelling(true);
@@ -75,6 +87,11 @@ export function SubscriptionPage() {
   };
 
   const downloadReceipt = (o: DemoOrder) => {
+    // Real API: the GST invoice PDF from the server.
+    if (!USE_MOCK) {
+      subscriptionService.downloadInvoice(o).then(() => toast.success(t('invoiceDownloaded')), (e) => toast.error(errorMessage(e)));
+      return;
+    }
     const p = getPlan(o.planId);
     const html = `<!doctype html><html><head><meta charset="utf-8"><title>Receipt ${escapeHtml(o.id)}</title>
 <style>body{font-family:"DM Sans",system-ui,sans-serif;max-width:560px;margin:32px auto;color:#1C2321}h1{color:#C2410C}td{padding:6px 0}td:last-child{text-align:right}.n{background:#FFFBEB;border:1px solid #FDE68A;padding:8px;border-radius:8px;font-size:13px}</style></head><body>
@@ -89,7 +106,7 @@ export function SubscriptionPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader eyebrow={<DemoBadge>{t('demoBilling')}</DemoBadge>} title={t('subTitle')} description={t('subDesc')} />
+      <PageHeader eyebrow={USE_MOCK ? <DemoBadge>{t('demoBilling')}</DemoBadge> : undefined} title={t('subTitle')} description={t('subDesc')} />
 
       <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr_1fr]">
         <Card className="p-5">
@@ -164,18 +181,18 @@ export function SubscriptionPage() {
         <Card className="min-w-0">
           <CardHeader title={t('receipts')} description={t('receiptsDesc')} />
           <CardBody>
-            {orders.length === 0 ? (
+            {shownOrders.length === 0 ? (
               <EmptyState icon={<Receipt className="h-6 w-6" />} title={t('noReceipts')} description={t('noReceiptsDesc')} className="border-0 py-6" />
             ) : (
               <ul className="space-y-3">
-                {orders.map((o) => (
+                {shownOrders.map((o) => (
                   <li key={o.id} className="flex items-center gap-3 rounded-lg border border-line p-3">
                     <Receipt className="h-5 w-5 shrink-0 text-muted" aria-hidden />
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-medium">{planCopy(lang, getPlan(o.planId)?.name ?? o.planId)} · {formatINR(o.amountInr)}</p>
-                      <p className="truncate text-xs text-muted">{formatDateTime(o.createdAt)} · {t(METHOD_KEY[o.method])}</p>
+                      <p className="truncate text-xs text-muted">{formatDateTime(o.createdAt)} · {USE_MOCK ? t(METHOD_KEY[o.method]) : o.invoiceNo ?? o.id}</p>
                     </div>
-                    <Button variant="ghost" size="sm" onClick={() => downloadReceipt(o)} leftIcon={<Download className="h-4 w-4" />} aria-label={t('downloadReceiptAria', { id: o.id })}>{t('receipt')}</Button>
+                    <Button variant="ghost" size="sm" onClick={() => downloadReceipt(o)} leftIcon={<Download className="h-4 w-4" />} aria-label={t('downloadReceiptAria', { id: o.invoiceNo ?? o.id })}>{USE_MOCK ? t('receipt') : t('invoice')}</Button>
                   </li>
                 ))}
               </ul>
@@ -184,9 +201,9 @@ export function SubscriptionPage() {
         </Card>
       </div>
 
-      <Notice tone="warning" title={t('prototype')}>{t('demoPaymentNotice')}</Notice>
+      {USE_MOCK && <Notice tone="warning" title={t('prototype')}>{t('demoPaymentNotice')}</Notice>}
 
-      <CheckoutModal plan={checkoutPlan} onClose={() => setCheckoutPlan(null)} onReceipt={downloadReceipt} />
+      <CheckoutModal plan={checkoutPlan} onClose={() => setCheckoutPlan(null)} onReceipt={downloadReceipt} onPaid={() => reloadOrders()} returnTo={returnTo} />
 
       <ConfirmationDialog
         open={confirmCancel}
@@ -203,7 +220,9 @@ export function SubscriptionPage() {
   );
 }
 
-function CheckoutModal({ plan, onClose, onReceipt }: { plan: Plan | null; onClose: () => void; onReceipt: (o: DemoOrder) => void }) {
+function CheckoutModal({
+  plan, onClose, onReceipt, onPaid, returnTo,
+}: { plan: Plan | null; onClose: () => void; onReceipt: (o: DemoOrder) => void; onPaid?: () => void; returnTo?: string | null }) {
   const t = useT(accountMessages);
   const tc = useT(commonMessages);
   const lang = useUiLang();
@@ -213,6 +232,9 @@ function CheckoutModal({ plan, onClose, onReceipt }: { plan: Plan | null; onClos
   const sub = useSubscriptionStore((s) => s.sub);
   const [order, setOrder] = useState<DemoOrder | null>(null);
   const [failure, setFailure] = useState<string | null>(null);
+  // Paid on Razorpay but not confirmed yet: never offer to pay again, only to check the order.
+  const [pending, setPending] = useState<{ orderId: string } | null>(null);
+  const [checking, setChecking] = useState(false);
   const [simulateFailure, setSimulateFailure] = useState(false);
   const [creditsBefore, setCreditsBefore] = useState(0);
   const { handleSubmit, register, watch, setValue, reset, formState: { errors, isSubmitting } } = useForm<DemoCheckoutInput>({
@@ -225,31 +247,54 @@ function CheckoutModal({ plan, onClose, onReceipt }: { plan: Plan | null; onClos
       reset({ planId: plan.id, method: 'upi', acceptTerms: false });
       setOrder(null);
       setFailure(null);
+      setPending(null);
       setSimulateFailure(false);
     }
   }, [plan, reset]);
 
   if (!plan) return null;
-  const { base, gst, total } = gstBreakup(plan.priceInr);
+  const { base, gst, total } = planGst(plan);
   const planName = planCopy(lang, plan.name);
 
   // `simulate` is passed in (not read from state) so Retry never reuses a stale failure flag.
+  const succeed = (o: DemoOrder, v: { planId: string; method: PaymentMethodLabel }) => {
+    applyOrder(o, plan);
+    onPaid?.();
+    track('purchase_completed', { planId: v.planId, method: v.method, amount: o.amountInr, credits: plan.credits });
+    push({ type: 'payment', title: t('receiptNotifTitle', { amount: formatINR(o.amountInr) }), body: t('receiptNotifBody', { plan: planName, credits: creditsText(plan.credits) }), link: '/subscription' });
+    setOrder(o);
+    toast.success(t('creditsAddedToast', { credits: creditsText(plan.credits) }));
+  };
   const runPay = (simulate: boolean) => handleSubmit(async (v) => {
     setFailure(null);
     track('purchase_started', { planId: v.planId, method: v.method, amount: total });
+    setCreditsBefore(useSubscriptionStore.getState().sub.credits);
     try {
-      const o = await subscriptionService.createDemoOrder(v.planId, v.method, { simulateFailure: simulate });
-      setCreditsBefore(useSubscriptionStore.getState().sub.credits);
-      applyOrder(o, plan);
-      track('purchase_completed', { planId: v.planId, method: v.method, amount: o.amountInr, credits: plan.credits });
-      push({ type: 'payment', title: t('receiptNotifTitle', { amount: formatINR(o.amountInr) }), body: t('receiptNotifBody', { plan: planName, credits: creditsText(plan.credits) }), link: '/subscription' });
-      setOrder(o);
-      toast.success(t('creditsAddedToast', { credits: creditsText(plan.credits) }));
+      succeed(await subscriptionService.createDemoOrder(v.planId, v.method, { simulateFailure: simulate }), v);
     } catch (e) {
       track('purchase_failed', { planId: v.planId, method: v.method });
+      if (e instanceof PaymentError && e.code === 'VERIFY_FAILED' && e.orderId) {
+        setPending({ orderId: e.orderId });
+        return;
+      }
       setFailure(errorMessage(e, t('failedFallback')));
     }
   })();
+  const checkStatus = async () => {
+    if (!pending) return;
+    setChecking(true);
+    try {
+      const o = await subscriptionService.checkOrder(pending.orderId, plan.id, watch('method'));
+      if (o.status === 'success') {
+        setPending(null);
+        succeed(o, { planId: plan.id, method: watch('method') });
+      } else toast(t('stillPending'), { id: 'still-pending' });
+    } catch (e) {
+      toast.error(errorMessage(e));
+    } finally {
+      setChecking(false);
+    }
+  };
   const pay = () => runPay(simulateFailure);
   const retry = () => {
     setSimulateFailure(false);
@@ -261,18 +306,27 @@ function CheckoutModal({ plan, onClose, onReceipt }: { plan: Plan | null; onClos
     <Modal
       open={!!plan}
       onOpenChange={(o) => !o && onClose()}
-      title={order ? (USE_MOCK ? t('paymentSuccessDemo') : t('paymentSuccess')) : failure ? t('paymentFailed') : t('checkoutTitle', { plan: planName })}
-      description={order || failure ? undefined : USE_MOCK ? t('reviewDemo') : t('reviewLive')}
+      title={order ? (USE_MOCK ? t('paymentSuccessDemo') : t('paymentSuccess')) : pending ? t('pendingTitle') : failure ? t('paymentFailed') : t('checkoutTitle', { plan: planName })}
+      description={order || failure || pending ? undefined : USE_MOCK ? t('reviewDemo') : t('reviewLive')}
       footer={
-        failure ? (
+        pending ? (
+          <>
+            <Button variant="outline" onClick={onClose}>{t('close')}</Button>
+            <Button onClick={() => void checkStatus()} loading={checking} leftIcon={<RotateCcw className="h-4 w-4" />}>{t('checkStatus')}</Button>
+          </>
+        ) : failure ? (
           <>
             <Button variant="outline" onClick={onClose}>{t('close')}</Button>
             <Button onClick={retry} loading={isSubmitting} leftIcon={<RotateCcw className="h-4 w-4" />}>{t('tryAgain')}</Button>
           </>
         ) : order ? (
           <>
-            <Button variant="outline" onClick={() => onReceipt(order)} leftIcon={<Download className="h-4 w-4" />}>{t('downloadReceipt')}</Button>
-            <ButtonLink to="/exams" onClick={onClose}>{t('startPractising')}</ButtonLink>
+            <Button variant="outline" onClick={() => onReceipt(order)} leftIcon={<Download className="h-4 w-4" />}>{USE_MOCK ? t('downloadReceipt') : t('downloadInvoice')}</Button>
+            {returnTo ? (
+              <ButtonLink to={returnTo} onClick={onClose}>{t('continueToTest')}</ButtonLink>
+            ) : (
+              <ButtonLink to="/exams" onClick={onClose}>{t('startPractising')}</ButtonLink>
+            )}
           </>
         ) : (
           <>
@@ -282,7 +336,13 @@ function CheckoutModal({ plan, onClose, onReceipt }: { plan: Plan | null; onClos
         )
       }
     >
-      {failure ? (
+      {pending ? (
+        <div className="flex flex-col items-center py-4 text-center" role="status">
+          <RotateCcw className="h-12 w-12 text-warning" aria-hidden />
+          <p className="mt-3 text-lg font-semibold">{t('pendingHeading')}</p>
+          <p className="mt-1 max-w-sm text-sm text-muted">{t('pendingBody')}</p>
+        </div>
+      ) : failure ? (
         <div className="flex flex-col items-center py-4 text-center" role="alert">
           <CircleX className="h-12 w-12 text-danger" aria-hidden />
           <p className="mt-3 text-lg font-semibold">{t('failedHeading')}</p>
@@ -293,7 +353,7 @@ function CheckoutModal({ plan, onClose, onReceipt }: { plan: Plan | null; onClos
         <div className="flex flex-col items-center py-4 text-center">
           <CircleCheck className="h-12 w-12 text-success" aria-hidden />
           <p className="mt-3 text-lg font-semibold">{t('creditsAdded', { credits: creditsText(plan.credits) })}</p>
-          <p className="mt-1 text-sm text-muted">{t('orderLine', { id: order.id, amount: formatINR(order.amountInr), method: t(METHOD_KEY[order.method]) })}</p>
+          <p className="mt-1 text-sm text-muted">{t('orderLine', { id: order.invoiceNo ?? order.id, amount: formatINR(order.amountInr), method: t(METHOD_KEY[order.method]) })}</p>
           <p className="mt-4 rounded-full bg-success-soft px-4 py-1.5 text-sm font-semibold text-success" data-testid="new-balance">
             {t('newBalance', { n: sub.credits })} <span className="font-normal text-muted">{t('wasBalance', { n: creditsBefore })}</span>
           </p>
@@ -326,16 +386,17 @@ function CheckoutModal({ plan, onClose, onReceipt }: { plan: Plan | null; onClos
           <Notice tone="info" title={t('noDetailsTitle')}>
             <span className="inline-flex items-center gap-1"><Building2 className="h-3.5 w-3.5" aria-hidden />{t('noDetailsBody')}</span>
           </Notice>
-          {USE_MOCK && (
+          {!USE_MOCK && <p className="-mt-2 text-xs text-muted">{t('methodInRazorpay')}</p>}
+          {(USE_MOCK || import.meta.env.DEV) && (
             <Checkbox
-              label={t('simulateFail')}
-              description={t('simulateFailDesc')}
+              label={USE_MOCK ? t('simulateFail') : t('simulateFailDev')}
+              description={USE_MOCK ? t('simulateFailDesc') : t('simulateFailDevDesc')}
               checked={simulateFailure}
               onChange={(e) => setSimulateFailure(e.target.checked)}
             />
           )}
           <Checkbox label={t('agreeRefund')} description={t('agreeRefundDesc')} error={errors.acceptTerms?.message} {...register('acceptTerms')} />
-          <p className="text-xs text-muted">{t('demoPaymentNotice')}</p>
+          {USE_MOCK && <p className="text-xs text-muted">{t('demoPaymentNotice')}</p>}
         </form>
       )}
     </Modal>

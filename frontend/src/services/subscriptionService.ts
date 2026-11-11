@@ -4,7 +4,10 @@ import type { Json } from '@prepmitra/shared';
 import { env } from '@/utils/env';
 import { http } from './http';
 import { USE_MOCK, delay, mockError } from './mock';
-import { openRazorpayCheckout } from './razorpay';
+import { fetchOrder, openRazorpayCheckout, toOrder } from './razorpay';
+import { saveFile } from '@/lib/download';
+
+const PLAN_FROM_CODE_UI: Record<string, string> = { pay_per_exam: 'pay-per-mock', credit_pack_10: 'monthly', monthly: 'monthly', yearly: 'yearly' };
 
 /** Plans shown in the app: VITE_PRICING_SET=launch switches to the 15-day MVP packs. */
 export const getActivePlans = (): Plan[] => getPlanSet(env.pricingSet);
@@ -14,6 +17,10 @@ export interface CreditsResponse {
   nextExpiry?: string;
   ledger: CreditLedgerEntry[];
 }
+
+/** Price split for the checkout summary: the server's own GST figures when the plan came from /v1/plans. */
+export const planGst = (plan: Plan) =>
+  plan.gstInr != null && plan.baseInr != null ? { base: plan.baseInr, gst: plan.gstInr, total: plan.priceInr } : gstBreakup(plan.priceInr);
 
 export const gstBreakup = (price: number) => {
   const gst = PRICES_INCLUDE_GST ? Math.round((price - price / (1 + GST_RATE)) * 100) / 100 : Math.round(price * GST_RATE * 100) / 100;
@@ -46,11 +53,29 @@ export const subscriptionService = {
    */
   async createDemoOrder(planId: PlanId, method: PaymentMethodLabel, opts: { simulateFailure?: boolean } = {}): Promise<DemoOrder> {
     const plan = getActivePlans().find((p) => p.id === planId) ?? getPlanSet('full').find((p) => p.id === planId)!;
-    if (!USE_MOCK) return openRazorpayCheckout(planId, method);
+    if (!USE_MOCK) return openRazorpayCheckout(planId, method, opts);
     await delay(1500);
     if (opts.simulateFailure) throw mockError(402, 'PAYMENT_FAILED', 'Payment failed — no money was deducted. Try again.');
     const { gst, total } = gstBreakup(plan.priceInr);
     return { id: createId('ord'), planId, amountInr: total, gstInr: gst, method, status: 'success', createdAt: new Date().toISOString() };
+  },
+
+  /** GET /v1/orders/{id}: re-check a payment that could not be confirmed (real API). */
+  checkOrder: (orderId: string, planId: PlanId, method: PaymentMethodLabel) => fetchOrder(orderId, planId, method),
+
+  /** GET /v1/orders — this account's payments on any device (real API). */
+  async getOrders(): Promise<DemoOrder[] | null> {
+    if (USE_MOCK) return null;
+    const items: Json[] = (await http.get(API_ENDPOINTS.orders, { params: { limit: 50 } })).data.items ?? [];
+    return items
+      .filter((o) => o.status === 'paid' || o.status === 'refunded')
+      .map((o) => toOrder(o, (PLAN_FROM_CODE_UI[o.plan_code] ?? 'pay-per-mock') as PlanId, 'upi'));
+  },
+
+  /** GET /v1/orders/{id}/invoice — the GST invoice PDF for a paid order (real API). */
+  async downloadInvoice(order: DemoOrder): Promise<void> {
+    const { data } = await http.get<Blob>(`/v1/orders/${order.id}/invoice`, { responseType: 'blob' });
+    await saveFile(`PrepMitra-invoice-${(order.invoiceNo ?? order.id).replace(/\//g, '-')}.pdf`, data);
   },
 
   async cancelAutoRenew(): Promise<void> {

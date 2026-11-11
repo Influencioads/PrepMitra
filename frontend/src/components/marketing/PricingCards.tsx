@@ -16,7 +16,7 @@ export function PricingCards({
   const lang = useUiLang();
   const tx = (s: string) => planCopy(lang, s);
   return (
-    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+    <div className={cn('grid gap-5 sm:grid-cols-2', plans.length === 3 ? 'lg:grid-cols-3' : 'xl:grid-cols-4')}>
       {plans.map((p) => {
         const current = currentPlanId === p.id;
         return (
@@ -41,7 +41,10 @@ export function PricingCards({
               <span className="font-display text-4xl font-extrabold tracking-tight">{formatINR(p.priceInr)}</span>
               <span className="text-sm font-semibold text-muted">{p.id === 'monthly' && p.isRecurring ? t('perMonth') : p.id === 'yearly' ? t('perYear') : p.id === 'free' || p.credits > 1 ? '' : t('perCredit')}</span>
             </p>
-            <p className="mt-1 h-5 text-xs text-muted">{perCredit(p) > 0 && p.credits > 1 ? t('perMock', { amount: formatINR(perCredit(p)) }) : p.id === 'free' ? t('oneTimeTrial') : ''}</p>
+            <p className="mt-1 h-5 text-xs text-muted">
+              {perCredit(p) > 0 && p.credits > 1 ? t('perMock', { amount: formatINR(perCredit(p)) }) : p.id === 'free' ? t('oneTimeTrial') : ''}
+              {!!p.gstInr && <span>{perCredit(p) > 0 && p.credits > 1 ? ' · ' : ''}{t('inclGst', { amount: formatINR(p.gstInr) })}</span>}
+            </p>
             <p className={cn('mt-4 border-t-2 border-dashed pt-4 text-sm text-muted', p.highlighted ? 'border-[#E7B48F]' : 'border-line-strong')}>{tx(p.description)}</p>
             <ul className="mt-5 space-y-2.5 text-sm">
               {p.features.map((f) => (

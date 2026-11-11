@@ -246,7 +246,16 @@ export function ExamInstructionsPage() {
           </>
         }
       >
-        <p className="text-sm text-muted">{t('needCreditsBody')}</p>
+        <p className="text-sm text-muted">{USE_MOCK ? t('needCreditsBody') : t('needCreditsBodyLive')}</p>
+        {/* New users: the one-time free mini mock needs no credits. */}
+        {!sub.freeMiniMockUsed && !exam.isFree && (
+          <div className="mt-4 rounded-xl border border-secondary/25 bg-secondary-soft p-3 text-sm">
+            <p className="text-secondary">{t('freeMiniOffer')}</p>
+            <Link to="/exams/general-aptitude/instructions" onClick={() => setNoCredits(false)} className="mt-1 inline-block font-semibold text-secondary underline-offset-2 hover:underline">
+              {t('tryFreeMini')} →
+            </Link>
+          </div>
+        )}
       </Modal>
     </div>
   );

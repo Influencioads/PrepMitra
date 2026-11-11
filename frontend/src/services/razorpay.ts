@@ -16,15 +16,18 @@ export type PaymentErrorCode = 'PAYMENT_CANCELLED' | 'PAYMENT_FAILED' | 'CHECKOU
 export class PaymentError extends Error {
   readonly code: PaymentErrorCode;
   readonly status = 402;
-  constructor(code: PaymentErrorCode, message: string) {
+  /** Our order id, so a payment that could not be confirmed can be checked again (never paid twice). */
+  readonly orderId?: string;
+  constructor(code: PaymentErrorCode, message: string, orderId?: string) {
     super(message);
     this.code = code;
+    this.orderId = orderId;
     this.name = 'PaymentError';
   }
 }
 
 /** Backend order (GET/POST /v1/orders…) → the receipt shape the checkout screens use. */
-const toOrder = (o: Json, planId: PlanId, method: PaymentMethodLabel): DemoOrder => ({
+export const toOrder = (o: Json, planId: PlanId, method: PaymentMethodLabel): DemoOrder => ({
   id: o.id,
   planId,
   amountInr: o.amount_paise / 100,
@@ -32,6 +35,8 @@ const toOrder = (o: Json, planId: PlanId, method: PaymentMethodLabel): DemoOrder
   method,
   status: o.status === 'paid' ? 'success' : o.status === 'refunded' ? 'refunded' : o.status === 'failed' ? 'failed' : 'pending',
   createdAt: o.paid_at ?? o.created_at,
+  invoiceNo: o.invoice_no ?? undefined,
+  creditsAfter: typeof o.credits?.total === 'number' ? o.credits.total : undefined,
 });
 
 interface RazorpaySuccess {
@@ -70,16 +75,26 @@ function loadCheckout(): Promise<void> {
   return scriptPromise;
 }
 
-export async function openRazorpayCheckout(planId: PlanId, method: PaymentMethodLabel): Promise<DemoOrder> {
-  const order = await checkout(planId, method);
-  void import('@/store/sync').then((m) => m.syncCredits()).catch(() => undefined);
+export async function openRazorpayCheckout(planId: PlanId, method: PaymentMethodLabel, opts: { simulateFailure?: boolean } = {}): Promise<DemoOrder> {
+  const order = await checkout(planId, method, opts);
+  // Show the new balance from the server before the success screen.
+  await import('@/store/sync').then((m) => m.syncCredits()).catch(() => undefined);
   return order;
 }
 
-async function checkout(planId: PlanId, method: PaymentMethodLabel): Promise<DemoOrder> {
+/** GET /v1/orders/{id} — used to re-check a payment that could not be confirmed straight away. */
+export async function fetchOrder(orderId: string, planId: PlanId, method: PaymentMethodLabel): Promise<DemoOrder> {
+  const order = toOrder((await http.get(`/v1/orders/${orderId}`)).data, planId, method);
+  if (order.status === 'success') await import('@/store/sync').then((m) => m.syncCredits()).catch(() => undefined);
+  return order;
+}
+
+async function checkout(planId: PlanId, method: PaymentMethodLabel, opts: { simulateFailure?: boolean }): Promise<DemoOrder> {
   const order = (await http.post(API_ENDPOINTS.orders, { plan_code: planCodeFromId(planId), platform: 'web' })).data;
   if (order.mock) {
     // Backend without Razorpay keys (development): its mock gateway settles the order and adds the credits.
+    // "Make this payment fail" (development only) leaves the order unpaid, like a declined payment.
+    if (opts.simulateFailure) throw new PaymentError('PAYMENT_FAILED', 'Payment failed — no money was deducted. Try again.', order.order_id);
     return toOrder((await http.post(`/v1/orders/${order.order_id}/mock-pay`)).data, planId, method);
   }
   const key = order.key_id || env.razorpayKeyId;
@@ -94,15 +109,16 @@ async function checkout(planId: PlanId, method: PaymentMethodLabel): Promise<Dem
       currency: order.currency,
       name: 'PrepMitra AI',
       description: order.plan?.name,
-      prefill: order.checkout_options?.prefill,
+      // Opens Razorpay on the method the student picked (they can still switch inside Razorpay).
+      prefill: { ...order.checkout_options?.prefill, method: method === 'card' ? 'card' : method },
       notes: order.checkout_options?.notes,
       config: { display: { preferences: { show_default_blocks: true } } },
       theme: { color: '#C2410C' },
       handler: (resp: RazorpaySuccess) => resolve(resp),
-      modal: { ondismiss: () => reject(new PaymentError('PAYMENT_CANCELLED', 'Payment cancelled. No money was deducted.')) },
+      modal: { ondismiss: () => reject(new PaymentError('PAYMENT_CANCELLED', 'Payment cancelled. No money was deducted.', order.order_id)) },
     });
     rzp.on('payment.failed', (resp) =>
-      reject(new PaymentError('PAYMENT_FAILED', resp.error?.description ?? 'Payment failed — no money was deducted. Try again.')),
+      reject(new PaymentError('PAYMENT_FAILED', resp.error?.description ?? 'Payment failed — no money was deducted. Try again.', order.order_id)),
     );
     rzp.open();
   });
@@ -113,6 +129,7 @@ async function checkout(planId: PlanId, method: PaymentMethodLabel): Promise<Dem
     throw new PaymentError(
       'VERIFY_FAILED',
       'We received your payment but could not confirm it yet. Credits will appear within a few minutes; contact support if they don’t.',
+      order.order_id,
     );
   }
 }

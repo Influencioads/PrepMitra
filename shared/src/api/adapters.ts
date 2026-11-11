@@ -192,8 +192,9 @@ export function toPlans(body: Json): Plan[] {
     const d = design.find((x) => x.id === id);
     out.push({
       id,
-      name: p.name,
-      priceInr: p.price_inr,
+      // Prices, credits and validity come from the server; names and copy from the design (translated in the UI).
+      name: d?.name ?? p.name,
+      priceInr: p.price_inr ?? (p.price_paise ?? 0) / 100,
       credits: p.credits,
       validityDays: p.validity_days ?? null,
       isRecurring: !!p.is_recurring,
@@ -202,6 +203,9 @@ export function toPlans(body: Json): Plan[] {
       highlighted: d?.highlighted,
       badge: d?.badge,
       cta: d?.cta ?? 'Buy',
+      gstInr: typeof p.gst_paise === 'number' ? p.gst_paise / 100 : undefined,
+      baseInr: typeof p.taxable_paise === 'number' ? p.taxable_paise / 100 : undefined,
+      purchasable: p.purchasable ?? (p.price_paise ?? p.price_inr) > 0,
     });
   }
   return out;

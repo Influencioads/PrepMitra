@@ -111,14 +111,17 @@ export function AppTopbar({ onMenu }: { onMenu?: () => void }) {
         <LanguageSwitcher className="hidden sm:inline-flex" />
         <Link
           to="/subscription"
-          className="inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1.5 text-sm font-medium hover:bg-stone-50 sm:px-3"
-          aria-label={t('creditsAvailable', { count: credits })}
+          className={cn(
+            'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-sm font-medium sm:px-3',
+            credits === 0 ? 'border-[#f26b1d] bg-[#f26b1d] text-white hover:bg-[#e05e12]' : 'border-line hover:bg-stone-50',
+          )}
+          aria-label={credits === 0 ? `${t('creditsAvailable', { count: 0 })} — ${t('buyCreditsChip')}` : t('creditsAvailable', { count: credits })}
           data-testid="header-credits"
         >
-          <Coins className="h-4 w-4 text-warning" aria-hidden />
+          <Coins className={cn('h-4 w-4', credits === 0 ? 'text-white' : 'text-warning')} aria-hidden />
           {/* Phones show just the number so the balance stays visible in a narrow header. */}
           <span className="tabular-nums sm:hidden" aria-hidden>{credits}</span>
-          <span className="hidden sm:inline" aria-hidden>{t('creditsChip', { count: credits })}</span>
+          <span className="hidden sm:inline" aria-hidden>{credits === 0 ? t('buyCreditsChip') : t('creditsChip', { count: credits })}</span>
         </Link>
         <Link to="/notifications" className="relative rounded-full p-2 hover:bg-stone-100" aria-label={t('notificationsAria', { count: unread })}>
           <Bell className="h-5 w-5" />

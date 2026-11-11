@@ -515,6 +515,11 @@ export interface Plan {
   highlighted?: boolean;
   badge?: string;
   cta: string;
+  /** From GET /v1/plans: the GST inside the price and the taxable amount (prices include GST). */
+  gstInr?: number;
+  baseInr?: number;
+  /** false for the free trial: it cannot be bought. */
+  purchasable?: boolean;
 }
 
 export type CreditReason = 'purchase' | 'exam-attempt' | 'interview' | 'refund' | 'free-trial' | 'bonus' | 'expired';
@@ -548,6 +553,10 @@ export interface DemoOrder {
   method: PaymentMethodLabel;
   status: 'success' | 'failed' | 'refunded' | 'pending';
   createdAt: ISODateString;
+  /** Real API: GST invoice number once paid (GET /v1/orders/{id}/invoice gives the PDF). */
+  invoiceNo?: string;
+  /** Real API: credit balance right after this payment. */
+  creditsAfter?: number;
 }
 
 // ---------- Notifications ----------

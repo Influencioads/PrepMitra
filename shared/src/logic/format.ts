@@ -20,8 +20,12 @@ export function formatDuration(totalSeconds: number): string {
   return sec ? `${m}m ${pad(sec)}s` : `${m}m`;
 }
 
+/** ₹99, ₹1,299 — and money with paise always shows two decimals (₹15.10, not ₹15.1). */
 export function formatINR(amount: number): string {
-  return `₹${amount.toLocaleString('en-IN')}`;
+  const paise = Math.round(amount * 100);
+  return paise % 100 === 0
+    ? `₹${(paise / 100).toLocaleString('en-IN')}`
+    : `₹${(paise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
 const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
