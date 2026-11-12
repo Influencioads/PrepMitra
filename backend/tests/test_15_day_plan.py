@@ -81,9 +81,12 @@ def test_launch_scope_catalog_and_plans(client):
     roles = {r["slug"] for r in client.get("/v1/interview-roles").json()["items"]}
     assert roles == {"bank-po-interview"}
     plans = {p["code"]: p for p in client.get("/v1/plans").json()["items"]}
-    assert set(plans) == {"free_trial", "pay_per_exam", "credit_pack_10"}
-    assert plans["credit_pack_10"]["price_paise"] == 39900 and plans["credit_pack_10"]["credits"] == 10
-    assert plans["credit_pack_10"]["is_recurring"] is False and plans["credit_pack_10"]["validity_days"] == 90
+    # Blueprint pricing: Free, Starter/Pro study plans, AI Tutor packs, Topper Combo and add-ons; old plans retired.
+    assert {"free_trial", "starter_monthly", "pro_annual", "tutor_lite_monthly", "combo_monthly", "single_mock",
+            "extra_mocks_5", "ultra_pack"} <= set(plans)
+    assert not {"pay_per_exam", "credit_pack_10", "monthly", "yearly"} & set(plans)
+    assert plans["extra_mocks_5"]["price_paise"] == 4900 and plans["extra_mocks_5"]["credits"] == 5
+    assert plans["extra_mocks_5"]["is_recurring"] is False and plans["extra_mocks_5"]["validity_days"] == 90
     # Drafts exist and can be published from admin later without code.
     with SessionLocal() as s:
         assert s.scalar(select(Exam).where(Exam.slug == "cat")).status == "draft"
@@ -108,22 +111,22 @@ def test_flags_endpoint(client, catalog_seeded, ready_user):
 
 
 def test_orders_verify_and_razorpay_webhook_paths(client, catalog_seeded, user_headers):
-    o = client.post("/v1/orders", headers=user_headers, json={"plan_code": "credit_pack_10"}).json()
+    o = client.post("/v1/orders", headers=user_headers, json={"plan_code": "extra_mocks_5"}).json()
     sig = hmac_hex(MOCK_KEY_SECRET, f"{o['gateway_order_id']}|pay_abc".encode())
     v = client.post("/v1/orders/verify", headers=user_headers, json={
         "razorpay_order_id": o["gateway_order_id"], "razorpay_payment_id": "pay_abc", "razorpay_signature": sig}).json()
-    assert v["status"] == "paid" and v["credits"]["total"] == 10
+    assert v["status"] == "paid" and v["credits"]["total"] == 5
     grant = v["credits"]["grants"][0]
     assert grant["expires_at"] and grant["reason"] == "purchase"
 
-    o2 = client.post("/v1/orders", headers=user_headers, json={"plan_code": "pay_per_exam"}).json()
+    o2 = client.post("/v1/orders", headers=user_headers, json={"plan_code": "single_mock"}).json()
     raw = (b'{"event":"payment.captured","payload":{"payment":{"entity":{"id":"pay_w1","order_id":"'
            + o2["gateway_order_id"].encode() + b'"}}}}')
     hdr = {"X-Razorpay-Signature": hmac_hex(DEV_WEBHOOK_SECRET, raw), "X-Razorpay-Event-Id": "evt_w1",
            "Content-Type": "application/json"}
     assert client.post("/v1/webhooks/razorpay", content=raw, headers=hdr).json()["status"] == "fulfilled"
     assert client.post("/v1/webhooks/razorpay", content=raw, headers=hdr).json()["status"] == "duplicate"
-    assert client.get("/v1/me/credits", headers=user_headers).json()["total"] == 11
+    assert client.get("/v1/me/credits", headers=user_headers).json()["total"] == 6
 
 
 def test_interview_answer_path_and_resume_upload(client, catalog_seeded, ready_user, db):
@@ -239,7 +242,7 @@ def test_admin_flags_and_confirm_wrong_creates_lesson(client, catalog_seeded, re
 
 
 def test_admin_payments_and_stats(client, catalog_seeded, ready_user, admin_headers):
-    o = client.post("/v1/orders", headers=ready_user, json={"plan_code": "pay_per_exam"}).json()
+    o = client.post("/v1/orders", headers=ready_user, json={"plan_code": "single_mock"}).json()
     client.post(f"/v1/orders/{o['order_id']}/mock-pay", headers=ready_user)
     a = client.post("/v1/attempts", headers=ready_user, json={"exam_id": str(catalog_seeded[MINI])}).json()
     rid = client.post(f"/v1/attempts/{a['id']}/submit", headers=ready_user).json()["report_id"]
@@ -248,7 +251,7 @@ def test_admin_payments_and_stats(client, catalog_seeded, ready_user, admin_head
     assert pay["total"] == 1 and pay["items"][0]["status"] == "paid"
     st = client.get("/v1/admin/stats", headers=admin_headers).json()
     assert st["users"]["total"] >= 2 and st["attempts"]["started"] == 1 and st["attempts"]["free_trial"] == 1
-    assert st["revenue"]["gross_paise"] == 9900 and st["report_rating"]["average"] == 5.0
+    assert st["revenue"]["gross_paise"] == 2900 and st["report_rating"]["average"] == 5.0
     assert st["report_time_ms"]["p50"] is not None and "ai_cost_per_attempt_inr" in st
     assert client.get("/v1/admin/stats", headers=ready_user).status_code == 403
 

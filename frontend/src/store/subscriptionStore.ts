@@ -29,6 +29,13 @@ interface SubscriptionStoreState {
 
 const DAY = 86_400_000;
 
+function purchaseSlot(plan: Plan, expiresAt: string | undefined): Partial<SubscriptionState> {
+  if (plan.group === 'study') return { planId: plan.id, renewsAt: expiresAt, autoRenew: true };
+  if (plan.group === 'combo') return { planId: plan.id, tutorPlanId: undefined, renewsAt: expiresAt, autoRenew: true };
+  if (plan.group === 'tutor') return { tutorPlanId: plan.id, autoRenew: true };
+  return {};
+}
+
 export const useSubscriptionStore = create<SubscriptionStoreState>()(
   persist(
     (set, get) => ({
@@ -58,17 +65,16 @@ export const useSubscriptionStore = create<SubscriptionStoreState>()(
         set((s) => {
           const now = Date.now();
           const expiresAt = plan.validityDays ? new Date(now + plan.validityDays * DAY).toISOString() : undefined;
-          const isPlan = plan.id === 'monthly' || plan.id === 'yearly';
+          // Study plan / combo takes the plan slot, a tutor pack the tutor slot; add-ons only add credits.
+          const slot = purchaseSlot(plan, expiresAt);
           // Real API: credits come from the server (re-synced after payment); keep only the receipt here.
-          if (!USE_MOCK) return { orders: [order, ...s.orders], sub: { ...s.sub, status: 'active' } };
+          if (!USE_MOCK) return { orders: [order, ...s.orders], sub: { ...s.sub, ...slot, status: 'active' } };
           return {
             orders: [order, ...s.orders],
             sub: {
               ...s.sub,
-              planId: isPlan ? plan.id : s.sub.planId === 'free' ? 'pay-per-mock' : s.sub.planId,
+              ...slot,
               status: 'active',
-              autoRenew: plan.isRecurring ? true : s.sub.autoRenew,
-              renewsAt: isPlan ? expiresAt : s.sub.renewsAt,
               credits: s.sub.credits + plan.credits,
               ledger: [{ id: createId('cl'), delta: plan.credits, reason: 'purchase', label: `${plan.name} — ₹${plan.priceInr.toLocaleString('en-IN')} (demo)`, at: new Date(now).toISOString(), expiresAt }, ...s.sub.ledger],
             },

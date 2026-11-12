@@ -501,11 +501,41 @@ export interface InterviewReport {
 }
 
 // ---------- Plans, credits, payments ----------
-export type PlanId = 'free' | 'pay-per-mock' | 'monthly' | 'yearly';
+/**
+ * Plan ids are the backend plan codes (`GET /v1/plans`), except the free tier, which the clients call 'free'
+ * (backend code `free_trial`). Codes the client does not know yet still map through as their own id.
+ */
+export type KnownPlanId =
+  | 'free'
+  | 'starter_monthly' | 'starter_quarterly' | 'starter_annual'
+  | 'pro_monthly' | 'pro_quarterly' | 'pro_annual'
+  | 'tutor_lite_monthly' | 'tutor_lite_annual'
+  | 'tutor_pro_monthly' | 'tutor_pro_annual'
+  | 'combo_monthly' | 'combo_annual'
+  | 'single_mock' | 'extra_mocks_5' | 'extra_doubts_50' | 'extra_master_10' | 'interview_pack' | 'ultra_pack';
+export type PlanId = KnownPlanId | (string & {});
+
+/** Study plan (one at a time), AI Tutor pack (one at a time, works with any plan), Topper Combo (both), add-on. */
+export type PlanGroup = 'free' | 'study' | 'tutor' | 'combo' | 'addon';
+export type PlanPeriod = 'monthly' | 'quarterly' | 'annual' | 'one_time' | 'lifetime';
+
+/** Feature switches (`flags`) and metered AI allowances (`limits`, per calendar month on subscriptions). */
+export interface PlanEntitlements {
+  flags: Record<string, boolean | string>;
+  limits: Record<string, number>;
+  fullMocksPerMonth?: number;
+}
 
 export interface Plan {
   id: PlanId;
+  /** Backend plan code sent as `plan_code` on `POST /v1/orders`. */
+  code: string;
   name: string;
+  group: PlanGroup;
+  period: PlanPeriod;
+  /** Plan family shared by the periods of one tier, e.g. 'starter', 'pro', 'tutor_lite', 'combo'. */
+  family: string;
+  entitlements: PlanEntitlements;
   priceInr: number;
   credits: number;
   validityDays: number | null;
@@ -528,8 +558,29 @@ export interface CreditLedgerEntry {
   expiresAt?: ISODateString;
 }
 
+/** One metered feature in `GET /v1/me/allowances`. */
+export interface AllowanceLimit {
+  feature: string;
+  label: string;
+  limit: number;
+  used: number;
+  remaining: number;
+}
+
+/** `GET /v1/me/allowances`: everything the student's current plans unlock. */
+export interface Allowances {
+  /** Plan ids held right now (free tier excluded). */
+  plans: PlanId[];
+  flags: Record<string, boolean | string>;
+  limits: AllowanceLimit[];
+  resetsAt?: ISODateString;
+}
+
 export interface SubscriptionState {
+  /** Study plan or Topper Combo ('free' when none). */
   planId: PlanId;
+  /** AI Tutor pack held next to the study plan (a combo already includes one). */
+  tutorPlanId?: PlanId;
   status: 'active' | 'cancelled' | 'expired' | 'trial';
   credits: number;
   renewsAt?: ISODateString;

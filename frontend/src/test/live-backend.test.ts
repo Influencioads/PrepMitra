@@ -71,15 +71,18 @@ describe.skipIf(!live)('live backend journey', () => {
     expect(review[0]!.question.correctOptionIds?.length).toBe(1);
     expect(getQuestionById(review[0]!.questionId)!.explanation).not.toBe('');
 
-    // ₹399 pack through the backend's mock gateway, then credits re-synced from the server.
+    // ₹149 Starter (10 mocks / month) through the backend's mock gateway, then credits and allowances from the server.
     const plans = await subscriptionService.getPlans();
-    expect(plans.map((p) => p.id)).toEqual(['free', 'pay-per-mock', 'monthly']);
-    expect(plans.find((p) => p.id === 'monthly')!.priceInr).toBe(399);
-    const order = await subscriptionService.createDemoOrder('monthly', 'upi');
+    expect(plans.map((p) => p.id)).toEqual(expect.arrayContaining(['free', 'starter_monthly', 'pro_quarterly', 'tutor_lite_monthly', 'combo_annual', 'single_mock']));
+    expect(plans.find((p) => p.id === 'starter_monthly')).toMatchObject({ priceInr: 149, group: 'study', period: 'monthly' });
+    const order = await subscriptionService.createDemoOrder('starter_monthly', 'upi');
     expect(order.status).toBe('success');
-    expect(order.amountInr).toBe(399);
+    expect(order.amountInr).toBe(149);
     const credits = await subscriptionService.getCredits();
     expect(credits!.credits).toBe(10);
+    const allowances = await subscriptionService.getAllowances([]);
+    expect(allowances.plans).toContain('starter_monthly');
+    expect(allowances.limits.find((l) => l.feature === 'sectional_tests')!.limit).toBe(30);
 
     // Text interview: start, two answers, end, report.
     const roles = await interviewService.listRoles();

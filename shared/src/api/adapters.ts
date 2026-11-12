@@ -9,13 +9,15 @@
 import type {
   Answer, AppNotification, Attempt, CreditLedgerEntry, CreditReason, DayPlan, Difficulty, Exam, ExamCategory, ExamReport,
   InterviewReport, InterviewRole, InterviewScores, InterviewSession, InterviewStage, LanguageCode, Loophole, NotificationType,
-  Plan, PlanId, Question, QuestionOutcome, QuestionReviewItem, QuestionStatusAdmin, QuestionState, QuestionType, ScoreResult, SharedReport, ShortcutItem, Subject, User,
+  Allowances, Plan, PlanGroup, PlanPeriod, Question, QuestionOutcome, QuestionReviewItem, QuestionStatusAdmin, QuestionState, QuestionType, ScoreResult, SharedReport, ShortcutItem, Subject, User,
   UserProfile, UserSettings, WeaknessItem,
 } from '../types/core';
 import type { AdminOrder, AdminQuestion, AdminUserRecord, ReviewItem, ReviewReason } from '../types/admin';
 import { getExamById } from '../mocks/exams';
 import { getRoleById } from '../mocks/interviews';
-import { getPlanSet } from '../constants';
+import {
+  METERED_FEATURES, PLAN_CATALOG, PLAN_FAMILY_COPY, groupFromCode, planCodeFromId, planFamily, planIdFromCode,
+} from '../constants';
 import { DEFAULT_SETTINGS } from '../mocks/user';
 
 // The backend payloads are validated server-side; the client reads them loosely.
@@ -173,38 +175,69 @@ export function toRole(r: Json): InterviewRole {
 }
 
 // ---------- plans & credits ----------
-const PLAN_FROM_CODE: Record<string, PlanId> = { free_trial: 'free', pay_per_exam: 'pay-per-mock', credit_pack_10: 'monthly', monthly: 'monthly', yearly: 'yearly' };
-let planCodes: Record<string, string> = { free: 'free_trial', 'pay-per-mock': 'pay_per_exam', monthly: 'credit_pack_10', yearly: 'yearly' };
+export { planCodeFromId, planIdFromCode };
 
-/** Backend plan code for a frontend plan id (the ₹399 10-credit pack shows as 'monthly' in the launch design). */
-export const planCodeFromId = (id: string) => planCodes[id] ?? id;
+const PLAN_GROUPS: PlanGroup[] = ['free', 'study', 'tutor', 'combo', 'addon'];
+const PLAN_PERIODS: PlanPeriod[] = ['monthly', 'quarterly', 'annual', 'one_time', 'lifetime'];
+
+/** One `GET /v1/plans` item → Plan. Every code maps through (unknown codes keep their code as id). */
+export function toPlan(p: Json): Plan {
+  const code: string = p.code;
+  const id = planIdFromCode(code);
+  const ent: Json = p.entitlements ?? {};
+  const rawGroup = p.group ?? ent.group;
+  const group: PlanGroup = PLAN_GROUPS.includes(rawGroup) ? rawGroup : groupFromCode(code);
+  const rawPeriod = p.period ?? ent.period;
+  const period: PlanPeriod = PLAN_PERIODS.includes(rawPeriod) ? rawPeriod : group === 'free' ? 'lifetime' : 'one_time';
+  const family = planFamily(code);
+  const design = PLAN_CATALOG.find((x) => x.id === id);
+  const copy = design ?? PLAN_FAMILY_COPY[family];
+  const limits: Record<string, number> = ent.limits ?? {};
+  const priceInr = p.price_inr ?? (p.price_paise ?? 0) / 100;
+  return {
+    id,
+    code,
+    name: p.name ?? design?.name ?? code,
+    group,
+    period,
+    family,
+    entitlements: { flags: ent.flags ?? {}, limits, fullMocksPerMonth: ent.full_mocks_per_month ?? undefined },
+    priceInr,
+    credits: p.credits ?? 0,
+    validityDays: p.validity_days ?? null,
+    isRecurring: !!p.is_recurring,
+    description: copy?.description ?? '',
+    // Unknown plans: list their allowances so the card is never empty.
+    features: copy?.features ?? [
+      ...(p.credits ? [`${p.credits} full mock${p.credits === 1 ? '' : 's'}`] : []),
+      ...Object.entries(limits).map(([k, n]) => `${n} × ${METERED_FEATURES[k] ?? k}`),
+    ],
+    highlighted: copy?.highlighted,
+    badge: design?.badge ?? copy?.badge,
+    cta: copy?.cta ?? (priceInr > 0 ? 'Buy' : 'Start free'),
+  };
+}
 
 export function toPlans(body: Json): Plan[] {
   const items: Json[] = body.items ?? body;
-  const hasPack = items.some((p) => p.code === 'credit_pack_10');
-  const design = getPlanSet(hasPack ? 'launch' : 'full');
-  const out: Plan[] = [];
-  for (const p of items) {
-    if (hasPack && p.code === 'monthly') continue; // launch: the pack takes the 'monthly' slot
-    const id = PLAN_FROM_CODE[p.code];
-    if (!id) continue;
-    planCodes = { ...planCodes, [id]: p.code };
-    const d = design.find((x) => x.id === id);
-    out.push({
-      id,
-      name: p.name,
-      priceInr: p.price_inr,
-      credits: p.credits,
-      validityDays: p.validity_days ?? null,
-      isRecurring: !!p.is_recurring,
-      description: d?.description ?? '',
-      features: d?.features ?? [],
-      highlighted: d?.highlighted,
-      badge: d?.badge,
-      cta: d?.cta ?? 'Buy',
-    });
-  }
-  return out;
+  return items.filter((p) => p && typeof p.code === 'string').map(toPlan);
+}
+
+/** `GET /v1/me/allowances` → Allowances (limits as a list, in the backend's feature order). */
+export function toAllowances(body: Json): Allowances {
+  const limits: Json = body.limits ?? {};
+  return {
+    plans: ((body.plans ?? []) as string[]).map(planIdFromCode).filter((id) => id !== 'free'),
+    flags: body.flags ?? {},
+    limits: Object.entries(limits).map(([feature, l]: [string, Json]) => ({
+      feature,
+      label: l.label ?? METERED_FEATURES[feature] ?? feature,
+      limit: l.limit ?? 0,
+      used: l.used ?? 0,
+      remaining: l.remaining ?? Math.max((l.limit ?? 0) - (l.used ?? 0), 0),
+    })),
+    resetsAt: body.resets_at ?? undefined,
+  };
 }
 
 const CREDIT_REASON: Record<string, CreditReason> = {
@@ -722,7 +755,7 @@ export function toAdminUser(u: Json): AdminUserRecord {
     email: u.email ?? undefined,
     state: u.state ?? '',
     preferredLanguage: (u.preferred_language ?? 'en') as LanguageCode,
-    planId: (u.credits ?? 0) > 0 ? 'pay-per-mock' : 'free',
+    planId: u.plan_code ? planIdFromCode(u.plan_code) : 'free',
     status: u.status === 'blocked' ? 'blocked' : 'active',
     credits: u.credits ?? 0,
     joinedAt: u.created_at,
@@ -738,7 +771,7 @@ export function toAdminOrder(o: Json, userName = ''): AdminOrder {
     invoiceNo: o.invoice_no ?? '—',
     userId: o.user_id,
     userName,
-    planId: PLAN_FROM_CODE[o.plan_code] ?? 'pay-per-mock',
+    planId: planIdFromCode(o.plan_code ?? 'single_mock'),
     amountInr: o.amount_paise / 100,
     gstInr: (o.gst_amount_paise ?? 0) / 100,
     gateway: o.gateway === 'cashfree' ? 'cashfree' : 'razorpay',

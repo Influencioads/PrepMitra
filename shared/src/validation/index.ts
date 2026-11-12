@@ -156,7 +156,7 @@ export const numericAnswerSchema = z
   .regex(/^-?\d{0,7}(\.\d{0,4})?$/, 'Enter a number (up to 4 decimals)');
 
 export const demoCheckoutSchema = z.object({
-  planId: z.enum(['pay-per-mock', 'monthly', 'yearly']),
+  planId: z.string().min(1).refine((v) => v !== 'free' && v !== 'free_trial', 'Choose a paid plan'),
   method: z.enum(['upi', 'card', 'netbanking', 'wallet']),
   acceptTerms: z.boolean().refine((v) => v, 'Please accept the refund and cancellation policy'),
 });

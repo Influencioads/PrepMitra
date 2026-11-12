@@ -394,3 +394,41 @@ def stats(days: int = Query(default=30, ge=1, le=365), admin: User = Depends(req
         "open_flags": db.scalar(select(func.count()).select_from(QuestionReport).where(QuestionReport.status == "open")),
         "question_verification_failure_rate": q["question_generation"]["verification_failure_rate"],
     }
+
+
+# ---- AI cost and routing (blueprint: track Rs per student and per feature) -----------------------------------------
+@router.get("/ai/costs")
+def ai_costs(days: int = Query(default=30, ge=1, le=365), admin: User = Depends(quality),
+             db: Session = Depends(get_db)):
+    """AI spend per feature and per model in the window, cache-hit share, and the routing table in force."""
+    from app.ai import catalog
+
+    since = utcnow() - timedelta(days=days)
+    rows = db.execute(select(AiUsage.feature, AiUsage.purpose, AiUsage.model, func.count(),
+                             func.sum(AiUsage.input_tokens), func.sum(AiUsage.cached_tokens),
+                             func.sum(AiUsage.output_tokens), func.sum(AiUsage.cost_usd))
+                      .where(AiUsage.created_at >= since)
+                      .group_by(AiUsage.feature, AiUsage.purpose, AiUsage.model)).all()
+    by_feature: dict[str, dict] = {}
+    total = 0.0
+    for feature, purpose, model, calls, tin, tcached, tout, usd in rows:
+        key = feature or catalog.PURPOSE_TO_FEATURE.get(purpose, purpose)
+        if usd is None:
+            usd = cost_usd(model, tin or 0, tout or 0, tcached or 0)
+        inr = float(usd) * USD_TO_INR
+        total += inr
+        f = by_feature.setdefault(key, {"feature": key, "calls": 0, "cost_inr": 0.0, "input_tokens": 0,
+                                        "cached_tokens": 0, "output_tokens": 0, "models": {}})
+        f["calls"] += calls
+        f["cost_inr"] += inr
+        f["input_tokens"] += tin or 0
+        f["cached_tokens"] += tcached or 0
+        f["output_tokens"] += tout or 0
+        f["models"][model] = f["models"].get(model, 0) + calls
+    features = sorted(by_feature.values(), key=lambda f: -f["cost_inr"])
+    for f in features:
+        f["cost_inr"] = round(f["cost_inr"], 2)
+        f["cost_per_call_inr"] = round(f["cost_inr"] / f["calls"], 4) if f["calls"] else None
+        f["cache_hit_share"] = round(f["cached_tokens"] / f["input_tokens"], 3) if f["input_tokens"] else None
+    return {"window_days": days, "total_inr": round(total, 2), "usd_to_inr": USD_TO_INR, "features": features,
+            "routing": catalog.routing_table()}

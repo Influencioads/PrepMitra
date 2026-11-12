@@ -11,7 +11,7 @@ from app.core.ratelimit import hit
 from app.db import get_db
 from app.models import Order, Plan, Subscription, User
 from app.schemas.common import IapVerifyIn, OrderIn, OrderVerifyIn
-from app.services import credits, payments, pdf
+from app.services import allowances, credits, payments, pdf
 
 router = APIRouter(tags=["payments"])
 
@@ -20,6 +20,13 @@ router = APIRouter(tags=["payments"])
 def my_credits(user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Credit balance with per-grant expiry (oldest-expiring credits are used first)."""
     return credits.balance(db, user.id)
+
+
+@router.get("/me/allowances")
+def my_allowances(user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    """AI allowances from every plan the student holds now: feature switches, and for each metered feature the
+    limit, used and remaining this month (subscriptions), per add-on, and for life (Free)."""
+    return allowances.summary(db, user)
 
 
 @router.post("/orders", status_code=201)

@@ -178,3 +178,55 @@ def invoice_pdf(*, order, plan_name: str, buyer_name: str | None, buyer_state: s
     ]
     doc.build(flow)
     return buf.getvalue()
+
+
+def study_material_pdf(*, app_name: str, title: str, language: str, payload: dict) -> bytes:
+    """Notes, formula sheets, topic decks, deep dives and mistake summaries as a printable PDF.
+
+    Walks the JSON generically: keys become headings, lists become bullets, 2-D lists become tables. Mermaid
+    diagrams are printed as their source (the app draws them; a server-side Mermaid renderer can replace this)."""
+    st = _styles(language)
+    mono = ParagraphStyle("mono", parent=st["p"], fontName="Courier", fontSize=8, leading=10,
+                          backColor=colors.HexColor("#f6f8fa"))
+    buf = io.BytesIO()
+    doc = SimpleDocTemplate(buf, pagesize=A4, leftMargin=15 * mm, rightMargin=15 * mm, title=title)
+    flow = [_p(f"{app_name} - {title}", st["h1"])]
+
+    def label(k: str) -> str:
+        return k.replace("_", " ").strip().capitalize()
+
+    def walk(value, depth=0):
+        if isinstance(value, dict):
+            if value.get("type") == "mermaid" and value.get("mermaid"):
+                flow.append(Paragraph(escape(value["mermaid"]).replace("\n", "<br/>"), mono))
+                if value.get("caption"):
+                    flow.append(_p(value["caption"], st["small"]))
+                return
+            if value.get("type") == "table" and value.get("table"):
+                flow.append(_table(value["table"]))
+                return
+            for k, v in value.items():
+                if k in ("type", "mermaid", "table") or v in ("", None, [], {}):
+                    continue
+                if isinstance(v, (str, int, float)):
+                    flow.append(_p(f"{label(k)}: {v}", st["p"]))
+                else:
+                    flow.append(_p(label(k), st["h2"]))
+                    walk(v, depth + 1)
+        elif isinstance(value, list):
+            if value and all(isinstance(r, list) for r in value):
+                flow.append(_table(value))
+                return
+            for i, item in enumerate(value, 1):
+                if isinstance(item, (str, int, float)):
+                    flow.append(_p(f"• {item}", st["p"]))
+                else:
+                    flow.append(Spacer(1, 4))
+                    walk(item, depth + 1)
+        elif value not in ("", None):
+            flow.append(_p(value, st["p"]))
+
+    walk({k: v for k, v in payload.items() if k != "title"})
+    flow += [Spacer(1, 12), _p(DISCLAIMER, st["small"])]
+    doc.build(flow)
+    return buf.getvalue()

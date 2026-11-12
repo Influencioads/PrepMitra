@@ -83,4 +83,11 @@ def periodic() -> list[tuple[int, object]]:
         (6 * 3600, _with_db(notifications.notify_expiring_credits)),
         (6 * 3600, _with_db(notifications.notify_inactive_users)),
         (get_settings().mentor_reminder_interval_seconds, _with_db(reminders.sweep)),  # mentor nudges, deduplicated
+        (1800, _current_affairs),  # daily digest after 06:00 IST, once per day
     ]
+
+
+def _current_affairs():
+    from app.services.ai_features.coaching import scheduled_current_affairs
+
+    return scheduled_current_affairs()

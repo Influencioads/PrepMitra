@@ -18,6 +18,23 @@ class Plan(TimestampMixin, Base):
     validity_days: Mapped[int] = mapped_column(Integer)
     is_recurring: Mapped[bool] = mapped_column(Boolean, default=False)
     active: Mapped[bool] = mapped_column(Boolean, default=True)
+    # What the plan unlocks (blueprint pricing): group (study | tutor | combo | addon), billing period and AI
+    # allowances. Subscription allowances are per calendar month; add-on allowances last the add-on's validity.
+    entitlements: Mapped[dict] = mapped_column(JSONType, default=dict)
+
+
+class FeatureUse(Base):
+    """One use of a metered AI feature (a doubt, a deep dive, a tutor chat turn...). `source` says which allowance
+    paid for it: "plan" (this month's subscription allowance), "free" (lifetime free allowance) or an add-on order id."""
+
+    __tablename__ = "feature_uses"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    feature: Mapped[str] = mapped_column(String(40), index=True)
+    source: Mapped[str] = mapped_column(String(64))
+    ref_id: Mapped[str | None] = mapped_column(String(64))
+    created_at: Mapped[datetime] = mapped_column(TZDateTime, default=utcnow, index=True)
 
 
 class Order(TimestampMixin, Base):

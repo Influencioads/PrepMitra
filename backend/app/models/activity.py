@@ -235,4 +235,8 @@ class AiUsage(Base):
     output_tokens: Mapped[int] = mapped_column(Integer, default=0)
     ref_id: Mapped[str | None] = mapped_column(String(64), index=True)
     latency_ms: Mapped[int] = mapped_column(Integer, default=0)
+    # Blueprint feature the call served (mock_report, tutor_chat, ...), prompt-cache hits and the call's cost.
+    feature: Mapped[str | None] = mapped_column(String(40), index=True)
+    cached_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    cost_usd: Mapped[float | None] = mapped_column(Float)
     created_at: Mapped[datetime] = mapped_column(TZDateTime, default=utcnow, index=True)

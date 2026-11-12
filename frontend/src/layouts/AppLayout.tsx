@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   Bell, BookOpen, BookX, Bot, CalendarDays, ClipboardList, Coins, CreditCard, LayoutDashboard, Menu, MessageCircle, MessageSquare,
-  Settings, TrendingUp, User, X,
+  Settings, TrendingUp, User, X, Sparkles, HelpCircle, GraduationCap, Gauge, FileText, Repeat, Wand2,
 } from 'lucide-react';
+import { getPlan, planShortName } from '@prepmitra/shared';
 import { Logo } from '@/components/ui';
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { UserMenu } from '@/components/layout/UserMenu';
@@ -35,6 +36,18 @@ const NAV_GROUPS = [
     ],
   },
   {
+    label: 'groupAi',
+    items: [
+      { to: '/ai', label: 'navAiHub', icon: Sparkles },
+      { to: '/ai/doubts', label: 'navAiDoubts', icon: HelpCircle },
+      { to: '/ai/tutor', label: 'navAiTutor', icon: GraduationCap },
+      { to: '/ai/persona', label: 'navAiPersona', icon: Gauge },
+      { to: '/ai/notes', label: 'navAiNotes', icon: FileText },
+      { to: '/ai/practice', label: 'navAiPractice', icon: Repeat },
+      { to: '/ai/coach', label: 'navAiCoach', icon: Wand2 },
+    ],
+  },
+  {
     label: 'groupAccount',
     items: [
       { to: '/subscription', label: 'navCredits', icon: CreditCard },
@@ -59,7 +72,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
                 <NavLink
                   to={to}
                   onClick={onNavigate}
-                  end={to === '/exams' || to === '/mentor'}
+                  end={to === '/exams' || to === '/mentor' || to === '/ai'}
                   className={({ isActive }) =>
                     cn(
                       'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
@@ -89,12 +102,13 @@ function CreditsCard() {
   const planId = useSubscriptionStore((s) => s.sub.planId);
   const freeUsed = useSubscriptionStore((s) => s.sub.freeMiniMockUsed);
   const t = useT(layoutMessages);
+  const plan = getPlan(planId);
   return (
     <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-4 text-white">
       <p className="text-xs font-medium text-white/80">{t('availableCredits')}</p>
       <p className="mt-1 text-2xl font-bold">{credits}</p>
       <p className="mt-1 text-xs text-white/80">
-        {planId === 'free' ? (freeUsed ? t('freeTrialUsed') : t('freeMiniAvailable')) : planId === 'monthly' ? t('planMonthly') : planId === 'yearly' ? t('planYearly') : t('planPayPerMock')}
+        {planId === 'free' ? (freeUsed ? t('freeTrialUsed') : t('freeMiniAvailable')) : plan ? planShortName(plan) : t('planPayPerMock')}
       </p>
       <Link to="/subscription" className="mt-3 inline-flex rounded-lg bg-[#f26b1d] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#e05e12]">
         {credits === 0 ? t('getCredits') : t('managePlan')}

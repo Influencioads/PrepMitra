@@ -133,10 +133,10 @@ def test_quality_dashboard_and_revenue(client, catalog_seeded, ready_user, admin
     assert qd["report_ratings"][0]["average"] == 4.0
     assert qd["question_generation"]["total"] >= 30 and qd["ai_cost"]["attempts_and_interviews"] == 1
     assert qd["report_generation_ms"]["p50"] is not None
-    o = client.post("/v1/orders", headers=ready_user, json={"plan_code": "pay_per_exam"}).json()
+    o = client.post("/v1/orders", headers=ready_user, json={"plan_code": "single_mock"}).json()
     client.post(f"/v1/orders/{o['order_id']}/mock-pay", headers=ready_user)
     rev = client.get("/v1/admin/revenue", headers=admin_headers).json()
-    assert rev["gross_paise"] == 9900 and rev["gst_paise"] == 1510
+    assert rev["gross_paise"] == 2900 and rev["gst_paise"] == 442
 
 
 def test_progress_dashboard(client, catalog_seeded, ready_user):

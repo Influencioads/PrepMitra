@@ -11,7 +11,8 @@ from app.models.activity import (
     UserMistake,
     UserTopicMastery,
 )
-from app.models.billing import CreditLedger, Order, PaymentWebhookEvent, Plan, Subscription
+from app.models.ai_features import AiArtifact, AiChatMessage, Persona, Solution
+from app.models.billing import CreditLedger, FeatureUse, Order, PaymentWebhookEvent, Plan, Subscription
 from app.models.catalog import (
     Exam,
     ExamBlueprint,
@@ -46,8 +47,9 @@ from app.models.users import (
 )
 
 __all__ = [
+    "AiArtifact", "AiChatMessage", "Persona", "Solution",
     "AdminUser", "AiLesson", "AiUsage", "AnalyticsEvent", "Attempt", "AttemptAnswer", "AuditLog",
-    "Consent", "CreditLedger", "DeviceToken", "Exam", "ExamBlueprint", "ExamGoal", "MentorInsight", "MentorMessage",
+    "Consent", "CreditLedger", "DeviceToken", "FeatureUse", "Exam", "ExamBlueprint", "ExamGoal", "MentorInsight", "MentorMessage",
     "NotebookEntry", "NotificationPreference", "PracticeSession", "StudyTask", "Glossary", "InterviewRole", "InterviewSession",
     "InterviewTurn", "Notification", "Order", "OtpCode", "Paper", "PaymentWebhookEvent", "Plan", "Question",
     "QuestionGenerationLog", "QuestionReport", "QuestionTranslation", "RefreshToken", "Report",

@@ -32,6 +32,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="home" options={{ title: 'Home', tabBarIcon: icon('home', 'home-outline') }} />
       <Tabs.Screen name="explore" options={{ title: 'Explore', tabBarIcon: icon('compass', 'compass-outline') }} />
       <Tabs.Screen name="practice" options={{ title: 'Practice', tabBarIcon: icon('flash', 'flash-outline') }} />
+      <Tabs.Screen name="ai" options={{ title: 'AI', tabBarIcon: icon('sparkles', 'sparkles-outline'), tabBarAccessibilityLabel: 'AI study tools' }} />
       <Tabs.Screen name="reports" options={{ title: 'Reports', tabBarIcon: icon('bar-chart', 'bar-chart-outline') }} />
       <Tabs.Screen
         name="profile"

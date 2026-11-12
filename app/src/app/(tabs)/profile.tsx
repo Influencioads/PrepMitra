@@ -78,6 +78,8 @@ export default function Profile() {
         <Divider />
         <ListRow icon="wallet-outline" title="Credits & subscriptions" onPress={() => router.push('/subscription')} />
         <Divider />
+        <ListRow icon="sparkles-outline" title="AI study tools" subtitle="Doubts, tutor, notes, revision and more" onPress={() => router.push('/ai')} />
+        <Divider />
         <ListRow icon="analytics-outline" title="Progress analytics" onPress={() => router.push('/progress')} />
         <Divider />
         <ListRow icon="settings-outline" title="Settings & privacy" onPress={() => router.push('/settings')} />

@@ -101,6 +101,55 @@ backend/
 docs/                  API guide, requirement status, plan/tracker
 ```
 
+## AI model routing and pricing (Nov 2026 blueprint)
+
+All AI goes through one gateway, `app/ai/provider.py`. With `AI_PROVIDER=openrouter` and `OPENROUTER_API_KEY` set,
+each call is routed by feature (`app/ai/catalog.py`): a cheap primary model, fallbacks for outages, and a premium
+model only when the caller asks for escalation and the student still has premium allowance. Model ids and prices
+are OpenRouter's list on 2026-11-12, at ₹90 = $1; every call logs tokens, cache hits and cost to `ai_usage`.
+
+| Feature (current call site) | Primary | Fallback | Premium |
+|---|---|---|---|
+| Mock report + time analysis (`exam_report`) | DeepSeek V3.2 | Gemini 2.5 Flash | — |
+| Persona micro-update (`mentor_attempt_note`) | Gemini 2.5 Flash-Lite | GPT-5 nano | — |
+| Study planner (`mentor_plan_note`) | GPT-5 mini | DeepSeek V3.2 | — |
+| Ask Mitra chat (`mentor_chat`) | DeepSeek V3.2 (Gemini Flash for Indian languages) | Claude Haiku 5.5 | Claude Sonnet 5.5 |
+| Interview turns / scoring | Kimi K2 / GPT-5 | GLM-4.6 / Claude Sonnet 5.5 | — |
+| Question bank write / verify | GPT-5 / DeepSeek V3.2 (reasoning) | Gemini 3.1 Pro | Claude Opus 5.5 |
+| Translation / back-translation | Gemini 2.5 Flash / GPT-5 mini | Flash-Lite / DeepSeek | — |
+
+`GET /v1/admin/ai/costs` shows ₹ per feature and the routing in force; `AI_MODEL_OVERRIDES` swaps a model without a
+release.
+
+### Student AI features (`/v1/ai/...`, code in `app/services/ai_features/`)
+
+| Feature | Endpoint | Allowance / plan |
+|---|---|---|
+| Doubt Solver (solution store first, verified by a second model, saved for everyone) | `POST /ai/doubts`, `/ai/doubts/{id}/explain-again`, `/feedback` | doubts (Free 5 for life, Starter 50, Pro 150 incl. 50 premium) |
+| Photo Doubt | `POST /ai/doubts/photo` | photo doubts (Tutor packs) |
+| AI Tutor Deep Dive (smart / master / ultra) | `POST /ai/tutor/deep-dives`, `GET` for history | Smart / Master / Ultra credits (Free: 1 sample) |
+| Ask Mitra tutor chat | `POST /ai/tutor/chat`, `GET` for history | tutor chat turns (Tutor packs) |
+| Persona, deep persona, Ultra review | `GET /ai/persona`, `POST /ai/persona/deep`, `/ai/persona/ultra-review` | everyone / Pro monthly / 1 Ultra credit |
+| Rank & Cutoff Predictor | `GET /ai/rank?exam_id=` | Pro |
+| Mistake Notebook weekly summary (PDF on Tutor Pro) | `GET /ai/mistakes/summary` | Starter+ |
+| Notes Maker (shared master notes or personal) | `POST /ai/notes` | personal notes (Starter 5, Pro 20) |
+| Topic Explainer (free library or custom deck) | `GET /ai/topic-decks/library`, `POST /ai/topic-decks` | library free; custom: Pro 5, or 3 tutor credits, Ultra 4 |
+| Revision AI (spaced quiz + AI hints + flashcards) | `POST /ai/revision/today` | Starter+ |
+| Current Affairs digest + quiz (daily, fact-checked) | `GET /ai/current-affairs` | Pro |
+| Descriptive Writing Evaluator (+ topper rewrite) | `POST /ai/writing/evaluate` | Pro 4/month (+1 Master credit) |
+| Cheat Code Coach (spot, shape, test, lock) and shortcut library | `/ai/coach/sessions...`, `GET /ai/coach/cards`, `GET /ai/shortcuts` | coach sessions |
+| Any item as PDF | `GET /ai/artifacts/{id}/pdf` | owner or shared |
+
+Admin: `GET/PATCH /admin/ai/solutions` (disputed and flagged answers), `POST /admin/ai/library/decks`,
+`POST /admin/ai/current-affairs/run`. A failed AI call returns 503 and refunds the allowance; off-topic requests get
+422; messages showing distress get the Tele-MANAS helpline (14416) instead of an AI reply.
+
+Plans follow the blueprint (`app/services/plan_catalog.py`): Free, Starter ₹149/399/1,199, Pro ₹299/799/2,499,
+AI Tutor Lite ₹99/999, AI Tutor Pro ₹299/2,999, Topper Combo ₹499/4,999 and add-ons (₹29 mock, ₹49 for 5 mocks,
+₹39 doubts, ₹99 Master deep dives, ₹199 interview pack, ₹349 Ultra pack). Full mocks are exam credits as before; the
+other AI limits are monthly allowances (`app/services/allowances.py`, `GET /v1/me/allowances`) that fall back to
+the cheaper model instead of blocking when the premium allowance runs out.
+
 ## Background jobs
 
 | Job | Trigger | What it does |

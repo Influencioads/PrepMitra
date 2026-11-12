@@ -1,5 +1,6 @@
 import axios, { type AxiosError } from 'axios';
 import type { ApiError } from '@prepmitra/shared';
+import { toApiErrorBody } from '@prepmitra/shared';
 import { useAuthStore } from '@/store/authStore';
 import { env } from '@/utils/env';
 
@@ -22,11 +23,13 @@ http.interceptors.request.use((config) => {
 
 http.interceptors.response.use(
   (r) => r,
-  (error: AxiosError<{ code?: string; message?: string }>) => {
+  (error: AxiosError) => {
+    // Backend errors arrive as { error: { code, message } } (same reader as the website).
+    const body = toApiErrorBody(error.response?.data);
     const apiError: ApiError = {
       status: error.response?.status ?? 0,
-      code: error.response?.data?.code ?? (error.code || 'NETWORK_ERROR'),
-      message: error.response?.data?.message ?? 'Unable to reach the server. Check your connection and try again.',
+      code: body.code ?? (error.code || 'NETWORK_ERROR'),
+      message: body.message ?? (error.response ? 'Something went wrong. Please try again.' : 'Unable to reach the server. Check your connection and try again.'),
     };
     return Promise.reject(apiError);
   },

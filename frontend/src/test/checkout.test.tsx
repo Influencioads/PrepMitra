@@ -23,7 +23,7 @@ describe('SubscriptionPage checkout (demo payments)', () => {
       </MemoryRouter>,
     );
 
-    await user.click(screen.getAllByRole('button', { name: /buy 1 credit/i })[0]!);
+    await user.click(screen.getAllByRole('button', { name: /buy 1 mock/i })[0]!);
     const dialog = await screen.findByRole('dialog');
     await user.click(within(dialog).getByLabelText(/refund and cancellation policy/i));
     await user.click(within(dialog).getByLabelText(/simulate a failed payment/i));

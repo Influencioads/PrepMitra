@@ -53,7 +53,16 @@ class Settings(BaseSettings):
     bootstrap_admin_phone: str = ""
 
     # AI
-    ai_provider: str = "claude"  # claude | mock
+    # openrouter: every feature routed per app/ai/catalog.py (one key, all providers) | claude: Anthropic API only |
+    # mock: deterministic and free (tests, demos)
+    ai_provider: str = "openrouter"
+    openrouter_api_key: str = ""
+    # Re-point any catalog alias at another OpenRouter model without a release: "ultra=openai/gpt-6-astra,glm=z-ai/glm-4.7"
+    ai_model_overrides: str = ""
+    # Tier 0 model sold in the Ultra pack: fable | gemini_carbon | gemini_argon | gpt_astra (pick after the 200-question eval)
+    ai_ultra_model: str = "fable"
+    # Daily current-affairs digest (one web-grounded run for all students, after 06:00 IST).
+    current_affairs_enabled: bool = True
     anthropic_api_key: str = ""
     ai_model_strong: str = "claude-opus-5-5"
     ai_model_fast: str = "claude-haiku-5-5"

@@ -78,30 +78,30 @@ export const ADMIN_TEAM: AdminTeamMember[] = [
 // ---------- Users ----------
 type UserSeed = [name: string, state: string, lang: LanguageCode, plan: PlanId];
 const USER_SEEDS: UserSeed[] = [
-  ['Ananya Sharma', 'Maharashtra', 'en', 'monthly'],
-  ['Rohit Kumar', 'Bihar', 'hi', 'pay-per-mock'],
-  ['Priya Nair', 'Kerala', 'ml', 'yearly'],
+  ['Ananya Sharma', 'Maharashtra', 'en', 'pro_monthly'],
+  ['Rohit Kumar', 'Bihar', 'hi', 'single_mock'],
+  ['Priya Nair', 'Kerala', 'ml', 'pro_annual'],
   ['Arjun Singh', 'Uttar Pradesh', 'hi', 'free'],
-  ['Kavya Reddy', 'Telangana', 'te', 'monthly'],
+  ['Kavya Reddy', 'Telangana', 'te', 'starter_monthly'],
   ['Sourav Das', 'West Bengal', 'bn', 'free'],
-  ['Divya Patel', 'Gujarat', 'gu', 'pay-per-mock'],
+  ['Divya Patel', 'Gujarat', 'gu', 'single_mock'],
   ['Mohammed Irfan', 'Karnataka', 'ur', 'free'],
-  ['Lakshmi Subramanian', 'Tamil Nadu', 'ta', 'yearly'],
+  ['Lakshmi Subramanian', 'Tamil Nadu', 'ta', 'starter_annual'],
   ['Vikram Rathore', 'Rajasthan', 'hi', 'free'],
-  ['Sneha Joshi', 'Maharashtra', 'mr', 'monthly'],
+  ['Sneha Joshi', 'Maharashtra', 'mr', 'starter_quarterly'],
   ['Gurpreet Kaur', 'Punjab', 'pa', 'free'],
-  ['Aditya Mishra', 'Madhya Pradesh', 'hi', 'pay-per-mock'],
-  ['Riya Chatterjee', 'West Bengal', 'bn', 'monthly'],
+  ['Aditya Mishra', 'Madhya Pradesh', 'hi', 'single_mock'],
+  ['Riya Chatterjee', 'West Bengal', 'bn', 'combo_monthly'],
   ['Karthik Raman', 'Tamil Nadu', 'ta', 'free'],
-  ['Neha Gupta', 'Delhi', 'en', 'yearly'],
+  ['Neha Gupta', 'Delhi', 'en', 'combo_annual'],
   ['Suresh Behera', 'Odisha', 'or', 'free'],
-  ['Pallavi Hegde', 'Karnataka', 'kn', 'pay-per-mock'],
+  ['Pallavi Hegde', 'Karnataka', 'kn', 'single_mock'],
   ['Amit Yadav', 'Haryana', 'hi', 'free'],
   ['Fatima Sheikh', 'Jammu and Kashmir', 'ur', 'free'],
-  ['Rahul Deshmukh', 'Maharashtra', 'mr', 'monthly'],
+  ['Rahul Deshmukh', 'Maharashtra', 'mr', 'pro_monthly'],
   ['Bhavna Choudhary', 'Assam', 'as', 'free'],
   ['Nikhil Menon', 'Kerala', 'ml', 'free'],
-  ['Tanvi Shah', 'Gujarat', 'gu', 'monthly'],
+  ['Tanvi Shah', 'Gujarat', 'gu', 'tutor_lite_monthly'],
   ['Deepak Thakur', 'Himachal Pradesh', 'hi', 'free'],
 ];
 const BLOCKED_USERS = new Set([9, 19]);
@@ -137,9 +137,11 @@ function buildUser(seed: UserSeed, i: number): AdminUserRecord {
     const exam = isInterview ? undefined : PAID_EXAMS[Math.floor(rand() * PAID_EXAMS.length)]!;
     const cost = Math.max(role?.creditCost ?? exam!.creditCost, 1);
     // Pay-per-mock learners top up just before an attempt when they run out.
+    // Tutor packs carry no mock credits (credits 0): top up one mock at a time instead of looping forever.
+    const topUp = Math.max(plan.credits, 1);
     while (balance < cost) {
-      ledger.push({ id: `cl-${i}-t${a}-${balance}`, delta: plan.credits, reason: 'purchase', label: planLabel, at: new Date(Date.parse(when) - HOUR).toISOString() });
-      balance += plan.credits;
+      ledger.push({ id: `cl-${i}-t${a}-${balance}`, delta: topUp, reason: 'purchase', label: planLabel, at: new Date(Date.parse(when) - HOUR).toISOString() });
+      balance += topUp;
     }
     balance -= cost;
     if (role) {
@@ -184,7 +186,7 @@ function buildOrders(): AdminOrder[] {
   for (let i = 0; i < 30; i++) {
     const user = buyers[i % buyers.length]!;
     // First order per buyer is their plan; repeat orders are mostly top-ups.
-    const planId: PlanId = i < buyers.length ? user.planId : rand() < 0.7 ? 'pay-per-mock' : user.planId;
+    const planId: PlanId = i < buyers.length ? user.planId : rand() < 0.7 ? (rand() < 0.5 ? 'single_mock' : 'extra_mocks_5') : user.planId;
     const plan = PLANS.find((p) => p.id === planId)!;
     const roll = rand();
     const status: AdminOrderStatus = i === 3 || i === 17 ? 'failed' : i === 8 || i === 22 ? 'refunded' : i === 1 ? 'pending' : roll < 0.04 ? 'failed' : 'paid';
@@ -211,7 +213,7 @@ function buildOrders(): AdminOrder[] {
 
 export const ADMIN_ORDERS: AdminOrder[] = buildOrders();
 
-export const ADMIN_SUBSCRIPTIONS: AdminSubscription[] = ADMIN_USERS.filter((u) => u.planId === 'monthly' || u.planId === 'yearly').map(
+export const ADMIN_SUBSCRIPTIONS: AdminSubscription[] = ADMIN_USERS.filter((u) => PLANS.find((p) => p.id === u.planId)?.isRecurring).map(
   (u, i) => {
     const plan = PLANS.find((p) => p.id === u.planId)!;
     const startedDays = Math.min(Math.round((SEED_NOW - Date.parse(u.joinedAt)) / DAY) - 2, plan.validityDays! - 3);

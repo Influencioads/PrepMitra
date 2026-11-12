@@ -25,8 +25,13 @@ def _env_file_value(key: str) -> str:
 
 os.environ.setdefault("APP_ENV", "development")
 os.environ.setdefault("DATABASE_URL", f"sqlite:///{(BACKEND / 'dev.db').as_posix()}")
-# Real Claude once backend/.env has an API key (mock tests then get real questions); the free mock AI otherwise.
-if not (os.environ.get("ANTHROPIC_API_KEY") or _env_file_value("ANTHROPIC_API_KEY")):
+# AI: OpenRouter (blueprint model routing) once backend/.env has OPENROUTER_API_KEY, else Claude with an Anthropic
+# key, else the free mock AI.
+if os.environ.get("OPENROUTER_API_KEY") or _env_file_value("OPENROUTER_API_KEY"):
+    os.environ.setdefault("AI_PROVIDER", "openrouter")
+elif os.environ.get("ANTHROPIC_API_KEY") or _env_file_value("ANTHROPIC_API_KEY"):
+    os.environ.setdefault("AI_PROVIDER", "claude")
+else:
     os.environ.setdefault("AI_PROVIDER", "mock")
 os.environ.setdefault("PAYMENT_GATEWAY", "mock")
 os.environ.setdefault("JOB_MODE", "thread")
@@ -71,6 +76,13 @@ def main() -> None:
     if fresh:
         # SEED_SCOPE=full publishes all 18 exams and 6 roles instead of the 15-day launch catalog.
         print("Seeding:", seed(scope=os.environ.get("SEED_SCOPE", "launch")))
+    else:  # keep prices and allowances in step with app/services/plan_catalog.py
+        from app.db import SessionLocal
+        from app.seed import seed_plans
+
+        with SessionLocal() as db:
+            seed_plans(db)
+            db.commit()
     print(f"\nSwagger UI: http://localhost:{port}/docs   (admin phone: {os.environ['BOOTSTRAP_ADMIN_PHONE']})\n")
     uvicorn.run("app.main:app", host="127.0.0.1", port=port)
 

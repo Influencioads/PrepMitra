@@ -16,21 +16,13 @@ from sqlalchemy import select
 from app.ai.embeddings import embed
 from app.db import SessionLocal
 from app.models import AiLesson, Exam, ExamBlueprint, Glossary, InterviewRole, Plan, Topic
+from app.services.plan_catalog import PLANS, RETIRED
 
 log = logging.getLogger("seed")
 
 TIER1 = ["en", "hi", "bn", "mr", "te", "ta", "gu", "kn", "ml", "or", "pa", "ur"]
 ALL = TIER1 + ["as", "ne", "kok", "mai", "sa", "sd", "ks", "doi", "brx", "mni", "sat"]
 MIX = {"easy": 30, "medium": 50, "hard": 20}
-
-PLANS = [
-    # code, name, price (paise, GST-inclusive), credits, validity days, recurring
-    ("free_trial", "Free trial (30-min mini mock)", 0, 1, 30, False),
-    ("pay_per_exam", "Pay per exam", 9900, 1, 90, False),
-    ("monthly", "Monthly plan", 39900, 10, 30, True),
-    ("yearly", "Yearly plan (proposed)", 299900, 150, 365, True),
-    ("credit_pack_10", "10-credit pack", 39900, 10, 90, False),
-]
 
 T = {  # reusable syllabus topic lists: (name, weightage)
     "reasoning": [("Analogy and classification", 2), ("Coding-decoding", 2), ("Series", 2), ("Blood relations", 1),
@@ -230,19 +222,27 @@ GLOSSARY = [
 LAUNCH_EXAMS = {"mini-mock-general-aptitude", "ibps-po-prelims", "ibps-clerk-prelims", "ibps-rrb-officer-prelims",
                 "ibps-rrb-office-assistant-prelims", "sbi-po-prelims", "sbi-junior-associate-prelims"}
 LAUNCH_ROLES = {"bank-po-interview"}
-LAUNCH_PLANS = {"free_trial", "pay_per_exam", "credit_pack_10"}
 LAUNCH_LANGS = ["en", "hi"]
+
+
+def seed_plans(db) -> None:
+    """Blueprint pricing (app/services/plan_catalog.py), the same for the launch and full catalogs. Idempotent."""
+    for spec in PLANS:
+        p = db.scalar(select(Plan).where(Plan.code == spec["code"])) or Plan(code=spec["code"])
+        for k, v in spec.items():
+            setattr(p, k, v)
+        p.active = True
+        db.add(p)
+    for p in db.scalars(select(Plan).where(Plan.code.in_(RETIRED))):
+        p.active = False
+    db.flush()
 
 
 def seed(papers_per_exam: int = 0, scope: str = "launch") -> dict:
     """scope="launch": the 15-day MVP catalog. scope="full": the PDF's whole proposed catalog (18 exams, 6 roles)."""
     full = scope == "full"
     with SessionLocal() as db:
-        for code, name, price, credits_, days, rec in PLANS:
-            p = db.scalar(select(Plan).where(Plan.code == code)) or Plan(code=code)
-            p.name, p.price_paise, p.credits, p.validity_days, p.is_recurring = name, price, credits_, days, rec
-            p.active = full or code in LAUNCH_PLANS
-            db.add(p)
+        seed_plans(db)
 
         for spec in EXAMS:
             live = full or spec["slug"] in LAUNCH_EXAMS

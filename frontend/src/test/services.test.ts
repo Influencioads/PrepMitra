@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { API_ENDPOINTS, getExamById, getPlanSet, MINI_MOCK } from '@prepmitra/shared';
+import {
+  API_ENDPOINTS, conflictingPlan, getExamById, getPlanSet, MINI_MOCK, mockAllowances, planCodeFromId, subscriptionSlots, toAllowances, toPlans,
+} from '@prepmitra/shared';
 import { http } from '@/services/http';
 import { reportService } from '@/services/reportService';
 import { attemptService } from '@/services/attemptService';
@@ -101,11 +103,55 @@ describe('analytics track()', () => {
   });
 });
 
-describe('pricing sets', () => {
-  it('launch set has the 10-credit pack at ₹399', () => {
-    const launch = getPlanSet('launch');
-    expect(launch.map((p) => p.id)).toEqual(['free', 'pay-per-mock', 'monthly']);
-    expect(launch.find((p) => p.id === 'monthly')).toMatchObject({ priceInr: 399, credits: 10 });
-    expect(getPlanSet('full')).toHaveLength(4);
+describe('pricing blueprint', () => {
+  it('mock catalog matches the backend plan codes and prices', () => {
+    const plans = getPlanSet('full');
+    const prices = Object.fromEntries(plans.map((p) => [p.code, p.priceInr]));
+    expect(prices).toEqual({
+      free_trial: 0,
+      starter_monthly: 149, starter_quarterly: 399, starter_annual: 1199,
+      pro_monthly: 299, pro_quarterly: 799, pro_annual: 2499,
+      tutor_lite_monthly: 99, tutor_lite_annual: 999, tutor_pro_monthly: 299, tutor_pro_annual: 2999,
+      combo_monthly: 499, combo_annual: 4999,
+      single_mock: 29, extra_mocks_5: 49, extra_doubts_50: 39, extra_master_10: 99, interview_pack: 199, ultra_pack: 349,
+    });
+    expect(plans.find((p) => p.id === 'pro_quarterly')).toMatchObject({ group: 'study', period: 'quarterly', credits: 75, validityDays: 90 });
+    expect(plans.find((p) => p.id === 'combo_monthly')!.entitlements.limits).toMatchObject({ doubts: 150, smart_credits: 40, master_credits: 10 });
+  });
+
+  it('maps every /v1/plans code, including ones the client does not know', () => {
+    const plans = toPlans({ items: [
+      { code: 'free_trial', name: 'Free', price_inr: 0, credits: 1, validity_days: 30, is_recurring: false, group: 'free', period: 'lifetime', entitlements: {} },
+      { code: 'pro_annual', name: 'Pro (Selection Pass) · annual', price_inr: 2499, credits: 300, validity_days: 365, is_recurring: true, group: 'study', period: 'annual', entitlements: { limits: { doubts: 150 } } },
+      { code: 'mystery_pack', name: 'Mystery pack', price_inr: 59, credits: 0, validity_days: 30, is_recurring: false, group: 'addon', period: 'one_time', entitlements: { limits: { doubts: 20 } } },
+    ] });
+    expect(plans.map((p) => p.id)).toEqual(['free', 'pro_annual', 'mystery_pack']);
+    expect(plans[1]).toMatchObject({ group: 'study', period: 'annual', family: 'pro', badge: 'Most popular' });
+    expect(plans[2]!.features).toEqual(['20 × AI doubts']);
+    expect(planCodeFromId('free')).toBe('free_trial');
+    expect(planCodeFromId('pro_annual')).toBe('pro_annual');
+  });
+
+  it('allows one study plan and one tutor pack; the combo is both', () => {
+    const plans = getPlanSet('full');
+    const plan = (id: string) => plans.find((p) => p.id === id)!;
+    expect(conflictingPlan(plan('tutor_lite_monthly'), ['starter_monthly'], plans)).toBeUndefined();
+    expect(conflictingPlan(plan('pro_monthly'), ['starter_annual'], plans)?.id).toBe('starter_annual');
+    expect(conflictingPlan(plan('combo_monthly'), ['tutor_pro_monthly'], plans)?.id).toBe('tutor_pro_monthly');
+    expect(conflictingPlan(plan('extra_mocks_5'), ['combo_monthly'], plans)).toBeUndefined();
+    expect(subscriptionSlots(['starter_monthly', 'tutor_lite_annual', 'extra_doubts_50'])).toEqual({ planId: 'starter_monthly', tutorPlanId: 'tutor_lite_annual' });
+  });
+
+  it('reads /v1/me/allowances', () => {
+    const a = toAllowances({
+      plans: ['free_trial', 'starter_monthly'], flags: { persona: 'full' }, resets_at: '2026-12-01T00:00:00Z',
+      limits: { doubts: { label: 'AI doubts', limit: 55, used: 5, remaining: 50, sources: [] } },
+    });
+    expect(a).toEqual({
+      plans: ['starter_monthly'], flags: { persona: 'full' }, resetsAt: '2026-12-01T00:00:00Z',
+      limits: [{ feature: 'doubts', label: 'AI doubts', limit: 55, used: 5, remaining: 50 }],
+    });
+    const mock = mockAllowances(['starter_monthly', 'extra_doubts_50']);
+    expect(mock.limits.find((l) => l.feature === 'doubts')).toMatchObject({ limit: 105, remaining: 105 });
   });
 });

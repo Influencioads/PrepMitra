@@ -13,6 +13,7 @@ from app.db import SessionLocal
 from app.routers import (
     admin_content,
     admin_ops,
+    ai,
     attempts,
     auth,
     billing,
@@ -119,5 +120,6 @@ def languages():
 
 
 for r in (auth.router, me.router, me.uploads, catalog.router, attempts.router, reports.router, interviews.router,
-          billing.router, engagement.router, mentor.router, admin_content.router, admin_ops.router):
+          billing.router, engagement.router, mentor.router, ai.router, ai.admin_router, admin_content.router,
+          admin_ops.router):
     app.include_router(r, prefix=settings.api_prefix)

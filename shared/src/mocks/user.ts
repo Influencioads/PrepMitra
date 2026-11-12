@@ -180,7 +180,7 @@ export const SEED_RECOMMENDATIONS: Recommendation[] = [
 ];
 
 export const SEED_SUBSCRIPTION: SubscriptionState = {
-  planId: 'monthly',
+  planId: 'starter_monthly',
   status: 'active',
   credits: 6,
   renewsAt: new Date(SEED_NOW + 12 * DAY).toISOString(),
@@ -189,9 +189,9 @@ export const SEED_SUBSCRIPTION: SubscriptionState = {
   ledger: [
     { id: 'cl-1', delta: 1, reason: 'free-trial', label: 'Free trial mini mock', at: daysAgo(48) },
     { id: 'cl-2', delta: -1, reason: 'free-trial', label: 'General Aptitude mini mock', at: daysAgo(42) },
-    { id: 'cl-3', delta: 1, reason: 'purchase', label: 'Pay Per Mock — ₹99', at: daysAgo(36), expiresAt: new Date(SEED_NOW + 54 * DAY).toISOString() },
+    { id: 'cl-3', delta: 1, reason: 'purchase', label: 'Single mock with AI report — ₹29', at: daysAgo(36), expiresAt: new Date(SEED_NOW + 54 * DAY).toISOString() },
     { id: 'cl-4', delta: -1, reason: 'exam-attempt', label: 'SSC CGL mock', at: daysAgo(35) },
-    { id: 'cl-5', delta: 10, reason: 'purchase', label: 'Monthly plan — ₹399', at: daysAgo(18), expiresAt: new Date(SEED_NOW + 12 * DAY).toISOString() },
+    { id: 'cl-5', delta: 10, reason: 'purchase', label: 'Starter (Mock Pass) · monthly — ₹149', at: daysAgo(18), expiresAt: new Date(SEED_NOW + 12 * DAY).toISOString() },
     { id: 'cl-6', delta: -1, reason: 'exam-attempt', label: 'IBPS Clerk mock', at: daysAgo(14) },
     { id: 'cl-7', delta: -1, reason: 'interview', label: 'Bank PO mock interview', at: daysAgo(10) },
     { id: 'cl-8', delta: -1, reason: 'exam-attempt', label: 'SBI PO mock', at: daysAgo(7) },

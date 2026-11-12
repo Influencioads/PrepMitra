@@ -13,7 +13,7 @@ from app.services.gateways import DEV_WEBHOOK_SECRET, MOCK_KEY_SECRET, hmac_hex
 from tests.conftest import auth_headers, login
 
 
-def _order(client, h, plan="pay_per_exam", platform="web"):
+def _order(client, h, plan="single_mock", platform="web"):
     return client.post("/v1/orders", headers=h, json={"plan_code": plan, "platform": platform})
 
 
@@ -30,8 +30,12 @@ def _captured(gw_order_id, pay_id="pay_1"):
 
 def test_plans_gst_inclusive(client, catalog_seeded):
     plans = {p["code"]: p for p in client.get("/v1/plans").json()["items"]}
-    assert plans["pay_per_exam"]["price_paise"] == 9900 and plans["monthly"]["credits"] == 10
-    assert plans["pay_per_exam"]["gst_paise"] == 1510  # 99 * 18/118
+    assert plans["single_mock"]["price_paise"] == 2900 and plans["starter_monthly"]["credits"] == 10
+    assert plans["single_mock"]["gst_paise"] == 442  # 29 * 18/118
+    assert plans["pro_monthly"]["price_paise"] == 29900 and plans["pro_annual"]["price_paise"] == 249900
+    assert plans["combo_monthly"]["price_paise"] == 49900 and plans["tutor_lite_monthly"]["price_paise"] == 9900
+    assert plans["pro_quarterly"]["credits"] == 75 and plans["pro_quarterly"]["validity_days"] == 90
+    assert plans["pro_monthly"]["entitlements"]["limits"]["doubts"] == 150
     assert plans["free_trial"]["purchasable"] is False
 
 
@@ -57,7 +61,7 @@ def test_webhook_bad_signature_rejected(client, catalog_seeded, user_headers):
 
 
 def test_repeated_webhook_adds_credits_once(client, catalog_seeded, user_headers, db):
-    o = _order(client, user_headers, plan="monthly").json()
+    o = _order(client, user_headers, plan="starter_monthly").json()
     assert _webhook(client, _captured(o["gateway_order_id"]), event_id="evt_A").json()["status"] == "fulfilled"
     assert _webhook(client, _captured(o["gateway_order_id"]), event_id="evt_A").json()["status"] == "duplicate"
     # A different event for the same payment (order.paid) is also harmless.
@@ -65,7 +69,7 @@ def test_repeated_webhook_adds_credits_once(client, catalog_seeded, user_headers
     assert client.get("/v1/me/credits", headers=user_headers).json()["total"] == 10
     sub = db.scalar(select(Subscription))
     assert sub.status == "active" and (sub.renews_at - utcnow()).days in (29, 30)
-    assert _order(client, user_headers, plan="monthly").status_code == 409  # already subscribed
+    assert _order(client, user_headers, plan="starter_monthly").status_code == 409  # already subscribed
 
 
 def test_invoice_pdf_and_order_list(client, catalog_seeded, user_headers):
@@ -79,7 +83,7 @@ def test_invoice_pdf_and_order_list(client, catalog_seeded, user_headers):
 
 
 def test_cancel_subscription_keeps_plan_until_expiry(client, catalog_seeded, user_headers):
-    o = _order(client, user_headers, plan="monthly").json()
+    o = _order(client, user_headers, plan="starter_monthly").json()
     client.post(f"/v1/orders/{o['order_id']}/mock-pay", headers=user_headers)
     sub = client.get("/v1/subscriptions", headers=user_headers).json()["items"][0]
     out = client.post(f"/v1/subscriptions/{sub['id']}/cancel", headers=user_headers).json()
@@ -104,7 +108,7 @@ def test_credit_expiry_ordering_and_expiry_job(client, user_headers, db):
 
 
 def test_admin_refund_revokes_unused_credits(client, catalog_seeded, user_headers, admin_headers):
-    o = _order(client, user_headers, plan="monthly").json()
+    o = _order(client, user_headers, plan="starter_monthly").json()
     client.post(f"/v1/orders/{o['order_id']}/mock-pay", headers=user_headers)
     r = client.post(f"/v1/admin/orders/{o['order_id']}/refund", headers=admin_headers, json={"reason": "duplicate payment"})
     assert r.json()["status"] == "refunded"

@@ -10,7 +10,7 @@ import {
 } from '@/components/ui';
 import { AdminLoadGate, DataTable, FilterBar, IconButton, ResultCount, type Column } from '@/components/admin/AdminUi';
 import { useAdminLoad } from '@/components/admin/useAdminLoad';
-import { PLAN_LABELS, PLAN_TONES, languageLabel } from '@/components/admin/labels';
+import { PLAN_LABELS, planLabel, planTone, languageLabel } from '@/components/admin/labels';
 import { adminService } from '@/services/adminService';
 import { errorMessage } from '@/services/mock';
 import { useAdminStore } from '@/store/adminStore';
@@ -67,7 +67,7 @@ export function AdminUsersPage() {
       ),
     },
     { key: 'state', header: 'State', cell: (u) => <span className="whitespace-nowrap">{u.state}</span> },
-    { key: 'plan', header: 'Plan', cell: (u) => <Badge tone={PLAN_TONES[u.planId]}>{PLAN_LABELS[u.planId]}</Badge> },
+    { key: 'plan', header: 'Plan', cell: (u) => <Badge tone={planTone(u.planId)}>{planLabel(u.planId)}</Badge> },
     { key: 'attempts', header: 'Attempts', cell: (u) => u.attempts.length },
     { key: 'credits', header: 'Credits', cell: (u) => <span className="font-semibold">{u.credits}</span> },
     { key: 'joined', header: 'Joined', cell: (u) => <span className="whitespace-nowrap text-muted">{formatDate(u.joinedAt)}</span> },
@@ -221,7 +221,7 @@ function UserDetailModal({ user, onClose, onBlock }: { user: AdminUserRecord; on
       <div className="grid gap-6 md:grid-cols-[240px_1fr]">
         <dl className="divide-y divide-line rounded-xl border border-line px-4">
           <KeyValue label="Status" value={<Badge tone={user.status === 'active' ? 'success' : 'danger'}>{user.status === 'active' ? 'Active' : 'Blocked'}</Badge>} />
-          <KeyValue label="Plan" value={<Badge tone={PLAN_TONES[user.planId]}>{PLAN_LABELS[user.planId]}</Badge>} />
+          <KeyValue label="Plan" value={<Badge tone={planTone(user.planId)}>{planLabel(user.planId)}</Badge>} />
           <KeyValue label="Credits" value={user.credits} />
           <KeyValue label="Attempts" value={user.attempts.length} />
           <KeyValue label="Phone" value={maskPhone(user.phone)} />

@@ -32,7 +32,17 @@ def plan_out(p: Plan) -> dict:
     return {"id": p.id, "code": p.code, "name": p.name, "price_paise": p.price_paise, "price_inr": p.price_paise / 100,
             "taxable_paise": taxable, "gst_paise": gst, "gst_inclusive": True, "credits": p.credits,
             "validity_days": p.validity_days, "is_recurring": p.is_recurring,
+            "group": (p.entitlements or {}).get("group"), "period": (p.entitlements or {}).get("period"),
+            "entitlements": p.entitlements or {},
             "purchasable": p.code != "free_trial" and p.price_paise > 0}
+
+
+# A student can hold one study plan and one AI Tutor pack at a time; the Topper Combo is both.
+_SLOTS = {"study": {"study"}, "tutor": {"tutor"}, "combo": {"study", "tutor"}}
+
+
+def _slots(plan: Plan) -> set[str]:
+    return _SLOTS.get((plan.entitlements or {}).get("group"), {"study"})
 
 
 def list_plans(db: Session) -> list[dict]:
@@ -43,9 +53,11 @@ def create_order(db: Session, user: User, plan_code: str, platform: str) -> dict
     plan = db.scalar(select(Plan).where(Plan.code == plan_code, Plan.active.is_(True)))
     if plan is None or plan.price_paise <= 0:
         raise not_found("Plan")
-    if plan.is_recurring and db.scalar(select(Subscription).where(
-            Subscription.user_id == user.id, Subscription.status == "active")):
-        raise AppError(409, "already_subscribed", "You already have an active subscription")
+    if plan.is_recurring:
+        held = db.scalars(select(Plan).join(Subscription, Subscription.plan_id == Plan.id).where(
+            Subscription.user_id == user.id, Subscription.status == "active")).all()
+        if any(_slots(h) & _slots(plan) for h in held):
+            raise AppError(409, "already_subscribed", "You already have an active subscription of this kind")
     _, gst = gst_split(plan.price_paise)
     order = Order(user_id=user.id, plan_id=plan.id, amount_paise=plan.price_paise, gst_amount_paise=gst,
                   gateway="razorpay", status="created", client_platform=platform)
