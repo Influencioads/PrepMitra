@@ -4,6 +4,7 @@ import { StudyDeskArt } from '@/components/marketing/StudyDeskArt';
 import { useT } from '@/i18n';
 import { LanguageSwitcher } from '@/i18n/LanguageSwitcher';
 import { layoutMessages } from '@/i18n/messages/layout';
+import { PageTransition } from '@/components/motion';
 
 /** 3×3 saffron dot grid (one dot missing), decorative. */
 function DotGrid({ className }: { className?: string }) {
@@ -51,7 +52,7 @@ export function AuthLayout() {
           {/* Form side */}
           <main id="main" className="auth-dark bg-secondary-hover px-6 py-9 sm:px-12 sm:py-12 lg:px-14 lg:py-14">
             <div className="mx-auto w-full max-w-[360px]">
-              <Outlet />
+              <PageTransition><Outlet /></PageTransition>
             </div>
           </main>
         </div>

@@ -13,6 +13,7 @@ import { useAuthStore } from '@/store';
 import { selectOpenReviewCount, useAdminStore } from '@/store/adminStore';
 import { TEAM_ROLE_LABELS } from '@/components/admin/labels';
 import { cn } from '@/utils/cn';
+import { PageTransition } from '@/components/motion';
 
 const NAV_GROUPS = [
   {
@@ -203,7 +204,7 @@ export function AdminLayout() {
         </div>
 
         <main id="admin-main" className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-          <Outlet />
+          <PageTransition><Outlet /></PageTransition>
         </main>
       </div>
     </div>

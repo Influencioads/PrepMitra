@@ -17,6 +17,7 @@ import { PrintStyles } from '@/components/common/PrintStyles';
 import { usePrintMode } from '@/lib/share';
 import { saveFile } from '@/lib/download';
 import { buildReportPdf } from '@/lib/reportPdf';
+import { FAST, motion } from '@/components/motion';
 import { track } from '@/lib/analytics';
 import { describeAnswer, describeCorrect, shortLabel } from '@/features/exam/answers';
 import { useAuthStore, useExamStore } from '@/store';
@@ -179,7 +180,7 @@ export function ReportPage() {
       />
       </div>
 
-      <div className="mt-6" role="tabpanel" aria-label={tab}>
+      <motion.div key={printing ? 'all' : tab} className="mt-6" role="tabpanel" aria-label={tab} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={FAST}>
         {show('overview') && (
           <div className="space-y-6">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-[320px_1fr]">
@@ -448,7 +449,7 @@ export function ReportPage() {
             )}
           </div>
         )}
-      </div>
+      </motion.div>
 
       <Card className="mt-8 p-5" data-print-hide><ReportRating reportId={report.id} value={report.rating} /></Card>
       {flagQ && (

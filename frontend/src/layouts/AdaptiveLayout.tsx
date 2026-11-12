@@ -3,6 +3,7 @@ import { useAuthStore } from '@/store';
 import { AppLayout } from './AppLayout';
 import { PublicFooter, PublicHeader } from './PublicLayout';
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
+import { PageTransition } from '@/components/motion';
 
 /** Catalog pages: app shell for signed-in learners, marketing shell for visitors. */
 export function AdaptiveLayout() {
@@ -13,7 +14,7 @@ export function AdaptiveLayout() {
       <ScrollToTop />
       <PublicHeader />
       <main id="main" className="container-page flex-1 py-8 lg:py-10">
-        <Outlet />
+        <PageTransition><Outlet /></PageTransition>
       </main>
       <PublicFooter />
     </div>

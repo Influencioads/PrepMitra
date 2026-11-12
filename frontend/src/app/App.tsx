@@ -7,6 +7,7 @@ import { OfflineBanner } from '@/components/common/OfflineBanner';
 import { useSyncHtmlLang } from '@/i18n';
 import { USE_MOCK } from '@/services/mock';
 import { syncFromBackend, useAuthStore } from '@/store';
+import { MotionConfig } from 'framer-motion';
 
 export function App() {
   useSyncHtmlLang();
@@ -19,7 +20,10 @@ export function App() {
   return (
     <AppErrorBoundary>
       <OfflineBanner />
-      <RouterProvider router={router} />
+      {/* Subtle motion everywhere; switched off for people who ask their device to reduce motion. */}
+      <MotionConfig reducedMotion="user">
+        <RouterProvider router={router} />
+      </MotionConfig>
       <Toaster
         position="top-center"
         toastOptions={{

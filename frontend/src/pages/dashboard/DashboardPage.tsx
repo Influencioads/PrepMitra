@@ -19,6 +19,7 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useContentT } from '@/i18n/content';
 import { useT } from '@/i18n';
 import { dashboardMessages } from '@/i18n/messages/dashboard';
+import { Stagger } from '@/components/motion';
 
 const greetingKey = () => {
   const h = new Date().getHours();
@@ -151,12 +152,12 @@ export function DashboardPage() {
         </section>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <Stagger className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label={t('statTaken')} value={p.history.length} icon={<ClipboardList className="h-5 w-5" />} hint={hasHistory ? t('statLast', { date: formatShortDate(p.history[0]!.submittedAt) }) : t('statNoAttempts')} />
         <StatCard label={t('statAvg')} value={`${p.avg}%`} icon={<Target className="h-5 w-5" />} trend={hasHistory ? { value: p.delta, label: t('statVsPrev') } : undefined} hint={hasHistory ? '' : t('statTakeMock')} />
         <StatCard label={t('statStreak')} value={t(p.streakDays === 1 ? 'day' : 'days', { count: p.streakDays })} icon={<Flame className="h-5 w-5" />} hint={t('minThisWeek', { count: p.totalMinutes })} />
         <StatCard label={t('statCredits')} value={sub.credits} icon={<Coins className="h-5 w-5" />} hint={sub.freeMiniMockUsed ? <Link to="/subscription" className="font-medium text-primary hover:underline">{t('manageCredits')}</Link> : t('freeMiniAvailable')} />
-      </div>
+      </Stagger>
 
       <div className={cn('grid gap-3 sm:grid-cols-2', interviewsEnabled() ? 'lg:grid-cols-4' : 'lg:grid-cols-3')} aria-label={t('quickPractice')}>
         {[
@@ -297,9 +298,9 @@ export function DashboardPage() {
           <h2 id="rec-exams" className="text-lg font-semibold">{t('recExams')}</h2>
           <ButtonLink to="/exams" variant="ghost" size="sm" rightIcon={<ArrowRight className="h-4 w-4" />}>{t('allExams')}</ButtonLink>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <Stagger className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {recommendedExams.map((e) => <ExamCard key={e.id} exam={e} />)}
-        </div>
+        </Stagger>
       </section>
     </div>
   );

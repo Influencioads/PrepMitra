@@ -3,6 +3,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import { Button, type ButtonVariant } from './Button';
+import { motion } from 'framer-motion';
+import { BASE, FAST } from '@/components/motion';
 
 export interface ModalProps {
   open: boolean;
@@ -23,10 +25,16 @@ export function Modal({ open, onOpenChange, title, description, children, footer
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-stone-900/50 backdrop-blur-[1px] animate-fade-in" />
-        <Dialog.Content
+        <Dialog.Overlay asChild>
+          <motion.div className="fixed inset-0 z-50 bg-stone-900/50 backdrop-blur-[1px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={FAST} />
+        </Dialog.Overlay>
+        <Dialog.Content asChild>
+        <motion.div
+          initial={{ opacity: 0, y: 14, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={BASE}
           className={cn(
-            'fixed z-50 flex max-h-[90vh] w-full flex-col bg-card shadow-overlay animate-fade-in focus:outline-none',
+            'fixed z-50 flex max-h-[90vh] w-full flex-col bg-card shadow-overlay focus:outline-none',
             sheetOnMobile
               ? 'inset-x-0 bottom-0 rounded-t-2xl sm:inset-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl'
               : 'left-1/2 top-1/2 w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl',
@@ -48,6 +56,7 @@ export function Modal({ open, onOpenChange, title, description, children, footer
           </div>
           {children && <div className="overflow-y-auto px-5 py-4 scrollbar-thin">{children}</div>}
           {footer && <div className="flex flex-col-reverse gap-2 border-t border-line px-5 py-4 sm:flex-row sm:justify-end">{footer}</div>}
+        </motion.div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

@@ -12,6 +12,7 @@ import { useT } from '@/i18n';
 import { LanguageSwitcher } from '@/i18n/LanguageSwitcher';
 import { interviewsEnabled } from '@/config/launch';
 import { layoutMessages } from '@/i18n/messages/layout';
+import { PageTransition } from '@/components/motion';
 
 const NAV_GROUPS = [
   {
@@ -186,7 +187,7 @@ export function AppLayout() {
       <div className="lg:pl-64">
         <AppTopbar onMenu={() => setDrawer(true)} />
         <main id="main" className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-          <Outlet />
+          <PageTransition><Outlet /></PageTransition>
         </main>
       </div>
     </div>

@@ -28,6 +28,7 @@ import { cn } from '@/utils/cn';
 import { useT } from '@/i18n';
 import { useContentT } from '@/i18n/content';
 import { examMessages } from '@/i18n/messages/exam';
+import { FAST, motion } from '@/components/motion';
 
 const STATUS_ORDER: PaletteStatus[] = ['answered', 'answered-marked', 'marked', 'not-answered', 'not-visited'];
 
@@ -495,6 +496,7 @@ function ExamSession({ attempt }: { attempt: Attempt }) {
               onContextMenu={blockCopy}
               data-testid="question-area"
             >
+              <motion.div key={index} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={FAST}>
               <QuestionCard
                 question={question}
                 number={index + 1}
@@ -508,6 +510,7 @@ function ExamSession({ attempt }: { attempt: Attempt }) {
                 lang={translated ? viewLang : 'en'}
                 unsaved={unsaved}
               />
+              </motion.div>
             </div>
             {marked && (
               <p className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#F3E8FA] px-3 py-1 text-xs font-medium text-[#6B21A8]">

@@ -48,7 +48,7 @@ export function usePrintMode() {
   /** Renders the expanded print layout, runs `fn` (e.g. builds a PDF from it), then goes back. */
   const withExpanded = useCallback(async <T,>(fn: () => Promise<T>): Promise<T> => {
     setPrinting(true);
-    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 150))));
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 600))));
     try {
       return await fn();
     } finally {

@@ -25,7 +25,7 @@ const sizes: Record<ButtonSize, string> = {
 
 export const buttonClasses = (variant: ButtonVariant = 'primary', size: ButtonSize = 'md', className?: string) =>
   cn(
-    'inline-flex items-center justify-center rounded-lg font-medium whitespace-nowrap transition-colors',
+    'inline-flex items-center justify-center rounded-lg font-medium whitespace-nowrap transition duration-150 enabled:active:scale-[0.98]',
     'disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
     variants[variant],
     variant !== 'link' && sizes[size],

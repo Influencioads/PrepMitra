@@ -18,6 +18,7 @@ import { useContentT } from '@/i18n/content';
 import { catalogMessages, categoryText } from '@/i18n/messages/catalog';
 import { commonMessages } from '@/i18n/messages/common';
 import { layoutMessages } from '@/i18n/messages/layout';
+import { Stagger } from '@/components/motion';
 
 const SORTS = [
   { value: 'popular', key: 'sortPopular' },
@@ -270,9 +271,9 @@ export function ExamCatalogPage() {
             ) : exams.error ? (
               <ErrorState title={tc('somethingWrong')} onRetry={exams.reload} description={exams.error} />
             ) : shownExams.length > 0 ? (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {shownExams.map((e) => <ExamCard key={e.id} exam={e} />)}
-              </div>
+              </Stagger>
             ) : (
               !nothing && emptyNote(t('noMatchDesc'))
             )}
@@ -301,9 +302,9 @@ export function ExamCatalogPage() {
             ) : roles.error ? (
               <ErrorState title={tc('somethingWrong')} onRetry={roles.reload} description={roles.error} />
             ) : shownRoles.length > 0 ? (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {shownRoles.map((r) => <InterviewCard key={r.id} role={r} />)}
-              </div>
+              </Stagger>
             ) : (
               !nothing && emptyNote(t('noRolesMatch'))
             )}

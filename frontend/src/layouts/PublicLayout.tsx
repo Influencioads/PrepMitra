@@ -13,6 +13,7 @@ import { LanguageSwitcher } from '@/i18n/LanguageSwitcher';
 import { interviewsEnabled } from '@/config/launch';
 import { layoutMessages } from '@/i18n/messages/layout';
 import { catalogMessages, categoryText } from '@/i18n/messages/catalog';
+import { PageTransition } from '@/components/motion';
 
 const NAV = [
   { to: '/exams', key: 'navExams' },
@@ -164,7 +165,7 @@ export function PublicLayout() {
       <ScrollToTop />
       <PublicHeader />
       <main id="main" className="flex-1">
-        <Outlet />
+        <PageTransition><Outlet /></PageTransition>
       </main>
       <PublicFooter />
     </div>
