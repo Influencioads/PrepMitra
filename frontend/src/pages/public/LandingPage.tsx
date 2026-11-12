@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Plus } from 'lucide-react';
+import { ArrowRight, BookOpenCheck, CalendarDays, Check, CircleMinus, Gift, Lock, Plus } from 'lucide-react';
 import type { ExamCategory } from '@prepmitra/shared';
 import { EXAM_CATEGORIES } from '@prepmitra/shared';
 import { AppIcon, ButtonLink, HandEyebrow, MarksLeak, PenNote, StickyNote } from '@/components/ui';
@@ -8,6 +8,7 @@ import { PricingCards } from '@/components/marketing/PricingCards';
 import { AnswerSheetHero, PanelRoom, PrepPathPreview } from '@/components/marketing/PaperVisuals';
 import { ExamMarquee } from '@/components/marketing/ExamMarquee';
 import { CutoffMeter } from '@/components/marketing/CutoffMeter';
+import { DrawnArrow, FloatingBubbles, HeroBackdrop, Magnetic, PenUnderline, TiltCard, TypingDots, WordsReveal } from '@/components/marketing/HomeFx';
 import { AnimatePresence, CountUp, Reveal, motion, useScroll, useSpring } from '@/components/motion/landing';
 import { usePlans } from '@/hooks/usePlans';
 import { useAuthStore } from '@/store';
@@ -54,15 +55,21 @@ function BubbleCta({ to, children, tone = 'saffron', className }: { to: string; 
       whileTap={{ scale: 0.97, y: 2 }}
       to={to}
       className={cn(
-        'group inline-flex min-h-16 items-center gap-3 rounded-[20px] py-2.5 pl-2.5 pr-6 text-base font-extrabold transition-transform hover:-translate-y-0.5 sm:text-lg',
+        'group relative inline-flex min-h-16 items-center gap-3 overflow-hidden rounded-[20px] py-2.5 pl-2.5 pr-6 text-base font-extrabold transition-transform hover:-translate-y-0.5 sm:text-lg',
         tone === 'saffron' ? 'bg-primary text-white shadow-[0_6px_0_#8A2E07]' : 'bg-accent text-chalk-deep shadow-[0_6px_0_#A6370A]',
         className,
       )}
     >
-      <span className={cn('flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-[3px]', tone === 'saffron' ? 'border-white' : 'border-chalk-deep')} aria-hidden>
+      <motion.span
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/4 skew-x-[-20deg] bg-white/25"
+        animate={{ x: ['0%', '600%'] }}
+        transition={{ duration: 1.1, repeat: Infinity, repeatDelay: 3.2, ease: 'easeInOut' }}
+      />
+      <span className={cn('relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-[3px]', tone === 'saffron' ? 'border-white' : 'border-chalk-deep')} aria-hidden>
         <span className={cn('h-6 w-6 scale-75 rounded-full transition-transform group-hover:scale-100', tone === 'saffron' ? 'bg-white' : 'bg-chalk-deep')} />
       </span>
-      {children}
+      <span className="relative">{children}</span>
     </MotionLink>
   );
 }
@@ -76,20 +83,27 @@ function ScrollProgress() {
 
 const HERO = (delay: number) => ({ initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const, delay } });
 
-/** FAQ row that opens and closes smoothly (button + region, keyboard friendly). */
-function FaqItem({ q, a, open, onToggle, id }: { q: string; a: string; open: boolean; onToggle: () => void; id: string }) {
+/** FAQ row that opens and closes smoothly (button + region, keyboard friendly). The open row gets a saffron margin bar. */
+function FaqItem({ q, a, open, onToggle, id, index }: { q: string; a: string; open: boolean; onToggle: () => void; id: string; index: number }) {
   return (
-    <div className="border-b-[1.5px] border-ink">
+    <div className={cn('relative rounded-2xl transition-colors duration-300', open ? 'bg-card shadow-hard-sm ring-[1.5px] ring-ink' : 'hover:bg-card/60')}>
+      {open && <motion.span layoutId="faq-bar" className="absolute inset-y-4 left-0 w-1 rounded-full bg-primary" transition={{ type: 'spring', stiffness: 400, damping: 34 }} aria-hidden />}
       <h3>
         <button
           type="button"
           onClick={onToggle}
           aria-expanded={open}
           aria-controls={`${id}-a`}
-          className="flex w-full items-center justify-between gap-4 py-5 text-left font-display text-lg font-bold sm:text-xl"
+          className="flex w-full items-center gap-4 px-5 py-5 text-left font-display text-lg font-bold sm:text-xl"
         >
-          {q}
-          <motion.span animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.2 }} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-[1.5px] border-ink" aria-hidden>
+          <span className={cn('font-hand text-base tabular-nums transition-colors', open ? 'text-primary' : 'text-subtle')} aria-hidden>{String(index + 1).padStart(2, '0')}</span>
+          <span className="flex-1">{q}</span>
+          <motion.span
+            animate={{ rotate: open ? 45 : 0, backgroundColor: open ? 'var(--color-primary)' : 'rgba(0,0,0,0)', color: open ? '#fff' : 'var(--color-ink)' }}
+            transition={{ duration: 0.2 }}
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-[1.5px] border-ink"
+            aria-hidden
+          >
             <Plus className="h-4 w-4" />
           </motion.span>
         </button>
@@ -103,16 +117,23 @@ function FaqItem({ q, a, open, onToggle, id }: { q: string; a: string; open: boo
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 font-hand text-lg leading-relaxed text-ink/80">{a}</p>
+            <p className="px-5 pb-5 pl-[3.6rem] font-hand text-lg leading-relaxed text-ink/80">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
 }
+
+const STATS = [
+  { Icon: BookOpenCheck, tile: 'bg-primary-soft text-primary', blob: 'bg-primary-soft', num: 'text-primary' },
+  { Icon: CircleMinus, tile: 'bg-[#FCE7EC] text-pen', blob: 'bg-[#FCE7EC]', num: 'text-pen' },
+  { Icon: CalendarDays, tile: 'bg-secondary-soft text-secondary', blob: 'bg-secondary-soft', num: 'text-secondary' },
+  { Icon: Gift, tile: 'bg-sticky-yellow text-[#92400E]', blob: 'bg-sticky-yellow', num: 'text-[#92400E]' },
+] as const;
 
 export function LandingPage() {
   useDocumentTitle('');
@@ -145,62 +166,122 @@ export function LandingPage() {
     <div className="bg-notebook [--margin-x:14px] sm:[--margin-x:28px] lg:[--margin-x:48px]">
       <ScrollProgress />
       {/* ---------------- Hero ---------------- */}
-      <section className="container-page grid items-center gap-12 pb-16 pt-10 lg:grid-cols-[1.1fr_1fr] lg:gap-8 lg:pb-20 lg:pt-14">
-        <div className="min-w-0">
-          <motion.p {...HERO(0)} className="font-hand text-lg text-secondary sm:text-xl">{bankingOnly ? t('heroForBanking') : t('heroFor')} —</motion.p>
-          <h1 className="mt-3 text-[2.7rem] font-extrabold leading-[1] tracking-tight sm:text-6xl lg:text-[4.6rem]">
-            <motion.span {...HERO(0.08)} className="block">{t('heroLine1')}</motion.span>
-            <motion.span {...HERO(0.16)} className="block">{t('heroLine2')}</motion.span>
-            {/* "Get Hired." appears, then the red pen circles it. */}
-            <motion.span {...HERO(0.3)} className="relative mt-3 inline-block -rotate-3 px-5 pb-2 text-primary sm:-ml-4 sm:px-7">
-              {t('heroLine3')}
-              <svg viewBox="0 0 300 100" preserveAspectRatio="none" className="pointer-events-none absolute -inset-1.5 h-[calc(100%+12px)] w-[calc(100%+12px)] overflow-visible text-pen" aria-hidden>
-                <motion.path
-                  d="M160 8 C 255 6, 296 28, 294 52 C 292 80, 222 96, 146 94 C 66 92, 6 80, 8 50 C 10 22, 74 6, 170 12"
-                  fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" vectorEffect="non-scaling-stroke"
-                  initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.6 }}
-                />
-              </svg>
-            </motion.span>
-          </h1>
-          <motion.p {...HERO(0.42)} className="mt-7 max-w-xl text-lg leading-relaxed text-muted">{t('heroBody')}</motion.p>
-          <motion.div {...HERO(0.52)} className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
-            <BubbleCta to={startHref}>{t('heroCta')}</BubbleCta>
-            <a href="#features" className="group font-bold text-ink underline decoration-2 underline-offset-4 hover:text-primary">
-              {t('heroSecondary')} <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-            </a>
-          </motion.div>
-          <motion.p {...HERO(0.62)} className="mt-5 font-hand text-base text-muted">{t('heroNote')}</motion.p>
+      <section className="relative isolate">
+        <HeroBackdrop />
+        <div className="container-page grid items-center gap-12 pb-20 pt-10 lg:grid-cols-[1.1fr_1fr] lg:gap-8 lg:pb-28 lg:pt-14">
+          <div className="min-w-0">
+            {openMockCount > 0 && (
+              <motion.p {...HERO(0)} className="mb-5 inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-card/85 px-3 py-1.5 text-xs font-bold text-secondary shadow-sm backdrop-blur">
+                <span className="relative flex h-2 w-2" aria-hidden>
+                  <motion.span className="absolute inset-0 rounded-full bg-success" animate={{ scale: [1, 2.6], opacity: [0.6, 0] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }} />
+                  <span className="relative h-2 w-2 rounded-full bg-success" />
+                </span>
+                {t('heroLive', { n: openMockCount })}
+              </motion.p>
+            )}
+            <motion.p {...HERO(0.05)} className="font-hand text-lg text-secondary sm:text-xl">{bankingOnly ? t('heroForBanking') : t('heroFor')} —</motion.p>
+            <h1 className="mt-3 text-[2.7rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.6rem]">
+              <span className="block"><WordsReveal text={t('heroLine1')} delay={0.1} /></span>
+              <span className="block"><WordsReveal text={t('heroLine2')} delay={0.3} /></span>
+              {/* The last line appears, then the red pen circles it. */}
+              <motion.span
+                initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
+                animate={{ opacity: 1, scale: 1, rotate: -3 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 16, delay: 0.55 }}
+                className="relative mt-3 inline-block px-5 pb-2 text-primary sm:-ml-4 sm:px-7"
+              >
+                {t('heroLine3')}
+                <svg viewBox="0 0 300 100" preserveAspectRatio="none" className="pointer-events-none absolute -inset-1.5 h-[calc(100%+12px)] w-[calc(100%+12px)] overflow-visible text-pen" aria-hidden>
+                  <motion.path
+                    d="M160 8 C 255 6, 296 28, 294 52 C 292 80, 222 96, 146 94 C 66 92, 6 80, 8 50 C 10 22, 74 6, 170 12"
+                    fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" vectorEffect="non-scaling-stroke"
+                    initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.85 }}
+                  />
+                </svg>
+              </motion.span>
+            </h1>
+            <motion.p {...HERO(0.5)} className="mt-7 max-w-xl text-lg leading-relaxed text-muted">{t('heroBody')}</motion.p>
+            <motion.div {...HERO(0.6)} className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+              <Magnetic><BubbleCta to={startHref}>{t('heroCta')}</BubbleCta></Magnetic>
+              <a href="#features" className="group font-bold text-ink underline decoration-2 underline-offset-4 hover:text-primary">
+                {t('heroSecondary')} <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </motion.div>
+            <motion.ul
+              className="mt-6 flex flex-wrap gap-2"
+              initial="hidden"
+              animate="show"
+              variants={{ show: { transition: { staggerChildren: 0.08, delayChildren: 0.75 } } }}
+            >
+              {(['heroChip1', 'heroChip2', 'heroChip3'] as const).map((k) => (
+                <motion.li
+                  key={k}
+                  variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-card/80 px-3 py-1 text-sm font-medium text-muted backdrop-blur"
+                >
+                  <Check className="h-3.5 w-3.5 text-success" strokeWidth={3} aria-hidden />
+                  {t(k)}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+          <TiltCard max={5}>
+            <AnswerSheetHero />
+          </TiltCard>
         </div>
-        <AnswerSheetHero />
+        {/* scroll cue */}
+        <motion.a
+          href="#how-it-works"
+          className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-[11px] font-bold uppercase tracking-[0.18em] text-subtle hover:text-primary lg:flex"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6 }}
+        >
+          <span className="flex h-8 w-5 justify-center rounded-full border-2 border-current pt-1.5" aria-hidden>
+            <motion.span className="h-1.5 w-1 rounded-full bg-current" animate={{ y: [0, 8, 0], opacity: [1, 0.2, 1] }} transition={{ duration: 1.6, repeat: Infinity }} />
+          </span>
+          {t('scrollCue')}
+        </motion.a>
       </section>
 
       {/* ---------------- Exam ribbon ---------------- */}
-      <ExamMarquee exams={popular.filter((e) => isExamOpen(e))} label={t('examsRibbon')} />
+      <div className="overflow-hidden py-4">
+        <div className="-rotate-[1.2deg] scale-x-[1.04] shadow-[0_10px_0_rgba(28,35,33,0.08)]">
+          <ExamMarquee exams={popular.filter((e) => isExamOpen(e))} label={t('examsRibbon')} />
+        </div>
+      </div>
 
       {/* ---------------- Numbers strip (all true product facts, no invented stats) ---------------- */}
       <section aria-label={t('statsLabel')} className="container-page pt-12">
-        <dl className="grid grid-cols-2 overflow-hidden rounded-2xl border-[1.5px] border-ink bg-card lg:grid-cols-4">
+        <dl className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {[
             { to: openMockCount, decimals: 0, label: t('stat1') },
             { to: 0.25, decimals: 2, label: t('stat2') },
             { to: 7, decimals: 0, label: t('stat3') },
             { to: 1, decimals: 0, label: t('stat4') },
-          ].map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
-              className={cn('flex flex-col-reverse gap-1 p-5 sm:p-6', i % 2 === 1 && 'border-l-[1.5px] border-dashed border-line-strong', i > 1 && 'border-t-[1.5px] border-dashed border-line-strong lg:border-t-0', i === 2 && 'lg:border-l-[1.5px]')}
-            >
-              <dt className="text-sm leading-snug text-muted">{s.label}</dt>
-              <dd className="font-display text-4xl font-extrabold tabular-nums tracking-tight text-ink sm:text-5xl">
-                <CountUp to={s.to} decimals={s.decimals} />
-              </dd>
-            </motion.div>
-          ))}
+          ].map((stat, i) => {
+            const look = STATS[i]!;
+            return (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -5 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
+                className="group relative flex flex-col-reverse overflow-hidden rounded-2xl border-[1.5px] border-ink bg-card p-5 shadow-hard-sm sm:p-6"
+              >
+                <span className={cn('absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-70 transition-transform duration-500 group-hover:scale-[1.7]', look.blob)} aria-hidden />
+                <dt className="relative mt-1 text-sm leading-snug text-muted">{stat.label}</dt>
+                <dd className={cn('relative mt-4 font-display text-4xl font-extrabold tabular-nums tracking-tight sm:text-5xl', look.num)}>
+                  <CountUp to={stat.to} decimals={stat.decimals} />
+                </dd>
+                <span className={cn('relative flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110', look.tile)} aria-hidden>
+                  <look.Icon className="h-5 w-5" />
+                </span>
+              </motion.div>
+            );
+          })}
         </dl>
       </section>
 
@@ -208,22 +289,40 @@ export function LandingPage() {
       <section id="how-it-works" className="container-page scroll-mt-20 py-16 lg:py-24">
         <Reveal>
           <HandEyebrow>{t('loopEyebrow')}</HandEyebrow>
-          <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl">{t('loopTitle')}</h2>
         </Reveal>
+        <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl">
+          <span className="relative inline-block">
+            <WordsReveal text={t('loopTitle')} inView />
+            <PenUnderline delay={0.5} />
+          </span>
+        </h2>
         <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {LOOP.map((s, i) => (
             // Sticky notes land one by one, settling at their tilt; hovering straightens and lifts one.
             <motion.li
               key={s.title}
+              className="relative"
               initial={{ opacity: 0, y: 28, rotate: 0 }}
               whileInView={{ opacity: 1, y: 0, rotate: s.tilt }}
               whileHover={{ rotate: 0, y: -6, transition: { duration: 0.2 } }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
             >
-              <StickyNote color={s.color} className="h-full">
-                <p className="font-hand text-4xl font-bold text-primary">{i + 1}</p>
-                <h3 className="mt-1 text-xl font-bold sm:text-2xl">{t(s.title)}</h3>
+              {i < LOOP.length - 1 && <DrawnArrow className="absolute -right-10 top-2 z-10 hidden h-9 w-16 lg:block" delay={0.5 + i * 0.15} />}
+              <StickyNote color={s.color} className="relative h-full">
+                {/* tape */}
+                <span className="absolute -top-3 left-1/2 h-6 w-20 -translate-x-1/2 -rotate-2 bg-white/60 shadow-sm" aria-hidden />
+                <span className="relative flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink" aria-hidden>
+                  <motion.span
+                    className="absolute inset-[3px] rounded-full bg-ink"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 18, delay: 0.35 + i * 0.12 }}
+                  />
+                  <span className="relative font-display text-lg font-extrabold text-white">{i + 1}</span>
+                </span>
+                <h3 className="mt-3 text-xl font-bold sm:text-2xl">{t(s.title)}</h3>
                 <p className="mt-2 leading-relaxed text-ink/80">{t(s.body)}</p>
               </StickyNote>
             </motion.li>
@@ -233,16 +332,22 @@ export function LandingPage() {
 
       {/* ---------------- Marks leak ---------------- */}
       <section id="features" className="container-page scroll-mt-20 pb-16 lg:pb-24">
-        <Reveal className="grid items-center gap-10 rounded-[28px] border-2 border-ink bg-card p-6 shadow-hard sm:p-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:p-14">
+        <Reveal className="relative grid items-center gap-10 overflow-hidden rounded-[28px] border-2 border-ink bg-card bg-[radial-gradient(circle,rgba(28,35,33,0.07)_1px,transparent_1px)] p-6 shadow-hard [background-size:18px_18px] sm:p-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:p-14">
+          <span className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-pen/10 blur-3xl" aria-hidden />
           <div className="min-w-0">
             <HandEyebrow tone="pen">{t('leakEyebrow')}</HandEyebrow>
             <h2 className="mt-1 text-3xl font-extrabold leading-tight sm:text-[2.6rem]">
               {t('leakTitle1')}
               <br />
-              {t('leakTitle2')} <span className="text-pen">{t('leakTitle3')}</span>
+              {t('leakTitle2')}{' '}
+              <span className="relative inline-block text-pen">
+                {t('leakTitle3')}
+                <PenUnderline delay={0.4} />
+              </span>
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted">{t('leakBody')}</p>
           </div>
+          <TiltCard max={4} className="relative">
           <MarksLeak
             className="border-dashed border-line-strong bg-paper"
             title={t('leakCardTitle')}
@@ -254,6 +359,7 @@ export function LandingPage() {
             note={<PenNote>{t('leakNote')}</PenNote>}
             animated
           />
+          </TiltCard>
         </Reveal>
       </section>
 
@@ -263,10 +369,10 @@ export function LandingPage() {
       {/* ---------------- Categories as index cards ---------------- */}
       <section className="container-page pb-16 lg:pb-24">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <Reveal>
-            <HandEyebrow tone="green">{t('catEyebrow')}</HandEyebrow>
-            <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl">{t('catTitle')}</h2>
-          </Reveal>
+          <div>
+            <Reveal><HandEyebrow tone="green">{t('catEyebrow')}</HandEyebrow></Reveal>
+            <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl"><WordsReveal text={t('catTitle')} inView /></h2>
+          </div>
           <ButtonLink to="/exams" variant="outline" rightIcon={<ArrowRight className="h-4 w-4" />} className="self-start border-ink sm:self-auto">{t('catAll')}</ButtonLink>
         </div>
         {launchFocus ? (
@@ -280,22 +386,34 @@ export function LandingPage() {
                       <AppIcon name={c.icon} className="h-3.5 w-3.5" />
                       {count === 1 ? t('mockOne') : t('mocksMany', { count })}
                     </span>
-                    <article className="grid gap-6 rounded-[0_20px_20px_20px] border-[1.5px] border-ink bg-ruled p-6 shadow-hard sm:p-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
-                      <div>
+                    <article className="relative grid gap-6 overflow-hidden rounded-[0_20px_20px_20px] border-[1.5px] border-ink bg-ruled p-6 shadow-hard sm:p-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+                      <span className="pointer-events-none absolute -bottom-20 -right-16 h-64 w-64 rounded-full bg-secondary/10 blur-2xl" aria-hidden />
+                      <motion.span
+                        className="pointer-events-none absolute -bottom-6 right-4 text-secondary opacity-[0.07]"
+                        initial={{ rotate: -12, scale: 0.8 }}
+                        whileInView={{ rotate: 0, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        aria-hidden
+                      >
+                        <AppIcon name={c.icon} className="h-44 w-44" />
+                      </motion.span>
+                      <div className="relative">
                         <h3 className="text-2xl font-extrabold sm:text-3xl">{categoryText(tc, c.id).label}</h3>
                         <p className="mt-2 leading-relaxed text-muted">{categoryText(tc, c.id).description}</p>
                         <ButtonLink to={`/exams?category=${c.id}`} className="mt-5" rightIcon={<ArrowRight className="h-4 w-4" />}>{t('catOpenCta', { count })}</ButtonLink>
                       </div>
-                      <ul className="flex flex-wrap gap-2" aria-label={categoryText(tc, c.id).label}>
+                      <ul className="relative flex flex-wrap gap-2" aria-label={categoryText(tc, c.id).label}>
                         {open.map((e, i) => (
                           <motion.li
                             key={e.id}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
+                            whileHover={{ y: -3 }}
                             transition={{ duration: 0.25, delay: 0.1 + Math.min(i, 12) * 0.04 }}
                           >
-                            <Link to={`/exams/${e.id}`} className="inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-ink bg-card px-3 py-1.5 text-sm font-semibold transition-colors hover:bg-ink hover:text-white">
+                            <Link to={`/exams/${e.id}`} className="inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-ink bg-card px-3 py-1.5 text-sm font-semibold shadow-[0_2px_0_var(--color-ink)] transition-colors hover:bg-ink hover:text-white">
                               {ct(e.shortTitle)}
                             </Link>
                           </motion.li>
@@ -312,10 +430,13 @@ export function LandingPage() {
             <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
               {soonCats.map((c, i) => (
                 <motion.div key={c.id} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: i * 0.06 }}>
-                  <Link to={`/exams?category=${c.id}`} className="group flex h-full flex-col gap-2 rounded-2xl border border-line-strong bg-card/70 p-4 transition-colors hover:border-ink">
-                    <span className={cn('inline-flex w-fit items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-bold', CATEGORY_TAB[c.id])}>
-                      <AppIcon name={c.icon} className="h-3 w-3" />
-                      {tc('comingSoon')}
+                  <Link to={`/exams?category=${c.id}`} className="group relative flex h-full flex-col gap-2 rounded-2xl border border-dashed border-line-strong bg-card/70 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-solid hover:border-ink hover:shadow-hard-sm">
+                    <span className="flex items-center justify-between">
+                      <span className={cn('inline-flex w-fit items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-bold', CATEGORY_TAB[c.id])}>
+                        <AppIcon name={c.icon} className="h-3 w-3" />
+                        {tc('comingSoon')}
+                      </span>
+                      <Lock className="h-3.5 w-3.5 text-subtle transition-transform group-hover:rotate-12" aria-hidden />
                     </span>
                     <span className="text-sm font-bold leading-snug">{categoryText(tc, c.id).label}</span>
                     <span className="font-hand text-sm text-muted">{c.examples.split(' · ').map(ct).join(' · ')}</span>
@@ -353,20 +474,31 @@ export function LandingPage() {
         <Reveal className="min-w-0">
           <HandEyebrow tone="green">{t('pathEyebrow')}</HandEyebrow>
           <h2 className="mt-1 text-3xl font-extrabold leading-tight sm:text-[2.6rem]">{t('pathTitle1')}<br />{t('pathTitle2')}</h2>
-          <PrepPathPreview startHref={startHref} className="mt-8" />
+          <TiltCard max={4} className="mt-8"><PrepPathPreview startHref={startHref} /></TiltCard>
         </Reveal>
         <Reveal className="min-w-0" delay={0.1}>
           <HandEyebrow tone="green">{t('mitraEyebrow')}</HandEyebrow>
           <h2 className="mt-1 text-3xl font-extrabold leading-tight sm:text-[2.6rem]">{t('mitraTitle1')}<br />{t('mitraTitle2')}</h2>
           {/* The question arrives, then Mitra's answer appears line by line. */}
           <motion.div
-            className="mt-8 flex min-h-[360px] flex-col gap-4 rounded-3xl bg-chalkboard p-6 font-hand text-chalk-text shadow-[0_10px_0_var(--color-wood)] sm:p-7"
+            className="relative mt-8 flex min-h-[380px] flex-col gap-4 overflow-hidden rounded-3xl bg-chalkboard p-6 font-hand text-chalk-text shadow-[0_10px_0_var(--color-wood)] sm:p-7"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.4 }}
-            variants={{ show: { transition: { staggerChildren: 0.35, delayChildren: 0.2 } } }}
+            variants={{ show: { transition: { staggerChildren: 0.35, delayChildren: 1.1 } } }}
           >
-            <motion.p variants={CHAT} className="self-end rounded-[16px_16px_4px_16px] bg-primary-soft px-4 py-2 text-lg text-ink">{t('mitraQ')}</motion.p>
+            <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.10),transparent_55%)]" aria-hidden />
+            <div className="relative flex items-center gap-2 border-b border-white/10 pb-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/60">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-sm text-chalk-deep" aria-hidden>☺</span>
+              Mitra · AI
+              <motion.span
+                className="ml-auto"
+                variants={{ hidden: { opacity: 1 }, show: { opacity: 0, transition: { delay: 1.0, duration: 0.2 } } }}
+              >
+                <TypingDots />
+              </motion.span>
+            </div>
+            <motion.p variants={CHAT} className="relative self-end rounded-[16px_16px_4px_16px] bg-primary-soft px-4 py-2 text-lg text-ink">{t('mitraQ')}</motion.p>
             <motion.p variants={CHAT} className="text-2xl font-bold text-marigold">{t('mitraA1')}</motion.p>
             <motion.p variants={CHAT} className="text-lg leading-relaxed sm:text-xl">{t('mitraA2')}<br />{t('mitraA3')}</motion.p>
             <motion.p variants={CHAT} className="rounded-xl border-[1.5px] border-dashed border-white/45 px-4 py-2.5 text-lg"><b className="text-accent">{t('mitraShortcutLabel')}</b> {t('mitraShortcut')}</motion.p>
@@ -397,12 +529,11 @@ export function LandingPage() {
       </section>}
 
       {/* ---------------- Pricing as admit cards ---------------- */}
-      <section id="pricing" className="container-page scroll-mt-20 py-16 lg:py-24">
-        <Reveal>
-          <HandEyebrow>{t('priceEyebrow')}</HandEyebrow>
-          <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl">{t('priceTitle')}</h2>
-          <p className="mt-3 text-lg text-muted">{interviewsEnabled() ? t('priceBody') : t('priceBodyExams')}</p>
-        </Reveal>
+      <section id="pricing" className="relative container-page scroll-mt-20 py-16 lg:py-24">
+        <span className="pointer-events-none absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" aria-hidden />
+        <Reveal><HandEyebrow>{t('priceEyebrow')}</HandEyebrow></Reveal>
+        <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl"><WordsReveal text={t('priceTitle')} inView /></h2>
+        <Reveal delay={0.15}><p className="mt-3 text-lg text-muted">{interviewsEnabled() ? t('priceBody') : t('priceBodyExams')}</p></Reveal>
         <div className="mt-12">
           <PricingCards
             inView
@@ -415,35 +546,70 @@ export function LandingPage() {
 
       {/* ---------------- FAQ in the margin ---------------- */}
       <section id="faq" className="container-page grid scroll-mt-20 gap-10 pb-16 lg:grid-cols-[0.75fr_1.25fr] lg:pb-24">
-        <Reveal>
-          <HandEyebrow>{t('faqEyebrow')}</HandEyebrow>
-          <h2 className="mt-1 text-4xl font-extrabold leading-tight sm:text-5xl">{t('faqTitle')}</h2>
-        </Reveal>
-        <Reveal delay={0.1}>
+        <div className="lg:sticky lg:top-24 lg:self-start">
+          <Reveal><HandEyebrow>{t('faqEyebrow')}</HandEyebrow></Reveal>
+          <h2 className="mt-1 text-4xl font-extrabold leading-tight sm:text-5xl"><WordsReveal text={t('faqTitle')} inView /></h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20, rotate: 0 }}
+            whileInView={{ opacity: 1, y: 0, rotate: -1.5 }}
+            whileHover={{ rotate: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="mt-8 max-w-sm"
+          >
+            <StickyNote color="yellow" className="relative">
+              <span className="absolute -top-3 left-8 h-6 w-16 -rotate-3 bg-white/60 shadow-sm" aria-hidden />
+              <p className="font-display text-xl font-bold">{t('faqStillTitle')}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink/80">{t('faqStillBody')}</p>
+              <Link to={startHref} className="group mt-4 inline-flex items-center gap-1.5 font-bold text-primary">
+                {t('faqStillCta')}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+              </Link>
+            </StickyNote>
+          </motion.div>
+        </div>
+        <motion.div
+          className="space-y-2"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{ show: { transition: { staggerChildren: 0.06 } } }}
+        >
           {FAQS.map((f, i) => (
-            <FaqItem key={f.q} id={`faq-${i}`} q={t(f.q)} a={t(f.a)} open={faqOpen === i} onToggle={() => setFaqOpen((o) => (o === i ? -1 : i))} />
+            <motion.div key={f.q} variants={{ hidden: { opacity: 0, x: 16 }, show: { opacity: 1, x: 0, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } } }}>
+              <FaqItem index={i} id={`faq-${i}`} q={t(f.q)} a={t(f.a)} open={faqOpen === i} onToggle={() => setFaqOpen((o) => (o === i ? -1 : i))} />
+            </motion.div>
           ))}
-        </Reveal>
+        </motion.div>
       </section>
 
       {/* ---------------- Final CTA ---------------- */}
       <section className="container-page pb-16 lg:pb-20">
         <motion.div
-          className="flex flex-col items-start justify-between gap-8 rounded-[28px] bg-chalkboard px-6 py-10 shadow-[0_12px_0_var(--color-wood)] sm:px-12 sm:py-14 lg:flex-row lg:items-center"
+          className="relative flex flex-col items-start justify-between gap-8 overflow-hidden rounded-[28px] bg-chalkboard px-6 py-12 shadow-[0_12px_0_var(--color-wood)] sm:px-12 sm:py-16 lg:flex-row lg:items-center"
           initial={{ opacity: 0, scale: 0.97, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="min-w-0">
+          <FloatingBubbles />
+          <span className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl" aria-hidden />
+          <div className="relative min-w-0">
             <h2 className="font-hand text-4xl font-bold leading-tight text-chalk-text sm:text-5xl">
-              {t('ctaTitle1')}
-              <br />
-              <span className="text-marigold">{t('ctaTitle2')}</span>
+              <span className="block"><WordsReveal text={t('ctaTitle1')} inView /></span>
+              <span className="block text-marigold"><WordsReveal text={t('ctaTitle2')} inView delay={0.25} /></span>
             </h2>
             <p className="mt-3 text-lg text-white/80">{t('ctaBody')}</p>
           </div>
-          <BubbleCta to={startHref} tone="marigold" className="shrink-0">{t('ctaBubble')}</BubbleCta>
+          <div className="relative shrink-0">
+            <motion.span
+              className="pointer-events-none absolute inset-0 rounded-[20px] border-2 border-marigold"
+              animate={{ scale: [1, 1.12], opacity: [0.7, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
+              aria-hidden
+            />
+            <Magnetic><BubbleCta to={startHref} tone="marigold">{t('ctaBubble')}</BubbleCta></Magnetic>
+          </div>
         </motion.div>
         <p className="mt-6 text-center text-xs text-muted">{tl('affiliation')}</p>
       </section>

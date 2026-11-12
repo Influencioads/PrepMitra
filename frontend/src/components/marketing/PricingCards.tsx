@@ -6,7 +6,7 @@ import { Button, ButtonLink, Card } from '@/components/ui';
 import { cn } from '@/utils/cn';
 import { useT, useUiLang } from '@/i18n';
 import { catalogMessages, planCopy } from '@/i18n/messages/catalog';
-import { Stagger } from '@/components/motion';
+import { Stagger, motion } from '@/components/motion';
 import { interviewsEnabled } from '@/config/launch';
 
 const perCredit = (p: Plan) => (p.priceInr > 0 && p.credits > 0 ? Math.round(p.priceInr / p.credits) : 0);
@@ -26,10 +26,19 @@ export function PricingCards({
           <Card
             key={p.id}
             className={cn(
-              'relative flex flex-col rounded-2xl border-[1.5px] border-ink p-6',
+              'relative flex flex-col rounded-2xl border-[1.5px] border-ink p-6 transition-transform duration-200 hover:-translate-y-1.5',
               p.highlighted ? 'border-[2.5px] border-primary bg-primary-soft shadow-[8px_8px_0_var(--color-primary)] xl:-rotate-1' : 'shadow-hard-sm',
             )}
           >
+            {p.highlighted && (
+              <span className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl" aria-hidden>
+                <motion.span
+                  className="absolute inset-y-0 -left-1/3 w-1/4 skew-x-[-20deg] bg-white/50"
+                  animate={{ x: ['0%', '650%'] }}
+                  transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 4, ease: 'easeInOut' }}
+                />
+              </span>
+            )}
             {p.badge && (
               <span className={cn(
                 'absolute -top-4 right-4 rotate-6 rounded-lg border-[2.5px] bg-paper px-2.5 py-1 text-xs font-extrabold uppercase tracking-[0.1em]',

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useInView, useReducedMotion, useSpring, useTransform } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { HandEyebrow } from '@/components/ui';
+import { SparkBurst, TiltCard } from './HomeFx';
 import { cn } from '@/utils/cn';
 import { useT } from '@/i18n';
 import { homeMessages } from '@/i18n/messages/home';
@@ -86,7 +87,14 @@ export function CutoffMeter() {
           </div>
         </div>
 
-        <div className="min-w-0 rounded-[24px] border-2 border-ink bg-card p-5 shadow-hard sm:p-8">
+        <TiltCard max={3} className="min-w-0">
+        <div className="relative overflow-hidden rounded-[24px] border-2 border-ink bg-card p-5 shadow-hard sm:p-8">
+          <motion.span
+            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full blur-3xl"
+            animate={{ backgroundColor: after ? 'rgba(30,94,71,0.16)' : 'rgba(242,140,40,0.16)' }}
+            transition={{ duration: 0.6 }}
+            aria-hidden
+          />
           {/* Score readout */}
           <div className="flex items-end justify-between gap-4">
             <div>
@@ -103,12 +111,13 @@ export function CutoffMeter() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ type: 'spring', stiffness: 380, damping: 18 }}
                 className={cn(
-                  'mb-2 rounded-lg border-[2.5px] px-3 py-1 text-sm font-extrabold uppercase tracking-wide',
+                  'relative mb-2 rounded-lg border-[2.5px] px-3 py-1 text-sm font-extrabold uppercase tracking-wide',
                   after ? 'border-secondary text-secondary' : 'border-pen text-pen',
                 )}
                 aria-live="polite"
               >
                 {after ? t('cutClear', { n: fmt(gap) }) : t('cutShort', { n: fmt(gap) })}
+                {after && <SparkBurst />}
               </motion.span>
             </AnimatePresence>
           </div>
@@ -170,6 +179,7 @@ export function CutoffMeter() {
             {t('cutSample')}
           </motion.p>
         </div>
+        </TiltCard>
       </div>
     </section>
   );

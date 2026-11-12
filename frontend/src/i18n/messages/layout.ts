@@ -33,6 +33,10 @@ export const layoutMessages = defineMessages({
     terms: 'Terms of use',
     refund: 'Refund & cancellation',
     contact: 'Contact us',
+    backToTop: 'Back to top',
+    footerSoon: 'Soon',
+    footerTaglineExams: 'Bank exam mocks with a report that shows every mark you gave away.',
+    footerBigLine: 'Every quarter mark counts.',
     copyright: '© {{year}} PrepMitra AI. Prototype build.',
     affiliation:
       'PrepMitra AI offers mock tests based on public exam patterns. We are not affiliated with SSC, UPSC, IBPS, SBI, RRB, IIMs, IITs, NTA or any exam-conducting body.',
@@ -131,6 +135,10 @@ export const layoutMessages = defineMessages({
     terms: 'उपयोग की शर्तें',
     refund: 'रिफ़ंड और कैंसलेशन',
     contact: 'संपर्क करें',
+    backToTop: 'ऊपर जाएँ',
+    footerSoon: 'जल्द',
+    footerTaglineExams: 'बैंक परीक्षा के मॉक, ऐसी रिपोर्ट के साथ जो हर छूटा अंक दिखाती है।',
+    footerBigLine: 'हर चौथाई अंक मायने रखता है।',
     copyright: '© {{year}} PrepMitra AI. प्रोटोटाइप बिल्ड।',
     affiliation:
       'PrepMitra AI सार्वजनिक परीक्षा पैटर्न पर आधारित मॉक टेस्ट देता है। हमारा SSC, UPSC, IBPS, SBI, RRB, IIM, IIT, NTA या किसी भी परीक्षा संस्था से कोई संबंध नहीं है।',
