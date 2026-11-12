@@ -18,7 +18,7 @@ describe('CutoffMeter (home page)', () => {
     await user.click(after);
     expect(after).toHaveAttribute('aria-pressed', 'true');
     expect(await screen.findByText('Cleared by 4.75')).toBeInTheDocument();
-    expect(screen.getAllByText(/· plugged/).length).toBe(3);
+    expect(screen.getAllByText('plugged').length).toBe(3);
     expect(screen.getByText(/Sample numbers/)).toBeInTheDocument();
   });
 });

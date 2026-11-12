@@ -68,6 +68,10 @@ export const homeMessages = defineMessages({
     cutShort: '{{n}} short',
     cutClear: 'Cleared by {{n}}',
     cutPlugged: 'plugged',
+    cutReplay: 'Replay',
+    cutRecovered: 'Marks won back',
+    cutLeaksTitle: 'The three leaks',
+    cutYouTag: 'You',
     cutSample: 'Sample numbers · IBPS PO Prelims · out of 100',
 
     dialEyebrow: 'turn the dial',
@@ -214,6 +218,10 @@ export const homeMessages = defineMessages({
     cutShort: '{{n}} पीछे',
     cutClear: '{{n}} से पार',
     cutPlugged: 'रोका',
+    cutReplay: 'फिर से चलाएँ',
+    cutRecovered: 'वापस मिले अंक',
+    cutLeaksTitle: 'तीन रिसाव',
+    cutYouTag: 'आप',
     cutSample: 'नमूना अंक · IBPS PO प्रीलिम्स · 100 में से',
 
     dialEyebrow: 'डायल घुमाइए',
