@@ -168,11 +168,12 @@ export function LandingPage() {
     <div className="bg-notebook [--margin-x:14px] sm:[--margin-x:28px] lg:[--margin-x:48px]">
       <ScrollProgress />
       {/* ---------------- Hero: the turn-the-dial exam picker, with the headline on top ---------------- */}
-      <section className="container-page pb-10 pt-4 sm:pt-6">
+      <section className="pb-2">
         <ExamDial
           exams={dialExams}
           allHref="/exams?category=banking"
           tall
+          className="rounded-none"
           heading={
             <>
               <motion.p {...HERO(0)} className="font-hand text-lg text-marigold sm:text-xl">{bankingOnly ? t('heroForBanking') : t('heroFor')} —</motion.p>
