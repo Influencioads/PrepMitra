@@ -323,7 +323,7 @@ export function LandingPage() {
       <CutoffMeter />
 
       {/* ---------------- Categories as index cards ---------------- */}
-      <section className="container-page pb-16 lg:pb-24">
+      <section className="container-page py-16 lg:py-24">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <Reveal><HandEyebrow tone="green">{t('catEyebrow')}</HandEyebrow></Reveal>
