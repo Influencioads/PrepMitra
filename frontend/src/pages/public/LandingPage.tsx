@@ -8,6 +8,7 @@ import { PricingCards } from '@/components/marketing/PricingCards';
 import { PanelRoom, PrepPathPreview } from '@/components/marketing/PaperVisuals';
 import { ExamMarquee } from '@/components/marketing/ExamMarquee';
 import { CutoffMeter } from '@/components/marketing/CutoffMeter';
+import { ExamDial } from '@/components/marketing/ExamDial';
 import { DrawnArrow, FloatingBubbles, Magnetic, PenUnderline, TiltCard, TypingDots, WordsReveal } from '@/components/marketing/HomeFx';
 import { PhoneReport } from '@/components/marketing/PhoneReport';
 import { AnimatePresence, CountUp, Reveal, motion, useScroll, useSpring } from '@/components/motion/landing';
@@ -328,62 +329,19 @@ export function LandingPage() {
 
       {/* ---------------- Categories as index cards ---------------- */}
       <section className="container-page pb-16 lg:pb-24">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <Reveal><HandEyebrow tone="green">{t('catEyebrow')}</HandEyebrow></Reveal>
-            <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl"><WordsReveal text={t('catTitle')} inView /></h2>
-          </div>
-          <ButtonLink to="/exams" variant="outline" rightIcon={<ArrowRight className="h-4 w-4" />} className="self-start border-ink sm:self-auto">{t('catAll')}</ButtonLink>
-        </div>
         {launchFocus ? (
           <>
-            {openCats.map(({ count, ...c }) => {
-              const open = openFirst(exams.filter((e) => e.category === c.id && isExamOpen(e)));
-              return (
-                <Reveal key={c.id} className="mt-10">
-                  <div className="relative pt-5">
-                    <span className={cn('absolute left-0 top-0 inline-flex h-7 items-center gap-1.5 rounded-t-xl px-3 text-xs font-bold', CATEGORY_TAB[c.id])}>
-                      <AppIcon name={c.icon} className="h-3.5 w-3.5" />
-                      {count === 1 ? t('mockOne') : t('mocksMany', { count })}
-                    </span>
-                    <article className="relative grid gap-6 overflow-hidden rounded-[0_20px_20px_20px] border-[1.5px] border-ink bg-ruled p-6 shadow-hard sm:p-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
-                      <span className="pointer-events-none absolute -bottom-20 -right-16 h-64 w-64 rounded-full bg-secondary/10 blur-2xl" aria-hidden />
-                      <motion.span
-                        className="pointer-events-none absolute -bottom-6 right-4 text-secondary opacity-[0.07]"
-                        initial={{ rotate: -12, scale: 0.8 }}
-                        whileInView={{ rotate: 0, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        aria-hidden
-                      >
-                        <AppIcon name={c.icon} className="h-44 w-44" />
-                      </motion.span>
-                      <div className="relative">
-                        <h3 className="text-2xl font-extrabold sm:text-3xl">{categoryText(tc, c.id).label}</h3>
-                        <p className="mt-2 leading-relaxed text-muted">{categoryText(tc, c.id).description}</p>
-                        <ButtonLink to={`/exams?category=${c.id}`} className="mt-5" rightIcon={<ArrowRight className="h-4 w-4" />}>{t('catOpenCta', { count })}</ButtonLink>
-                      </div>
-                      <ul className="relative flex flex-wrap gap-2" aria-label={categoryText(tc, c.id).label}>
-                        {open.map((e, i) => (
-                          <motion.li
-                            key={e.id}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            whileHover={{ y: -3 }}
-                            transition={{ duration: 0.25, delay: 0.1 + Math.min(i, 12) * 0.04 }}
-                          >
-                            <Link to={`/exams/${e.id}`} className="inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-ink bg-card px-3 py-1.5 text-sm font-semibold shadow-[0_2px_0_var(--color-ink)] transition-colors hover:bg-ink hover:text-white">
-                              {ct(e.shortTitle)}
-                            </Link>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </article>
-                  </div>
-                </Reveal>
-              );
-            })}
+            {/* The open category (banking at launch) as the turn-the-dial picker. */}
+            {openCats.map((c) => (
+              <Reveal key={c.id} y={28}>
+                <ExamDial
+                  exams={openFirst(exams.filter((e) => e.category === c.id && isExamOpen(e)))}
+                  eyebrow={t('catEyebrow')}
+                  title={t('catTitle')}
+                  allHref={`/exams?category=${c.id}`}
+                />
+              </Reveal>
+            ))}
             <Reveal className="mt-10">
               <p className="font-hand text-lg text-muted">{t('catSoonTitle')} — {t('catSoonNote')}</p>
             </Reveal>
@@ -406,6 +364,14 @@ export function LandingPage() {
             </div>
           </>
         ) : (
+        <>
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <Reveal><HandEyebrow tone="green">{t('catEyebrow')}</HandEyebrow></Reveal>
+            <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl"><WordsReveal text={t('catTitle')} inView /></h2>
+          </div>
+          <ButtonLink to="/exams" variant="outline" rightIcon={<ArrowRight className="h-4 w-4" />} className="self-start border-ink sm:self-auto">{t('catAll')}</ButtonLink>
+        </div>
         <div className="mt-10 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map(({ count, ...c }) => {
             return (
@@ -426,6 +392,7 @@ export function LandingPage() {
             );
           })}
         </div>
+        </>
         )}
       </section>
 
