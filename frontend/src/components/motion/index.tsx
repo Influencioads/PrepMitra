@@ -1,6 +1,6 @@
-import { Children, isValidElement, type ReactNode } from 'react';
+import { Children, isValidElement, useEffect, useRef, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion, type Transition, type Variants } from 'framer-motion';
+import { animate, motion, useInView, useReducedMotion, type Transition, type Variants } from 'framer-motion';
 
 /**
  * PrepMitra motion: subtle and fast (150–300 ms), never in the student's way.
@@ -41,13 +41,15 @@ const item: Variants = {
  * Each child is wrapped in a motion div (`itemClassName`, default h-full so cards keep equal heights).
  */
 export function Stagger({
-  children, className, itemClassName = 'h-full', as = 'div', ...rest
-}: { children: ReactNode; className?: string; itemClassName?: string; as?: 'div' | 'ul' | 'ol'; 'aria-label'?: string }) {
+  children, className, itemClassName = 'h-full', as = 'div', inView = false, ...rest
+}: { children: ReactNode; className?: string; itemClassName?: string; as?: 'div' | 'ul' | 'ol'; inView?: boolean; 'aria-label'?: string }) {
   const Comp = motion[as];
   const Item = as === 'div' ? motion.div : motion.li;
   let i = 0;
+  // inView: start when the list scrolls into view (long marketing pages); otherwise on mount.
+  const trigger = inView ? { whileInView: 'show', viewport: { once: true, amount: 0.15 } } : { animate: 'show' };
   return (
-    <Comp className={className} initial="hidden" animate="show" {...rest}>
+    <Comp className={className} initial="hidden" {...trigger} {...rest}>
       {Children.map(children, (child) =>
         child == null || child === false ? null : (
           <Item key={isValidElement(child) && child.key != null ? child.key : i} className={itemClassName} variants={item} custom={i++}>
@@ -56,6 +58,44 @@ export function Stagger({
         ),
       )}
     </Comp>
+  );
+}
+
+/** Fades and rises into place once, when scrolled into view (marketing pages). */
+export function Reveal({ children, className, delay = 0, y = 18 }: { children: ReactNode; className?: string; delay?: number; y?: number }) {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.45, ease: EASE, delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** A number that counts up once when it scrolls into view (shows the final value straight away for reduced motion). */
+export function CountUp({ to, decimals = 0, prefix = '', suffix = '', className }: { to: number; decimals?: number; prefix?: string; suffix?: string; className?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const seen = useInView(ref, { once: true, amount: 0.6 });
+  const reduce = useReducedMotion();
+  const fmt = (v: number) => `${prefix}${v.toFixed(decimals)}${suffix}`;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !seen) return;
+    if (reduce) {
+      el.textContent = fmt(to);
+      return;
+    }
+    const controls = animate(0, to, { duration: 0.9, ease: EASE, onUpdate: (v) => (el.textContent = fmt(v)) });
+    return () => controls.stop();
+  }, [seen, reduce, to]); // eslint-disable-line react-hooks/exhaustive-deps
+  return (
+    <span ref={ref} className={className}>
+      {fmt(reduce ? to : 0)}
+    </span>
   );
 }
 

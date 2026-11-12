@@ -496,4 +496,23 @@ const PLAN_COPY_HI: Record<string, string> = {
 };
 
 /** Translates shared plan copy for the current UI language (falls back to English). */
-export const planCopy = (lang: 'en' | 'hi', english: string) => (lang === 'hi' ? (PLAN_COPY_HI[english] ?? english) : english);
+/** Launch mode (interviews hidden): plan lines that mention interviews, worded for exams only. */
+const EXAMS_ONLY: Record<string, string> = {
+  'One credit for any full mock exam or mock interview, valid for 90 days.': 'One credit for any full mock exam, valid for 90 days.',
+  '1 credit (exam or interview)': '1 credit = 1 full mock',
+  '10 credits for exams or interviews, valid for 90 days. One-time payment, no auto-renew.': '10 credits for full mock exams, valid for 90 days. One-time payment, no auto-renew.',
+  '10 credits (exam or interview)': '10 credits = 10 full mocks',
+  'Exams and interviews': 'All exam mocks',
+};
+Object.assign(PLAN_COPY_HI, {
+  'One credit for any full mock exam, valid for 90 days.': 'किसी भी पूरे मॉक टेस्ट के लिए एक क्रेडिट, 90 दिन तक वैध।',
+  '1 credit = 1 full mock': '1 क्रेडिट = 1 पूरा मॉक',
+  '10 credits for full mock exams, valid for 90 days. One-time payment, no auto-renew.': 'पूरे मॉक टेस्ट के लिए 10 क्रेडिट, 90 दिन तक वैध। एक बार भुगतान, ऑटो-रिन्यू नहीं।',
+  '10 credits = 10 full mocks': '10 क्रेडिट = 10 पूरे मॉक',
+  'All exam mocks': 'सभी परीक्षा मॉक',
+});
+
+export const planCopy = (lang: 'en' | 'hi', english: string, examsOnly = false) => {
+  const en = examsOnly ? (EXAMS_ONLY[english] ?? english) : english;
+  return lang === 'hi' ? (PLAN_COPY_HI[en] ?? en) : en;
+};

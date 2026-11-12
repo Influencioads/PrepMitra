@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import { cn } from '@/utils/cn';
 
 /**
@@ -112,7 +113,8 @@ export interface LeakItem {
 }
 
 /** "Where your marks leaked": a stacked bar plus a legend. Marks are computed by code, never by AI. */
-export function MarksLeak({ items, title, note, className }: { items: LeakItem[]; title: string; note?: ReactNode; className?: string }) {
+/** `animated` (marketing pages): the bar fills in when scrolled into view. Reports and PDFs stay static. */
+export function MarksLeak({ items, title, note, className, animated = false }: { items: LeakItem[]; title: string; note?: ReactNode; className?: string; animated?: boolean }) {
   const total = items.reduce((s, i) => s + i.marks, 0);
   const fmt = (n: number) => `−${Number.isInteger(n) ? n : n.toFixed(2)}`;
   return (
@@ -123,7 +125,20 @@ export function MarksLeak({ items, title, note, className }: { items: LeakItem[]
       </div>
       {total > 0 && (
         <div className="mt-4 flex h-4 overflow-hidden rounded-full sm:h-5" aria-hidden>
-          {items.filter((i) => i.marks > 0).map((i) => <span key={i.label} className={i.color} style={{ flex: i.marks }} />)}
+          {items.filter((i) => i.marks > 0).map((i, n) => !animated ? (
+            <span key={i.label} className={i.color} style={{ flex: i.marks }} />
+          ) : (
+            // Each leak fills in from the left, one after another, when the card scrolls into view.
+            <motion.span
+              key={i.label}
+              className={cn(i.color, 'origin-left')}
+              style={{ flex: i.marks }}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.15 + n * 0.25, ease: [0.22, 1, 0.36, 1] }}
+            />
+          ))}
         </div>
       )}
       <ul className="mt-4 space-y-2.5 text-sm sm:text-base">

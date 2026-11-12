@@ -4,6 +4,11 @@ import { defineMessages } from '../index';
 export const homeMessages = defineMessages({
   en: {
     heroFor: 'for SSC · Banking · Railways · CAT · Placements',
+    heroForBanking: 'for IBPS · SBI · RRB bank exams',
+    priceBodyExams: '1 credit = 1 full mock exam, with its report.',
+    catOpenCta: 'See all {{count}} mocks',
+    catSoonTitle: 'Coming soon',
+    catSoonNote: 'We are adding these exams next.',
     heroLine1: 'Practice like it’s',
     heroLine2: 'the real exam.',
     heroLine3: 'Get Hired.',
@@ -97,6 +102,11 @@ export const homeMessages = defineMessages({
   },
   hi: {
     heroFor: 'SSC · बैंकिंग · रेलवे · CAT · प्लेसमेंट के लिए',
+    heroForBanking: 'IBPS · SBI · RRB बैंक परीक्षाओं के लिए',
+    priceBodyExams: '1 क्रेडिट = 1 पूरा मॉक टेस्ट, रिपोर्ट सहित।',
+    catOpenCta: 'सभी {{count}} मॉक देखें',
+    catSoonTitle: 'जल्द आ रहा है',
+    catSoonNote: 'ये परीक्षाएँ हम आगे जोड़ रहे हैं।',
     heroLine1: 'ऐसे अभ्यास करें जैसे',
     heroLine2: 'असली परीक्षा हो।',
     heroLine3: 'नौकरी पाएँ।',

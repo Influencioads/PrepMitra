@@ -7,17 +7,19 @@ import { cn } from '@/utils/cn';
 import { useT, useUiLang } from '@/i18n';
 import { catalogMessages, planCopy } from '@/i18n/messages/catalog';
 import { Stagger } from '@/components/motion';
+import { interviewsEnabled } from '@/config/launch';
 
 const perCredit = (p: Plan) => (p.priceInr > 0 && p.credits > 0 ? Math.round(p.priceInr / p.credits) : 0);
 
 export function PricingCards({
-  plans = getActivePlans(), currentPlanId, onSelect, ctaHref,
-}: { plans?: Plan[]; currentPlanId?: PlanId; onSelect?: (plan: Plan) => void; ctaHref?: (plan: Plan) => string }) {
+  plans = getActivePlans(), currentPlanId, onSelect, ctaHref, inView,
+}: { plans?: Plan[]; currentPlanId?: PlanId; onSelect?: (plan: Plan) => void; ctaHref?: (plan: Plan) => string; inView?: boolean }) {
   const t = useT(catalogMessages);
   const lang = useUiLang();
-  const tx = (s: string) => planCopy(lang, s);
+  const examsOnly = !interviewsEnabled();
+  const tx = (s: string) => planCopy(lang, s, examsOnly);
   return (
-    <Stagger className={cn('grid gap-5 sm:grid-cols-2', plans.length === 3 ? 'lg:grid-cols-3' : 'xl:grid-cols-4')}>
+    <Stagger inView={inView} className={cn('grid gap-5 sm:grid-cols-2', plans.length === 3 ? 'lg:grid-cols-3' : 'xl:grid-cols-4')}>
       {plans.map((p) => {
         const current = currentPlanId === p.id;
         return (

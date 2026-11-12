@@ -4,14 +4,23 @@ import { Bubble, MitraSays, PenNote, PenScore, Stamp } from '@/components/ui';
 import { useT } from '@/i18n';
 import { homeMessages } from '@/i18n/messages/home';
 import { cn } from '@/utils/cn';
+import { motion } from 'framer-motion';
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 type Mark = 'ok' | 'x' | 'skip';
 const LEFT: [number, number, Mark][] = [[1, 1, 'ok'], [2, 3, 'ok'], [3, 2, 'ok'], [4, 0, 'x'], [5, 1, 'ok'], [6, 0, 'ok']];
 const RIGHT: [number, number, Mark][] = [[9, 0, 'ok'], [10, -1, 'skip'], [11, -1, 'skip'], [12, 1, 'ok'], [13, 3, 'ok'], [14, 2, 'ok']];
 
-function OmrRow({ n, pick, mark, skipLabel }: { n: number; pick: number; mark: Mark; skipLabel: string }) {
+function OmrRow({ n, pick, mark, skipLabel, order = 0 }: { n: number; pick: number; mark: Mark; skipLabel: string; order?: number }) {
   return (
-    <div className="flex h-6 items-center gap-1.5 sm:gap-2">
+    <motion.div
+      className="flex h-6 items-center gap-1.5 sm:gap-2"
+      // The sheet is "filled in" row by row, like a student bubbling answers.
+      initial={{ opacity: 0, x: -6 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.25, ease: EASE, delay: 0.45 + order * 0.06 }}
+    >
       {mark === 'skip' ? (
         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-pen text-[10px] font-bold text-pen">{n}</span>
       ) : (
@@ -23,7 +32,7 @@ function OmrRow({ n, pick, mark, skipLabel }: { n: number; pick: number; mark: M
         {mark === 'x' && <span className="font-bold text-pen">✗</span>}
         {mark === 'skip' && <span className="font-hand text-pen">{skipLabel}</span>}
       </span>
-    </div>
+    </motion.div>
   );
 }
 
@@ -32,7 +41,18 @@ export function AnswerSheetHero({ className }: { className?: string }) {
   const t = useT(homeMessages);
   return (
     <div className={cn('relative mx-auto w-full max-w-[460px] pb-24 sm:pb-20', className)} role="img" aria-label={`${t('sheetTitle')} — ${t('sampleLabel')}: 27¾/35, ${t('percentile')} 84.2`}>
-      <div className="rotate-[2deg] rounded-[10px] border-[1.5px] border-ink bg-card p-5 shadow-[14px_14px_0_var(--color-rule)] sm:p-7" aria-hidden>
+      <motion.div
+        initial={{ opacity: 0, y: 28, rotate: 6 }}
+        animate={{ opacity: 1, y: 0, rotate: 2 }}
+        transition={{ duration: 0.6, ease: EASE, delay: 0.15 }}
+        aria-hidden
+      >
+      {/* A gentle float, as if the sheet rests on a desk fan's breeze. */}
+      <motion.div
+        className="rounded-[10px] border-[1.5px] border-ink bg-card p-5 shadow-[14px_14px_0_var(--color-rule)] sm:p-7"
+        animate={{ y: [0, -5, 0] }}
+        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity, delay: 1.8 }}
+      >
         <div className="flex items-center justify-between gap-3 border-b-2 border-ink pb-3">
           <span className="font-display text-xs font-extrabold uppercase tracking-[0.12em] sm:text-sm">{t('sheetTitle')}</span>
           <span className="text-[11px] text-muted sm:text-xs">{t('sheetExam')}</span>
@@ -40,18 +60,33 @@ export function AnswerSheetHero({ className }: { className?: string }) {
         <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:gap-x-6">
           {LEFT.map((l, i) => (
             <div key={l[0]} className="contents">
-              <OmrRow n={l[0]} pick={l[1]} mark={l[2]} skipLabel={t('sheetSkip')} />
-              <OmrRow n={RIGHT[i][0]} pick={RIGHT[i][1]} mark={RIGHT[i][2]} skipLabel={t('sheetSkip')} />
+              <OmrRow n={l[0]} pick={l[1]} mark={l[2]} skipLabel={t('sheetSkip')} order={i} />
+              <OmrRow n={RIGHT[i][0]} pick={RIGHT[i][1]} mark={RIGHT[i][2]} skipLabel={t('sheetSkip')} order={i + 6} />
             </div>
           ))}
         </div>
-        <PenNote className="mt-4">{t('sheetNote')}</PenNote>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 1.25 }}>
+          <PenNote className="mt-4">{t('sheetNote')}</PenNote>
+        </motion.div>
         <div className="mt-5 flex items-center justify-between gap-3">
-          <PenScore score="27¾" total={35} size="sm" className="sm:text-5xl" />
-          <Stamp value="84.2" label={t('percentile')} />
+          {/* Red-pen score circled, then the percentile stamped. */}
+          <motion.div initial={{ opacity: 0, scale: 0.6, rotate: -12 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 260, damping: 18, delay: 1.45 }}>
+            <PenScore score="27¾" total={35} size="sm" className="sm:text-5xl" />
+          </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 1.6 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.28, ease: [0.5, 0, 0.75, 0], delay: 1.7 }}>
+            <Stamp value="84.2" label={t('percentile')} />
+          </motion.div>
         </div>
-      </div>
-      <MitraSays tone="chalk" size={52} className="absolute -left-2 bottom-0 max-w-[330px] -rotate-2 sm:-left-10">{t('mitraHero')}</MitraSays>
+      </motion.div>
+      </motion.div>
+      <motion.div
+        className="absolute -left-2 bottom-0 max-w-[330px] sm:-left-10"
+        initial={{ opacity: 0, x: -24, rotate: -2 }}
+        animate={{ opacity: 1, x: 0, rotate: -2 }}
+        transition={{ duration: 0.5, ease: EASE, delay: 2 }}
+      >
+        <MitraSays tone="chalk" size={52}>{t('mitraHero')}</MitraSays>
+      </motion.div>
     </div>
   );
 }
@@ -63,18 +98,36 @@ export function PrepPathPreview({ startHref, className }: { startHref: string; c
   return (
     <div className={cn('relative h-[360px] overflow-hidden rounded-3xl border border-line bg-card', className)}>
       <svg viewBox="0 0 260 360" preserveAspectRatio="none" className="absolute left-0 top-0 h-[360px] w-[160px] sm:w-[260px]" aria-hidden>
-        <path d="M70 52 C 170 60, 190 100, 160 132 C 130 170, 70 180, 80 222 C 90 266, 190 270, 170 312" fill="none" stroke="#1C2321" strokeWidth="3" strokeDasharray="2 10" strokeLinecap="round" />
+        {/* The dotted path draws itself when the card scrolls into view. */}
+        <defs>
+          <mask id="path-reveal">
+            <motion.path
+              d="M70 52 C 170 60, 190 100, 160 132 C 130 170, 70 180, 80 222 C 90 266, 190 270, 170 312"
+              fill="none" stroke="#fff" strokeWidth="8" strokeLinecap="round"
+              initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 1.2, ease: 'easeInOut' }}
+            />
+          </mask>
+        </defs>
+        <path d="M70 52 C 170 60, 190 100, 160 132 C 130 170, 70 180, 80 222 C 90 266, 190 270, 170 312" fill="none" stroke="#1C2321" strokeWidth="3" strokeDasharray="2 10" strokeLinecap="round" mask="url(#path-reveal)" />
       </svg>
       <ol className="contents">
         <li>
-          <span className={cn('absolute left-[19px] top-[28px] sm:left-[46px] flex h-12 w-12 items-center justify-center rounded-full', done)} aria-hidden><Check className="h-5 w-5" /></span>
+          <motion.span initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 320, damping: 16, delay: 0.2 }} className={cn('absolute left-[19px] top-[28px] sm:left-[46px] flex h-12 w-12 items-center justify-center rounded-full', done)} aria-hidden><Check className="h-5 w-5" /></motion.span>
           <p className="absolute left-[150px] sm:left-[232px] top-[40px] pr-4 text-sm text-muted sm:text-base">{t('pathDay1')}</p>
         </li>
         <li>
-          <span className={cn('absolute left-[74px] top-[108px] sm:left-[136px] flex h-12 w-12 items-center justify-center rounded-full', done)} aria-hidden><Check className="h-5 w-5" /></span>
+          <motion.span initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 320, damping: 16, delay: 0.55 }} className={cn('absolute left-[74px] top-[108px] sm:left-[136px] flex h-12 w-12 items-center justify-center rounded-full', done)} aria-hidden><Check className="h-5 w-5" /></motion.span>
           <p className="absolute left-[150px] sm:left-[232px] top-[120px] pr-4 text-sm text-muted sm:text-base">{t('pathDay2')}</p>
         </li>
         <li>
+          {/* A soft pulse invites the tap on today's step. */}
+          <motion.span
+            className="pointer-events-none absolute left-[9px] top-[182px] h-20 w-20 rounded-full bg-primary/30 sm:left-[40px]"
+            animate={{ scale: [1, 1.35], opacity: [0.55, 0] }}
+            transition={{ duration: 1.8, ease: 'easeOut', repeat: Infinity, repeatDelay: 0.6 }}
+            aria-hidden
+          />
           <Link to={startHref} className="absolute left-[9px] top-[182px] sm:left-[40px] flex h-20 w-20 items-center justify-center rounded-full bg-primary text-sm font-extrabold uppercase text-white shadow-[0_6px_0_#8A2E07,0_0_0_10px_rgb(242_140_40/0.25)] transition-transform hover:-translate-y-0.5">
             {t('start')}
           </Link>
