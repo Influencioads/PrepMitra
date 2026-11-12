@@ -1,28 +1,21 @@
-import { useEffect, useState } from 'react';
-import type { Plan } from '@prepmitra/shared';
+import { useEffect, useMemo, useState } from 'react';
+import type { Allowances, Plan } from '@prepmitra/shared';
+import { activePurchaseIds } from '@prepmitra/shared';
 import { getActivePlans, subscriptionService } from '@/services/subscriptionService';
-import { USE_MOCK } from '@/services/mock';
+import { useSubscriptionStore } from '@/store/subscriptionStore';
 
-let cache: Plan[] | null = null;
+let cached: Plan[] | null = null;
 
-/**
- * Plans from GET /v1/plans (prices, credits, validity and GST come from the server).
- * Shows the built-in plans until the server answers, and keeps them if it cannot be reached.
- */
-export function usePlans(): { plans: Plan[]; fromServer: boolean } {
-  const [plans, setPlans] = useState<Plan[]>(() => cache ?? getActivePlans());
-  const [fromServer, setFromServer] = useState(!!cache);
+/** Plans from `GET /v1/plans`; the bundled catalog until they load (or if the request fails). */
+export function usePlans(): Plan[] {
+  const [plans, setPlans] = useState<Plan[]>(() => cached ?? getActivePlans());
   useEffect(() => {
-    if (USE_MOCK || cache) return;
     let alive = true;
     subscriptionService.getPlans().then(
       (p) => {
         if (!p.length) return;
-        cache = p;
-        if (alive) {
-          setPlans(p);
-          setFromServer(true);
-        }
+        cached = p;
+        if (alive) setPlans(p);
       },
       () => undefined,
     );
@@ -30,10 +23,24 @@ export function usePlans(): { plans: Plan[]; fromServer: boolean } {
       alive = false;
     };
   }, []);
-  return { plans, fromServer };
+  return plans;
 }
 
-/** Tests: forget the cached plans. */
-export const resetPlansCache = () => {
-  cache = null;
-};
+/** `GET /v1/me/allowances`, refetched whenever the student's plans or orders change. */
+export function useAllowances(): { allowances: Allowances | null; error: boolean } {
+  const sub = useSubscriptionStore((s) => s.sub);
+  const orders = useSubscriptionStore((s) => s.orders);
+  const key = useMemo(() => activePurchaseIds(sub, orders).join(','), [sub, orders]);
+  const [state, setState] = useState<{ allowances: Allowances | null; error: boolean }>({ allowances: null, error: false });
+  useEffect(() => {
+    let alive = true;
+    subscriptionService.getAllowances(key ? key.split(',') : []).then(
+      (a) => alive && setState({ allowances: a, error: false }),
+      () => alive && setState((s) => ({ ...s, error: true })),
+    );
+    return () => {
+      alive = false;
+    };
+  }, [key, orders.length]);
+  return state;
+}

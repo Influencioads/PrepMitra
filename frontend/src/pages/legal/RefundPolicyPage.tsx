@@ -8,9 +8,9 @@ const SECTIONS: LegalSection[] = [
     title: 'Summary',
     body: (
       <ul>
+        <li><b>Credit purchases are final.</b> Once credits are added to your account, the amount paid is not refunded.</li>
         <li>Credits are deducted only when you start an exam or interview.</li>
         <li>If an attempt fails because of a technical problem on our side, the credit is restored automatically.</li>
-        <li>Unused purchased credits can be refunded within 7 days of purchase.</li>
         <li>You can cancel auto-renew at any time; your plan stays active until it expires.</li>
       </ul>
     ),
@@ -41,15 +41,19 @@ const SECTIONS: LegalSection[] = [
   },
   {
     id: 'refunds',
-    title: 'Refunds',
+    title: 'No refunds once credits are purchased',
     body: (
       <>
+        <p>
+          <b>All credit purchases are final.</b> Once the payment is successful and the credits are added to your account, the amount
+          paid is not refunded, in full or in part. This applies to used, partly used, unused and expired credits, and to every plan,
+          pack and single credit. Please check the plan before you pay.
+        </p>
+        <p>The only exceptions:</p>
         <ul>
-          <li><b>Unused credits:</b> request a refund within 7 days of purchase for any credits you have not used. Partly used packs are refunded for the unused credits, pro rata.</li>
-          <li><b>Duplicate or failed payments:</b> if you were charged but did not receive credits, or were charged twice, we refund the extra amount in full.</li>
-          <li><b>Not refundable:</b> credits already used for a completed attempt, expired credits and the free trial.</li>
+          <li><b>Technical failure on our side:</b> the credit is restored to your account (see above). This is a credit restore, not a money refund.</li>
+          <li><b>Payment errors:</b> if you were charged but no credits were added, or you were charged twice for the same order, the extra amount goes back to the original payment method (UPI, card, net banking or wallet) within 5–7 working days. Your bank may take a few more days to show it.</li>
         </ul>
-        <p>Approved refunds go back to the original payment method (UPI, card, net banking or wallet) within 5–7 working days. Your bank may take a few more days to show it.</p>
       </>
     ),
   },
@@ -59,14 +63,14 @@ const SECTIONS: LegalSection[] = [
     body: (
       <p>
         If you are on an auto-renewing plan, you can cancel auto-renew anytime from Credits &amp; plan. Cancellation stops future
-        charges; your current plan and its credits stay active until the renewal date. Unused monthly credits expire at the end of
+        charges; your current plan and its credits stay active until the renewal date, and the amount already paid is not refunded. Unused monthly credits expire at the end of
         each billing period. App store purchases are cancelled through Google Play or the App Store.
       </p>
     ),
   },
   {
     id: 'how-to',
-    title: 'How to request a refund',
+    title: 'Reporting a payment problem',
     body: (
       <p>
         Write to {SUPPORT_EMAIL} or use the <Link to="/contact" className="font-medium text-primary hover:underline">contact form</Link>{' '}
@@ -80,8 +84,8 @@ export function RefundPolicyPage() {
   return (
     <LegalDoc
       title="Refund and cancellation policy"
-      description="When credits are restored, how refunds work, and how to cancel auto-renew."
-      metaDescription="PrepMitra AI refund and cancellation policy: credits deducted on attempt start, automatic restore on technical failure, refunds in 5–7 working days."
+      description="Credit purchases are final. When credits are restored, and how to cancel auto-renew."
+      metaDescription="PrepMitra AI refund and cancellation policy: credit purchases are final and not refundable, credits are deducted on attempt start and restored automatically on technical failure."
       sections={SECTIONS}
     />
   );

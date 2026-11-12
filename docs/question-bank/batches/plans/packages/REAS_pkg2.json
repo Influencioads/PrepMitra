@@ -1,0 +1,302 @@
+{
+  "subject": "Reasoning Ability",
+  "prefix": "REAS",
+  "package": 2,
+  "topics": [
+    "Month and Date-Based Puzzles",
+    "Puzzles (Other)",
+    "Syllogism",
+    "Inequality"
+  ],
+  "total": 193,
+  "batches": {
+    "007": {
+      "batch_id": "BATCH_007",
+      "count": 43,
+      "by_difficulty": {
+        "Basic": 12,
+        "Intermediate": 17,
+        "Advanced": 14
+      },
+      "question_ids": [
+        "BANK_REAS_001257",
+        "BANK_REAS_001299"
+      ],
+      "stimulus_id_start": "STIM_REAS_007201",
+      "topics": [
+        {
+          "topic": "Month and Date-Based Puzzles",
+          "subtopics": [
+            "Month-based",
+            "Date-based",
+            "Year-based"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Puzzles (Other)",
+          "subtopics": [
+            "Designation",
+            "Comparison and ordering",
+            "Day-based"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 2,
+            "Advanced": 5
+          },
+          "total": 12
+        },
+        {
+          "topic": "Syllogism",
+          "subtopics": [
+            "Two-statement",
+            "Only a few / Only",
+            "Possibility cases"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 8,
+            "Advanced": 5
+          },
+          "total": 15
+        },
+        {
+          "topic": "Inequality",
+          "subtopics": [
+            "Direct inequality",
+            "Coded inequality"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 6,
+            "Advanced": 2
+          },
+          "total": 11
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_007_REAS_pkg2.json"
+    },
+    "008": {
+      "batch_id": "BATCH_008",
+      "count": 50,
+      "by_difficulty": {
+        "Basic": 12,
+        "Intermediate": 19,
+        "Advanced": 19
+      },
+      "question_ids": [
+        "BANK_REAS_001457",
+        "BANK_REAS_001506"
+      ],
+      "stimulus_id_start": "STIM_REAS_008201",
+      "topics": [
+        {
+          "topic": "Month and Date-Based Puzzles",
+          "subtopics": [
+            "Month-based",
+            "Date-based",
+            "Year-based"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 7,
+            "Advanced": 6
+          },
+          "total": 15
+        },
+        {
+          "topic": "Puzzles (Other)",
+          "subtopics": [
+            "Designation",
+            "Comparison and ordering",
+            "Day-based"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 0,
+            "Advanced": 1
+          },
+          "total": 1
+        },
+        {
+          "topic": "Syllogism",
+          "subtopics": [
+            "Two-statement",
+            "Only a few / Only",
+            "Possibility cases"
+          ],
+          "quota": {
+            "Basic": 8,
+            "Intermediate": 4,
+            "Advanced": 7
+          },
+          "total": 19
+        },
+        {
+          "topic": "Inequality",
+          "subtopics": [
+            "Direct inequality",
+            "Coded inequality"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 8,
+            "Advanced": 5
+          },
+          "total": 15
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_008_REAS_pkg2.json"
+    },
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 57,
+      "by_difficulty": {
+        "Basic": 20,
+        "Intermediate": 17,
+        "Advanced": 20
+      },
+      "question_ids": [
+        "BANK_REAS_001649",
+        "BANK_REAS_001705"
+      ],
+      "stimulus_id_start": "STIM_REAS_009201",
+      "topics": [
+        {
+          "topic": "Month and Date-Based Puzzles",
+          "subtopics": [
+            "Month-based",
+            "Date-based",
+            "Year-based"
+          ],
+          "quota": {
+            "Basic": 8,
+            "Intermediate": 3,
+            "Advanced": 4
+          },
+          "total": 15
+        },
+        {
+          "topic": "Puzzles (Other)",
+          "subtopics": [
+            "Designation",
+            "Comparison and ordering",
+            "Day-based"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 6,
+            "Advanced": 2
+          },
+          "total": 9
+        },
+        {
+          "topic": "Syllogism",
+          "subtopics": [
+            "Two-statement",
+            "Only a few / Only",
+            "Possibility cases"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 7
+          },
+          "total": 14
+        },
+        {
+          "topic": "Inequality",
+          "subtopics": [
+            "Direct inequality",
+            "Coded inequality"
+          ],
+          "quota": {
+            "Basic": 8,
+            "Intermediate": 4,
+            "Advanced": 7
+          },
+          "total": 19
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_REAS_pkg2.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 43,
+      "by_difficulty": {
+        "Basic": 14,
+        "Intermediate": 15,
+        "Advanced": 14
+      },
+      "question_ids": [
+        "BANK_REAS_001857",
+        "BANK_REAS_001899"
+      ],
+      "stimulus_id_start": "STIM_REAS_010201",
+      "topics": [
+        {
+          "topic": "Month and Date-Based Puzzles",
+          "subtopics": [
+            "Month-based",
+            "Date-based",
+            "Year-based"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 0,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "Puzzles (Other)",
+          "subtopics": [
+            "Designation",
+            "Comparison and ordering",
+            "Day-based"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 1,
+            "Advanced": 4
+          },
+          "total": 10
+        },
+        {
+          "topic": "Syllogism",
+          "subtopics": [
+            "Two-statement",
+            "Only a few / Only",
+            "Possibility cases"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 10,
+            "Advanced": 2
+          },
+          "total": 17
+        },
+        {
+          "topic": "Inequality",
+          "subtopics": [
+            "Direct inequality",
+            "Coded inequality"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 4,
+            "Advanced": 7
+          },
+          "total": 13
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_REAS_pkg2.json"
+    }
+  }
+}

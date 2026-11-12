@@ -1,0 +1,498 @@
+{
+  "subject": "Banking and Financial Awareness",
+  "prefix": "BFA",
+  "package": 2,
+  "topics": [
+    "NPA",
+    "Basel Norms",
+    "Financial Inclusion",
+    "Priority Sector Lending",
+    "RBI Integrated Ombudsman Scheme",
+    "Digital Banking",
+    "UPI",
+    "NEFT",
+    "RTGS",
+    "IMPS",
+    "NPCI"
+  ],
+  "total": 209,
+  "batches": {
+    "008": {
+      "batch_id": "BATCH_008",
+      "count": 72,
+      "by_difficulty": {
+        "Basic": 20,
+        "Intermediate": 30,
+        "Advanced": 22
+      },
+      "question_ids": [
+        "BANK_BFA_001468",
+        "BANK_BFA_001539"
+      ],
+      "stimulus_id_start": "STIM_BFA_008201",
+      "topics": [
+        {
+          "topic": "NPA",
+          "subtopics": [
+            "Classification",
+            "Resolution and IBC",
+            "SARFAESI"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 12
+        },
+        {
+          "topic": "Basel Norms",
+          "subtopics": [
+            "Capital adequacy",
+            "LCR and NSFR",
+            "Leverage ratio"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "Financial Inclusion",
+          "subtopics": [
+            "PMJDY and allied schemes",
+            "Business correspondents"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 2
+          },
+          "total": 9
+        },
+        {
+          "topic": "Priority Sector Lending",
+          "subtopics": [
+            "Targets and sub-targets",
+            "PSLCs"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 6
+        },
+        {
+          "topic": "RBI Integrated Ombudsman Scheme",
+          "subtopics": [
+            "Scope and grounds",
+            "Process and limits"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 4
+          },
+          "total": 7
+        },
+        {
+          "topic": "Digital Banking",
+          "subtopics": [
+            "Mobile and internet banking",
+            "Digital lending",
+            "CBDC (e-rupee)"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 5,
+            "Advanced": 3
+          },
+          "total": 9
+        },
+        {
+          "topic": "UPI",
+          "subtopics": [
+            "Features",
+            "UPI Lite and international"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 5,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "NEFT",
+          "subtopics": [
+            "Settlement and timings"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "RTGS",
+          "subtopics": [
+            "Limits and timings"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "IMPS",
+          "subtopics": [
+            "Limits and features"
+          ],
+          "quota": {
+            "Basic": 0,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "NPCI",
+          "subtopics": [
+            "Products: NACH, AePS, RuPay, FASTag"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 6
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_008_BFA_pkg2.json"
+    },
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 69,
+      "by_difficulty": {
+        "Basic": 20,
+        "Intermediate": 27,
+        "Advanced": 22
+      },
+      "question_ids": [
+        "BANK_BFA_001668",
+        "BANK_BFA_001736"
+      ],
+      "stimulus_id_start": "STIM_BFA_009201",
+      "topics": [
+        {
+          "topic": "NPA",
+          "subtopics": [
+            "Classification",
+            "Resolution and IBC",
+            "SARFAESI"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 1,
+            "Advanced": 3
+          },
+          "total": 7
+        },
+        {
+          "topic": "Basel Norms",
+          "subtopics": [
+            "Capital adequacy",
+            "LCR and NSFR",
+            "Leverage ratio"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 12
+        },
+        {
+          "topic": "Financial Inclusion",
+          "subtopics": [
+            "PMJDY and allied schemes",
+            "Business correspondents"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "Priority Sector Lending",
+          "subtopics": [
+            "Targets and sub-targets",
+            "PSLCs"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 4,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "RBI Integrated Ombudsman Scheme",
+          "subtopics": [
+            "Scope and grounds",
+            "Process and limits"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Digital Banking",
+          "subtopics": [
+            "Mobile and internet banking",
+            "Digital lending",
+            "CBDC (e-rupee)"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 2,
+            "Advanced": 5
+          },
+          "total": 10
+        },
+        {
+          "topic": "UPI",
+          "subtopics": [
+            "Features",
+            "UPI Lite and international"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 4,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "NEFT",
+          "subtopics": [
+            "Settlement and timings"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "RTGS",
+          "subtopics": [
+            "Limits and timings"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "IMPS",
+          "subtopics": [
+            "Limits and features"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "NPCI",
+          "subtopics": [
+            "Products: NACH, AePS, RuPay, FASTag"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_BFA_pkg2.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 68,
+      "by_difficulty": {
+        "Basic": 22,
+        "Intermediate": 26,
+        "Advanced": 20
+      },
+      "question_ids": [
+        "BANK_BFA_001870",
+        "BANK_BFA_001937"
+      ],
+      "stimulus_id_start": "STIM_BFA_010201",
+      "topics": [
+        {
+          "topic": "NPA",
+          "subtopics": [
+            "Classification",
+            "Resolution and IBC",
+            "SARFAESI"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Basel Norms",
+          "subtopics": [
+            "Capital adequacy",
+            "LCR and NSFR",
+            "Leverage ratio"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 1,
+            "Advanced": 3
+          },
+          "total": 7
+        },
+        {
+          "topic": "Financial Inclusion",
+          "subtopics": [
+            "PMJDY and allied schemes",
+            "Business correspondents"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 12
+        },
+        {
+          "topic": "Priority Sector Lending",
+          "subtopics": [
+            "Targets and sub-targets",
+            "PSLCs"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "RBI Integrated Ombudsman Scheme",
+          "subtopics": [
+            "Scope and grounds",
+            "Process and limits"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 4,
+            "Advanced": 1
+          },
+          "total": 7
+        },
+        {
+          "topic": "Digital Banking",
+          "subtopics": [
+            "Mobile and internet banking",
+            "Digital lending",
+            "CBDC (e-rupee)"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "UPI",
+          "subtopics": [
+            "Features",
+            "UPI Lite and international"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 4
+          },
+          "total": 8
+        },
+        {
+          "topic": "NEFT",
+          "subtopics": [
+            "Settlement and timings"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "RTGS",
+          "subtopics": [
+            "Limits and timings"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "IMPS",
+          "subtopics": [
+            "Limits and features"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 3
+        },
+        {
+          "topic": "NPCI",
+          "subtopics": [
+            "Products: NACH, AePS, RuPay, FASTag"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_BFA_pkg2.json"
+    }
+  }
+}

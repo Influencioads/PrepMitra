@@ -6,7 +6,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { CircleCheck, FileText, Upload } from 'lucide-react';
 import type { EducationLevel, LanguageCode } from '@prepmitra/shared';
 import {
-  EDUCATION_LEVELS, EXAMS, INDIAN_STATES, INTERVIEW_ROLES, LANGUAGES, RESUME_RULES, STREAMS, educationSchema, formatDate, getPlan, languageName, languageSchema,
+  EDUCATION_LEVELS, EXAMS, INDIAN_STATES, INTERVIEW_ROLES, LANGUAGES, RESUME_RULES, STREAMS, educationSchema, formatDate, getPlan, languageName, planShortName, languageSchema,
   isProfileReady, maskPhone, profilePersonalSchema, targetsSchema, validateResumeFile, type EducationInput, type LanguageInput, type ProfilePersonalInput,
   type TargetsInput,
 } from '@prepmitra/shared';
@@ -55,6 +55,8 @@ export function ProfilePage() {
   const profile = useProfileStore((s) => s.profile);
   const updateProfile = useProfileStore((s) => s.updateProfile);
   const planId = useSubscriptionStore((s) => s.sub.planId);
+  const currentPlan = getPlan(planId);
+  const planName = currentPlan ? planShortName(currentPlan) : 'Free';
   const [saving, setSaving] = useState<string | null>(null);
   const [params] = useSearchParams();
   const ready = isProfileReady(user, profile);
@@ -121,7 +123,7 @@ export function ProfilePage() {
           <p className="text-xl font-bold">{user.name}</p>
           <p className="text-sm text-muted">{maskPhone(user.phone)}{user.email ? ` · ${user.email}` : ''}</p>
           <div className="mt-2 flex flex-wrap gap-1.5">
-            <Badge tone="primary">{planCopy(uiLang, getPlan(planId)?.name ?? 'Free Trial')}</Badge>
+            <Badge tone="primary">{planCopy(uiLang, planName)}</Badge>
             <Badge>{languageName(user.preferredLanguage)}</Badge>
             <Badge>{t('memberSince', { date: formatDate(user.createdAt) })}</Badge>
           </div>

@@ -159,7 +159,7 @@ export function LandingPage() {
     const open = openExamCategories();
     return open !== 'all' && open.length === 1 && open[0] === 'banking';
   })();
-  const { plans } = usePlans();
+  const plans = usePlans();
   const [faqOpen, setFaqOpen] = useState(0);
   const openMockCount = exams.filter((e) => isExamOpen(e)).length;
   const dialExams = openFirst(exams.filter((e) => isExamOpen(e) && !e.isFree));

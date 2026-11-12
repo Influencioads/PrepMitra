@@ -8,3 +8,4 @@ export * from './subscriptionService';
 export * from './notificationService';
 export * from './adminService';
 export { errorMessage, isApiError } from './mock';
+export * from './mentorService';

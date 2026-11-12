@@ -14,6 +14,8 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useT } from '@/i18n';
 import { LanguageSwitcher } from '@/i18n/LanguageSwitcher';
 import { accountMessages } from '@/i18n/messages/account';
+import { ReminderSettingsCard } from '@/components/mentor/ReminderSettingsCard';
+import { USE_MOCK } from '@/services/mock';
 
 type AKey = keyof typeof accountMessages.en;
 const NOTIF: { key: keyof NotificationPreferences; label: AKey; description: AKey }[] = [
@@ -109,6 +111,8 @@ export function SettingsPage() {
           ))}
         </CardBody>
       </Card>
+
+      {!USE_MOCK && <ReminderSettingsCard />}
 
       <Card>
         <CardHeader title={t('privacy')} description={t('privacyDesc')} />

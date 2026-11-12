@@ -129,10 +129,10 @@ export const homeMessages = defineMessages({
     panelBanking: 'Banking',
     panelHr: 'HR',
 
-    priceEyebrow: 'no subscription trap',
-    priceTitle: 'Buy mocks like admit cards.',
+    priceEyebrow: 'plans that fit your prep',
+    priceTitle: 'Pick your admit card.',
     priceBody: '1 credit = 1 full mock exam or 1 mock interview, with its report.',
-    priceBodyExams: '1 credit = 1 full mock and its report. Valid 90 days, no monthly bill.',
+    priceBodyExams: 'A study plan for regular mocks, an AI Tutor pack if you want one, and one-off add-ons. Prices include GST.',
     priceRefund: 'Paper didn’t load? Your credit walks back on its own.',
 
     faqEyebrow: 'doubts from the last bench',
@@ -279,10 +279,10 @@ export const homeMessages = defineMessages({
     panelBanking: 'बैंकिंग',
     panelHr: 'HR',
 
-    priceEyebrow: 'कोई सब्सक्रिप्शन जाल नहीं',
-    priceTitle: 'मॉक खरीदिए, एडमिट कार्ड की तरह।',
+    priceEyebrow: 'आपकी तैयारी के हिसाब से प्लान',
+    priceTitle: 'अपना एडमिट कार्ड चुनिए।',
     priceBody: '1 क्रेडिट = 1 पूरा मॉक टेस्ट या 1 मॉक इंटरव्यू, रिपोर्ट सहित।',
-    priceBodyExams: '1 क्रेडिट = 1 पूरा मॉक और उसकी रिपोर्ट। 90 दिन वैध, कोई मासिक बिल नहीं।',
+    priceBodyExams: 'नियमित मॉक के लिए स्टडी प्लान, चाहें तो AI ट्यूटर पैक, और एक बार के ऐड-ऑन। कीमतों में GST शामिल है।',
     priceRefund: 'पेपर लोड नहीं हुआ? क्रेडिट अपने-आप लौट आता है।',
 
     faqEyebrow: 'पिछली बेंच की शंकाएँ',

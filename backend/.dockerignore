@@ -1,0 +1,11 @@
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+storage
+tests
+# Never bake local config, secrets or dev data into the image
+.env
+.env.*
+secrets
+dev.db*

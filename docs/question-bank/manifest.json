@@ -1,0 +1,49 @@
+{
+  "generated_on": "2026-11-07",
+  "target_total": 10000,
+  "files": [
+    "BATCH_000_sample.json",
+    "BATCH_001.json",
+    "BATCH_002.json",
+    "BATCH_003.json",
+    "BATCH_004.json",
+    "BATCH_005.json",
+    "BATCH_006.json",
+    "BATCH_007.json",
+    "BATCH_008.json",
+    "BATCH_009.json",
+    "BATCH_010.json"
+  ],
+  "total_questions": 10000,
+  "by_subject": {
+    "Quantitative Aptitude": 2000,
+    "Reasoning Ability": 2000,
+    "English Language": 1500,
+    "General Awareness and Current Affairs": 1500,
+    "Banking and Financial Awareness": 2000,
+    "Computer Knowledge": 1000
+  },
+  "by_difficulty": {
+    "Basic": 3000,
+    "Intermediate": 4000,
+    "Advanced": 3000
+  },
+  "by_exam": {
+    "IBPS_CSA": 6300,
+    "IBPS_PO": 6300,
+    "IBPS_RRB_OA": 6550,
+    "IBPS_RRB_OS1": 7900,
+    "SBI_JA": 7000,
+    "SBI_PO": 7000
+  },
+  "by_source_type": {
+    "Original": 10000
+  },
+  "by_review_status": {
+    "Pending Human Review": 10000
+  },
+  "remaining_to_target": 0,
+  "validation_errors": 0,
+  "near_duplicate_warnings": 1,
+  "complete": false
+}

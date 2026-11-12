@@ -78,6 +78,13 @@ export default function RootLayout() {
               <Stack.Screen name="interview/report/[reportId]" options={{ title: 'Interview report' }} />
               <Stack.Screen name="progress" options={{ title: 'Progress analytics' }} />
               <Stack.Screen name="subscription" options={{ title: 'Credits & plans' }} />
+              <Stack.Screen name="ai/doubts" options={{ title: 'Doubt Solver' }} />
+              <Stack.Screen name="ai/tutor" options={{ title: 'AI Tutor' }} />
+              <Stack.Screen name="ai/persona" options={{ title: 'Persona & rank' }} />
+              <Stack.Screen name="ai/notes" options={{ title: 'Notes & decks' }} />
+              <Stack.Screen name="ai/practice" options={{ title: 'Revision & practice' }} />
+              <Stack.Screen name="ai/coach" options={{ title: 'Cheat Code Coach' }} />
+              <Stack.Screen name="ai/artifact/[id]" options={{ title: 'Study material' }} />
               <Stack.Screen name="notifications" options={{ title: 'Notifications' }} />
               <Stack.Screen name="settings" options={{ title: 'Settings' }} />
               <Stack.Screen name="edit-profile" options={{ title: 'Edit profile' }} />

@@ -1,0 +1,4163 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "BATCH_008",
+  "created_at": "2026-11-05",
+  "notes": "Reasoning Ability topic package 4 for BATCH_008: 50 original questions on ranking, input-output, data sufficiency, assumptions, conclusions, cause and effect and critical reasoning, built by tools/packages/REAS_pkg4.py. Ranking positions and input-output machines are recomputed in code, comparison puzzles brute-forced for a unique order, and data sufficiency checked by enumerating models for each statement subset. Verbal items are hand-written and were re-answered blind by separate fresh solvers. All questions await human review.",
+  "stimuli": [
+    {
+      "stimulus_id": "STIM_REAS_008401",
+      "type": "passage",
+      "title": "Machine: odd numbers first",
+      "content": "A number arrangement machine rearranges a line of numbers step by step. In each step it takes, among the numbers not yet arranged, the smallest odd number and places it immediately to the right of the numbers already arranged at the left end (in Step I, at the extreme left). When no odd number is left, it takes the smallest even number in the same way. The other numbers keep their order. A step that would not change the line is not counted, and the machine stops when the arrangement is complete.\n\nInput: 42 17 68 33 91 24 55",
+      "solution": "Order of selection: 17, 33, 55, 91 (odd), then 24, 42, 68 (even).\n\nStep I: 17 42 68 33 91 24 55\nStep II: 17 33 42 68 91 24 55\nStep III: 17 33 55 42 68 91 24\nStep IV: 17 33 55 91 42 68 24\nStep V: 17 33 55 91 24 42 68"
+    },
+    {
+      "stimulus_id": "STIM_REAS_008402",
+      "type": "passage",
+      "title": "Machine: word-number pairs to the right",
+      "content": "A word and number arrangement machine rearranges a line step by step. In each step it takes the word that comes first in alphabetical order among the words not yet arranged and the smallest number among the numbers not yet arranged. It adds the number of letters in that word to that number, and places the word followed by the new number at the right end, immediately to the left of the pairs already placed there (in Step I, at the extreme right). All other elements keep their order. The machine stops when every element has been arranged.\n\nInput: violet 28 amber 73 coral 46 indigo 15 olive 59",
+      "solution": "Pairs in order: amber + 15 → 20, coral + 28 → 33, indigo + 46 → 52, olive + 59 → 64, violet + 73 → 79.\n\nStep I: violet 28 73 coral 46 indigo olive 59 amber 20\nStep II: violet 73 46 indigo olive 59 coral 33 amber 20\nStep III: violet 73 olive 59 indigo 52 coral 33 amber 20\nStep IV: violet 73 olive 64 indigo 52 coral 33 amber 20\nStep V: violet 79 olive 64 indigo 52 coral 33 amber 20"
+    },
+    {
+      "stimulus_id": "STIM_REAS_008403",
+      "type": "passage",
+      "title": "Machine: middle digits and swapped ends",
+      "content": "A number arrangement machine rearranges a line of three-digit numbers step by step. In each step it takes, among the numbers not yet arranged, the one with the smallest middle (tens) digit, interchanges its first and last digits, and places the new number immediately to the right of the numbers already arranged at the left end (in Step I, at the extreme left). The other numbers keep their order. The machine stops when every number has been arranged.\n\nInput: 482 731 965 254 619 873",
+      "solution": "Middle digits: 482 → 8, 731 → 3, 965 → 6, 254 → 5, 619 → 1, 873 → 7. Order of selection: 619, 731, 254, 965, 873, 482 → 916, 137, 452, 569, 378, 284.\n\nStep I: 916 482 731 965 254 873\nStep II: 916 137 482 965 254 873\nStep III: 916 137 452 482 965 873\nStep IV: 916 137 452 569 482 873\nStep V: 916 137 452 569 378 482\nStep VI: 916 137 452 569 378 284"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "BANK_REAS_001553",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Number rearrangement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008401",
+      "set_position": 1,
+      "question_text": "Which of the following is Step II?",
+      "options": [
+        {
+          "key": "A",
+          "text": "17 33 42 68 91 24 55"
+        },
+        {
+          "key": "B",
+          "text": "17 42 68 33 91 24 55"
+        },
+        {
+          "key": "C",
+          "text": "17 33 55 42 68 91 24"
+        },
+        {
+          "key": "D",
+          "text": "17 24 33 42 55 68 91"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Odd numbers are arranged before even numbers",
+        "explanation": "Step I: 17 42 68 33 91 24 55. Step II: 17 33 42 68 91 24 55.",
+        "steps": [
+          "Step I: 17 42 68 33 91 24 55",
+          "Step II: 17 33 42 68 91 24 55"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The first two wrong lines are Steps I and III; the last puts all the numbers in plain ascending order.",
+        "final_answer": "Option A: 17 33 42 68 91 24 55"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001554",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Number rearrangement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008401",
+      "set_position": 2,
+      "question_text": "The machine stops once the seven numbers stand in their final order. How many steps does it need for this input?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Four"
+        },
+        {
+          "key": "B",
+          "text": "Five"
+        },
+        {
+          "key": "C",
+          "text": "Six"
+        },
+        {
+          "key": "D",
+          "text": "Seven"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Stop when the line is final",
+        "explanation": "Step I: 17 42 68 33 91 24 55. Step II: 17 33 42 68 91 24 55. Step III: 17 33 55 42 68 91 24. Step IV: 17 33 55 91 42 68 24. Step V: 17 33 55 91 24 42 68. After Step V, 42 and 68 are already in their places, so no further step is needed.",
+        "steps": [
+          "Step I: 17 42 68 33 91 24 55",
+          "Step II: 17 33 42 68 91 24 55",
+          "Step III: 17 33 55 42 68 91 24",
+          "Step IV: 17 33 55 91 42 68 24",
+          "Step V: 17 33 55 91 24 42 68"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option B: Five"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001555",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Number rearrangement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008401",
+      "set_position": 3,
+      "question_text": "In Step III, which number is 4th from the right end?",
+      "options": [
+        {
+          "key": "A",
+          "text": "68"
+        },
+        {
+          "key": "B",
+          "text": "55"
+        },
+        {
+          "key": "C",
+          "text": "42"
+        },
+        {
+          "key": "D",
+          "text": "91"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Read the step, then count",
+        "explanation": "Step III: 17 33 55 42 68 91 24. The 4th from the right is 42.",
+        "steps": [
+          "Step III: 17 33 55 42 68 91 24"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option C: 42"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001556",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Number rearrangement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008401",
+      "set_position": 4,
+      "question_text": "In which step does 91 first stand immediately to the right of 55?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Step I"
+        },
+        {
+          "key": "B",
+          "text": "Step II"
+        },
+        {
+          "key": "C",
+          "text": "Step III"
+        },
+        {
+          "key": "D",
+          "text": "Step IV"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Track two numbers through the steps",
+        "explanation": "Step I: 17 42 68 33 91 24 55. Step II: 17 33 42 68 91 24 55. Step III: 17 33 55 42 68 91 24. Step IV: 17 33 55 91 42 68 24.",
+        "steps": [
+          "Step I: 17 42 68 33 91 24 55",
+          "Step II: 17 33 42 68 91 24 55",
+          "Step III: 17 33 55 42 68 91 24",
+          "Step IV: 17 33 55 91 42 68 24"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option D: Step IV"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001557",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Number rearrangement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008401",
+      "set_position": 5,
+      "question_text": "In the last step, what is the position of 24 from the left end?",
+      "options": [
+        {
+          "key": "A",
+          "text": "3rd"
+        },
+        {
+          "key": "B",
+          "text": "4th"
+        },
+        {
+          "key": "C",
+          "text": "5th"
+        },
+        {
+          "key": "D",
+          "text": "6th"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "The first even number follows all the odd numbers",
+        "explanation": "Last step: 17 33 55 91 24 42 68. There are four odd numbers, so 24 is 5th from the left.",
+        "steps": [
+          "Last step: 17 33 55 91 24 42 68"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option C: 5th"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001558",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Word rearrangement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "A word machine rearranges a line of words step by step. In each step it takes, among the words not yet arranged, the word whose first letter comes latest in the alphabet, replaces that first letter by the letter just before it in the alphabet (for example, 'nest' becomes 'mest'), and places the new word immediately to the right of the words already arranged at the left end (in Step I, at the extreme left). The other words keep their order.\n\nInput: tide hall rope moss vane cork\n\nWhich of the following is Step IV?",
+      "options": [
+        {
+          "key": "A",
+          "text": "uane side qope hall moss cork"
+        },
+        {
+          "key": "B",
+          "text": "uane side qope loss hall cork"
+        },
+        {
+          "key": "C",
+          "text": "uane side qope loss gall cork"
+        },
+        {
+          "key": "D",
+          "text": "vane tide rope moss hall cork"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Selection by the first letter, then a one-letter change",
+        "explanation": "Step I: uane tide hall rope moss cork. Step II: uane side hall rope moss cork. Step III: uane side qope hall moss cork. Step IV: uane side qope loss hall cork.",
+        "steps": [
+          "Step I: uane tide hall rope moss cork",
+          "Step II: uane side hall rope moss cork",
+          "Step III: uane side qope hall moss cork",
+          "Step IV: uane side qope loss hall cork"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The first two wrong lines are Steps III and V; the last forgets to change the first letters.",
+        "final_answer": "Option B: uane side qope loss hall cork"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001559",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Mixed machine",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008402",
+      "set_position": 1,
+      "question_text": "Which of the following is Step III?",
+      "options": [
+        {
+          "key": "A",
+          "text": "violet 73 46 indigo olive 59 coral 33 amber 20"
+        },
+        {
+          "key": "B",
+          "text": "violet 73 olive 64 indigo 52 coral 33 amber 20"
+        },
+        {
+          "key": "C",
+          "text": "violet 73 olive 59 indigo 46 coral 28 amber 15"
+        },
+        {
+          "key": "D",
+          "text": "violet 73 olive 59 indigo 52 coral 33 amber 20"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Pairs with a transformed number",
+        "explanation": "Step I: violet 28 73 coral 46 indigo olive 59 amber 20. Step II: violet 73 46 indigo olive 59 coral 33 amber 20. Step III: violet 73 olive 59 indigo 52 coral 33 amber 20.",
+        "steps": [
+          "Step I: violet 28 73 coral 46 indigo olive 59 amber 20",
+          "Step II: violet 73 46 indigo olive 59 coral 33 amber 20",
+          "Step III: violet 73 olive 59 indigo 52 coral 33 amber 20"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The first two wrong lines are Steps II and IV; the last forgets to add the word lengths.",
+        "final_answer": "Option D: violet 73 olive 59 indigo 52 coral 33 amber 20"
+      },
+      "suggested_time_seconds": 110,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001560",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Mixed machine",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008402",
+      "set_position": 2,
+      "question_text": "In Step II, which element is 3rd to the left of 'amber'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "59"
+        },
+        {
+          "key": "B",
+          "text": "coral"
+        },
+        {
+          "key": "C",
+          "text": "olive"
+        },
+        {
+          "key": "D",
+          "text": "33"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Read the step, then count",
+        "explanation": "Step II: violet 73 46 indigo olive 59 coral 33 amber 20. Three places to the left of 'amber' is 59.",
+        "steps": [
+          "Step II: violet 73 46 indigo olive 59 coral 33 amber 20"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option A: 59"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001561",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Mixed machine",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008402",
+      "set_position": 3,
+      "question_text": "What is the sum of all the numbers in the last step?",
+      "options": [
+        {
+          "key": "A",
+          "text": "221"
+        },
+        {
+          "key": "B",
+          "text": "242"
+        },
+        {
+          "key": "C",
+          "text": "248"
+        },
+        {
+          "key": "D",
+          "text": "253"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each number gains its word's length",
+        "explanation": "Last step: violet 79 olive 64 indigo 52 coral 33 amber 20. Sum = 79 + 64 + 52 + 33 + 20 = 248.",
+        "steps": [
+          "Last step: violet 79 olive 64 indigo 52 coral 33 amber 20"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option C: 248"
+      },
+      "suggested_time_seconds": 85,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001562",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Number rearrangement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008403",
+      "set_position": 1,
+      "question_text": "Which of the following is Step II?",
+      "options": [
+        {
+          "key": "A",
+          "text": "916 482 731 965 254 873"
+        },
+        {
+          "key": "B",
+          "text": "916 137 482 965 254 873"
+        },
+        {
+          "key": "C",
+          "text": "916 137 452 482 965 873"
+        },
+        {
+          "key": "D",
+          "text": "619 731 482 965 254 873"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Select by the middle digit, then swap the end digits",
+        "explanation": "Step I: 916 482 731 965 254 873. Step II: 916 137 482 965 254 873.",
+        "steps": [
+          "Step I: 916 482 731 965 254 873",
+          "Step II: 916 137 482 965 254 873"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The first two wrong lines are Steps I and III; the last forgets to interchange the digits.",
+        "final_answer": "Option B: 916 137 482 965 254 873"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001563",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Number rearrangement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008403",
+      "set_position": 2,
+      "question_text": "In Step IV, what is the difference between the 2nd number from the left and the 2nd number from the right?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30"
+        },
+        {
+          "key": "B",
+          "text": "43"
+        },
+        {
+          "key": "C",
+          "text": "345"
+        },
+        {
+          "key": "D",
+          "text": "736"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Read the step, then subtract",
+        "explanation": "Step IV: 916 137 452 569 482 873. 2nd from the left = 137, 2nd from the right = 482; difference = 345.",
+        "steps": [
+          "Step IV: 916 137 452 569 482 873"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "final_answer": "Option C: 345"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001564",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Input and Output",
+      "subtopic": "Number rearrangement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_008403",
+      "set_position": 3,
+      "question_text": "In the last step, how many of the six three-digit numbers are odd?",
+      "options": [
+        {
+          "key": "A",
+          "text": "One"
+        },
+        {
+          "key": "B",
+          "text": "Two"
+        },
+        {
+          "key": "C",
+          "text": "Three"
+        },
+        {
+          "key": "D",
+          "text": "Four"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Swapping the end digits can change a number from odd to even",
+        "explanation": "Last step: 916 137 452 569 378 284. Only 137 and 569 are odd, so there are two odd numbers (the input had four).",
+        "steps": [
+          "Last step: 916 137 452 569 378 284",
+          "Odd: 137, 569"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Four counts the odd numbers of the input; Three and One miscount the new numbers.",
+        "final_answer": "Option B: Two"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001565",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: How much money does Asha have?\n\nI. Asha and Bela together have ₹500.\nII. Asha has ₹100 more than Bela.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Two unknowns need two independent facts",
+        "explanation": "I alone allows many splits of ₹500, and II alone gives only the difference. Together: A + B = 500 and A − B = 100, so A = ₹300.",
+        "steps": [
+          "I alone ⇒ not sufficient",
+          "II alone ⇒ not sufficient",
+          "Together: 2A = 600 ⇒ A = ₹300"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'alone' option relies on one equation in two unknowns; 'together not sufficient' ignores that the two equations fix A.",
+        "final_answer": "Option D: Both statements I and II together are necessary"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001566",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: Is the whole number x even?\n\nI. x + 3 is odd.\nII. 5x is even.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Either statement I alone or statement II alone is sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each statement on its own",
+        "explanation": "I: odd − 3 is even, so x is even — sufficient. II: 5 is odd, so 5x is even only when x is even — sufficient. Each statement alone answers 'yes'.",
+        "steps": [
+          "I: x = odd − 3 ⇒ even",
+          "II: odd × x even ⇒ x even"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'alone' option overlooks that the other statement also settles the question; 'both together necessary' needs both when one is enough.",
+        "final_answer": "Option C: Either statement I alone or statement II alone is sufficient"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001567",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: In a certain code, every letter of a word is replaced by the letter a fixed number of places after it in the alphabet (the same number for every letter, counting on from A after Z). What is the code for 'MAP'?\n\nI. The fixed number of places is an odd number less than 6.\nII. 'GO' is written as 'JR'.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "A shift code is fixed once the shift is known",
+        "explanation": "I allows a shift of 1, 3 or 5 — not sufficient. II: G → J and O → R are shifts of 3, so 'MAP' is 'PDS' — sufficient.",
+        "steps": [
+          "I: shift 1, 3 or 5 ⇒ not sufficient",
+          "II: G → J = +3 ⇒ MAP → PDS"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'I alone' trusts a statement that leaves three shifts; the 'together' options ignore that II alone fixes the shift.",
+        "final_answer": "Option B: Statement II alone is sufficient, but statement I alone is not sufficient"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001568",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: How many years older than Chetan is Amit?\n\nI. Amit is 6 years older than Bhanu.\nII. Chetan is younger than Bhanu.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "An inequality cannot fix a difference",
+        "explanation": "I gives Amit − Bhanu = 6. II says only that Chetan is younger than Bhanu, not by how much. So Amit − Chetan is more than 6, but could be 7, 8, 9, … — not fixed even with both statements.",
+        "steps": [
+          "I: A − B = 6",
+          "II: C < B, gap unknown",
+          "Together: A − C > 6 but not fixed ⇒ not sufficient"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The 'alone' options use one statement; 'both together necessary' treats 'younger' as if it gave the size of the gap.",
+        "final_answer": "Option C: Statements I and II together are not sufficient"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001569",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: Five persons J, K, L, M and N stand in a queue, one behind another. Who stands at the back of the queue?\n\nI. K is third from the front, and J stands immediately behind K.\nII. M stands somewhere in front of L, and N stands somewhere in front of M.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Fill the free places using the order",
+        "explanation": "I leaves places 1, 2 and 5 for L, M and N in any order — not sufficient. II gives N before M before L, but not their places — not sufficient. Together, N, M and L take places 1, 2 and 5 in that order, so L is at the back.",
+        "steps": [
+          "I: K = 3, J = 4; places 1, 2, 5 open",
+          "II: N ahead of M ahead of L",
+          "Together: N 1, M 2, L 5 ⇒ L"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each statement alone leaves more than one person for the last place; 'together not sufficient' ignores that the order fills the three free places uniquely.",
+        "final_answer": "Option D: Both statements I and II together are necessary"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001570",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: Five subjects — Maths, Physics, Chemistry, Biology and English — are taught in five periods (1 to 5) on Monday, one subject per period. Which subject is taught in period 4?\n\nI. Biology is taught in period 2, and Physics is taught in the period immediately after Maths.\nII. Chemistry, Biology and English are taught in periods 1, 2 and 3 in some order, and Physics is taught in the period immediately after Maths.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Test each statement alone",
+        "explanation": "I: with Biology in period 2, Maths and Physics can be in periods 3–4 or 4–5, so period 4 has Physics or Maths — not sufficient. II: periods 4 and 5 are left for Maths and Physics, and Physics comes right after Maths, so Maths is in period 4 — sufficient.",
+        "steps": [
+          "I: Maths–Physics in 3–4 or 4–5 ⇒ not sufficient",
+          "II: periods 4, 5 = Maths, Physics ⇒ Maths"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'I alone' trusts a statement that leaves two subjects for period 4; the 'together' options ignore that II alone is enough.",
+        "final_answer": "Option B: Statement II alone is sufficient, but statement I alone is not sufficient"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001571",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: Ravi's roll number is a two-digit number. What is it?\n\nI. It is a prime number, its digits add up to 10, and its tens digit is greater than its units digit.\nII. Its units digit is 3.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "List the numbers each statement allows",
+        "explanation": "I: the two-digit numbers whose digits add up to 10 and whose tens digit is larger are 64, 73, 82 and 91; of these only 73 is prime — sufficient. II allows 13, 23, …, 93 — not sufficient.",
+        "steps": [
+          "I: 64, 73, 82, 91 ⇒ only 73 is prime",
+          "II: nine numbers end in 3 ⇒ not sufficient"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'II alone' trusts a statement that allows nine numbers; the 'together' options add a statement that is not needed.",
+        "final_answer": "Option A: Statement I alone is sufficient, but statement II alone is not sufficient"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001572",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: In a class with no tied ranks, how many students rank between Gauri and Hema?\n\nI. Gauri is 8th from the top, and Hema is 15th from the top.\nII. There are 40 students in the class, and Hema is 26th from the bottom.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Ranks between two persons need both ranks from the same end",
+        "explanation": "I: 15 − 8 − 1 = 6 students rank between them — sufficient. II gives only Hema's rank (15th from the top) and nothing about Gauri — not sufficient.",
+        "steps": [
+          "I: 15 − 8 − 1 = 6 ⇒ sufficient",
+          "II: Gauri unknown ⇒ not sufficient"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'II alone' trusts a statement that never mentions Gauri; the 'together' options add a statement that is not needed.",
+        "final_answer": "Option A: Statement I alone is sufficient, but statement II alone is not sufficient"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001573",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: What is the weight of box R?\n\nI. Boxes P and Q together weigh 30 kg, and boxes P, Q and R together weigh 48 kg.\nII. Box Q weighs 12 kg, and box R weighs 6 kg more than box Q.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Either statement I alone or statement II alone is sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each statement on its own",
+        "explanation": "I: R = 48 − 30 = 18 kg — sufficient. II: R = 12 + 6 = 18 kg — sufficient.",
+        "steps": [
+          "I: R = 48 − 30 = 18 kg",
+          "II: R = 12 + 6 = 18 kg"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'alone' option ignores that the other statement also gives R; 'both together necessary' needs both when either works.",
+        "final_answer": "Option C: Either statement I alone or statement II alone is sufficient"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001574",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: Is A greater than D?\n\nI. A ≥ B.\nII. B > C.\nIII. C ≥ D.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements II and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Even all three statements together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "All three statements I, II and III together are necessary"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "A chain needs every link",
+        "explanation": "All three give A ≥ B > C ≥ D, so A > D: 'yes'. Any two statements leave a gap in the chain: I + II says nothing about D, II + III says nothing about A, and I + III does not connect B with C. So all three are needed.",
+        "steps": [
+          "I + II + III: A ≥ B > C ≥ D ⇒ A > D",
+          "Any pair leaves A or D unconnected"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each pair misses one link of the chain, and with all three the answer is fixed, so 'not sufficient' is wrong.",
+        "final_answer": "Option D: All three statements I, II and III together are necessary"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001575",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: What is the value of x + y?\n\nI. x − y = 4.\nII. xy = 21.\nIII. x and y are both positive integers.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements I and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "All three statements I, II and III together are necessary"
+        },
+        {
+          "key": "D",
+          "text": "Even all three statements together are not sufficient"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Watch for negative solutions",
+        "explanation": "I + II: x = 7, y = 3 or x = −3, y = −7, so x + y = 10 or −10 — not sufficient. II + III: (1, 21), (3, 7), (7, 3), (21, 1) give sums 22 or 10. I + III: infinitely many pairs. All three: x = 7, y = 3, so x + y = 10.",
+        "steps": [
+          "I + II: (7, 3) or (−3, −7)",
+          "II + III: sums 22 or 10",
+          "All three: x + y = 10"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "I + II forgets the negative pair; I + III gives a whole family; with all three the sum is fixed.",
+        "final_answer": "Option C: All three statements I, II and III together are necessary"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001576",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: Arun, Bina, Chirag and Dev each own one car, and the four cars are red, blue, green and white, one of each colour. What is the colour of Arun's car?\n\nI. Bina's car is not blue.\nII. Chirag's car is white.\nIII. Dev's car is blue, and Bina's car is not green.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements II and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "All three statements I, II and III together are necessary"
+        },
+        {
+          "key": "D",
+          "text": "Even all three statements together are not sufficient"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Pair the statements and test each pair",
+        "explanation": "II + III: Chirag white, Dev blue, Bina not green ⇒ Bina red, so Arun green — sufficient. I + II: Chirag white, Bina red or green, Arun could be red, blue or green. I + III: Dev blue, Bina red or white, Arun could be red, green or white. No single statement is enough.",
+        "steps": [
+          "II + III: Chirag white, Dev blue, Bina red ⇒ Arun green",
+          "I + II and I + III leave Arun open"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "I + II leaves several colours for Arun; II + III already fixes it, so all three are not necessary.",
+        "final_answer": "Option B: Only statements II and III together are sufficient"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001577",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Assumptions",
+      "subtopic": "Implicit assumptions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two assumptions. An assumption is something supposed or taken for granted by the person making the statement. Decide which of the assumptions is/are implicit in the statement.\n\nStatement: The municipal corporation has asked every restaurant in the city to display its food-hygiene rating at the entrance.\n\nAssumptions:\nI. Customers may use the hygiene rating when deciding where to eat.\nII. Every restaurant in the city has the highest hygiene rating.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only assumption I is implicit"
+        },
+        {
+          "key": "B",
+          "text": "Only assumption II is implicit"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is implicit"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are implicit"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Implicit assumption: what the speaker must take for granted",
+        "explanation": "Ratings are displayed at the entrance so that customers can see them before choosing a restaurant, so I is implicit. If every restaurant had the top rating, displaying it would tell customers nothing; II is not assumed and goes against the purpose of the order.",
+        "steps": [
+          "Display at the entrance ⇒ customers can use it to choose: I",
+          "Ratings must differ to be useful ⇒ II not implicit"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only II and Both accept a claim that makes the display pointless; Neither ignores why it is displayed.",
+        "final_answer": "Option A: Only assumption I is implicit"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001578",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: Meena's birthday is on 12 August. Today is 5 August of the same year.\n\nConclusions:\nI. Meena's birthday is 7 days from today.\nII. Meena's birthday has already passed this year.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "From 5 August to 12 August is 12 − 5 = 7 days, so I follows. The birthday is still a week away, so it has not passed; II is false.",
+        "steps": [
+          "12 − 5 = 7 days ahead ⇒ I",
+          "Birthday is still to come ⇒ II false"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only II and Both accept a conclusion the dates contradict; Neither ignores the simple count.",
+        "final_answer": "Option A: Only conclusion I follows"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001579",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Valid conclusions",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: Rita is taller than Sita, and Sita is taller than Gita.\n\nConclusions:\nI. Rita is taller than Gita.\nII. Gita is the shortest of the three.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "Rita > Sita > Gita, so Rita is taller than Gita (I), and Gita is shorter than both the others, so she is the shortest of the three (II).",
+        "steps": [
+          "Rita > Sita > Gita",
+          "⇒ Rita > Gita: I",
+          "⇒ Gita shortest: II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'Only' option drops one of two direct consequences of the same chain.",
+        "final_answer": "Option D: Both conclusions I and II follow"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001580",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: A shop offered a 10% discount on all shirts last Sunday.\n\nConclusions:\nI. The shop sold more shirts last Sunday than on the Saturday before it.\nII. The shop had no trousers for sale last Sunday.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "The statement tells us only about the discount. It gives no sales figures for either day (I does not follow), and a discount on shirts says nothing about whether trousers were on sale (II does not follow).",
+        "steps": [
+          "No sales figures ⇒ I does not follow",
+          "Shirts only mentioned ⇒ nothing about trousers ⇒ II does not follow"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each other option accepts an outcome or a fact that the statement does not give.",
+        "final_answer": "Option C: Neither conclusion I nor II follows"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001581",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: The train to Jaipur left the station on time at 4:15 pm. Ravi reached the station at 4:25 pm.\n\nConclusions:\nI. Ravi will travel to Jaipur by bus.\nII. Ravi could not board that train at the station.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "The train had left ten minutes before Ravi reached the station, so he could not board it there (II). How he will travel now, or whether he was going to Jaipur at all, is not stated, so I does not follow.",
+        "steps": [
+          "Train left 4:15; Ravi arrived 4:25 ⇒ could not board it: II",
+          "His further plans are unknown ⇒ I does not follow"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only I and Both guess Ravi's next step; Neither misses the direct timing.",
+        "final_answer": "Option B: Only conclusion II follows"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001582",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: On Monday, every one of the 40 passenger seats on a school bus was occupied by a student, and 5 more students travelled standing. Apart from the driver, there was no one else on the bus.\n\nConclusions:\nI. The bus carries more than 40 students every day.\nII. 45 students travelled on the bus on Monday.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "On Monday, 40 seated and 5 standing students travelled: 45 in all (II). The statement is about Monday only, so nothing follows about other days (I).",
+        "steps": [
+          "Monday: 40 + 5 = 45 students ⇒ II",
+          "Other days are not described ⇒ I does not follow"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only I and Both turn a single day into a daily pattern; Neither ignores the direct count.",
+        "final_answer": "Option B: Only conclusion II follows"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001583",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Valid conclusions",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: In a company, only employees who have completed five years of service are eligible for the long-service award, and every eligible employee who has no disciplinary record receives it. Leela has completed seven years of service and has no disciplinary record.\n\nConclusions:\nI. Leela receives the long-service award.\nII. Every employee who receives the long-service award has completed five years of service.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "'Only employees with five years of service are eligible' makes five years necessary for eligibility, not enough for it; other conditions may apply. So we cannot say that Leela is eligible, and I does not follow. Every award-winner must be eligible, and every eligible employee has five years of service, so II follows.",
+        "steps": [
+          "'Only X are eligible' ⇒ eligible ⇒ X (not X ⇒ eligible)",
+          "Leela's eligibility not established ⇒ I does not follow",
+          "Award ⇒ eligible ⇒ five years ⇒ II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only I and Both read 'only those with five years' as 'all those with five years'; Neither misses that every award-winner must be eligible.",
+        "final_answer": "Option B: Only conclusion II follows"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:self-recheck"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001584",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: A test has 50 questions. Each correct answer earns 2 marks, each wrong answer costs 1 mark, and an unanswered question earns nothing. Tarun answered all 50 questions and scored 73 marks.\n\nConclusions:\nI. Tarun answered 41 questions correctly.\nII. Tarun got more than 10 questions wrong.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "If c answers are correct, 50 − c are wrong: 2c − (50 − c) = 73, so 3c = 123 and c = 41 (I). Then 9 answers were wrong, which is not more than 10, so II is false.",
+        "steps": [
+          "2c − (50 − c) = 73 ⇒ c = 41: I",
+          "Wrong = 9 ⇒ II false"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only II and Both accept a count the arithmetic rules out; Neither ignores the direct calculation.",
+        "final_answer": "Option A: Only conclusion I follows"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001585",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: A building has 10 floors with 4 flats on each floor. Every flat on floors 1 to 5 has exactly one balcony, and every flat on floors 6 to 10 has exactly two balconies.\n\nConclusions:\nI. The flats of the building have 60 balconies in all.\nII. More than half of the flats' balconies are on floors 6 to 10.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "Floors 1–5: 5 × 4 × 1 = 20 balconies; floors 6–10: 5 × 4 × 2 = 40 balconies. Total 60 (I), and 40 of the 60 are on floors 6 to 10, which is more than half (II).",
+        "steps": [
+          "Floors 1–5: 20; floors 6–10: 40",
+          "Total 60 ⇒ I",
+          "40 > 30 ⇒ II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'Only' option drops one of two direct calculations.",
+        "final_answer": "Option D: Both conclusions I and II follow"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001586",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: The average monthly salary of the 10 employees of a firm is ₹30,000.\n\nConclusions:\nI. At least one employee of the firm earns ₹30,000 or more a month.\nII. Every employee of the firm earns at least ₹25,000 a month.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "If every employee earned less than ₹30,000, the average would also be less than ₹30,000. So at least one earns ₹30,000 or more (I). An average says nothing about the lowest salary — one employee could earn ₹10,000 while others earn more — so II does not follow.",
+        "steps": [
+          "Not everyone can be below the average ⇒ I",
+          "The minimum is not fixed by the average ⇒ II does not follow"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only II and Both treat the average as a floor; Neither misses that some value must reach the average.",
+        "final_answer": "Option A: Only conclusion I follows"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001587",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: This year, the number of cars sold by a company fell by 10%, while the number of two-wheelers it sold rose by 10%.\n\nConclusions:\nI. The total number of vehicles the company sold this year was the same as last year.\nII. The company sold more two-wheelers than cars this year.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "Percentage changes depend on last year's numbers, which are not given. If the company sold more cars than two-wheelers last year, the total fell; if fewer, it rose — so I does not follow. Whether two-wheelers now outnumber cars also depends on the starting numbers, so II does not follow.",
+        "steps": [
+          "Equal percentages on unequal bases ⇒ totals unknown ⇒ I does not follow",
+          "Last year's numbers unknown ⇒ II does not follow"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each other option treats equal percentage changes as if the bases were known.",
+        "final_answer": "Option C: Neither conclusion I nor II follows"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001588",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. The college raised the fees for its hostel by 40% this year.\nII. Many students of the college moved out of the hostel this year into cheaper shared flats nearby.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "A steep rise in hostel fees makes the hostel costlier than shared flats, so students move out to save money. I explains II.",
+        "steps": [
+          "I: hostel fees up 40%",
+          "II: students move to cheaper flats",
+          "I → II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Students moving out cannot have caused a fee rise announced for the year, so B fails; one statement explains the other, so neither independent nor common causes fit.",
+        "final_answer": "Option A: Statement I is the cause and statement II is its effect"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001589",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. A new metro station opened next to the Sector 18 market last month.\nII. The number of shoppers visiting the Sector 18 market rose sharply this month.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "A metro station next to the market makes it much easier for people to reach it, so more shoppers come. The station (I) came first and explains the rise (II).",
+        "steps": [
+          "I: easier access to the market",
+          "II: more shoppers",
+          "I → II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "More shoppers this month cannot have caused a station that opened last month (B); no third event is needed.",
+        "final_answer": "Option A: Statement I is the cause and statement II is its effect"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001590",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. The company recalled 20,000 of its new pressure cookers from the market.\nII. Tests found that the safety valve of the company's new pressure cooker could fail under high pressure.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "A product is recalled when it is found to be unsafe. The faulty safety valve (II) is the reason for the recall (I).",
+        "steps": [
+          "II: faulty valve found",
+          "I: cookers recalled",
+          "II → I"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A recall does not create a fault in a valve, so A fails; the fault directly explains the recall.",
+        "final_answer": "Option B: Statement II is the cause and statement I is its effect"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001591",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. The price of gold in the country rose to a record high this week.\nII. The city's municipal corporation began a drive to clear encroachments from footpaths this week.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "Gold prices depend on world markets and demand for gold; clearing footpaths is a civic decision. Neither explains the other, and no single event explains both.",
+        "steps": [
+          "I: market-driven price rise",
+          "II: civic drive",
+          "No link, no shared trigger"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A or B would need gold prices and footpath drives to affect each other; E would need one event behind both.",
+        "final_answer": "Option C: Both the statements I and II are effects of independent causes"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001592",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Common cause",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. Petrol pumps across the state ran out of fuel this week because fuel tankers did not reach them.\nII. Deliveries of cooking-gas cylinders across the state were badly delayed this week because the trucks carrying them did not run.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "Empty petrol pumps do not delay gas cylinders, and delayed cylinders do not empty petrol pumps. Both are what one event would produce — for example, a statewide strike by the tanker and truck operators who carry fuel and gas.",
+        "steps": [
+          "I and II: both depend on fuel transport",
+          "Shared trigger: disruption of fuel transport (e.g., a strike)"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A and B would need one shortage to cause the other; D would need two unrelated reasons in the same week, while one transport disruption explains both.",
+        "final_answer": "Option D: Both the statements I and II are effects of some common cause"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001593",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Course of action",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: Every evening, vegetable vendors in a town market throw their unsold and rotting vegetables on the road, and the heaps attract stray cattle that block traffic.\n\nWhich of the following is the most appropriate course of action?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Close the vegetable market permanently"
+        },
+        {
+          "key": "B",
+          "text": "Ban the sale of vegetables in the town"
+        },
+        {
+          "key": "C",
+          "text": "Ask the traffic police to stop vehicles from using the market road"
+        },
+        {
+          "key": "D",
+          "text": "Place covered waste bins in the market, collect the market's waste every evening, and fine vendors who dump waste on the road"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Remove the cause with a practical, enforceable step",
+        "explanation": "The problem starts with waste dumped on the road. Bins, daily collection and fines stop the dumping, which removes the heaps, the cattle and the traffic blocks.",
+        "steps": [
+          "Cause: dumping of waste on the road",
+          "Remedy: bins + daily collection + fines"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Closing the market or banning vegetable sales is extreme; stopping traffic leaves the waste where it is.",
+        "final_answer": "Option D: Place covered waste bins in the market, collect the market's waste every evening, and fine vendors who dump waste on the road"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001594",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: An online poll on a bank's website found that 85% of the people who responded prefer mobile banking to visiting a branch. So the bank can close most of its rural branches without inconveniencing its customers.\n\nWhich of the following, if true, most seriously weakens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The poll received more than 10,000 responses"
+        },
+        {
+          "key": "B",
+          "text": "Running a rural branch costs the bank less than running a city branch"
+        },
+        {
+          "key": "C",
+          "text": "Some city customers also visit branches"
+        },
+        {
+          "key": "D",
+          "text": "Most of the bank's rural customers do not use the internet, and very few of them took part in the online poll"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Weaken: show that the sample does not represent the people affected",
+        "explanation": "The decision affects rural customers, but the poll mostly reached internet users. If rural customers hardly took part and mostly do not use the internet, the poll says nothing about their needs.",
+        "steps": [
+          "Evidence: online poll",
+          "Affected group: rural customers",
+          "Weakener: they were missing from the poll"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A large number of responses does not fix a biased sample; branch costs and city customers' habits do not show how rural customers would be affected.",
+        "final_answer": "Option D: Most of the bank's rural customers do not use the internet, and very few of them took part in the online poll"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001595",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: The city should set up more public charging points for electric cars, because the lack of charging points is what is holding back the purchase of electric cars in the city.\n\nWhich of the following, if true, most strengthens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Electric cars are cheaper to run than petrol cars"
+        },
+        {
+          "key": "B",
+          "text": "The city has more than five lakh registered cars"
+        },
+        {
+          "key": "C",
+          "text": "Charging points can be installed in parking lots"
+        },
+        {
+          "key": "D",
+          "text": "In a survey, most car buyers in the city who had considered an electric car said they did not buy one because they had nowhere to charge it"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Strengthen: confirm the cause the argument names",
+        "explanation": "The argument says the shortage of charging points is the obstacle. The survey shows that buyers who considered electric cars were put off for exactly that reason.",
+        "steps": [
+          "Claim: lack of charging points blocks purchases",
+          "Strengthener: buyers say so in a survey"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Running costs and the number of cars do not show what stops buyers; that charging points can be installed shows the plan is possible, not that it would help.",
+        "final_answer": "Option D: In a survey, most car buyers in the city who had considered an electric car said they did not buy one because they had nowhere to charge it"
+      },
+      "suggested_time_seconds": 65,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001596",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Inference from a passage",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Passage: A theatre sells balcony tickets at ₹300 each and stall tickets at ₹200 each. On Saturday it sold 150 tickets in all and collected ₹38,000 from them.\n\nWhich of the following can be inferred from the passage?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The theatre sold 80 balcony tickets on Saturday"
+        },
+        {
+          "key": "B",
+          "text": "The theatre sold 70 balcony tickets on Saturday"
+        },
+        {
+          "key": "C",
+          "text": "The theatre sold more stall tickets than balcony tickets on Saturday"
+        },
+        {
+          "key": "D",
+          "text": "The theatre collected ₹16,000 from stall tickets on Saturday"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Two conditions fix two unknowns",
+        "explanation": "If b balcony tickets were sold, 300b + 200(150 − b) = 38,000, so 100b = 8,000 and b = 80. Then 70 stall tickets were sold, bringing in ₹14,000.",
+        "steps": [
+          "300b + 200(150 − b) = 38,000",
+          "b = 80; stall = 70; stall income ₹14,000"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "70 is the number of stall tickets; stall tickets (70) were fewer than balcony tickets (80); stall income was ₹14,000, not ₹16,000.",
+        "final_answer": "Option A: The theatre sold 80 balcony tickets on Saturday"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001597",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Course of action",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: After a new highway opened near a district hospital, the number of patients in its emergency ward has doubled, and many of them wait for hours before a doctor sees them.\n\nWhich of the following is the most appropriate course of action?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Add doctors and beds to the emergency ward and set up a trauma-care unit to treat highway accident cases"
+        },
+        {
+          "key": "B",
+          "text": "Close the new highway"
+        },
+        {
+          "key": "C",
+          "text": "Refuse to treat patients from other districts"
+        },
+        {
+          "key": "D",
+          "text": "Reduce the working hours of the emergency ward"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Match capacity to the new demand",
+        "explanation": "Demand has doubled, mainly from the highway. More doctors and beds, plus a trauma unit, add the capacity the ward now needs.",
+        "steps": [
+          "Problem: demand doubled, long waits",
+          "Remedy: more staff, beds and a trauma unit"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Closing the highway is impractical; refusing patients and cutting hours make the problem worse.",
+        "final_answer": "Option A: Add doctors and beds to the emergency ward and set up a trauma-care unit to treat highway accident cases"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001598",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: Shops on Gandhi Road that put up bright LED signboards last year reported higher sales this year than the shops on the road that did not. So bright signboards increase a shop's sales.\n\nWhich of the following, if true, most seriously weakens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "LED signboards use less electricity than older signboards"
+        },
+        {
+          "key": "B",
+          "text": "The shops that put up LED signboards were the same shops that also enlarged their premises and stocked more goods last year"
+        },
+        {
+          "key": "C",
+          "text": "Some shops on Gandhi Road stay open until 10 pm"
+        },
+        {
+          "key": "D",
+          "text": "Gandhi Road is one of the busiest roads in the town"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Weaken: point to another difference between the two groups",
+        "explanation": "If the shops with new signboards also expanded and added stock, their higher sales could come from the expansion, not the signboards.",
+        "steps": [
+          "Evidence: signboard shops sold more",
+          "Weakener: those shops also expanded ⇒ another cause"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Electricity use, opening hours of some shops and the road's traffic apply to both groups and do not explain the difference.",
+        "final_answer": "Option B: The shops that put up LED signboards were the same shops that also enlarged their premises and stocked more goods last year"
+      },
+      "suggested_time_seconds": 65,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001599",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Inference from a passage",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Passage: In a quiz tournament, each of five teams played every other team exactly once. Each match had a winner and a loser; the winner got 2 points and the loser 0.\n\nWhich of the following must be true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Each team won exactly two matches"
+        },
+        {
+          "key": "B",
+          "text": "At least one team won all its matches"
+        },
+        {
+          "key": "C",
+          "text": "The five teams together got 20 points"
+        },
+        {
+          "key": "D",
+          "text": "The five teams together got 10 points"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Count matches first",
+        "explanation": "Five teams playing each other once make 5 × 4 ÷ 2 = 10 matches, and each match gives out exactly 2 points, so the teams together got 20 points.",
+        "steps": [
+          "Matches = 5C2 = 10",
+          "Points = 10 × 2 = 20"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The results of individual teams are not given, so 'two wins each' and 'one unbeaten team' need not be true; 10 is the number of matches, not points.",
+        "final_answer": "Option C: The five teams together got 20 points"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001600",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: The city's decision to make the first hour of parking free in the old market area will bring more shoppers to the old market.\n\nWhich of the following, if true, most strengthens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The old market has more than 200 shops"
+        },
+        {
+          "key": "B",
+          "text": "Parking charges in the city were last revised five years ago"
+        },
+        {
+          "key": "C",
+          "text": "Some shoppers in the old market come on foot"
+        },
+        {
+          "key": "D",
+          "text": "Shopkeepers in the old market say that many of their former customers now shop at the new mall mainly because parking there is free"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Strengthen: show that parking cost is what keeps shoppers away",
+        "explanation": "If shoppers left the old market mainly because they had to pay for parking, free parking removes that reason and is likely to bring some of them back.",
+        "steps": [
+          "Claim: free parking ⇒ more shoppers",
+          "Strengthener: paid parking is why shoppers left"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The number of shops and when charges were last revised do not link parking to shoppers; shoppers on foot are unaffected by parking.",
+        "final_answer": "Option D: Shopkeepers in the old market say that many of their former customers now shop at the new mall mainly because parking there is free"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001601",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Course of action",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: A bank has found that many people who took small business loans under a government scheme did not know that the loans had to be repaid, and defaults on these loans are rising.\n\nWhich of the following is the most appropriate course of action?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Explain the repayment terms clearly to every borrower when the loan is given, and send reminders before each instalment falls due"
+        },
+        {
+          "key": "B",
+          "text": "Stop giving loans under the scheme"
+        },
+        {
+          "key": "C",
+          "text": "Write off all the loans given under the scheme"
+        },
+        {
+          "key": "D",
+          "text": "Take legal action against every borrower at once"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Remove the misunderstanding that causes the problem",
+        "explanation": "Defaults are rising because borrowers did not know they had to repay. Clear explanation at the start and reminders later remove that gap without ending the scheme.",
+        "steps": [
+          "Cause: borrowers unaware of repayment",
+          "Remedy: explain terms + reminders"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Stopping the scheme or writing off loans is extreme; suing every borrower punishes people for a misunderstanding that the bank can correct.",
+        "final_answer": "Option A: Explain the repayment terms clearly to every borrower when the loan is given, and send reminders before each instalment falls due"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001602",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: Since the city introduced a ₹2,000 fine for driving without a seat belt, the number of drivers caught without a seat belt has fallen by 60%. So many more drivers in the city now wear seat belts.\n\nWhich of the following, if true, most seriously weakens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The fine for not wearing a helmet was also raised during the same period"
+        },
+        {
+          "key": "B",
+          "text": "During the same period, the traffic police cut the number of seat-belt checkpoints in the city by about two-thirds"
+        },
+        {
+          "key": "C",
+          "text": "Most new cars warn drivers who have not fastened their seat belts"
+        },
+        {
+          "key": "D",
+          "text": "Many drivers support the higher fine"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Weaken: show that the measure itself changed",
+        "explanation": "The number of drivers caught depends on how many checks are made. If checkpoints fell by two-thirds, far fewer drivers would be caught even if just as many drove without seat belts.",
+        "steps": [
+          "Evidence: fewer drivers caught",
+          "Weakener: far fewer checks ⇒ catches no longer measure behaviour"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The helmet fine concerns two-wheelers; seat-belt warnings in new cars would, if anything, support the argument; drivers' support for the fine does not show what they do.",
+        "final_answer": "Option B: During the same period, the traffic police cut the number of seat-belt checkpoints in the city by about two-thirds"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    }
+  ]
+}

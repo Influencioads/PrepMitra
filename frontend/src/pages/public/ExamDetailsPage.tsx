@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check, CircleCheck, XCircle } from 'lucide-react';
-import { EXAM_CATEGORIES, LANGUAGES } from '@prepmitra/shared';
+import { EXAM_CATEGORIES, LANGUAGES, getPlan } from '@prepmitra/shared';
 import { AppIcon, Button, ButtonLink, ErrorState, LoadingSkeleton, Notice } from '@/components/ui';
 import { examService } from '@/services';
 import { USE_MOCK } from '@/services/mock';
@@ -14,6 +14,9 @@ import { useT, useUiLang } from '@/i18n';
 import { useContentT } from '@/i18n/content';
 import { catalogMessages, categoryText, creditsText, difficultyText } from '@/i18n/messages/catalog';
 import { layoutMessages } from '@/i18n/messages/layout';
+
+/** Price of one full mock bought on its own (the `single_mock` add-on). */
+const SINGLE_MOCK_PRICE = getPlan('single_mock')?.priceInr ?? 29;
 
 export function ExamDetailsPage() {
   const { id = '' } = useParams();
@@ -225,7 +228,7 @@ export function ExamDetailsPage() {
           <div className="rounded-2xl border border-line bg-card p-6">
             <p className="text-sm text-muted">{t('price')}</p>
             <p className="mt-1 text-3xl font-bold tracking-tight">{usesFreeTrial ? t('free') : creditsText(t, cost)}</p>
-            <p className="mt-0.5 text-sm text-muted">{usesFreeTrial ? t('usesFreeTrial') : t('fullMockOr', { amount: 99 * cost })}</p>
+            <p className="mt-0.5 text-sm text-muted">{usesFreeTrial ? t('usesFreeTrial') : t('fullMockOr', { amount: SINGLE_MOCK_PRICE * cost })}</p>
             {!exam.isFree && (
               <p className="mt-4 flex items-center justify-between border-t border-line pt-4 text-sm">
                 <span className="text-muted">{t('miniPrice')}</span>

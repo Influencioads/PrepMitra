@@ -1,0 +1,464 @@
+{
+  "subject": "Banking and Financial Awareness",
+  "prefix": "BFA",
+  "package": 3,
+  "topics": [
+    "Payment Banks",
+    "Small Finance Banks",
+    "Financial Markets",
+    "Money Market",
+    "Capital Market",
+    "Insurance",
+    "Mutual Funds",
+    "Budget and Economic Survey",
+    "Government Financial Schemes",
+    "RBI Circulars and Regulatory Updates"
+  ],
+  "total": 191,
+  "batches": {
+    "008": {
+      "batch_id": "BATCH_008",
+      "count": 63,
+      "by_difficulty": {
+        "Basic": 19,
+        "Intermediate": 25,
+        "Advanced": 19
+      },
+      "question_ids": [
+        "BANK_BFA_001540",
+        "BANK_BFA_001602"
+      ],
+      "stimulus_id_start": "STIM_BFA_008301",
+      "topics": [
+        {
+          "topic": "Payment Banks",
+          "subtopics": [
+            "Permitted activities",
+            "Deposit limit"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 0
+          },
+          "total": 2
+        },
+        {
+          "topic": "Small Finance Banks",
+          "subtopics": [
+            "Licensing norms",
+            "PSL targets"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "Financial Markets",
+          "subtopics": [
+            "Structure and regulators"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Money Market",
+          "subtopics": [
+            "Instruments: T-bills, CP, CD, call money"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 9
+        },
+        {
+          "topic": "Capital Market",
+          "subtopics": [
+            "Primary and secondary market",
+            "SEBI",
+            "Indices"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Insurance",
+          "subtopics": [
+            "IRDAI",
+            "Life and general insurance",
+            "Government insurance schemes"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 4,
+            "Advanced": 1
+          },
+          "total": 6
+        },
+        {
+          "topic": "Mutual Funds",
+          "subtopics": [
+            "Types",
+            "NAV and SIP",
+            "AMFI"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Budget and Economic Survey",
+          "subtopics": [
+            "Union Budget highlights",
+            "Economic Survey highlights",
+            "Fiscal terms"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 9
+        },
+        {
+          "topic": "Government Financial Schemes",
+          "subtopics": [
+            "PMMY, PMSBY, PMJJBY, APY",
+            "Credit guarantee schemes"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 3,
+            "Advanced": 4
+          },
+          "total": 10
+        },
+        {
+          "topic": "RBI Circulars and Regulatory Updates",
+          "subtopics": [
+            "Recent RBI directions"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 4,
+            "Advanced": 2
+          },
+          "total": 7
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_008_BFA_pkg3.json"
+    },
+    "009": {
+      "batch_id": "BATCH_009",
+      "count": 65,
+      "by_difficulty": {
+        "Basic": 21,
+        "Intermediate": 24,
+        "Advanced": 20
+      },
+      "question_ids": [
+        "BANK_BFA_001737",
+        "BANK_BFA_001801"
+      ],
+      "stimulus_id_start": "STIM_BFA_009301",
+      "topics": [
+        {
+          "topic": "Payment Banks",
+          "subtopics": [
+            "Permitted activities",
+            "Deposit limit"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Small Finance Banks",
+          "subtopics": [
+            "Licensing norms",
+            "PSL targets"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 1,
+            "Advanced": 0
+          },
+          "total": 2
+        },
+        {
+          "topic": "Financial Markets",
+          "subtopics": [
+            "Structure and regulators"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Money Market",
+          "subtopics": [
+            "Instruments: T-bills, CP, CD, call money"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Capital Market",
+          "subtopics": [
+            "Primary and secondary market",
+            "SEBI",
+            "Indices"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 6,
+            "Advanced": 3
+          },
+          "total": 11
+        },
+        {
+          "topic": "Insurance",
+          "subtopics": [
+            "IRDAI",
+            "Life and general insurance",
+            "Government insurance schemes"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Mutual Funds",
+          "subtopics": [
+            "Types",
+            "NAV and SIP",
+            "AMFI"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 3,
+            "Advanced": 1
+          },
+          "total": 5
+        },
+        {
+          "topic": "Budget and Economic Survey",
+          "subtopics": [
+            "Union Budget highlights",
+            "Economic Survey highlights",
+            "Fiscal terms"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Government Financial Schemes",
+          "subtopics": [
+            "PMMY, PMSBY, PMJJBY, APY",
+            "Credit guarantee schemes"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 8
+        },
+        {
+          "topic": "RBI Circulars and Regulatory Updates",
+          "subtopics": [
+            "Recent RBI directions"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 3,
+            "Advanced": 4
+          },
+          "total": 10
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_009_BFA_pkg3.json"
+    },
+    "010": {
+      "batch_id": "BATCH_010",
+      "count": 63,
+      "by_difficulty": {
+        "Basic": 20,
+        "Intermediate": 24,
+        "Advanced": 19
+      },
+      "question_ids": [
+        "BANK_BFA_001938",
+        "BANK_BFA_002000"
+      ],
+      "stimulus_id_start": "STIM_BFA_010301",
+      "topics": [
+        {
+          "topic": "Payment Banks",
+          "subtopics": [
+            "Permitted activities",
+            "Deposit limit"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Small Finance Banks",
+          "subtopics": [
+            "Licensing norms",
+            "PSL targets"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 2
+          },
+          "total": 5
+        },
+        {
+          "topic": "Financial Markets",
+          "subtopics": [
+            "Structure and regulators"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 0
+          },
+          "total": 3
+        },
+        {
+          "topic": "Money Market",
+          "subtopics": [
+            "Instruments: T-bills, CP, CD, call money"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Capital Market",
+          "subtopics": [
+            "Primary and secondary market",
+            "SEBI",
+            "Indices"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 1,
+            "Advanced": 3
+          },
+          "total": 6
+        },
+        {
+          "topic": "Insurance",
+          "subtopics": [
+            "IRDAI",
+            "Life and general insurance",
+            "Government insurance schemes"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 9
+        },
+        {
+          "topic": "Mutual Funds",
+          "subtopics": [
+            "Types",
+            "NAV and SIP",
+            "AMFI"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Budget and Economic Survey",
+          "subtopics": [
+            "Union Budget highlights",
+            "Economic Survey highlights",
+            "Fiscal terms"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 5,
+            "Advanced": 3
+          },
+          "total": 10
+        },
+        {
+          "topic": "Government Financial Schemes",
+          "subtopics": [
+            "PMMY, PMSBY, PMJJBY, APY",
+            "Credit guarantee schemes"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "RBI Circulars and Regulatory Updates",
+          "subtopics": [
+            "Recent RBI directions"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 8
+        }
+      ],
+      "output": "batches/parts/frag/BATCH_010_BFA_pkg3.json"
+    }
+  }
+}

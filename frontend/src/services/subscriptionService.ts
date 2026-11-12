@@ -1,7 +1,8 @@
-import type { CreditLedgerEntry, DemoOrder, PaymentMethodLabel, Plan, PlanId } from '@prepmitra/shared';
-import { API_ENDPOINTS, GST_RATE, PRICES_INCLUDE_GST, createId, getPlanSet, toCredits, toPlans } from '@prepmitra/shared';
+import type { Allowances, CreditLedgerEntry, DemoOrder, PaymentMethodLabel, Plan, PlanId } from '@prepmitra/shared';
+import {
+  API_ENDPOINTS, GST_RATE, PLANS, PRICES_INCLUDE_GST, conflictingPlan, createId, mockAllowances, toAllowances, toCredits, toPlans,
+} from '@prepmitra/shared';
 import type { Json } from '@prepmitra/shared';
-import { env } from '@/utils/env';
 import { http } from './http';
 import { USE_MOCK, delay, mockError } from './mock';
 import { fetchOrder, openRazorpayCheckout, toOrder } from './razorpay';
@@ -9,8 +10,8 @@ import { saveFile } from '@/lib/download';
 
 const PLAN_FROM_CODE_UI: Record<string, string> = { pay_per_exam: 'pay-per-mock', credit_pack_10: 'monthly', monthly: 'monthly', yearly: 'yearly' };
 
-/** Plans shown in the app: VITE_PRICING_SET=launch switches to the 15-day MVP packs. */
-export const getActivePlans = (): Plan[] => getPlanSet(env.pricingSet);
+/** The bundled plan catalog (mock mode, and the first paint before `GET /v1/plans` answers). */
+export const getActivePlans = (): Plan[] => PLANS;
 
 export interface CreditsResponse {
   credits: number;
@@ -41,6 +42,13 @@ export const subscriptionService = {
     return getActivePlans();
   },
 
+  /** GET /v1/me/allowances. Mock mode computes them from the plans and add-ons held (`held`), nothing used yet. */
+  async getAllowances(held: PlanId[]): Promise<Allowances> {
+    if (!USE_MOCK) return toAllowances((await http.get(API_ENDPOINTS.allowances)).data);
+    await delay(200);
+    return mockAllowances(held);
+  },
+
   /** GET /v1/me/credits */
   async getCredits(): Promise<CreditsResponse | null> {
     if (USE_MOCK) return null;
@@ -51,9 +59,15 @@ export const subscriptionService = {
    * Real mode: Razorpay Checkout (POST /v1/orders → Checkout → POST /v1/orders/verify).
    * Demo mode: simulated; `simulateFailure` exercises the failure/retry screen.
    */
-  async createDemoOrder(planId: PlanId, method: PaymentMethodLabel, opts: { simulateFailure?: boolean } = {}): Promise<DemoOrder> {
-    const plan = getActivePlans().find((p) => p.id === planId) ?? getPlanSet('full').find((p) => p.id === planId)!;
+  async createDemoOrder(
+    planId: PlanId, method: PaymentMethodLabel, opts: { simulateFailure?: boolean; held?: PlanId[] } = {},
+  ): Promise<DemoOrder> {
     if (!USE_MOCK) return openRazorpayCheckout(planId, method, opts);
+    const plan = PLANS.find((p) => p.id === planId);
+    if (!plan) throw mockError(404, 'PLAN_NOT_FOUND', 'This plan is no longer available.');
+    // Same rule as the server (409 already_subscribed): one study plan and one AI Tutor pack at a time.
+    const clash = conflictingPlan(plan, opts.held ?? [], PLANS);
+    if (clash) throw mockError(409, 'already_subscribed', `You already have ${clash.name}. You can switch when it ends.`);
     await delay(1500);
     if (opts.simulateFailure) throw mockError(402, 'PAYMENT_FAILED', 'Payment failed — no money was deducted. Try again.');
     const { gst, total } = gstBreakup(plan.priceInr);

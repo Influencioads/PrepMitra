@@ -58,6 +58,21 @@ const ReportProcessingPage = page(() => import('@/pages/exam/ReportProcessingPag
 const ExamResultPage = page(() => import('@/pages/exam/ExamResultPage'), 'ExamResultPage');
 const ReportPage = page(() => import('@/pages/exam/ReportPage'), 'ReportPage');
 // Interview
+const MentorDashboardPage = page(() => import('@/pages/mentor/MentorDashboardPage'), 'MentorDashboardPage');
+const StudyPlanPage = page(() => import('@/pages/mentor/StudyPlanPage'), 'StudyPlanPage');
+const MockAnalysisPage = page(() => import('@/pages/mentor/MockAnalysisPage'), 'MockAnalysisPage');
+const MistakeNotebookPage = page(() => import('@/pages/mentor/MistakeNotebookPage'), 'MistakeNotebookPage');
+const MentorChatPage = page(() => import('@/pages/mentor/MentorChatPage'), 'MentorChatPage');
+// AI study tools
+const AiHubPage = page(() => import('@/pages/ai/AiHubPage'), 'AiHubPage');
+const DoubtSolverPage = page(() => import('@/pages/ai/DoubtSolverPage'), 'DoubtSolverPage');
+const TutorPage = page(() => import('@/pages/ai/TutorPage'), 'TutorPage');
+const PersonaPage = page(() => import('@/pages/ai/PersonaPage'), 'PersonaPage');
+const NotesPage = page(() => import('@/pages/ai/NotesPage'), 'NotesPage');
+const PracticePage = page(() => import('@/pages/ai/PracticePage'), 'PracticePage');
+const CoachPage = page(() => import('@/pages/ai/CoachPage'), 'CoachPage');
+const ArtifactPage = page(() => import('@/pages/ai/ArtifactPage'), 'ArtifactPage');
+
 const InterviewSetupPage = page(() => import('@/pages/interview/InterviewSetupPage'), 'InterviewSetupPage');
 const InterviewSessionPage = page(() => import('@/pages/interview/InterviewSessionPage'), 'InterviewSessionPage');
 const InterviewReportPage = page(() => import('@/pages/interview/InterviewReportPage'), 'InterviewReportPage');
@@ -128,6 +143,19 @@ export const routes = [
           { path: '/exam-result/:reportId', element: <S><ExamResultPage /></S> },
           { path: '/reports/:reportId', element: <S><ReportPage /></S> },
           { path: '/progress', element: <S><ProgressPage /></S> },
+          { path: '/mentor', element: <S><MentorDashboardPage /></S> },
+          { path: '/mentor/plan', element: <S><StudyPlanPage /></S> },
+          { path: '/mentor/analysis/:attemptId', element: <S><MockAnalysisPage /></S> },
+          { path: '/mentor/notebook', element: <S><MistakeNotebookPage /></S> },
+          { path: '/mentor/chat', element: <S><MentorChatPage /></S> },
+          { path: '/ai', element: <S><AiHubPage /></S> },
+          { path: '/ai/doubts', element: <S><DoubtSolverPage /></S> },
+          { path: '/ai/tutor', element: <S><TutorPage /></S> },
+          { path: '/ai/persona', element: <S><PersonaPage /></S> },
+          { path: '/ai/notes', element: <S><NotesPage /></S> },
+          { path: '/ai/practice', element: <S><PracticePage /></S> },
+          { path: '/ai/coach', element: <S><CoachPage /></S> },
+          { path: '/ai/artifacts/:id', element: <S><ArtifactPage /></S> },
           { path: '/subscription', element: <S><SubscriptionPage /></S> },
           { path: '/notifications', element: <S><NotificationsPage /></S> },
           { path: '/profile', element: <S><ProfilePage /></S> },

@@ -1,5 +1,7 @@
 import type { Attempt, ExamReport, InterviewReport, InterviewSession } from '@prepmitra/shared';
-import { API_ENDPOINTS, DEFAULT_SETTINGS, toCredits, toInterviewReport, toInterviewSession, toMe, toNotification } from '@prepmitra/shared';
+import {
+  API_ENDPOINTS, DEFAULT_SETTINGS, subscriptionSlots, toCredits, toInterviewReport, toInterviewSession, toMe, toNotification,
+} from '@prepmitra/shared';
 import type { Json } from '@prepmitra/shared';
 import { http } from '@/services/http';
 import { examIdForUuid, fetchExam, fetchExams, fetchPaper, fetchRoles, mapExamReport } from '@/services/backend';
@@ -28,8 +30,32 @@ export function syncFromBackend(): Promise<void> {
 export async function syncCredits(): Promise<void> {
   const uid = useAuthStore.getState().session?.user.id;
   if (!uid) return;
-  const [credits, attempts] = await Promise.all([http.get(API_ENDPOINTS.credits), http.get(API_ENDPOINTS.attempts, { params: { limit: 50 } })]);
+  const [credits, attempts, allowances] = await Promise.all([
+    http.get(API_ENDPOINTS.credits),
+    http.get(API_ENDPOINTS.attempts, { params: { limit: 50 } }),
+    settled(http.get(API_ENDPOINTS.allowances)),
+  ]);
   applyCredits(credits.data, attempts.data.items ?? []);
+  if (allowances) applyPlans(allowances.data);
+}
+
+/**
+ * Study plan (or combo) and AI Tutor pack held now, from the plan codes in `GET /v1/me/allowances`;
+ * renewal date and auto-renew from the active subscriptions in `GET /v1/me/progress`.
+ */
+function applyPlans(allowances: Json, progress?: Json) {
+  const { planId, tutorPlanId } = subscriptionSlots(allowances.plans ?? []);
+  const active: Json[] = (progress?.subscriptions ?? []).filter((x: Json) => x.status === 'active');
+  const renewsAt: string | undefined = active.map((x) => x.renews_at).filter(Boolean).sort()[0];
+  useSubscriptionStore.setState((s) => ({
+    sub: {
+      ...s.sub,
+      planId,
+      tutorPlanId,
+      ...(progress ? { renewsAt, autoRenew: active.some((x) => x.auto_renew) } : {}),
+      status: planId !== 'free' || tutorPlanId ? 'active' : s.sub.status,
+    },
+  }));
 }
 
 function applyCredits(c: Json, attempts: Json[]) {
@@ -38,12 +64,10 @@ function applyCredits(c: Json, attempts: Json[]) {
   useSubscriptionStore.setState((s) => ({
     sub: {
       ...s.sub,
-      planId: credits > 0 ? (s.sub.planId === 'free' ? 'pay-per-mock' : s.sub.planId) : 'free',
-      status: credits > 0 ? 'active' : usedTrial ? 'expired' : 'trial',
+      status: credits > 0 || s.sub.planId !== 'free' || s.sub.tutorPlanId ? 'active' : usedTrial ? 'expired' : 'trial',
       credits,
       ledger,
       freeMiniMockUsed: usedTrial,
-      autoRenew: false,
     },
   }));
 }
@@ -55,12 +79,13 @@ async function doSync() {
   if (!session) return;
   const uid = session.user.id;
   await Promise.all([settled(fetchExams()), settled(fetchRoles())]);
-  const [me, credits, attemptsRes, progress, notes] = await Promise.all([
+  const [me, credits, attemptsRes, progress, notes, allowances] = await Promise.all([
     settled(http.get(API_ENDPOINTS.me)),
     settled(http.get(API_ENDPOINTS.credits)),
     settled(http.get(API_ENDPOINTS.attempts, { params: { limit: 50 } })),
     settled(http.get(API_ENDPOINTS.progress)),
     settled(http.get(API_ENDPOINTS.notifications)),
+    settled(http.get(API_ENDPOINTS.allowances)),
   ]);
   if (useAuthStore.getState().session?.user.id !== uid) return; // signed out meanwhile
 
@@ -81,6 +106,7 @@ async function doSync() {
     if (useSubscriptionStore.getState().ownerId !== uid) useSubscriptionStore.getState().reset(uid, useSubscriptionStore.getState().sub);
     applyCredits(credits.data, attemptItems);
   }
+  if (allowances) applyPlans(allowances.data, progress?.data);
 
   // Exam attempts: unfinished ones (to resume) and reports for the most recent submitted ones.
   const attempts: Attempt[] = [];

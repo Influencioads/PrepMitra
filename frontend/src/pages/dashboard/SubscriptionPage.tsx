@@ -6,17 +6,18 @@ import toast from 'react-hot-toast';
 import { Building2, CircleCheck, CircleX, Coins, CreditCard, Download, Landmark, Receipt, RotateCcw, Smartphone, Wallet } from 'lucide-react';
 import type { DemoOrder, PaymentMethodLabel, Plan } from '@prepmitra/shared';
 import {
-  GST_RATE, PRICES_INCLUDE_GST, demoCheckoutSchema, formatDate, formatDateTime, formatINR, getPlanSet, type DemoCheckoutInput,
+  GST_RATE, PERIOD_LABEL, PLANS as CATALOG, PRICES_INCLUDE_GST, demoCheckoutSchema, formatDate, formatDateTime, formatINR, heldPlanIds, planShortName,
+  type DemoCheckoutInput,
 } from '@prepmitra/shared';
 import {
   Badge, Button, ButtonLink, Card, CardBody, CardHeader, Checkbox, ConfirmationDialog, DemoBadge, EmptyState, KeyValue, Modal, Notice, PageHeader,
-  StatCard,
+  ProgressBar, StatCard,
 } from '@/components/ui';
 import { PricingCards } from '@/components/marketing/PricingCards';
 import { RadioCards } from '@/components/interview/RadioCards';
 import { errorMessage, planGst, subscriptionService } from '@/services';
 import { PaymentError } from '@/services/razorpay';
-import { usePlans } from '@/hooks/usePlans';
+import { useAllowances, usePlans } from '@/hooks/usePlans';
 import { useAsync } from '@/hooks/useAsync';
 import { USE_MOCK } from '@/services/mock';
 import { track } from '@/lib/analytics';
@@ -34,8 +35,8 @@ const METHOD_LABEL: Record<PaymentMethodLabel, string> = { upi: 'UPI', card: 'Cr
 const METHOD_KEY = { upi: 'methodUpi', card: 'methodCardLong', netbanking: 'methodNetbanking', wallet: 'methodWallet' } as const satisfies Record<PaymentMethodLabel, keyof typeof accountMessages.en>;
 const STATUS_KEY = { active: 'statusActive', trial: 'statusTrial', cancelled: 'statusCancelled', expired: 'statusExpired' } as const;
 const STATUS_TONE = { active: 'success', trial: 'info', cancelled: 'warning', expired: 'danger' } as const;
-/** Looks a plan up in the given set first, then the full set (older orders may use another set). */
-const findPlan = (plans: Plan[], id: string): Plan | undefined => plans.find((p) => p.id === id) ?? getPlanSet('full').find((p) => p.id === id);
+/** Looks a plan up in the live list first, then the bundled catalog. */
+const findPlan = (plans: Plan[], id?: string): Plan | undefined => (id ? plans.find((p) => p.id === id) ?? CATALOG.find((p) => p.id === id) : undefined);
 /** Only same-site paths are followed after paying (e.g. back to the exam the student was starting). */
 const safeReturn = (to: string | null) => (to && to.startsWith('/') && !to.startsWith('//') ? to : null);
 
@@ -51,10 +52,15 @@ export function SubscriptionPage() {
   const [checkoutPlan, setCheckoutPlan] = useState<Plan | null>(null);
   const [confirmCancel, setConfirmCancel] = useState(false);
   const [cancelling, setCancelling] = useState(false);
-  // GET /v1/plans: prices, credits and GST from the server (built-in plans until it answers).
-  const { plans: PLANS } = usePlans();
-  const getPlan = (id: string) => findPlan(PLANS, id);
-  const plan = getPlan(sub.planId) ?? PLANS[0]!;
+  // GET /v1/plans (bundled catalog until it answers) and GET /v1/me/allowances.
+  const PLANS = usePlans();
+  const { allowances, error: allowancesError } = useAllowances();
+  const getPlan = (id?: string) => findPlan(PLANS, id);
+  const plan = getPlan(sub.planId) ?? PLANS.find((p) => p.group === 'free') ?? CATALOG[0]!;
+  const tutorPlan = getPlan(sub.tutorPlanId);
+  const topUp = PLANS.find((p) => p.id === 'single_mock') ?? PLANS.find((p) => p.group === 'addon' && p.credits > 0);
+  const upgrade = PLANS.find((p) => p.id === 'pro_monthly') ?? PLANS.find((p) => p.group === 'study');
+  const shownLimits = allowances?.limits.filter((l) => l.limit > 0) ?? [];
   // Where to go after paying, e.g. the exam that needed credits (?returnTo=/exams/…/instructions).
   const [returnTo] = useState(() => safeReturn(params.get('returnTo')));
   // Real API: this account's paid orders from the server, on any device.
@@ -113,7 +119,9 @@ export function SubscriptionPage() {
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-sm text-muted">{t('currentPlan')}</p>
-              <p className="mt-1 text-2xl font-bold">{planCopy(lang, plan.name)}</p>
+              <p className="mt-1 text-2xl font-bold">{planCopy(lang, planShortName(plan))}</p>
+              {plan.group !== 'free' && <p className="text-sm text-muted">{PERIOD_LABEL[plan.period]}</p>}
+              {tutorPlan && <p className="mt-1 text-sm font-semibold">{t('plusTutor', { plan: `${planCopy(lang, planShortName(tutorPlan))} (${PERIOD_LABEL[tutorPlan.period].toLowerCase()})` })}</p>}
             </div>
             <Badge tone={STATUS_TONE[sub.status]}>{t(STATUS_KEY[sub.status])}</Badge>
           </div>
@@ -124,23 +132,49 @@ export function SubscriptionPage() {
           </dl>
           <div className="mt-4 flex flex-wrap gap-2">
             {sub.autoRenew && <Button variant="outline" size="sm" onClick={() => setConfirmCancel(true)}>{t('cancelAutoRenew')}</Button>}
-            <Button size="sm" onClick={() => setCheckoutPlan(PLANS.find((p) => p.id === 'monthly')!)}>{t('upgradePlan')}</Button>
+            {upgrade && sub.planId === 'free' && <Button size="sm" onClick={() => setCheckoutPlan(upgrade)}>{t('upgradePlan')}</Button>}
           </div>
         </Card>
-        <StatCard label={t('availableCredits')} value={sub.credits} icon={<Coins className="h-5 w-5" />} hint={sub.planId === 'monthly' ? t('monthlyExpireHint') : t('oldestFirstHint')} />
+        <StatCard label={t('availableCredits')} value={sub.credits} icon={<Coins className="h-5 w-5" />} hint={plan.isRecurring ? t('monthlyExpireHint') : t('oldestFirstHint')} />
         <Card className="flex flex-col justify-between p-5">
           <div>
             <p className="text-sm text-muted">{t('topUpQ')}</p>
-            <p className="mt-1 text-lg font-semibold">{t('topUpPrice')}</p>
+            <p className="mt-1 text-lg font-semibold">{t('topUpPrice', { price: formatINR(topUp?.priceInr ?? 29) })}</p>
             <p className="text-xs text-muted">{t('topUpValid')}</p>
           </div>
-          <Button variant="secondary" className="mt-4" onClick={() => setCheckoutPlan(PLANS.find((p) => p.id === 'pay-per-mock')!)}>{t('buyOne')}</Button>
+          <Button variant="secondary" className="mt-4" disabled={!topUp} onClick={() => topUp && setCheckoutPlan(topUp)}>{t('buyOne')}</Button>
         </Card>
       </div>
 
+      <Card>
+        <CardHeader
+          title={t('allowancesTitle')}
+          description={allowances?.resetsAt ? `${t('allowancesDesc')} ${t('allowancesResets', { date: formatDate(allowances.resetsAt) })}` : t('allowancesDesc')}
+        />
+        <CardBody>
+          {allowances === null ? (
+            <p className="text-sm text-muted" role={allowancesError ? 'alert' : 'status'}>{allowancesError ? t('allowancesError') : t('allowancesLoading')}</p>
+          ) : shownLimits.length === 0 ? (
+            <p className="text-sm text-muted">{t('allowancesEmpty')}</p>
+          ) : (
+            <ul className="grid gap-x-8 gap-y-4 sm:grid-cols-2" data-testid="allowances">
+              {shownLimits.map((l) => (
+                <li key={l.feature}>
+                  <div className="mb-1 flex justify-between gap-3 text-sm">
+                    <span className="font-medium">{l.label}</span>
+                    <span className="whitespace-nowrap text-muted">{t('allowanceLeft', { remaining: l.remaining, limit: l.limit })}</span>
+                  </div>
+                  <ProgressBar value={l.used} max={l.limit} size="sm" tone={l.remaining === 0 ? 'danger' : 'primary'} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </CardBody>
+      </Card>
+
       <section aria-labelledby="plans-h">
         <h2 id="plans-h" className="mb-4 text-lg font-semibold">{t('comparePlans')}</h2>
-        <PricingCards plans={PLANS} currentPlanId={sub.planId} onSelect={setCheckoutPlan} />
+        <PricingCards plans={PLANS} currentPlanId={sub.planId} heldPlanIds={heldPlanIds(sub)} onSelect={setCheckoutPlan} />
       </section>
 
       <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
@@ -239,7 +273,7 @@ function CheckoutModal({
   const [creditsBefore, setCreditsBefore] = useState(0);
   const { handleSubmit, register, watch, setValue, reset, formState: { errors, isSubmitting } } = useForm<DemoCheckoutInput>({
     resolver: zodResolver(demoCheckoutSchema),
-    defaultValues: { planId: 'monthly', method: 'upi', acceptTerms: false },
+    defaultValues: { planId: 'pro_monthly', method: 'upi', acceptTerms: false },
   });
 
   useEffect(() => {
@@ -261,16 +295,16 @@ function CheckoutModal({
     applyOrder(o, plan);
     onPaid?.();
     track('purchase_completed', { planId: v.planId, method: v.method, amount: o.amountInr, credits: plan.credits });
-    push({ type: 'payment', title: t('receiptNotifTitle', { amount: formatINR(o.amountInr) }), body: t('receiptNotifBody', { plan: planName, credits: creditsText(plan.credits) }), link: '/subscription' });
+    push({ type: 'payment', title: t('receiptNotifTitle', { amount: formatINR(o.amountInr) }), body: plan.credits ? t('receiptNotifBody', { plan: planName, credits: creditsText(plan.credits) }) : t('planActivated', { plan: planName }), link: '/subscription' });
     setOrder(o);
-    toast.success(t('creditsAddedToast', { credits: creditsText(plan.credits) }));
+    toast.success(plan.credits ? t('creditsAddedToast', { credits: creditsText(plan.credits) }) : t('planActivated', { plan: planName }));
   };
   const runPay = (simulate: boolean) => handleSubmit(async (v) => {
     setFailure(null);
     track('purchase_started', { planId: v.planId, method: v.method, amount: total });
     setCreditsBefore(useSubscriptionStore.getState().sub.credits);
     try {
-      succeed(await subscriptionService.createDemoOrder(v.planId, v.method, { simulateFailure: simulate }), v);
+      succeed(await subscriptionService.createDemoOrder(v.planId, v.method, { simulateFailure: simulate, held: heldPlanIds(useSubscriptionStore.getState().sub) }), v);
     } catch (e) {
       track('purchase_failed', { planId: v.planId, method: v.method });
       if (e instanceof PaymentError && e.code === 'VERIFY_FAILED' && e.orderId) {
@@ -352,7 +386,7 @@ function CheckoutModal({
       ) : order ? (
         <div className="flex flex-col items-center py-4 text-center">
           <CircleCheck className="h-12 w-12 text-success" aria-hidden />
-          <p className="mt-3 text-lg font-semibold">{t('creditsAdded', { credits: creditsText(plan.credits) })}</p>
+          <p className="mt-3 text-lg font-semibold">{plan.credits ? t('creditsAdded', { credits: creditsText(plan.credits) }) : t('planActivated', { plan: planName })}</p>
           <p className="mt-1 text-sm text-muted">{t('orderLine', { id: order.invoiceNo ?? order.id, amount: formatINR(order.amountInr), method: t(METHOD_KEY[order.method]) })}</p>
           <p className="mt-4 rounded-full bg-success-soft px-4 py-1.5 text-sm font-semibold text-success" data-testid="new-balance">
             {t('newBalance', { n: sub.credits })} <span className="font-normal text-muted">{t('wasBalance', { n: creditsBefore })}</span>
@@ -362,7 +396,7 @@ function CheckoutModal({
         <form onSubmit={(e) => { e.preventDefault(); void pay(); }} className="space-y-5">
           <div className="rounded-lg bg-background p-4">
             <p className="font-semibold">{planName}</p>
-            <p className="text-sm text-muted">{creditsText(plan.credits)}{plan.validityDays ? t('validDays', { n: plan.validityDays }) : ''}{plan.isRecurring ? t('autoRenewsMonthly') : ''}</p>
+            <p className="text-sm text-muted">{plan.credits ? creditsText(plan.credits) : planCopy(lang, plan.description)}{plan.validityDays ? t('validDays', { n: plan.validityDays }) : ''}{plan.isRecurring ? t('autoRenewsMonthly') : ''}</p>
             <dl className="mt-3 divide-y divide-line">
               <KeyValue label={t('priceExcl')} value={formatINR(base)} />
               <KeyValue label={t('gstAt', { rate: GST_RATE * 100 })} value={formatINR(gst)} />

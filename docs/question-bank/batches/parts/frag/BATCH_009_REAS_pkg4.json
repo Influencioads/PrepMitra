@@ -1,0 +1,3876 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "BATCH_009",
+  "created_at": "2026-11-05",
+  "notes": "Reasoning Ability topic package 4 for BATCH_009: 47 original questions on ranking, input-output, data sufficiency, assumptions, conclusions, cause and effect and critical reasoning, built by tools/packages/REAS_pkg4.py. Ranking positions and input-output machines are recomputed in code, comparison puzzles brute-forced for a unique order, and data sufficiency checked by enumerating models for each statement subset. Verbal items are hand-written and were re-answered blind by separate fresh solvers. All questions await human review.",
+  "stimuli": [
+    {
+      "stimulus_id": "STIM_REAS_009401",
+      "type": "puzzle",
+      "title": "Six trees and their heights",
+      "content": "Six trees P, Q, R, S, T and U in a garden have different heights.\n\n- Tree R is taller than exactly four of the other trees.\n- Tree Q is taller than tree T but shorter than tree U.\n- Tree P is shorter than tree T.\n- Exactly one tree is taller than tree S and shorter than tree R.",
+      "solution": "R is the 2nd tallest. U > Q > T > P, so U is the tallest. S is two places below R, that is, 4th tallest; Q, T and P fill the 3rd, 5th and 6th places in that order. Tallest to shortest: U, R, Q, S, T, P."
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "BANK_REAS_001755",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Ranking and Order",
+      "subtopic": "Position in a row",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Thirty-one people stand in a queue. Mohan has twice as many people behind him as in front of him. What is Mohan's position from the back of the queue?",
+      "options": [
+        {
+          "key": "A",
+          "text": "11th"
+        },
+        {
+          "key": "B",
+          "text": "20th"
+        },
+        {
+          "key": "C",
+          "text": "21st"
+        },
+        {
+          "key": "D",
+          "text": "22nd"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "People in front + Mohan + people behind = total",
+        "explanation": "If f people are in front of Mohan, 2f are behind him: f + 1 + 2f = 31, so f = 10. Twenty people are behind him, so he is 21st from the back.",
+        "steps": [
+          "f + 1 + 2f = 31 ⇒ f = 10",
+          "Behind = 20 ⇒ 21st from the back"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "11th is his place from the front; 20th forgets to count Mohan himself; 22nd adds one too many.",
+        "final_answer": "Option C: 21st"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001756",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Ranking and Order",
+      "subtopic": "Comparison of heights/weights",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009401",
+      "set_position": 1,
+      "question_text": "Which tree is the third tallest?",
+      "options": [
+        {
+          "key": "A",
+          "text": "R"
+        },
+        {
+          "key": "B",
+          "text": "Q"
+        },
+        {
+          "key": "C",
+          "text": "S"
+        },
+        {
+          "key": "D",
+          "text": "U"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fix the extremes, then the gaps",
+        "explanation": "Order from the tallest: U, R, Q, S, T, P. The third tallest is Q.",
+        "steps": [
+          "Order: U > R > Q > S > T > P"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "U is the tallest, R second and S fourth.",
+        "final_answer": "Option B: Q"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001757",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Ranking and Order",
+      "subtopic": "Comparison of heights/weights",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009401",
+      "set_position": 2,
+      "question_text": "How many trees are taller than tree S?",
+      "options": [
+        {
+          "key": "A",
+          "text": "One"
+        },
+        {
+          "key": "B",
+          "text": "Two"
+        },
+        {
+          "key": "C",
+          "text": "Three"
+        },
+        {
+          "key": "D",
+          "text": "Four"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Count above a fixed place",
+        "explanation": "S is 4th tallest, so U, R and Q — three trees — are taller than S.",
+        "steps": [
+          "S = 4th tallest",
+          "Above: U, R, Q"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Two leaves out U; Four counts S itself; One counts only R.",
+        "final_answer": "Option C: Three"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001758",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Ranking and Order",
+      "subtopic": "Comparison of heights/weights",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009401",
+      "set_position": 3,
+      "question_text": "The heights of the six trees are 4 m, 6 m, 7 m, 9 m, 12 m and 15 m. What is the combined height of trees T and Q?",
+      "options": [
+        {
+          "key": "A",
+          "text": "13 m"
+        },
+        {
+          "key": "B",
+          "text": "15 m"
+        },
+        {
+          "key": "C",
+          "text": "16 m"
+        },
+        {
+          "key": "D",
+          "text": "19 m"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Match the sorted heights to the sorted order",
+        "explanation": "From the shortest: P 4 m, T 6 m, S 7 m, Q 9 m, R 12 m, U 15 m. T + Q = 6 + 9 = 15 m.",
+        "steps": [
+          "Shortest to tallest: P, T, S, Q, R, U",
+          "T = 6 m, Q = 9 m"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "13 m takes S for T; 16 m takes S for Q; 19 m takes R for Q.",
+        "final_answer": "Option B: 15 m"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001759",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Ranking and Order",
+      "subtopic": "Position in a row",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Forty students sit in a row facing north. Counting from the left end, every fourth student (the 4th, 8th, 12th and so on) is a girl, and all the others are boys. Naresh is 14th from the right end. How many girls sit to the left of Naresh?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Four"
+        },
+        {
+          "key": "B",
+          "text": "Five"
+        },
+        {
+          "key": "C",
+          "text": "Six"
+        },
+        {
+          "key": "D",
+          "text": "Seven"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Convert to one end, then count the multiples",
+        "explanation": "Naresh is 40 − 14 + 1 = 27th from the left. The girls to his left are in places 4, 8, …, 24: six girls.",
+        "steps": [
+          "Naresh = 27th from the left",
+          "Girls at 4, 8, 12, 16, 20, 24 ⇒ 6"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Seven counts place 28, which is to Naresh's right; Five misses one multiple; Four counts the girls to his right (28, 32, 36, 40).",
+        "final_answer": "Option C: Six"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001760",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Ranking and Order",
+      "subtopic": "Position in a row",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Twenty-one girls stand in a row facing north. Komal is 7th from the left end. How many girls must leave the row from its right end so that Komal stands exactly in the middle of the row?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Six"
+        },
+        {
+          "key": "B",
+          "text": "Seven"
+        },
+        {
+          "key": "C",
+          "text": "Eight"
+        },
+        {
+          "key": "D",
+          "text": "Fourteen"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "In the middle ⇒ equal numbers on both sides",
+        "explanation": "Komal has 6 girls to her left and 21 − 7 = 14 to her right. To be in the middle she needs 6 on the right, so 14 − 6 = 8 girls must leave.",
+        "steps": [
+          "Left of Komal: 6",
+          "Right of Komal: 14",
+          "Leave: 14 − 6 = 8"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Seven and Six are her place and the girls on her left; Fourteen is the number on her right.",
+        "final_answer": "Option C: Eight"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001761",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Ranking and Order",
+      "subtopic": "Position in a row",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "In a class of 50 students with no tied ranks, every student's rank in English is exactly the reverse of his or her rank in Maths: the student ranked 1st in Maths is ranked last in English, the student ranked 2nd in Maths is second-last in English, and so on. Tanu ranks 18th in Maths. What is her rank in English?",
+      "options": [
+        {
+          "key": "A",
+          "text": "18th"
+        },
+        {
+          "key": "B",
+          "text": "32nd"
+        },
+        {
+          "key": "C",
+          "text": "33rd"
+        },
+        {
+          "key": "D",
+          "text": "34th"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "A reversed list = the same list counted from the other end",
+        "explanation": "Reversing the order turns a rank r into 50 − r + 1. Tanu's English rank is 50 − 18 + 1 = 33rd.",
+        "steps": [
+          "English rank = 50 − 18 + 1 = 33"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "32nd forgets the + 1; 18th ignores the reversal; 34th adds 1 twice.",
+        "final_answer": "Option C: 33rd"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001762",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: What is the price of one pen?\n\nI. Three pens and two pencils together cost ₹50.\nII. One pen and one pencil together cost ₹20.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Two prices need two independent facts",
+        "explanation": "I allows several pairs (for example pen ₹10 and pencil ₹10, or pen ₹14 and pencil ₹4); II allows many splits of ₹20. Together: 3p + 2c = 50 and 2p + 2c = 40, so p = ₹10.",
+        "steps": [
+          "I alone ⇒ not sufficient",
+          "II alone ⇒ not sufficient",
+          "Together: (3p + 2c) − 2(p + c) = 10 ⇒ p = ₹10"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'alone' option uses one equation in two unknowns; 'together not sufficient' ignores that the two equations fix the price.",
+        "final_answer": "Option D: Both statements I and II together are necessary"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001763",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: At what time did the train leave Station X?\n\nI. The train reached Station Y at 2:40 pm.\nII. The train was scheduled to leave Station X at 10:40 am, and it left 45 minutes late.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Test each statement alone",
+        "explanation": "I gives only the arrival time; without the journey time the departure is unknown — not sufficient. II: 10:40 am + 45 minutes = 11:25 am — sufficient.",
+        "steps": [
+          "I: journey time unknown ⇒ not sufficient",
+          "II: 10:40 + 0:45 = 11:25"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'I alone' needs the journey time, which is not given; the 'together' options ignore that II alone answers.",
+        "final_answer": "Option B: Statement II alone is sufficient, but statement I alone is not sufficient"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001764",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: Dev, Eshan, Farah and Gita are four children of different ages. Is Dev the eldest of the four?\n\nI. Dev is older than Eshan, and Eshan is older than both Farah and Gita.\nII. Gita is the youngest of the four.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "A yes/no question is settled if every case agrees",
+        "explanation": "I: Dev > Eshan > Farah and Gita, so Dev is older than all three — 'yes'. II says nothing about Dev's place among the other three — not sufficient.",
+        "steps": [
+          "I: Dev > Eshan > Farah, Gita ⇒ yes",
+          "II: only Gita placed ⇒ not sufficient"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'II alone' places only Gita; the 'together' options add a statement that is not needed.",
+        "final_answer": "Option A: Statement I alone is sufficient, but statement II alone is not sufficient"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001765",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: Kunal, Lata, Mohit and Neha live on the four floors of a building, one on each floor (floor 1 is the lowermost). On which floor does Kunal live?\n\nI. Exactly one person lives above Kunal.\nII. Neha lives on the topmost floor, and Kunal lives immediately below Neha.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Either statement I alone or statement II alone is sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each statement on its own",
+        "explanation": "I: exactly one person lives above Kunal, so he is on floor 3. II: Neha is on floor 4 and Kunal just below her, on floor 3. Each statement alone gives floor 3.",
+        "steps": [
+          "I: one person above ⇒ floor 3",
+          "II: below floor 4 ⇒ floor 3"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'alone' option misses that the other statement also fixes the floor; 'both together necessary' needs both when either works.",
+        "final_answer": "Option C: Either statement I alone or statement II alone is sufficient"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001766",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: How many students of Class 8B passed the test?\n\nI. 40 students of Class 8B took the test, and 60% of them passed.\nII. 40 students of Class 8B took the test, and 16 of them failed.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Either statement I alone or statement II alone is sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each statement on its own",
+        "explanation": "I: 60% of 40 = 24 passed. II: 40 − 16 = 24 passed. Each statement alone gives the answer.",
+        "steps": [
+          "I: 0.6 × 40 = 24",
+          "II: 40 − 16 = 24"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'alone' option misses that the other statement also works; 'both together necessary' needs both when either is enough.",
+        "final_answer": "Option C: Either statement I alone or statement II alone is sufficient"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001767",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Two-statement",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by two statements, I and II. Decide whether the data in the statements are sufficient to answer the question.\n\nQuestion: Kavi, Leena, Mona and Neel sit at a square table, one on each side, all facing the centre. Who sits opposite Kavi?\n\nI. Leena sits immediately to the right of Kavi.\nII. Mona sits immediately to the left of Kavi.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I alone is sufficient, but statement II alone is not sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Statement II alone is sufficient, but statement I alone is not sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Statements I and II together are not sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Both statements I and II together are necessary"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Four seats: right, left and opposite",
+        "explanation": "I fixes only Kavi's right; Mona and Neel could take either of the other two seats — not sufficient. II fixes only Kavi's left; Leena and Neel could take either remaining seat — not sufficient. Together, the right and left seats are Leena and Mona, so Neel sits opposite Kavi.",
+        "steps": [
+          "I: right = Leena; opposite = Mona or Neel",
+          "II: left = Mona; opposite = Leena or Neel",
+          "Together: opposite = Neel"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each statement alone leaves two people for the opposite seat; 'together not sufficient' ignores that the two fixed neighbours leave only Neel.",
+        "final_answer": "Option D: Both statements I and II together are necessary"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001768",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: What is the value of the positive integer n?\n\nI. n is a factor of 36.\nII. n is a multiple of 4.\nIII. n is greater than 10.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements I and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "All three statements I, II and III together are necessary"
+        },
+        {
+          "key": "D",
+          "text": "Even all three statements together are not sufficient"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Check whether even all three fix the answer",
+        "explanation": "Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36. With II they are 4, 12 and 36; with III as well, 12 and 36 remain. Even all three statements leave two values, so they are not sufficient.",
+        "steps": [
+          "I + II: 4, 12, 36",
+          "I + III: 12, 18, 36",
+          "All three: 12 or 36 ⇒ not sufficient"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Every pair leaves several values, and even all three leave 12 and 36.",
+        "final_answer": "Option D: Even all three statements together are not sufficient"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001769",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: At what time did the meeting begin?\n\nI. The meeting lasted 90 minutes.\nII. The meeting ended at 4:15 pm.\nIII. Tea was served exactly halfway through the meeting, at 3:30 pm.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements II and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Any two of the three statements together are sufficient"
+        },
+        {
+          "key": "D",
+          "text": "All three statements I, II and III together are necessary"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Two of start, end, length and midpoint fix the rest",
+        "explanation": "I + II: 4:15 pm − 90 min = 2:45 pm. I + III: 3:30 pm − 45 min = 2:45 pm. II + III: the midpoint 3:30 pm is 45 minutes before the end, so the meeting lasted 90 minutes and began at 2:45 pm. Any two statements are enough; none alone is.",
+        "steps": [
+          "I + II: 4:15 − 1:30 = 2:45",
+          "I + III: 3:30 − 0:45 = 2:45",
+          "II + III: 3:30 − 0:45 = 2:45"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each listed pair works, so no single pair is the only sufficient one, and all three are not needed.",
+        "final_answer": "Option C: Any two of the three statements together are sufficient"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001770",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: What is the weight of box Q?\n\nI. Boxes P and Q together weigh 50 kg.\nII. Boxes Q and R together weigh 60 kg.\nIII. Boxes P and R together weigh 70 kg.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements II and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "All three statements I, II and III together are necessary"
+        },
+        {
+          "key": "D",
+          "text": "Even all three statements together are not sufficient"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Three unknowns need three equations",
+        "explanation": "Any two statements give two equations in three unknowns — not sufficient. All three: P + Q + R = (50 + 60 + 70) ÷ 2 = 90, so Q = 90 − 70 = 20 kg.",
+        "steps": [
+          "Any pair: two equations, three unknowns",
+          "All: total 90 ⇒ Q = 20 kg"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each pair leaves one weight free; with all three the weight of Q is fixed, so 'not sufficient' is wrong.",
+        "final_answer": "Option C: All three statements I, II and III together are necessary"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001771",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: What is Anil's present age?\n\nI. Anil is twice as old as Bimal.\nII. Bimal is younger than 15.\nIII. Five years ago, Anil was three times as old as Bimal was then.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements I and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Only statements II and III together are sufficient"
+        },
+        {
+          "key": "D",
+          "text": "All three statements I, II and III together are necessary"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Two independent equations fix two ages",
+        "explanation": "I + III: A = 2B and A − 5 = 3(B − 5), so 2B − 5 = 3B − 15, B = 10 and A = 20 — sufficient. I + II allows B = 1 to 14, so A is not fixed. II + III: A = 3B − 10 with B < 15 still allows several ages. No statement alone is enough.",
+        "steps": [
+          "I + III: 2B − 5 = 3B − 15 ⇒ B = 10, A = 20",
+          "I + II and II + III: several ages"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "I + II and II + III leave many ages; II is not needed once I and III are used.",
+        "final_answer": "Option B: Only statements I and III together are sufficient"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001772",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: Five persons P, Q, R, S and T sit in a row, all facing north. Who sits second from the right end?\n\nI. R sits second to the right of P.\nII. Q and T sit at the two ends of the row.\nIII. S sits immediately to the left of R.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements II and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "All three statements I, II and III together are necessary"
+        },
+        {
+          "key": "D",
+          "text": "Even all three statements together are not sufficient"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Pair the statements and test each pair",
+        "explanation": "I + II: P, R and the person between them fill places 2, 3 and 4, so P is 2nd and R is 4th — R is second from the right. II + III: S and R are next to each other in places 2–4, so the 4th place could be R or P. I + III puts P, S and R together but not where. No single statement is enough.",
+        "steps": [
+          "I + II: P 2nd, R 4th ⇒ R",
+          "II + III: 4th = R or P",
+          "I + III: block of three not fixed"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "II + III leaves two people for the place; I + II already fixes it, so all three are not necessary.",
+        "final_answer": "Option A: Only statements I and II together are sufficient"
+      },
+      "suggested_time_seconds": 85,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001773",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Data Sufficiency",
+      "subtopic": "Three-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "The question below is followed by three statements, I, II and III. Decide which of the statements are sufficient to answer the question.\n\nQuestion: Sapna has only ₹2 coins and ₹5 coins. How many ₹5 coins does she have?\n\nI. She has 20 coins in all.\nII. Her coins are worth ₹67 in all.\nIII. She has more ₹2 coins than ₹5 coins.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only statements I and II together are sufficient"
+        },
+        {
+          "key": "B",
+          "text": "Only statements II and III together are sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Any two of the three statements together are sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Even all three statements together are not sufficient"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Number and value of coins fix both counts",
+        "explanation": "I + II: t + f = 20 and 2t + 5f = 67 give 3f = 27, so f = 9 — sufficient. II + III allows (31, 1), (26, 3), (21, 5), (16, 7) and (11, 9) — not sufficient. I + III allows f = 0 to 9. No statement alone is enough.",
+        "steps": [
+          "I + II: 3f = 67 − 40 = 27 ⇒ f = 9",
+          "II + III: five possibilities",
+          "I + III: f = 0 to 9"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "II + III and I + III leave several counts, so 'any two' is wrong; I + II fixes the count.",
+        "final_answer": "Option A: Only statements I and II together are sufficient"
+      },
+      "suggested_time_seconds": 85,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:enumerate-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001774",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Assumptions",
+      "subtopic": "Implicit assumptions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two assumptions. An assumption is something supposed or taken for granted by the person making the statement. Decide which of the assumptions is/are implicit in the statement.\n\nStatement: The state electricity board has asked consumers to pay their bills online to avoid the long queues at its offices.\n\nAssumptions:\nI. Many consumers are able to pay their bills online.\nII. Long queues form at the board's offices when consumers pay their bills there.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only assumption I is implicit"
+        },
+        {
+          "key": "B",
+          "text": "Only assumption II is implicit"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is implicit"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are implicit"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Implicit assumption: what the speaker must take for granted",
+        "explanation": "Asking consumers to pay online makes sense only if many of them can (I), and the stated reason — avoiding long queues — takes for granted that paying at the offices causes such queues (II).",
+        "steps": [
+          "Advice must be practicable ⇒ I",
+          "Stated purpose ⇒ queues exist at the offices ⇒ II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'Only' option drops one of two things the advice rests on.",
+        "final_answer": "Option D: Both I and II are implicit"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001775",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Assumptions",
+      "subtopic": "Implicit assumptions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two assumptions. An assumption is something supposed or taken for granted by the person making the statement. Decide which of the assumptions is/are implicit in the statement.\n\nStatement: Advertisement of a cricket academy: \"Learn from coaches who have played for the state team — join now!\"\n\nAssumptions:\nI. People who want to learn cricket value being coached by experienced players.\nII. Every student who joins the academy will go on to play for the state team.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only assumption I is implicit"
+        },
+        {
+          "key": "B",
+          "text": "Only assumption II is implicit"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is implicit"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are implicit"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Implicit assumption: what the speaker must take for granted",
+        "explanation": "The advertisement highlights the coaches' playing record because it expects learners to value it (I). It makes no promise that every student will reach the state team, and nothing in it depends on that (II).",
+        "steps": [
+          "Selling point = coaches' experience ⇒ learners value it: I",
+          "No promise of selection ⇒ II not implicit"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only II and Both accept a promise the advertisement never makes; Neither ignores its selling point.",
+        "final_answer": "Option A: Only assumption I is implicit"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001776",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Assumptions",
+      "subtopic": "Implicit assumptions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two assumptions. An assumption is something supposed or taken for granted by the person making the statement. Decide which of the assumptions is/are implicit in the statement.\n\nStatement: Notice near the lifts of an office building: \"In case of fire, do not use the lifts.\"\n\nAssumptions:\nI. Using a lift during a fire may be dangerous.\nII. There is another way, such as a staircase, to leave the building during a fire.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only assumption I is implicit"
+        },
+        {
+          "key": "B",
+          "text": "Only assumption II is implicit"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is implicit"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are implicit"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Implicit assumption: what the speaker must take for granted",
+        "explanation": "People are told not to use the lifts in a fire only because lifts are considered unsafe then (I). Telling people not to use the lifts in an emergency takes for granted that they have another way out (II).",
+        "steps": [
+          "Ban on lifts ⇒ lifts seen as unsafe: I",
+          "No lifts in an emergency ⇒ another exit exists: II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each 'Only' option drops one of two things the notice needs.",
+        "final_answer": "Option D: Both I and II are implicit"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001777",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Assumptions",
+      "subtopic": "Implicit assumptions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two assumptions. An assumption is something supposed or taken for granted by the person making the statement. Decide which of the assumptions is/are implicit in the statement.\n\nStatement: The principal announced, \"The school's annual sports day will be held on the first Saturday of December.\"\n\nAssumptions:\nI. It never rains in December.\nII. Every student of the school will win at least one prize on sports day.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only assumption I is implicit"
+        },
+        {
+          "key": "B",
+          "text": "Only assumption II is implicit"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is implicit"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are implicit"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Implicit assumption: what the speaker must take for granted",
+        "explanation": "The announcement only fixes a date. It does not need December to be free of rain on every day ('never' is too strong), and it says nothing about prizes.",
+        "steps": [
+          "'Never rains' is an extreme claim ⇒ I not implicit",
+          "Prizes are not mentioned ⇒ II not implicit"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each other option accepts a claim that the announcement does not rely on.",
+        "final_answer": "Option C: Neither I nor II is implicit"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001778",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Assumptions",
+      "subtopic": "Implicit assumptions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two assumptions. An assumption is something supposed or taken for granted by the person making the statement. Decide which of the assumptions is/are implicit in the statement.\n\nStatement: A bank's message to its customers: \"Never share your card PIN with anyone, including people who say they are bank staff.\"\n\nAssumptions:\nI. The bank's staff regularly ask customers for their PINs.\nII. Some people may try to get customers' PINs by pretending to be bank staff.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only assumption I is implicit"
+        },
+        {
+          "key": "B",
+          "text": "Only assumption II is implicit"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is implicit"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are implicit"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Implicit assumption: what the speaker must take for granted",
+        "explanation": "The warning about people who 'say they are bank staff' is given because fraudsters may pose as staff (II). The message implies that genuine staff do not ask for PINs, so I goes against it.",
+        "steps": [
+          "Warning about pretenders ⇒ II",
+          "Bank says never share, even with staff ⇒ I contradicts the message"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only I and Both accept a claim the message contradicts; Neither misses the reason for the warning.",
+        "final_answer": "Option B: Only assumption II is implicit"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001779",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Assumptions",
+      "subtopic": "Implicit assumptions",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two assumptions. An assumption is something supposed or taken for granted by the person making the statement. Decide which of the assumptions is/are implicit in the statement.\n\nStatement: A traffic-police advertisement: \"Renew your vehicle's pollution-under-control certificate before it expires, to avoid a fine.\"\n\nAssumptions:\nI. The traffic police check whether vehicles have valid pollution certificates.\nII. Most vehicles in the city cause heavy pollution.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only assumption I is implicit"
+        },
+        {
+          "key": "B",
+          "text": "Only assumption II is implicit"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is implicit"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are implicit"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Implicit assumption: what the speaker must take for granted",
+        "explanation": "The threat of a fine is real only if the police check certificates (I). The advertisement is about keeping the certificate valid; it does not assume that most vehicles pollute heavily (II).",
+        "steps": [
+          "Fine for expiry ⇒ certificates are checked: I",
+          "No claim about how much vehicles pollute ⇒ II not implicit"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only II and Both accept a sweeping claim; Neither ignores how the fine works.",
+        "final_answer": "Option A: Only assumption I is implicit"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001780",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Assumptions",
+      "subtopic": "Implicit assumptions",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two assumptions. An assumption is something supposed or taken for granted by the person making the statement. Decide which of the assumptions is/are implicit in the statement.\n\nStatement: The city has decided to fit every ambulance with a remote device that turns the traffic signals ahead of it green.\n\nAssumptions:\nI. Once the devices are fitted, ambulances will no longer need sirens.\nII. Delays at traffic signals slow ambulances down.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only assumption I is implicit"
+        },
+        {
+          "key": "B",
+          "text": "Only assumption II is implicit"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is implicit"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are implicit"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Implicit assumption: what the speaker must take for granted",
+        "explanation": "The devices are meant to save time at signals, which assumes that signals now delay ambulances (II). Green signals do not clear the vehicles already on the road, so the plan does not assume that sirens become unnecessary (I).",
+        "steps": [
+          "Purpose: save time at signals ⇒ II",
+          "Sirens still needed for traffic on the road ⇒ I not implicit"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only I and Both read too much into the plan; Neither misses why the devices are fitted.",
+        "final_answer": "Option B: Only assumption II is implicit"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001781",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Statement and Conclusions",
+      "subtopic": "Inferences",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Read the statement and the two conclusions. Assume everything in the statement to be true, and decide which conclusion(s) logically follow from it.\n\nStatement: A meeting began at 10:45 am and lasted 2 hours 30 minutes without a break. Lunch at the office is served at 1:00 pm.\n\nConclusions:\nI. The meeting ended at 1:15 pm.\nII. The meeting ended before lunch was served.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "A conclusion must follow from the statement alone",
+        "explanation": "10:45 am + 2 hours 30 minutes = 1:15 pm (I). Lunch is served at 1:00 pm, which is before the meeting ended, so II is false.",
+        "steps": [
+          "10:45 + 2:30 = 13:15 = 1:15 pm ⇒ I",
+          "1:15 pm is after 1:00 pm ⇒ II false"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Only II and Both accept a timing the arithmetic rules out; Neither ignores the direct calculation.",
+        "final_answer": "Option A: Only conclusion I follows"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001782",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. A power cut hit the whole town from 6 pm to 10 pm on Saturday.\nII. The town's only cinema hall, which has no power generator, cancelled its 7 pm show on Saturday.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "A cinema with no generator cannot run a show without electricity, and the 7 pm show fell inside the power cut. I explains II.",
+        "steps": [
+          "I: no power 6–10 pm",
+          "II: 7 pm show cancelled; no generator",
+          "I → II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A cancelled show cannot cause a town-wide power cut (B); no outside event is needed to explain II.",
+        "final_answer": "Option A: Statement I is the cause and statement II is its effect"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001783",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. The village panchayat installed solar-powered streetlights along all the village roads.\nII. The village roads were dark at night because there was no electricity connection for streetlights.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "The roads had no lights for lack of an electricity connection, so the panchayat chose lights that need none. II is the reason for I.",
+        "steps": [
+          "II: roads dark; no power connection",
+          "I: solar lights installed",
+          "II → I"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Installing lights cannot cause the earlier darkness (A); the two are directly linked.",
+        "final_answer": "Option B: Statement II is the cause and statement I is its effect"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001784",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. A famous singer released her new album on Friday.\nII. The city's water department repaired a leaking pipeline on Friday.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "An album release follows the singer's own plans; a pipeline repair follows a leak. Neither explains the other, and no single event lies behind both.",
+        "steps": [
+          "I: music industry decision",
+          "II: civic repair",
+          "No link"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A or B would need the album and the repair to affect each other; E would need one shared reason.",
+        "final_answer": "Option C: Both the statements I and II are effects of independent causes"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001785",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Common cause",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. Several matches of the city's open-air cricket tournament were called off this week.\nII. The lake in the city overflowed this week for the first time in ten years.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "Called-off cricket matches cannot make a lake overflow, and an overflowing lake does not stop matches across the city. Both are typical results of one event — very heavy rain in the city this week.",
+        "steps": [
+          "I: outdoor matches called off",
+          "II: lake overflows",
+          "Shared trigger: very heavy rain"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A or B would need one statement to produce the other; D would need two unrelated reasons, while heavy rain explains both.",
+        "final_answer": "Option D: Both the statements I and II are effects of some common cause"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001786",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. The government cut the import duty on edible oils from 20% to 5%.\nII. Retail prices of imported edible oils fell over the next few weeks.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "A lower import duty lowers the landed cost of imported oils, and lower costs pass into lower retail prices over the following weeks. I explains II.",
+        "steps": [
+          "I: import duty cut",
+          "II: retail prices of imported oils fall",
+          "I → II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Falling prices that came after the duty cut cannot have caused it (B); the link is direct, so D and E do not fit.",
+        "final_answer": "Option A: Statement I is the cause and statement II is its effect"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001787",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. The bank has begun asking customers for a one-time code, in addition to their password, every time they log in to its net-banking website.\nII. Last month, many of the bank's customers lost money after their net-banking passwords were stolen.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "When stolen passwords lead to losses, a bank adds a second check so that a password alone is no longer enough. II is the reason for I.",
+        "steps": [
+          "II: losses through stolen passwords",
+          "I: extra login check added",
+          "II → I"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A new login check cannot cause losses that happened last month (A); the extra check answers that problem directly.",
+        "final_answer": "Option B: Statement II is the cause and statement I is its effect"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001788",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. The country's exports of rice rose by 12% this year.\nII. A state government opened 50 new primary health centres this year.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "Rice exports depend on harvests and world demand; opening health centres is a state health-policy decision. Neither explains the other, and nothing suggests one event behind both.",
+        "steps": [
+          "I: trade outcome",
+          "II: state health decision",
+          "No link, no shared trigger"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A or B would need exports and health centres to affect each other; E would need a common cause.",
+        "final_answer": "Option C: Both the statements I and II are effects of independent causes"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001789",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Independent causes",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. The retail price of onions in the country's markets doubled in the first half of this month.\nII. In the second half of this month, the government banned the export of onions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "When onion prices at home shoot up, the government stops exports so that more onions stay in the domestic market and prices come down. I explains II. A ban on exports keeps more onions at home, which would lower prices, so it cannot be the cause of the rise.",
+        "steps": [
+          "I: domestic prices double",
+          "II: export ban to keep onions at home",
+          "I → II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "B fails because an export ban increases supply at home and would push prices down, not up; the link is direct.",
+        "final_answer": "Option A: Statement I is the cause and statement II is its effect"
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001790",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Cause and Effect",
+      "subtopic": "Common cause",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Below are two statements, I and II. They may be independent causes, effects of independent causes or of a common cause, or one may be the effect of the other. Decide the relationship.\n\nI. Several banks raised the interest rates on their fixed deposits this week.\nII. Several banks raised the interest rates on their home loans this week.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Statement I is the cause and statement II is its effect"
+        },
+        {
+          "key": "B",
+          "text": "Statement II is the cause and statement I is its effect"
+        },
+        {
+          "key": "C",
+          "text": "Both the statements I and II are effects of independent causes"
+        },
+        {
+          "key": "D",
+          "text": "Both the statements I and II are effects of some common cause"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Cause and effect: look for a direct link, a shared trigger, or none",
+        "explanation": "Banks raise both deposit and loan rates together when their own cost of funds rises, as after an increase in the central bank's policy rate. Higher deposit rates do not by themselves explain higher loan rates (banks could absorb the cost), and higher loan rates do not explain higher deposit rates; both follow from the same change.",
+        "steps": [
+          "I and II: both are rate rises by banks",
+          "Shared trigger: a rise in the policy rate / cost of funds"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A or B would need one rate rise to cause the other; D would need two unrelated reasons, while one policy change explains both.",
+        "final_answer": "Option D: Both the statements I and II are effects of some common cause"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001791",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Inference from a passage",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Passage: A parking lot charges ₹20 for the first hour and ₹10 for each additional hour or part of an hour. Rohit parked his car there from 9:00 am to 12:20 pm the same day.\n\nWhich of the following can be inferred from the passage?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Rohit paid ₹40 for parking"
+        },
+        {
+          "key": "B",
+          "text": "Rohit paid ₹45 for parking"
+        },
+        {
+          "key": "C",
+          "text": "Rohit paid ₹60 for parking"
+        },
+        {
+          "key": "D",
+          "text": "Rohit paid ₹50 for parking"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Part of an hour counts as a full hour",
+        "explanation": "Rohit parked for 3 hours 20 minutes: the first hour costs ₹20, and the remaining 2 hours 20 minutes count as three additional hours (₹30). Total ₹50.",
+        "steps": [
+          "Duration: 3 h 20 min",
+          "₹20 + 3 × ₹10 = ₹50"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "₹40 ignores the part hour; ₹45 charges half for it; ₹60 charges an extra hour.",
+        "final_answer": "Option D: Rohit paid ₹50 for parking"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001792",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Course of action",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: Students of a college complain that the food in the college canteen is often stale, and several students fell ill last week after eating there.\n\nWhich of the following is the most appropriate course of action?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Close the college for a week"
+        },
+        {
+          "key": "B",
+          "text": "Get the canteen inspected, require food to be cooked fresh every day, and act against the canteen contractor if the standards are not met"
+        },
+        {
+          "key": "C",
+          "text": "Ask the students to stop eating lunch"
+        },
+        {
+          "key": "D",
+          "text": "Shorten the lunch break"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fix the source of the problem",
+        "explanation": "The problem is unsafe food from the canteen. Inspection, fresh-cooking rules and action against the contractor address it directly.",
+        "steps": [
+          "Problem: stale food, illness",
+          "Remedy: inspect, set standards, enforce"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Closing the college and skipping lunch are extreme; a shorter lunch break does nothing about the food.",
+        "final_answer": "Option B: Get the canteen inspected, require food to be cooked fresh every day, and act against the canteen contractor if the standards are not met"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001793",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: Families that own pets report lower stress than families that do not. So getting a pet reduces a family's stress.\n\nWhich of the following, if true, most seriously weakens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Dogs are the most popular pets in the country"
+        },
+        {
+          "key": "B",
+          "text": "Pet food has become costlier in recent years"
+        },
+        {
+          "key": "C",
+          "text": "Some pet-owning families have more than one pet"
+        },
+        {
+          "key": "D",
+          "text": "Families that already have low stress and plenty of free time are much more likely to decide to get a pet"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Weaken: the causation may run the other way",
+        "explanation": "If calm families with free time are the ones that get pets, low stress may be the reason for owning a pet rather than its result, so the comparison does not show that pets reduce stress.",
+        "steps": [
+          "Evidence: pet owners less stressed",
+          "Weakener: low stress leads to pet ownership"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The most popular pet, food prices and the number of pets do not explain why pet owners are less stressed.",
+        "final_answer": "Option D: Families that already have low stress and plenty of free time are much more likely to decide to get a pet"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001794",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: The town should replace its old water pipes, because the pipes are the main reason the town's tap water is often dirty.\n\nWhich of the following, if true, most strengthens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The old pipes were laid more than forty years ago"
+        },
+        {
+          "key": "B",
+          "text": "New pipes will cost the town ₹12 crore"
+        },
+        {
+          "key": "C",
+          "text": "Most towns in the state get their water from rivers"
+        },
+        {
+          "key": "D",
+          "text": "Water samples taken at the town's treatment plant are clean, but samples of the same water taken from taps after it passes through the old pipes are often dirty"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Strengthen: locate the problem in the pipes",
+        "explanation": "If the water leaves the plant clean and arrives dirty, it is being dirtied on the way — in the pipes — which supports replacing them.",
+        "steps": [
+          "Clean at the plant, dirty at the tap ⇒ pipes are the source"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The pipes' age suggests but does not show the cause; cost and other towns' water sources are irrelevant.",
+        "final_answer": "Option D: Water samples taken at the town's treatment plant are clean, but samples of the same water taken from taps after it passes through the old pipes are often dirty"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001795",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Inference from a passage",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Passage: In an office, every employee in the Accounts team sits on the 3rd floor. Every employee who sits on the 3rd floor has a laptop. Some employees who have laptops work from home on Fridays.\n\nWhich of the following must be true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Every member of the Accounts team has a laptop"
+        },
+        {
+          "key": "B",
+          "text": "Every employee who has a laptop sits on the 3rd floor"
+        },
+        {
+          "key": "C",
+          "text": "Some members of the Accounts team work from home on Fridays"
+        },
+        {
+          "key": "D",
+          "text": "No one who sits on the 3rd floor works from home on Fridays"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Chain 'every' statements in the forward direction only",
+        "explanation": "Accounts ⇒ 3rd floor ⇒ laptop, so every Accounts member has a laptop. The 'some' statement about laptop owners says nothing certain about the Accounts team or the 3rd floor.",
+        "steps": [
+          "Accounts ⊆ 3rd floor ⊆ laptop users",
+          "'Some laptop users work from home' does not pass down the chain"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The first wrong option reverses 'every 3rd-floor employee has a laptop'; the other two draw definite conclusions from a 'some' statement.",
+        "final_answer": "Option A: Every member of the Accounts team has a laptop"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001796",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Course of action",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: Farmers in a district complain that they must carry their vegetables 40 km to the nearest wholesale market, and much of the produce spoils on the way.\n\nWhich of the following is the most appropriate course of action?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ask the farmers to grow fewer vegetables"
+        },
+        {
+          "key": "B",
+          "text": "Set up collection centres in the district with refrigerated transport to the wholesale market, or open a market yard within the district"
+        },
+        {
+          "key": "C",
+          "text": "Close the wholesale market"
+        },
+        {
+          "key": "D",
+          "text": "Ban the transport of vegetables out of the district"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Shorten the distance or protect the produce on the way",
+        "explanation": "Spoilage comes from the long trip without proper transport. Local collection with refrigerated transport, or a market yard nearby, removes that loss.",
+        "steps": [
+          "Problem: distance + spoilage",
+          "Remedy: local collection or market"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Growing less cuts farmers' income; closing the market or banning transport makes selling impossible.",
+        "final_answer": "Option B: Set up collection centres in the district with refrigerated transport to the wholesale market, or open a market yard within the district"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001797",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: Most people who were cheated in online-shopping frauds in the country last year were between 20 and 35 years old. So people aged 20 to 35 are more careless online than older people.\n\nWhich of the following, if true, most seriously weakens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Online-shopping frauds rose by 25% last year"
+        },
+        {
+          "key": "B",
+          "text": "Many fraud victims did not report the fraud to the police"
+        },
+        {
+          "key": "C",
+          "text": "People aged 20 to 35 shop online mostly on their phones"
+        },
+        {
+          "key": "D",
+          "text": "People aged 20 to 35 make up about 80% of all online shoppers in the country"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Weaken: compare with the size of each group",
+        "explanation": "If this age group makes up most online shoppers, it would account for most fraud victims even if its members were no more careless than anyone else. The raw share of victims does not show a higher rate of carelessness.",
+        "steps": [
+          "Evidence: most victims are 20–35",
+          "Weakener: most shoppers are 20–35 ⇒ share of victims expected"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "A rise in frauds and unreported cases do not compare age groups; the device used does not show carelessness.",
+        "final_answer": "Option D: People aged 20 to 35 make up about 80% of all online shoppers in the country"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001798",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Inference from a passage",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Passage: A shop sells pens only in packs of 6 and packs of 10. Ankit bought exactly 46 pens from the shop.\n\nWhich of the following must be true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ankit bought at least one pack of each size"
+        },
+        {
+          "key": "B",
+          "text": "Ankit bought 7 packs in all"
+        },
+        {
+          "key": "C",
+          "text": "Ankit bought more packs of 6 than packs of 10"
+        },
+        {
+          "key": "D",
+          "text": "Ankit bought exactly 4 packs of 10"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "List every possibility before choosing 'must'",
+        "explanation": "6a + 10b = 46 has only two whole-number solutions: one pack of 6 with four packs of 10, or six packs of 6 with one pack of 10. In both, he bought at least one pack of each size.",
+        "steps": [
+          "6a + 10b = 46 ⇒ (a, b) = (1, 4) or (6, 1)",
+          "Both include each size"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "7 packs, more packs of 6, and exactly 4 packs of 10 are each true for only one of the two possibilities.",
+        "final_answer": "Option A: Ankit bought at least one pack of each size"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001799",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Course of action",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: Many senior citizens in a city do not claim the pension they are entitled to, because the application form is long and must be submitted in person at a single office in the city.\n\nWhich of the following is the most appropriate course of action?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Stop the pension scheme for new applicants"
+        },
+        {
+          "key": "B",
+          "text": "Shorten the form and let it be submitted online or at ward offices, with help desks for senior citizens"
+        },
+        {
+          "key": "C",
+          "text": "Raise the amount of the pension"
+        },
+        {
+          "key": "D",
+          "text": "Pay the pension only to those who have already applied"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Remove the barrier that keeps people out",
+        "explanation": "Eligible people are left out because applying is hard. A shorter form, more places to apply and help desks make it easy for them to claim.",
+        "steps": [
+          "Barrier: long form, one office",
+          "Remedy: shorter form, online/ward submission, help desks"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Stopping the scheme or limiting it to current applicants leaves the eligible out; a higher pension does not help people who cannot apply.",
+        "final_answer": "Option B: Shorten the form and let it be submitted online or at ward offices, with help desks for senior citizens"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001800",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Strengthen and weaken",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Argument: The state should make all its government offices paperless within one year, because this would save about ₹500 crore a year on paper and printing.\n\nWhich of the following, if true, most seriously weakens the argument?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Paper is made from wood pulp"
+        },
+        {
+          "key": "B",
+          "text": "Most government offices in the state have no computers or internet connection, and equipping them would take at least five years"
+        },
+        {
+          "key": "C",
+          "text": "Several private companies in the state are already paperless"
+        },
+        {
+          "key": "D",
+          "text": "The state spends more on salaries than on paper"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Weaken: attack the plan's feasibility within the stated time",
+        "explanation": "The proposal is to go paperless within one year. If most offices lack the computers and connections needed and setting them up takes five years, the plan cannot be carried out on time, whatever its savings.",
+        "steps": [
+          "Proposal: paperless in one year",
+          "Weakener: infrastructure needs five years ⇒ not feasible"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The source of paper is irrelevant; private firms' success supports the idea; comparing salaries with paper costs does not deny the savings.",
+        "final_answer": "Option B: Most government offices in the state have no computers or internet connection, and equipping them would take at least five years"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001801",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Critical Reasoning",
+      "subtopic": "Inference from a passage",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Passage: A bank pays interest on a savings account only on the part of the balance above ₹10,000, at 4% a year. Leena kept ₹25,000 in her account for a full year and Mohan kept ₹12,000 in his for a full year; neither balance changed during the year.\n\nWhich of the following must be true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Leena earned ₹1,000 as interest"
+        },
+        {
+          "key": "B",
+          "text": "Mohan earned ₹480 as interest"
+        },
+        {
+          "key": "C",
+          "text": "Leena earned a little more than twice as much interest as Mohan"
+        },
+        {
+          "key": "D",
+          "text": "Leena earned more than seven times as much interest as Mohan"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Apply the rate only to the part above the threshold",
+        "explanation": "Leena earns 4% of ₹15,000 = ₹600; Mohan earns 4% of ₹2,000 = ₹80. ₹600 is 7.5 times ₹80.",
+        "steps": [
+          "Leena: 0.04 × 15,000 = ₹600",
+          "Mohan: 0.04 × 2,000 = ₹80",
+          "600 ÷ 80 = 7.5"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "₹1,000 and ₹480 apply the rate to the whole balance; 'about twice' compares the balances, not the interest.",
+        "final_answer": "Option D: Leena earned more than seven times as much interest as Mohan"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    }
+  ]
+}

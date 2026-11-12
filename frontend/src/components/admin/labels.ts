@@ -1,8 +1,8 @@
 import type {
-  AdminOrderStatus, AdminTeamRole, LessonSource, PaymentGateway, PlanId, PublishStatus, QuestionStatusAdmin, QuestionType,
+  AdminOrderStatus, AdminTeamRole, LessonSource, PaymentGateway, PlanGroup, PlanId, PublishStatus, QuestionStatusAdmin, QuestionType,
   ReviewReason, ReviewStatus, Subject,
 } from '@prepmitra/shared';
-import { ADMIN_MODULES, ADMIN_TEAM_ROLES, LANGUAGES } from '@prepmitra/shared';
+import { ADMIN_MODULES, ADMIN_TEAM_ROLES, LANGUAGES, PERIOD_LABEL, PLANS, groupFromCode, planShortName } from '@prepmitra/shared';
 import type { BadgeTone, SelectOption } from '@/components/ui';
 
 export const SUBJECT_LABELS: Record<Subject, string> = {
@@ -64,8 +64,13 @@ export const LESSON_SOURCE: Record<LessonSource, { label: string; tone: BadgeTon
 
 export const GATEWAY_LABELS: Record<PaymentGateway, string> = { razorpay: 'Razorpay', cashfree: 'Cashfree' };
 
-export const PLAN_LABELS: Record<PlanId, string> = { free: 'Free', 'pay-per-mock': 'Pay per mock', monthly: 'Monthly', yearly: 'Yearly' };
-export const PLAN_TONES: Record<PlanId, BadgeTone> = { free: 'neutral', 'pay-per-mock': 'info', monthly: 'primary', yearly: 'secondary' };
+/** Admin label per plan id, e.g. "Pro (Selection Pass) · Quarterly"; older or unknown ids show as-is. */
+export const PLAN_LABELS: Record<string, string> = Object.fromEntries(
+  PLANS.map((p) => [p.id, p.group === 'free' ? 'Free' : p.group === 'addon' ? p.name : `${planShortName(p)} · ${PERIOD_LABEL[p.period]}`]),
+);
+export const planLabel = (id: PlanId) => PLAN_LABELS[id] ?? id;
+const GROUP_TONES: Record<PlanGroup, BadgeTone> = { free: 'neutral', study: 'primary', tutor: 'secondary', combo: 'success', addon: 'info' };
+export const planTone = (id: PlanId): BadgeTone => GROUP_TONES[PLANS.find((p) => p.id === id)?.group ?? groupFromCode(id)];
 
 export const TEAM_ROLE_LABELS = Object.fromEntries(ADMIN_TEAM_ROLES.map((r) => [r.id, r.label])) as Record<AdminTeamRole, string>;
 export const MODULE_LABELS = Object.fromEntries(ADMIN_MODULES.map((m) => [m.id, m.label])) as Record<string, string>;

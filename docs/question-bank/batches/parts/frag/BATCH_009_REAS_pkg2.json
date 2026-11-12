@@ -1,0 +1,4673 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "BATCH_009",
+  "created_at": "2026-11-05",
+  "notes": "Reasoning Ability topic package 2 for BATCH_009 (Month and Date-Based Puzzles, Puzzles (Other), Syllogism, Inequality): 57 original questions built by tools/packages/REAS_pkg2.py. Puzzles are brute-forced for a unique arrangement or recomputed with datetime; syllogisms checked over every Venn-region model; inequalities over every integer ordering (with a wider-range cross-check).",
+  "stimuli": [
+    {
+      "stimulus_id": "STIM_REAS_009201",
+      "type": "passage",
+      "title": "Five Greek capital letters for comparisons",
+      "content": "In the questions of this set, the Greek capital letters Γ, Λ, Ξ, Π and Ψ are used with these meanings:\n'A Γ B' means 'A is greater than B'; 'A Λ B' means 'A is smaller than B'; 'A Ξ B' means 'A is either greater than or equal to B'; 'A Π B' means 'A is either smaller than or equal to B'; 'A Ψ B' means 'A is equal to B'.\nAssuming the statements to be true, find which of the conclusions I and II is/are definitely true.",
+      "solution": "Decode: Γ means >, Λ means <, Ξ means ≥, Π means ≤ and Ψ means =. Rewrite the statements with ordinary signs, join them into a chain and test each conclusion."
+    },
+    {
+      "stimulus_id": "STIM_REAS_009202",
+      "type": "passage",
+      "title": "Five chess symbols defined by negations",
+      "content": "In the questions of this set, chess symbols are used between two letters with these meanings:\n'A ♔ B' means 'A is neither smaller than nor equal to B'; 'A ♕ B' means 'A is not greater than B'; 'A ♖ B' means 'A is neither greater than nor smaller than B'; 'A ♗ B' means 'A is not smaller than B'; 'A ♘ B' means 'A is neither greater than nor equal to B'.\nAssuming the statements to be true, find which of the conclusions I and II is/are definitely true.",
+      "solution": "Translate each negation: 'neither smaller nor equal' = >, 'not greater' = ≤, 'neither greater nor smaller' = =, 'not smaller' = ≥, 'neither greater nor equal' = <. So ♔ is >, ♕ is ≤, ♖ is =, ♗ is ≥ and ♘ is <. Then join the statements into one chain."
+    },
+    {
+      "stimulus_id": "STIM_REAS_009203",
+      "type": "puzzle",
+      "title": "Six treks in six months, read by season",
+      "content": "Six friends Aadi, Bela, Daksh, Hema, Ishan and Kajal each go on one trek in the same year, in six different months among January, March, April, July, October and December. Take the seasons as: Spring = January to March, Summer = April to June, Monsoon = July to September, Winter = October to December.\n\n- Hema treks in the only Summer month among the six.\n- Ishan treks in a Monsoon month.\n- Kajal treks in the month that comes just before Hema's among the six months.\n- Daksh and Bela both trek in Winter, and Bela's month is later.",
+      "solution": "Of the six months, only April is in Summer: Hema. Only July is in Monsoon: Ishan. The month before April in the list is March: Kajal. Winter months are October and December; Bela is later, so Daksh October and Bela December. Aadi takes the remaining month, January.\n\nJan Aadi, Mar Kajal, Apr Hema, Jul Ishan, Oct Daksh, Dec Bela."
+    },
+    {
+      "stimulus_id": "STIM_REAS_009204",
+      "type": "puzzle",
+      "title": "Six appointments across the end of September 2026",
+      "content": "Six persons Pranav, Rukmini, Sachin, Tanvi, Uttam and Vidya each have one appointment at a passport office on six different dates from Friday, 25 September 2026 to Tuesday, 6 October 2026 (September has 30 days).\n\n- Rukmini's appointment is on the last day of September.\n- Pranav's appointment is exactly five days after Rukmini's.\n- Tanvi's appointment is on the first Saturday of the period.\n- Vidya's appointment is on a Friday in October.\n- Sachin's appointment is on the day after Vidya's.\n- Uttam's appointment is on a Monday, before Rukmini's.",
+      "solution": "Days: Fri 25, Sat 26, Sun 27, Mon 28, Tue 29, Wed 30 September; Thu 1, Fri 2, Sat 3, Sun 4, Mon 5, Tue 6 October. Rukmini 30 September; Pranav five days later, 5 October. Tanvi: first Saturday, 26 September. Vidya: the Friday in October, 2 October; Sachin 3 October. Uttam: a Monday before 30 September, 28 September.\n\nTanvi 26 Sep (Sat), Uttam 28 Sep (Mon), Rukmini 30 Sep (Wed), Vidya 2 Oct (Fri), Sachin 3 Oct (Sat), Pranav 5 Oct (Mon)."
+    },
+    {
+      "stimulus_id": "STIM_REAS_009205",
+      "type": "puzzle",
+      "title": "Six employees and their retirement years",
+      "content": "Six employees Gyan, Hridya, Kesar, Lohit, Mrinal and Navya of a bank were born in six different years between 1960 and 1995. Each employee retires in the year in which he or she turns 60.\n\n- Kesar retires in 2031.\n- Lohit is seven years younger than Kesar.\n- Gyan retires in 2026, and Navya is exactly ten years younger than Gyan.\n- Hridya was born in a leap year, after Kesar but before Lohit.\n- Mrinal is the youngest of the six, and Mrinal's age in 2026 is a perfect square.",
+      "solution": "Kesar: 2031 − 60 = 1971; Lohit 1978. Gyan: 2026 − 60 = 1966; Navya 1976. Hridya: a leap year after 1971 and before 1978 — 1972 or 1976 — and 1976 is Navya's, so 1972. Mrinal is the youngest (after 1978) and is a perfect-square age in 2026: 36 (born 1990) is the only one within 1979–1995 (25 would be 2001, 49 would be 1977).\n\nBirth / retirement: Gyan 1966/2026, Kesar 1971/2031, Hridya 1972/2032, Navya 1976/2036, Lohit 1978/2038, Mrinal 1990/2050."
+    },
+    {
+      "stimulus_id": "STIM_REAS_009206",
+      "type": "puzzle",
+      "title": "Three departments, two posts each, six joining years",
+      "content": "Six employees Aarav, Bhakti, Chaitali, Devesh, Eeshan and Fiza work in three departments of a company — HR, IT and Sales. Each holds one of two posts, Manager or Executive, and each joined in a different year from 2018 to 2023.\n\n- Each department has exactly two of them: one Manager and one Executive, and in each department the Manager joined earlier than the Executive.\n- Aarav, an Executive, joined last of the six.\n- Devesh joined first of the six, and Bhakti works in the same department as Devesh.\n- Fiza is a Manager and joined one year after Devesh.\n- Chaitali works in Sales and joined in 2020.\n- Eeshan joined in the year after Chaitali and works in the same department as her.\n- Bhakti does not work in IT.",
+      "solution": "Aarav joined in 2023 as an Executive; Devesh in 2018. Devesh joined before everyone, so he cannot be an Executive (his Manager would have joined earlier): Devesh is a Manager, and Bhakti, in his department, is its Executive. Fiza: Manager, 2019. Chaitali: Sales, 2020; Eeshan: Sales, 2021 — so Chaitali is the Sales Manager and Eeshan the Sales Executive. Sales is full, so Devesh and Bhakti are in HR or IT; Bhakti is not in IT, so both are in HR. Fiza then manages IT and Aarav is the IT Executive. Bhakti takes the remaining year, 2022.\n\nHR: Devesh (Manager, 2018), Bhakti (Executive, 2022); IT: Fiza (Manager, 2019), Aarav (Executive, 2023); Sales: Chaitali (Manager, 2020), Eeshan (Executive, 2021)."
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "BANK_REAS_001649",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nAll monkeys are bears.\nSome rabbits are not bears.\n\nConclusions:\nI. Some bears are rabbits.\nII. Some rabbits are not monkeys.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Two-statement syllogism (Venn diagram method)",
+        "explanation": "Some rabbits lie outside the bears; every monkey is inside the bears, so those rabbits are not monkeys (II). Whether any bear is a rabbit is open (I).",
+        "steps": [
+          "Rabbits outside bears are outside monkeys (monkeys ⊂ bears) ⇒ II follows",
+          "Bears and rabbits need not overlap ⇒ I not certain"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Conclusion I is not forced by the statements (some valid diagram breaks it), so 'Both' and 'Only I' are wrong; II holds in every diagram, so 'Neither' is wrong.",
+        "final_answer": "Option B: Only conclusion II follows"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001650",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nNo squirrel is a dolphin.\nAll whales are dolphins.\n\nConclusions:\nI. No whale is a squirrel.\nII. Some dolphins are not squirrels.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Two-statement syllogism (Venn diagram method)",
+        "explanation": "Whales ⊂ dolphins and dolphins never meet squirrels, so no whale is a squirrel (I). Since no dolphin is a squirrel and dolphins exist, some dolphins are not squirrels (II).",
+        "steps": [
+          "All whales are dolphins + No dolphin is a squirrel ⇒ No whale is a squirrel: I",
+          "No dolphin is a squirrel ⇒ some dolphins are not squirrels: II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion holds in every valid diagram, so choosing only one of them, or neither, is wrong.",
+        "final_answer": "Option D: Both conclusions I and II follow"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001651",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Two-statement",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nSome yaks are not goats.\nAll donkeys are goats.\n\nConclusions:\nI. Some yaks are donkeys.\nII. No yak is a donkey.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Either conclusion I or II follows"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Two-statement syllogism (Venn diagram method)",
+        "explanation": "The statements leave the yak–donkey relation open: yaks may or may not reach into the goats (where the donkeys are). So neither I nor II is certain, but they are a complementary pair: one must be true.",
+        "steps": [
+          "No definite yak–donkey relation",
+          "'Some yaks are donkeys' / 'No yak is a donkey' ⇒ complementary pair",
+          "Either I or II follows"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Neither conclusion is certain alone, so 'Only I' and 'Only II' are wrong; but in every diagram one of the two holds, so 'Neither' is wrong. ('Either' replaces 'Both' under the four-option rule.)",
+        "final_answer": "Option D: Either conclusion I or II follows"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001652",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Only a few / Only",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nOnly muffins are biscuits.\nNo samosa is a muffin.\n\nConclusions:\nI. No biscuit is a samosa.\nII. All muffins are biscuits.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "'Only a few' and 'Only' statements",
+        "explanation": "'Only muffins are biscuits' means every biscuit is a muffin. Muffins never meet samosas, so no biscuit is a samosa (I). The statement does not say every muffin is a biscuit (II) — that would be 'Only biscuits are muffins'.",
+        "steps": [
+          "Only muffins are biscuits ⇒ biscuits ⊂ muffins",
+          "Muffins ∩ samosas = ∅ ⇒ I follows",
+          "Muffins may extend beyond biscuits ⇒ II not certain"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Conclusion II is not forced by the statements (some valid diagram breaks it), so 'Both' and 'Only II' are wrong; I holds in every diagram, so 'Neither' is wrong.",
+        "final_answer": "Option A: Only conclusion I follows"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001653",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Only a few / Only",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nOnly a few laddoos are jalebis.\nOnly a few dosas are jalebis.\n\nConclusions:\nI. Some laddoos are dosas.\nII. All jalebis are laddoos.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "'Only a few' and 'Only' statements",
+        "explanation": "Laddoos and dosas each overlap the jalebis only partly, and their overlaps may be different parts, so 'Some laddoos are dosas' is not certain (I). The jalebis meeting the dosas may lie outside the laddoos, so 'All jalebis are laddoos' is not certain either (II).",
+        "steps": [
+          "Two 'Only a few' statements with the middle term as predicate ⇒ no laddoo–dosa link",
+          "Jalebi ∩ dosa may avoid laddoos ⇒ II not certain"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion fails in at least one valid diagram, so 'Only I', 'Only II' and 'Both' are wrong.",
+        "final_answer": "Option C: Neither conclusion I nor II follows"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001654",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Possibility cases",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nAll pizzas are burgers.\nOnly a few noodles are burgers.\n\nConclusions:\nI. All noodles being pizzas is a possibility.\nII. All burgers being noodles is a possibility.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Possibility conclusions in syllogism",
+        "explanation": "Some noodles are not burgers, and every pizza is a burger, so those noodles are not pizzas: all noodles can never be pizzas (I fails). The burgers may all lie inside the noodles — only a few noodles being burgers is still satisfied — so II is possible.",
+        "steps": [
+          "Noodles outside burgers are outside pizzas ⇒ I impossible",
+          "Burgers ⊂ noodles keeps 'only a few noodles are burgers' true ⇒ II possible"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Conclusion I is not forced by the statements (some valid diagram breaks it), so 'Both' and 'Only I' are wrong; II holds in every diagram, so 'Neither' is wrong.",
+        "final_answer": "Option B: Only conclusion II follows"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001655",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Possibility cases",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nNo soup is a salad.\nSome salads are sandwiches.\n\nTaking the statements to be true even if they seem to be at variance with commonly known facts, which one of the following conclusions definitely follows?",
+      "options": [
+        {
+          "key": "A",
+          "text": "All sandwiches being soups is a possibility."
+        },
+        {
+          "key": "B",
+          "text": "All salads being soups is a possibility."
+        },
+        {
+          "key": "C",
+          "text": "Some soups being sandwiches is a possibility."
+        },
+        {
+          "key": "D",
+          "text": "Some sandwiches are soups."
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Possibility conclusions in syllogism",
+        "explanation": "The sandwiches outside the salads are unrestricted, so some of them may be soups: 'Some soups being sandwiches is a possibility' follows.",
+        "steps": [
+          "Soups only avoid salads",
+          "Sandwiches outside salads may meet soups ⇒ possible"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "All sandwiches can never be soups (some sandwiches are salads); all salads being soups contradicts 'No soup is a salad'; 'Some sandwiches are soups' is possible but not definite.",
+        "final_answer": "Option C: Some soups being sandwiches is a possibility."
+      },
+      "suggested_time_seconds": 55,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001656",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Possibility cases",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nAll lizards are snakes.\nSome snakes are frogs.\nNo frog is a turtle.\n\nConclusions:\nI. All lizards being frogs is a possibility.\nII. Some snakes are not turtles.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Possibility conclusions in syllogism",
+        "explanation": "The lizards may sit entirely inside the snake–frog overlap, so all lizards being frogs is possible (I). The snakes that are frogs can never be turtles, so some snakes are not turtles (II).",
+        "steps": [
+          "Lizards ⊂ snakes may fall inside snake ∩ frog ⇒ I possible",
+          "Snake ∩ frog ≠ ∅ and outside turtles ⇒ II definite"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion holds in every valid diagram, so choosing only one of them, or neither, is wrong.",
+        "final_answer": "Option D: Both conclusions I and II follow"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001657",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Possibility cases",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nOnly a few crabs are snails.\nAll snails are moths.\nNo moth is a beetle.\n\nConclusions:\nI. Some crabs are not beetles.\nII. Some beetles being snails is a possibility.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Possibility conclusions in syllogism",
+        "explanation": "Some crabs are snails, snails ⊂ moths and moths never meet beetles, so those crabs are not beetles (I). For the same reason no snail can ever be a beetle, so II is impossible.",
+        "steps": [
+          "Crab ∩ snail ⊂ moths, outside beetles ⇒ I follows",
+          "Snails ⊂ moths, moths ∩ beetles = ∅ ⇒ II impossible"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Conclusion II is not forced by the statements (some valid diagram breaks it), so 'Both' and 'Only II' are wrong; I holds in every diagram, so 'Neither' is wrong.",
+        "final_answer": "Option A: Only conclusion I follows"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001658",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Possibility cases",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nSome butterflies are wasps.\nNo wasp is a cricket.\nOnly a few crickets are hornets.\n\nConclusions:\nI. All hornets being wasps is a possibility.\nII. No butterfly is a cricket.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Possibility conclusions in syllogism",
+        "explanation": "Some crickets are hornets, and no cricket is a wasp, so those hornets are not wasps: all hornets can never be wasps (I fails). Butterflies outside the wasps may be crickets, so 'No butterfly is a cricket' is not certain (II).",
+        "steps": [
+          "Hornet ∩ cricket ≠ ∅ and outside wasps ⇒ I impossible",
+          "Butterflies outside wasps are free ⇒ II not certain"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion fails in at least one valid diagram, so 'Only I', 'Only II' and 'Both' are wrong.",
+        "final_answer": "Option C: Neither conclusion I nor II follows"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001659",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Only a few / Only",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nOnly vests are skirts.\nOnly a few caps are skirts.\nNo hat is a vest.\n\nConclusions:\nI. All caps being hats is a possibility.\nII. Some vests are caps.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "'Only a few' and 'Only' statements",
+        "explanation": "'Only vests are skirts' puts every skirt inside the vests. Some caps are skirts, hence vests: some vests are caps (II). Those caps can never be hats (no hat is a vest), so all caps being hats is impossible (I).",
+        "steps": [
+          "Skirts ⊂ vests",
+          "Cap ∩ skirt ⊂ vests ⇒ II follows",
+          "Vests ∩ hats = ∅ ⇒ I impossible"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Conclusion I is not forced by the statements (some valid diagram breaks it), so 'Both' and 'Only I' are wrong; II holds in every diagram, so 'Neither' is wrong.",
+        "final_answer": "Option B: Only conclusion II follows"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001660",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Two-statement",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nAll mittens are belts.\nSome belts are ties.\nNo tie is a dhoti.\n\nConclusions:\nI. Some mittens are dhotis.\nII. No mitten is a dhoti.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Either conclusion I or II follows"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Two-statement syllogism (Venn diagram method)",
+        "explanation": "Mittens sit inside the belts, and dhotis are kept only out of the ties; the part of the belts outside the ties may or may not hold both mittens and dhotis. So neither conclusion is certain, but they form a complementary pair: one of them must be true.",
+        "steps": [
+          "No definite mitten–dhoti link",
+          "I and II: 'Some A are B' / 'No A is B' ⇒ either"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Neither conclusion is certain alone, so 'Only I' and 'Only II' are wrong; but in every diagram one of the two holds, so 'Neither' is wrong. ('Either' replaces 'Both' under the four-option rule.)",
+        "final_answer": "Option D: Either conclusion I or II follows"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001661",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Possibility cases",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nNo bracelet is an anklet.\nOnly a few anklets are earrings.\nAll earrings are necklaces.\n\nConclusions:\nI. Some necklaces are not bracelets.\nII. All bracelets being anklets is a possibility.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Possibility conclusions in syllogism",
+        "explanation": "Some anklets are earrings, hence necklaces, and no anklet is a bracelet: those necklaces are not bracelets (I). 'No bracelet is an anklet' makes 'All bracelets being anklets' impossible (II).",
+        "steps": [
+          "Anklet ∩ earring ⊂ necklaces, outside bracelets ⇒ I follows",
+          "No bracelet is an anklet ⇒ II impossible"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Conclusion II is not forced by the statements (some valid diagram breaks it), so 'Both' and 'Only II' are wrong; I holds in every diagram, so 'Neither' is wrong.",
+        "final_answer": "Option A: Only conclusion I follows"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001662",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Syllogism",
+      "subtopic": "Only a few / Only",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements:\nOnly bangles are brooches.\nSome lockets are brooches.\nSome pendants are not bangles.\n\nConclusions:\nI. All pendants being brooches is a possibility.\nII. All lockets are bangles.\n\nTake the statements as true. Which conclusion(s) follow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only conclusion I follows"
+        },
+        {
+          "key": "B",
+          "text": "Only conclusion II follows"
+        },
+        {
+          "key": "C",
+          "text": "Neither conclusion I nor II follows"
+        },
+        {
+          "key": "D",
+          "text": "Both conclusions I and II follow"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "'Only a few' and 'Only' statements",
+        "explanation": "Some pendants are outside the bangles, and every brooch is inside the bangles ('Only bangles are brooches'), so all pendants can never be brooches (I fails). Lockets outside the brooches may be outside the bangles, so 'All lockets are bangles' is not certain (II).",
+        "steps": [
+          "Brooches ⊂ bangles; pendants outside bangles ⇒ I impossible",
+          "Lockets outside brooches are free ⇒ II not certain"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion fails in at least one valid diagram, so 'Only I', 'Only II' and 'Both' are wrong.",
+        "final_answer": "Option C: Neither conclusion I nor II follows"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:all-venn-models",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001663",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: B ≤ R = E < Y ≥ P > L\n\nConclusions:\nI. B < Y\nII. L < E",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "B ≤ R = E < Y gives B < Y (I). L < P ≤ Y and then the chain turns at Y (E < Y), so L and E are unrelated (II).",
+        "steps": [
+          "I: B ≤ R = E < Y ⇒ B < Y, true",
+          "II: E < Y ≥ P > L: turn at Y ⇒ no relation"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "II is not definitely true (a valid ordering breaks it), so 'Only II' and 'Both' are wrong; I always holds, so 'Neither' is wrong.",
+        "final_answer": "Option A: Only I is true"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001664",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: S > F ≥ A < C = O ≤ U\n\nConclusions:\nI. S > C\nII. U > A",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "S > F ≥ A < C turns at A, so S and C are unrelated (I). U ≥ O = C > A gives U > A (II).",
+        "steps": [
+          "I: turn at A ⇒ no relation",
+          "II: U ≥ O = C > A ⇒ U > A, true"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "I is not definitely true (a valid ordering breaks it), so 'Only I' and 'Both' are wrong; II always holds, so 'Neither' is wrong.",
+        "final_answer": "Option B: Only II is true"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001665",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: Y ≥ M = G ≤ X < K > I\n\nConclusions:\nI. Y ≥ X\nII. I < X",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "Y ≥ M = G ≤ X turns at G, so Y and X are unrelated (I). X < K > I turns at K, so I and X are unrelated (II).",
+        "steps": [
+          "I: turn at G ⇒ no relation",
+          "II: turn at K ⇒ no relation"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion fails for some ordering that satisfies the statements, so the other three are wrong.",
+        "final_answer": "Option C: Neither I nor II is true"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001666",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statement: N < W ≤ J ≤ H = D < Z\n\nConclusions:\nI. N < H\nII. Z > J",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "Every sign points the same way. N < W ≤ J ≤ H gives N < H (I); Z > D = H ≥ J gives Z > J (II).",
+        "steps": [
+          "I: N < W ≤ J ≤ H ⇒ N < H, true",
+          "II: Z > D = H ≥ J ⇒ Z > J, true"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion holds for every ordering that satisfies the statements, so picking one, or neither, is wrong.",
+        "final_answer": "Option D: Both I and II are true"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001667",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Coded inequality",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009201",
+      "set_position": 1,
+      "question_text": "Statements: T Π K, K Ψ B, B Γ U\n\nConclusions:\nI. T Λ B\nII. T Ψ B",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Either I or II is true"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Decoding symbols, then reading the chain",
+        "explanation": "Decoded: T ≤ K = B > U, so T ≤ B. T < B and T = B are each uncertain, but one of them must hold.",
+        "steps": [
+          "Decode: T ≤ K, K = B, B > U",
+          "T ≤ K = B ⇒ T ≤ B",
+          "I (T < B) and II (T = B) split '≤' ⇒ either"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Neither conclusion is certain alone, but one of them must hold, so 'Neither' is wrong. ('Either' replaces 'Both' under the four-option rule.)",
+        "final_answer": "Option D: Either I or II is true"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001668",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Coded inequality",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009201",
+      "set_position": 2,
+      "question_text": "Statements: R Ξ H, H Γ M, M Π D\n\nConclusions:\nI. R Γ M\nII. D Γ H",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Decoding symbols, then reading the chain",
+        "explanation": "Decoded: R ≥ H > M ≤ D. R > M follows (I). D and H are on opposite sides of the turn at M, so D > H is not certain (II).",
+        "steps": [
+          "Decode: R ≥ H, H > M, M ≤ D",
+          "I: R ≥ H > M ⇒ R > M, true",
+          "II: turn at M ⇒ no relation"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "II is not definitely true (a valid ordering breaks it), so 'Only II' and 'Both' are wrong; I always holds, so 'Neither' is wrong.",
+        "final_answer": "Option A: Only I is true"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001669",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Coded inequality",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009201",
+      "set_position": 3,
+      "question_text": "Statements: Z Λ Q, Q Ψ C, C Ξ F\n\nConclusions:\nI. Z Λ F\nII. Q Ξ F",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Decoding symbols, then reading the chain",
+        "explanation": "Decoded: Z < Q = C ≥ F. Z and F lie on opposite sides of the turn at Q = C, so Z < F is not certain (I). Q = C ≥ F gives Q ≥ F (II).",
+        "steps": [
+          "Decode: Z < Q, Q = C, C ≥ F",
+          "I: turn at C ⇒ no relation",
+          "II: Q = C ≥ F ⇒ Q ≥ F, true"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "I is not definitely true (a valid ordering breaks it), so 'Only I' and 'Both' are wrong; II always holds, so 'Neither' is wrong.",
+        "final_answer": "Option B: Only II is true"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001670",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Coded inequality",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009201",
+      "set_position": 4,
+      "question_text": "Statements: A Γ W, W Ψ E, E Λ V\n\nConclusions:\nI. A Γ V\nII. W Γ V",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Decoding symbols, then reading the chain",
+        "explanation": "Decoded: A > W = E < V. A and V lie on opposite sides of the turn at E, so A > V is not certain (I). W = E < V gives W < V, so W > V is false (II).",
+        "steps": [
+          "Decode: A > W, W = E, E < V",
+          "I: A > W = E < V: turn at E ⇒ no relation",
+          "II: W < V ⇒ W > V false"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion fails for some ordering that satisfies the statements, so the other three are wrong.",
+        "final_answer": "Option C: Neither I nor II is true"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001671",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements: P ≥ H; H = X; X > Y; Y ≥ A; C < A\n\nConclusions:\nI. P > A\nII. C < X",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "Combined: P ≥ H = X > Y ≥ A > C. All signs point one way with a strict sign on each path: P > A (I) and C < X (II).",
+        "steps": [
+          "Chain: P ≥ H = X > Y ≥ A > C",
+          "I: P > A, true",
+          "II: C < A ≤ Y < X ⇒ C < X, true"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion holds for every ordering that satisfies the statements, so picking one, or neither, is wrong.",
+        "final_answer": "Option D: Both I and II are true"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001672",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements: M < E; E ≤ O; O = T; T > J; J ≥ U\n\nConclusions:\nI. M < T\nII. U < E",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "Combined: M < E ≤ O = T > J ≥ U. M < T follows (I). U and E are on opposite sides of the turn at T, so U < E is not certain (II).",
+        "steps": [
+          "Chain: M < E ≤ O = T > J ≥ U",
+          "I: M < E ≤ O = T ⇒ M < T, true",
+          "II: turn at T ⇒ no relation"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "II is not definitely true (a valid ordering breaks it), so 'Only II' and 'Both' are wrong; I always holds, so 'Neither' is wrong.",
+        "final_answer": "Option A: Only I is true"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001673",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements: D ≥ K; K < R; R ≤ W; W = Q; L > D\n\nConclusions:\nI. L > R\nII. Q > D",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "Combined: L > D ≥ K < R ≤ W = Q. Both conclusions compare a term left of K with a term right of K, and the chain turns at K (D ≥ K < R).",
+        "steps": [
+          "Chain: L > D ≥ K < R ≤ W = Q",
+          "I and II cross the turn at K ⇒ no relation"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion fails for some ordering that satisfies the statements, so the other three are wrong.",
+        "final_answer": "Option C: Neither I nor II is true"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001674",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements: F = V; V > N; N ≥ B; G ≥ B; G < I\n\nConclusions:\nI. F > G\nII. I > B",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "Combined: F = V > N ≥ B ≤ G < I. F and G are on opposite sides of the turn at B, so F > G is not certain (I). I > G ≥ B gives I > B (II).",
+        "steps": [
+          "Chain: F = V > N ≥ B ≤ G < I",
+          "I: turn at B ⇒ no relation",
+          "II: I > G ≥ B ⇒ I > B, true"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "I is not definitely true (a valid ordering breaks it), so 'Only I' and 'Both' are wrong; II always holds, so 'Neither' is wrong.",
+        "final_answer": "Option B: Only II is true"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001675",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Coded inequality",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009202",
+      "set_position": 1,
+      "question_text": "Statements: J ♗ R, R ♖ W, W ♔ E, S ♕ E, S ♘ M\n\nConclusions:\nI. J ♔ W\nII. J ♖ W",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Either I or II is true"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Decoding symbols, then reading the chain",
+        "explanation": "Decoded: J ≥ R = W > E ≥ S < M. Only J ≥ W is known, so J > W and J = W are each uncertain, but one must hold.",
+        "steps": [
+          "Decode: J ≥ R, R = W, W > E, S ≤ E, S < M",
+          "J ≥ R = W ⇒ J ≥ W",
+          "I (J > W) and II (J = W) split '≥' ⇒ either"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Neither conclusion is certain alone, but one of them must hold, so 'Neither' is wrong. ('Either' replaces 'Both' under the four-option rule.)",
+        "final_answer": "Option D: Either I or II is true"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001676",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Coded inequality",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009202",
+      "set_position": 2,
+      "question_text": "Statements: U ♘ N, N ♕ T, T ♖ I, I ♘ O, Y ♗ O\n\nConclusions:\nI. U ♘ I\nII. Y ♔ N",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Decoding symbols, then reading the chain",
+        "explanation": "Decoded: U < N ≤ T = I < O ≤ Y. U < I (I) and Y ≥ O > I = T ≥ N gives Y > N (II).",
+        "steps": [
+          "Decode: U < N, N ≤ T, T = I, I < O, Y ≥ O",
+          "Chain: U < N ≤ T = I < O ≤ Y",
+          "I: U < I, true",
+          "II: Y > N, true"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion holds for every ordering that satisfies the statements, so picking one, or neither, is wrong.",
+        "final_answer": "Option D: Both I and II are true"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001677",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Coded inequality",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009202",
+      "set_position": 3,
+      "question_text": "Statements: H ♔ L, L ♗ F, F ♘ D, D ♖ P, K ♗ D\n\nConclusions:\nI. H ♔ D\nII. K ♗ L",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Decoding symbols, then reading the chain",
+        "explanation": "Decoded: H > L ≥ F < D = P ≤ K. Both conclusions compare a term left of F with a term right of F, and the chain turns at F.",
+        "steps": [
+          "Decode: H > L, L ≥ F, F < D, D = P, K ≥ D",
+          "Chain: H > L ≥ F < D = P ≤ K",
+          "I and II cross the turn at F ⇒ no relation"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Each conclusion fails for some ordering that satisfies the statements, so the other three are wrong.",
+        "final_answer": "Option C: Neither I nor II is true"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001678",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Coded inequality",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009202",
+      "set_position": 4,
+      "question_text": "Statements: C ♕ G, G ♘ A, A ♗ B, B ♔ X, X ♖ Z\n\nConclusions:\nI. A ♔ Z\nII. C ♘ B",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Decoding symbols, then reading the chain",
+        "explanation": "Decoded: C ≤ G < A ≥ B > X = Z. A ≥ B > X = Z gives A > Z (I). C and B are on opposite sides of the turn at A, so C < B is not certain (II).",
+        "steps": [
+          "Decode: C ≤ G, G < A, A ≥ B, B > X, X = Z",
+          "I: A > Z, true",
+          "II: turn at A ⇒ no relation"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "II is not definitely true (a valid ordering breaks it), so 'Only II' and 'Both' are wrong; I always holds, so 'Neither' is wrong.",
+        "final_answer": "Option A: Only I is true"
+      },
+      "suggested_time_seconds": 80,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001679",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements: Q ≥ E; E > I; I = H; H ≤ V; V < T; W ≥ Q\n\nConclusions:\nI. W > V\nII. T > I",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only I is true"
+        },
+        {
+          "key": "B",
+          "text": "Only II is true"
+        },
+        {
+          "key": "C",
+          "text": "Neither I nor II is true"
+        },
+        {
+          "key": "D",
+          "text": "Both I and II are true"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Reading a combined inequality chain",
+        "explanation": "Combined: W ≥ Q ≥ E > I = H ≤ V < T. W and V are on opposite sides of the turn at H, so W > V is not certain (I). T > V ≥ H = I gives T > I (II).",
+        "steps": [
+          "Chain: W ≥ Q ≥ E > I = H ≤ V < T",
+          "I: turn at H ⇒ no relation",
+          "II: T > V ≥ H = I ⇒ T > I, true"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "I is not definitely true (a valid ordering breaks it), so 'Only I' and 'Both' are wrong; II always holds, so 'Neither' is wrong.",
+        "final_answer": "Option B: Only II is true"
+      },
+      "suggested_time_seconds": 65,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001680",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Statements: K < D; D ≤ P; P = Y; Y > G; G ≥ N; N > Z\n\nConclusions:\nI. K < G\nII. P > N\nIII. Z < P\n\nWhich of the conclusions is/are definitely true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only II and III are true"
+        },
+        {
+          "key": "B",
+          "text": "All I, II and III are true"
+        },
+        {
+          "key": "C",
+          "text": "Only II is true"
+        },
+        {
+          "key": "D",
+          "text": "None of I, II and III is true"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Three conclusions tested against one chain",
+        "explanation": "Combined: K < D ≤ P = Y > G ≥ N > Z. K and G lie on opposite sides of the turn at Y, so K < G is not certain (I). P = Y > G ≥ N gives P > N (II), and Z < N ≤ G < Y = P gives Z < P (III).",
+        "steps": [
+          "Chain: K < D ≤ P = Y > G ≥ N > Z",
+          "I: turn at Y ⇒ not certain",
+          "II: P > N, true",
+          "III: Z < P, true",
+          "Only II and III"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "'All three' accepts I, which crosses the turn at Y; 'Only II' misses III; 'None' misses both.",
+        "final_answer": "Option A: Only II and III are true"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001681",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Inequality",
+      "subtopic": "Direct inequality",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "In which of the following expressions is 'M ≥ C' definitely true, but 'M > C' not definitely true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "M ≥ T > R = C < B"
+        },
+        {
+          "key": "B",
+          "text": "M ≥ T = R ≥ C ≤ B"
+        },
+        {
+          "key": "C",
+          "text": "M = T ≥ R ≤ C < B"
+        },
+        {
+          "key": "D",
+          "text": "B ≤ M > T = R ≥ C"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "'≥' certain but '>' not: the path must avoid every strict sign",
+        "explanation": "In M ≥ T = R ≥ C ≤ B, the path from M to C has only '≥' and '=' signs, so M ≥ C is certain but M = C is still possible — M > C is not certain.",
+        "steps": [
+          "Need: path M → C with no turn and no strict sign",
+          "M ≥ T = R ≥ C: only ≥ and = ⇒ M ≥ C, not M > C"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "M ≥ T > R = C and B ≤ M > T = R ≥ C contain a strict sign, so M > C is definitely true as well; M = T ≥ R ≤ C turns at R, so even M ≥ C is not certain.",
+        "final_answer": "Option B: M ≥ T = R ≥ C ≤ B"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:exhaustive-integers",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001682",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Month-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009203",
+      "set_position": 1,
+      "question_text": "Who treks in January?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kajal"
+        },
+        {
+          "key": "B",
+          "text": "Aadi"
+        },
+        {
+          "key": "C",
+          "text": "Daksh"
+        },
+        {
+          "key": "D",
+          "text": "Bela"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Seasons fix most months",
+        "explanation": "Every other month is taken by a clue, so Aadi gets January.",
+        "steps": [
+          "Jan Aadi, Mar Kajal, Apr Hema, Jul Ishan, Oct Daksh, Dec Bela",
+          "January: Aadi"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Kajal treks in March, Daksh in October and Bela in December.",
+        "final_answer": "Option B: Aadi"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001683",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Month-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009203",
+      "set_position": 2,
+      "question_text": "How many friends trek between Kajal and Bela?",
+      "options": [
+        {
+          "key": "A",
+          "text": "One"
+        },
+        {
+          "key": "B",
+          "text": "Two"
+        },
+        {
+          "key": "C",
+          "text": "Three"
+        },
+        {
+          "key": "D",
+          "text": "Four"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Count strictly between",
+        "explanation": "Kajal is in March and Bela in December; Hema, Ishan and Daksh lie between: three.",
+        "steps": [
+          "Jan Aadi, Mar Kajal, Apr Hema, Jul Ishan, Oct Daksh, Dec Bela",
+          "April, July, October ⇒ 3"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Two misses one of Hema, Ishan, Daksh; Four counts an end; One counts only Ishan.",
+        "final_answer": "Option C: Three"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001684",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Month-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009203",
+      "set_position": 3,
+      "question_text": "In which month does Ishan trek?",
+      "options": [
+        {
+          "key": "A",
+          "text": "July"
+        },
+        {
+          "key": "B",
+          "text": "August"
+        },
+        {
+          "key": "C",
+          "text": "October"
+        },
+        {
+          "key": "D",
+          "text": "April"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Season membership",
+        "explanation": "July is the only Monsoon month among the six.",
+        "steps": [
+          "Jan Aadi, Mar Kajal, Apr Hema, Jul Ishan, Oct Daksh, Dec Bela",
+          "Ishan: July"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "August is not one of the six months; October is Daksh's and April Hema's.",
+        "final_answer": "Option A: July"
+      },
+      "suggested_time_seconds": 25,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001685",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Month-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009203",
+      "set_position": 4,
+      "question_text": "Who treks in the month that comes immediately after Ishan's among the six months?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Daksh"
+        },
+        {
+          "key": "B",
+          "text": "Bela"
+        },
+        {
+          "key": "C",
+          "text": "Hema"
+        },
+        {
+          "key": "D",
+          "text": "Aadi"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Neighbour in the list of months",
+        "explanation": "After July comes October: Daksh.",
+        "steps": [
+          "Jan Aadi, Mar Kajal, Apr Hema, Jul Ishan, Oct Daksh, Dec Bela",
+          "October: Daksh"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Bela is in December, Hema in April (before July) and Aadi in January.",
+        "final_answer": "Option A: Daksh"
+      },
+      "suggested_time_seconds": 25,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001686",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Month-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009203",
+      "set_position": 5,
+      "question_text": "How many of the friends trek in a month that has 31 days?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Three"
+        },
+        {
+          "key": "B",
+          "text": "Four"
+        },
+        {
+          "key": "C",
+          "text": "Five"
+        },
+        {
+          "key": "D",
+          "text": "Six"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Month lengths",
+        "explanation": "January, March, July, October and December have 31 days; only April has 30. So five friends.",
+        "steps": [
+          "Jan Aadi, Mar Kajal, Apr Hema, Jul Ishan, Oct Daksh, Dec Bela",
+          "31-day months: Jan, Mar, Jul, Oct, Dec ⇒ 5"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Four leaves out one 31-day month; Six counts April (30 days); Three counts only some.",
+        "final_answer": "Option C: Five"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001687",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Date-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "In a certain month, the 14th is a Wednesday. Leena's birthday is on the 14th. Manas's birthday is three days after Leena's, and Nirav's birthday is on the Monday of the same week (the week runs from Monday to Sunday).\n\nOn which date is Nirav's birthday, and on which day of the week is Manas's birthday?",
+      "options": [
+        {
+          "key": "A",
+          "text": "13th; Saturday"
+        },
+        {
+          "key": "B",
+          "text": "12th; Friday"
+        },
+        {
+          "key": "C",
+          "text": "11th; Saturday"
+        },
+        {
+          "key": "D",
+          "text": "12th; Saturday"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Count days forwards and backwards",
+        "explanation": "The Monday of the week that holds Wednesday the 14th is two days earlier: the 12th. Manas: 14 + 3 = 17th; Wednesday + 3 days = Saturday.",
+        "steps": [
+          "Wednesday 14 ⇒ Monday 12",
+          "Manas: 17th = Wednesday + 3 = Saturday"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "13th is a Tuesday; Friday is the 16th, only two days after Leena's; 11th is the Sunday of the previous week.",
+        "final_answer": "Option D: 12th; Saturday"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001688",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Year-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Four siblings Jugal, Kirti, Lakshmi and Mohan were born in 2001, 2004, 2007 and 2010, one in each year. Ages are counted in completed years on their birthdays.\n- Kirti is the eldest.\n- Mohan is younger than Jugal but older than Lakshmi.\n\nHow old will Mohan be on his birthday in 2026?",
+      "options": [
+        {
+          "key": "A",
+          "text": "16"
+        },
+        {
+          "key": "B",
+          "text": "19"
+        },
+        {
+          "key": "C",
+          "text": "22"
+        },
+        {
+          "key": "D",
+          "text": "25"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Order of birth years",
+        "explanation": "Kirti is the eldest: 2001. Jugal is older than Mohan, who is older than Lakshmi: Jugal 2004, Mohan 2007, Lakshmi 2010. In 2026 Mohan turns 2026 − 2007 = 19.",
+        "steps": [
+          "Kirti 2001",
+          "Jugal 2004, Mohan 2007, Lakshmi 2010",
+          "2026 − 2007 = 19"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "22 is Jugal's age, 16 Lakshmi's and 25 Kirti's.",
+        "final_answer": "Option B: 19"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001689",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Month-based",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Four friends Rina, Sohan, Tara and Uday each start a monthly savings plan in a different month of the same year.\n- Rina starts in March.\n- Sohan starts four months after Rina.\n- Tara starts two months before Sohan.\n- Uday starts in the month immediately after Tara's.\n\nWho starts in June?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Uday"
+        },
+        {
+          "key": "B",
+          "text": "Tara"
+        },
+        {
+          "key": "C",
+          "text": "Sohan"
+        },
+        {
+          "key": "D",
+          "text": "Rina"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Chain of month gaps",
+        "explanation": "Rina: March. Sohan: March + 4 = July. Tara: July − 2 = May. Uday: May + 1 = June.",
+        "steps": [
+          "Rina Mar ⇒ Sohan Jul ⇒ Tara May ⇒ Uday Jun"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Tara starts in May, Sohan in July and Rina in March.",
+        "final_answer": "Option A: Uday"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001690",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Date-based",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009204",
+      "set_position": 1,
+      "question_text": "How many of the six appointments are in October?",
+      "options": [
+        {
+          "key": "A",
+          "text": "One"
+        },
+        {
+          "key": "B",
+          "text": "Two"
+        },
+        {
+          "key": "C",
+          "text": "Three"
+        },
+        {
+          "key": "D",
+          "text": "Four"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Carry dates over the month end",
+        "explanation": "Vidya (2 Oct), Sachin (3 Oct) and Pranav (5 Oct): three.",
+        "steps": [
+          "Tanvi 26 Sep Sat, Uttam 28 Sep Mon, Rukmini 30 Sep Wed, Vidya 2 Oct Fri, Sachin 3 Oct Sat, Pranav 5 Oct Mon",
+          "October: Vidya, Sachin, Pranav ⇒ 3"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Two misses Pranav, whose date crosses into October (30 Sep + 5 = 5 Oct); Four or One miscount.",
+        "final_answer": "Option C: Three"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001691",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Date-based",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009204",
+      "set_position": 2,
+      "question_text": "How many days after Tanvi's appointment is Pranav's appointment?",
+      "options": [
+        {
+          "key": "A",
+          "text": "8"
+        },
+        {
+          "key": "B",
+          "text": "9"
+        },
+        {
+          "key": "C",
+          "text": "10"
+        },
+        {
+          "key": "D",
+          "text": "11"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Day count across a 30-day month",
+        "explanation": "26 September to 30 September is 4 days, and 5 more days reach 5 October: 9 days.",
+        "steps": [
+          "Tanvi 26 Sep Sat, Uttam 28 Sep Mon, Rukmini 30 Sep Wed, Vidya 2 Oct Fri, Sachin 3 Oct Sat, Pranav 5 Oct Mon",
+          "4 + 5 = 9"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "10 treats September as a 31-day month; 8 and 11 miscount by a day or two.",
+        "final_answer": "Option B: 9"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001692",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Date-based",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009204",
+      "set_position": 3,
+      "question_text": "On which day of the week is Rukmini's appointment?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tuesday"
+        },
+        {
+          "key": "B",
+          "text": "Thursday"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "Wednesday"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Weekday from a known date",
+        "explanation": "25 September is a Friday, so 30 September (five days later) is a Wednesday.",
+        "steps": [
+          "Tanvi 26 Sep Sat, Uttam 28 Sep Mon, Rukmini 30 Sep Wed, Vidya 2 Oct Fri, Sachin 3 Oct Sat, Pranav 5 Oct Mon",
+          "Fri 25 + 5 days ⇒ Wed 30"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Tuesday is 29 September, Thursday 1 October and Monday 28 September (Uttam).",
+        "final_answer": "Option D: Wednesday"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001693",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Year-based",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009205",
+      "set_position": 1,
+      "question_text": "Who retires in 2036?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Navya"
+        },
+        {
+          "key": "B",
+          "text": "Lohit"
+        },
+        {
+          "key": "C",
+          "text": "Hridya"
+        },
+        {
+          "key": "D",
+          "text": "Kesar"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Retirement year = birth year + 60",
+        "explanation": "2036 − 60 = 1976: Navya (ten years younger than Gyan, born 1966).",
+        "steps": [
+          "Gyan 1966/2026, Kesar 1971/2031, Hridya 1972/2032, Navya 1976/2036, Lohit 1978/2038, Mrinal 1990/2050",
+          "1976 ⇒ Navya"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Lohit retires in 2038, Hridya in 2032 and Kesar in 2031.",
+        "final_answer": "Option A: Navya"
+      },
+      "suggested_time_seconds": 150,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001694",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Year-based",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009205",
+      "set_position": 2,
+      "question_text": "In which year will Mrinal retire?",
+      "options": [
+        {
+          "key": "A",
+          "text": "2038"
+        },
+        {
+          "key": "B",
+          "text": "2045"
+        },
+        {
+          "key": "C",
+          "text": "2050"
+        },
+        {
+          "key": "D",
+          "text": "2051"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Perfect-square age with a range",
+        "explanation": "Mrinal must be younger than Lohit (1978) and born by 1995: age in 2026 between 31 and 47. The only perfect square there is 36, so Mrinal was born in 1990 and retires in 2050.",
+        "steps": [
+          "Gyan 1966/2026, Kesar 1971/2031, Hridya 1972/2032, Navya 1976/2036, Lohit 1978/2038, Mrinal 1990/2050",
+          "Age 36 ⇒ 1990 ⇒ 2050"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "2045 takes age 41; 2051 counts 61 years; 2038 is Lohit's retirement.",
+        "final_answer": "Option C: 2050"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001695",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Year-based",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009205",
+      "set_position": 3,
+      "question_text": "Who retires immediately after Kesar?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Navya"
+        },
+        {
+          "key": "B",
+          "text": "Lohit"
+        },
+        {
+          "key": "C",
+          "text": "Gyan"
+        },
+        {
+          "key": "D",
+          "text": "Hridya"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Order of retirement = order of birth",
+        "explanation": "Kesar retires in 2031; the next retirement is Hridya's in 2032.",
+        "steps": [
+          "Gyan 1966/2026, Kesar 1971/2031, Hridya 1972/2032, Navya 1976/2036, Lohit 1978/2038, Mrinal 1990/2050",
+          "2031 Kesar ⇒ 2032 Hridya"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Navya retires in 2036 and Lohit in 2038, both later; Gyan retires first, in 2026.",
+        "final_answer": "Option D: Hridya"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001696",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Month and Date-Based Puzzles",
+      "subtopic": "Year-based",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009205",
+      "set_position": 4,
+      "question_text": "How many of the six were born in a leap year?",
+      "options": [
+        {
+          "key": "A",
+          "text": "One"
+        },
+        {
+          "key": "B",
+          "text": "Two"
+        },
+        {
+          "key": "C",
+          "text": "Three"
+        },
+        {
+          "key": "D",
+          "text": "Four"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Leap years are divisible by 4",
+        "explanation": "Birth years 1966, 1971, 1972, 1976, 1978, 1990; only 1972 and 1976 are divisible by 4: two.",
+        "steps": [
+          "Gyan 1966/2026, Kesar 1971/2031, Hridya 1972/2032, Navya 1976/2036, Lohit 1978/2038, Mrinal 1990/2050",
+          "1972 ✓, 1976 ✓ ⇒ 2"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "One forgets Navya's 1976; Three or Four count years such as 1966 or 1990, which are not divisible by 4.",
+        "final_answer": "Option B: Two"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001697",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Comparison and ordering",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Five colleagues Ujala, Vimal, Waseem, Xenia and Yatin reached the office at different times on Monday.\n- Ujala reached before Vimal but after Waseem.\n- Yatin reached after Vimal.\n- Xenia reached before Waseem.\n\nWho reached third?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ujala"
+        },
+        {
+          "key": "B",
+          "text": "Waseem"
+        },
+        {
+          "key": "C",
+          "text": "Vimal"
+        },
+        {
+          "key": "D",
+          "text": "Xenia"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "One chain of 'before'",
+        "explanation": "Waseem < Ujala < Vimal < Yatin, and Xenia is before Waseem. Order: Xenia, Waseem, Ujala, Vimal, Yatin. Third: Ujala.",
+        "steps": [
+          "Xenia → Waseem → Ujala → Vimal → Yatin",
+          "Third: Ujala"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Waseem is second, Vimal fourth and Xenia first.",
+        "final_answer": "Option A: Ujala"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001698",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Designation",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009206",
+      "set_position": 1,
+      "question_text": "Who is the Manager of the IT department?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Devesh"
+        },
+        {
+          "key": "B",
+          "text": "Fiza"
+        },
+        {
+          "key": "C",
+          "text": "Chaitali"
+        },
+        {
+          "key": "D",
+          "text": "Aarav"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fill the departments one by one",
+        "explanation": "Sales has Chaitali and Eeshan; HR has Devesh and Bhakti; IT is left with Fiza (Manager) and Aarav.",
+        "steps": [
+          "HR: Devesh M 2018, Bhakti E 2022; IT: Fiza M 2019, Aarav E 2023; Sales: Chaitali M 2020, Eeshan E 2021",
+          "IT Manager: Fiza"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Devesh manages HR, Chaitali manages Sales and Aarav is the IT Executive.",
+        "final_answer": "Option B: Fiza"
+      },
+      "suggested_time_seconds": 110,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001699",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Designation",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009206",
+      "set_position": 2,
+      "question_text": "In which year did Bhakti join?",
+      "options": [
+        {
+          "key": "A",
+          "text": "2019"
+        },
+        {
+          "key": "B",
+          "text": "2021"
+        },
+        {
+          "key": "C",
+          "text": "2022"
+        },
+        {
+          "key": "D",
+          "text": "2023"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Remaining value",
+        "explanation": "2018 Devesh, 2019 Fiza, 2020 Chaitali, 2021 Eeshan, 2023 Aarav; Bhakti joined in 2022.",
+        "steps": [
+          "HR: Devesh M 2018, Bhakti E 2022; IT: Fiza M 2019, Aarav E 2023; Sales: Chaitali M 2020, Eeshan E 2021",
+          "Bhakti: 2022"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "2021 is Eeshan's year, 2019 Fiza's and 2023 Aarav's.",
+        "final_answer": "Option C: 2022"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001700",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Designation",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009206",
+      "set_position": 3,
+      "question_text": "How many Executives joined before 2023?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None"
+        },
+        {
+          "key": "B",
+          "text": "One"
+        },
+        {
+          "key": "C",
+          "text": "Two"
+        },
+        {
+          "key": "D",
+          "text": "Three"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Count with two attributes",
+        "explanation": "The Executives are Bhakti (2022), Aarav (2023) and Eeshan (2021); two joined before 2023.",
+        "steps": [
+          "HR: Devesh M 2018, Bhakti E 2022; IT: Fiza M 2019, Aarav E 2023; Sales: Chaitali M 2020, Eeshan E 2021",
+          "Executives: Eeshan 2021, Bhakti 2022, Aarav 2023 ⇒ 2"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Three counts Aarav, who joined in 2023; One or None miss Eeshan or Bhakti.",
+        "final_answer": "Option C: Two"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001701",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Designation",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "stimulus_id": "STIM_REAS_009206",
+      "set_position": 4,
+      "question_text": "Which of the following statements is true?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bhakti is the HR Manager."
+        },
+        {
+          "key": "B",
+          "text": "Fiza works in HR."
+        },
+        {
+          "key": "C",
+          "text": "Chaitali joined after Eeshan."
+        },
+        {
+          "key": "D",
+          "text": "Eeshan is the Sales Executive and joined in 2021."
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Check each statement",
+        "explanation": "Eeshan joined in 2021, the year after Chaitali, as the Sales Executive.",
+        "steps": [
+          "HR: Devesh M 2018, Bhakti E 2022; IT: Fiza M 2019, Aarav E 2023; Sales: Chaitali M 2020, Eeshan E 2021"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Bhakti is the HR Executive; Fiza works in IT; Chaitali joined before Eeshan.",
+        "final_answer": "Option D: Eeshan is the Sales Executive and joined in 2021."
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001702",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Day-based",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Seven persons Gagan, Heer, Ikram, Jaya, Kanta, Lucky and Manav each go grocery shopping on one of seven consecutive days, from a Wednesday to the following Tuesday, one person per day.\n- Exactly three persons shop between Heer and Kanta, and Heer shops before Kanta.\n- Ikram shops on Saturday, and Jaya on the day immediately after Ikram.\n- Manav shops on the first of the seven days.\n- Gagan shops later than Lucky.\n- Kanta does not shop on the last of the seven days.\n\nWho shops on Friday?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gagan"
+        },
+        {
+          "key": "B",
+          "text": "Lucky"
+        },
+        {
+          "key": "C",
+          "text": "Heer"
+        },
+        {
+          "key": "D",
+          "text": "Kanta"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "A week that starts mid-week",
+        "explanation": "Days 1–7 are Wed, Thu, Fri, Sat, Sun, Mon, Tue. Manav Wed, Ikram Sat, Jaya Sun. Heer and Kanta are four days apart: (Thu, Mon) or (Fri, Tue); Kanta is not on Tuesday, so Heer Thu and Kanta Mon. Friday and Tuesday remain; Gagan is later than Lucky, so Lucky shops on Friday and Gagan on Tuesday.",
+        "steps": [
+          "Manav Wed, Ikram Sat, Jaya Sun",
+          "Heer–Kanta 4 apart, Kanta ≠ Tue ⇒ Heer Thu, Kanta Mon",
+          "Lucky Fri, Gagan Tue"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Gagan shops on Tuesday, Heer on Thursday and Kanta on Monday.",
+        "final_answer": "Option B: Lucky"
+      },
+      "suggested_time_seconds": 70,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001703",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Prelims",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "IBPS_CSA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_JA",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OA",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Comparison and ordering",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Six cyclists Ritesh, Sonal, Tara, Umang, Vipin and Wahida rode at different speeds in a race.\n- Ritesh is faster than exactly two of the others.\n- Sonal is faster than Ritesh.\n- Tara is slower than Umang but faster than Sonal.\n- Vipin is not the slowest.\n\nWho is the second slowest?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ritesh"
+        },
+        {
+          "key": "B",
+          "text": "Wahida"
+        },
+        {
+          "key": "C",
+          "text": "Sonal"
+        },
+        {
+          "key": "D",
+          "text": "Vipin"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Use 'exactly' counts to fix a position",
+        "explanation": "Umang > Tara > Sonal > Ritesh, and Ritesh is faster than exactly two cyclists — Vipin and Wahida, the only ones left. Vipin is not the slowest, so Wahida is last and Vipin second slowest.",
+        "steps": [
+          "Umang > Tara > Sonal > Ritesh",
+          "Two below Ritesh: Vipin, Wahida",
+          "Vipin not last ⇒ Vipin 5th (second slowest)"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Ritesh is the third slowest, Wahida the slowest and Sonal the fourth slowest.",
+        "final_answer": "Option D: Vipin"
+      },
+      "suggested_time_seconds": 60,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001704",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Day-based",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Seven persons Nikhil, Pooja, Rehana, Sameer, Tavleen, Uday and Vaani each visit an art gallery on a different day of one week, from Monday to Sunday.\n- As many persons visit before Nikhil as visit after Pooja.\n- Exactly two persons visit between Nikhil and Rehana.\n- Sameer visits on Thursday, and Rehana visits after Sameer.\n- Tavleen visits after Uday, and exactly one person visits between Uday and Sameer.\n- Vaani visits before Nikhil.\n\nWho visits on the day immediately before Rehana?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pooja"
+        },
+        {
+          "key": "B",
+          "text": "Sameer"
+        },
+        {
+          "key": "C",
+          "text": "Tavleen"
+        },
+        {
+          "key": "D",
+          "text": "Nikhil"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Turn counting clues into positions",
+        "explanation": "Let Nikhil be day n and Pooja day p: n − 1 = 7 − p, so n + p = 8. Rehana is after Thursday (5, 6 or 7) and three days from Nikhil, so Nikhil is on day 2, 3 or 4; day 4 is Sameer's. Uday is two days from Sameer: day 2 or 6. Case Nikhil 2: Pooja 6, Rehana 5, Vaani 1, Uday must be 6 — taken by Pooja ✗. Case Nikhil 3: Pooja 5, Rehana 6, Uday 2 (day 6 is Rehana's), Tavleen after Uday and Vaani before Nikhil leave Vaani Monday and Tavleen Sunday. So: Mon Vaani, Tue Uday, Wed Nikhil, Thu Sameer, Fri Pooja, Sat Rehana, Sun Tavleen. The day before Rehana's is Pooja's.",
+        "steps": [
+          "Nikhil + Pooja = 8; Rehana ∈ {5, 6, 7} and |Nikhil − Rehana| = 3",
+          "Nikhil 2 ⇒ Uday has no day ✗",
+          "Nikhil 3 ⇒ Pooja 5, Rehana 6, Uday 2, Vaani 1, Tavleen 7",
+          "Before Saturday (Rehana): Friday ⇒ Pooja"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Sameer is on Thursday, Tavleen on Sunday (after Rehana) and Nikhil on Wednesday.",
+        "final_answer": "Option A: Pooja"
+      },
+      "suggested_time_seconds": 120,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    },
+    {
+      "question_id": "BANK_REAS_001705",
+      "exam_mappings": [
+        {
+          "exam_id": "IBPS_PO",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        },
+        {
+          "exam_id": "SBI_PO",
+          "stage": "Mains",
+          "section_key": "reasoning_computer"
+        },
+        {
+          "exam_id": "IBPS_RRB_OS1",
+          "stage": "Mains",
+          "section_key": "reasoning"
+        }
+      ],
+      "subject": "Reasoning Ability",
+      "topic": "Puzzles (Other)",
+      "subtopic": "Comparison and ordering",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "language": "en",
+      "question_text": "Five students Ketan, Lavi, Mansi, Neha and Oindrila took two tests. In each test they got the ranks 1 to 5 (rank 1 is the best), with no ties.\n- No student has the same rank in both tests.\n- The student ranked 1st in Test 1 is ranked 3rd in Test 2.\n- Lavi's rank in Test 2 is exactly two places better than in Test 1.\n- Oindrila is 2nd in Test 1 and last in Test 2.\n- Ketan's two ranks add up to 6.\n- Neha is ranked below Ketan in both tests.\n\nWho is ranked 4th in Test 2?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Neha"
+        },
+        {
+          "key": "B",
+          "text": "Ketan"
+        },
+        {
+          "key": "C",
+          "text": "Mansi"
+        },
+        {
+          "key": "D",
+          "text": "Lavi"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Two rankings at once",
+        "explanation": "Oindrila: (2, 5). Ketan's ranks add to 6: (1, 5) and (2, 4) clash with Oindrila, (3, 3) repeats a rank, and (5, 1) leaves no room for Neha below Ketan in Test 1 — so Ketan is (4, 2). Neha is below Ketan in both: Test 1 rank 5, Test 2 rank 3 or 4. Lavi improves by two: Test 1 rank 3 → Test 2 rank 1 (rank 1 in Test 1 cannot improve). Mansi takes Test 1 rank 1 and so Test 2 rank 3, leaving Neha 4th in Test 2.",
+        "steps": [
+          "Oindrila (2, 5)",
+          "Ketan (4, 2): the other sums fail",
+          "Neha (5, ·); Lavi (3, 1)",
+          "Mansi (1, 3) ⇒ Neha (5, 4)"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Ketan is 2nd in Test 2, Mansi 3rd and Lavi 1st.",
+        "final_answer": "Option A: Neha"
+      },
+      "suggested_time_seconds": 120,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:brute-force-unique",
+          "ai:author-solve"
+        ],
+        "verified_at": "2026-11-05"
+      }
+    }
+  ]
+}

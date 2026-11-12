@@ -8,7 +8,7 @@ import { Badge, Button, ConfirmationDialog, EmptyState, Notice, PageHeader, Sear
 import { AdminLoadGate, DataTable, FilterBar, IconButton, ResultCount, StatusBadge, type Column } from '@/components/admin/AdminUi';
 import { useAdminLoad } from '@/components/admin/useAdminLoad';
 import { buildInvoiceHtml, downloadFile, toCsv, todayStamp } from '@/components/admin/download';
-import { GATEWAY_LABELS, ORDER_STATUS, PLAN_LABELS, PLAN_TONES } from '@/components/admin/labels';
+import { GATEWAY_LABELS, ORDER_STATUS, PLAN_LABELS, planLabel, planTone } from '@/components/admin/labels';
 import { adminService } from '@/services/adminService';
 import { errorMessage } from '@/services/mock';
 import { useAdminStore } from '@/store/adminStore';
@@ -91,7 +91,7 @@ function exportOrders(rows: AdminOrder[], name: string) {
   const csv = toCsv(
     ['Order ID', 'Invoice', 'User ID', 'User', 'Plan', 'Amount (INR)', 'GST (INR)', 'Taxable (INR)', 'Gateway', 'Method', 'Status', 'Created', 'Refunded', 'Refund reason'],
     rows.map((o) => [
-      o.id, o.invoiceNo, o.userId, o.userName, PLAN_LABELS[o.planId], o.amountInr, o.gstInr, Math.round((o.amountInr - o.gstInr) * 100) / 100,
+      o.id, o.invoiceNo, o.userId, o.userName, planLabel(o.planId), o.amountInr, o.gstInr, Math.round((o.amountInr - o.gstInr) * 100) / 100,
       GATEWAY_LABELS[o.gateway], o.method, o.status, o.createdAt, o.refundedAt ?? '', o.refundReason ?? '',
     ]),
   );
@@ -112,7 +112,7 @@ function orderColumns(onRefund?: (o: AdminOrder) => void): Column<AdminOrder>[] 
       ),
     },
     { key: 'user', header: 'User', cell: (o) => <div><p className="whitespace-nowrap font-medium">{o.userName}</p><p className="text-xs text-muted">{o.userId}</p></div> },
-    { key: 'plan', header: 'Plan', cell: (o) => <Badge tone={PLAN_TONES[o.planId]}>{PLAN_LABELS[o.planId]}</Badge> },
+    { key: 'plan', header: 'Plan', cell: (o) => <Badge tone={planTone(o.planId)}>{planLabel(o.planId)}</Badge> },
     { key: 'amount', header: 'Amount', className: 'text-right', cell: (o) => <span className="font-semibold tabular-nums">{formatINR(o.amountInr)}</span> },
     { key: 'gst', header: 'GST', className: 'text-right', cell: (o) => <span className="tabular-nums text-muted">{rupees(o.gstInr)}</span> },
     { key: 'gateway', header: 'Gateway', cell: (o) => <span className="whitespace-nowrap">{GATEWAY_LABELS[o.gateway]} <span className="text-xs uppercase text-muted">· {o.method}</span></span> },
@@ -206,7 +206,7 @@ function OrdersTab({ orders }: { orders: AdminOrder[] }) {
         open={!!refunding}
         onOpenChange={(o) => !o && setRefunding(null)}
         title="Issue refund?"
-        description={refunding ? `${formatINR(refunding.amountInr)} to ${refunding.userName} via ${GATEWAY_LABELS[refunding.gateway]} for order ${refunding.id}. ${PLAN_LABELS[refunding.planId]} credits will be revoked.` : undefined}
+        description={refunding ? `${formatINR(refunding.amountInr)} to ${refunding.userName} via ${GATEWAY_LABELS[refunding.gateway]} for order ${refunding.id}. ${planLabel(refunding.planId)} credits will be revoked.` : undefined}
         confirmLabel="Issue refund"
         variant="danger"
         loading={busy}
@@ -251,7 +251,7 @@ function SubscriptionsTab({ subs }: { subs: AdminSubscription[] }) {
   const columns: Column<AdminSubscription>[] = [
     { key: 'id', header: 'Subscription', cell: (s) => <span className="font-mono text-xs font-semibold">{s.id}</span> },
     { key: 'user', header: 'User', cell: (s) => <span className="whitespace-nowrap font-medium">{s.userName}</span> },
-    { key: 'plan', header: 'Plan', cell: (s) => <Badge tone={PLAN_TONES[s.planId]}>{PLAN_LABELS[s.planId]}</Badge> },
+    { key: 'plan', header: 'Plan', cell: (s) => <Badge tone={planTone(s.planId)}>{planLabel(s.planId)}</Badge> },
     { key: 'amount', header: 'Amount', className: 'text-right', cell: (s) => <span className="tabular-nums">{formatINR(s.amountInr)}</span> },
     { key: 'status', header: 'Status', cell: (s) => <StatusBadge map={SUB_STATUS} value={s.status} /> },
     { key: 'auto', header: 'Auto-renew', cell: (s) => (s.autoRenew ? 'On' : 'Off') },

@@ -129,7 +129,7 @@ describe('Day 3 — exam detail page matches the blueprint', () => {
     expect(within(table).getAllByText(negative).length).toBe(sectionCount);
     expect(within(table).getByText('60 min')).toBeInTheDocument();
     expect(screen.getAllByText('1 credit').length).toBeGreaterThan(0);
-    expect(screen.getByText('Full mock · or ₹99 pay-per-mock')).toBeInTheDocument();
+    expect(screen.getByText('Full mock · or ₹29 as a single mock')).toBeInTheDocument();
     expect(screen.getByText('Compute 44 × 39.')).toBeInTheDocument();
     expect(screen.getByText('Topic: Number system')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Start free mini mock (30 min)' })).toBeInTheDocument();

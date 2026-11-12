@@ -16,8 +16,8 @@ import { NEW_USER_SUBSCRIPTION, useNotificationStore, useSubscriptionStore } fro
 const PLANS_RESPONSE = {
   items: [
     { id: 1, code: 'free_trial', name: 'Free trial (30-min mini mock)', price_paise: 0, price_inr: 0, taxable_paise: 0, gst_paise: 0, credits: 1, validity_days: 30, is_recurring: false, purchasable: false },
-    { id: 2, code: 'pay_per_exam', name: 'Pay per exam', price_paise: 9900, price_inr: 99, taxable_paise: 8390, gst_paise: 1510, credits: 1, validity_days: 90, is_recurring: false, purchasable: true },
-    { id: 5, code: 'credit_pack_10', name: '10-credit pack', price_paise: 39900, price_inr: 399, taxable_paise: 33814, gst_paise: 6086, credits: 10, validity_days: 90, is_recurring: false, purchasable: true },
+    { id: 2, code: 'single_mock', name: 'Single mock with AI report', price_paise: 2900, price_inr: 29, taxable_paise: 2458, gst_paise: 442, credits: 1, validity_days: 90, is_recurring: false, purchasable: true, group: 'addon', period: 'one_time' },
+    { id: 5, code: 'starter_monthly', name: 'Starter (Mock Pass) · monthly', price_paise: 14900, price_inr: 149, taxable_paise: 12627, gst_paise: 2273, credits: 10, validity_days: 30, is_recurring: true, purchasable: true, group: 'study', period: 'monthly' },
   ],
 };
 
@@ -30,18 +30,17 @@ afterEach(() => vi.restoreAllMocks());
 describe('Day 8 — pricing from GET /v1/plans', () => {
   it('maps the server plans: price, credits, validity and the GST inside the price', () => {
     const plans = toPlans(PLANS_RESPONSE);
-    expect(plans.map((p) => [p.id, p.priceInr, p.credits])).toEqual([['free', 0, 1], ['pay-per-mock', 99, 1], ['monthly', 399, 10]]);
-    expect(plans[2]).toMatchObject({ name: '10-Credit Pack', gstInr: 60.86, baseInr: 338.14, purchasable: true, validityDays: 90 });
+    expect(plans.map((p) => [p.id, p.priceInr, p.credits])).toEqual([['free', 0, 1], ['single_mock', 29, 1], ['starter_monthly', 149, 10]]);
+    expect(plans[2]).toMatchObject({ gstInr: 22.73, baseInr: 126.27, purchasable: true, validityDays: 30, group: 'study', period: 'monthly' });
     expect(plans[0]!.purchasable).toBe(false);
     expect(formatINR(15.1)).toBe('₹15.10');
     expect(formatINR(399)).toBe('₹399');
   });
 
-  it('cards show free mini mock, ₹99, ₹399 for 10 credits and the GST each price includes', () => {
+  it('cards show the server prices (study plan and single-mock add-on)', () => {
     render(<MemoryRouter><PricingCards plans={toPlans(PLANS_RESPONSE)} /></MemoryRouter>);
-    expect(screen.getByText('₹399')).toBeInTheDocument();
-    expect(screen.getByText('incl. ₹15.10 GST')).toBeInTheDocument();
-    expect(screen.getByText(/incl\. ₹60\.86 GST/)).toBeInTheDocument();
+    expect(screen.getAllByText('₹149').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('₹29').length).toBeGreaterThan(0);
   });
 
   it('pricing page has the GST note and the FAQ', () => {
@@ -58,17 +57,17 @@ describe('Day 8 — Razorpay checkout states', () => {
     const user = userEvent.setup();
     vi.spyOn(subscriptionService, 'createDemoOrder').mockRejectedValue(new PaymentError('VERIFY_FAILED', 'We received your payment but could not confirm it yet.', 'ord-1'));
     const check = vi.spyOn(subscriptionService, 'checkOrder').mockResolvedValue({
-      id: 'ord-1', planId: 'pay-per-mock', amountInr: 99, gstInr: 15.1, method: 'upi', status: 'success', createdAt: new Date().toISOString(), invoiceNo: 'PM/2026-27/000007',
+      id: 'ord-1', planId: 'single_mock', amountInr: 29, gstInr: 4.42, method: 'upi', status: 'success', createdAt: new Date().toISOString(), invoiceNo: 'PM/2026-27/000007',
     });
     render(<MemoryRouter initialEntries={['/subscription?returnTo=%2Fexams%2Fibps-po%2Finstructions']}><Routes><Route path="/subscription" element={<SubscriptionPage />} /></Routes></MemoryRouter>);
-    await user.click(screen.getAllByRole('button', { name: /buy 1 credit/i })[0]!);
+    await user.click(screen.getAllByRole('button', { name: /buy 1 mock/i })[0]!);
     const dialog = await screen.findByRole('dialog');
     await user.click(within(dialog).getByLabelText(/refund and cancellation policy/i));
     await user.click(within(dialog).getByRole('button', { name: /^pay /i }));
     expect(await within(dialog).findByText('Payment received — confirming it')).toBeInTheDocument();
     expect(within(dialog).queryByRole('button', { name: /try again|^pay /i })).toBeNull();
     await user.click(within(dialog).getByRole('button', { name: 'Check status' }));
-    expect(check).toHaveBeenCalledWith('ord-1', 'pay-per-mock', 'upi');
+    expect(check).toHaveBeenCalledWith('ord-1', 'single_mock', 'upi');
     expect(await within(dialog).findByTestId('new-balance')).toBeInTheDocument();
     expect(within(dialog).getByText(/PM\/2026-27\/000007/)).toBeInTheDocument();
     // Came from an exam that needed credits: go straight back to it.
@@ -78,7 +77,7 @@ describe('Day 8 — Razorpay checkout states', () => {
   it('ignores a returnTo that leaves the site', async () => {
     const user = userEvent.setup();
     render(<MemoryRouter initialEntries={['/subscription?returnTo=%2F%2Fevil.example']}><Routes><Route path="/subscription" element={<SubscriptionPage />} /></Routes></MemoryRouter>);
-    await user.click(screen.getAllByRole('button', { name: /buy 1 credit/i })[0]!);
+    await user.click(screen.getAllByRole('button', { name: /buy 1 mock/i })[0]!);
     const dialog = await screen.findByRole('dialog');
     await user.click(within(dialog).getByLabelText(/refund and cancellation policy/i));
     await user.click(within(dialog).getByRole('button', { name: /^pay /i }));

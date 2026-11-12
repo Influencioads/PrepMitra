@@ -1,4 +1,7 @@
 import type { ExamCategory, IconKey, Language, LanguageCode, Plan } from '../types/core';
+import { PLAN_CATALOG } from './plans';
+
+export * from './plans';
 
 export const APP_NAME = 'PrepMitra AI';
 export const APP_TAGLINE = 'Your Personal AI Exam & Interview Coach';
@@ -51,6 +54,7 @@ export const API_ENDPOINTS = {
   me: '/v1/me',
   consents: '/v1/me/consents',
   credits: '/v1/me/credits',
+  allowances: '/v1/me/allowances',
   progress: '/v1/me/progress',
   // Catalog
   exams: '/v1/exams',
@@ -178,87 +182,18 @@ export const languageName = (code: LanguageCode): string =>
   LANGUAGES.find((l) => l.code === code)?.name ?? code;
 
 /**
- * Proposed pricing from the MVP document (§7). Edit here to reconfigure
- * pricing across web and mobile; the backend `/v1/plans` will replace this.
+ * Pricing blueprint (Nov 2026): study plans, AI Tutor packs, Topper Combo and add-ons live in `./plans`.
+ * Mock mode shows PLAN_CATALOG; the real API's `GET /v1/plans` replaces it (see `toPlans`).
  */
 export const GST_RATE = 0.18;
 export const PRICES_INCLUDE_GST = true;
 
-const FULL_PLANS: Plan[] = [
-  {
-    id: 'free',
-    name: 'Free Trial',
-    priceInr: 0,
-    credits: 1,
-    validityDays: null,
-    isRecurring: false,
-    description: 'One 30-minute mini mock with the full report, so you can see the value before paying.',
-    features: ['1 mini mock (30 min)', 'Full performance report', 'Topic-wise strengths and weaknesses', 'No card required'],
-    cta: 'Start free mini mock',
-  },
-  {
-    id: 'pay-per-mock',
-    name: 'Pay Per Mock',
-    priceInr: 99,
-    credits: 1,
-    validityDays: 90,
-    isRecurring: false,
-    description: 'One credit for any full mock exam or mock interview, valid for 90 days.',
-    features: ['1 credit (exam or interview)', 'Detailed report and shortcuts', '7-day improvement plan', 'Valid for 90 days'],
-    cta: 'Buy 1 credit',
-  },
-  {
-    id: 'monthly',
-    name: 'Monthly',
-    priceInr: 399,
-    credits: 10,
-    validityDays: 30,
-    isRecurring: true,
-    description: '10 credits every month for regular practice. Cancel auto-renew anytime.',
-    features: ['10 credits / month', 'Exams and interviews', 'Progress analytics', 'Auto-renews, cancel anytime'],
-    highlighted: true,
-    badge: 'Most popular',
-    cta: 'Choose Monthly',
-  },
-  {
-    id: 'yearly',
-    name: 'Yearly',
-    priceInr: 2999,
-    credits: 150,
-    validityDays: 365,
-    isRecurring: false,
-    description: '150 credits for a full preparation year — about 37% cheaper than 12 monthly payments.',
-    features: ['150 credits / year', 'Everything in Monthly', 'Priority access to new exams', 'Best value per mock'],
-    badge: 'Best value',
-    cta: 'Choose Yearly',
-  },
-];
-
-/** Launch pricing from the 15-day plan: one-time credit packs only (auto-renew is Phase 2). */
-const LAUNCH_PLANS: Plan[] = [
-  FULL_PLANS[0]!,
-  FULL_PLANS[1]!,
-  {
-    id: 'monthly',
-    name: '10-Credit Pack',
-    priceInr: 399,
-    credits: 10,
-    validityDays: 90,
-    isRecurring: false,
-    description: '10 credits for exams or interviews, valid for 90 days. One-time payment, no auto-renew.',
-    features: ['10 credits (exam or interview)', 'Detailed reports and shortcuts', 'Progress analytics', 'Valid for 90 days'],
-    highlighted: true,
-    badge: 'Best value',
-    cta: 'Buy 10 credits',
-  },
-];
-
+/** Kept for older callers: there is one plan set now (the `launch` credit packs are retired). */
 export type PlanSetId = 'full' | 'launch';
-export const PLAN_SETS: Record<PlanSetId, Plan[]> = { full: FULL_PLANS, launch: LAUNCH_PLANS };
-/** Change to 'launch' to ship the 15-day MVP pricing everywhere (web can also use VITE_PRICING_SET). */
+export const PLAN_SETS: Record<PlanSetId, Plan[]> = { full: PLAN_CATALOG, launch: PLAN_CATALOG };
 export const ACTIVE_PLAN_SET: PlanSetId = 'full';
-export const PLANS: Plan[] = PLAN_SETS[ACTIVE_PLAN_SET];
-export const getPlanSet = (id?: string | null): Plan[] => (id === 'launch' || id === 'full' ? PLAN_SETS[id] : PLANS);
+export const PLANS: Plan[] = PLAN_CATALOG;
+export const getPlanSet = (_id?: string | null): Plan[] => PLANS;
 
 export const getPlan = (id: string, plans: Plan[] = PLANS) => plans.find((p) => p.id === id);
 
