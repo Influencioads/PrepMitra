@@ -64,6 +64,7 @@ const SECTIONS: LegalSection[] = [
           <li>Purchased credits are valid for the period shown at purchase (90 days for single credits and credit packs). Unused credits expire after that.</li>
           <li>Prices are shown in Indian Rupees and [include / exclude] 18% GST.</li>
           <li>Credits have no cash value and cannot be transferred or sold.</li>
+          <li><b>All credit purchases are final.</b> Once credits are added to your account, the amount paid is not refunded, whether or not the credits are used.</li>
         </ul>
         <p>Refunds and cancellations are covered by our <Link to="/refund-policy" className="font-medium text-primary hover:underline">Refund and cancellation policy</Link>.</p>
       </>

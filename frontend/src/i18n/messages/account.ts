@@ -218,7 +218,7 @@ export const accountMessages = defineMessages({
     simulateFail: 'Simulate a failed payment',
     simulateFailDesc: 'Demo only: shows the failure and retry screen.',
     agreeRefund: 'I agree to the refund and cancellation policy',
-    agreeRefundDesc: 'Credits are used when you start an attempt and restored automatically if an attempt fails for technical reasons.',
+    agreeRefundDesc: 'Credit purchases are final and not refundable. Credits are used when you start an attempt and restored automatically if an attempt fails for technical reasons.',
 
     // Notifications
     notifTitle: 'Notifications',
@@ -563,7 +563,7 @@ export const accountMessages = defineMessages({
     simulateFail: 'विफल भुगतान आज़माएँ',
     simulateFailDesc: 'सिर्फ़ डेमो: विफलता और फिर से कोशिश वाली स्क्रीन दिखाता है।',
     agreeRefund: 'मैं रिफ़ंड और रद्दीकरण नीति से सहमत हूँ',
-    agreeRefundDesc: 'क्रेडिट प्रयास शुरू करने पर इस्तेमाल होते हैं और तकनीकी कारण से प्रयास विफल होने पर अपने-आप वापस हो जाते हैं।',
+    agreeRefundDesc: 'क्रेडिट की खरीद अंतिम है और भुगतान की गई राशि वापस नहीं होती। क्रेडिट प्रयास शुरू करने पर इस्तेमाल होते हैं और तकनीकी कारण से प्रयास विफल होने पर अपने-आप वापस हो जाते हैं।',
 
     notifTitle: 'सूचनाएँ',
     notifDesc: 'परिणाम, भुगतान, प्लान रिमाइंडर और अभ्यास की याद।',
