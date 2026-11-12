@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpenCheck, CalendarDays, Check, CircleMinus, Gift, Lock, Plus } from 'lucide-react';
+import { ArrowRight, BookOpenCheck, CalendarDays, CircleMinus, Gift, Lock, Plus } from 'lucide-react';
 import type { ExamCategory } from '@prepmitra/shared';
 import { EXAM_CATEGORIES } from '@prepmitra/shared';
 import { AppIcon, ButtonLink, HandEyebrow, MarksLeak, PenNote, StickyNote } from '@/components/ui';
 import { PricingCards } from '@/components/marketing/PricingCards';
-import { AnswerSheetHero, PanelRoom, PrepPathPreview } from '@/components/marketing/PaperVisuals';
+import { PanelRoom, PrepPathPreview } from '@/components/marketing/PaperVisuals';
 import { ExamMarquee } from '@/components/marketing/ExamMarquee';
 import { CutoffMeter } from '@/components/marketing/CutoffMeter';
-import { DrawnArrow, FloatingBubbles, HeroBackdrop, Magnetic, PenUnderline, TiltCard, TypingDots, WordsReveal } from '@/components/marketing/HomeFx';
+import { DrawnArrow, FloatingBubbles, Magnetic, PenUnderline, TiltCard, TypingDots, WordsReveal } from '@/components/marketing/HomeFx';
+import { PhoneReport } from '@/components/marketing/PhoneReport';
 import { AnimatePresence, CountUp, Reveal, motion, useScroll, useSpring } from '@/components/motion/landing';
 import { usePlans } from '@/hooks/usePlans';
 import { useAuthStore } from '@/store';
@@ -165,22 +166,13 @@ export function LandingPage() {
   return (
     <div className="bg-notebook [--margin-x:14px] sm:[--margin-x:28px] lg:[--margin-x:48px]">
       <ScrollProgress />
-      {/* ---------------- Hero ---------------- */}
-      <section className="relative isolate">
-        <HeroBackdrop />
-        <div className="container-page grid items-center gap-12 pb-20 pt-10 lg:grid-cols-[1.1fr_1fr] lg:gap-8 lg:pb-28 lg:pt-14">
+      {/* ---------------- Hero (kept simple: one line of context, headline, one sentence, one action) ---------------- */}
+      <section className="relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute -left-32 top-0 -z-10 h-96 w-96 rounded-full bg-primary/10 blur-3xl" aria-hidden />
+        <div className="container-page grid items-center gap-14 pb-20 pt-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:pb-24 lg:pt-16">
           <div className="min-w-0">
-            {openMockCount > 0 && (
-              <motion.p {...HERO(0)} className="mb-5 inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-card/85 px-3 py-1.5 text-xs font-bold text-secondary shadow-sm backdrop-blur">
-                <span className="relative flex h-2 w-2" aria-hidden>
-                  <motion.span className="absolute inset-0 rounded-full bg-success" animate={{ scale: [1, 2.6], opacity: [0.6, 0] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }} />
-                  <span className="relative h-2 w-2 rounded-full bg-success" />
-                </span>
-                {t('heroLive', { n: openMockCount })}
-              </motion.p>
-            )}
-            <motion.p {...HERO(0.05)} className="font-hand text-lg text-secondary sm:text-xl">{bankingOnly ? t('heroForBanking') : t('heroFor')} —</motion.p>
-            <h1 className="mt-3 text-[2.7rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.6rem]">
+            <motion.p {...HERO(0)} className="font-hand text-lg text-secondary sm:text-xl">{bankingOnly ? t('heroForBanking') : t('heroFor')} —</motion.p>
+            <h1 className="mt-3 text-[2.7rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.4rem]">
               <span className="block"><WordsReveal text={t('heroLine1')} delay={0.1} /></span>
               <span className="block"><WordsReveal text={t('heroLine2')} delay={0.3} /></span>
               {/* The last line appears, then the red pen circles it. */}
@@ -200,48 +192,16 @@ export function LandingPage() {
                 </svg>
               </motion.span>
             </h1>
-            <motion.p {...HERO(0.5)} className="mt-7 max-w-xl text-lg leading-relaxed text-muted">{t('heroBody')}</motion.p>
-            <motion.div {...HERO(0.6)} className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <motion.p {...HERO(0.5)} className="mt-7 max-w-lg text-lg leading-relaxed text-muted">{t('heroBody')}</motion.p>
+            <motion.div {...HERO(0.6)} className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
               <Magnetic><BubbleCta to={startHref}>{t('heroCta')}</BubbleCta></Magnetic>
               <a href="#features" className="group font-bold text-ink underline decoration-2 underline-offset-4 hover:text-primary">
                 {t('heroSecondary')} <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
               </a>
             </motion.div>
-            <motion.ul
-              className="mt-6 flex flex-wrap gap-2"
-              initial="hidden"
-              animate="show"
-              variants={{ show: { transition: { staggerChildren: 0.08, delayChildren: 0.75 } } }}
-            >
-              {(['heroChip1', 'heroChip2', 'heroChip3'] as const).map((k) => (
-                <motion.li
-                  key={k}
-                  variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-card/80 px-3 py-1 text-sm font-medium text-muted backdrop-blur"
-                >
-                  <Check className="h-3.5 w-3.5 text-success" strokeWidth={3} aria-hidden />
-                  {t(k)}
-                </motion.li>
-              ))}
-            </motion.ul>
           </div>
-          <TiltCard max={5}>
-            <AnswerSheetHero />
-          </TiltCard>
+          <PhoneReport />
         </div>
-        {/* scroll cue */}
-        <motion.a
-          href="#how-it-works"
-          className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-[11px] font-bold uppercase tracking-[0.18em] text-subtle hover:text-primary lg:flex"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.6 }}
-        >
-          <span className="flex h-8 w-5 justify-center rounded-full border-2 border-current pt-1.5" aria-hidden>
-            <motion.span className="h-1.5 w-1 rounded-full bg-current" animate={{ y: [0, 8, 0], opacity: [1, 0.2, 1] }} transition={{ duration: 1.6, repeat: Infinity }} />
-          </span>
-          {t('scrollCue')}
-        </motion.a>
       </section>
 
       {/* ---------------- Exam ribbon ---------------- */}
@@ -251,9 +211,9 @@ export function LandingPage() {
         </div>
       </div>
 
-      {/* ---------------- Numbers strip (all true product facts, no invented stats) ---------------- */}
-      <section aria-label={t('statsLabel')} className="container-page pt-12">
-        <dl className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      {/* ---------------- Numbers strip (true product facts only): one slim line ---------------- */}
+      <section aria-label={t('statsLabel')} className="container-page pt-10">
+        <dl className="grid grid-cols-2 gap-y-6 rounded-2xl border-[1.5px] border-ink bg-card px-5 py-5 shadow-hard-sm sm:px-6 lg:grid-cols-4 lg:divide-x-[1.5px] lg:divide-dashed lg:divide-line-strong lg:py-6">
           {[
             { to: openMockCount, decimals: 0, label: t('stat1') },
             { to: 0.25, decimals: 2, label: t('stat2') },
@@ -264,21 +224,21 @@ export function LandingPage() {
             return (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 18 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -5 }}
-                viewport={{ once: true, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
-                className="group relative flex flex-col-reverse overflow-hidden rounded-2xl border-[1.5px] border-ink bg-card p-5 shadow-hard-sm sm:p-6"
+                className="group flex items-center gap-3 lg:justify-center lg:px-4"
               >
-                <span className={cn('absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-70 transition-transform duration-500 group-hover:scale-[1.7]', look.blob)} aria-hidden />
-                <dt className="relative mt-1 text-sm leading-snug text-muted">{stat.label}</dt>
-                <dd className={cn('relative mt-4 font-display text-4xl font-extrabold tabular-nums tracking-tight sm:text-5xl', look.num)}>
-                  <CountUp to={stat.to} decimals={stat.decimals} />
-                </dd>
-                <span className={cn('relative flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110', look.tile)} aria-hidden>
+                <span className={cn('flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110', look.tile)} aria-hidden>
                   <look.Icon className="h-5 w-5" />
                 </span>
+                <div className="flex min-w-0 flex-col-reverse">
+                  <dt className="text-xs leading-snug text-muted sm:text-sm">{stat.label}</dt>
+                  <dd className={cn('font-display text-2xl font-extrabold tabular-nums leading-tight tracking-tight sm:text-3xl', look.num)}>
+                    <CountUp to={stat.to} decimals={stat.decimals} />
+                  </dd>
+                </div>
               </motion.div>
             );
           })}
