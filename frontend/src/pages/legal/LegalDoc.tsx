@@ -8,7 +8,7 @@ export interface LegalSection {
   body: ReactNode;
 }
 
-export const LEGAL_LAST_UPDATED = '30 October 2026';
+export const LEGAL_LAST_UPDATED = '12 November 2026';
 
 /** Shared layout for policy pages: title, draft notice, sticky table of contents, sections. */
 export function LegalDoc({
