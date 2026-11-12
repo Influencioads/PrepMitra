@@ -11,9 +11,9 @@ import { SparkBurst } from './HomeFx';
 const BEFORE = 61.25;
 const CUTOFF = 63.75;
 const LEAKS = [
-  { key: 'leak1', marks: 4, Icon: LayoutGrid, tone: 'pen' },
-  { key: 'leak2', marks: 2, Icon: Clock, tone: 'accent' },
-  { key: 'leak3', marks: 1.25, Icon: Target, tone: 'purple' },
+  { key: 'leak1', marks: 4, Icon: LayoutGrid },
+  { key: 'leak2', marks: 2, Icon: Clock },
+  { key: 'leak3', marks: 1.25, Icon: Target },
 ] as const;
 const RECOVERED = LEAKS.reduce((s, l) => s + l.marks, 0); // 7.25
 const AFTER = BEFORE + RECOVERED; // 68.5
@@ -24,14 +24,9 @@ const MAX = 80;
 const pct = (v: number) => ((v - MIN) / (MAX - MIN)) * 100;
 const fmt = (v: number) => (Number.isInteger(v) ? String(v) : v.toFixed(2).replace(/0$/, ''));
 
-/** On the dark chalkboard band: soft red for "short", bright green for "cleared". */
-const SHORT = '#FF8A95';
-const CLEAR = '#5EE0A0';
-const TONE: Record<(typeof LEAKS)[number]['tone'], { chip: string; text: string }> = {
-  pen: { chip: 'bg-[#FF8A95]/15 text-[#FF8A95]', text: 'text-[#FF8A95]' },
-  accent: { chip: 'bg-accent/20 text-[#FFB066]', text: 'text-[#FFB066]' },
-  purple: { chip: 'bg-[#C084FC]/15 text-[#D8B4FE]', text: 'text-[#D8B4FE]' },
-};
+/** PrepMitra colours on the chalkboard band: saffron for "short", marigold gold for "cleared". */
+const SHORT = '#F28C28';
+const CLEAR = '#FFD27A';
 
 /**
  * "The 0.25 game": the same student's score after mock 1 and after the 7-day plan, on one track
@@ -74,7 +69,7 @@ export function CutoffMeter() {
   };
 
   return (
-    <section id="cutoff" className="relative isolate scroll-mt-20 overflow-hidden bg-chalkboard py-16 text-chalk-text lg:py-24">
+    <section id="cutoff" className="relative isolate scroll-mt-20 overflow-hidden bg-chalkboard py-12 text-chalk-text lg:py-16">
       {/* torn paper edges, chalk light, faint grid, giant 0.25 */}
       <svg viewBox="0 0 1200 24" preserveAspectRatio="none" className="absolute inset-x-0 top-0 h-4 w-full text-background" aria-hidden>
         <path d="M0 0h1200v8c-40 10-80-6-120 4s-80 10-120 0-80-8-120 2-80 10-120 0-80-8-120 2-80 10-120 0-80-6-120 4-80 8-120 0-80-6-120 4S40 18 0 8Z" fill="currentColor" />
@@ -96,25 +91,25 @@ export function CutoffMeter() {
       </motion.span>
       <motion.span
         className="pointer-events-none absolute -left-32 bottom-0 -z-10 h-96 w-96 rounded-full blur-3xl"
-        animate={{ backgroundColor: after ? 'rgba(94,224,160,0.14)' : 'rgba(255,138,149,0.12)' }}
+        animate={{ backgroundColor: after ? 'rgba(255,210,122,0.14)' : 'rgba(242,140,40,0.14)' }}
         transition={{ duration: 0.8 }}
         aria-hidden
       />
 
       <div ref={ref} className="container-page">
-        {/* ---------- Heading + controls ---------- */}
-        <div className="grid items-end gap-6 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
+        {/* ---------- Heading (left) · switch, score and stamp (right) ---------- */}
+        <div className="grid items-end gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
           <div>
             <p className="font-hand text-lg text-marigold sm:text-xl">{t('cutEyebrow')} —</p>
-            <h2 className="mt-1 text-balance font-display text-[2rem] font-extrabold leading-[1.08] tracking-tight text-chalk-text sm:text-6xl">
+            <h2 className="mt-1 text-balance font-display text-[2rem] font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
               <span style={{ color: SHORT }}>{t('cutTitle1')}</span>
               <br />
               <span style={{ color: CLEAR }}>{t('cutTitle2')}</span>
             </h2>
+            <p className="mt-3 max-w-lg text-base leading-relaxed text-white/70">{t('cutBody')}</p>
           </div>
           <div className="lg:justify-self-end">
-            <p className="max-w-md text-lg leading-relaxed text-white/75">{t('cutBody')}</p>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2">
               <div role="group" aria-label={t('cutToggle')} className="inline-flex rounded-full border border-white/25 bg-white/10 p-1 backdrop-blur">
                 {[false, true].map((v) => (
                   <button
@@ -122,7 +117,7 @@ export function CutoffMeter() {
                     type="button"
                     aria-pressed={after === v}
                     onClick={() => pick(v)}
-                    className={cn('relative rounded-full px-4 py-2 text-sm font-bold transition-colors', after === v ? 'text-chalk-deep' : 'text-white/80 hover:text-white')}
+                    className={cn('relative rounded-full px-4 py-1.5 text-sm font-bold transition-colors', after === v ? 'text-chalk-deep' : 'text-white/80 hover:text-white')}
                   >
                     {after === v && (
                       <motion.span layoutId="cut-pill" className="absolute inset-0 rounded-full" style={{ backgroundColor: v ? CLEAR : SHORT }} transition={{ type: 'spring', stiffness: 400, damping: 32 }} />
@@ -131,42 +126,40 @@ export function CutoffMeter() {
                   </button>
                 ))}
               </div>
-              <button type="button" onClick={replay} className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-bold text-white/70 transition-colors hover:text-white">
+              <button type="button" onClick={replay} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold text-white/70 transition-colors hover:text-white">
                 <RotateCcw className="h-4 w-4" aria-hidden />
                 {t('cutReplay')}
               </button>
             </div>
+            <div className="mt-4 flex flex-wrap items-end gap-x-6 gap-y-3">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/55">{t('cutYou')}</p>
+                <p className="font-display text-6xl font-extrabold leading-none tabular-nums tracking-tight sm:text-7xl">
+                  <motion.span>{label}</motion.span>
+                  <span className="ml-1 text-xl text-white/40 sm:text-2xl">/100</span>
+                </p>
+              </div>
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={after ? 'clear' : 'short'}
+                  initial={{ opacity: 0, scale: 1.5, rotate: after ? -14 : 10 }}
+                  animate={{ opacity: 1, scale: 1, rotate: after ? -5 : 3 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 17 }}
+                  className="relative mb-1.5 rounded-xl border-[3px] px-3 py-1.5 text-base font-extrabold uppercase tracking-wide"
+                  style={{ borderColor: after ? CLEAR : SHORT, color: after ? CLEAR : SHORT }}
+                  aria-live="polite"
+                >
+                  {after ? t('cutClear', { n: fmt(gap) }) : t('cutShort', { n: fmt(gap) })}
+                  {after && <SparkBurst color="bg-marigold" />}
+                </motion.span>
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
-
-        {/* ---------- Score + stamp ---------- */}
-        <div className="mt-12 flex flex-wrap items-end justify-between gap-4 border-t border-white/15 pt-8">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/55">{t('cutYou')}</p>
-            <p className="font-display text-7xl font-extrabold leading-none tabular-nums tracking-tight sm:text-8xl">
-              <motion.span>{label}</motion.span>
-              <span className="ml-1 text-2xl text-white/40 sm:text-3xl">/100</span>
-            </p>
-          </div>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.span
-              key={after ? 'clear' : 'short'}
-              initial={{ opacity: 0, scale: 1.5, rotate: after ? -14 : 10 }}
-              animate={{ opacity: 1, scale: 1, rotate: after ? -5 : 3 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ type: 'spring', stiffness: 380, damping: 17 }}
-              className="relative mb-2 rounded-xl border-[3px] px-4 py-2 text-lg font-extrabold uppercase tracking-wide sm:text-xl"
-              style={{ borderColor: after ? CLEAR : SHORT, color: after ? CLEAR : SHORT }}
-              aria-live="polite"
-            >
-              {after ? t('cutClear', { n: fmt(gap) }) : t('cutShort', { n: fmt(gap) })}
-              {after && <SparkBurst color="bg-[#5EE0A0]" />}
-            </motion.span>
-          </AnimatePresence>
         </div>
 
         {/* ---------- Track (full container width) ---------- */}
-        <div className="relative mt-10 pb-16 pt-12" aria-hidden>
+        <div className="relative mt-6 pb-14 pt-11" aria-hidden>
           <div className="absolute bottom-16 top-0 -translate-x-1/2" style={{ left: `${pct(CUTOFF)}%` }}>
             <span className="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap rounded-md bg-pen px-2.5 py-1 text-xs font-extrabold text-white shadow-[0_4px_14px_rgba(215,38,61,0.45)]">
               {t('cutLine', { n: fmt(CUTOFF) })}
@@ -175,11 +168,11 @@ export function CutoffMeter() {
           </div>
 
           <div className="relative h-6 overflow-hidden rounded-full border border-white/30 bg-white/10">
-            <motion.div className="absolute inset-y-0 left-0 rounded-full transition-colors duration-500" style={{ width: left, backgroundColor: after ? CLEAR : '#F28C28' }} />
+            <motion.div className="absolute inset-y-0 left-0 rounded-full transition-colors duration-500" style={{ width: left, backgroundColor: after ? CLEAR : SHORT }} />
             <motion.div
               className="absolute inset-y-0"
               style={{
-                backgroundImage: `repeating-linear-gradient(45deg, ${after ? 'rgba(16,36,28,0.35)' : 'rgba(255,138,149,0.45)'} 0 6px, transparent 6px 12px)`,
+                backgroundImage: `repeating-linear-gradient(45deg, ${after ? 'rgba(16,36,28,0.35)' : 'rgba(215,38,61,0.55)'} 0 6px, transparent 6px 12px)`,
               }}
               initial={false}
               animate={{ left: `${pct(lo)}%`, width: `${pct(hi) - pct(lo)}%`, opacity: seen ? 1 : 0 }}
@@ -188,8 +181,8 @@ export function CutoffMeter() {
           </div>
 
           <motion.div className="absolute top-[74px] -translate-x-1/2" style={{ left }}>
-            <span className="mx-auto block h-0 w-0 border-x-[7px] border-b-[9px] border-x-transparent transition-colors duration-500" style={{ borderBottomColor: after ? CLEAR : '#F28C28' }} />
-            <span className="block whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold text-chalk-deep transition-colors duration-500" style={{ backgroundColor: after ? CLEAR : '#F28C28' }}>
+            <span className="mx-auto block h-0 w-0 border-x-[7px] border-b-[9px] border-x-transparent transition-colors duration-500" style={{ borderBottomColor: after ? CLEAR : SHORT }} />
+            <span className="block whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold text-chalk-deep transition-colors duration-500" style={{ backgroundColor: after ? CLEAR : SHORT }}>
               {t('cutYouTag')}
             </span>
           </motion.div>
@@ -205,7 +198,7 @@ export function CutoffMeter() {
         </div>
 
         {/* ---------- Leak tickets ---------- */}
-        <div className="mt-4 flex flex-wrap items-baseline justify-between gap-3">
+        <div className="mt-2 flex flex-wrap items-baseline justify-between gap-3">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/55">{t('cutLeaksTitle')}</p>
           <p className="text-sm font-bold">
             <span className="text-white/60">{t('cutRecovered')}: </span>
@@ -214,20 +207,19 @@ export function CutoffMeter() {
             </motion.span>
           </p>
         </div>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+        <ul className="mt-3 grid gap-3 sm:grid-cols-3">
           {LEAKS.map((l, i) => {
-            const tone = TONE[l.tone];
             return (
               <motion.li
                 key={l.key}
                 className={cn(
-                  'relative flex items-center gap-3 overflow-hidden rounded-2xl border p-4 backdrop-blur transition-colors duration-500 sm:p-5',
-                  after ? 'border-[#5EE0A0]/40 bg-[#5EE0A0]/10' : 'border-white/15 bg-white/[0.06]',
+                  'relative flex items-center gap-3 overflow-hidden rounded-2xl border px-4 py-3 backdrop-blur transition-colors duration-500',
+                  after ? 'border-marigold/40 bg-marigold/10' : 'border-white/15 bg-white/[0.06]',
                 )}
                 animate={after ? { y: [0, -6, 0] } : { y: 0 }}
                 transition={{ duration: 0.45, delay: 0.25 + i * 0.15 }}
               >
-                <span className={cn('relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-colors duration-500', after ? 'bg-[#5EE0A0] text-chalk-deep' : tone.chip)}>
+                <span className={cn('relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-colors duration-500', after ? 'bg-marigold text-chalk-deep' : 'bg-white/10 text-accent')}>
                   <AnimatePresence initial={false} mode="wait">
                     {after ? (
                       <motion.span key="ok" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: 0 }} exit={{ scale: 0 }} transition={{ type: 'spring', stiffness: 500, damping: 18, delay: 0.25 + i * 0.15 }}>
@@ -241,7 +233,7 @@ export function CutoffMeter() {
                   </AnimatePresence>
                 </span>
                 <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-white/90">{t(l.key)}</span>
-                <span className={cn('shrink-0 text-right font-display text-2xl font-extrabold tabular-nums transition-colors duration-500', !after && tone.text)} style={after ? { color: CLEAR } : undefined}>
+                <span className={'shrink-0 text-right font-display text-xl font-extrabold tabular-nums transition-colors duration-500'} style={{ color: after ? CLEAR : SHORT }}>
                   {after ? `+${fmt(l.marks)}` : `−${fmt(l.marks)}`}
                   <span className="block text-[10px] font-bold uppercase tracking-wide">{after ? t('cutPlugged') : '\u00a0'}</span>
                 </span>
@@ -250,7 +242,7 @@ export function CutoffMeter() {
           })}
         </ul>
 
-        <p className="mt-6 text-xs text-white/50">{t('cutSample')}</p>
+        <p className="mt-4 text-xs text-white/50">{t('cutSample')}</p>
       </div>
     </section>
   );
