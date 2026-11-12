@@ -10,7 +10,6 @@ import { ExamMarquee } from '@/components/marketing/ExamMarquee';
 import { CutoffMeter } from '@/components/marketing/CutoffMeter';
 import { ExamDial } from '@/components/marketing/ExamDial';
 import { DrawnArrow, FloatingBubbles, Magnetic, PenUnderline, TiltCard, TypingDots, WordsReveal } from '@/components/marketing/HomeFx';
-import { PhoneReport } from '@/components/marketing/PhoneReport';
 import { AnimatePresence, CountUp, Reveal, motion, useScroll, useSpring } from '@/components/motion/landing';
 import { usePlans } from '@/hooks/usePlans';
 import { useAuthStore } from '@/store';
@@ -163,46 +162,41 @@ export function LandingPage() {
   const { plans } = usePlans();
   const [faqOpen, setFaqOpen] = useState(0);
   const openMockCount = exams.filter((e) => isExamOpen(e)).length;
+  const dialExams = openFirst(exams.filter((e) => isExamOpen(e) && !e.isFree));
 
   return (
     <div className="bg-notebook [--margin-x:14px] sm:[--margin-x:28px] lg:[--margin-x:48px]">
       <ScrollProgress />
-      {/* ---------------- Hero (kept simple: one line of context, headline, one sentence, one action) ---------------- */}
-      <section className="relative isolate overflow-hidden">
-        <div className="pointer-events-none absolute -left-32 top-0 -z-10 h-96 w-96 rounded-full bg-primary/10 blur-3xl" aria-hidden />
-        <div className="container-page grid items-center gap-14 pb-20 pt-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:pb-24 lg:pt-16">
-          <div className="min-w-0">
-            <motion.p {...HERO(0)} className="font-hand text-lg text-secondary sm:text-xl">{bankingOnly ? t('heroForBanking') : t('heroFor')} —</motion.p>
-            <h1 className="mt-3 text-[2.7rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.4rem]">
-              <span className="block"><WordsReveal text={t('heroLine1')} delay={0.1} /></span>
-              <span className="block"><WordsReveal text={t('heroLine2')} delay={0.3} /></span>
-              {/* The last line appears, then the red pen circles it. */}
-              <motion.span
-                initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
-                animate={{ opacity: 1, scale: 1, rotate: -3 }}
-                transition={{ type: 'spring', stiffness: 260, damping: 16, delay: 0.55 }}
-                className="relative mt-3 inline-block px-5 pb-2 text-primary sm:-ml-4 sm:px-7"
-              >
-                {t('heroLine3')}
-                <svg viewBox="0 0 300 100" preserveAspectRatio="none" className="pointer-events-none absolute -inset-1.5 h-[calc(100%+12px)] w-[calc(100%+12px)] overflow-visible text-pen" aria-hidden>
-                  <motion.path
-                    d="M160 8 C 255 6, 296 28, 294 52 C 292 80, 222 96, 146 94 C 66 92, 6 80, 8 50 C 10 22, 74 6, 170 12"
-                    fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" vectorEffect="non-scaling-stroke"
-                    initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.85 }}
-                  />
-                </svg>
-              </motion.span>
-            </h1>
-            <motion.p {...HERO(0.5)} className="mt-7 max-w-lg text-lg leading-relaxed text-muted">{t('heroBody')}</motion.p>
-            <motion.div {...HERO(0.6)} className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
-              <Magnetic><BubbleCta to={startHref}>{t('heroCta')}</BubbleCta></Magnetic>
-              <a href="#features" className="group font-bold text-ink underline decoration-2 underline-offset-4 hover:text-primary">
-                {t('heroSecondary')} <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-              </a>
-            </motion.div>
-          </div>
-          <PhoneReport />
-        </div>
+      {/* ---------------- Hero: the turn-the-dial exam picker, with the headline on top ---------------- */}
+      <section className="container-page pb-10 pt-4 sm:pt-6">
+        <ExamDial
+          exams={dialExams}
+          allHref="/exams?category=banking"
+          tall
+          heading={
+            <>
+              <motion.p {...HERO(0)} className="font-hand text-lg text-marigold sm:text-xl">{bankingOnly ? t('heroForBanking') : t('heroFor')} —</motion.p>
+              <h1 className="mx-auto mt-2 max-w-4xl text-balance font-display text-[2.1rem] font-extrabold leading-[1.05] tracking-tight text-chalk-text sm:text-6xl">
+                <WordsReveal text={`${t('heroLine1')} ${t('heroLine2')}`} delay={0.1} />{' '}
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
+                  animate={{ opacity: 1, scale: 1, rotate: -3 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 16, delay: 0.55 }}
+                  className="relative inline-block px-3 text-marigold sm:px-5"
+                >
+                  {t('heroLine3')}
+                  <svg viewBox="0 0 300 100" preserveAspectRatio="none" className="pointer-events-none absolute -inset-1 h-[calc(100%+8px)] w-[calc(100%+8px)] overflow-visible text-marigold" aria-hidden>
+                    <motion.path
+                      d="M160 8 C 255 6, 296 28, 294 52 C 292 80, 222 96, 146 94 C 66 92, 6 80, 8 50 C 10 22, 74 6, 170 12"
+                      fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke"
+                      initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.85 }}
+                    />
+                  </svg>
+                </motion.span>
+              </h1>
+            </>
+          }
+        />
       </section>
 
       {/* ---------------- Exam ribbon ---------------- */}
@@ -329,20 +323,16 @@ export function LandingPage() {
 
       {/* ---------------- Categories as index cards ---------------- */}
       <section className="container-page pb-16 lg:pb-24">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <Reveal><HandEyebrow tone="green">{t('catEyebrow')}</HandEyebrow></Reveal>
+            <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl"><WordsReveal text={t('catTitle')} inView /></h2>
+          </div>
+          <ButtonLink to="/exams" variant="outline" rightIcon={<ArrowRight className="h-4 w-4" />} className="self-start border-ink sm:self-auto">{t('catAll')}</ButtonLink>
+        </div>
         {launchFocus ? (
           <>
-            {/* The open category (banking at launch) as the turn-the-dial picker. */}
-            {openCats.map((c) => (
-              <Reveal key={c.id} y={28}>
-                <ExamDial
-                  exams={openFirst(exams.filter((e) => e.category === c.id && isExamOpen(e)))}
-                  eyebrow={t('catEyebrow')}
-                  title={t('catTitle')}
-                  allHref={`/exams?category=${c.id}`}
-                />
-              </Reveal>
-            ))}
-            <Reveal className="mt-10">
+            <Reveal className="mt-8">
               <p className="font-hand text-lg text-muted">{t('catSoonTitle')} — {t('catSoonNote')}</p>
             </Reveal>
             <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -365,13 +355,6 @@ export function LandingPage() {
           </>
         ) : (
         <>
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <Reveal><HandEyebrow tone="green">{t('catEyebrow')}</HandEyebrow></Reveal>
-            <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl"><WordsReveal text={t('catTitle')} inView /></h2>
-          </div>
-          <ButtonLink to="/exams" variant="outline" rightIcon={<ArrowRight className="h-4 w-4" />} className="self-start border-ink sm:self-auto">{t('catAll')}</ButtonLink>
-        </div>
         <div className="mt-10 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map(({ count, ...c }) => {
             return (

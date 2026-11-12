@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type KeyboardEvent } from 'react';
+import { useCallback, useEffect, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion, type PanInfo } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -32,7 +32,7 @@ function useWide() {
  * the chosen one stops under the marker, a big paper disc rises from the bottom edge and spins in,
  * and the whole scene takes that exam's colour. Arrows, ← →, a drag on the disc or a tap on a name turn it.
  */
-export function ExamDial({ exams, eyebrow, title, allHref = '/exams?category=banking', className }: { exams: Exam[]; eyebrow?: string; title?: string; allHref?: string; className?: string }) {
+export function ExamDial({ exams, eyebrow, title, heading, tall = false, allHref = '/exams?category=banking', className }: { exams: Exam[]; eyebrow?: string; title?: string; heading?: ReactNode; tall?: boolean; allHref?: string; className?: string }) {
   const t = useT(homeMessages);
   const ct = useContentT();
   const reduce = useReducedMotion();
@@ -64,8 +64,31 @@ export function ExamDial({ exams, eyebrow, title, allHref = '/exams?category=ban
     else if (info.offset.x > 50) go(-1);
   };
 
-  if (!exam) return null;
   const color = COLORS[active % COLORS.length]!;
+  const sizes = cn(
+    tall ? '[--H:540px] sm:[--H:720px]' : '[--H:500px] sm:[--H:660px]',
+    '[--R:222px] [--D:350px] [--cy:calc(var(--H)-4px)]',
+    'sm:[--R:440px] sm:[--D:640px] sm:[--cy:calc(var(--H)+24px)]',
+  );
+  const head = heading ?? (
+    <>
+      <p className="font-hand text-lg text-marigold sm:text-xl">{eyebrow ?? t('dialEyebrow')} —</p>
+      <h2 className="mt-1 text-balance font-display text-3xl font-extrabold tracking-tight text-chalk-text sm:text-5xl">{title ?? t('dialTitle')}</h2>
+    </>
+  );
+
+  // Exams still loading (or none): keep the scene and heading on screen, with an empty ring and disc.
+  if (!exam) {
+    return (
+      <div className={cn('relative isolate h-[var(--H)] overflow-hidden rounded-[32px] text-chalk-text', sizes, className)} style={{ backgroundColor: color }}>
+        <div className="relative z-20 px-6 pt-8 text-center sm:pt-10">{head}</div>
+        <div className="absolute left-1/2 top-[var(--cy)] h-0 w-0" aria-hidden>
+          <span className="absolute left-0 top-0 h-[calc(var(--R)*2)] w-[calc(var(--R)*2)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/30" />
+          <span className="absolute left-0 top-0 h-[var(--D)] w-[var(--D)] -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full border-[3px] border-ink bg-paper/90" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -79,8 +102,7 @@ export function ExamDial({ exams, eyebrow, title, allHref = '/exams?category=ban
       className={cn(
         // H = scene height, R = arc radius, D = disc diameter, cy = where the shared centre sits (below the middle).
         'relative isolate h-[var(--H)] overflow-hidden rounded-[32px] text-chalk-text outline-none ring-offset-4 ring-offset-background focus-visible:ring-2 focus-visible:ring-primary',
-        '[--H:500px] [--R:222px] [--D:350px] [--cy:calc(var(--H)-4px)]',
-        'sm:[--H:660px] sm:[--R:440px] sm:[--D:640px] sm:[--cy:calc(var(--H)+24px)]',
+        sizes,
         className,
       )}
     >
@@ -91,8 +113,7 @@ export function ExamDial({ exams, eyebrow, title, allHref = '/exams?category=ban
 
       {/* ---------- Heading ---------- */}
       <div className="relative z-20 px-6 pt-8 text-center sm:pt-10">
-        <p className="font-hand text-lg text-marigold sm:text-xl">{eyebrow ?? t('dialEyebrow')} —</p>
-        <h2 className="mt-1 text-balance font-display text-3xl font-extrabold tracking-tight text-chalk-text sm:text-5xl">{title ?? t('dialTitle')}</h2>
+        {head}
         <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-white/55" aria-live="polite">
           {t('dialOf', { i: active + 1, n })} · <Link to={allHref} className="underline decoration-white/40 underline-offset-4 hover:text-white">{t('dialAll', { n })}</Link>
         </p>
