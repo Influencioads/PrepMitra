@@ -37,7 +37,7 @@ export function ExamDial({ exams, eyebrow, title, heading, tall = false, allHref
   const ct = useContentT();
   const reduce = useReducedMotion();
   const wide = useWide();
-  const step = wide ? 21 : 27; // degrees between names on the arc
+  const step = wide ? 24 : 31; // degrees between names on the arc
   const reach = wide ? 3 : 2; // how many names show on each side
   // `turn` keeps counting past the ends so the arc always moves the short way round.
   const [turn, setTurn] = useState(0);
@@ -66,9 +66,9 @@ export function ExamDial({ exams, eyebrow, title, heading, tall = false, allHref
 
   const color = COLORS[active % COLORS.length]!;
   const sizes = cn(
-    tall ? '[--H:540px] sm:[--H:720px]' : '[--H:500px] sm:[--H:660px]',
-    '[--R:222px] [--D:350px] [--cy:calc(var(--H)-4px)]',
-    'sm:[--R:440px] sm:[--D:640px] sm:[--cy:calc(var(--H)+24px)]',
+    tall ? '[--H:540px] sm:[--H:680px]' : '[--H:500px] sm:[--H:660px]',
+    '[--R:206px] [--D:360px] [--cy:calc(var(--H)-4px)]',
+    'sm:[--R:392px] sm:[--D:680px] sm:[--cy:calc(var(--H)+24px)]',
   );
   const head = heading ?? (
     <>
