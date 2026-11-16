@@ -18,9 +18,12 @@ interface Tool {
 
 const TOOLS: Tool[] = [
   { href: '/ai/doubts', title: 'Doubt Solver', desc: 'Type or photograph a question. Verified steps, shortcut and the trap.', icon: 'help-buoy-outline', feature: 'doubts' },
-  { href: '/ai/tutor', title: 'Ask Mitra', desc: 'Your AI tutor who knows your mocks. Story mode too.', icon: 'chatbubbles-outline', feature: 'tutor_chat_turns' },
+  { href: '/ai/tutor', title: 'AI tutor', desc: 'The blackboard: step-by-step lessons on your weakest topic, checked by code.', icon: 'easel-outline' },
+  { href: { pathname: '/ai/tutor', params: { tab: 'chat' } }, title: 'Ask Mitra', desc: 'Your AI tutor who knows your mocks. Story mode too.', icon: 'chatbubbles-outline', feature: 'tutor_chat_turns' },
+  { href: '/ai/teach-back', title: 'AI student', desc: 'Teach a concept to Chotu. Mitra marks how well you taught.', icon: 'happy-outline' },
+  { href: '/ai/cheat-codes', title: 'Cheat codes', desc: 'Exam-safe shortcuts. Flip for the trap, drill 2 of 3 to unlock.', icon: 'key-outline' },
   { href: { pathname: '/ai/tutor', params: { tab: 'deep' } }, title: 'Deep dives', desc: 'Visual note, concept from zero, the trap and practice.', icon: 'school-outline', feature: 'smart_credits' },
-  { href: '/ai/persona', title: 'Persona & rank', desc: 'Topic mastery, error mix, strategy and rank predictor.', icon: 'speedometer-outline', flag: 'rank_predictor', plan: 'Pro' },
+  { href: '/ai/persona', title: 'Exam persona', desc: 'Which of six exam-takers you are, the evidence, your game plan and rank predictor.', icon: 'speedometer-outline', flag: 'rank_predictor', plan: 'Pro' },
   { href: '/ai/notes', title: 'Notes & decks', desc: 'Notes, formula sheets, mind maps and topic decks.', icon: 'document-text-outline', feature: 'personal_notes' },
   { href: '/ai/practice', title: 'Revision AI', desc: 'Today’s spaced quiz from your mistakes, with hints.', icon: 'repeat-outline', flag: 'revision_ai', plan: 'Starter' },
   { href: { pathname: '/ai/practice', params: { tab: 'current' } }, title: 'Current affairs', desc: 'Daily fact-checked digest and GA quiz.', icon: 'newspaper-outline', flag: 'current_affairs', plan: 'Pro' },

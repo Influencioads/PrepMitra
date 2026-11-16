@@ -329,7 +329,7 @@ def coach_note(db: Session, user: User, attempt_id: uuid.UUID) -> dict:
         lost = data["marks_lost"]
         top = max(lost["items"], key=lambda i: i["marks"]) if lost["items"] else None
         weak = [t["topic"] for t in data["topics"] if t["marks_lost"] > 0][:2]
-        parts = [f"You scored {_n(data['score'])} out of {_n(data['max_score'])}."]
+        parts = [f"You scored {round(data['score'])} out of {round(data['max_score'])}."]
         if top and top["marks"] > 0:
             parts.append(f"The biggest loss was {top['reason'].replace('_', ' ')} ({_n(top['marks'])} marks).")
         if weak:

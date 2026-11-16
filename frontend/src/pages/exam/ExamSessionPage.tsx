@@ -9,7 +9,7 @@ import type { ClipboardEvent, MouseEvent as ReactMouseEvent } from 'react';
 import type { Answer, Attempt, ExamReport, LanguageCode, PaletteStatus } from '@prepmitra/shared';
 import {
   addTimeSpent, answeredCount, clearResponse, countPaletteStatuses, getQuestionById, hasTranslation,
-  isAnswered, languageName, localizeQuestion, setAnswer, toggleMarkForReview, toggleOption, visitQuestion,
+  isAnswered, languageName, localizeQuestion, setAnswer, toggleMarkForReview, toggleOption, visitQuestion, formatMarks
 } from '@prepmitra/shared';
 import { Avatar, Button, ConfirmationDialog, ErrorState, Logo, Modal } from '@/components/ui';
 import { CountdownTimer } from '@/components/exam/CountdownTimer';
@@ -301,7 +301,7 @@ function ExamSession({ attempt }: { attempt: Attempt }) {
         pushNotification({
           type: 'result',
           title: t('reportReadyTitle', { exam: exam.shortTitle }),
-          body: t('reportReadyBody', { score: report.result.score, max: report.result.maxScore, accuracy: report.result.accuracy }),
+          body: t('reportReadyBody', { score: formatMarks(report.result.score), max: formatMarks(report.result.maxScore), accuracy: report.result.accuracy }),
           link: `/reports/${report.id}`,
         });
         if (auto) toast(t('autoSubmitted'), { icon: '⏰' });

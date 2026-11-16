@@ -95,7 +95,7 @@ export interface LeakItem {
 /** "Where your marks leaked": stacked bar plus legend. Marks come from code, never from AI. */
 export function MarksLeak({ title, items, note }: { title: string; items: LeakItem[]; note?: ReactNode }) {
   const total = items.reduce((s, i) => s + i.marks, 0);
-  const fmt = (n: number) => `−${Number.isInteger(n) ? n : n.toFixed(2)}`;
+  const fmt = (n: number) => `−${Math.round(n)}`;
   return (
     <View style={styles.leak}>
       <View style={styles.leakHead}>

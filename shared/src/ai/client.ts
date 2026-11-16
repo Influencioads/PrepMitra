@@ -5,6 +5,8 @@ import type {
   DeepDiveListItem, DeepDiveRequest, DeepDiveResult, DeepPersona, DoubtFeedbackResult, DoubtRequest, DoubtResult, ExplainAgainResult,
   MistakeSummary, Notes, RevisionSubmitResult, NotesRequest, PersonaSnapshot, RankPrediction, RevisionToday, ShortcutCard, SupportReply, TopicDeck,
   TutorChatMessage, TutorChatReply, TutorChatRequest, WritingEvaluation, WritingRequest, AiArtifact,
+  BlackboardLesson, CheatCodeCatalogue, CheatCodeDrill, CheatCodeDrillResult, CodeCheck, ExamPersonaProfile, LessonIndex,
+  TeachConcept, TeachResult,
 } from './types';
 
 /**
@@ -96,6 +98,21 @@ export function createAiApi(t: AiTransport) {
     coachLock: (sid: string, share = false) => t.post<CheatCard>(`/v1/ai/coach/sessions/${sid}/lock`, { share }),
     coachCards: async () => (await t.get<{ items: CheatCard[] }>('/v1/ai/coach/cards')).items,
     shortcuts: async (topic?: string) => (await t.get<{ items: ShortcutCard[] }>('/v1/ai/shortcuts', { topic: topic || undefined })).items,
+
+    // redesign: exam persona, cheat codes, blackboard lessons, teach-back (no allowance; marked by code)
+    personaProfile: () => t.get<ExamPersonaProfile>('/v1/ai/persona/profile'),
+    cheatCodes: () => t.get<CheatCodeCatalogue>('/v1/ai/cheat-codes'),
+    cheatCodeDrill: (codeId: string) => t.get<CheatCodeDrill>(`/v1/ai/cheat-codes/${codeId}/drill`),
+    checkCheatCodeDrill: (codeId: string, answers: (string | null)[]) =>
+      t.post<CheatCodeDrillResult>(`/v1/ai/cheat-codes/${codeId}/drill`, { answers }),
+    lessons: () => t.get<LessonIndex>('/v1/ai/tutor/lessons'),
+    lesson: (id: string) => t.get<BlackboardLesson>(`/v1/ai/tutor/lessons/${id}`),
+    checkLesson: (id: string, index: number, answer: string) =>
+      t.post<CodeCheck>(`/v1/ai/tutor/lessons/${id}/check`, { index, answer }),
+    teachConcepts: async () => (await t.get<{ items: { id: string; topic: string; ask: string }[] }>('/v1/ai/teach-back')).items,
+    teachConcept: (id: string) => t.get<TeachConcept>(`/v1/ai/teach-back/${id}`),
+    teachAnswer: (id: string, body: { round: number; choice?: string; text?: string }) =>
+      t.post<TeachResult>(`/v1/ai/teach-back/${id}/answer`, body),
   };
 }
 

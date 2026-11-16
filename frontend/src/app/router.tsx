@@ -72,6 +72,8 @@ const NotesPage = page(() => import('@/pages/ai/NotesPage'), 'NotesPage');
 const PracticePage = page(() => import('@/pages/ai/PracticePage'), 'PracticePage');
 const CoachPage = page(() => import('@/pages/ai/CoachPage'), 'CoachPage');
 const ArtifactPage = page(() => import('@/pages/ai/ArtifactPage'), 'ArtifactPage');
+const TeachBackPage = page(() => import('@/pages/ai/TeachBackPage'), 'TeachBackPage');
+const CheatCodesPage = page(() => import('@/pages/ai/CheatCodesPage'), 'CheatCodesPage');
 
 const InterviewSetupPage = page(() => import('@/pages/interview/InterviewSetupPage'), 'InterviewSetupPage');
 const InterviewSessionPage = page(() => import('@/pages/interview/InterviewSessionPage'), 'InterviewSessionPage');
@@ -152,6 +154,8 @@ export const routes = [
           { path: '/ai/doubts', element: <S><DoubtSolverPage /></S> },
           { path: '/ai/tutor', element: <S><TutorPage /></S> },
           { path: '/ai/persona', element: <S><PersonaPage /></S> },
+          { path: '/ai/teach-back', element: <S><TeachBackPage /></S> },
+          { path: '/ai/cheat-codes', element: <S><CheatCodesPage /></S> },
           { path: '/ai/notes', element: <S><NotesPage /></S> },
           { path: '/ai/practice', element: <S><PracticePage /></S> },
           { path: '/ai/coach', element: <S><CoachPage /></S> },

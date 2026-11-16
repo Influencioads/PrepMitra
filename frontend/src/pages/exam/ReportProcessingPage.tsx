@@ -3,7 +3,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { Clock, RotateCw, TriangleAlert } from 'lucide-react';
 import type { ExamReport } from '@prepmitra/shared';
-import { liveCatalog } from '@prepmitra/shared';
+import { liveCatalog, formatMarks } from '@prepmitra/shared';
 import { Button, ButtonLink } from '@/components/ui';
 import { ReportProcessing } from '@/components/exam/ReportProcessing';
 import { ReportPollError, errorMessage, reportService } from '@/services';
@@ -40,7 +40,7 @@ export function ReportProcessingPage() {
       pushNotification({
         type: 'result',
         title: t('reportReadyTitle', { exam: report.examTitle }),
-        body: t('reportReadyBody', { score: report.result.score, max: report.result.maxScore, accuracy: report.result.accuracy }),
+        body: t('reportReadyBody', { score: formatMarks(report.result.score), max: formatMarks(report.result.maxScore), accuracy: report.result.accuracy }),
         link: `/reports/${report.id}`,
       });
       navigate(`/exam-result/${report.id}`, { replace: true });

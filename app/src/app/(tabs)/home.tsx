@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {
-  formatClock, formatDuration, formatShortDate, getExamById, getRoleById, relativeTime, remainingSeconds,
+  formatClock, formatDuration, formatShortDate, getExamById, getRoleById, relativeTime, remainingSeconds, formatMarks
 } from '@prepmitra/shared';
 import {
   AppText, Badge, Button, Card, CardHeader, DemoBadge, Divider, EmptyState, ListRow, MitraSays, NotebookBackground, ProgressBar, Screen,
@@ -202,7 +202,7 @@ export default function Home() {
               {i > 0 && <Divider />}
               <ListRow
                 title={h.examTitle}
-                subtitle={`${formatShortDate(h.submittedAt)} · ${h.score}/${h.maxScore} · ${formatDuration(h.timeTakenSec)}`}
+                subtitle={`${formatShortDate(h.submittedAt)} · ${formatMarks(h.score)}/${formatMarks(h.maxScore)} · ${formatDuration(h.timeTakenSec)}`}
                 right={<Badge label={`${h.accuracy}%`} tone={accuracyTone(h.accuracy)} />}
                 onPress={() => router.push(`/reports/${h.reportId}`)}
                 accessibilityHint="Opens the performance report"

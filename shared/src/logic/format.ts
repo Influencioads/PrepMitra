@@ -20,6 +20,12 @@ export function formatDuration(totalSeconds: number): string {
   return sec ? `${m}m ${pad(sec)}s` : `${m}m`;
 }
 
+/** Marks are always shown as whole numbers (4.2498 → 4, −10.32 → −10). Scores stay exact underneath. */
+export function formatMarks(n: number): string {
+  const r = Math.round(n);
+  return String(r === 0 ? 0 : r);
+}
+
 /** ₹99, ₹1,299 — and money with paise always shows two decimals (₹15.10, not ₹15.1). */
 export function formatINR(amount: number): string {
   const paise = Math.round(amount * 100);

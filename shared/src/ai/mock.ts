@@ -2,6 +2,7 @@ import type { Allowances } from '../types/core';
 import { METERED_FEATURES } from '../constants';
 import { aiError } from './errors';
 import type { AiApi } from './client';
+import { createRedesignMock } from './redesignMock';
 import type {
   AiVisual, CheatCard, CheatCardPayload, CoachSolvedQuestion, CoachTopic, CurrentAffairs, DeckLibraryItem, DeckPayload, DeepDive,
   DeepDiveListItem, DeepDivePayload, DeepPersona, DoubtAnswer, DoubtSolution, MistakeSummary, Notes, NotesPayload, PersonaSnapshot,
@@ -549,6 +550,7 @@ export function createMockAiApi(latencyMs = 400): AiApi {
       const t = (topicQ ?? '').toLowerCase();
       return SHORTCUTS.filter((x) => !t || x.payload.topic.toLowerCase().includes(t) || x.title.toLowerCase().includes(t));
     },
+    ...createRedesignMock((ms = latencyMs) => wait(ms)),
   };
   return api;
 }

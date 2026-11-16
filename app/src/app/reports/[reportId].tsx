@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { Stack, router, useLocalSearchParams } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { QuestionOutcome } from '@prepmitra/shared';
-import { DISCLAIMERS, formatDate, formatDuration, getExamById, getQuestionById } from '@prepmitra/shared';
+import { DISCLAIMERS, formatDate, formatDuration, formatMarks, getExamById, getQuestionById } from '@prepmitra/shared';
 import {
   AppText, Badge, Button, Card, CardHeader, Chip, DemoBadge, EmptyState, Notice, ProgressBar, ScoreRing, Screen, SegmentedControl, toast,
 } from '@/components';
@@ -89,7 +89,7 @@ export default function ReportScreen() {
             <CardHeader title="Sections" />
             <View style={styles.gap}>
               {r.sections.map((s) => (
-                <ProgressBar key={s.sectionId} label={`${s.name} · ${s.score}/${s.maxScore}`} value={s.accuracy} showValue tone={accuracyTone(s.accuracy)} size="sm" />
+                <ProgressBar key={s.sectionId} label={`${s.name} · ${formatMarks(s.score)}/${formatMarks(s.maxScore)}`} value={s.accuracy} showValue tone={accuracyTone(s.accuracy)} size="sm" />
               ))}
             </View>
           </Card>
@@ -148,7 +148,7 @@ export default function ReportScreen() {
             </Card>
             <Card style={styles.metric}>
               <AppText variant="caption">Negative marking</AppText>
-              <AppText variant="h2" color={colors.warningText}>−{r.negativeMarksLost}</AppText>
+              <AppText variant="h2" color={colors.warningText}>−{formatMarks(r.negativeMarksLost)}</AppText>
             </Card>
           </View>
           {report.loopholes.length === 0 ? (

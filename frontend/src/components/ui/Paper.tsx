@@ -116,7 +116,7 @@ export interface LeakItem {
 /** `animated` (marketing pages): the bar fills in when scrolled into view. Reports and PDFs stay static. */
 export function MarksLeak({ items, title, note, className, animated = false }: { items: LeakItem[]; title: string; note?: ReactNode; className?: string; animated?: boolean }) {
   const total = items.reduce((s, i) => s + i.marks, 0);
-  const fmt = (n: number) => `−${Number.isInteger(n) ? n : n.toFixed(2)}`;
+  const fmt = (n: number) => `−${Math.round(n)}`;
   return (
     <section className={cn('rounded-[20px] border-[1.5px] border-ink bg-card p-5', className)}>
       <div className="flex items-baseline justify-between gap-3">

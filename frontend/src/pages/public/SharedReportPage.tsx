@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, CircleCheck, Lightbulb, ShieldCheck, Sparkles, TrendingDown, Trophy, TriangleAlert } from 'lucide-react';
-import { formatDate } from '@prepmitra/shared';
+import { formatDate, formatMarks } from '@prepmitra/shared';
 import { Badge, ButtonLink, Card, CardBody, CardHeader, EmptyState, LoadingSkeleton } from '@/components/ui';
 import { reportService } from '@/services';
 import { useAsync } from '@/hooks/useAsync';
@@ -42,10 +42,10 @@ export function SharedReportPage() {
 
       {sc && (
         <Card className="grid grid-cols-2 gap-4 p-5 sm:grid-cols-4" data-testid="shared-score">
-          <div><p className="text-xs text-muted">{t('sharedScore')}</p><p className="text-2xl font-bold">{sc.score}<span className="text-base font-medium text-muted">/{sc.maxScore}</span></p></div>
+          <div><p className="text-xs text-muted">{t('sharedScore')}</p><p className="text-2xl font-bold">{formatMarks(sc.score)}<span className="text-base font-medium text-muted">/{formatMarks(sc.maxScore)}</span></p></div>
           <div><p className="text-xs text-muted">{t('accuracy')}</p><p className="text-2xl font-bold">{sc.accuracy}%</p></div>
           <div><p className="text-xs text-muted">{t('correctIncorrectSkipped')}</p><p className="text-lg font-semibold">{sc.correct} / {sc.incorrect} / {sc.unanswered}</p></div>
-          <div><p className="text-xs text-muted">{t('lostNegative')}</p><p className="text-lg font-semibold text-danger">{sc.negativeMarksLost > 0 ? `−${sc.negativeMarksLost}` : '0'}</p></div>
+          <div><p className="text-xs text-muted">{t('lostNegative')}</p><p className="text-lg font-semibold text-danger">{sc.negativeMarksLost > 0 ? `−${formatMarks(sc.negativeMarksLost)}` : '0'}</p></div>
         </Card>
       )}
 

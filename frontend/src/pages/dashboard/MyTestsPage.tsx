@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { ClipboardList, MessageSquare, PlayCircle, Trash2 } from 'lucide-react';
 import type { ExamCategory } from '@prepmitra/shared';
 import {
-  EXAM_CATEGORIES, formatDateTime, formatDuration, formatShortDate, getExamById, liveCatalog, relativeTime, remainingSeconds, answeredCount,
+  EXAM_CATEGORIES, formatDateTime, formatDuration, formatShortDate, getExamById, liveCatalog, relativeTime, remainingSeconds, answeredCount, formatMarks
 } from '@prepmitra/shared';
 import {
   Badge, ButtonLink, Button, Card, ConfirmationDialog, EmptyState, PageHeader, SearchInput, Select, Tabs, accuracyTone,
@@ -135,7 +135,7 @@ export function MyTestsPage() {
                           <p className="text-xs text-muted">{h.category ? categoryText(tcat, h.category).label : ''}</p>
                         </td>
                         <td className="px-5 py-3 text-muted">{formatDateTime(h.submittedAt)}</td>
-                        <td className="px-5 py-3 font-medium">{h.score}/{h.maxScore}</td>
+                        <td className="px-5 py-3 font-medium">{formatMarks(h.score)}/{formatMarks(h.maxScore)}</td>
                         <td className="px-5 py-3"><Badge tone={accuracyTone(h.accuracy)}>{h.accuracy}%</Badge></td>
                         <td className="px-5 py-3">{h.percentile}</td>
                         <td className="px-5 py-3 text-muted">{formatDuration(h.timeTakenSec)}</td>

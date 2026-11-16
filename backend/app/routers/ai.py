@@ -20,7 +20,8 @@ from app.core.ratelimit import hit
 from app.db import get_db
 from app.models import AiArtifact, Solution, User
 from app.services import allowances, pdf
-from app.services.ai_features import coaching, content, doubts, engine, persona, tutor
+from app.services.ai_features import (archetype, cheat_codes, coaching, content, doubts, engine, lessons, persona,
+                                      teach_back, tutor)
 
 router = APIRouter(prefix="/ai", tags=["AI features"])
 admin_router = APIRouter(prefix="/admin/ai", tags=["admin: AI features"])
@@ -349,6 +350,80 @@ def my_cards(user: User = Depends(get_current_user), db: Session = Depends(get_d
 def shortcuts(topic: str | None = None, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Shared shortcut library (open to everyone)."""
     return {"items": coaching.shortcut_library(db, topic)}
+
+
+# ---- redesign: exam persona, cheat codes, blackboard lessons, teach-back (all marked by code, no allowance) ---------
+class DrillCheckIn(BaseModel):
+    answers: list[str | None] = Field(max_length=10)
+
+
+class LessonCheckIn(BaseModel):
+    index: int = Field(ge=0, le=20)
+    answer: str = Field(min_length=1, max_length=3)
+
+
+class TeachIn(BaseModel):
+    round: int = Field(ge=0, le=10)
+    choice: str | None = Field(default=None, max_length=3)
+    text: str | None = Field(default=None, max_length=1200)
+
+
+@router.get("/persona/profile")
+def persona_profile(user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Exam persona: which of six exam-taker types you are, with traits, evidence and history. All computed by code."""
+    return archetype.profile(db, user, persona.compute(db, user)["topic_mastery"])
+
+
+@router.get("/cheat-codes")
+def cheat_code_list(user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    weak = [t["topic"] for t in persona.compute(db, user)["weak_topics"]]
+    return cheat_codes.catalogue(db, user, weak)
+
+
+@router.get("/cheat-codes/{code_id}/drill")
+def cheat_code_drill(code_id: str, user: User = Depends(get_current_user)):
+    return cheat_codes.drill(code_id)
+
+
+@router.post("/cheat-codes/{code_id}/drill")
+def cheat_code_check(code_id: str, body: DrillCheckIn, user: User = Depends(get_current_user),
+                     db: Session = Depends(get_db)):
+    """Marks the 3-question drill by code. 2 of 3 right unlocks the code."""
+    _limit(user)
+    return cheat_codes.check(db, user, code_id, body.answers)
+
+
+@router.get("/tutor/lessons")
+def tutor_lessons(user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    return lessons.index(persona.compute(db, user)["weak_topics"])
+
+
+@router.get("/tutor/lessons/{lesson_id}")
+def tutor_lesson(lesson_id: str, user: User = Depends(get_current_user)):
+    return lessons.get(lesson_id)
+
+
+@router.post("/tutor/lessons/{lesson_id}/check")
+def tutor_lesson_check(lesson_id: str, body: LessonCheckIn, user: User = Depends(get_current_user)):
+    return lessons.check(lesson_id, body.index, body.answer)
+
+
+@router.get("/teach-back")
+def teach_back_list(user: User = Depends(get_current_user)):
+    return teach_back.index()
+
+
+@router.get("/teach-back/{concept_id}")
+def teach_back_concept(concept_id: str, user: User = Depends(get_current_user)):
+    return teach_back.get(concept_id)
+
+
+@router.post("/teach-back/{concept_id}/answer")
+def teach_back_answer(concept_id: str, body: TeachIn, user: User = Depends(get_current_user),
+                      db: Session = Depends(get_db)):
+    """Scores from a fixed rubric (code); Mitra writes the margin note for free-text answers."""
+    _limit(user, 10)
+    return teach_back.answer(db, user, concept_id, body.round, body.choice, body.text)
 
 
 # ---- admin --------------------------------------------------------------------------------------------------------

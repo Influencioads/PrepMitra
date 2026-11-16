@@ -1,5 +1,5 @@
 import type { SectionResult } from '@prepmitra/shared';
-import { formatDuration } from '@prepmitra/shared';
+import { formatDuration, formatMarks } from '@prepmitra/shared';
 import { Badge } from '@/components/ui';
 import { cn } from '@/utils/cn';
 import { useT } from '@/i18n';
@@ -51,7 +51,7 @@ export function SectionTable({ sections, className }: { sections: SectionResult[
                 <td className={cn(cell, 'text-success')}>{s.correct}</td>
                 <td className={cn(cell, 'text-danger')}>{s.incorrect}</td>
                 <td className={cn(cell, 'text-muted')}>{s.unanswered}</td>
-                <td className={cn(cell, 'font-semibold')}>{trim(s.score)}/{trim(s.maxScore)}</td>
+                <td className={cn(cell, 'font-semibold')}>{formatMarks(s.score)}/{formatMarks(s.maxScore)}</td>
                 <td className={cell}><AccuracyCell s={s} /></td>
                 <td className={cn(cell, 'pr-0 text-muted')}>{formatDuration(s.timeSpentSec)}</td>
               </tr>
@@ -65,7 +65,7 @@ export function SectionTable({ sections, className }: { sections: SectionResult[
                 <td className={cn(cell, 'text-success')}>{total.correct}</td>
                 <td className={cn(cell, 'text-danger')}>{total.incorrect}</td>
                 <td className={cn(cell, 'text-muted')}>{total.unanswered}</td>
-                <td className={cell}>{total.score}/{total.maxScore}</td>
+                <td className={cell}>{formatMarks(total.score)}/{formatMarks(total.maxScore)}</td>
                 <td className={cell} />
                 <td className={cn(cell, 'pr-0 text-muted')}>{formatDuration(total.time)}</td>
               </tr>
@@ -80,7 +80,7 @@ export function SectionTable({ sections, className }: { sections: SectionResult[
               <p className="text-sm font-semibold">{s.name}</p>
               <AccuracyCell s={s} />
             </div>
-            <p className="mt-1 text-sm"><b>{trim(s.score)}</b><span className="text-muted">/{trim(s.maxScore)} · {formatDuration(s.timeSpentSec)}</span></p>
+            <p className="mt-1 text-sm"><b>{formatMarks(s.score)}</b><span className="text-muted">/{formatMarks(s.maxScore)} · {formatDuration(s.timeSpentSec)}</span></p>
             <dl className="mt-2 grid grid-cols-4 gap-1 text-center text-xs">
               {[
                 [t('colAttempted'), attemptedOf(s), ''],

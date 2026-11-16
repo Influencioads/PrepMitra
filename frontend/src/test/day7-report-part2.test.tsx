@@ -164,7 +164,7 @@ describe('Day 7 — rating, PDF and share', () => {
       </MemoryRouter>,
     );
     const score = await screen.findByTestId('shared-score');
-    expect(score).toHaveTextContent('0.75/100');
+    expect(score).toHaveTextContent('1/100');
     expect(score).toHaveTextContent('25%');
     expect(screen.getByText('Fill in the blanks')).toBeInTheDocument();
     expect(screen.getByText(/no name, phone number or questions/)).toBeInTheDocument();

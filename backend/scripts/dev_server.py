@@ -2,7 +2,8 @@
 
     cd backend && .venv/Scripts/python scripts/dev_server.py [--port 8000]
 
-Uses a local SQLite file (backend/dev.db), the mock AI provider and the mock payment gateway, creates + seeds the
+Uses a local SQLite file (backend/dev.db), or the PostgreSQL named by DEV_DATABASE_URL in backend/.env (migrated with
+Alembic, like production; `docker compose up -d db` gives PostgreSQL 16 + pgvector), the mock AI provider and the mock payment gateway, creates + seeds the
 schema on first run, and makes DEV_ADMIN_PHONE (default 9000000009) a founder admin at first login.
 Any of these can be overridden with real environment variables. Not for production: use PostgreSQL + Alembic.
 """
@@ -24,7 +25,8 @@ def _env_file_value(key: str) -> str:
 
 
 os.environ.setdefault("APP_ENV", "development")
-os.environ.setdefault("DATABASE_URL", f"sqlite:///{(BACKEND / 'dev.db').as_posix()}")
+os.environ.setdefault("DATABASE_URL", os.environ.get("DEV_DATABASE_URL") or _env_file_value("DEV_DATABASE_URL")
+                      or f"sqlite:///{(BACKEND / 'dev.db').as_posix()}")
 # AI: OpenRouter (blueprint model routing) once backend/.env has OPENROUTER_API_KEY, else Claude with an Anthropic
 # key, else the free mock AI.
 if os.environ.get("OPENROUTER_API_KEY") or _env_file_value("OPENROUTER_API_KEY"):
@@ -71,8 +73,17 @@ def main() -> None:
     from app.seed import seed
 
     fresh = not inspect(engine).has_table("exams")
-    Base.metadata.create_all(engine)
-    _add_missing_columns(engine, Base)
+    if engine.dialect.name == "postgresql":  # the real migrations, exactly as in production
+        from alembic import command
+        from alembic.config import Config
+
+        cfg = Config(str(BACKEND / "alembic.ini"))
+        cfg.set_main_option("script_location", str(BACKEND / "alembic"))
+        cfg.set_main_option("sqlalchemy.url", os.environ["DATABASE_URL"].replace("%", "%%"))
+        command.upgrade(cfg, "head")
+    else:
+        Base.metadata.create_all(engine)
+        _add_missing_columns(engine, Base)
     if fresh:
         # SEED_SCOPE=full publishes all 18 exams and 6 roles instead of the 15-day launch catalog.
         print("Seeding:", seed(scope=os.environ.get("SEED_SCOPE", "launch")))
@@ -83,6 +94,7 @@ def main() -> None:
         with SessionLocal() as db:
             seed_plans(db)
             db.commit()
+    print(f"Database: {engine.url.render_as_string(hide_password=True)}")
     print(f"\nSwagger UI: http://localhost:{port}/docs   (admin phone: {os.environ['BOOTSTRAP_ADMIN_PHONE']})\n")
     uvicorn.run("app.main:app", host="127.0.0.1", port=port)
 

@@ -53,12 +53,12 @@ describe('Day 6 — report part 1 numbers (real backend report)', () => {
     );
     const table = await screen.findByTestId('section-table');
     const cells = (name: RegExp) => within(within(table).getByRole('rowheader', { name }).closest('tr')!).getAllByRole('cell').map((c) => c.textContent);
-    expect(cells(/English Language/)).toEqual(['12', '3', '9', '18', '0.75/30', '25%', '9m 30s']);
+    expect(cells(/English Language/)).toEqual(['12', '3', '9', '18', '1/30', '25%', '9m 30s']);
     expect(cells(/Quantitative Aptitude/).slice(0, 6)).toEqual(['0', '0', '0', '35', '0/35', 'Not attempted']);
-    expect(cells(/^Total$/).slice(0, 5)).toEqual(['12', '3', '9', '88', '0.75/100']);
+    expect(cells(/^Total$/).slice(0, 5)).toEqual(['12', '3', '9', '88', '1/100']);
 
     expect(screen.getByText('12% (12/100)')).toBeInTheDocument(); // attempt rate
-    expect(screen.getAllByText('−2.25').length).toBeGreaterThan(0); // marks lost to negative marking
+    expect(screen.getAllByText('−2').length).toBeGreaterThan(0); // marks lost to negative marking
     expect(screen.getAllByText('25%').length).toBeGreaterThan(0); // accuracy
     // Real reports are not labelled "demo"; the notice says the server did the scoring.
     expect(screen.queryByText('Demo analysis')).not.toBeInTheDocument();

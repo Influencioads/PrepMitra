@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   Bell, BookOpen, BookX, Bot, CalendarDays, ClipboardList, Coins, CreditCard, LayoutDashboard, Menu, MessageCircle, MessageSquare,
-  Settings, TrendingUp, User, X, Sparkles, HelpCircle, GraduationCap, Gauge, FileText, Repeat, Wand2,
+  Settings, TrendingUp, User, X, Sparkles, HelpCircle, GraduationCap, Gauge, FileText, Repeat, Wand2, Baby, KeyRound,
 } from 'lucide-react';
 import { getPlan, planShortName } from '@prepmitra/shared';
 import { Logo } from '@/components/ui';
@@ -40,8 +40,10 @@ const NAV_GROUPS = [
     label: 'groupAi',
     items: [
       { to: '/ai', label: 'navAiHub', icon: Sparkles },
-      { to: '/ai/doubts', label: 'navAiDoubts', icon: HelpCircle },
       { to: '/ai/tutor', label: 'navAiTutor', icon: GraduationCap },
+      { to: '/ai/doubts', label: 'navAiDoubts', icon: HelpCircle },
+      { to: '/ai/teach-back', label: 'navAiStudent', icon: Baby },
+      { to: '/ai/cheat-codes', label: 'navAiCheatCodes', icon: KeyRound },
       { to: '/ai/persona', label: 'navAiPersona', icon: Gauge },
       { to: '/ai/notes', label: 'navAiNotes', icon: FileText },
       { to: '/ai/practice', label: 'navAiPractice', icon: Repeat },

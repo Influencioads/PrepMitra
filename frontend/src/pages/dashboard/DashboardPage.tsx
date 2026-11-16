@@ -4,7 +4,7 @@ import {
   ArrowRight, BookOpen, ClipboardList, Coins, Flame, Lightbulb, MessageSquare, Play, Target, TrendingDown, TrendingUp, Trophy,
 } from 'lucide-react';
 import type { Recommendation } from '@prepmitra/shared';
-import { EXAMS, formatDuration, formatShortDate, getExamById, getRoleById, relativeTime } from '@prepmitra/shared';
+import { EXAMS, formatDuration, formatMarks, formatShortDate, getExamById, getRoleById, relativeTime } from '@prepmitra/shared';
 import {
   Badge, ButtonLink, Card, CardBody, CardHeader, DemoBadge, EmptyState, Mitra, PageHeader, ProgressBar, StatCard, accuracyTone,
 } from '@/components/ui';
@@ -271,7 +271,7 @@ export function DashboardPage() {
                     <tr key={h.reportId} className="border-b border-line last:border-0">
                       <td className="px-5 py-3 font-medium">{h.examTitle}</td>
                       <td className="px-5 py-3 text-muted">{formatShortDate(h.submittedAt)}</td>
-                      <td className="px-5 py-3">{h.score}/{h.maxScore}</td>
+                      <td className="px-5 py-3">{formatMarks(h.score)}/{formatMarks(h.maxScore)}</td>
                       <td className="px-5 py-3"><Badge tone={accuracyTone(h.accuracy)}>{h.accuracy}%</Badge></td>
                       <td className="px-5 py-3 text-muted">{formatDuration(h.timeTakenSec)}</td>
                       <td className="px-5 py-3 text-right"><ButtonLink to={`/reports/${h.reportId}`} variant="ghost" size="sm">{t('report')}</ButtonLink></td>

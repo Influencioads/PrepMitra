@@ -80,7 +80,9 @@ export default function RootLayout() {
               <Stack.Screen name="subscription" options={{ title: 'Credits & plans' }} />
               <Stack.Screen name="ai/doubts" options={{ title: 'Doubt Solver' }} />
               <Stack.Screen name="ai/tutor" options={{ title: 'AI Tutor' }} />
-              <Stack.Screen name="ai/persona" options={{ title: 'Persona & rank' }} />
+              <Stack.Screen name="ai/persona" options={{ title: 'Exam persona' }} />
+              <Stack.Screen name="ai/teach-back" options={{ title: 'AI student' }} />
+              <Stack.Screen name="ai/cheat-codes" options={{ title: 'Cheat codes' }} />
               <Stack.Screen name="ai/notes" options={{ title: 'Notes & decks' }} />
               <Stack.Screen name="ai/practice" options={{ title: 'Revision & practice' }} />
               <Stack.Screen name="ai/coach" options={{ title: 'Cheat Code Coach' }} />

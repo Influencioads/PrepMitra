@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Bot, BrainCircuit, Camera, FileText, Gauge, GraduationCap, Newspaper, PenLine, Repeat, Sparkles, Wand2 } from 'lucide-react';
+import { Baby, Bot, BrainCircuit, Camera, FileText, Gauge, GraduationCap, KeyRound, Newspaper, PenLine, Presentation, Repeat, Sparkles, Wand2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Card, PageHeader } from '@/components/ui';
 import { AllowanceChip, hasFlag, useAllowances } from '@/components/ai/AiUi';
@@ -19,6 +19,10 @@ interface Tool {
 const AI_TOOLS: Tool[] = [
   { to: '/ai/doubts', title: 'Doubt Solver', desc: 'Type or photograph any question. Verified step-by-step answers, shortcuts and the trap to avoid.', icon: Sparkles, feature: 'doubts' },
   { to: '/ai/doubts?tab=photo', title: 'Photo doubt', desc: 'Snap a question from a book or paper and get it solved.', icon: Camera, feature: 'photo_doubts' },
+  { to: '/ai/tutor', title: 'Blackboard lessons', desc: 'Mitra draws a topic step by step on the board, then checks you with two questions.', icon: Presentation },
+  { to: '/ai/teach-back', title: 'AI student (teach-back)', desc: 'Explain a concept to Chotu in three rounds. A fixed rubric marks how well you taught.', icon: Baby },
+  { to: '/ai/cheat-codes', title: 'Cheat codes', desc: 'Exam-safe shortcuts with worked examples and the trap. Drill 2 of 3 to unlock each one.', icon: KeyRound },
+  { to: '/ai/persona', title: 'Exam persona', desc: 'Fast Guesser or Perfectionist? Your trait shape, the evidence and a three-step game plan.', icon: Gauge },
   { to: '/ai/tutor', title: 'Ask Mitra (AI tutor)', desc: 'Chat with a tutor that knows your mocks. Ask for a story or a different explanation.', icon: Bot, feature: 'tutor_chat_turns' },
   { to: '/ai/tutor?tab=deep', title: 'Deep dives', desc: 'One-page visual, concept from zero, the trap, a checklist and three practice questions.', icon: GraduationCap, feature: 'smart_credits' },
   { to: '/ai/persona', title: 'Persona & rank', desc: 'Your topic mastery, error mix, speed profile, deep strategy and rank predictor.', icon: Gauge, flag: 'rank_predictor', plan: 'Pro' },
@@ -41,7 +45,7 @@ export function AiHubPage() {
         {AI_TOOLS.map((t) => {
           const locked = t.flag && data && !hasFlag(data, t.flag);
           return (
-            <Link key={t.to} to={t.to} className="group">
+            <Link key={t.title} to={t.to} className="group">
               <Card className="h-full p-5 transition-shadow group-hover:shadow-md">
                 <div className="flex items-start gap-3">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary"><t.icon className="h-5 w-5" aria-hidden /></span>

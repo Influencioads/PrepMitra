@@ -1,6 +1,6 @@
 import type { ExamReport, InterviewReport, User, UserProfile, UserSettings, AttemptSummary } from '@prepmitra/shared';
 import {
-  APP_NAME, DISCLAIMERS, EXPERIENCE_LEVELS, formatDate, formatDuration, getExamById, getRoleById, languageName,
+  APP_NAME, DISCLAIMERS, EXPERIENCE_LEVELS, formatDate, formatDuration, getExamById, getRoleById, languageName, formatMarks
 } from '@prepmitra/shared';
 
 /**
@@ -18,7 +18,7 @@ export function examReportText(r: ExamReport): string {
     `Time taken: ${formatDuration(r.timeTakenSec)} of ${formatDuration(r.durationSec)}`,
     '',
     'Sections:',
-    ...r.result.sections.map((s) => `• ${s.name}: ${s.score}/${s.maxScore} (${s.accuracy}% accuracy)`),
+    ...r.result.sections.map((s) => `• ${s.name}: ${formatMarks(s.score)}/${formatMarks(s.maxScore)} (${s.accuracy}% accuracy)`),
     '',
     'Strengths:',
     ...r.strengths.map((s) => `• ${s}`),

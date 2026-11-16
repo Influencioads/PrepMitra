@@ -3,16 +3,17 @@ services:
   db:
     image: pgvector/pgvector:pg16
     environment:
-      POSTGRES_USER: prepmitra
-      POSTGRES_PASSWORD: prepmitra
-      POSTGRES_DB: prepmitra
+      # Your own values go in ./.env (not committed): PREPMITRA_DB_USER, PREPMITRA_DB_PASSWORD, PREPMITRA_DB_NAME.
+      POSTGRES_USER: ${PREPMITRA_DB_USER:-prepmitra}
+      POSTGRES_PASSWORD: ${PREPMITRA_DB_PASSWORD:-prepmitra}
+      POSTGRES_DB: ${PREPMITRA_DB_NAME:-prepmitra}
     ports:
-      - "5432:5432"
+      - "${PREPMITRA_DB_PORT:-5432}:5432"   # set PREPMITRA_DB_PORT=5433 in ./.env if another PostgreSQL already uses 5432
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./backend/scripts/init-test-db.sql:/docker-entrypoint-initdb.d/10-test-db.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U prepmitra"]
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
       interval: 5s
       timeout: 3s
       retries: 20
@@ -32,7 +33,7 @@ services:
     command: sh -c "alembic upgrade head && python -m app.seed"
     env_file: backend/.env
     environment: &backend_env
-      DATABASE_URL: postgresql+psycopg://prepmitra:prepmitra@db:5432/prepmitra
+      DATABASE_URL: postgresql+psycopg://${PREPMITRA_DB_USER:-prepmitra}:${PREPMITRA_DB_PASSWORD:-prepmitra}@db:5432/${PREPMITRA_DB_NAME:-prepmitra}
       REDIS_URL: redis://redis:6379/0
       JOB_MODE: redis
       RUN_SCHEDULER_IN_API: "false"

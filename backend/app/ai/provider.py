@@ -384,7 +384,7 @@ class MockProvider:
         weak = [t for t in topics if t["wrong_refs"]]
         wrong = [r for t in topics for r in t["wrong_refs"]]
         return {
-            "summary": f"You scored {a.get('score')} out of {a.get('max_score')} with {round((a.get('accuracy') or 0) * 100)}% accuracy.",
+            "summary": f"You scored {round(a.get('score') or 0)} out of {round(a.get('max_score') or 0)} with {round((a.get('accuracy') or 0) * 100)}% accuracy.",
             "strengths": [{"topic": t["name"], "detail": "Fast and accurate here."} for t in strong[:3]],
             "weaknesses": [{"topic": t["name"], "detail": "Accuracy is low on this topic.", "question_refs": t["wrong_refs"][:5]}
                            for t in weak[:4]],

@@ -1,4 +1,4 @@
-import { configure, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { configure, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { AiHubPage } from '@/pages/ai/AiHubPage';
@@ -8,6 +8,8 @@ import { PersonaPage } from '@/pages/ai/PersonaPage';
 import { NotesPage } from '@/pages/ai/NotesPage';
 import { PracticePage } from '@/pages/ai/PracticePage';
 import { CoachPage } from '@/pages/ai/CoachPage';
+import { TeachBackPage } from '@/pages/ai/TeachBackPage';
+import { CheatCodesPage } from '@/pages/ai/CheatCodesPage';
 import { AiErrorNotice } from '@/components/ai/AiUi';
 
 // AI screens render a lot at once; give findBy* more time when the whole suite runs in parallel.
@@ -30,10 +32,13 @@ describe('AI study tools (mock mode)', { timeout: 20_000 }, () => {
     await user.type(screen.getByLabelText('Question'), 'A price falls by 20%. By what percent must it rise to get back?');
     await user.click(screen.getByRole('button', { name: 'C' }));
     await user.click(screen.getByRole('button', { name: /solve/i }));
-    expect(await screen.findByText(/Verified by two AI models/)).toBeInTheDocument();
+    expect((await screen.findAllByText(/Verified by two AI models/)).length).toBeGreaterThan(0);
     expect(screen.getByText('Shortcut')).toBeInTheDocument();
+    expect(screen.getByText('The trap')).toBeInTheDocument();
+    // The solved doubt is kept in the session's recent list.
+    expect(screen.getByRole('navigation', { name: 'Recent doubts' })).toHaveTextContent(/A price falls by 20%/);
     expect(screen.getByText('About your choice')).toBeInTheDocument();
-    await user.click(screen.getByRole('button', { name: /explain again/i }));
+    await user.click(screen.getByRole('button', { name: /explain differently/i }));
     expect(await screen.findByText(/Showing a different explanation/)).toBeInTheDocument();
   });
 
@@ -64,13 +69,72 @@ describe('AI study tools (mock mode)', { timeout: 20_000 }, () => {
   it('chats with Ask Mitra and builds a deep dive', async () => {
     const user = userEvent.setup();
     at(<TutorPage />, '/ai/tutor');
-    await user.type(screen.getByLabelText('Message'), 'How do I solve time and work?');
+    await user.type(await screen.findByLabelText('Message'), 'How do I solve time and work?');
     await user.click(screen.getByRole('button', { name: 'Send' }));
     expect(await screen.findByText(/Turn each worker into a rate/)).toBeInTheDocument();
     await user.click(screen.getByRole('tab', { name: 'Deep dives' }));
     await user.type(screen.getByLabelText('Question or concept'), 'successive percentage change');
     await user.click(screen.getByRole('button', { name: /start deep dive/i }));
     expect(await screen.findByText('Never-again checklist')).toBeInTheDocument();
+  });
+
+  it('teaches the blackboard lesson step by step and marks the check question by code', async () => {
+    const user = userEvent.setup();
+    at(<TutorPage />, '/ai/tutor');
+    expect(await screen.findByRole('heading', { name: 'Circular seating arrangement' })).toBeInTheDocument();
+    expect(screen.getByText('Step 1 of 6')).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /next step/i }));
+    await user.click(screen.getByRole('button', { name: /next step/i }));
+    expect(screen.getByText('Step 3 of 6')).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /D in seat 1, A in seat 5/ })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /^As*C$/ }));
+    expect(await screen.findByText(/Right\.|Not quite/)).toBeInTheDocument();
+  });
+
+  it('shows the exam persona with the radar, evidence and game plan', async () => {
+    const user = userEvent.setup();
+    at(<PersonaPage />, '/ai/persona');
+    expect(await screen.findByRole('heading', { name: 'The Fast Guesser', level: 2 })).toBeInTheDocument();
+    expect(screen.getByText(/after 380 answers/)).toBeInTheDocument();
+    expect(screen.getByText(/96% trait match/)).toBeInTheDocument();
+    await user.click(screen.getByRole('tab', { name: /The Perfectionist/ }));
+    expect(screen.getByRole('img', { name: /Trait shape: You .*The Perfectionist/ })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Stamina' }));
+    expect(screen.getByText(/held at 70% accuracy/)).toBeInTheDocument();
+    expect(screen.queryByText(/11 questions in under 15 seconds/)).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'How to beat The Fast Guesser' })).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /Start 3-Q drill/ })[0]).toHaveAttribute('href', '/ai/cheat-codes?drill=stem-first-scan');
+    expect(screen.getByText(/73 right · 20 wrong → 73 − 5 = 68 marks/)).toBeInTheDocument();
+  });
+
+  it('teaches Chotu three rounds and shows the rubric score', async () => {
+    const user = userEvent.setup();
+    at(<TeachBackPage />, '/ai/teach-back');
+    expect(await screen.findByText(/Bhaiya, A sits inside B/)).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /Draw it\. Put A fully inside B/ }));
+    expect(await screen.findByText(/Spot on/)).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: '28 of 30' })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /next round/i }));
+    expect(screen.getByRole('heading', { name: /round 2 of 3/i })).toBeInTheDocument();
+    await user.type(screen.getByLabelText(/own words/i), 'It is possible but not always: draw C overlapping A, for example.');
+    await user.click(screen.getByRole('button', { name: 'Teach this' }));
+    expect(await screen.findByText(/R2:/)).toBeInTheDocument();
+  });
+
+  it('flips a cheat code and unlocks it with a 3-question drill', async () => {
+    const user = userEvent.setup();
+    at(<CheatCodesPage />, '/ai/cheat-codes');
+    expect(await screen.findByRole('heading', { name: 'Cheat codes', level: 1 })).toBeInTheDocument();
+    await user.type(screen.getByLabelText('Search cheat codes'), 'LCM');
+    expect(screen.getByRole('heading', { name: '1 code' })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Flip · the trap' }));
+    expect(screen.getByText(/take units from the ratio/)).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /Flip back/ }));
+    await user.click(screen.getByRole('button', { name: 'Practise this code' }));
+    const groups = await screen.findAllByRole('radiogroup');
+    for (const g of groups) await user.click(within(g).getAllByRole('radio')[0]!);
+    await user.click(screen.getByRole('button', { name: /check my answers/i }));
+    expect(await screen.findByText(/of 3 right/)).toBeInTheDocument();
   });
 
   it('shows the persona and the upgrade prompt when Ultra credits run out', async () => {

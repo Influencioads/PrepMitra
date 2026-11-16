@@ -1,11 +1,11 @@
 import type { ExamReport } from '@prepmitra/shared';
-import { formatDate, formatDuration } from '@prepmitra/shared';
+import { formatDate, formatDuration, formatMarks } from '@prepmitra/shared';
 import { Button, MarksLeak, MitraSays, PenNote, PenScore, Stamp } from '@/components/ui';
 import { cn } from '@/utils/cn';
 import { useT } from '@/i18n';
 import { reportMessages } from '@/i18n/messages/report';
 
-const trim = (n: number) => Math.round(n * 100) / 100;
+const trim = (n: number) => Math.round(n);
 
 /** Marks-leak breakdown from the code-computed result (never from AI text). */
 export function leakItems(report: ExamReport, t: ReturnType<typeof useT<typeof reportMessages.en>>) {
@@ -52,14 +52,14 @@ export function CheckedSheet({ report, studentName, onOpenPlan, className }: { r
         <h2 className="mt-1 text-2xl font-extrabold sm:text-3xl">{studentName ? `${studentName} · ` : ''}{report.examTitle}</h2>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
-          <PenScore score={`${r.score}`} total={r.maxScore} size="lg" />
+          <PenScore score={formatMarks(r.score)} total={formatMarks(r.maxScore)} size="lg" />
           <div className="flex flex-col items-center gap-3">
             <p className="-rotate-6 font-hand text-2xl font-bold text-pen sm:text-3xl">{praise}</p>
-            <Stamp value={`${report.percentile}`} label={t('percentileEst')} />
+            <Stamp value={`${Math.round(report.percentile)}`} label={t('percentileEst')} />
           </div>
         </div>
         <p className="mt-5 text-base">
-          <b className="text-lg text-success">{r.correct}</b> {t('correct').toLowerCase()} · <b className="text-lg text-pen">{r.incorrect}</b> {t('incorrect').toLowerCase()} · <b className="text-lg">{r.unanswered}</b> {t('unanswered').toLowerCase()} · <b className="text-lg">{r.accuracy}%</b> {t('accuracy').toLowerCase()}
+          <b className="text-lg text-success">{r.correct}</b> {t('correct').toLowerCase()} · <b className="text-lg text-pen">{r.incorrect}</b> {t('incorrect').toLowerCase()} · <b className="text-lg">{r.unanswered}</b> {t('unanswered').toLowerCase()} · <b className="text-lg">{Math.round(r.accuracy)}%</b> {t('accuracy').toLowerCase()}
         </p>
 
         <ol className="mt-6 space-y-4">

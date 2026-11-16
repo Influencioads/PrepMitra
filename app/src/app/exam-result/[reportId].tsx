@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
-import { formatDuration, getExamById } from '@prepmitra/shared';
+import { formatDuration, formatMarks, getExamById } from '@prepmitra/shared';
 import {
   AppText, Button, Card, CardHeader, DemoBadge, EmptyState, MarksLeak, MitraSays, NotebookBackground, Notice, PenNote, PenScore, ProgressBar,
   RatingStars, Screen, Stamp, toast,
@@ -40,7 +40,7 @@ export default function ExamResult() {
   const next = getExamById(report.recommendedNextExamId);
   const praise = r.percentage >= 75 ? 'शाबाश!' : r.percentage >= 50 ? 'Good effort!' : 'Keep going!';
   // Leaks come from the code-computed result, never from AI text.
-  const trim = (n: number) => Math.round(n * 100) / 100;
+  const trim = (n: number) => Math.round(n);
   const wrong = r.questions.filter((q) => q.outcome === 'incorrect');
   const skipped = r.questions.filter((q) => q.outcome === 'unanswered');
   const leaks = [
@@ -87,7 +87,7 @@ export default function ExamResult() {
             <DemoBadge label="Demo scoring" />
           </View>
           <View style={styles.scoreRow}>
-            <PenScore score={`${r.score}`} total={r.maxScore} size={42} />
+            <PenScore score={formatMarks(r.score)} total={formatMarks(r.maxScore)} size={42} />
             <View style={styles.stampCol}>
               <PenNote size={22}>{praise}</PenNote>
               <Stamp value={`${report.percentile}`} label="Percentile" />
@@ -116,7 +116,7 @@ export default function ExamResult() {
             <View key={s.sectionId} style={styles.section}>
               <View style={styles.sectionHead}>
                 <AppText variant="smallStrong" style={styles.flex}>{s.name}</AppText>
-                <AppText variant="smallStrong">{s.score}/{s.maxScore}</AppText>
+                <AppText variant="smallStrong">{formatMarks(s.score)}/{formatMarks(s.maxScore)}</AppText>
               </View>
               <ProgressBar value={s.accuracy} tone={accuracyTone(s.accuracy)} size="sm" label={`${s.name} accuracy`} />
               <AppText variant="caption">{s.correct} correct · {s.incorrect} incorrect · {s.unanswered} skipped · {s.accuracy}% accuracy</AppText>

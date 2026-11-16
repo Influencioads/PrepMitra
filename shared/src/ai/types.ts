@@ -399,3 +399,115 @@ export interface CoachTopic {
   name: string;
   section?: string | null;
 }
+
+// ---------- redesign: exam persona, cheat codes, blackboard lessons, teach-back (all computed / marked by code) ----------
+export type PersonaKey = 'fast_guesser' | 'perfectionist' | 'section_hopper' | 'late_bloomer' | 'steady_climber' | 'overthinker';
+export type PersonaTrait = 'speed' | 'accuracy' | 'risk' | 'stamina' | 'recovery' | 'consistency';
+export type TraitScores = Record<PersonaTrait, number>;
+
+export interface ExamPersonaType {
+  key: PersonaKey;
+  name: string;
+  tagline: string;
+  /** lucide icon name: zap | target | shuffle | sunrise | trending-up | help-circle */
+  icon: string;
+  description: string;
+  signals: string[];
+  shape: TraitScores;
+}
+
+export interface PersonaEvidence { trait: PersonaTrait; stat: string; title: string; body: string }
+export interface PersonaNote { title: string; body: string }
+export interface PersonaPlanStep { title: string; body: string; code_id: string }
+export interface PersonaHistoryItem {
+  attempt_id: string; date: string; score: number; max_score: number; persona: PersonaKey; persona_name: string;
+  attempted: number; right: number; wrong: number; rushed: number; rushed_wrong: number;
+}
+
+export interface ExamPersonaProfile {
+  mocks_taken: number;
+  /** answers counted across the mocks */
+  answers: number;
+  persona: PersonaKey | null;
+  traits: TraitScores | null;
+  matches: { key: PersonaKey; match: number }[];
+  match_percent?: number;
+  same_persona_streak?: number;
+  confidence?: 'high' | 'medium' | 'low';
+  personas: ExamPersonaType[];
+  evidence: PersonaEvidence[];
+  superpowers: PersonaNote[];
+  blind_spots: PersonaNote[];
+  plan: PersonaPlanStep[];
+  /** oldest first */
+  history: PersonaHistoryItem[];
+}
+
+export interface CheatCode {
+  id: string;
+  topic: string;
+  title: string;
+  saves_seconds: number;
+  trick: string;
+  example: string;
+  /** "When not to use it" — the back of the flip card */
+  trap: string;
+  exams: string[];
+  unlocked: boolean;
+  drill_size: number;
+}
+export interface CheatCodeCatalogue {
+  total: number;
+  unlocked_count: number;
+  topics: { name: string; count: number }[];
+  /** codes picked for this student (unlocked first, then their weak topics) */
+  yours: CheatCode[];
+  items: CheatCode[];
+}
+export interface McqOption { key: string; text: string }
+export interface CodeQuestion { text: string; options: McqOption[] }
+export interface CheatCodeDrill { code_id: string; title: string; questions: CodeQuestion[] }
+export interface CodeCheck { correct: boolean; answer: string; explanation: string }
+export interface CheatCodeDrillResult {
+  code_id: string; right: number; of: number; results: CodeCheck[]; unlocked: boolean; newly_unlocked: boolean;
+}
+
+export interface LessonStep {
+  title: string;
+  lines: string[];
+  trap: string;
+  /** Seating diagram: seat indices go clockwise from the top seat (0). `arrow` is [from, to] seat. */
+  diagram?: { seats: number; placed?: Record<string, string>; arrow?: [number, number] };
+}
+export interface BlackboardLesson {
+  id: string;
+  subject: string;
+  topic: string;
+  question: { style: string; text: string; clues: string[] };
+  steps: LessonStep[];
+  check: CodeQuestion[];
+}
+export interface LessonIndex {
+  recommended: string;
+  why: { topic: string; mastery: number } | null;
+  items: { id: string; subject: string; topic: string; steps: number }[];
+}
+
+export interface TeachRound {
+  kind: string;
+  mood: string;
+  chotu: string;
+  coach_hint: string;
+  options: McqOption[];
+}
+export interface TeachConcept {
+  id: string; topic: string; board: string[]; ask: string;
+  /** venn-all-some | circle-6 */
+  diagram: string;
+  rounds: TeachRound[];
+}
+export interface TeachScores { clarity: number; correctness: number; examples: number }
+export interface TeachResult {
+  round: number; scores: TeachScores; total: number; max_total: number; good: boolean; note: string;
+  written: string; chotu_reply: string; done: boolean;
+}

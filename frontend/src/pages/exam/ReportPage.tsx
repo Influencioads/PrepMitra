@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, CircleCheck, CircleMinus, Flag, Lightbulb, Sparkles, TrendingDown, Trophy, TriangleAlert, XCircle } from 'lucide-react';
 import type { Answer, Loophole, QuestionOutcome } from '@prepmitra/shared';
-import { formatDate, formatDuration, getExamById, getQuestionById, languageName } from '@prepmitra/shared';
+import { formatDate, formatDuration, formatMarks, getExamById, getQuestionById, languageName } from '@prepmitra/shared';
 import {
   Badge, Button, ButtonLink, Card, CardBody, CardHeader, ChoiceChip, DemoBadge, EmptyState, KeyValue, Notice, PageHeader, Tabs,
 } from '@/components/ui';
@@ -194,7 +194,7 @@ export function ReportPage() {
                 <dl className="mt-3 w-full divide-y divide-line text-left">
                   <KeyValue label={t('accuracy')} value={`${r.accuracy}%`} />
                   <KeyValue label={t('attemptRate')} value={`${attemptRate}% (${r.attempted}/${r.questions.length})`} />
-                  <KeyValue label={t('lostNegative')} value={<span className={r.negativeMarksLost > 0 ? 'text-danger' : undefined}>{r.negativeMarksLost > 0 ? `−${r.negativeMarksLost}` : '0'}</span>} />
+                  <KeyValue label={t('lostNegative')} value={<span className={r.negativeMarksLost > 0 ? 'text-danger' : undefined}>{r.negativeMarksLost > 0 ? `−${formatMarks(r.negativeMarksLost)}` : '0'}</span>} />
                   <KeyValue label={t('percentileEst')} value={report.percentile} />
                   <KeyValue label={t('correctIncorrectSkipped')} value={`${r.correct} / ${r.incorrect} / ${r.unanswered}`} />
                   <KeyValue label={t('timeTaken')} value={formatDuration(report.timeTakenSec)} />
@@ -327,10 +327,10 @@ export function ReportPage() {
               <CardHeader title={t('whereLost')} />
               <CardBody>
                 <dl className="divide-y divide-line">
-                  <KeyValue label={t('maxPossible')} value={r.maxScore} />
-                  <KeyValue label={t('yourScore')} value={r.score} />
+                  <KeyValue label={t('maxPossible')} value={formatMarks(r.maxScore)} />
+                  <KeyValue label={t('yourScore')} value={formatMarks(r.score)} />
                   <KeyValue label={t('lostIncorrect')} value={marksLostWrong} />
-                  <KeyValue label={t('lostNegative')} value={r.negativeMarksLost} />
+                  <KeyValue label={t('lostNegative')} value={formatMarks(r.negativeMarksLost)} />
                   <KeyValue label={t('leftOnTable')} value={marksLostSkipped} />
                   <KeyValue label={t('totalLost')} value={<span className="text-danger">{r.marksLostTotal}</span>} />
                 </dl>
