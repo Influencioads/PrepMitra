@@ -27,8 +27,8 @@ describe('Website UI language (English / Hindi)', () => {
     renderLanding();
 
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent('चौथाई अंकों से।');
-    expect(heading).toHaveTextContent('अपने ढूँढिए।');
+    expect(heading).toHaveTextContent('गलतियाँ सुधारें।');
+    expect(heading).toHaveTextContent('कट-ऑफ़ पार करें।');
     expect(screen.getAllByRole('link', { name: /पहला गोला भरिए/ }).length).toBeGreaterThan(0);
     // Brand name stays unchanged in Hindi.
     expect(screen.getAllByText(/PrepMitra AI/).length).toBeGreaterThan(0);
@@ -38,14 +38,14 @@ describe('Website UI language (English / Hindi)', () => {
     await user.click(englishButtons[0]!);
 
     expect(useI18nStore.getState().lang).toBe('en');
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('in quarter marks.');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Fix mistakes.');
     expect(screen.getAllByRole('link', { name: /Shade your first bubble/ }).length).toBeGreaterThan(0);
-    expect(screen.getByRole('heading', { level: 1 })).not.toHaveTextContent('चौथाई');
+    expect(screen.getByRole('heading', { level: 1 })).not.toHaveTextContent('सुधारें');
     expect(screen.getAllByRole('button', { name: 'हिन्दी' })[0]).toHaveAttribute('aria-pressed', 'false');
   });
 
   it('defaults to English', () => {
     renderLanding();
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Find yours.');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Clear the cut-off.');
   });
 });

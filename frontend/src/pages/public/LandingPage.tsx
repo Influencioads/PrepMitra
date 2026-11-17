@@ -9,6 +9,7 @@ import { PanelRoom, PrepPathPreview } from '@/components/marketing/PaperVisuals'
 import { ExamMarquee } from '@/components/marketing/ExamMarquee';
 import { CutoffMeter } from '@/components/marketing/CutoffMeter';
 import { ExamDial } from '@/components/marketing/ExamDial';
+import { AiToolsShowcase } from '@/components/marketing/AiToolsShowcase';
 import { DrawnArrow, FloatingBubbles, Magnetic, PenUnderline, TiltCard, TypingDots, WordsReveal } from '@/components/marketing/HomeFx';
 import { AnimatePresence, CountUp, Reveal, motion, useScroll, useSpring } from '@/components/motion/landing';
 import { usePlans } from '@/hooks/usePlans';
@@ -177,8 +178,11 @@ export function LandingPage() {
           heading={
             <>
               <motion.p {...HERO(0)} className="font-hand text-lg text-marigold sm:text-xl">{bankingOnly ? t('heroForBanking') : t('heroFor')} —</motion.p>
-              <h1 className="mx-auto mt-2 max-w-4xl text-balance font-display text-[2.1rem] font-extrabold leading-[1.05] tracking-tight text-chalk-text sm:text-6xl">
-                <WordsReveal text={`${t('heroLine1')} ${t('heroLine2')}`} delay={0.1} />{' '}
+              <h1 className="mx-auto mt-2 max-w-5xl text-balance font-display text-[2.1rem] font-extrabold leading-[1.05] tracking-tight text-chalk-text sm:text-6xl">
+                <WordsReveal text={t('heroLine1')} delay={0.1} />{' '}
+                <br className="sm:hidden" />
+                <WordsReveal text={t('heroLine2')} delay={0.28} />{' '}
+                <br className="hidden sm:block" />
                 <motion.span
                   initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
                   animate={{ opacity: 1, scale: 1, rotate: -3 }}
@@ -206,6 +210,9 @@ export function LandingPage() {
           <ExamMarquee exams={popular.filter((e) => isExamOpen(e))} label={t('examsRibbon')} />
         </div>
       </div>
+
+      {/* ---------------- AI tools: the six that matter most, each with a labelled sample demo ---------------- */}
+      <AiToolsShowcase />
 
       {/* ---------------- Numbers strip (true product facts only): one slim line ---------------- */}
       <section aria-label={t('statsLabel')} className="container-page pt-10">
@@ -336,19 +343,21 @@ export function LandingPage() {
             <Reveal className="mt-8">
               <p className="font-hand text-lg text-muted">{t('catSoonTitle')} — {t('catSoonNote')}</p>
             </Reveal>
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {soonCats.map((c, i) => (
                 <motion.div key={c.id} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: i * 0.06 }}>
-                  <Link to={`/exams?category=${c.id}`} className="group relative flex h-full flex-col gap-2 rounded-2xl border border-dashed border-line-strong bg-card/70 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-solid hover:border-ink hover:shadow-hard-sm">
-                    <span className="flex items-center justify-between">
-                      <span className={cn('inline-flex w-fit items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-bold', CATEGORY_TAB[c.id])}>
-                        <AppIcon name={c.icon} className="h-3 w-3" />
-                        {tc('comingSoon')}
+                  <Link to={`/exams?category=${c.id}`} className="group relative flex h-full min-h-[13rem] flex-col rounded-3xl border-[1.5px] border-dashed border-line-strong bg-card/80 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-solid hover:border-ink hover:shadow-hard-sm">
+                    <span className="flex items-start justify-between">
+                      <span className={cn('flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-200 group-hover:-rotate-6', CATEGORY_TAB[c.id])}>
+                        <AppIcon name={c.icon} className="h-6 w-6" />
                       </span>
-                      <Lock className="h-3.5 w-3.5 text-subtle transition-transform group-hover:rotate-12" aria-hidden />
+                      <Lock className="h-4 w-4 text-subtle transition-transform group-hover:rotate-12" aria-hidden />
                     </span>
-                    <span className="text-sm font-bold leading-snug">{categoryText(tc, c.id).label}</span>
-                    <span className="font-hand text-sm text-muted">{c.examples.split(' · ').map(ct).join(' · ')}</span>
+                    <span className="mt-5 text-lg font-bold leading-snug">{categoryText(tc, c.id).label}</span>
+                    <span className="mt-1 font-hand text-base leading-snug text-muted">{c.examples.split(' · ').map(ct).join(' · ')}</span>
+                    <span className="mt-auto pt-4">
+                      <span className={cn('inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold', CATEGORY_TAB[c.id])}>{tc('comingSoon')}</span>
+                    </span>
                   </Link>
                 </motion.div>
               ))}
@@ -442,17 +451,19 @@ export function LandingPage() {
       {/* ---------------- Pricing as admit cards ---------------- */}
       <section id="pricing" className="relative container-page scroll-mt-20 py-16 lg:py-24">
         <span className="pointer-events-none absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" aria-hidden />
-        <Reveal><HandEyebrow>{t('priceEyebrow')}</HandEyebrow></Reveal>
-        <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl"><WordsReveal text={t('priceTitle')} inView /></h2>
-        <Reveal delay={0.15}><p className="mt-3 text-lg text-muted">{interviewsEnabled() ? t('priceBody') : t('priceBodyExams')}</p></Reveal>
-        <div className="mt-12">
+        <div className="mx-auto max-w-2xl text-center">
+          <Reveal><HandEyebrow>{t('priceEyebrow')}</HandEyebrow></Reveal>
+          <h2 className="mt-1 text-4xl font-extrabold sm:text-5xl"><WordsReveal text={t('priceTitle')} inView /></h2>
+        </div>
+        <div className="mt-10">
           <PricingCards
             inView
+            tabbed
             plans={plans}
             ctaHref={(p) => (user ? (p.id === 'free' ? '/exams/general-aptitude' : `/subscription?plan=${p.id}`) : p.id === 'free' ? '/signup' : `/signup?plan=${p.id}`)}
           />
         </div>
-        <p className="mt-6 font-hand text-base text-muted">{t('priceRefund')}</p>
+        <p className="mt-8 text-center font-hand text-base text-muted">{t('priceRefund')}</p>
       </section>
 
       {/* ---------------- FAQ in the margin ---------------- */}
