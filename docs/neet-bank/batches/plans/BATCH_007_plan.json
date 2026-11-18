@@ -1,0 +1,1361 @@
+{
+  "batch_id": "BATCH_007",
+  "subjects": [
+    {
+      "subject": "Physics",
+      "prefix": "PHY",
+      "total": 250,
+      "by_difficulty": {
+        "Basic": 74,
+        "Intermediate": 101,
+        "Advanced": 75
+      },
+      "question_ids": [
+        "NEET_PHY_001501",
+        "NEET_PHY_001750"
+      ],
+      "topics": [
+        {
+          "topic": "Physics and Measurement",
+          "subtopics": [
+            "Units and SI system",
+            "Least count and significant figures",
+            "Errors in measurement",
+            "Dimensional analysis"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Kinematics",
+          "subtopics": [
+            "Motion in a straight line",
+            "Graphs of motion",
+            "Vectors",
+            "Relative velocity",
+            "Projectile motion",
+            "Uniform circular motion"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Laws of Motion",
+          "subtopics": [
+            "Newton's laws and impulse",
+            "Conservation of linear momentum",
+            "Equilibrium of concurrent forces",
+            "Friction",
+            "Circular motion: level and banked roads"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Work, Energy and Power",
+          "subtopics": [
+            "Work by constant and variable force",
+            "Work-energy theorem",
+            "Power",
+            "Spring potential energy",
+            "Motion in a vertical circle",
+            "Collisions"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Rotational Motion",
+          "subtopics": [
+            "Centre of mass",
+            "Torque and angular momentum",
+            "Moment of inertia and axis theorems",
+            "Rigid-body rotation",
+            "Equilibrium of rigid bodies"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Gravitation",
+          "subtopics": [
+            "Law of gravitation",
+            "Variation of g",
+            "Kepler's laws",
+            "Gravitational potential and energy",
+            "Escape and orbital velocity",
+            "Satellite energy and period"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 8
+        },
+        {
+          "topic": "Properties of Solids and Liquids",
+          "subtopics": [
+            "Elasticity and moduli",
+            "Fluid pressure and Pascal's law",
+            "Viscosity and Stokes' law",
+            "Bernoulli's principle",
+            "Surface tension and capillarity",
+            "Thermal expansion and calorimetry",
+            "Heat transfer"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 6,
+            "Advanced": 5
+          },
+          "total": 15
+        },
+        {
+          "topic": "Thermodynamics",
+          "subtopics": [
+            "Zeroth and first law",
+            "Isothermal and adiabatic processes",
+            "Second law, reversible and irreversible processes"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Kinetic Theory of Gases",
+          "subtopics": [
+            "Ideal gas equation",
+            "Pressure and rms speed",
+            "Degrees of freedom and equipartition",
+            "Mean free path"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 2,
+            "Advanced": 2
+          },
+          "total": 6
+        },
+        {
+          "topic": "Oscillations and Waves",
+          "subtopics": [
+            "SHM equation and phase",
+            "Spring and pendulum oscillations",
+            "Energy in SHM",
+            "Progressive waves and wave speed",
+            "Superposition and standing waves",
+            "Organ pipes and beats"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 14
+        },
+        {
+          "topic": "Electrostatics",
+          "subtopics": [
+            "Coulomb's law and superposition",
+            "Electric field and dipole",
+            "Gauss's law",
+            "Electric potential and energy",
+            "Capacitors and dielectrics"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 6
+          },
+          "total": 20
+        },
+        {
+          "topic": "Current Electricity",
+          "subtopics": [
+            "Drift velocity and Ohm's law",
+            "Resistivity and temperature",
+            "Combination of resistors",
+            "Cells, emf and internal resistance",
+            "Kirchhoff's laws",
+            "Wheatstone and metre bridge"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 6
+          },
+          "total": 20
+        },
+        {
+          "topic": "Magnetic Effects of Current and Magnetism",
+          "subtopics": [
+            "Biot-Savart law",
+            "Ampere's law",
+            "Force on charges and conductors",
+            "Torque on loop and galvanometer",
+            "Magnetic dipole and bar magnet",
+            "Magnetic materials"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 6
+          },
+          "total": 20
+        },
+        {
+          "topic": "Electromagnetic Induction and Alternating Currents",
+          "subtopics": [
+            "Faraday's and Lenz's laws",
+            "Self and mutual inductance",
+            "AC: rms, reactance and impedance",
+            "LCR resonance and power",
+            "AC generator and transformer"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 14
+        },
+        {
+          "topic": "Electromagnetic Waves",
+          "subtopics": [
+            "Displacement current",
+            "EM wave properties",
+            "EM spectrum and uses"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Optics",
+          "subtopics": [
+            "Mirrors",
+            "Refraction and lenses",
+            "Total internal reflection",
+            "Prism",
+            "Optical instruments",
+            "Huygens' principle and interference",
+            "Diffraction",
+            "Polarisation"
+          ],
+          "quota": {
+            "Basic": 7,
+            "Intermediate": 9,
+            "Advanced": 7
+          },
+          "total": 23
+        },
+        {
+          "topic": "Dual Nature of Matter and Radiation",
+          "subtopics": [
+            "Photoelectric effect",
+            "Einstein's equation",
+            "de Broglie wavelength"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Atoms and Nuclei",
+          "subtopics": [
+            "Rutherford scattering",
+            "Bohr model and hydrogen spectrum",
+            "Nuclear size and mass defect",
+            "Binding energy",
+            "Fission and fusion"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 12
+        },
+        {
+          "topic": "Electronic Devices",
+          "subtopics": [
+            "Semiconductors",
+            "p-n junction diode and rectifier",
+            "LED, photodiode and solar cell",
+            "Zener diode",
+            "Logic gates"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 14
+        },
+        {
+          "topic": "Experimental Skills",
+          "subtopics": [
+            "Vernier calipers and screw gauge",
+            "Mechanics experiments",
+            "Thermal and fluid experiments",
+            "Electrical experiments",
+            "Optics experiments"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        }
+      ],
+      "packages": [
+        {
+          "package": "PHY_007_p1",
+          "topics": [
+            "Physics and Measurement",
+            "Kinematics",
+            "Laws of Motion",
+            "Work, Energy and Power",
+            "Rotational Motion",
+            "Gravitation",
+            "Properties of Solids and Liquids",
+            "Thermodynamics",
+            "Kinetic Theory of Gases",
+            "Oscillations and Waves",
+            "Electrostatics"
+          ],
+          "count": 129,
+          "question_ids": [
+            "NEET_PHY_001501",
+            "NEET_PHY_001629"
+          ],
+          "output": "batches/parts/BATCH_007_PHY_p1.json"
+        },
+        {
+          "package": "PHY_007_p2",
+          "topics": [
+            "Current Electricity",
+            "Magnetic Effects of Current and Magnetism",
+            "Electromagnetic Induction and Alternating Currents",
+            "Electromagnetic Waves",
+            "Optics",
+            "Dual Nature of Matter and Radiation",
+            "Atoms and Nuclei",
+            "Electronic Devices",
+            "Experimental Skills"
+          ],
+          "count": 121,
+          "question_ids": [
+            "NEET_PHY_001630",
+            "NEET_PHY_001750"
+          ],
+          "output": "batches/parts/BATCH_007_PHY_p2.json"
+        }
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "prefix": "CHE",
+      "total": 250,
+      "by_difficulty": {
+        "Basic": 75,
+        "Intermediate": 100,
+        "Advanced": 75
+      },
+      "question_ids": [
+        "NEET_CHE_001501",
+        "NEET_CHE_001750"
+      ],
+      "topics": [
+        {
+          "topic": "Some Basic Concepts in Chemistry",
+          "subtopics": [
+            "Laws of chemical combination",
+            "Mole concept",
+            "Empirical and molecular formulae",
+            "Stoichiometry"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 10
+        },
+        {
+          "topic": "Atomic Structure",
+          "subtopics": [
+            "Bohr model and hydrogen spectrum",
+            "Dual nature and uncertainty",
+            "Quantum numbers and orbitals",
+            "Electronic configuration"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Chemical Bonding and Molecular Structure",
+          "subtopics": [
+            "Ionic bonding and lattice enthalpy",
+            "Fajans' rule and dipole moment",
+            "VSEPR shapes",
+            "Hybridisation and resonance",
+            "Molecular orbital theory",
+            "Hydrogen and metallic bonding"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 6
+          },
+          "total": 18
+        },
+        {
+          "topic": "Chemical Thermodynamics",
+          "subtopics": [
+            "First law, work and enthalpy",
+            "Hess's law and enthalpies",
+            "Entropy and Gibbs energy",
+            "Gibbs energy and K"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Solutions",
+          "subtopics": [
+            "Concentration terms",
+            "Raoult's law and ideal solutions",
+            "Colligative properties",
+            "van't Hoff factor"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Equilibrium",
+          "subtopics": [
+            "Physical equilibria and Henry's law",
+            "Kp, Kc and Le Chatelier",
+            "Acids, bases and pH",
+            "Hydrolysis and buffers",
+            "Solubility product"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Redox Reactions and Electrochemistry",
+          "subtopics": [
+            "Oxidation number and balancing",
+            "Conductance and Kohlrausch's law",
+            "Electrode potential and cells",
+            "Nernst equation and Gibbs energy",
+            "Batteries and fuel cells"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 14
+        },
+        {
+          "topic": "Chemical Kinetics",
+          "subtopics": [
+            "Rate law and order",
+            "Zero and first order reactions",
+            "Half-life",
+            "Arrhenius equation and activation energy"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 4,
+            "Advanced": 4
+          },
+          "total": 12
+        },
+        {
+          "topic": "Classification of Elements and Periodicity in Properties",
+          "subtopics": [
+            "Modern periodic table",
+            "Atomic and ionic radii",
+            "Ionisation and electron gain enthalpy",
+            "Valence and reactivity"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 10
+        },
+        {
+          "topic": "p-Block Elements",
+          "subtopics": [
+            "Group 13 and 14 trends",
+            "Group 15 and 16 trends",
+            "Group 17 and 18 trends",
+            "Anomalous first element"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "d- and f-Block Elements",
+          "subtopics": [
+            "Transition element trends",
+            "Magnetic and colour properties",
+            "K2Cr2O7 and KMnO4",
+            "Lanthanoids and actinoids"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Coordination Compounds",
+          "subtopics": [
+            "Werner's theory and ligands",
+            "IUPAC nomenclature",
+            "Isomerism",
+            "Valence bond theory",
+            "Crystal field theory",
+            "Applications"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 15
+        },
+        {
+          "topic": "Purification and Characterisation of Organic Compounds",
+          "subtopics": [
+            "Purification methods",
+            "Qualitative analysis",
+            "Quantitative analysis and formulae"
+          ],
+          "quota": {
+            "Basic": 1,
+            "Intermediate": 2,
+            "Advanced": 1
+          },
+          "total": 4
+        },
+        {
+          "topic": "Some Basic Principles of Organic Chemistry",
+          "subtopics": [
+            "Hybridisation and functional groups",
+            "IUPAC nomenclature",
+            "Isomerism",
+            "Reactive intermediates",
+            "Electronic effects",
+            "Types of organic reactions"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Hydrocarbons",
+          "subtopics": [
+            "Alkanes and conformations",
+            "Alkenes: addition and ozonolysis",
+            "Alkynes",
+            "Benzene and aromaticity",
+            "Electrophilic substitution"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 14
+        },
+        {
+          "topic": "Organic Compounds Containing Halogens",
+          "subtopics": [
+            "C-X bond and preparation",
+            "SN1 and SN2",
+            "Polyhalogen compounds"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 10
+        },
+        {
+          "topic": "Organic Compounds Containing Oxygen",
+          "subtopics": [
+            "Alcohols",
+            "Phenols",
+            "Ethers",
+            "Aldehydes and ketones",
+            "Carboxylic acids"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Organic Compounds Containing Nitrogen",
+          "subtopics": [
+            "Amines: basicity and identification",
+            "Diazonium salts"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 10
+        },
+        {
+          "topic": "Biomolecules (Chemistry)",
+          "subtopics": [
+            "Carbohydrates",
+            "Amino acids and proteins",
+            "Vitamins",
+            "Nucleic acids",
+            "Hormones"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 10
+        },
+        {
+          "topic": "Principles Related to Practical Chemistry",
+          "subtopics": [
+            "Detection of elements and functional groups",
+            "Preparations",
+            "Titrimetric analysis",
+            "Qualitative salt analysis",
+            "Thermochemistry and kinetics experiments"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        }
+      ],
+      "packages": [
+        {
+          "package": "CHE_007_p1",
+          "topics": [
+            "Some Basic Concepts in Chemistry",
+            "Atomic Structure",
+            "Chemical Bonding and Molecular Structure",
+            "Chemical Thermodynamics",
+            "Solutions",
+            "Equilibrium",
+            "Redox Reactions and Electrochemistry",
+            "Chemical Kinetics",
+            "Classification of Elements and Periodicity in Properties"
+          ],
+          "count": 120,
+          "question_ids": [
+            "NEET_CHE_001501",
+            "NEET_CHE_001620"
+          ],
+          "output": "batches/parts/BATCH_007_CHE_p1.json"
+        },
+        {
+          "package": "CHE_007_p2",
+          "topics": [
+            "p-Block Elements",
+            "d- and f-Block Elements",
+            "Coordination Compounds",
+            "Purification and Characterisation of Organic Compounds",
+            "Some Basic Principles of Organic Chemistry",
+            "Hydrocarbons",
+            "Organic Compounds Containing Halogens",
+            "Organic Compounds Containing Oxygen",
+            "Organic Compounds Containing Nitrogen",
+            "Biomolecules (Chemistry)",
+            "Principles Related to Practical Chemistry"
+          ],
+          "count": 130,
+          "question_ids": [
+            "NEET_CHE_001621",
+            "NEET_CHE_001750"
+          ],
+          "output": "batches/parts/BATCH_007_CHE_p2.json"
+        }
+      ]
+    },
+    {
+      "subject": "Botany",
+      "prefix": "BOT",
+      "total": 250,
+      "by_difficulty": {
+        "Basic": 76,
+        "Intermediate": 100,
+        "Advanced": 74
+      },
+      "question_ids": [
+        "NEET_BOT_001501",
+        "NEET_BOT_001750"
+      ],
+      "topics": [
+        {
+          "topic": "The Living World and Classification",
+          "subtopics": [
+            "What is living",
+            "Taxonomy and hierarchy",
+            "Binomial nomenclature",
+            "Five kingdom classification",
+            "Monera, Protista and Fungi",
+            "Lichens, viruses and viroids"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Plant Kingdom",
+          "subtopics": [
+            "Algae",
+            "Bryophytes",
+            "Pteridophytes",
+            "Gymnosperms"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Morphology of Flowering Plants",
+          "subtopics": [
+            "Root, stem and leaf",
+            "Inflorescence",
+            "Flower",
+            "Fruit and seed",
+            "Plant families"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Anatomy of Flowering Plants",
+          "subtopics": [
+            "Plant tissues",
+            "Tissue systems",
+            "Dicot and monocot anatomy"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 14
+        },
+        {
+          "topic": "Cell: The Unit of Life",
+          "subtopics": [
+            "Cell theory",
+            "Prokaryotic cell",
+            "Cell envelope and membrane",
+            "Endomembrane system",
+            "Mitochondria, plastids and ribosomes",
+            "Cytoskeleton, cilia and centrioles",
+            "Nucleus"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Cell Cycle and Cell Division",
+          "subtopics": [
+            "Cell cycle phases",
+            "Mitosis",
+            "Meiosis",
+            "Significance"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 14
+        },
+        {
+          "topic": "Photosynthesis",
+          "subtopics": [
+            "Site and pigments",
+            "Light reactions and photophosphorylation",
+            "Chemiosmosis",
+            "Calvin cycle and C4 pathway",
+            "Photorespiration",
+            "Limiting factors"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 6,
+            "Advanced": 5
+          },
+          "total": 16
+        },
+        {
+          "topic": "Respiration in Plants",
+          "subtopics": [
+            "Glycolysis and fermentation",
+            "TCA cycle",
+            "Electron transport system",
+            "ATP yield and amphibolic pathway",
+            "Respiratory quotient"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Plant Growth and Development",
+          "subtopics": [
+            "Germination and growth phases",
+            "Growth rate",
+            "Differentiation and redifferentiation",
+            "Plant growth regulators"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Sexual Reproduction in Flowering Plants",
+          "subtopics": [
+            "Microsporogenesis and male gametophyte",
+            "Megasporogenesis and embryo sac",
+            "Pollination",
+            "Outbreeding devices and pollen-pistil interaction",
+            "Double fertilisation",
+            "Endosperm and embryo",
+            "Apomixis, parthenocarpy and polyembryony"
+          ],
+          "quota": {
+            "Basic": 7,
+            "Intermediate": 9,
+            "Advanced": 7
+          },
+          "total": 23
+        },
+        {
+          "topic": "Principles of Inheritance and Variation",
+          "subtopics": [
+            "Mendelian inheritance",
+            "Incomplete and co-dominance",
+            "Multiple alleles and pleiotropy",
+            "Polygenic inheritance",
+            "Linkage and crossing over",
+            "Sex determination",
+            "Sex-linked inheritance",
+            "Mendelian and chromosomal disorders"
+          ],
+          "quota": {
+            "Basic": 8,
+            "Intermediate": 10,
+            "Advanced": 7
+          },
+          "total": 25
+        },
+        {
+          "topic": "Molecular Basis of Inheritance",
+          "subtopics": [
+            "DNA as genetic material",
+            "DNA and RNA structure",
+            "DNA packaging",
+            "Replication",
+            "Transcription",
+            "Genetic code and translation",
+            "Lac operon",
+            "Human genome project and DNA fingerprinting"
+          ],
+          "quota": {
+            "Basic": 8,
+            "Intermediate": 9,
+            "Advanced": 7
+          },
+          "total": 24
+        },
+        {
+          "topic": "Microbes in Human Welfare",
+          "subtopics": [
+            "Household and industrial products",
+            "Sewage treatment",
+            "Biogas",
+            "Biocontrol agents and biofertilisers"
+          ],
+          "quota": {
+            "Basic": 2,
+            "Intermediate": 3,
+            "Advanced": 2
+          },
+          "total": 7
+        },
+        {
+          "topic": "Organisms and Populations",
+          "subtopics": [
+            "Population attributes",
+            "Population growth",
+            "Population interactions"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Ecosystem",
+          "subtopics": [
+            "Structure and components",
+            "Productivity and decomposition",
+            "Energy flow",
+            "Ecological pyramids"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 10
+        },
+        {
+          "topic": "Biodiversity and Conservation",
+          "subtopics": [
+            "Patterns of biodiversity",
+            "Importance and loss",
+            "Hotspots and Red Data Book",
+            "In situ and ex situ conservation"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 4,
+            "Advanced": 3
+          },
+          "total": 10
+        }
+      ],
+      "packages": [
+        {
+          "package": "BOT_007_p1",
+          "topics": [
+            "The Living World and Classification",
+            "Plant Kingdom",
+            "Morphology of Flowering Plants",
+            "Anatomy of Flowering Plants",
+            "Cell: The Unit of Life",
+            "Cell Cycle and Cell Division",
+            "Photosynthesis",
+            "Respiration in Plants"
+          ],
+          "count": 125,
+          "question_ids": [
+            "NEET_BOT_001501",
+            "NEET_BOT_001625"
+          ],
+          "output": "batches/parts/BATCH_007_BOT_p1.json"
+        },
+        {
+          "package": "BOT_007_p2",
+          "topics": [
+            "Plant Growth and Development",
+            "Sexual Reproduction in Flowering Plants",
+            "Principles of Inheritance and Variation",
+            "Molecular Basis of Inheritance",
+            "Microbes in Human Welfare",
+            "Organisms and Populations",
+            "Ecosystem",
+            "Biodiversity and Conservation"
+          ],
+          "count": 125,
+          "question_ids": [
+            "NEET_BOT_001626",
+            "NEET_BOT_001750"
+          ],
+          "output": "batches/parts/BATCH_007_BOT_p2.json"
+        }
+      ]
+    },
+    {
+      "subject": "Zoology",
+      "prefix": "ZOO",
+      "total": 250,
+      "by_difficulty": {
+        "Basic": 76,
+        "Intermediate": 99,
+        "Advanced": 75
+      },
+      "question_ids": [
+        "NEET_ZOO_001501",
+        "NEET_ZOO_001750"
+      ],
+      "topics": [
+        {
+          "topic": "Animal Kingdom",
+          "subtopics": [
+            "Basis of classification",
+            "Non-chordate phyla",
+            "Chordate classes"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 6
+          },
+          "total": 20
+        },
+        {
+          "topic": "Structural Organisation in Animals",
+          "subtopics": [
+            "Animal tissues",
+            "Frog: morphology and anatomy"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 6,
+            "Advanced": 5
+          },
+          "total": 16
+        },
+        {
+          "topic": "Biomolecules",
+          "subtopics": [
+            "Proteins and amino acids",
+            "Carbohydrates and lipids",
+            "Nucleic acids",
+            "Enzymes: properties and action",
+            "Enzyme classification"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 6
+          },
+          "total": 20
+        },
+        {
+          "topic": "Breathing and Exchange of Gases",
+          "subtopics": [
+            "Respiratory system",
+            "Mechanism of breathing",
+            "Respiratory volumes",
+            "Exchange and transport of gases",
+            "Regulation and disorders"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Body Fluids and Circulation",
+          "subtopics": [
+            "Blood and blood groups",
+            "Coagulation and lymph",
+            "Human heart",
+            "Cardiac cycle and ECG",
+            "Double circulation and regulation",
+            "Circulatory disorders"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Excretory Products and their Elimination",
+          "subtopics": [
+            "Modes of excretion",
+            "Nephron structure",
+            "Urine formation",
+            "Regulation of kidney function",
+            "Disorders and dialysis"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 6,
+            "Advanced": 4
+          },
+          "total": 15
+        },
+        {
+          "topic": "Locomotion and Movement",
+          "subtopics": [
+            "Types of movement",
+            "Muscle contraction",
+            "Skeletal system",
+            "Joints",
+            "Muscular and skeletal disorders"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Neural Control and Coordination",
+          "subtopics": [
+            "Neuron and nerves",
+            "Nervous system divisions",
+            "Nerve impulse generation and conduction"
+          ],
+          "quota": {
+            "Basic": 3,
+            "Intermediate": 5,
+            "Advanced": 3
+          },
+          "total": 11
+        },
+        {
+          "topic": "Chemical Coordination and Integration",
+          "subtopics": [
+            "Hypothalamus and pituitary",
+            "Thyroid, parathyroid and pineal",
+            "Adrenal, pancreas and gonads",
+            "Mechanism of hormone action",
+            "Hormonal disorders"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 6,
+            "Advanced": 5
+          },
+          "total": 16
+        },
+        {
+          "topic": "Human Reproduction",
+          "subtopics": [
+            "Male and female reproductive systems",
+            "Gametogenesis",
+            "Menstrual cycle",
+            "Fertilisation and implantation",
+            "Pregnancy, parturition and lactation"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 8,
+            "Advanced": 6
+          },
+          "total": 20
+        },
+        {
+          "topic": "Reproductive Health",
+          "subtopics": [
+            "STDs and their prevention",
+            "Contraception",
+            "MTP and amniocentesis",
+            "Infertility and ART"
+          ],
+          "quota": {
+            "Basic": 4,
+            "Intermediate": 5,
+            "Advanced": 4
+          },
+          "total": 13
+        },
+        {
+          "topic": "Evolution",
+          "subtopics": [
+            "Origin of life",
+            "Evidences of evolution",
+            "Darwinism and modern synthesis",
+            "Natural selection",
+            "Gene flow, drift and Hardy-Weinberg",
+            "Adaptive radiation",
+            "Human evolution"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        },
+        {
+          "topic": "Human Health and Disease",
+          "subtopics": [
+            "Pathogens and diseases",
+            "Immunity and vaccines",
+            "Cancer",
+            "HIV and AIDS",
+            "Drug and alcohol abuse"
+          ],
+          "quota": {
+            "Basic": 7,
+            "Intermediate": 9,
+            "Advanced": 7
+          },
+          "total": 23
+        },
+        {
+          "topic": "Biotechnology: Principles and Processes",
+          "subtopics": [
+            "Restriction enzymes",
+            "Cloning vectors",
+            "Competent hosts and transformation",
+            "PCR and gel electrophoresis",
+            "Bioreactors and downstream processing"
+          ],
+          "quota": {
+            "Basic": 6,
+            "Intermediate": 7,
+            "Advanced": 6
+          },
+          "total": 19
+        },
+        {
+          "topic": "Biotechnology and its Applications",
+          "subtopics": [
+            "Bt crops and RNAi",
+            "Human insulin",
+            "Gene therapy",
+            "Transgenic animals",
+            "Biosafety, biopiracy and patents"
+          ],
+          "quota": {
+            "Basic": 5,
+            "Intermediate": 7,
+            "Advanced": 5
+          },
+          "total": 17
+        }
+      ],
+      "packages": [
+        {
+          "package": "ZOO_007_p1",
+          "topics": [
+            "Animal Kingdom",
+            "Structural Organisation in Animals",
+            "Biomolecules",
+            "Breathing and Exchange of Gases",
+            "Body Fluids and Circulation",
+            "Excretory Products and their Elimination",
+            "Locomotion and Movement",
+            "Neural Control and Coordination"
+          ],
+          "count": 125,
+          "question_ids": [
+            "NEET_ZOO_001501",
+            "NEET_ZOO_001625"
+          ],
+          "output": "batches/parts/BATCH_007_ZOO_p1.json"
+        },
+        {
+          "package": "ZOO_007_p2",
+          "topics": [
+            "Chemical Coordination and Integration",
+            "Human Reproduction",
+            "Reproductive Health",
+            "Evolution",
+            "Human Health and Disease",
+            "Biotechnology: Principles and Processes",
+            "Biotechnology and its Applications"
+          ],
+          "count": 125,
+          "question_ids": [
+            "NEET_ZOO_001626",
+            "NEET_ZOO_001750"
+          ],
+          "output": "batches/parts/BATCH_007_ZOO_p2.json"
+        }
+      ]
+    }
+  ],
+  "total": 1000
+}

@@ -14,12 +14,13 @@ CACHE_PREFIX = "catalog:"
 CATEGORIES = {
     "central_govt": "Central government jobs", "banking": "Banking", "civil_services": "Civil services",
     "state_psc": "State PSC", "higher_education": "Higher education", "campus_hiring": "Campus and corporate hiring",
+    "medical": "Medical entrance",
 }
 INTERVIEW_EVALUATES = ["Role knowledge", "Answer structure", "Communication", "Confidence", "Resume consistency"]
 
 
 def disclaimer(exam_name: str) -> str:
-    return (f"Mock test based on the {exam_name} pattern. Not affiliated with SSC, UPSC, IBPS, SBI, RRB, NTA, "
+    return (f"Mock test based on the {exam_name} pattern. Not affiliated with SSC, UPSC, IBPS, SBI, RRB, NTA, NMC, "
             f"IIMs, IITs or any exam-conducting body.")
 
 

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://prepmitra.in/schemas/neet-question-batch.v1.json",
+  "title": "PrepMitra NEET (UG) question batch v1",
+  "description": "One import file. Same shape as the banking bank (docs/question-bank/question.schema.json) so tools and the importer stay alike. Marks (+4/-1) are NOT stored on a question: they come from exam_patterns.json.",
+  "type": "object",
+  "required": ["schema_version", "batch_id", "created_at", "stimuli", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "batch_id": {"type": "string", "pattern": "^BATCH_[0-9]{3}$"},
+    "created_at": {"type": "string", "format": "date"},
+    "notes": {"type": "string"},
+    "stimuli": {"type": "array", "items": {"$ref": "#/$defs/stimulus"}, "description": "Rare in NEET; used for a shared data table or experiment description"},
+    "questions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/question"}}
+  },
+  "$defs": {
+    "subject": {"enum": ["Physics", "Chemistry", "Botany", "Zoology"]},
+    "url": {"type": "string", "pattern": "^https?://"},
+    "stimulus": {
+      "type": "object",
+      "required": ["stimulus_id", "type", "title", "content"],
+      "additionalProperties": false,
+      "properties": {
+        "stimulus_id": {"type": "string", "pattern": "^STIM_[A-Z]+_[0-9]{6}$"},
+        "type": {"enum": ["data_table", "experiment", "passage"]},
+        "title": {"type": "string"},
+        "content": {"type": "string", "minLength": 20},
+        "solution": {"type": "string"}
+      }
+    },
+    "examMapping": {
+      "type": "object",
+      "required": ["exam_id", "stage", "section_key"],
+      "additionalProperties": false,
+      "properties": {
+        "exam_id": {"const": "NEET_UG"},
+        "stage": {"const": "UG"},
+        "section_key": {"enum": ["physics", "chemistry", "botany", "zoology"]}
+      }
+    },
+    "option": {
+      "type": "object",
+      "required": ["key", "text"],
+      "additionalProperties": false,
+      "properties": {"key": {"enum": ["A", "B", "C", "D"]}, "text": {"type": "string", "minLength": 1}}
+    },
+    "factCheck": {
+      "type": "object",
+      "required": ["claim", "source_url", "checked_on"],
+      "additionalProperties": false,
+      "properties": {
+        "claim": {"type": "string"},
+        "source_url": {"$ref": "#/$defs/url"},
+        "checked_on": {"type": "string", "format": "date"}
+      }
+    },
+    "question": {
+      "type": "object",
+      "required": ["question_id", "exam_mappings", "subject", "topic", "subtopic", "difficulty", "question_type",
+                   "format", "language", "question_text", "options", "correct_answer", "solution",
+                   "suggested_time_seconds", "source", "verification"],
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {"type": "string", "pattern": "^NEET_(PHY|CHE|BOT|ZOO)_[0-9]{6}$"},
+        "exam_mappings": {"type": "array", "minItems": 1, "maxItems": 1, "items": {"$ref": "#/$defs/examMapping"}},
+        "subject": {"$ref": "#/$defs/subject"},
+        "topic": {"type": "string", "description": "Must be a topic of the subject in taxonomy.json"},
+        "subtopic": {"type": "string"},
+        "difficulty": {"enum": ["Basic", "Intermediate", "Advanced"]},
+        "question_type": {"const": "MCQ", "description": "Four options, single correct answer (NTA bulletin)"},
+        "format": {
+          "enum": ["direct", "numerical", "assertion_reason", "statement_pair", "match_list", "multi_statement"],
+          "description": "The NEET stem styles. assertion_reason, statement_pair and match_list use the fixed option sets in README.md."
+        },
+        "language": {"const": "en"},
+        "stimulus_id": {"type": "string"},
+        "set_position": {"type": "integer", "minimum": 1},
+        "question_text": {"type": "string", "minLength": 10},
+        "options": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"$ref": "#/$defs/option"}},
+        "correct_answer": {"enum": ["A", "B", "C", "D"]},
+        "solution": {
+          "type": "object",
+          "required": ["concept", "explanation", "steps", "final_answer"],
+          "additionalProperties": false,
+          "properties": {
+            "concept": {"type": "string"},
+            "explanation": {"type": "string", "minLength": 20},
+            "steps": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "shortcut": {"type": ["string", "null"]},
+            "why_others_wrong": {"type": ["string", "null"]},
+            "ncert_reference": {"type": ["string", "null"], "description": "Class, chapter and section the fact or method comes from, e.g. 'Class 12 Biology, Ch 5, 5.2'"},
+            "final_answer": {"type": "string"}
+          }
+        },
+        "suggested_time_seconds": {"type": "integer", "minimum": 20, "maximum": 180},
+        "source": {
+          "type": "object",
+          "required": ["source_type", "source_name", "source_url", "original_exam_year"],
+          "additionalProperties": false,
+          "properties": {
+            "source_type": {"enum": ["Original", "Official PYQ", "Licensed"]},
+            "source_name": {"type": "string"},
+            "source_url": {"anyOf": [{"$ref": "#/$defs/url"}, {"type": "null"}]},
+            "original_exam_year": {"type": ["integer", "null"]},
+            "license_note": {"type": ["string", "null"]}
+          }
+        },
+        "verification": {
+          "type": "object",
+          "required": ["answer_verified", "solution_verified", "review_status", "verified_by", "verified_at"],
+          "additionalProperties": false,
+          "properties": {
+            "answer_verified": {"type": "boolean"},
+            "solution_verified": {"type": "boolean"},
+            "review_status": {"enum": ["Draft", "Pending Human Review", "Approved", "Rejected"]},
+            "verified_by": {"type": "array", "items": {"type": "string"}},
+            "verified_at": {"type": "string", "format": "date"},
+            "fact_checks": {"type": "array", "items": {"$ref": "#/$defs/factCheck"}}
+          }
+        },
+        "tags": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

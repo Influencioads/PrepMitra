@@ -165,7 +165,7 @@ export const demoCheckoutSchema = z.object({
 export const adminExamSchema = z.object({
   title: z.string().trim().min(3, 'Title is required'),
   shortTitle: z.string().trim().min(2, 'Short title is required').max(20),
-  category: z.enum(['government', 'banking', 'railway', 'civil-services', 'higher-education', 'campus-placement']),
+  category: z.enum(['government', 'banking', 'railway', 'civil-services', 'higher-education', 'campus-placement', 'medical']),
   conductingBody: z.string().trim().min(2, 'Enter the pattern source (e.g. SSC)'),
   description: z.string().trim().min(20, 'Write at least 20 characters'),
   durationMin: z.number({ message: 'Enter duration' }).int().min(10, 'Min 10 minutes').max(300, 'Max 300 minutes'),

@@ -15,7 +15,7 @@ class Exam(TimestampMixin, Base):
     id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
     slug: Mapped[str] = mapped_column(String(80), unique=True)
     name: Mapped[str] = mapped_column(String(160))
-    # central_govt | banking | civil_services | higher_education | campus_hiring
+    # central_govt | banking | civil_services | higher_education | campus_hiring | medical
     category: Mapped[str] = mapped_column(String(40), index=True)
     description: Mapped[str] = mapped_column(Text, default="")
     # draft | published | hidden

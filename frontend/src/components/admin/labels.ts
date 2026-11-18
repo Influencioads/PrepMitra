@@ -14,6 +14,9 @@ export const SUBJECT_LABELS: Record<Subject, string> = {
   electronics: 'Electronics',
   'general-studies': 'General studies',
   'data-interpretation': 'Data interpretation',
+  physics: 'Physics',
+  chemistry: 'Chemistry',
+  biology: 'Biology',
 };
 export const SUBJECT_OPTIONS: SelectOption[] = Object.entries(SUBJECT_LABELS).map(([value, label]) => ({ value, label }));
 

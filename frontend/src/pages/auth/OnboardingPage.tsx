@@ -34,7 +34,7 @@ import { cn } from '@/utils/cn';
 const STEP_KEYS = ['step0', 'step1', 'step2'] as const;
 const DRAFT_VERSION = 2;
 const POPULAR_LANGS: LanguageCode[] = ['en', 'hi', 'mr', 'ta', 'te', 'bn'];
-const CATEGORY_ORDER: ExamCategory[] = ['government', 'banking', 'railway', 'civil-services', 'higher-education', 'campus-placement'];
+const CATEGORY_ORDER: ExamCategory[] = ['government', 'banking', 'railway', 'civil-services', 'higher-education', 'medical', 'campus-placement'];
 
 const langLabel = (lang: UiLang, code: LanguageCode) =>
   lang === 'hi' ? LANGUAGES.find((l) => l.code === code)?.nativeName ?? languageName(code) : languageName(code);

@@ -68,6 +68,40 @@ T = {  # reusable syllabus topic lists: (name, weightage)
     "cuet_pg": [("General awareness", 1), ("Language comprehension", 1), ("Analytical reasoning", 1),
                 ("Quantitative ability", 1), ("Domain knowledge", 3)],
     "verbal": [("Reading comprehension", 2), ("Grammar", 2), ("Vocabulary", 1), ("Sentence correction", 1)],
+    # NEET (UG): topic names match docs/neet-bank/taxonomy.json (NMC 2026 syllabus); weight = planned questions.
+    "neet_physics": [("Physics and Measurement", 63), ("Kinematics", 126), ("Laws of Motion", 126),
+                     ("Work, Energy and Power", 110), ("Rotational Motion", 126), ("Gravitation", 94),
+                     ("Properties of Solids and Liquids", 156), ("Thermodynamics", 94),
+                     ("Kinetic Theory of Gases", 63), ("Oscillations and Waves", 140), ("Electrostatics", 187),
+                     ("Current Electricity", 187), ("Magnetic Effects of Current and Magnetism", 187),
+                     ("Electromagnetic Induction and Alternating Currents", 140), ("Electromagnetic Waves", 47),
+                     ("Optics", 219), ("Dual Nature of Matter and Radiation", 94), ("Atoms and Nuclei", 124),
+                     ("Electronic Devices", 140), ("Experimental Skills", 77)],
+    "neet_chemistry": [("Some Basic Concepts in Chemistry", 91), ("Atomic Structure", 121),
+                       ("Chemical Bonding and Molecular Structure", 183), ("Chemical Thermodynamics", 121),
+                       ("Solutions", 107), ("Equilibrium", 167), ("Redox Reactions and Electrochemistry", 137),
+                       ("Chemical Kinetics", 106), ("Classification of Elements and Periodicity in Properties", 90),
+                       ("p-Block Elements", 120), ("d- and f-Block Elements", 120), ("Coordination Compounds", 153),
+                       ("Purification and Characterisation of Organic Compounds", 60),
+                       ("Some Basic Principles of Organic Chemistry", 183), ("Hydrocarbons", 150),
+                       ("Organic Compounds Containing Halogens", 106), ("Organic Compounds Containing Oxygen", 183),
+                       ("Organic Compounds Containing Nitrogen", 106), ("Biomolecules (Chemistry)", 106),
+                       ("Principles Related to Practical Chemistry", 90)],
+    "neet_botany": [("The Living World and Classification", 173), ("Plant Kingdom", 170),
+                    ("Morphology of Flowering Plants", 170), ("Anatomy of Flowering Plants", 137),
+                    ("Cell: The Unit of Life", 170), ("Cell Cycle and Cell Division", 137), ("Photosynthesis", 154),
+                    ("Respiration in Plants", 120), ("Plant Growth and Development", 120),
+                    ("Sexual Reproduction in Flowering Plants", 206),
+                    ("Principles of Inheritance and Variation", 240), ("Molecular Basis of Inheritance", 240),
+                    ("Microbes in Human Welfare", 86), ("Organisms and Populations", 137), ("Ecosystem", 120),
+                    ("Biodiversity and Conservation", 120)],
+    "neet_zoology": [("Animal Kingdom", 200), ("Structural Organisation in Animals", 146), ("Biomolecules", 181),
+                     ("Breathing and Exchange of Gases", 127), ("Body Fluids and Circulation", 163),
+                     ("Excretory Products and their Elimination", 146), ("Locomotion and Movement", 146),
+                     ("Neural Control and Coordination", 127), ("Chemical Coordination and Integration", 163),
+                     ("Human Reproduction", 217), ("Reproductive Health", 144), ("Evolution", 180),
+                     ("Human Health and Disease", 217), ("Biotechnology: Principles and Processes", 180),
+                     ("Biotechnology and its Applications", 163)],
 }
 
 
@@ -178,6 +212,16 @@ EXAMS = [
          sections=[S("quant", "Aptitude", 15, 1, 0.25, "quant"),
                    S("reasoning", "Reasoning", 15, 1, 0.25, "reasoning"),
                    S("verbal", "Verbal", 15, 1, 0.25, "verbal")]),
+    # Medical entrance: NEET (UG), NTA Information Bulletin 2026 - 180 compulsory MCQs in 180 minutes, +4/-1, one timer.
+    # The bulletin lists Biology as 90 questions; the printed paper splits it 45 Botany + 45 Zoology.
+    # Content comes from docs/neet-bank via app/services/neet_import.py, which also re-activates this blueprint.
+    dict(slug="neet-ug", name="NEET (UG)", category="medical", duration=180, langs=["en", "hi"],
+         description="NEET (UG) mock: 180 questions, 720 marks, 180 minutes, +4 for a correct answer and -1 for a "
+                     "wrong one. Physics, Chemistry and Biology (Botany and Zoology), 45 questions each.",
+         sections=[S("physics", "Physics", 45, 4, 1, "neet_physics"),
+                   S("chemistry", "Chemistry", 45, 4, 1, "neet_chemistry"),
+                   S("botany", "Biology: Botany", 45, 4, 1, "neet_botany"),
+                   S("zoology", "Biology: Zoology", 45, 4, 1, "neet_zoology")]),
 ]
 
 RUBRIC = {"criteria": [
@@ -239,7 +283,7 @@ def seed_plans(db) -> None:
 
 
 def seed(papers_per_exam: int = 0, scope: str = "launch") -> dict:
-    """scope="launch": the 15-day MVP catalog. scope="full": the PDF's whole proposed catalog (18 exams, 6 roles)."""
+    """scope="launch": the 15-day MVP catalog. scope="full": the PDF's whole proposed catalog (19 exams, 6 roles)."""
     full = scope == "full"
     with SessionLocal() as db:
         seed_plans(db)
@@ -310,6 +354,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--papers", type=int, default=0, help="pre-generate this many papers per exam")
     ap.add_argument("--scope", choices=["launch", "full"], default="launch",
-                    help="launch = 15-day MVP catalog (default); full = all 18 exams and 6 roles")
+                    help="launch = 15-day MVP catalog (default); full = all 19 exams and 6 roles")
     args = ap.parse_args()
     print(seed(args.papers, args.scope))

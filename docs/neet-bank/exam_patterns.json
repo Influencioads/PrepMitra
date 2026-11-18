@@ -1,0 +1,33 @@
+{
+  "_comment": "Official NEET (UG) pattern, transcribed from the NTA Information Bulletin NEET (UG)-2026, Chapter 4 'Examination Scheme'. The bulletin lists Biology as one subject of 90 questions; the printed paper splits it into Botany (45) and Zoology (45), which PrepMitra uses as two sections so each section draws on one subject. Marks live here, not on questions.",
+  "verified_on": "2026-11-16",
+  "exams": [
+    {
+      "exam_id": "NEET_UG",
+      "app_slug": "neet-ug",
+      "name": "NEET (UG)",
+      "conducting_body": "National Testing Agency (NTA), syllabus by the National Medical Commission (NMC)",
+      "notification_url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf",
+      "stages": [
+        {
+          "stage": "UG",
+          "mode": "Pen and paper (OMR), single shift",
+          "duration_min": 180,
+          "sectional_timing": false,
+          "all_compulsory": true,
+          "marks_correct": 4,
+          "marks_wrong": -1,
+          "marks_unanswered": 0,
+          "sections": [
+            {"section_key": "physics", "name": "Physics", "subjects": ["Physics"], "questions": 45, "max_marks": 180},
+            {"section_key": "chemistry", "name": "Chemistry", "subjects": ["Chemistry"], "questions": 45, "max_marks": 180},
+            {"section_key": "botany", "name": "Biology: Botany", "subjects": ["Botany"], "questions": 45, "max_marks": 180},
+            {"section_key": "zoology", "name": "Biology: Zoology", "subjects": ["Zoology"], "questions": 45, "max_marks": 180}
+          ]
+        }
+      ],
+      "mediums": ["en", "hi", "as", "bn", "gu", "kn", "ml", "mr", "or", "pa", "ta", "te", "ur"],
+      "pattern_history": "2021-2024: 200 questions (Section A 35 + Section B 15 of which 10 attempted, per subject), 200 minutes. From 2025: 180 compulsory questions, 180 minutes. 2026 kept the 2025 pattern."
+    }
+  ]
+}

@@ -1,0 +1,1382 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "BATCH_000",
+  "created_at": "2026-11-16",
+  "notes": "20 fully solved NEET (UG) samples for approval: 5 per section, every stem style. All original.",
+  "stimuli": [],
+  "questions": [
+    {
+      "question_id": "NEET_PHY_000001",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "physics"
+        }
+      ],
+      "subject": "Physics",
+      "topic": "Kinematics",
+      "subtopic": "Projectile motion",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "format": "numerical",
+      "language": "en",
+      "question_text": "A ball is thrown with a speed of 30 m/s at an angle of 30° above the horizontal. Taking g = 10 m/s², the maximum height reached by the ball is:",
+      "options": [
+        {
+          "key": "A",
+          "text": "5.625 m"
+        },
+        {
+          "key": "B",
+          "text": "11.25 m"
+        },
+        {
+          "key": "C",
+          "text": "22.5 m"
+        },
+        {
+          "key": "D",
+          "text": "45 m"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Maximum height of a projectile",
+        "explanation": "Only the vertical component of velocity, u sin θ, decides how high the ball rises. It rises until this component becomes zero.",
+        "steps": [
+          "Vertical component: u sin θ = 30 × sin 30° = 15 m/s",
+          "At the top, vertical velocity = 0, so 0 = (15)² − 2gH",
+          "H = 225 / (2 × 10) = 11.25 m"
+        ],
+        "shortcut": "H = u² sin²θ / 2g = 900 × ¼ / 20 = 11.25 m.",
+        "why_others_wrong": "45 m uses the full speed (u²/2g). 22.5 m forgets the 2 in 2g. 5.625 m divides by an extra 2.",
+        "ncert_reference": null,
+        "final_answer": "Option B: 11.25 m"
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_PHY_000002",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "physics"
+        }
+      ],
+      "subject": "Physics",
+      "topic": "Physics and Measurement",
+      "subtopic": "Dimensional analysis",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "format": "match_list",
+      "language": "en",
+      "question_text": "Match List-I (physical quantity) with List-II (dimensional formula).\n\nList-I:\nA. Planck's constant\nB. Pressure\nC. Impulse\nD. Surface tension\n\nList-II:\nI. [M T⁻²]\nII. [M L² T⁻¹]\nIII. [M L⁻¹ T⁻²]\nIV. [M L T⁻¹]\n\nChoose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "A-II, B-IV, C-III, D-I"
+        },
+        {
+          "key": "B",
+          "text": "A-IV, B-III, C-II, D-I"
+        },
+        {
+          "key": "C",
+          "text": "A-I, B-III, C-IV, D-II"
+        },
+        {
+          "key": "D",
+          "text": "A-II, B-III, C-IV, D-I"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Dimensions from defining equations",
+        "explanation": "Write each quantity from an equation that defines it, then replace every term by its dimensions.",
+        "steps": [
+          "Planck's constant h = E/ν: [M L² T⁻²] / [T⁻¹] = [M L² T⁻¹] → II",
+          "Pressure = force/area: [M L T⁻²] / [L²] = [M L⁻¹ T⁻²] → III",
+          "Impulse = force × time: [M L T⁻²] × [T] = [M L T⁻¹] → IV",
+          "Surface tension = force/length: [M L T⁻²] / [L] = [M T⁻²] → I"
+        ],
+        "shortcut": "Impulse has the same dimensions as momentum, [M L T⁻¹], and h has the dimensions of angular momentum, [M L² T⁻¹].",
+        "why_others_wrong": null,
+        "ncert_reference": null,
+        "final_answer": "Option D: A-II, B-III, C-IV, D-I"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_PHY_000003",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "physics"
+        }
+      ],
+      "subject": "Physics",
+      "topic": "Current Electricity",
+      "subtopic": "Cells, emf and internal resistance",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "format": "numerical",
+      "language": "en",
+      "question_text": "Two cells of emf 6 V and 4 V, with internal resistances 1 Ω and 2 Ω respectively, are connected in parallel (positive terminal to positive terminal). A 4 Ω resistor is connected across the combination. The current through the 4 Ω resistor is:",
+      "options": [
+        {
+          "key": "A",
+          "text": "10/7 A"
+        },
+        {
+          "key": "B",
+          "text": "1 A"
+        },
+        {
+          "key": "C",
+          "text": "8/7 A"
+        },
+        {
+          "key": "D",
+          "text": "5/4 A"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Kirchhoff's current law at a junction (cells in parallel)",
+        "explanation": "Let V be the common terminal voltage. The currents from the two cells add up to the current in the resistor.",
+        "steps": [
+          "Current from the 6 V cell: (6 − V)/1; from the 4 V cell: (4 − V)/2; through the resistor: V/4",
+          "(6 − V) + (4 − V)/2 = V/4",
+          "Multiply by 4: 24 − 4V + 8 − 2V = V, so 7V = 32 and V = 32/7 V",
+          "Current through 4 Ω = V/4 = 8/7 A ≈ 1.14 A"
+        ],
+        "shortcut": "Equivalent cell: E = (E₁/r₁ + E₂/r₂)/(1/r₁ + 1/r₂) = 8/1.5 = 16/3 V, r = 2/3 Ω; I = (16/3)/(4 + 2/3) = 8/7 A.",
+        "why_others_wrong": "10/7 A treats the cells as if in series (10 V across 7 Ω). 5/4 A averages the emfs and ignores internal resistance. 1 A uses the 4 V cell alone.",
+        "ncert_reference": null,
+        "final_answer": "Option C: 8/7 A"
+      },
+      "suggested_time_seconds": 120,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_PHY_000004",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "physics"
+        }
+      ],
+      "subject": "Physics",
+      "topic": "Magnetic Effects of Current and Magnetism",
+      "subtopic": "Force on charges and conductors",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "format": "assertion_reason",
+      "language": "en",
+      "question_text": "Given below are two statements: one is labelled Assertion (A) and the other is labelled Reason (R).\n\nAssertion (A): A charged particle moving parallel to a uniform magnetic field continues to move in a straight line.\nReason (R): The magnetic force on a moving charged particle does no work on it.\n\nChoose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both A and R are true and R is the correct explanation of A."
+        },
+        {
+          "key": "B",
+          "text": "Both A and R are true but R is NOT the correct explanation of A."
+        },
+        {
+          "key": "C",
+          "text": "A is true but R is false."
+        },
+        {
+          "key": "D",
+          "text": "A is false but R is true."
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Magnetic (Lorentz) force F = q(v × B)",
+        "explanation": "When v is parallel to B, v × B = 0, so there is no force and the particle is not deflected: A is true. The magnetic force is always perpendicular to v, so it does no work: R is also true. But R is not why the particle goes straight; a force that does no work can still bend the path (circular motion when v ⊥ B). The reason is that the force is zero.",
+        "steps": [
+          "F = qvB sin θ with θ = 0° gives F = 0 → A is true",
+          "F ⊥ v always, so power F·v = 0 → R is true",
+          "R does not explain A: zero work does not mean zero deflection"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Option A is the trap: R is true, but zero work also holds when the particle moves in a circle, so it cannot explain the straight path.",
+        "ncert_reference": null,
+        "final_answer": "Option B: Both A and R are true but R is NOT the correct explanation of A."
+      },
+      "suggested_time_seconds": 50,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_PHY_000005",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "physics"
+        }
+      ],
+      "subject": "Physics",
+      "topic": "Gravitation",
+      "subtopic": "Variation of g",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "format": "numerical",
+      "language": "en",
+      "question_text": "The acceleration due to gravity at a depth R/2 below the Earth's surface is equal to the acceleration due to gravity at a height h above the surface. If R is the radius of the Earth, h is:",
+      "options": [
+        {
+          "key": "A",
+          "text": "(√2 − 1)R"
+        },
+        {
+          "key": "B",
+          "text": "R/2"
+        },
+        {
+          "key": "C",
+          "text": "R/4"
+        },
+        {
+          "key": "D",
+          "text": "√2 R"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Variation of g with depth and with height",
+        "explanation": "Below the surface g falls linearly with depth; above it g falls as the inverse square of distance from the centre. Set the two equal.",
+        "steps": [
+          "At depth d: g_d = g(1 − d/R) = g(1 − 1/2) = g/2",
+          "At height h: g_h = g / (1 + h/R)²",
+          "g/(1 + h/R)² = g/2 → (1 + h/R)² = 2 → 1 + h/R = √2",
+          "h = (√2 − 1)R ≈ 0.414 R"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "R/4 comes from g_h ≈ g(1 − 2h/R), which is valid only when h ≪ R; here h is comparable to R. R/2 assumes depth and height act equally. √2 R forgets to subtract 1.",
+        "ncert_reference": null,
+        "final_answer": "Option A: (√2 − 1)R"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_CHE_000001",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "chemistry"
+        }
+      ],
+      "subject": "Chemistry",
+      "topic": "Chemical Bonding and Molecular Structure",
+      "subtopic": "VSEPR shapes",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "format": "direct",
+      "language": "en",
+      "question_text": "Which of the following molecules has a see-saw shape?",
+      "options": [
+        {
+          "key": "A",
+          "text": "XeF₄"
+        },
+        {
+          "key": "B",
+          "text": "BF₃"
+        },
+        {
+          "key": "C",
+          "text": "CH₄"
+        },
+        {
+          "key": "D",
+          "text": "SF₄"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "VSEPR theory: bond pairs and lone pairs around the central atom",
+        "explanation": "A see-saw shape comes from 4 bond pairs and 1 lone pair (5 electron pairs, trigonal bipyramidal arrangement with the lone pair in an equatorial position).",
+        "steps": [
+          "SF₄: S has 6 valence electrons, 4 used in bonds → 4 bond pairs + 1 lone pair → see-saw",
+          "XeF₄: 4 bond pairs + 2 lone pairs → square planar",
+          "BF₃: 3 bond pairs, no lone pair → trigonal planar",
+          "CH₄: 4 bond pairs, no lone pair → tetrahedral"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": null,
+        "final_answer": "Option D: SF₄"
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_CHE_000002",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "chemistry"
+        }
+      ],
+      "subject": "Chemistry",
+      "topic": "Chemical Kinetics",
+      "subtopic": "Half-life",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "format": "numerical",
+      "language": "en",
+      "question_text": "A first-order reaction is 75% complete in 60 minutes. The time taken for it to be 50% complete is:",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 min"
+        },
+        {
+          "key": "B",
+          "text": "40 min"
+        },
+        {
+          "key": "C",
+          "text": "45 min"
+        },
+        {
+          "key": "D",
+          "text": "20 min"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Half-life of a first-order reaction is independent of initial concentration",
+        "explanation": "75% completion means 25% (one quarter) remains, which takes exactly two half-lives.",
+        "steps": [
+          "100% → 50% (one half-life) → 25% (two half-lives)",
+          "2 × t½ = 60 min",
+          "t½ = 30 min"
+        ],
+        "shortcut": "For first order, t₇₅% = 2 t₅₀%.",
+        "why_others_wrong": "45 min assumes the reaction proceeds at a constant rate (zero order).",
+        "ncert_reference": null,
+        "final_answer": "Option A: 30 min"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_CHE_000003",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "chemistry"
+        }
+      ],
+      "subject": "Chemistry",
+      "topic": "Redox Reactions and Electrochemistry",
+      "subtopic": "Nernst equation and Gibbs energy",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "format": "numerical",
+      "language": "en",
+      "question_text": "For the cell Zn | Zn²⁺ (0.01 M) || Cu²⁺ (1 M) | Cu, E°cell = 1.10 V. The emf of the cell at 298 K is (take 2.303RT/F = 0.059 V):",
+      "options": [
+        {
+          "key": "A",
+          "text": "1.041 V"
+        },
+        {
+          "key": "B",
+          "text": "1.10 V"
+        },
+        {
+          "key": "C",
+          "text": "1.159 V"
+        },
+        {
+          "key": "D",
+          "text": "1.218 V"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Nernst equation",
+        "explanation": "Cell reaction: Zn + Cu²⁺ → Zn²⁺ + Cu, with n = 2. A lower product concentration (Zn²⁺) than reactant concentration (Cu²⁺) makes the emf larger than E°.",
+        "steps": [
+          "E = E° − (0.059/n) log ([Zn²⁺]/[Cu²⁺])",
+          "E = 1.10 − (0.059/2) log (0.01/1) = 1.10 − 0.0295 × (−2)",
+          "E = 1.10 + 0.059 = 1.159 V"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "1.041 V gets the sign of the log term wrong. 1.218 V uses n = 1. 1.10 V ignores concentration.",
+        "ncert_reference": null,
+        "final_answer": "Option C: 1.159 V"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_CHE_000004",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "chemistry"
+        }
+      ],
+      "subject": "Chemistry",
+      "topic": "Coordination Compounds",
+      "subtopic": "Valence bond theory",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "format": "statement_pair",
+      "language": "en",
+      "question_text": "Given below are two statements:\n\nStatement I: [Ni(CN)₄]²⁻ is square planar and diamagnetic.\nStatement II: [NiCl₄]²⁻ is tetrahedral and paramagnetic.\n\nIn the light of the above statements, choose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both Statement I and Statement II are true."
+        },
+        {
+          "key": "B",
+          "text": "Both Statement I and Statement II are false."
+        },
+        {
+          "key": "C",
+          "text": "Statement I is true but Statement II is false."
+        },
+        {
+          "key": "D",
+          "text": "Statement I is false but Statement II is true."
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Valence bond theory: strong- and weak-field ligands with a d⁸ ion",
+        "explanation": "Ni²⁺ is 3d⁸. CN⁻ is a strong-field ligand: it pairs the 3d electrons, leaving one 3d orbital free for dsp² hybridisation (square planar, no unpaired electrons). Cl⁻ is a weak-field ligand: no pairing, so sp³ hybridisation (tetrahedral) with two unpaired electrons.",
+        "steps": [
+          "Ni²⁺: [Ar] 3d⁸",
+          "[Ni(CN)₄]²⁻: pairing → dsp² → square planar, 0 unpaired electrons → diamagnetic (Statement I true)",
+          "[NiCl₄]²⁻: no pairing → sp³ → tetrahedral, 2 unpaired electrons → paramagnetic (Statement II true)"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": "Class 12 Chemistry, 'Coordination Compounds', valence bond theory",
+        "final_answer": "Option A: Both Statement I and Statement II are true."
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_CHE_000005",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "chemistry"
+        }
+      ],
+      "subject": "Chemistry",
+      "topic": "Organic Compounds Containing Oxygen",
+      "subtopic": "Aldehydes and ketones",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "format": "multi_statement",
+      "language": "en",
+      "question_text": "Which of the following compounds give a positive iodoform test?\n\n(a) Ethanol\n(b) Propan-2-ol\n(c) Propan-1-ol\n(d) Acetophenone\n(e) Pentan-3-one\n\nChoose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "(a), (c) and (e) only"
+        },
+        {
+          "key": "B",
+          "text": "(a), (b) and (d) only"
+        },
+        {
+          "key": "C",
+          "text": "(b), (d) and (e) only"
+        },
+        {
+          "key": "D",
+          "text": "(a), (b) and (c) only"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Haloform reaction",
+        "explanation": "The iodoform test is positive for compounds with a CH₃CO– group (methyl ketones and acetaldehyde), and for alcohols with a CH₃CH(OH)– group, which I₂/NaOH first oxidises to CH₃CO–.",
+        "steps": [
+          "(a) Ethanol, CH₃CH₂OH → oxidised to CH₃CHO → positive",
+          "(b) Propan-2-ol, CH₃CH(OH)CH₃ → oxidised to acetone → positive",
+          "(c) Propan-1-ol, CH₃CH₂CH₂OH → gives propanal, no CH₃CO– → negative",
+          "(d) Acetophenone, C₆H₅COCH₃ → methyl ketone → positive",
+          "(e) Pentan-3-one, CH₃CH₂COCH₂CH₃ → ethyl groups on both sides, no CH₃CO– → negative"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "Pentan-3-one is the usual trap: it is a ketone but not a methyl ketone.",
+        "ncert_reference": null,
+        "final_answer": "Option B: (a), (b) and (d) only"
+      },
+      "suggested_time_seconds": 75,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_BOT_000001",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "botany"
+        }
+      ],
+      "subject": "Botany",
+      "topic": "Cell: The Unit of Life",
+      "subtopic": "Prokaryotic cell",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "format": "direct",
+      "language": "en",
+      "question_text": "Which of the following is absent in a typical bacterial cell?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ribosomes"
+        },
+        {
+          "key": "B",
+          "text": "Plasma membrane"
+        },
+        {
+          "key": "C",
+          "text": "Mitochondria"
+        },
+        {
+          "key": "D",
+          "text": "Cell wall"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Prokaryotic cells lack membrane-bound organelles",
+        "explanation": "Bacteria have no membrane-bound organelles such as mitochondria, plastids or a nucleus. They do have a plasma membrane, 70S ribosomes and (in most) a cell wall.",
+        "steps": [
+          "Mitochondria are membrane-bound → absent in prokaryotes",
+          "Ribosomes (70S) are not membrane-bound → present",
+          "Plasma membrane and cell wall are parts of the bacterial cell envelope → present"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": "Class 11 Biology, 'Cell: The Unit of Life', prokaryotic cells",
+        "final_answer": "Option C: Mitochondria"
+      },
+      "suggested_time_seconds": 25,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_BOT_000002",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "botany"
+        }
+      ],
+      "subject": "Botany",
+      "topic": "Plant Growth and Development",
+      "subtopic": "Plant growth regulators",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "format": "match_list",
+      "language": "en",
+      "question_text": "Match List-I (plant growth regulator) with List-II (effect).\n\nList-I:\nA. Auxin\nB. Gibberellin\nC. Cytokinin\nD. Ethylene\n\nList-II:\nI. Promotes fruit ripening\nII. Causes apical dominance\nIII. Delays leaf senescence\nIV. Causes bolting in rosette plants\n\nChoose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "A-II, B-III, C-IV, D-I"
+        },
+        {
+          "key": "B",
+          "text": "A-II, B-IV, C-III, D-I"
+        },
+        {
+          "key": "C",
+          "text": "A-IV, B-II, C-III, D-I"
+        },
+        {
+          "key": "D",
+          "text": "A-I, B-IV, C-III, D-II"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Physiological effects of plant growth regulators",
+        "explanation": "Each regulator has a signature effect that NEET tests directly.",
+        "steps": [
+          "Auxin: the growing apical bud inhibits lateral buds (apical dominance) → II",
+          "Gibberellin: internode elongation just before flowering in rosette plants such as cabbage (bolting) → IV",
+          "Cytokinin: promotes nutrient mobilisation and delays leaf senescence → III",
+          "Ethylene: enhances respiration rate during ripening (respiratory climacteric) → I"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": "Class 11 Biology, 'Plant Growth and Development', plant growth regulators",
+        "final_answer": "Option B: A-II, B-IV, C-III, D-I"
+      },
+      "suggested_time_seconds": 40,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_BOT_000003",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "botany"
+        }
+      ],
+      "subject": "Botany",
+      "topic": "Principles of Inheritance and Variation",
+      "subtopic": "Mendelian inheritance",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "format": "numerical",
+      "language": "en",
+      "question_text": "In a cross AaBbCc × AaBbCc, the three genes assort independently and each shows complete dominance. What fraction of the offspring will show the dominant phenotype for exactly one of the three traits?",
+      "options": [
+        {
+          "key": "A",
+          "text": "27/64"
+        },
+        {
+          "key": "B",
+          "text": "3/64"
+        },
+        {
+          "key": "C",
+          "text": "1/64"
+        },
+        {
+          "key": "D",
+          "text": "9/64"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Product rule for independently assorting genes",
+        "explanation": "For each gene, Aa × Aa gives the dominant phenotype with probability 3/4 and the recessive with 1/4. 'Exactly one dominant' can happen in 3 ways (which trait is dominant).",
+        "steps": [
+          "P(dominant) = 3/4, P(recessive) = 1/4 for each trait",
+          "One particular arrangement, e.g. dominant–recessive–recessive: 3/4 × 1/4 × 1/4 = 3/64",
+          "Three such arrangements: 3 × 3/64 = 9/64"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "27/64 is the fraction for exactly two dominant traits (and also for all three). 3/64 counts only one arrangement. 1/64 is the triple-recessive fraction.",
+        "ncert_reference": "Class 12 Biology, 'Principles of Inheritance and Variation', dihybrid cross",
+        "final_answer": "Option D: 9/64"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_BOT_000004",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "botany"
+        }
+      ],
+      "subject": "Botany",
+      "topic": "Photosynthesis",
+      "subtopic": "Photorespiration",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "format": "assertion_reason",
+      "language": "en",
+      "question_text": "Given below are two statements: one is labelled Assertion (A) and the other is labelled Reason (R).\n\nAssertion (A): C₄ plants show little or no photorespiration.\nReason (R): In C₄ plants the Calvin cycle runs in bundle sheath cells, where a high CO₂ concentration makes RuBisCO act mainly as a carboxylase.\n\nChoose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both A and R are true and R is the correct explanation of A."
+        },
+        {
+          "key": "B",
+          "text": "Both A and R are true but R is NOT the correct explanation of A."
+        },
+        {
+          "key": "C",
+          "text": "A is true but R is false."
+        },
+        {
+          "key": "D",
+          "text": "A is false but R is true."
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Why C₄ plants avoid photorespiration",
+        "explanation": "RuBisCO binds both CO₂ and O₂; photorespiration happens when it binds O₂. C₄ plants first fix CO₂ in mesophyll cells and release it in bundle sheath cells, raising the CO₂ concentration around RuBisCO. So RuBisCO's oxygenase activity is minimised. R is true and is exactly why A is true.",
+        "steps": [
+          "Photorespiration = oxygenation of RuBP by RuBisCO",
+          "C₄ pathway concentrates CO₂ in bundle sheath cells",
+          "High CO₂ : O₂ ratio → carboxylation dominates → little photorespiration"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": "Class 11 Biology, 'Photosynthesis in Higher Plants', photorespiration and the C₄ pathway",
+        "final_answer": "Option A: Both A and R are true and R is the correct explanation of A."
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_BOT_000005",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "botany"
+        }
+      ],
+      "subject": "Botany",
+      "topic": "Ecosystem",
+      "subtopic": "Productivity and decomposition",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "format": "statement_pair",
+      "language": "en",
+      "question_text": "Given below are two statements:\n\nStatement I: Gross primary productivity minus the respiration losses of producers is the net primary productivity.\nStatement II: Secondary productivity is the rate at which producers form new organic matter.\n\nIn the light of the above statements, choose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both Statement I and Statement II are true."
+        },
+        {
+          "key": "B",
+          "text": "Both Statement I and Statement II are false."
+        },
+        {
+          "key": "C",
+          "text": "Statement I is true but Statement II is false."
+        },
+        {
+          "key": "D",
+          "text": "Statement I is false but Statement II is true."
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Primary and secondary productivity",
+        "explanation": "GPP − R = NPP, so Statement I is true. Secondary productivity is the rate of formation of new organic matter by consumers, not producers, so Statement II is false.",
+        "steps": [
+          "NPP = GPP − R → Statement I true",
+          "Secondary productivity refers to consumers → Statement II false"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": "Class 12 Biology, 'Ecosystem', productivity",
+        "final_answer": "Option C: Statement I is true but Statement II is false."
+      },
+      "suggested_time_seconds": 30,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_ZOO_000001",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "zoology"
+        }
+      ],
+      "subject": "Zoology",
+      "topic": "Body Fluids and Circulation",
+      "subtopic": "Blood and blood groups",
+      "difficulty": "Basic",
+      "question_type": "MCQ",
+      "format": "direct",
+      "language": "en",
+      "question_text": "A person with blood group AB has:",
+      "options": [
+        {
+          "key": "A",
+          "text": "No antigens on RBCs and both anti-A and anti-B antibodies in plasma"
+        },
+        {
+          "key": "B",
+          "text": "Antigens A and B on RBCs and no anti-A or anti-B antibodies in plasma"
+        },
+        {
+          "key": "C",
+          "text": "Antigens A and B on RBCs and both anti-A and anti-B antibodies in plasma"
+        },
+        {
+          "key": "D",
+          "text": "No antigens on RBCs and no antibodies in plasma"
+        }
+      ],
+      "correct_answer": "B",
+      "solution": {
+        "concept": "ABO blood grouping",
+        "explanation": "The blood group is named after the antigens on the RBCs. The plasma carries antibodies only against the antigens the person lacks, so group AB has neither antibody. This is why AB people are called universal recipients.",
+        "steps": [
+          "Group AB → antigens A and B on RBCs",
+          "Both antigens present → no anti-A, no anti-B in plasma"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "The first option describes group O. Having both antigen and its antibody (third option) would make the person's own blood clump.",
+        "ncert_reference": "Class 11 Biology, 'Body Fluids and Circulation', ABO grouping",
+        "final_answer": "Option B: Antigens A and B on RBCs and no anti-A or anti-B antibodies in plasma"
+      },
+      "suggested_time_seconds": 25,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_ZOO_000002",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "zoology"
+        }
+      ],
+      "subject": "Zoology",
+      "topic": "Excretory Products and their Elimination",
+      "subtopic": "Regulation of kidney function",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "format": "multi_statement",
+      "language": "en",
+      "question_text": "Which of the following statements about antidiuretic hormone (ADH) are correct?\n\n(a) It is released into the blood from the neurohypophysis.\n(b) It increases water reabsorption from the latter parts of the renal tubule.\n(c) Its deficiency causes diabetes insipidus.\n(d) It is secreted by the adrenal cortex.\n\nChoose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "(a), (b) and (d) only"
+        },
+        {
+          "key": "B",
+          "text": "(b) and (c) only"
+        },
+        {
+          "key": "C",
+          "text": "(a), (c) and (d) only"
+        },
+        {
+          "key": "D",
+          "text": "(a), (b) and (c) only"
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Hormonal regulation of water reabsorption",
+        "explanation": "ADH (vasopressin) is made by hypothalamic neurons and released from the posterior pituitary (neurohypophysis). It makes the distal tubule and collecting duct reabsorb more water. Too little ADH causes diabetes insipidus: large volumes of dilute urine.",
+        "steps": [
+          "(a) True: stored in and released from the neurohypophysis",
+          "(b) True: acts on the distal parts of the tubule",
+          "(c) True: deficiency → diabetes insipidus",
+          "(d) False: the adrenal cortex secretes aldosterone, not ADH"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": "Class 11 Biology, 'Excretory Products and their Elimination', regulation of kidney function",
+        "final_answer": "Option D: (a), (b) and (c) only"
+      },
+      "suggested_time_seconds": 45,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_ZOO_000003",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "zoology"
+        }
+      ],
+      "subject": "Zoology",
+      "topic": "Evolution",
+      "subtopic": "Gene flow, drift and Hardy-Weinberg",
+      "difficulty": "Advanced",
+      "question_type": "MCQ",
+      "format": "numerical",
+      "language": "en",
+      "question_text": "In a population in Hardy-Weinberg equilibrium, 16% of individuals show a recessive trait (genotype aa). Among the individuals who do NOT show the trait, what fraction are carriers (Aa)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "4/7"
+        },
+        {
+          "key": "B",
+          "text": "12/25"
+        },
+        {
+          "key": "C",
+          "text": "3/7"
+        },
+        {
+          "key": "D",
+          "text": "3/5"
+        }
+      ],
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Hardy-Weinberg principle: p² + 2pq + q² = 1",
+        "explanation": "q² is the recessive fraction; find q and p, then compare carriers (2pq) with all individuals showing the dominant trait (p² + 2pq).",
+        "steps": [
+          "q² = 0.16 → q = 0.4, p = 0.6",
+          "AA = p² = 0.36, Aa = 2pq = 0.48 → normal individuals = 0.84",
+          "Carriers among normal = 0.48 / 0.84 = 4/7 ≈ 0.57"
+        ],
+        "shortcut": null,
+        "why_others_wrong": "12/25 (0.48) is the carrier fraction of the whole population, not of the normal individuals asked about. 3/7 is the AA share among normal individuals. 3/5 is p.",
+        "ncert_reference": "Class 12 Biology, 'Evolution', Hardy-Weinberg principle",
+        "final_answer": "Option A: 4/7"
+      },
+      "suggested_time_seconds": 90,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "script:recompute",
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_ZOO_000004",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "zoology"
+        }
+      ],
+      "subject": "Zoology",
+      "topic": "Human Health and Disease",
+      "subtopic": "Pathogens and diseases",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "format": "match_list",
+      "language": "en",
+      "question_text": "Match List-I (disease) with List-II (causative organism).\n\nList-I:\nA. Typhoid\nB. Malaria\nC. Ascariasis\nD. Ringworm\n\nList-II:\nI. Plasmodium vivax\nII. Trichophyton\nIII. Salmonella typhi\nIV. Ascaris lumbricoides\n\nChoose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "A-III, B-IV, C-I, D-II"
+        },
+        {
+          "key": "B",
+          "text": "A-I, B-III, C-IV, D-II"
+        },
+        {
+          "key": "C",
+          "text": "A-III, B-I, C-IV, D-II"
+        },
+        {
+          "key": "D",
+          "text": "A-III, B-I, C-II, D-IV"
+        }
+      ],
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Common human diseases and their pathogens",
+        "explanation": "Typhoid is bacterial, malaria is protozoan, ascariasis is caused by a roundworm (helminth) and ringworm by fungi.",
+        "steps": [
+          "Typhoid → Salmonella typhi (bacterium) → III",
+          "Malaria → Plasmodium (protozoan) → I",
+          "Ascariasis → Ascaris (intestinal roundworm) → IV",
+          "Ringworm → fungi of genera Microsporum, Trichophyton, Epidermophyton → II"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": "Class 12 Biology, 'Human Health and Disease', common diseases in humans",
+        "final_answer": "Option C: A-III, B-I, C-IV, D-II"
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    },
+    {
+      "question_id": "NEET_ZOO_000005",
+      "exam_mappings": [
+        {
+          "exam_id": "NEET_UG",
+          "stage": "UG",
+          "section_key": "zoology"
+        }
+      ],
+      "subject": "Zoology",
+      "topic": "Biotechnology: Principles and Processes",
+      "subtopic": "Restriction enzymes",
+      "difficulty": "Intermediate",
+      "question_type": "MCQ",
+      "format": "assertion_reason",
+      "language": "en",
+      "question_text": "Given below are two statements: one is labelled Assertion (A) and the other is labelled Reason (R).\n\nAssertion (A): The restriction endonuclease EcoRI cuts DNA at random sites.\nReason (R): EcoRI recognises the palindromic nucleotide sequence 5'-GAATTC-3'.\n\nChoose the correct answer from the options given below:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both A and R are true and R is the correct explanation of A."
+        },
+        {
+          "key": "B",
+          "text": "Both A and R are true but R is NOT the correct explanation of A."
+        },
+        {
+          "key": "C",
+          "text": "A is true but R is false."
+        },
+        {
+          "key": "D",
+          "text": "A is false but R is true."
+        }
+      ],
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Specificity of restriction endonucleases",
+        "explanation": "Restriction endonucleases cut only at specific recognition sequences. EcoRI recognises the palindrome GAATTC and cuts between G and A on each strand, leaving sticky ends. So A is false and R is true.",
+        "steps": [
+          "Restriction endonucleases are sequence-specific → A is false",
+          "EcoRI site: 5'-GAATTC-3' / 3'-CTTAAG-5', a palindrome → R is true"
+        ],
+        "shortcut": null,
+        "why_others_wrong": null,
+        "ncert_reference": "Class 12 Biology, 'Biotechnology: Principles and Processes', restriction enzymes",
+        "final_answer": "Option D: A is false but R is true."
+      },
+      "suggested_time_seconds": 35,
+      "source": {
+        "source_type": "Original",
+        "source_name": "PrepMitra",
+        "source_url": null,
+        "original_exam_year": null,
+        "license_note": null
+      },
+      "verification": {
+        "answer_verified": true,
+        "solution_verified": true,
+        "review_status": "Pending Human Review",
+        "verified_by": [
+          "ai:author-solve",
+          "ai:independent-check"
+        ],
+        "verified_at": "2026-11-16"
+      }
+    }
+  ]
+}

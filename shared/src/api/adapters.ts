@@ -70,11 +70,16 @@ const CATEGORY: Record<string, ExamCategory> = {
   civil_services: 'civil-services',
   higher_education: 'higher-education',
   campus_hiring: 'campus-placement',
+  medical: 'medical',
 };
 const category = (key: string, slug: string): ExamCategory => (slug.startsWith('rrb-') ? 'railway' : CATEGORY[key] ?? 'government');
 
 export function subjectFromSection(key = '', name = ''): Subject {
   const s = `${key} ${name}`.toLowerCase();
+  // NEET sections first: "Biology: Botany" must not fall through to the general rules.
+  if (/physics/.test(s)) return 'physics';
+  if (/chemistry/.test(s)) return 'chemistry';
+  if (/biology|botany|zoology/.test(s)) return 'biology';
   // Order matters: "Reasoning & Computer Aptitude" is reasoning, "Data Analysis & Interpretation" is DI.
   if (/data analysis|interpretation|dilr|\bdai\b/.test(s)) return 'data-interpretation';
   if (/reason|logical|intelligence|csat/.test(s)) return 'reasoning';

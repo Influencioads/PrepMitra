@@ -98,31 +98,37 @@ def ensure_topics(db: Session, exam: Exam, section: dict, taxonomy: dict) -> lis
     return ids
 
 
-def ensure_blueprint(db: Session, exam: Exam, stage: dict, topic_ids: dict[str, list[int]]) -> int | None:
-    """Activates a blueprint matching the official pattern; returns the new version, or None if already current."""
+def ensure_blueprint(db: Session, exam: Exam, stage: dict, topic_ids: dict[str, list[int]], mix: dict = MIX,
+                     instructions: str = INSTRUCTIONS) -> int | None:
+    """Activates a blueprint matching the official pattern; returns the new version, or None if already current.
+
+    A section without duration_min has no sectional timer (one timer for the paper, as in NEET)."""
     sections = []
     for s in stage["sections"]:
         per_q = round(s["max_marks"] / s["questions"], 4)
         sections.append({"key": s["section_key"], "name": s["name"], "question_count": s["questions"],
                          "marks_per_question": per_q, "negative_marks": round(per_q * stage["negative_marking_fraction"], 4),
-                         "question_types": {"single": s["questions"]}, "duration_min": s["duration_min"],
+                         "question_types": {"single": s["questions"]},
+                         **({"duration_min": s["duration_min"]} if s.get("duration_min") else {}),
                          "topic_ids": topic_ids[s["section_key"]]})
     current = None
     if exam.current_blueprint_version is not None:
         current = db.scalar(select(ExamBlueprint).where(ExamBlueprint.exam_id == exam.id,
                                                         ExamBlueprint.version == exam.current_blueprint_version))
     if current is not None and current.sections == sections and current.duration_min == stage["duration_min"] \
-            and current.difficulty_mix == MIX:
+            and current.difficulty_mix == mix:
         return None
     languages = current.languages if current is not None else ["en"]
     topic_section = {t.id: t.section_key for t in db.scalars(select(Topic).where(Topic.exam_id == exam.id))}
-    errors = bp.validate(sections, stage["duration_min"], MIX, languages, topic_section)
+    errors = bp.validate(sections, stage["duration_min"], mix, languages, topic_section)
     if errors:
         raise ValueError(f"{exam.slug}: blueprint invalid: {errors}")
     version = (db.scalar(select(func.max(ExamBlueprint.version)).where(ExamBlueprint.exam_id == exam.id)) or 0) + 1
     db.add(ExamBlueprint(exam_id=exam.id, version=version, sections=sections, duration_min=stage["duration_min"],
-                         marking_scheme={"unanswered": 0}, difficulty_mix=MIX, languages=languages,
-                         calculator_allowed=False, section_switching_allowed=False, instructions=INSTRUCTIONS))
+                         marking_scheme={"unanswered": 0}, difficulty_mix=mix, languages=languages,
+                         calculator_allowed=False,
+                         section_switching_allowed=not any("duration_min" in s for s in sections),
+                         instructions=instructions))
     exam.current_blueprint_version = version
     return version
 
