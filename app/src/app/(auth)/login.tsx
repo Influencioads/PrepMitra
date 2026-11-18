@@ -4,10 +4,10 @@ import { router } from 'expo-router';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DEMO_USER, loginSchema, type LoginInput } from '@prepmitra/shared';
-import { AppText, AuthShell, authColors, Button, Input, toast } from '@/components';
+import { AppText, AuthShell, Button, Input, toast } from '@/components';
 import { authService, errorMessage } from '@/services';
 import { signInWithDemoData, useAuthStore } from '@/store';
-import { spacing } from '@/theme';
+import { colors, radii, spacing } from '@/theme';
 
 export default function Login() {
   const setPending = useAuthStore((s) => s.setPending);
@@ -40,17 +40,25 @@ export default function Login() {
   };
 
   return (
-    <AuthShell>
-      <View style={styles.head}>
-        <AppText accessibilityRole="header" style={styles.title}>Welcome back</AppText>
-        <AppText variant="body" color={authColors.muted}>Log in with your mobile number. We’ll ask for a 6-digit code next.</AppText>
-      </View>
+    <AuthShell
+      art
+      title="Welcome back"
+      subtitle="Log in with your mobile number. We’ll send a 6-digit code."
+      footer={
+        <>
+          <Button title="Get OTP" size="lg" rightIcon="arrow-forward" fullWidth loading={isSubmitting} onPress={handleSubmit(onSubmit)} />
+          <View style={styles.switch}>
+            <AppText variant="small">New to PrepMitra AI?</AppText>
+            <Button title="Create an account" variant="ghost" size="sm" onPress={() => router.replace('/signup')} />
+          </View>
+        </>
+      }
+    >
       <Controller
         control={control}
         name="phone"
         render={({ field: { value, onChange, onBlur } }) => (
           <Input
-            dark
             label="Mobile number"
             required
             leftAddon="+91"
@@ -68,43 +76,32 @@ export default function Login() {
           />
         )}
       />
-      <Button title="Get OTP" variant="accent" size="lg" rightIcon="arrow-forward" fullWidth loading={isSubmitting} onPress={handleSubmit(onSubmit)} />
 
       <View style={styles.divider}>
         <View style={styles.line} />
-        <AppText variant="caption" color={authColors.muted}>or</AppText>
+        <AppText variant="caption">or</AppText>
         <View style={styles.line} />
       </View>
-      <Button title="Continue with Google (demo)" variant="outlineLight" leftIcon="logo-google" fullWidth loading={googleLoading} onPress={google} />
-
-      <View style={styles.footer}>
-        <AppText variant="small" color={authColors.text}>New to PrepMitra AI?</AppText>
-        <Button title="Create an account" variant="ghostLight" size="sm" onPress={() => router.replace('/signup')} />
-      </View>
+      <Button title="Continue with Google (demo)" variant="outline" leftIcon="logo-google" fullWidth loading={googleLoading} onPress={google} />
 
       <View style={styles.demo}>
-        <AppText variant="smallStrong" color={authColors.text}>Demo account</AppText>
-        <AppText variant="caption" color={authColors.muted}>
-          {`Use ${DEMO_USER.phone} to see a returning learner with history. Any valid number works; the code is always 123456.`}
-        </AppText>
-        <Button
-          title="Fill demo number"
-          variant="outlineLight"
-          size="sm"
-          onPress={() => setValue('phone', DEMO_USER.phone, { shouldValidate: true })}
-          style={styles.self}
-        />
+        <View style={styles.flex}>
+          <AppText variant="smallStrong">Demo account</AppText>
+          <AppText variant="caption">{`${DEMO_USER.phone} has past mocks. The code is always 123456.`}</AppText>
+        </View>
+        <Button title="Fill" variant="soft" size="sm" onPress={() => setValue('phone', DEMO_USER.phone, { shouldValidate: true })} />
       </View>
     </AuthShell>
   );
 }
 
 const styles = StyleSheet.create({
-  head: { gap: spacing.sm, marginBottom: spacing.xs },
-  title: { color: authColors.text, fontSize: 34, lineHeight: 40, fontWeight: '800' },
+  flex: { flex: 1, gap: 2 },
   divider: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  line: { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: authColors.line },
-  footer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', marginTop: -spacing.xs },
-  demo: { gap: spacing.xs, borderWidth: 1, borderStyle: 'dashed', borderColor: authColors.line, borderRadius: 16, padding: spacing.lg },
-  self: { alignSelf: 'flex-start', marginTop: spacing.xs },
+  line: { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: colors.border },
+  switch: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' },
+  demo: {
+    flexDirection: 'row', alignItems: 'center', gap: spacing.md, padding: spacing.md, borderRadius: radii.lg,
+    borderWidth: 1, borderStyle: 'dashed', borderColor: colors.borderStrong,
+  },
 });

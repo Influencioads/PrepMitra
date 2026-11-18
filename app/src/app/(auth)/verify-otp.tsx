@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { DISCLAIMERS, maskPhone, otpSchema } from '@prepmitra/shared';
-import { AppText, Button, EmptyState, Notice, OtpInput, Screen, toast } from '@/components';
+import { AppText, AuthShell, Button, EmptyState, Notice, OtpInput, Screen, toast } from '@/components';
 import { useNow } from '@/hooks/useNow';
 import { authService, errorMessage, profileService } from '@/services';
 import { signInWithDemoData, useAuthStore } from '@/store';
-import { colors, spacing } from '@/theme';
+import { spacing } from '@/theme';
 
 const RESEND_AFTER_SEC = 30;
 
@@ -75,15 +75,13 @@ export default function VerifyOtp() {
   };
 
   return (
-    <Screen keyboard edges={['left', 'right', 'bottom']}>
-      <View style={styles.head}>
-        <AppText variant="h1" accessibilityRole="header">Enter verification code</AppText>
-        <AppText variant="body" color={colors.textSecondary}>
-          Enter the 6-digit code for {maskPhone(pending.phone)}.
-        </AppText>
-        <Button title="Change number" variant="ghost" size="sm" style={styles.self} onPress={() => router.back()} />
-      </View>
-      <Notice tone="warning" title="Demo mode">{DISCLAIMERS.demoOtp}</Notice>
+    <AuthShell
+      step={pending.purpose === 'signup' ? 'Step 2 of 2' : undefined}
+      title="Enter the code"
+      subtitle={`We sent a 6-digit code to ${maskPhone(pending.phone)}.`}
+      footer={<Button title="Verify and continue" size="lg" fullWidth loading={verifying} onPress={() => void verify()} />}
+    >
+      <Button title="Change number" variant="ghost" size="sm" leftIcon="create-outline" style={styles.self} onPress={() => router.back()} />
       <OtpInput
         value={code}
         onChange={(v) => {
@@ -93,7 +91,6 @@ export default function VerifyOtp() {
         error={error ?? undefined}
         onComplete={(v) => void verify(v)}
       />
-      <Button title="Verify and continue" size="lg" fullWidth loading={verifying} onPress={() => void verify()} />
       <View style={styles.resend}>
         {wait > 0 ? (
           <AppText variant="small" accessibilityLiveRegion="polite">You can request a new code in {wait}s</AppText>
@@ -101,12 +98,12 @@ export default function VerifyOtp() {
           <Button title="Get a new code" variant="ghost" size="sm" loading={resending} onPress={resend} />
         )}
       </View>
-    </Screen>
+      <Notice tone="warning" title="Demo mode">{DISCLAIMERS.demoOtp}</Notice>
+    </AuthShell>
   );
 }
 
 const styles = StyleSheet.create({
-  head: { gap: spacing.sm },
-  self: { alignSelf: 'flex-start', marginLeft: -spacing.md },
+  self: { alignSelf: 'flex-start', marginLeft: -spacing.md, marginTop: -spacing.md },
   resend: { alignItems: 'center', minHeight: 44, justifyContent: 'center' },
 });

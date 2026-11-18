@@ -7,6 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ToastProvider } from '@/components';
+import { PhoneFrame } from '@/components/PhoneFrame';
 import { SplashView } from '@/features/brand/SplashView';
 import { useAuthStore, useStoresHydrated } from '@/store';
 import { colors } from '@/theme';
@@ -38,6 +39,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <StatusBar style={hydrated ? 'dark' : 'light'} />
+      <PhoneFrame>
       {!hydrated ? (
         <SplashView />
       ) : (
@@ -96,6 +98,7 @@ export default function RootLayout() {
           </Stack>
         </ToastProvider>
       )}
+      </PhoneFrame>
     </SafeAreaProvider>
   );
 }

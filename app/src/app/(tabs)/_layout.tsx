@@ -23,15 +23,23 @@ export default function TabsLayout() {
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textSecondary,
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
-        tabBarStyle: { backgroundColor: colors.card, borderTopColor: colors.border, minHeight: Platform.OS === 'android' ? 60 : undefined },
+        tabBarLabelStyle: { fontSize: 11, fontWeight: '600', marginBottom: Platform.OS === 'web' ? 6 : 0 },
+        tabBarItemStyle: { paddingTop: 6 },
+        tabBarStyle: {
+          backgroundColor: colors.card,
+          borderTopColor: colors.border,
+          minHeight: Platform.OS === 'ios' ? undefined : 64,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+        },
         tabBarHideOnKeyboard: true,
         sceneStyle: { backgroundColor: colors.background },
       }}
     >
       <Tabs.Screen name="home" options={{ title: 'Home', tabBarIcon: icon('home', 'home-outline') }} />
       <Tabs.Screen name="explore" options={{ title: 'Explore', tabBarIcon: icon('compass', 'compass-outline') }} />
-      <Tabs.Screen name="practice" options={{ title: 'Practice', tabBarIcon: icon('flash', 'flash-outline') }} />
+      {/* Practice is reachable from Home's quick actions; five tabs keeps the bar readable on phones. */}
+      <Tabs.Screen name="practice" options={{ title: 'Practice', href: null }} />
       <Tabs.Screen name="ai" options={{ title: 'AI', tabBarIcon: icon('sparkles', 'sparkles-outline'), tabBarAccessibilityLabel: 'AI study tools' }} />
       <Tabs.Screen name="reports" options={{ title: 'Reports', tabBarIcon: icon('bar-chart', 'bar-chart-outline') }} />
       <Tabs.Screen

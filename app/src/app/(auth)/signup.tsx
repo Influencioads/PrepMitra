@@ -3,10 +3,10 @@ import { router } from 'expo-router';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signupSchema, type SignupInput } from '@prepmitra/shared';
-import { AppText, Button, Card, Input, Screen, SwitchRow, toast } from '@/components';
+import { AppText, AuthShell, Button, Card, Input, SwitchRow, toast } from '@/components';
 import { authService, errorMessage } from '@/services';
 import { useAuthStore } from '@/store';
-import { colors, spacing } from '@/theme';
+import { spacing } from '@/theme';
 
 export default function Signup() {
   const setPending = useAuthStore((s) => s.setPending);
@@ -33,15 +33,20 @@ export default function Signup() {
   };
 
   return (
-    <Screen
-      keyboard
-      edges={['left', 'right', 'bottom']}
-      footer={<Button title="Continue" size="lg" fullWidth loading={isSubmitting} onPress={handleSubmit(onSubmit)} />}
+    <AuthShell
+      step="Step 1 of 2"
+      title="Create your account"
+      subtitle="Start with a free 30-minute mini mock and a full report."
+      footer={
+        <>
+          <Button title="Continue" size="lg" rightIcon="arrow-forward" fullWidth loading={isSubmitting} onPress={handleSubmit(onSubmit)} />
+          <View style={styles.footer}>
+            <AppText variant="small">Already registered?</AppText>
+            <Button title="Log in" variant="ghost" size="sm" onPress={() => router.replace('/login')} />
+          </View>
+        </>
+      }
     >
-      <View style={styles.head}>
-        <AppText variant="h1" accessibilityRole="header">Create your account</AppText>
-        <AppText variant="body" color={colors.textSecondary}>Start with a free 30-minute mini mock and a full report.</AppText>
-      </View>
       <Controller
         control={control}
         name="name"
@@ -106,16 +111,11 @@ export default function Signup() {
           )}
         />
       </Card>
-      <View style={styles.footer}>
-        <AppText variant="small">Already registered?</AppText>
-        <Button title="Log in" variant="ghost" size="sm" onPress={() => router.replace('/login')} />
-      </View>
-    </Screen>
+    </AuthShell>
   );
 }
 
 const styles = StyleSheet.create({
-  head: { gap: spacing.sm },
   consents: { gap: spacing.md },
   footer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },
 });
