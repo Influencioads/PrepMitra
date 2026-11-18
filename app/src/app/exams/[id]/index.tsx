@@ -61,7 +61,7 @@ export default function ExamDetails() {
         {exam.isFree && <Badge label="Free mini mock" tone="success" />}
       </View>
       <AppText variant="body" color={colors.textSecondary}>{exam.description}</AppText>
-      {[`${exam.sections.length} sections · ${exam.totalQuestions} questions`, 'Section-wise report after you submit', `Available in ${exam.languages.length} languages`].map((h) => (
+      {[`${exam.sections.length} sections · ${exam.totalQuestions} questions`, 'Section-wise report after you submit', exam.languages.length === 1 ? `Available in ${languageName(exam.languages[0]!)}` : `Available in ${exam.languages.length} languages`].map((h) => (
         <View key={h} style={styles.highlight}>
           <Ionicons name="checkmark-circle" size={18} color={colors.success} />
           <AppText variant="small" color={colors.text} style={styles.flex}>{h}</AppText>

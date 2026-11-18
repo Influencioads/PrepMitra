@@ -70,6 +70,7 @@ const CATEGORY: Record<string, ExamCategory> = {
   civil_services: 'civil-services',
   higher_education: 'higher-education',
   campus_hiring: 'campus-placement',
+  medical_entrance: 'medical-entrance',
 };
 const category = (key: string, slug: string): ExamCategory => (slug.startsWith('rrb-') ? 'railway' : CATEGORY[key] ?? 'government');
 
@@ -83,6 +84,9 @@ export function subjectFromSection(key = '', name = ''): Subject {
   if (/awareness|\bga\b/.test(s)) return 'general-awareness';
   if (/computer|cse/.test(s)) return 'computer-science';
   if (/electronic|ece/.test(s)) return 'electronics';
+  if (/physics/.test(s)) return 'physics';
+  if (/chemistry/.test(s)) return 'chemistry';
+  if (/biology|botany|zoology/.test(s)) return 'biology';
   return 'general-studies';
 }
 

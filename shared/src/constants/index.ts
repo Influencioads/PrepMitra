@@ -144,6 +144,13 @@ export const EXAM_CATEGORIES: CategoryMeta[] = [
     icon: 'briefcase',
     examples: 'IT Placement · General Aptitude',
   },
+  {
+    id: 'medical-entrance',
+    label: 'Medical Entrance',
+    description: 'NEET UG pattern mocks for MBBS and BDS aspirants: Physics, Chemistry, Botany and Zoology.',
+    icon: 'medical',
+    examples: 'NEET UG',
+  },
 ];
 
 export const categoryLabel = (id: ExamCategory): string =>

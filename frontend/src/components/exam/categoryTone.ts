@@ -8,4 +8,5 @@ export const CATEGORY_TONE: Record<ExamCategory, string> = {
   'civil-services': 'bg-sticky-purple text-[#7E22CE]',
   'higher-education': 'bg-[#FCE7EC] text-[#9F1239]',
   'campus-placement': 'bg-sticky-green text-[#3F6212]',
+  'medical-entrance': 'bg-[#FDE8E4] text-[#B42318]',
 };

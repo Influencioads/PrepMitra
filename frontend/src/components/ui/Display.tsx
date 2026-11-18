@@ -1,7 +1,7 @@
 import { useId, useRef, type KeyboardEvent, type ReactNode } from 'react';
 import {
   Award, Banknote, Brain, Briefcase, Calculator, ChartColumn, Clock, Code, FileText, GraduationCap, Landmark,
-  Languages, Mic, Scale, Search, Shield, Sparkles, Target, TrainFront, TrendingUp, Users, type LucideIcon,
+  Languages, Mic, Scale, Search, Shield, Sparkles, Stethoscope, Target, TrainFront, TrendingUp, Users, type LucideIcon,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { IconKey } from '@prepmitra/shared';
@@ -14,7 +14,7 @@ import { Card } from './Card';
 export const ICONS: Record<IconKey, LucideIcon> = {
   landmark: Landmark, banknote: Banknote, train: TrainFront, scale: Scale, graduation: GraduationCap, briefcase: Briefcase,
   code: Code, users: Users, trending: TrendingUp, calculator: Calculator, brain: Brain, mic: Mic, file: FileText,
-  target: Target, languages: Languages, chart: ChartColumn, sparkles: Sparkles, shield: Shield, clock: Clock, award: Award,
+  target: Target, languages: Languages, chart: ChartColumn, sparkles: Sparkles, shield: Shield, clock: Clock, award: Award, medical: Stethoscope,
 };
 
 export function AppIcon({ name, className }: { name: IconKey; className?: string }) {

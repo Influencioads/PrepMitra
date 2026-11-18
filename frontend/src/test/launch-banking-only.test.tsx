@@ -7,9 +7,9 @@ import { ExamCatalogPage } from '@/pages/public/ExamCatalogPage';
 import { ExamDetailsPage } from '@/pages/public/ExamDetailsPage';
 import { ExamInstructionsPage } from '@/pages/exam/ExamInstructionsPage';
 
-// Launch settings: banking exams only, interviews off (the production defaults).
+// Launch settings: banking and NEET only, interviews off (the production defaults).
 beforeEach(() => {
-  vi.stubEnv('VITE_OPEN_EXAM_CATEGORIES', 'banking');
+  vi.stubEnv('VITE_OPEN_EXAM_CATEGORIES', 'banking,medical-entrance');
   vi.stubEnv('VITE_INTERVIEWS_ENABLED', 'false');
 });
 afterEach(() => vi.unstubAllEnvs());
@@ -26,11 +26,12 @@ function renderAt(path: string) {
   );
 }
 
-describe('Launch: banking exams only', () => {
+describe('Launch: banking and NEET only', () => {
   it('opens banking exams and the free mini mock; everything else is coming soon', () => {
-    expect(openExamCategories()).toEqual(['banking']);
+    expect(openExamCategories()).toEqual(['banking', 'medical-entrance']);
     expect(isExamOpen(getExamById('ibps-po')!)).toBe(true);
     expect(isExamOpen(getExamById('sbi-po')!)).toBe(true);
+    expect(isExamOpen(getExamById('neet-ug')!)).toBe(true);
     expect(isExamOpen(getExamById('ssc-cgl')!)).toBe(false);
     expect(isExamOpen(getExamById('general-aptitude')!)).toBe(true); // the one-time free trial
     expect(interviewsEnabled()).toBe(false);
@@ -40,8 +41,8 @@ describe('Launch: banking exams only', () => {
     renderAt('/exams');
     const section = (await screen.findByRole('heading', { name: /^Exam mocks/ })).closest('section')!;
     const titles = (await within(section).findAllByRole('heading', { level: 3 })).map((h) => h.textContent);
-    const firstClosed = titles.findIndex((x) => !/IBPS|SBI/.test(x ?? ''));
-    expect(titles.slice(0, firstClosed).every((x) => /IBPS|SBI/.test(x ?? ''))).toBe(true);
+    const firstClosed = titles.findIndex((x) => !/IBPS|SBI|NEET/.test(x ?? ''));
+    expect(titles.slice(0, firstClosed).every((x) => /IBPS|SBI|NEET/.test(x ?? ''))).toBe(true);
     const ssc = within(section).getByRole('link', { name: /SSC CGL Tier 1/ });
     expect(within(ssc).getAllByText('Coming soon').length).toBeGreaterThan(0);
     const ibps = within(section).getByRole('link', { name: /IBPS PO Prelims/ });
@@ -54,11 +55,17 @@ describe('Launch: banking exams only', () => {
     renderAt('/exams/ssc-cgl');
     expect(await screen.findByText('Opening soon')).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Start/ })).not.toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'See open exams' })).toHaveAttribute('href', '/exams?category=banking');
+    expect(screen.getByRole('link', { name: 'See open exams' })).toHaveAttribute('href', '/exams');
   });
 
   it('detail page of a banking exam can be started', async () => {
     renderAt('/exams/ibps-po');
+    expect(await screen.findByRole('button', { name: /Start full mock/ })).toBeInTheDocument();
+    expect(screen.queryByText('Opening soon')).not.toBeInTheDocument();
+  });
+
+  it('detail page of NEET UG can be started', async () => {
+    renderAt('/exams/neet-ug');
     expect(await screen.findByRole('button', { name: /Start full mock/ })).toBeInTheDocument();
     expect(screen.queryByText('Opening soon')).not.toBeInTheDocument();
   });

@@ -26,6 +26,7 @@ export const ICONS: Record<IconKey, IoniconName> = {
   shield: 'shield-checkmark-outline',
   clock: 'time-outline',
   award: 'ribbon-outline',
+  medical: 'medkit-outline',
 };
 
 export const CATEGORY_ICONS: Record<ExamCategory, IoniconName> = {
@@ -35,6 +36,7 @@ export const CATEGORY_ICONS: Record<ExamCategory, IoniconName> = {
   'civil-services': ICONS.scale,
   'higher-education': ICONS.graduation,
   'campus-placement': ICONS.briefcase,
+  'medical-entrance': ICONS.medical,
 };
 
 export const NOTIFICATION_ICONS: Record<NotificationType, IoniconName> = {

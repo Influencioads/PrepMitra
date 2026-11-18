@@ -25,7 +25,7 @@ export interface Language {
 export type IconKey =
   | 'landmark' | 'banknote' | 'train' | 'scale' | 'graduation' | 'briefcase'
   | 'code' | 'users' | 'trending' | 'calculator' | 'brain' | 'mic' | 'file' | 'target'
-  | 'languages' | 'chart' | 'sparkles' | 'shield' | 'clock' | 'award';
+  | 'languages' | 'chart' | 'sparkles' | 'shield' | 'clock' | 'award' | 'medical';
 
 // ---------- Users & profile ----------
 export type UserRole = 'user' | 'admin';
@@ -89,13 +89,14 @@ export interface UserSettings {
 
 // ---------- Exams ----------
 export type ExamCategory =
-  | 'government' | 'banking' | 'railway' | 'civil-services' | 'higher-education' | 'campus-placement';
+  | 'government' | 'banking' | 'railway' | 'civil-services' | 'higher-education' | 'campus-placement' | 'medical-entrance';
 
 export type Difficulty = 'Easy' | 'Moderate' | 'Hard';
 export type QuestionType = 'single' | 'multiple' | 'numeric';
 export type Subject =
   | 'quant' | 'reasoning' | 'english' | 'general-awareness' | 'computer-science'
-  | 'electronics' | 'general-studies' | 'data-interpretation';
+  | 'electronics' | 'general-studies' | 'data-interpretation'
+  | 'physics' | 'chemistry' | 'biology';
 
 export interface ExamSection {
   id: ID;
