@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # One-time install of prepmitra.influencioweb.com on the shared server (run as root).
-# Expects the release uploaded to /tmp/prepmitra.tgz (backend, deploy, docs/question-bank) and /tmp/web.tgz (frontend/dist).
+# Expects the release uploaded to /tmp/prepmitra.tgz (backend, deploy, docs/question-bank, docs/neet-bank) and /tmp/web.tgz (frontend/dist).
+# docs/neet-bank needs only exam_patterns.json, taxonomy.json and batches/BATCH_*.json (not tools/ or batches/parts/).
 # Everything lives in its own places: /opt/prepmitra, /var/www/prepmitra, compose project "prepmitra",
 # API on 127.0.0.1:8110 and one new nginx site file. No other site's config or containers are touched.
 set -euo pipefail
@@ -53,6 +54,10 @@ $COMPOSE up -d --build
 
 # 4. Question bank (draft: stored but not served until approved)
 $COMPOSE run --rm -v "$APP/docs/question-bank:/bank:ro" api python -m app.services.bank_import --bank /bank
+# NEET (UG): the exam stays unpublished and questions stay draft until a teacher approves them
+if [ -d "$APP/docs/neet-bank/batches" ]; then
+  $COMPOSE run --rm -v "$APP/docs/neet-bank:/neet:ro" api python -m app.services.neet_import --bank /neet
+fi
 
 # 5. nginx site + HTTPS
 cp "$APP/deploy/nginx-$DOMAIN.conf" "/etc/nginx/sites-available/$DOMAIN"
